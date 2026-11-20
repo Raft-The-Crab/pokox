@@ -1,6 +1,18 @@
-# GitHub repositories (proposal)
+# GitHub repositories
 
-The plan specifies GitHub Releases for binaries and a source mirror, but does **not** specify repo names, visibility or branching strategy (`docs/plan/README.md` lists branching as a known shallow area). This is a proposal, not a locked decision.
+## Decision (2026-11-21): monorepo
+
+The project ships as a single private monorepo: `Raft-The-Crab/pokox`
+(created 2026-11-21). The multi-repo split proposed below is **deferred**,
+not rejected: the work queue treats repo layout as singular, cross-module
+tasks (e.g. ENG-03 spanning `engine/`, root CMake and `vcpkg.json`) would
+become multi-repo changes, and no component has an external consumer or
+separate release cadence yet. Revisit when a component gets an external
+consumer or when `pokox-release` is needed for shipped binaries; that one
+is expected to stay separate. Directory boundaries (`engine/`, `mute/`,
+`server/`…) provide isolation without submodule workflow costs.
+
+The plan specifies GitHub Releases for binaries and a source mirror, but does **not** specify repo names, visibility or branching strategy (`docs/plan/README.md` lists branching as a known shallow area). The table below is retained as a reference for a possible future split.
 
 ## Proposed repositories
 

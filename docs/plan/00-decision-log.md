@@ -13,6 +13,7 @@ Every decision that was considered and settled. Includes rejected options so the
 | Money | $0 target. Nothing to buy, nothing sold for real currency. | Paid tiers, Play Store ($25 fee) |
 | Game distribution | GitHub Releases for exe/apk, R2 mirror, no GitHub API from clients | GitHub Packages, Git LFS |
 | Client binaries | Full installer on GitHub, delta patches on R2 | 2 GB self-contained game bundles |
+| Repository layout | Single private monorepo `Raft-The-Crab/pokox` | Multi-repo split, git submodules |
 
 ## Language and runtime
 
