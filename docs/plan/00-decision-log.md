@@ -15,6 +15,7 @@ Every decision that was considered and settled. Includes rejected options so the
 | Client binaries | Full installer on GitHub, delta patches on R2 | 2 GB self-contained game bundles |
 | Repository layout | Single private monorepo `Raft-The-Crab/pokox` | Multi-repo split, git submodules |
 | Backend hosting | Single grandfathered HF Space = platform backend/authority only (accounts, Pokoins, ledger); Edgegap = all game sessions (official + user); Cloudflare Durable Objects = lobbies/presence | Splitting Space duties, card-required hosts |
+| Session capacity fallback | Edgegap free tier (1 concurrent deployment, 1.5 vCPU, 1 h uptime cap) → donated/BYO slots → queue → developer self-host via existing signed registration | Blocking on Edgegap availability, pre-provisioning paid capacity |
 | Supporting services | Aiven OpenSearch (~20 GB × per-account, multi-account stacks) for search, Aiven Kafka ×N for telemetry/events, Axiom + Sentry observability | Card-required tiers (Google Cloud Run, Oracle, Render/Railway/Fly) |
 
 ## Language and runtime

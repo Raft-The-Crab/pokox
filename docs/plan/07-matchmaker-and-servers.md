@@ -55,6 +55,18 @@ Donated hardware follows the same registration but is constrained: it runs only 
 
 D1 is the source of truth; Redis is a fast mirror. When platform CCU is 20, allocation returns only donated/BYO slots or a queue.
 
+## Platform capacity degradation (Edgegap)
+
+Game sessions default to Edgegap on-demand containers. Verified free-tier limits (2026-11): **1 app, 2 versions, 1 concurrent deployment, up to 1.5 vCPU, unlimited deployments with a 1 h uptime cap per deployment, 3 matchmakers (3 h uptime), 3 server browsers (3 h uptime)**, limited container registry. This means the free tier effectively allows **one live session at a time** — far below the 20 platform CCU target.
+
+When Edgegap capacity is exhausted or a deployment hits its uptime cap, allocation must degrade in order:
+
+1. Return donated/BYO slots (existing path).
+2. Return queue with "platform capacity full" status.
+3. Surface the BYO self-host flow to the developer: register an external endpoint via `POST /dev/slot/register` (existing signed-registration path). Self-hosted sessions go through the same `.pkB` validator, so authority guarantees do not weaken.
+
+The client never blocks on Edgegap availability; a full platform is a normal queue/BYO state, not an error. Revisit paid Edgegap or additional free providers (Bonto, enzonic) when free usage is measurably exceeded — do not pre-provision.
+
 ## Cold start integration
 
 A Valkey wake lock (`wakeLock:slotId`, 30 s TTL) ensures one trigger boots a Space. On `GET /health`, the Space writes Ready and releases the lock. Every wake logs duration and outcome in D1. If median wake exceeds 20 s over a week, that is evidence to revisit the no-card constraint later — without changing the plan now.
