@@ -14,7 +14,7 @@ Every decision that was considered and settled. Includes rejected options so the
 | Game distribution | GitHub Releases for exe/apk, R2 mirror, no GitHub API from clients | GitHub Packages, Git LFS |
 | Client binaries | Full installer on GitHub, delta patches on R2 | 2 GB self-contained game bundles |
 | Repository layout | Single private monorepo `Raft-The-Crab/pokox` | Multi-repo split, git submodules |
-| Backend hosting | HF Space #1 = platform backend/authority (accounts, Pokoins, ledger); HF Space #2 = official first-party game hosting only; Edgegap = user-game sessions; Cloudflare Durable Objects = lobbies/presence | Second HF Space for UGC (unavailable to new accounts), card-required hosts |
+| Backend hosting | Single grandfathered HF Space = platform backend/authority only (accounts, Pokoins, ledger); Edgegap = all game sessions (official + user); Cloudflare Durable Objects = lobbies/presence | Splitting Space duties, card-required hosts |
 | Supporting services | Aiven OpenSearch (~20 GB × per-account, multi-account stacks) for search, Aiven Kafka ×N for telemetry/events, Axiom + Sentry observability | Card-required tiers (Google Cloud Run, Oracle, Render/Railway/Fly) |
 
 ## Language and runtime
