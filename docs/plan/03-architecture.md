@@ -33,22 +33,28 @@ Rule: one source of truth per fact. Balances live only in Postgres. Redis is rec
 | R2 | 10 GB, zero egress | Immutable CID chunks |
 | D1 | 5 GB total | Account-level row quotas |
 | Firebase Spark | 1 GB Firestore, ~50k reads/~20k writes per day | No card |
-| Hugging Face CPU Basic | 2 vCPU, 16 GB, 50 GB non-persistent disk | Spaces may sleep; quota can be 0 on some accounts |
-| Aiven Free | Always-on PostgreSQL, Kafka, MySQL, OpenSearch | No card. **Valkey not listed** — use Upstash or Layerbase for Redis |
+| Hugging Face CPU Basic (1 Space) | Authority server only — HF no longer grants free Docker Spaces to new accounts | Spaces may sleep; one Space per account |
+| Edgegap free tier | On-demand game-session/dedicated-server containers, scale to zero | Free account, no card; usage-billed beyond free |
+| Cloudflare Durable Objects (free) | Lobbies, presence, chat rooms, match-session state (hibernating WebSockets) | SQLite backend only on free plan |
+| Bonto or enzonic free tier | Optional always-on Node.js service if edge coverage is insufficient | No card; ~75 compute hrs/mo or one 512 MB server |
+| Aiven Free | Always-on PostgreSQL, Kafka (250 KiB/s, 5 topics, 3-day retention, schema registry), MySQL, OpenSearch (~20 GB), Valkey | No card |
 | GitHub Releases | 1,000 assets/release, <2 GiB each, no total or bandwidth cap | REST API 60/h unauthenticated — clients never call it |
 | Upstash Redis | 10k commands/day | Cache only |
-| Qdrant Cloud | 1 GB vector | Search only |
+| Qdrant Cloud | 1 GB vector | Search only (OpenSearch preferred for catalog) |
+| Axiom | Observability: 500 GB ingest/mo, error tracking, traces | No card |
+| Sentry | Client crash reporting (ENG-103) | No card free tier |
+| Kinde | Auth alternative to Firebase Spark, 10.5k MAU | No card |
 
 ## Critical correction
 
 Hugging Face CPU Basic is 2 vCPU / 16 GB / **50 GB non-persistent** disk and Spaces sleep when idle. Therefore:
 
-- No state on disk in either Space. Disk holds binaries only.
+- No state on disk in the Space. Disk holds binaries only.
 - Durable state lives in D1, Aiven Postgres, Valkey and R2.
-- A Workers Cron Trigger pings both Spaces every 10–15 min. A Valkey wake lock prevents races.
+- A Workers Cron Trigger pings the Space every 10–15 min. A Valkey wake lock prevents races.
 - The client sees a "server waking" state during boot, held in a lobby until the authority reports ready.
-- If HF #2 quota is 0, the fallback is Workers + D1 + KV validating economy and inventory only. Physics validation is the first thing dropped.
-- Verify two Docker Spaces can be created on the account before writing server code.
+- HF now grants free Docker Spaces only to legacy accounts; new accounts get none. The single available Space runs the **authority server**. Game sessions moved to Edgegap on-demand containers; lobbies/presence/chat moved to Cloudflare Durable Objects (free SQLite backend with hibernating WebSockets). If Edgegap/DO capacity is insufficient, the fallback is Workers + D1 + KV validating economy and inventory only. Physics validation is the first thing dropped.
+- Aiven free tier also provides OpenSearch (~20 GB) for catalog/search offload and Kafka (250 KiB/s, 5 topics, 3-day retention, schema registry + REST proxy) for telemetry/analytics events — supporting services that keep the authority hot path free of search and analytics work.
 
 ## Quota budget
 
