@@ -1,0 +1,13 @@
+# Local build artifacts; engine/build/ contains planned source directories.
+/build/
+/build-*/
+/out/
+/vcpkg_installed/
+/CMakeUserPresets.json
+
+# Ephemeral checkout used by the GitHub Actions workflow.
+/_vcpkg/
+
+# Python test caches
+__pycache__/
+*.py[cod]

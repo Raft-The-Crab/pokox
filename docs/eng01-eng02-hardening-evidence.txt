@@ -1,0 +1,60 @@
+ENG-01 / ENG-02 lifecycle test hardening — 2026-11-20
+
+Scope: Tests and documentation only. Production platform source and public API
+are unchanged. ENG-03 has not started. Windows/Android acceptance stays open.
+
+NEWLY REPRODUCED on Linux x64, GCC 11.5.0:
+- Expanded IPlatform contract executable: PASS with C++20, -Wall -Wextra
+  -Wpedantic -Wconversion -Wsign-conversion -Werror.
+- Production sdl_platform.cpp compiled against a test-only SDL function double:
+  PASS with those strict warnings; PASS separately with -O2 -DNDEBUG.
+- Ten deliberately introduced source regressions: all ten caught at runtime.
+  Each mutant compiled successfully. These checks establish sensitivity to
+  specific regressions, not exhaustive correctness or a coverage percentage.
+- Existing Python checks: D1 reservations 5, UV overlap 7, golden harness 11:
+  all 23 passed.
+
+Function-double checks include:
+- Calls before initialization; repeated initialization and shutdown.
+- Failed initialization, recovery, and destruction after failed initialization.
+- Invalid dimensions/title, failed window creation and retry.
+- Title substring copying; resizable/high-density window flags.
+- Foreign-window and unexposed event filtering; unchanged output on no event.
+- Logical/pixel resize, failed size queries, zero/negative defensive clamping.
+- Close/quit translation without implicit destruction; no-window event handling.
+- Destroy/recreate, shutdown/reinitialize, destructor-only cleanup.
+- Independent video reference preservation.
+
+New REAL-SDL checks added but NOT RUN here:
+- Reinitialize and recreate on the same object after full shutdown.
+- Destructor-only window cleanup with an independent video reference alive.
+
+LIMITATIONS:
+- The function double uses only a test-owned subset of SDL declarations and
+  behavior. It does not establish SDL ABI/API compatibility or OS behavior.
+- CMake and SDL3 are not installed. Tool-install and SDL-download attempts
+  failed because external hostnames could not be resolved. No full CMake,
+  CTest, SDL dummy, X11, Windows, Android, GPU or GitHub Actions run was made.
+- A sanitizer-linked executable built but could not run because libasan.so.6
+  is absent. No sanitizer success is claimed.
+- docs/eng02-test-evidence.txt is preserved historical evidence from the input,
+  not a fresh run of these changes.
+
+REPRODUCE WITHOUT SDL/CMAKE (from project root, GCC-compatible compiler):
+  g++ -std=c++20 -Wall -Wextra -Wpedantic -Werror \
+    -Iengine/platform/include \
+    engine/platform/tests/unit/i_platform_contract.cpp -o platform-contract
+  ./platform-contract
+  g++ -std=c++20 -Wall -Wextra -Wpedantic -Werror \
+    -Iengine/platform/tests/fakes -Iengine/platform/include \
+    engine/platform/src/sdl_platform.cpp \
+    engine/platform/tests/unit/sdl_platform_faults.cpp -o platform-faults
+  ./platform-faults
+  python3 engine/platform/tests/unit/check_fault_sensitivity.py --cxx g++
+
+CMake (on a provisioned host):
+  cmake -S . -B build -DBUILD_TESTING=ON
+  cmake --build build --config Debug
+  ctest --test-dir build -C Debug --output-on-failure
+The dependency-free suite now registers 14 tests; SDL mode registers 16.
+These are expected registrations from CMake source inspection, not run counts.

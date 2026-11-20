@@ -1,0 +1,12 @@
+{
+  "name": "pokox",
+  "version-string": "0.0.0",
+  "description": "PokoX build foundation (not a release version)",
+  "builtin-baseline": "4b089e9116ef2715919c32dd6ca3ab98bc341eb8",
+  "dependencies": [
+    { "name": "sdl3", "features": ["vulkan"] },
+    "imgui",
+    "spdlog",
+    "catch2"
+  ]
+}

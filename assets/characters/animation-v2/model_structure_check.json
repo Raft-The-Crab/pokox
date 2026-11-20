@@ -1,0 +1,67 @@
+{
+  "checks": {
+    "BoyR6": {
+      "Idle": {
+        "structure_sections_match": true,
+        "differences": [],
+        "attachment_parenting_matches": true,
+        "attachment_count": 19
+      },
+      "Walk": {
+        "structure_sections_match": true,
+        "differences": [],
+        "attachment_parenting_matches": true,
+        "attachment_count": 19
+      },
+      "Run": {
+        "structure_sections_match": true,
+        "differences": [],
+        "attachment_parenting_matches": true,
+        "attachment_count": 19
+      },
+      "Jump": {
+        "structure_sections_match": true,
+        "differences": [],
+        "attachment_parenting_matches": true,
+        "attachment_count": 19
+      }
+    },
+    "BlockyR6": {
+      "Idle": {
+        "structure_sections_match": true,
+        "differences": [],
+        "attachment_parenting_matches": true,
+        "attachment_count": 19
+      },
+      "Walk": {
+        "structure_sections_match": true,
+        "differences": [],
+        "attachment_parenting_matches": true,
+        "attachment_count": 19
+      },
+      "Run": {
+        "structure_sections_match": true,
+        "differences": [],
+        "attachment_parenting_matches": true,
+        "attachment_count": 19
+      },
+      "Jump": {
+        "structure_sections_match": true,
+        "differences": [],
+        "attachment_parenting_matches": true,
+        "attachment_count": 19
+      }
+    }
+  },
+  "sections_compared": [
+    "scene_mesh_armatures",
+    "armature_name",
+    "bones",
+    "pose_constraints",
+    "rig_drivers",
+    "meshes",
+    "material",
+    "packed_texture_sha256"
+  ],
+  "caveat": "This compares stored mesh, rig, material and attachment structures; animated poses and IK switch values deliberately differ. It does not establish every interactive behavior."
+}

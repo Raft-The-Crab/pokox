@@ -1,0 +1,27 @@
+NORMALISED H-RRS: uv=['UVMap'] mat=Poko_R6_Base
+NORMALISED T-RRS: uv=['UVMap'] mat=Poko_R6_Base
+NORMALISED LA-RRS: uv=['UVMap'] mat=Poko_R6_Base
+NORMALISED RA-RRS: uv=['UVMap'] mat=Poko_R6_Base
+NORMALISED LL-RRS: uv=['UVMap'] mat=Poko_R6_Base
+NORMALISED RL-RRS: uv=['UVMap'] mat=Poko_R6_Base
+ATTACH HatAttachment -> Head local=[0.0, 0.05, 0.0] world=[0.0, 0.0, 5.1424]
+ATTACH HairAttachment -> Head local=[-0.0, 0.02, 0.18] world=[0.0, -0.18, 5.1124]
+ATTACH FaceCenterAttachment -> Head local=[-0.0, -0.5422, 0.6] world=[0.0, -0.6, 4.5502]
+ATTACH FaceFrontAttachment -> Head local=[-0.0, -0.7922, 0.62] world=[0.0, -0.62, 4.3002]
+ATTACH NeckAttachment -> UpperTorso local=[0.0, 0.0, 0.0] world=[0.0, 0.0, 4.0002]
+ATTACH BodyFrontAttachment -> UpperTorso local=[-0.0, -0.7164, 0.55] world=[0.0, -0.55, 3.2838]
+ATTACH BodyBackAttachment -> UpperTorso local=[0.0, -0.7164, -0.55] world=[0.0, 0.55, 3.2838]
+ATTACH WaistCenterAttachment -> LowerTorso local=[0.0, -0.6806, 0.0] world=[0.0, 0.0, 2.0031]
+ATTACH WaistFrontAttachment -> LowerTorso local=[-0.0, -0.6806, 0.5] world=[0.0, -0.5, 2.0031]
+ATTACH WaistBackAttachment -> LowerTorso local=[0.0, -0.6806, -0.5] world=[0.0, 0.5, 2.0031]
+ATTACH LeftHipAttachment -> UpperLeg.L local=[-0.0, -0.7474, -0.0] world=[-0.4512, -0.0, 1.9204]
+ATTACH RightHipAttachment -> UpperLeg.R local=[-0.0, -0.7474, -0.0] world=[0.4512, -0.0, 1.9204]
+ATTACH LeftShoulderAttachment -> UpperArm.L local=[0.0, -0.5225, 0.0] world=[-0.9178, -0.0067, 3.5116]
+ATTACH RightShoulderAttachment -> UpperArm.R local=[0.0, -0.5225, 0.0] world=[0.9178, -0.0067, 3.5116]
+ATTACH LeftGripAttachment -> Hand.L local=[-0.0, 0.0, -0.0] world=[-1.4045, -0.0608, 2.1743]
+ATTACH RightGripAttachment -> Hand.R local=[-0.0, -0.0, 0.0] world=[1.4045, -0.0608, 2.1743]
+ATTACH RootAttachment -> Master local=[0.0, -0.5, 0.0] world=[0.0, 0.0, 0.0]
+ATTACH LeftAnkleAttachment -> Foot.L local=[0.0, -0.3455, 0.0] world=[-0.4512, -0.0, 0.4761]
+ATTACH RightAnkleAttachment -> Foot.R local=[-0.0, -0.3455, 0.0] world=[0.4512, -0.0, 0.4761]
+SAVED C:/Users/mysti.LAPTOP.000/Desktop/Project Poko/assets/characters/work/BoyR6_poko.blend
+EXPORTED C:/Users/mysti.LAPTOP.000/Desktop/Project Poko/assets/characters/work/BoyR6_poko.glb

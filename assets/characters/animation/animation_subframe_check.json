@@ -1,0 +1,50 @@
+[
+  {
+    "rig": "BoyR6",
+    "clip": "Idle",
+    "lowest_leg_z_at_half_frames": -1.4887766155879945e-05,
+    "worst_frame": 68.5
+  },
+  {
+    "rig": "BoyR6",
+    "clip": "Walk",
+    "lowest_leg_z_at_half_frames": -0.0001512419548816979,
+    "worst_frame": 1.5
+  },
+  {
+    "rig": "BoyR6",
+    "clip": "Run",
+    "lowest_leg_z_at_half_frames": -0.003033897839486599,
+    "worst_frame": 12.5
+  },
+  {
+    "rig": "BoyR6",
+    "clip": "Jump",
+    "lowest_leg_z_at_half_frames": -0.0025409325025975704,
+    "worst_frame": 8.5
+  },
+  {
+    "rig": "BlockyR6",
+    "clip": "Idle",
+    "lowest_leg_z_at_half_frames": 0.005240581929683685,
+    "worst_frame": 67.5
+  },
+  {
+    "rig": "BlockyR6",
+    "clip": "Walk",
+    "lowest_leg_z_at_half_frames": 0.003626846242696047,
+    "worst_frame": 17.5
+  },
+  {
+    "rig": "BlockyR6",
+    "clip": "Run",
+    "lowest_leg_z_at_half_frames": 0.002235673600807786,
+    "worst_frame": 12.5
+  },
+  {
+    "rig": "BlockyR6",
+    "clip": "Jump",
+    "lowest_leg_z_at_half_frames": 0.002722405130043626,
+    "worst_frame": 8.5
+  }
+]

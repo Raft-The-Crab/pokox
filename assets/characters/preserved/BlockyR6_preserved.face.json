@@ -1,0 +1,29 @@
+{
+  "schema": "pokox-preserved-r6-prototype-v1",
+  "rig": "BlockyR6",
+  "status": "interchange prototype; engine support not implemented",
+  "source_blend": "BlockyR6_source.blend",
+  "preserved_blend": "BlockyR6_preserved.blend",
+  "glb": "BlockyR6_preserved.glb",
+  "head_mesh": "H-RRS",
+  "head_uv_layers_in_blender_order": [
+    "other",
+    "customFaces",
+    "UVMap"
+  ],
+  "head_gltf_texcoords": {
+    "other": "TEXCOORD_0",
+    "customFaces": "TEXCOORD_1",
+    "UVMap": "TEXCOORD_2"
+  },
+  "gltf_uv_origin": "glTF V = 1 - Blender V",
+  "base_texture": "embedded RRS-Tex",
+  "face_overlay_texture": null,
+  "source_face_group": "customFacesTex_RRS",
+  "source_overlay_uv": "customFaces",
+  "face_material_requirement": "sample optional RGBA face using customFaces; alpha-composite over base sampled with UVMap",
+  "glb_material_note": "base-only preview; Blender face node graph does not transfer as glTF material",
+  "attachments": "19 provisional bone-parented points; +Y face side before glTF axis conversion",
+  "animation_note": "Blender control constraints/drivers are not glTF runtime behavior; bake/test animation clips separately",
+  "morph_note": "retain shape keys in .blend and glTF morph targets; engine support must be implemented and tested"
+}

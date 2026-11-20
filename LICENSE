@@ -1,0 +1,75 @@
+# PokoX Proprietary License
+
+Copyright (c) 2026 the PokoX project authors. All rights reserved.
+
+## 1. Ownership
+
+PokoX, including all source code, documentation, specifications, assets,
+build scripts, and associated materials in this repository (the
+"Software"), is proprietary and confidential. No license, express or
+implied, is granted except as expressly stated in a separate written
+agreement signed by an authorized representative of the PokoX project.
+
+## 2. No rights granted by access
+
+Access to this repository — including membership in the project
+distribution list, collaborator status, pull request access, or any other
+form of participation — does **not** grant any right to copy, modify for
+external use, redistribute, sublicense, publish, sell, or otherwise
+release any part of the Software outside of the project.
+
+## 3. Permitted contributor activity
+
+A person who is a member of the project or who has been expressly
+authorized to contribute (a "Contributor") may, solely for the purpose of
+contributing to the Software within this repository:
+
+- view, edit, and save changes to the Software;
+- submit pull requests and participate in code review; and
+- build and test the Software locally for that purpose.
+
+Contributor rights are limited to the acts listed above. A Contributor
+**may not** copy, extract, mirror, fork for external distribution,
+relicense, publish, or release any portion of the Software or any
+derivative work, in whole or in part, outside of this project, in any
+form, for any purpose, without a separate written license from the PokoX
+project.
+
+## 4. No external release
+
+No Contributor may release, publish, distribute, or make available any
+build, binary, asset, document, or other output derived from the Software
+to any third party. Release of any kind requires a separate written
+agreement.
+
+## 5. Confidentiality
+
+The Software and all non-public information encountered through it are
+confidential. Contributors must not disclose non-public information
+outside the project except as required by law or as authorized in
+writing.
+
+## 6. Third-party components
+
+Third-party dependencies retain their own licenses (for example,
+DiligentCore is Apache-2.0; see `docs/build.md`). This license does not
+modify the terms of those third-party licenses and does not grant any
+rights in them beyond what those licenses provide.
+
+## 7. Termination
+
+Access ends when the project owner revokes it. Sections 4–6 survive
+termination. Upon termination, a Contributor must delete all local copies
+of the Software within thirty (30) days, except for copies retained as
+required by law.
+
+## 8. No warranty
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+
+---
+
+Questions about licensing or contributions: see `CONTRIBUTING.md` and the
+project maintainers.

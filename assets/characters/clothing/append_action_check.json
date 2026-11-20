@@ -1,0 +1,26 @@
+[
+  {
+    "rig": "BoyR6",
+    "clip": "Walk",
+    "frame": 9,
+    "pose_matrix_max_error": 0.0
+  },
+  {
+    "rig": "BoyR6",
+    "clip": "Jump",
+    "frame": 18,
+    "pose_matrix_max_error": 0.0
+  },
+  {
+    "rig": "BlockyR6",
+    "clip": "Walk",
+    "frame": 9,
+    "pose_matrix_max_error": 0.0
+  },
+  {
+    "rig": "BlockyR6",
+    "clip": "Jump",
+    "frame": 18,
+    "pose_matrix_max_error": 0.0
+  }
+]

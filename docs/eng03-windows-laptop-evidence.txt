@@ -1,0 +1,102 @@
+ENG-03 Windows laptop evidence — 2026-11-20
+================================================
+
+Host: Windows laptop (MSYS2 UCRT64 environment)
+Toolchain: g++ 16.2.0 (x86_64-w64-mingw32), CMake 4.4.2, Ninja,
+Python 3.14.7, Git 2.55.0.windows.5
+vcpkg: pinned baseline 4b089e9116ef2715919c32dd6ca3ab98bc341eb8,
+bootstrapped at C:/Users/mysti.LAPTOP.000/vcpkg, triplet x64-mingw-dynamic
+Vulkan SDK: 1.4.363.1 (C:\VulkanSDK\1.4.363.1)
+GPU: AMD Radeon(TM) Graphics, Vulkan 1.3.260, driver 2.0.279
+Also present: 'Microsoft Direct3D12 (Microsoft Basic Render Driver)' WARP
+adapter and Mesa Dozen translation devices.
+
+NOTE: vswhere lists two stale VS Build Tools 2022 entries whose install
+directories do not exist; no working MSVC compiler was available. All
+Windows results below are MSYS2 UCRT64 MinGW, not MSVC and not MINGW64.
+
+1. Dependency-free build (POKO_WITH_DEPENDENCIES=OFF)
+   cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Debug -DBUILD_TESTING=ON
+   cmake --build build --parallel 8
+   ctest --test-dir build --output-on-failure
+   Result: 18/18 tests passed.
+   One real defect found and fixed: version_integration failed on the
+   UTF-8 tag 'café' because CMake execute_process decoded git output with
+   the OEM codepage. generate_version.cmake now passes ENCODING NONE to
+   all git invocations; the test then passed on both build trees.
+
+2. Full dependency build, SDL platform (INF-02/ENG-01/ENG-02)
+   cmake -S . -B build-sdl -G Ninja -DCMAKE_BUILD_TYPE=Debug
+     -DBUILD_TESTING=ON -DPOKO_WITH_DEPENDENCIES=ON
+     -DPOKO_WITH_SDL_PLATFORM=ON -DPOKO_WITH_VULKAN_DEMO=OFF
+     -DCMAKE_TOOLCHAIN_FILE=.../vcpkg.cmake
+     -DVCPKG_TARGET_TRIPLET=x64-mingw-dynamic
+     -DVCPKG_HOST_TRIPLET=x64-mingw-dynamic
+   vcpkg installed catch2 3.16.1, fmt 12.2.1, imgui 1.93.0, sdl3 3.4.20,
+   spdlog 1.17.0; FetchContent pinned DiligentCore b036337d (v2.5.6).
+   Build: all targets compiled and linked, including
+   pokox_dependency_smoke (SDL3, ImGui, spdlog, Catch2, Diligent).
+   ctest: 21/21 passed, including pokox_sdl_dummy and
+   pokox_sdl_invalid_driver against real SDL3.
+   pokox_window_demo.exe opened a real Windows window and stayed alive
+   (interactive open verified; manual resize/minimize/close gestures and
+   high-DPI checks remain unexercised).
+
+3. Vulkan clear demo (ENG-03)
+   Required changes discovered on real dependencies:
+   a) vcpkg.json: sdl3 needed the non-default 'vulkan' feature
+      ({"name":"sdl3","features":["vulkan"]}); without it SDL rejects
+      SDL_WINDOW_VULKAN ('Vulkan support is either not configured...').
+   b) -DMINGW_BUILD=TRUE is required with a non-MinGW generator name:
+      Diligent only sets MINGW_BUILD for generators matching 'MinGW',
+      and otherwise compiles DXCompiler.cpp which needs atlbase.h
+      (unavailable on MinGW). This matches upstream's MinGW intent and
+      disables the DXC shader path only.
+   c) GCC 16/libstdc++ no longer provides uint32_t transitively; the
+      pinned glslang SpvBuilder.h lacked <cstdint>. The root
+      CMakeLists.txt now adds the missing include to the fetched source
+      at configure time.
+
+   pokox_vulkan_clear.exe built and linked against real SDL3 3.4.20 and
+   static Diligent-GraphicsEngineVk-static.
+
+   First run (no --adapter): Diligent auto-selection chose
+   'Microsoft Direct3D12 (Microsoft Basic Render Driver)' (WARP). A
+   captured Diligent error/fatal ('Debug assertion failed in
+   FindQueueFamily ... minImageTransferGranularity') failed the demo
+   with exit 3 — the diagnostics capture worked as designed.
+
+   ClearConfig gained adapter_id and the demo gained --adapter N
+   (0xFFFFFFFF keeps automatic selection).
+
+   Second run: --frames 120 --adapter 0
+   Selected 'AMD Radeon(TM) Graphics' API 1.3.260 driver 2.0.279.
+   Result: POKO_CLEAR_RESULT submitted=120 validation_requested=true
+   graphics_errors=0 graphics_warnings=0, exit 0.
+   120 clear/present submissions completed on the real GPU.
+
+   NOT verified at that point: actual pixel output, validation-layer load,
+   window resize behavior (exits 2 by design), long-run stability, and any
+   non-Windows target.
+
+5. Visual verification — 2026-11-21
+   Interactive run (`--adapter 0`, no frame limit): the window stayed open
+   and a screen capture of the client area was taken after ~6 s.
+   Sampled pixels: R=53 G=97 B=144 at five positions across the window.
+   The configured clear color is linear {0.035, 0.12, 0.28}; displayed
+   through the sRGB swapchain these values are ~{54, 97, 144} — an exact
+   match. The blue clear color is visually confirmed on the real GPU.
+   The run ended via window close after 123 submitted frames,
+   POKO_CLEAR_RESULT graphics_errors=0 graphics_warnings=0.
+   VK_LAYER_KHRONOS_validation 1.4.363 was enumerated as an available
+   instance layer and validation was requested; zero diagnostics were
+   captured. Layer *load* is inferred from Diligent's validation path,
+   not independently confirmed via loader debug output.
+
+6. Still open
+   - MSVC toolchain leg of INF-02 (no working MSVC installed here).
+   - GitHub Actions has still never run; ci.yml mingw job now passes
+     -DMINGW_BUILD=TRUE to match this verified configuration.
+   - Android activity/lifecycle path untouched.
+   - ENG-03's 'clear color appears' criterion is met on Windows MinGW;
+     MSVC/Android builds of the same path remain unverified.

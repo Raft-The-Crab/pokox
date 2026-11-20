@@ -1,0 +1,207 @@
+{
+  "rig": "BoyR6",
+  "original_preserved_sections_match": true,
+  "sections": [
+    "scene_mesh_armatures",
+    "armature_name",
+    "bones",
+    "pose_constraints",
+    "rig_drivers",
+    "meshes",
+    "material",
+    "packed_texture_sha256"
+  ],
+  "attachments": {
+    "HatAttachment": {
+      "parent": "BoyRRS-Rig",
+      "bone": "Head",
+      "type": "BONE",
+      "xyz": [
+        0.0,
+        0.0,
+        5.14238
+      ]
+    },
+    "HairAttachment": {
+      "parent": "BoyRRS-Rig",
+      "bone": "Head",
+      "type": "BONE",
+      "xyz": [
+        0.0,
+        -0.18,
+        5.11238
+      ]
+    },
+    "FaceCenterAttachment": {
+      "parent": "BoyRRS-Rig",
+      "bone": "Head",
+      "type": "BONE",
+      "xyz": [
+        0.0,
+        0.6,
+        4.55019
+      ]
+    },
+    "FaceFrontAttachment": {
+      "parent": "BoyRRS-Rig",
+      "bone": "Head",
+      "type": "BONE",
+      "xyz": [
+        0.0,
+        0.62,
+        4.30019
+      ]
+    },
+    "NeckAttachment": {
+      "parent": "BoyRRS-Rig",
+      "bone": "UpperTorso",
+      "type": "BONE",
+      "xyz": [
+        0.0,
+        0.0,
+        4.00019
+      ]
+    },
+    "BodyFrontAttachment": {
+      "parent": "BoyRRS-Rig",
+      "bone": "UpperTorso",
+      "type": "BONE",
+      "xyz": [
+        0.0,
+        0.55,
+        3.28379
+      ]
+    },
+    "BodyBackAttachment": {
+      "parent": "BoyRRS-Rig",
+      "bone": "UpperTorso",
+      "type": "BONE",
+      "xyz": [
+        0.0,
+        -0.55,
+        3.28379
+      ]
+    },
+    "WaistCenterAttachment": {
+      "parent": "BoyRRS-Rig",
+      "bone": "LowerTorso",
+      "type": "BONE",
+      "xyz": [
+        0.0,
+        0.0,
+        2.00314
+      ]
+    },
+    "WaistFrontAttachment": {
+      "parent": "BoyRRS-Rig",
+      "bone": "LowerTorso",
+      "type": "BONE",
+      "xyz": [
+        -0.0,
+        0.5,
+        2.00314
+      ]
+    },
+    "WaistBackAttachment": {
+      "parent": "BoyRRS-Rig",
+      "bone": "LowerTorso",
+      "type": "BONE",
+      "xyz": [
+        0.0,
+        -0.5,
+        2.00314
+      ]
+    },
+    "LeftHipAttachment": {
+      "parent": "BoyRRS-Rig",
+      "bone": "UpperLeg.L",
+      "type": "BONE",
+      "xyz": [
+        -0.45115,
+        -0.0,
+        1.92041
+      ]
+    },
+    "RightHipAttachment": {
+      "parent": "BoyRRS-Rig",
+      "bone": "UpperLeg.R",
+      "type": "BONE",
+      "xyz": [
+        0.45115,
+        -0.0,
+        1.92041
+      ]
+    },
+    "LeftShoulderAttachment": {
+      "parent": "BoyRRS-Rig",
+      "bone": "UpperArm.L",
+      "type": "BONE",
+      "xyz": [
+        -0.91784,
+        -0.00667,
+        3.51159
+      ]
+    },
+    "RightShoulderAttachment": {
+      "parent": "BoyRRS-Rig",
+      "bone": "UpperArm.R",
+      "type": "BONE",
+      "xyz": [
+        0.91784,
+        -0.00667,
+        3.51159
+      ]
+    },
+    "LeftGripAttachment": {
+      "parent": "BoyRRS-Rig",
+      "bone": "Hand.L",
+      "type": "BONE",
+      "xyz": [
+        -1.40449,
+        -0.06076,
+        2.17434
+      ]
+    },
+    "RightGripAttachment": {
+      "parent": "BoyRRS-Rig",
+      "bone": "Hand.R",
+      "type": "BONE",
+      "xyz": [
+        1.40449,
+        -0.06076,
+        2.17434
+      ]
+    },
+    "RootAttachment": {
+      "parent": "BoyRRS-Rig",
+      "bone": "Master",
+      "type": "BONE",
+      "xyz": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "LeftAnkleAttachment": {
+      "parent": "BoyRRS-Rig",
+      "bone": "Foot.L",
+      "type": "BONE",
+      "xyz": [
+        -0.45116,
+        -0.0,
+        0.47615
+      ]
+    },
+    "RightAnkleAttachment": {
+      "parent": "BoyRRS-Rig",
+      "bone": "Foot.R",
+      "type": "BONE",
+      "xyz": [
+        0.45116,
+        -0.0,
+        0.47615
+      ]
+    }
+  },
+  "caveat": "structure/coordinate checks do not prove every interactive rig behavior"
+}

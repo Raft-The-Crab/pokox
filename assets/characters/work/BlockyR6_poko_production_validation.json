@@ -1,0 +1,265 @@
+{
+  "blender_version": "5.2.1 LTS",
+  "file": "BlockyR6_poko.blend",
+  "file_sha256": "039a2318c326b2c644e6950526514c4a1dfd3bf027473e007600ba5ba2e6005a",
+  "helper_visible": [],
+  "helpers": [
+    {
+      "collections": [
+        {
+          "hide_viewport": true,
+          "name": "BlockyShapes-RRS"
+        }
+      ],
+      "name": "TriplePlane-RRS",
+      "object_hide_get": false,
+      "render_hidden": true,
+      "visible_in_view_layer": false
+    },
+    {
+      "collections": [
+        {
+          "hide_viewport": true,
+          "name": "BlockyShapes-RRS"
+        }
+      ],
+      "name": "DoublePlane-RRS",
+      "object_hide_get": false,
+      "render_hidden": true,
+      "visible_in_view_layer": false
+    },
+    {
+      "collections": [
+        {
+          "hide_viewport": true,
+          "name": "BlockyShapes-RRS"
+        }
+      ],
+      "name": "Plane-RRS",
+      "object_hide_get": false,
+      "render_hidden": true,
+      "visible_in_view_layer": false
+    },
+    {
+      "collections": [
+        {
+          "hide_viewport": true,
+          "name": "BlockyShapes-RRS"
+        }
+      ],
+      "name": "Star-RRS",
+      "object_hide_get": false,
+      "render_hidden": true,
+      "visible_in_view_layer": false
+    },
+    {
+      "collections": [
+        {
+          "hide_viewport": true,
+          "name": "BlockyShapes-RRS"
+        }
+      ],
+      "name": "HeadShape-RRS",
+      "object_hide_get": false,
+      "render_hidden": true,
+      "visible_in_view_layer": false
+    },
+    {
+      "collections": [
+        {
+          "hide_viewport": true,
+          "name": "BlockyShapes-RRS"
+        }
+      ],
+      "name": "Arrow-RRS",
+      "object_hide_get": false,
+      "render_hidden": true,
+      "visible_in_view_layer": false
+    },
+    {
+      "collections": [
+        {
+          "hide_viewport": true,
+          "name": "BlockyShapes-RRS"
+        }
+      ],
+      "name": "CheckerCircle-RRS",
+      "object_hide_get": false,
+      "render_hidden": true,
+      "visible_in_view_layer": false
+    }
+  ],
+  "meshes": {
+    "H-RRS": {
+      "degenerate_3d_polygons": 0,
+      "faces": 571,
+      "materials": [
+        "Poko_R6_Base"
+      ],
+      "triangles": 1062,
+      "uv_layers": [
+        "UVMap"
+      ],
+      "uv_range": [
+        [
+          0.8808590173721313,
+          0.9775509834289551
+        ],
+        [
+          0.765625,
+          0.9843750596046448
+        ]
+      ],
+      "verts": 533
+    },
+    "LA-RRS": {
+      "degenerate_3d_polygons": 0,
+      "faces": 50,
+      "materials": [
+        "Poko_R6_Base"
+      ],
+      "triangles": 92,
+      "uv_layers": [
+        "UVMap"
+      ],
+      "uv_range": [
+        [
+          0.14794999361038208,
+          0.6547849774360657
+        ],
+        [
+          0.09375,
+          0.9960939884185791
+        ]
+      ],
+      "verts": 48
+    },
+    "LL-RRS": {
+      "degenerate_3d_polygons": 0,
+      "faces": 50,
+      "materials": [
+        "Poko_R6_Base"
+      ],
+      "triangles": 92,
+      "uv_layers": [
+        "UVMap"
+      ],
+      "uv_range": [
+        [
+          0.39990198612213135,
+          0.7045900225639343
+        ],
+        [
+          0.2382809966802597,
+          0.9960939884185791
+        ]
+      ],
+      "verts": 48
+    },
+    "RA-RRS": {
+      "degenerate_3d_polygons": 0,
+      "faces": 50,
+      "materials": [
+        "Poko_R6_Base"
+      ],
+      "triangles": 92,
+      "uv_layers": [
+        "UVMap"
+      ],
+      "uv_range": [
+        [
+          0.1684570014476776,
+          0.707518994808197
+        ],
+        [
+          0.2382809966802597,
+          0.8789060115814209
+        ]
+      ],
+      "verts": 48
+    },
+    "RL-RRS": {
+      "degenerate_3d_polygons": 0,
+      "faces": 50,
+      "materials": [
+        "Poko_R6_Base"
+      ],
+      "triangles": 92,
+      "uv_layers": [
+        "UVMap"
+      ],
+      "uv_range": [
+        [
+          0.3471679985523224,
+          0.558106005191803
+        ],
+        [
+          0.2382809966802597,
+          0.8789060115814209
+        ]
+      ],
+      "verts": 48
+    },
+    "T-RRS": {
+      "degenerate_3d_polygons": 0,
+      "faces": 50,
+      "materials": [
+        "Poko_R6_Base"
+      ],
+      "triangles": 92,
+      "uv_layers": [
+        "UVMap"
+      ],
+      "uv_range": [
+        [
+          0.021972699090838432,
+          0.3376460075378418
+        ],
+        [
+          0.24023400247097015,
+          0.9960939884185791
+        ]
+      ],
+      "verts": 48
+    }
+  },
+  "rig": {
+    "all_bone_parented_to_rig": true,
+    "all_parent_bones_exist": true,
+    "armature": "BlockyRRS-Rig",
+    "attachment_names": [
+      "BodyBackAttachment",
+      "BodyFrontAttachment",
+      "FaceCenterAttachment",
+      "FaceFrontAttachment",
+      "HairAttachment",
+      "HatAttachment",
+      "LeftAnkleAttachment",
+      "LeftGripAttachment",
+      "LeftHipAttachment",
+      "LeftShoulderAttachment",
+      "NeckAttachment",
+      "RightAnkleAttachment",
+      "RightGripAttachment",
+      "RightHipAttachment",
+      "RightShoulderAttachment",
+      "RootAttachment",
+      "WaistBackAttachment",
+      "WaistCenterAttachment",
+      "WaistFrontAttachment"
+    ],
+    "attachments": 19,
+    "bones": 32,
+    "custom_shape_bones": 26
+  },
+  "uv_overlap": {
+    "area_epsilon": 1e-12,
+    "candidate_pairs": 12,
+    "examples": [],
+    "mesh_pairs": [],
+    "method": "triangle clipping after grid broad phase",
+    "overlapping_triangle_pairs": 0,
+    "triangle_count": 1522
+  },
+  "view_layer": "ViewLayer"
+}

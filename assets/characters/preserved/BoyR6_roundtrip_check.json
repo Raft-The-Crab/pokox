@@ -1,0 +1,24 @@
+{
+  "rig": "BoyR6",
+  "blender_version": "5.2.1 LTS",
+  "head_uv_layers": [
+    "other",
+    "customFaces",
+    "UVMap"
+  ],
+  "head_uv_unique_sets_match_at_decimal_places": 5,
+  "head_uv_unique_counts": [
+    1,
+    131,
+    131
+  ],
+  "attachments_with_matching_bone_parent_and_position": 19,
+  "max_attachment_position_error": 7.206387060853772e-06,
+  "limb_shape_key_names_match": {
+    "LA-RRS": [],
+    "RA-RRS": [],
+    "LL-RRS": [],
+    "RL-RRS": []
+  },
+  "caveat": "UV set equality is not a per-corner proof; animation, constraints, materials and visual parity require separate checks"
+}

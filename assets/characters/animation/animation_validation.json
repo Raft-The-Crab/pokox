@@ -1,0 +1,154 @@
+[
+  {
+    "rig": "BoyR6",
+    "animation": "Idle",
+    "fps": 24,
+    "playback_frames": [
+      1,
+      96
+    ],
+    "loop": true,
+    "loop_endpoint_matrix_max_error": 0.0,
+    "sampled_pose_matrix_max_change": 0.044069,
+    "evaluated_leg_mesh_min_z": -1e-05,
+    "evaluated_leg_mesh_max_lowest_z": 0.01799,
+    "ik_switches": [
+      1.0,
+      1.0
+    ],
+    "note": "In-place Blender evaluated pose checks; no runtime blending, foot lock, export, or subjective animation-quality proof."
+  },
+  {
+    "rig": "BoyR6",
+    "animation": "Walk",
+    "fps": 24,
+    "playback_frames": [
+      1,
+      32
+    ],
+    "loop": true,
+    "loop_endpoint_matrix_max_error": 0.0,
+    "sampled_pose_matrix_max_change": 0.513502,
+    "evaluated_leg_mesh_min_z": -2e-05,
+    "evaluated_leg_mesh_max_lowest_z": 0.04144,
+    "ik_switches": [
+      1.0,
+      1.0
+    ],
+    "note": "In-place Blender evaluated pose checks; no runtime blending, foot lock, export, or subjective animation-quality proof."
+  },
+  {
+    "rig": "BoyR6",
+    "animation": "Run",
+    "fps": 24,
+    "playback_frames": [
+      1,
+      22
+    ],
+    "loop": true,
+    "loop_endpoint_matrix_max_error": 0.0,
+    "sampled_pose_matrix_max_change": 0.806374,
+    "evaluated_leg_mesh_min_z": -4e-05,
+    "evaluated_leg_mesh_max_lowest_z": 0.04885,
+    "ik_switches": [
+      1.0,
+      1.0
+    ],
+    "note": "In-place Blender evaluated pose checks; no runtime blending, foot lock, export, or subjective animation-quality proof."
+  },
+  {
+    "rig": "BoyR6",
+    "animation": "Jump",
+    "fps": 24,
+    "playback_frames": [
+      1,
+      41
+    ],
+    "loop": false,
+    "loop_endpoint_matrix_max_error": 0.0,
+    "sampled_pose_matrix_max_change": 1.35351,
+    "evaluated_leg_mesh_min_z": -7e-05,
+    "evaluated_leg_mesh_max_lowest_z": 1.35991,
+    "ik_switches": [
+      1.0,
+      1.0
+    ],
+    "note": "In-place Blender evaluated pose checks; no runtime blending, foot lock, export, or subjective animation-quality proof."
+  },
+  {
+    "rig": "BlockyR6",
+    "animation": "Idle",
+    "fps": 24,
+    "playback_frames": [
+      1,
+      96
+    ],
+    "loop": true,
+    "loop_endpoint_matrix_max_error": 0.0,
+    "sampled_pose_matrix_max_change": 0.033096,
+    "evaluated_leg_mesh_min_z": 0.00524,
+    "evaluated_leg_mesh_max_lowest_z": 0.02327,
+    "ik_switches": [
+      1.0,
+      1.0
+    ],
+    "note": "In-place Blender evaluated pose checks; no runtime blending, foot lock, export, or subjective animation-quality proof."
+  },
+  {
+    "rig": "BlockyR6",
+    "animation": "Walk",
+    "fps": 24,
+    "playback_frames": [
+      1,
+      32
+    ],
+    "loop": true,
+    "loop_endpoint_matrix_max_error": 0.0,
+    "sampled_pose_matrix_max_change": 0.416667,
+    "evaluated_leg_mesh_min_z": 0.00523,
+    "evaluated_leg_mesh_max_lowest_z": 0.04636,
+    "ik_switches": [
+      1.0,
+      1.0
+    ],
+    "note": "In-place Blender evaluated pose checks; no runtime blending, foot lock, export, or subjective animation-quality proof."
+  },
+  {
+    "rig": "BlockyR6",
+    "animation": "Run",
+    "fps": 24,
+    "playback_frames": [
+      1,
+      22
+    ],
+    "loop": true,
+    "loop_endpoint_matrix_max_error": 0.0,
+    "sampled_pose_matrix_max_change": 0.795464,
+    "evaluated_leg_mesh_min_z": 0.00522,
+    "evaluated_leg_mesh_max_lowest_z": 0.05416,
+    "ik_switches": [
+      1.0,
+      1.0
+    ],
+    "note": "In-place Blender evaluated pose checks; no runtime blending, foot lock, export, or subjective animation-quality proof."
+  },
+  {
+    "rig": "BlockyR6",
+    "animation": "Jump",
+    "fps": 24,
+    "playback_frames": [
+      1,
+      41
+    ],
+    "loop": false,
+    "loop_endpoint_matrix_max_error": 0.0,
+    "sampled_pose_matrix_max_change": 0.803143,
+    "evaluated_leg_mesh_min_z": 0.00517,
+    "evaluated_leg_mesh_max_lowest_z": 1.36521,
+    "ik_switches": [
+      1.0,
+      1.0
+    ],
+    "note": "In-place Blender evaluated pose checks; no runtime blending, foot lock, export, or subjective animation-quality proof."
+  }
+]

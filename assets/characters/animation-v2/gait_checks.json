@@ -1,0 +1,82 @@
+[
+  {
+    "rig": "BoyR6",
+    "clip": "Idle",
+    "minimum_leg_z_quarter_frame": -1.548381260363385e-05,
+    "worst_frame": 62.5,
+    "stance_samples": 0,
+    "stance_samples_sole_above_0_06": 0,
+    "max_stance_target_y_error_per_quarter_frame": 0,
+    "note": "Stance target test assumes nominal in-place treadmill speed. Sole height is a rough metric, not proof of ground lock or quality."
+  },
+  {
+    "rig": "BoyR6",
+    "clip": "Walk",
+    "minimum_leg_z_quarter_frame": -0.0007109580910764635,
+    "worst_frame": 15.25,
+    "stance_samples": 125,
+    "stance_samples_sole_above_0_06": 0,
+    "max_stance_target_y_error_per_quarter_frame": 0.0033845464388529457,
+    "note": "Stance target test assumes nominal in-place treadmill speed. Sole height is a rough metric, not proof of ground lock or quality."
+  },
+  {
+    "rig": "BoyR6",
+    "clip": "Run",
+    "minimum_leg_z_quarter_frame": -0.0018346360884606838,
+    "worst_frame": 19.75,
+    "stance_samples": 38,
+    "stance_samples_sole_above_0_06": 0,
+    "max_stance_target_y_error_per_quarter_frame": 0.0007986950683083749,
+    "note": "Stance target test assumes nominal in-place treadmill speed. Sole height is a rough metric, not proof of ground lock or quality."
+  },
+  {
+    "rig": "BoyR6",
+    "clip": "Jump",
+    "minimum_leg_z_quarter_frame": -0.0034880503080785275,
+    "worst_frame": 9.75,
+    "stance_samples": 0,
+    "stance_samples_sole_above_0_06": 0,
+    "max_stance_target_y_error_per_quarter_frame": 0,
+    "note": "Stance target test assumes nominal in-place treadmill speed. Sole height is a rough metric, not proof of ground lock or quality."
+  },
+  {
+    "rig": "BlockyR6",
+    "clip": "Idle",
+    "minimum_leg_z_quarter_frame": 0.0052459463477134705,
+    "worst_frame": 85.25,
+    "stance_samples": 0,
+    "stance_samples_sole_above_0_06": 0,
+    "max_stance_target_y_error_per_quarter_frame": 0,
+    "note": "Stance target test assumes nominal in-place treadmill speed. Sole height is a rough metric, not proof of ground lock or quality."
+  },
+  {
+    "rig": "BlockyR6",
+    "clip": "Walk",
+    "minimum_leg_z_quarter_frame": -0.0005815659533254802,
+    "worst_frame": 5.25,
+    "stance_samples": 125,
+    "stance_samples_sole_above_0_06": 0,
+    "max_stance_target_y_error_per_quarter_frame": 0.0033845464388529457,
+    "note": "Stance target test assumes nominal in-place treadmill speed. Sole height is a rough metric, not proof of ground lock or quality."
+  },
+  {
+    "rig": "BlockyR6",
+    "clip": "Run",
+    "minimum_leg_z_quarter_frame": -0.007915159687399864,
+    "worst_frame": 1.75,
+    "stance_samples": 38,
+    "stance_samples_sole_above_0_06": 0,
+    "max_stance_target_y_error_per_quarter_frame": 0.0007986950683083749,
+    "note": "Stance target test assumes nominal in-place treadmill speed. Sole height is a rough metric, not proof of ground lock or quality."
+  },
+  {
+    "rig": "BlockyR6",
+    "clip": "Jump",
+    "minimum_leg_z_quarter_frame": 0.0017824399983510375,
+    "worst_frame": 9.75,
+    "stance_samples": 0,
+    "stance_samples_sole_above_0_06": 0,
+    "max_stance_target_y_error_per_quarter_frame": 0,
+    "note": "Stance target test assumes nominal in-place treadmill speed. Sole height is a rough metric, not proof of ground lock or quality."
+  }
+]

@@ -1,0 +1,23 @@
+ENG-02 test evidence — 2026-11-20
+Host: Linux x64, GCC 11.5.0, CMake 3.31.10; SDL 3.4.20 locally built with reduced X11 dependencies.
+
+Strict SDL-enabled Debug build: -Wall -Wextra -Wpedantic -Werror
+CTest: 100% tests passed, 0 tests failed out of 15.
+Tests include the SDL dummy driver and invalid video-driver initialization.
+
+Dependency-free default Debug build:
+CTest: 100% tests passed, 0 tests failed out of 13.
+
+SDL integration test on a virtual X11 display:
+SDL x11 driver: create/resize/close translation/quit/teardown passed
+(The SDL close and quit events in this integration test are synthetic.)
+
+Separate virtual X11 window-manager protocol smoke test output:
+Found X11 demo window 4194319
+PokoX platform demo: resize the blank window or close it to exit.
+Resize: logical 800x600, pixels 800x600
+Resize: logical 704x448, pixels 704x448
+Resize: logical 704x448, pixels 704x448
+PASS: X11 resize and WM_DELETE_WINDOW closed the demo
+
+The X11 test creates a real window, programmatically resizes it and sends WM_DELETE_WINDOW; it is not a human clicking the close button. These results are not Windows, Android, physical GPU, or live GitHub Actions results.

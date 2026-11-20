@@ -1,0 +1,95 @@
+#include "poko/platform/sdl_platform.hpp"
+#include "poko/rhi/vulkan_clear_renderer.hpp"
+#include "poko/rhi/vulkan_diagnostics.hpp"
+#include <SDL3/SDL.h>
+#include <SDL3/SDL_main.h>
+#include <array>
+#include <charconv>
+#include <cstdint>
+#include <string_view>
+#include <system_error>
+#include <cstdio>
+int main(int argc, char** argv) {
+  using namespace poko;
+  std::uint32_t frame_limit = 0;
+  rhi::ClearConfig config{};
+  for (int i = 1; i < argc; ++i) {
+    const std::string_view arg{argv[i]};
+    if (arg == "--no-validation") { config.enable_validation = false; continue; }
+    if (arg == "--adapter" && i + 1 < argc) {
+      const std::string_view value{argv[++i]};
+      const auto parsed = std::from_chars(value.data(), value.data() + value.size(), config.adapter_id);
+      if (parsed.ec == std::errc{} && parsed.ptr == value.data() + value.size()) continue;
+    }
+    if (arg == "--frames" && i + 1 < argc) {
+      const std::string_view value{argv[++i]};
+      const auto parsed = std::from_chars(value.data(), value.data() + value.size(), frame_limit);
+      if (parsed.ec == std::errc{} && parsed.ptr == value.data() + value.size() && frame_limit != 0) continue;
+    }
+    std::fprintf(stderr, "Usage: pokox_vulkan_clear [--frames positive-integer] [--no-validation] [--adapter index]\n");
+    return 2;
+  }
+  platform::SdlPlatform window;
+  // Reverse destruction: renderer, diagnostics, SDL.
+  rhi::VulkanDiagnostics diagnostics;
+  rhi::VulkanClearRenderer renderer;
+  if (window.initialize() != platform::PlatformError::none ||
+      window.create_window({"PokoX - Vulkan clear seed", 800, 600,
+                             platform::WindowGraphicsApi::vulkan}) != platform::PlatformError::none) {
+    std::fprintf(stderr, "SDL setup failed: %s\n", SDL_GetError());
+    return 1;
+  }
+  if (diagnostics.start() != rhi::DiagnosticsError::none) {
+    std::fputs("Could not acquire exclusive graphics diagnostics; refusing an unmonitored run.\n", stderr);
+    return 1;
+  }
+  const auto initialized = renderer.initialize(window, config);
+  if (initialized != rhi::RenderError::none || diagnostics.messages().errors != 0) {
+    std::fprintf(stderr, "Vulkan renderer setup failed (stage %u); inspect Diligent/SDL diagnostics.\n",
+                 static_cast<unsigned>(initialized));
+    return 1;
+  }
+  std::puts("Vulkan clear seed: blue background expected. Close to exit.");
+  std::puts("Resize recreation is ENG-05; a pixel-size change exits this seed cleanly.");
+  constexpr std::array<float, 4> blue{0.035f, 0.12f, 0.28f, 1.0f};
+  bool running = true;
+  std::uint32_t frames = 0;
+  int exit_code = 0;
+  while (running) {
+    platform::Event event;
+    while (window.poll_event(event)) {
+      if (event.type == platform::EventType::quit_requested ||
+          event.type == platform::EventType::window_close_requested) running = false;
+    }
+    if (!running) break;
+    if (diagnostics.messages().errors != 0) { exit_code = 1; break; }
+    const auto result = renderer.clear_and_present(blue);
+    if (diagnostics.messages().errors != 0) { exit_code = 1; break; }
+    if (result == rhi::RenderError::not_drawable) { SDL_Delay(20); continue; }
+    if (result == rhi::RenderError::resize_required) {
+      std::puts("Drawable size changed: stopping before drawing; ENG-05 remains pending.");
+      exit_code = 2;
+      break;
+    }
+    if (result != rhi::RenderError::none) {
+      std::fprintf(stderr, "Clear/present failed (stage %u); no fallback attempted.\n",
+                   static_cast<unsigned>(result));
+      return 1;
+    }
+    if (frames != UINT32_MAX) ++frames;
+    if (frame_limit != 0 && frames >= frame_limit) break;
+    SDL_Delay(1);
+  }
+  renderer.shutdown();
+  diagnostics.stop();
+  window.shutdown();
+  const auto messages = diagnostics.messages();
+  if (messages.errors != 0) exit_code = 1;
+  std::printf("POKO_CLEAR_RESULT submitted=%u validation_requested=%s graphics_errors=%llu graphics_warnings=%llu\n",
+    frames, config.enable_validation ? "true" : "false", static_cast<unsigned long long>(messages.errors),
+    static_cast<unsigned long long>(messages.warnings));
+  if (exit_code == 0 && frame_limit != 0 && frames < frame_limit) exit_code = 2;
+  if (frame_limit != 0 && exit_code == 0)
+    std::printf("Completed %u clear/present submissions; pixels not independently verified.\n", frames);
+  return exit_code;
+}

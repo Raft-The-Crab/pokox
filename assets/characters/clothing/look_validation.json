@@ -1,0 +1,370 @@
+[
+  {
+    "rig": "BoyR6",
+    "file": "face library",
+    "packed_faces": [
+      [
+        "face_cheeky",
+        true
+      ],
+      [
+        "face_excited",
+        true
+      ],
+      [
+        "face_focused",
+        true
+      ],
+      [
+        "face_grin",
+        true
+      ],
+      [
+        "face_happy",
+        true
+      ],
+      [
+        "face_skeptical",
+        true
+      ],
+      [
+        "face_sleepy",
+        true
+      ],
+      [
+        "face_surprised",
+        true
+      ],
+      [
+        "face_wink",
+        true
+      ],
+      [
+        "face_worried",
+        true
+      ]
+    ]
+  },
+  {
+    "rig": "BoyR6",
+    "variant": "Shirt",
+    "packed_garment_layers": [
+      [
+        "T-RRS",
+        "Poko_shirt_overlay",
+        "shirt_T_RRS.png",
+        true
+      ],
+      [
+        "LA-RRS",
+        "Poko_shirt_overlay",
+        "shirt_LA_RRS.png",
+        true
+      ],
+      [
+        "RA-RRS",
+        "Poko_shirt_overlay",
+        "shirt_RA_RRS.png",
+        true
+      ]
+    ]
+  },
+  {
+    "rig": "BoyR6",
+    "variant": "TShirt",
+    "packed_garment_layers": [
+      [
+        "T-RRS",
+        "Poko_tshirt_overlay",
+        "tshirt_T_RRS.png",
+        true
+      ],
+      [
+        "LA-RRS",
+        "Poko_tshirt_overlay",
+        "tshirt_LA_RRS.png",
+        true
+      ],
+      [
+        "RA-RRS",
+        "Poko_tshirt_overlay",
+        "tshirt_RA_RRS.png",
+        true
+      ]
+    ]
+  },
+  {
+    "rig": "BoyR6",
+    "variant": "Pants",
+    "packed_garment_layers": [
+      [
+        "LL-RRS",
+        "Poko_pants_overlay",
+        "pants_LL_RRS.png",
+        true
+      ],
+      [
+        "RL-RRS",
+        "Poko_pants_overlay",
+        "pants_RL_RRS.png",
+        true
+      ]
+    ]
+  },
+  {
+    "rig": "BoyR6",
+    "variant": "Shirt_Pants",
+    "packed_garment_layers": [
+      [
+        "T-RRS",
+        "Poko_shirt_overlay",
+        "shirt_T_RRS.png",
+        true
+      ],
+      [
+        "LA-RRS",
+        "Poko_shirt_overlay",
+        "shirt_LA_RRS.png",
+        true
+      ],
+      [
+        "RA-RRS",
+        "Poko_shirt_overlay",
+        "shirt_RA_RRS.png",
+        true
+      ],
+      [
+        "LL-RRS",
+        "Poko_pants_overlay",
+        "pants_LL_RRS.png",
+        true
+      ],
+      [
+        "RL-RRS",
+        "Poko_pants_overlay",
+        "pants_RL_RRS.png",
+        true
+      ]
+    ]
+  },
+  {
+    "rig": "BoyR6",
+    "variant": "TShirt_Pants",
+    "packed_garment_layers": [
+      [
+        "T-RRS",
+        "Poko_tshirt_overlay",
+        "tshirt_T_RRS.png",
+        true
+      ],
+      [
+        "LA-RRS",
+        "Poko_tshirt_overlay",
+        "tshirt_LA_RRS.png",
+        true
+      ],
+      [
+        "RA-RRS",
+        "Poko_tshirt_overlay",
+        "tshirt_RA_RRS.png",
+        true
+      ],
+      [
+        "LL-RRS",
+        "Poko_pants_overlay",
+        "pants_LL_RRS.png",
+        true
+      ],
+      [
+        "RL-RRS",
+        "Poko_pants_overlay",
+        "pants_RL_RRS.png",
+        true
+      ]
+    ]
+  },
+  {
+    "rig": "BlockyR6",
+    "file": "face library",
+    "packed_faces": [
+      [
+        "face_cheeky",
+        true
+      ],
+      [
+        "face_excited",
+        true
+      ],
+      [
+        "face_focused",
+        true
+      ],
+      [
+        "face_grin",
+        true
+      ],
+      [
+        "face_happy",
+        true
+      ],
+      [
+        "face_skeptical",
+        true
+      ],
+      [
+        "face_sleepy",
+        true
+      ],
+      [
+        "face_surprised",
+        true
+      ],
+      [
+        "face_wink",
+        true
+      ],
+      [
+        "face_worried",
+        true
+      ]
+    ]
+  },
+  {
+    "rig": "BlockyR6",
+    "variant": "Shirt",
+    "packed_garment_layers": [
+      [
+        "T-RRS",
+        "Poko_shirt_overlay",
+        "shirt_T_RRS.png",
+        true
+      ],
+      [
+        "LA-RRS",
+        "Poko_shirt_overlay",
+        "shirt_LA_RRS.png",
+        true
+      ],
+      [
+        "RA-RRS",
+        "Poko_shirt_overlay",
+        "shirt_RA_RRS.png",
+        true
+      ]
+    ]
+  },
+  {
+    "rig": "BlockyR6",
+    "variant": "TShirt",
+    "packed_garment_layers": [
+      [
+        "T-RRS",
+        "Poko_tshirt_overlay",
+        "tshirt_T_RRS.png",
+        true
+      ],
+      [
+        "LA-RRS",
+        "Poko_tshirt_overlay",
+        "tshirt_LA_RRS.png",
+        true
+      ],
+      [
+        "RA-RRS",
+        "Poko_tshirt_overlay",
+        "tshirt_RA_RRS.png",
+        true
+      ]
+    ]
+  },
+  {
+    "rig": "BlockyR6",
+    "variant": "Pants",
+    "packed_garment_layers": [
+      [
+        "LL-RRS",
+        "Poko_pants_overlay",
+        "pants_LL_RRS.png",
+        true
+      ],
+      [
+        "RL-RRS",
+        "Poko_pants_overlay",
+        "pants_RL_RRS.png",
+        true
+      ]
+    ]
+  },
+  {
+    "rig": "BlockyR6",
+    "variant": "Shirt_Pants",
+    "packed_garment_layers": [
+      [
+        "T-RRS",
+        "Poko_shirt_overlay",
+        "shirt_T_RRS.png",
+        true
+      ],
+      [
+        "LA-RRS",
+        "Poko_shirt_overlay",
+        "shirt_LA_RRS.png",
+        true
+      ],
+      [
+        "RA-RRS",
+        "Poko_shirt_overlay",
+        "shirt_RA_RRS.png",
+        true
+      ],
+      [
+        "LL-RRS",
+        "Poko_pants_overlay",
+        "pants_LL_RRS.png",
+        true
+      ],
+      [
+        "RL-RRS",
+        "Poko_pants_overlay",
+        "pants_RL_RRS.png",
+        true
+      ]
+    ]
+  },
+  {
+    "rig": "BlockyR6",
+    "variant": "TShirt_Pants",
+    "packed_garment_layers": [
+      [
+        "T-RRS",
+        "Poko_tshirt_overlay",
+        "tshirt_T_RRS.png",
+        true
+      ],
+      [
+        "LA-RRS",
+        "Poko_tshirt_overlay",
+        "tshirt_LA_RRS.png",
+        true
+      ],
+      [
+        "RA-RRS",
+        "Poko_tshirt_overlay",
+        "tshirt_RA_RRS.png",
+        true
+      ],
+      [
+        "LL-RRS",
+        "Poko_pants_overlay",
+        "pants_LL_RRS.png",
+        true
+      ],
+      [
+        "RL-RRS",
+        "Poko_pants_overlay",
+        "pants_RL_RRS.png",
+        true
+      ]
+    ]
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "file": "BlockyR6_Idle_to_Jump_v2.blend",
+    "minimum_leg_z_quarter_frame": 0.005265855696052313,
+    "frame": 1.0
+  },
+  {
+    "file": "BlockyR6_Idle_to_Walk_v2.blend",
+    "minimum_leg_z_quarter_frame": 0.0009850871283560991,
+    "frame": 9.0
+  },
+  {
+    "file": "BlockyR6_Jump_to_Idle_v2.blend",
+    "minimum_leg_z_quarter_frame": 0.005265855696052313,
+    "frame": 1.0
+  },
+  {
+    "file": "BlockyR6_Run_to_Walk_v2.blend",
+    "minimum_leg_z_quarter_frame": -2.3185300960903987e-05,
+    "frame": 8.0
+  },
+  {
+    "file": "BlockyR6_Walk_to_Idle_v2.blend",
+    "minimum_leg_z_quarter_frame": 0.0009850871283560991,
+    "frame": 1.0
+  },
+  {
+    "file": "BlockyR6_Walk_to_Run_v2.blend",
+    "minimum_leg_z_quarter_frame": -2.3185300960903987e-05,
+    "frame": 2.0
+  },
+  {
+    "file": "BoyR6_Idle_to_Jump_v2.blend",
+    "minimum_leg_z_quarter_frame": -1.4768556866329163e-05,
+    "frame": 1.0
+  },
+  {
+    "file": "BoyR6_Idle_to_Walk_v2.blend",
+    "minimum_leg_z_quarter_frame": -0.00032767816446721554,
+    "frame": 4.25
+  },
+  {
+    "file": "BoyR6_Jump_to_Idle_v2.blend",
+    "minimum_leg_z_quarter_frame": -1.4768556866329163e-05,
+    "frame": 1.0
+  },
+  {
+    "file": "BoyR6_Run_to_Walk_v2.blend",
+    "minimum_leg_z_quarter_frame": -0.0009732251055538654,
+    "frame": 4.0
+  },
+  {
+    "file": "BoyR6_Walk_to_Idle_v2.blend",
+    "minimum_leg_z_quarter_frame": -0.00032767816446721554,
+    "frame": 5.75
+  },
+  {
+    "file": "BoyR6_Walk_to_Run_v2.blend",
+    "minimum_leg_z_quarter_frame": -0.0009732251055538654,
+    "frame": 6.0
+  }
+]

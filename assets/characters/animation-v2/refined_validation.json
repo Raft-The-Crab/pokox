@@ -1,0 +1,130 @@
+[
+  {
+    "rig": "BoyR6",
+    "clip": "Idle",
+    "fps": 24,
+    "playback_frames": [
+      1,
+      120
+    ],
+    "loop": true,
+    "loop_endpoint_matrix_max_error": 4.408728321890747e-18,
+    "sampled_pose_max_change": 0.07213721424341202,
+    "lowest_leg_z_sampled_every_half_frame": -1.548381260363385e-05,
+    "highest_both_feet_lower_bound": 0.008080972358584404,
+    "max_ik_target_move_per_half_frame": 0.0,
+    "note": "Numerical smoke test, not proof of visual quality, foot locking, transitions or final export."
+  },
+  {
+    "rig": "BoyR6",
+    "clip": "Walk",
+    "fps": 24,
+    "playback_frames": [
+      1,
+      32
+    ],
+    "loop": true,
+    "loop_endpoint_matrix_max_error": 0.0,
+    "sampled_pose_max_change": 0.7993327081203461,
+    "lowest_leg_z_sampled_every_half_frame": -0.0003919356968253851,
+    "highest_both_feet_lower_bound": 0.0009987407829612494,
+    "max_ik_target_move_per_half_frame": 0.05865922220889305,
+    "note": "Numerical smoke test, not proof of visual quality, foot locking, transitions or final export."
+  },
+  {
+    "rig": "BoyR6",
+    "clip": "Run",
+    "fps": 24,
+    "playback_frames": [
+      1,
+      22
+    ],
+    "loop": true,
+    "loop_endpoint_matrix_max_error": 0.0,
+    "sampled_pose_max_change": 1.3096700310707092,
+    "lowest_leg_z_sampled_every_half_frame": -9.177500032819808e-05,
+    "highest_both_feet_lower_bound": 0.08345866203308105,
+    "max_ik_target_move_per_half_frame": 0.11132542323788007,
+    "note": "Numerical smoke test, not proof of visual quality, foot locking, transitions or final export."
+  },
+  {
+    "rig": "BoyR6",
+    "clip": "Jump",
+    "fps": 24,
+    "playback_frames": [
+      1,
+      44
+    ],
+    "loop": false,
+    "loop_endpoint_matrix_max_error": 0.0,
+    "sampled_pose_max_change": 1.4589571952819824,
+    "lowest_leg_z_sampled_every_half_frame": -7.759185245959088e-05,
+    "highest_both_feet_lower_bound": 1.3221129179000854,
+    "max_ik_target_move_per_half_frame": 0.0951976108127038,
+    "note": "Numerical smoke test, not proof of visual quality, foot locking, transitions or final export."
+  },
+  {
+    "rig": "BlockyR6",
+    "clip": "Idle",
+    "fps": 24,
+    "playback_frames": [
+      1,
+      120
+    ],
+    "loop": true,
+    "loop_endpoint_matrix_max_error": 7.525698311994184e-18,
+    "sampled_pose_max_change": 0.05150596797466278,
+    "lowest_leg_z_sampled_every_half_frame": 0.0052470192313194275,
+    "highest_both_feet_lower_bound": 0.01331784762442112,
+    "max_ik_target_move_per_half_frame": 0.0,
+    "note": "Numerical smoke test, not proof of visual quality, foot locking, transitions or final export."
+  },
+  {
+    "rig": "BlockyR6",
+    "clip": "Walk",
+    "fps": 24,
+    "playback_frames": [
+      1,
+      32
+    ],
+    "loop": true,
+    "loop_endpoint_matrix_max_error": 0.0,
+    "sampled_pose_max_change": 0.542585551738739,
+    "lowest_leg_z_sampled_every_half_frame": 0.000579208426643163,
+    "highest_both_feet_lower_bound": 0.005259298719465733,
+    "max_ik_target_move_per_half_frame": 0.05865922182000512,
+    "note": "Numerical smoke test, not proof of visual quality, foot locking, transitions or final export."
+  },
+  {
+    "rig": "BlockyR6",
+    "clip": "Run",
+    "fps": 24,
+    "playback_frames": [
+      1,
+      22
+    ],
+    "loop": true,
+    "loop_endpoint_matrix_max_error": 0.0,
+    "sampled_pose_max_change": 1.1271533370018005,
+    "lowest_leg_z_sampled_every_half_frame": 0.0008842835086397827,
+    "highest_both_feet_lower_bound": 0.10347695648670197,
+    "max_ik_target_move_per_half_frame": 0.08926597941703826,
+    "note": "Numerical smoke test, not proof of visual quality, foot locking, transitions or final export."
+  },
+  {
+    "rig": "BlockyR6",
+    "clip": "Jump",
+    "fps": 24,
+    "playback_frames": [
+      1,
+      44
+    ],
+    "loop": false,
+    "loop_endpoint_matrix_max_error": 2.9391522145938313e-18,
+    "sampled_pose_max_change": 1.0747299194335938,
+    "lowest_leg_z_sampled_every_half_frame": 0.005194508470594883,
+    "highest_both_feet_lower_bound": 1.3448638916015625,
+    "max_ik_target_move_per_half_frame": 0.09519760343084045,
+    "note": "Numerical smoke test, not proof of visual quality, foot locking, transitions or final export."
+  }
+]

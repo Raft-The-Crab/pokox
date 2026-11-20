@@ -1,0 +1,66 @@
+{
+  "baseline": "Project-Poko-Preserved-R6.zip, previous deliverable",
+  "files": [
+    {
+      "file": "assets/characters/work/BoyR6_source.blend",
+      "sha256_before": "1729ea991328199393864361f75a4b9303a9e60a832759d1e1e533e92263f2d1",
+      "sha256_after": "1729ea991328199393864361f75a4b9303a9e60a832759d1e1e533e92263f2d1",
+      "unchanged": true
+    },
+    {
+      "file": "assets/characters/work/BoyR6_poko.blend",
+      "sha256_before": "52a2212e615c4d7467fd2006369209e915787b16b04a8b14c144b188c0f5ead1",
+      "sha256_after": "52a2212e615c4d7467fd2006369209e915787b16b04a8b14c144b188c0f5ead1",
+      "unchanged": true
+    },
+    {
+      "file": "assets/characters/work/BoyR6_poko.glb",
+      "sha256_before": "02a545cfbfb547a6fbebabd7d0d8a6ade581c1d775b211ebe6522d839ed6a631",
+      "sha256_after": "02a545cfbfb547a6fbebabd7d0d8a6ade581c1d775b211ebe6522d839ed6a631",
+      "unchanged": true
+    },
+    {
+      "file": "assets/characters/preserved/BoyR6_preserved.blend",
+      "sha256_before": "b0caec279f742e75a134ad82d52d767d9c6af2f322f51b42857e24f21b5ab638",
+      "sha256_after": "b0caec279f742e75a134ad82d52d767d9c6af2f322f51b42857e24f21b5ab638",
+      "unchanged": true
+    },
+    {
+      "file": "assets/characters/preserved/BoyR6_preserved.glb",
+      "sha256_before": "9e8161053136ead840e8a923dcecc7480bb5a22593400de298dcbdbc848da55f",
+      "sha256_after": "9e8161053136ead840e8a923dcecc7480bb5a22593400de298dcbdbc848da55f",
+      "unchanged": true
+    },
+    {
+      "file": "assets/characters/work/BlockyR6_source.blend",
+      "sha256_before": "7a4af30f8c9c20dba283644bff7cd138f6ccb9dd4db64beace7cbcc3ad51663a",
+      "sha256_after": "7a4af30f8c9c20dba283644bff7cd138f6ccb9dd4db64beace7cbcc3ad51663a",
+      "unchanged": true
+    },
+    {
+      "file": "assets/characters/work/BlockyR6_poko.blend",
+      "sha256_before": "039a2318c326b2c644e6950526514c4a1dfd3bf027473e007600ba5ba2e6005a",
+      "sha256_after": "039a2318c326b2c644e6950526514c4a1dfd3bf027473e007600ba5ba2e6005a",
+      "unchanged": true
+    },
+    {
+      "file": "assets/characters/work/BlockyR6_poko.glb",
+      "sha256_before": "a3e15af92db1fcb26585694e00d6ed428ab94d1291b96954743e13d1b871e4fe",
+      "sha256_after": "a3e15af92db1fcb26585694e00d6ed428ab94d1291b96954743e13d1b871e4fe",
+      "unchanged": true
+    },
+    {
+      "file": "assets/characters/preserved/BlockyR6_preserved.blend",
+      "sha256_before": "377fec1605f4f3dbeb95449942de20122af9cc73251deed5211c49037543d8c6",
+      "sha256_after": "377fec1605f4f3dbeb95449942de20122af9cc73251deed5211c49037543d8c6",
+      "unchanged": true
+    },
+    {
+      "file": "assets/characters/preserved/BlockyR6_preserved.glb",
+      "sha256_before": "668c15fb9c8cff9efd41c1f573da6cd17e8133a67baf33af59fbf2fb77a93b37",
+      "sha256_after": "668c15fb9c8cff9efd41c1f573da6cd17e8133a67baf33af59fbf2fb77a93b37",
+      "unchanged": true
+    }
+  ],
+  "adapted_bases_match_preserved": true
+}

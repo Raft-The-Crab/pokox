@@ -1,0 +1,48 @@
+ENG-03 Vulkan clear source candidate — local evidence, 2026-11-20
+Host: Linux x64 / GCC 11.5.0
+
+ACTUAL SOURCE, TEST-OWNED DEPENDENCY DOUBLES ONLY:
+- Three native-window branches (Linux X11, Win32, Android): strict-warning and
+  optimized control-flow checks passed on the SAME Linux host.
+- All three branches and bounded demo/CLI checks passed ASan + UBSan with leak
+  detection. Local sandbox-only runtime links resolved loader configuration.
+- Bounded demo runs passed with default validation requested and with the
+  explicit no-validation flag. Six invalid argument cases were rejected.
+- All 8 deliberate renderer regressions compiled and were caught at runtime.
+- All 11 prior platform mutations were caught again.
+- Existing Python tests: 5 D1 + 7 UV overlap + 11 golden tests passed (23 total).
+
+NOT VERIFIED:
+Real CMake configuration/CTest, real SDL/Diligent header compilation or linkage,
+Vulkan driver/layer availability, visible output, pixel correctness, actual
+Windows/Android execution, Android activity/lifecycle and device loss.
+A hard-fail callback for diagnostics-only validation errors is not implemented.
+The option stays default-off and ENG-03 acceptance remains open.
+
+Reproduce control-flow checks:
+  python3 engine/rhi/tests/unit/run_seed_checks.py --cxx g++ --mutations
+  python3 engine/rhi/tests/unit/run_seed_checks.py --cxx g++ --sanitize
+  python3 engine/platform/tests/unit/check_fault_sensitivity.py --cxx g++
+These scripts do not use real SDKs. See engine/rhi/README.md for laptop commands.
+
+RUNNER OUTPUT (optimized/mutation):
+PASS: LINUX native-window branch with dependency doubles
+PASS: WIN32 native-window branch with dependency doubles
+PASS: ANDROID native-window branch with dependency doubles
+PASS: bounded demo and six invalid-argument cases with doubles
+CAUGHT: accept_plain_window
+CAUGHT: allow_duplicate_initialization
+CAUGHT: ignore_zero_drawable
+CAUGHT: ignore_resize
+CAUGHT: omit_present
+CAUGHT: omit_idle
+CAUGHT: ignore_window_identity
+CAUGHT: swap_cleanup_order
+Complete. No real SDK, window, GPU, target-platform or pixel validation was performed.
+
+RUNNER OUTPUT (sanitizers):
+PASS: LINUX native-window branch with dependency doubles
+PASS: WIN32 native-window branch with dependency doubles
+PASS: ANDROID native-window branch with dependency doubles
+PASS: bounded demo and six invalid-argument cases with doubles
+Complete. No real SDK, window, GPU, target-platform or pixel validation was performed.

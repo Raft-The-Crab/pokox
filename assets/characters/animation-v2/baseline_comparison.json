@@ -1,0 +1,275 @@
+{
+  "previous_archive": "Project-Poko-R6-Animation-Faces-Clothing.zip",
+  "prior_blend_and_glb": [
+    {
+      "path": "assets/characters/work/BlockyR6_poko.blend",
+      "sha256_before": "039a2318c326b2c644e6950526514c4a1dfd3bf027473e007600ba5ba2e6005a",
+      "sha256_after": "039a2318c326b2c644e6950526514c4a1dfd3bf027473e007600ba5ba2e6005a",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/work/BlockyR6_poko.glb",
+      "sha256_before": "a3e15af92db1fcb26585694e00d6ed428ab94d1291b96954743e13d1b871e4fe",
+      "sha256_after": "a3e15af92db1fcb26585694e00d6ed428ab94d1291b96954743e13d1b871e4fe",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/work/BlockyR6_source.blend",
+      "sha256_before": "7a4af30f8c9c20dba283644bff7cd138f6ccb9dd4db64beace7cbcc3ad51663a",
+      "sha256_after": "7a4af30f8c9c20dba283644bff7cd138f6ccb9dd4db64beace7cbcc3ad51663a",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/work/BoyR6_poko.blend",
+      "sha256_before": "52a2212e615c4d7467fd2006369209e915787b16b04a8b14c144b188c0f5ead1",
+      "sha256_after": "52a2212e615c4d7467fd2006369209e915787b16b04a8b14c144b188c0f5ead1",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/work/BoyR6_poko.glb",
+      "sha256_before": "02a545cfbfb547a6fbebabd7d0d8a6ade581c1d775b211ebe6522d839ed6a631",
+      "sha256_after": "02a545cfbfb547a6fbebabd7d0d8a6ade581c1d775b211ebe6522d839ed6a631",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/work/BoyR6_source.blend",
+      "sha256_before": "1729ea991328199393864361f75a4b9303a9e60a832759d1e1e533e92263f2d1",
+      "sha256_after": "1729ea991328199393864361f75a4b9303a9e60a832759d1e1e533e92263f2d1",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/preserved/BlockyR6_preserved.blend",
+      "sha256_before": "377fec1605f4f3dbeb95449942de20122af9cc73251deed5211c49037543d8c6",
+      "sha256_after": "377fec1605f4f3dbeb95449942de20122af9cc73251deed5211c49037543d8c6",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/preserved/BlockyR6_preserved.glb",
+      "sha256_before": "668c15fb9c8cff9efd41c1f573da6cd17e8133a67baf33af59fbf2fb77a93b37",
+      "sha256_after": "668c15fb9c8cff9efd41c1f573da6cd17e8133a67baf33af59fbf2fb77a93b37",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/preserved/BoyR6_preserved.blend",
+      "sha256_before": "b0caec279f742e75a134ad82d52d767d9c6af2f322f51b42857e24f21b5ab638",
+      "sha256_after": "b0caec279f742e75a134ad82d52d767d9c6af2f322f51b42857e24f21b5ab638",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/preserved/BoyR6_preserved.glb",
+      "sha256_before": "9e8161053136ead840e8a923dcecc7480bb5a22593400de298dcbdbc848da55f",
+      "sha256_after": "9e8161053136ead840e8a923dcecc7480bb5a22593400de298dcbdbc848da55f",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/animation/BlockyR6_Idle.blend",
+      "sha256_before": "83b87ef854319baa95374af0f92bcb8c0951197eebdd8037626766c671af8876",
+      "sha256_after": "83b87ef854319baa95374af0f92bcb8c0951197eebdd8037626766c671af8876",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/animation/BlockyR6_Jump.blend",
+      "sha256_before": "abc81ec476bcf23fbcbbe0f97327bfa0e6aa4ccfa6f5cd2235cbed32e6758199",
+      "sha256_after": "abc81ec476bcf23fbcbbe0f97327bfa0e6aa4ccfa6f5cd2235cbed32e6758199",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/animation/BlockyR6_Run.blend",
+      "sha256_before": "d05024ab7710f91526133f875d8f10b4a314b0c407c1b0b2eeb9b703f74f000b",
+      "sha256_after": "d05024ab7710f91526133f875d8f10b4a314b0c407c1b0b2eeb9b703f74f000b",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/animation/BlockyR6_Walk.blend",
+      "sha256_before": "e2e7b09de5b554f421a8aca13940dc0bf3df8e4cfd21651f9ce4a15a3ab1da8a",
+      "sha256_after": "e2e7b09de5b554f421a8aca13940dc0bf3df8e4cfd21651f9ce4a15a3ab1da8a",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/animation/BoyR6_Idle.blend",
+      "sha256_before": "3fa64f767e096e4af70d8d76913591d129f2e85dfc4916bbacb376a0d2e9ac0c",
+      "sha256_after": "3fa64f767e096e4af70d8d76913591d129f2e85dfc4916bbacb376a0d2e9ac0c",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/animation/BoyR6_Jump.blend",
+      "sha256_before": "8aa17bb0626d67bc3ba5d16cd2feb543fb00c96b91a29db6752a846ff6c09fe8",
+      "sha256_after": "8aa17bb0626d67bc3ba5d16cd2feb543fb00c96b91a29db6752a846ff6c09fe8",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/animation/BoyR6_Run.blend",
+      "sha256_before": "113f8d88e991fd00ef45b9f459049b97321545c88146ec9487d6d9ce78ad16e1",
+      "sha256_after": "113f8d88e991fd00ef45b9f459049b97321545c88146ec9487d6d9ce78ad16e1",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/animation/BoyR6_Walk.blend",
+      "sha256_before": "74f9657fc5937e7d9e815dece65ffc3be591f4eaa76e0fd133467094ee36c2d5",
+      "sha256_after": "74f9657fc5937e7d9e815dece65ffc3be591f4eaa76e0fd133467094ee36c2d5",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/base/BlockyR6_Adapted.blend",
+      "sha256_before": "377fec1605f4f3dbeb95449942de20122af9cc73251deed5211c49037543d8c6",
+      "sha256_after": "377fec1605f4f3dbeb95449942de20122af9cc73251deed5211c49037543d8c6",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/base/BoyR6_Adapted.blend",
+      "sha256_before": "b0caec279f742e75a134ad82d52d767d9c6af2f322f51b42857e24f21b5ab638",
+      "sha256_after": "b0caec279f742e75a134ad82d52d767d9c6af2f322f51b42857e24f21b5ab638",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/clothing/BlockyR6/BlockyR6_Pants.blend",
+      "sha256_before": "715189205ed5f2c31d7dfed0c6c89910462b27d79a327a74101bac1e40b03877",
+      "sha256_after": "715189205ed5f2c31d7dfed0c6c89910462b27d79a327a74101bac1e40b03877",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/clothing/BlockyR6/BlockyR6_Shirt.blend",
+      "sha256_before": "35ec17e8a10c7ee59251002a07ce6c26486593b8b8cfc5eb804be48530e32ed2",
+      "sha256_after": "35ec17e8a10c7ee59251002a07ce6c26486593b8b8cfc5eb804be48530e32ed2",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/clothing/BlockyR6/BlockyR6_Shirt_Pants.blend",
+      "sha256_before": "f39482cb77d0bb0951288ba660312cf3235bba6165b194a032a8d13421410132",
+      "sha256_after": "f39482cb77d0bb0951288ba660312cf3235bba6165b194a032a8d13421410132",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/clothing/BlockyR6/BlockyR6_TShirt.blend",
+      "sha256_before": "ea6d5cca01fb6d1324bf9be0190d774b25d202ef50b0a59355730e5dde090357",
+      "sha256_after": "ea6d5cca01fb6d1324bf9be0190d774b25d202ef50b0a59355730e5dde090357",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/clothing/BlockyR6/BlockyR6_TShirt_Pants.blend",
+      "sha256_before": "3533c167722b4bdd9882cad128f1adb453beb9cee939c0585aedbe52b8a657d7",
+      "sha256_after": "3533c167722b4bdd9882cad128f1adb453beb9cee939c0585aedbe52b8a657d7",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/clothing/BoyR6/BoyR6_Pants.blend",
+      "sha256_before": "e60e2618bc898b037563c74678955ad96a9ef6c36f35e0699ecedc9b4936af92",
+      "sha256_after": "e60e2618bc898b037563c74678955ad96a9ef6c36f35e0699ecedc9b4936af92",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/clothing/BoyR6/BoyR6_Shirt.blend",
+      "sha256_before": "a3c2d5db032b2129f32953f3bbdb803cdb967717df81a889da83a3191cc4e127",
+      "sha256_after": "a3c2d5db032b2129f32953f3bbdb803cdb967717df81a889da83a3191cc4e127",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/clothing/BoyR6/BoyR6_Shirt_Pants.blend",
+      "sha256_before": "9b3c8ab508e81ee91098e834b470674702d1b3021b3e3894eeda5db8b41b515e",
+      "sha256_after": "9b3c8ab508e81ee91098e834b470674702d1b3021b3e3894eeda5db8b41b515e",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/clothing/BoyR6/BoyR6_TShirt.blend",
+      "sha256_before": "92f25c2eed81d2a8cedf3e248f126b8440b9e689f4a22ce48c9ad205b84dbf4c",
+      "sha256_after": "92f25c2eed81d2a8cedf3e248f126b8440b9e689f4a22ce48c9ad205b84dbf4c",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/clothing/BoyR6/BoyR6_TShirt_Pants.blend",
+      "sha256_before": "85433ac87544ce01109ff7ee8147145d0bd6cc569c36516f0b7709f31a033d92",
+      "sha256_after": "85433ac87544ce01109ff7ee8147145d0bd6cc569c36516f0b7709f31a033d92",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/face-packs/BlockyR6_Face_Library.blend",
+      "sha256_before": "ad425b9d1ee83b0e8473f8f08ceee8d90f16637834b318c9397e67cce56f17a1",
+      "sha256_after": "ad425b9d1ee83b0e8473f8f08ceee8d90f16637834b318c9397e67cce56f17a1",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/face-packs/BoyR6_Face_Library.blend",
+      "sha256_before": "bb37beba1408b4630f232cb7d4220273e8ed471eb04547ffdaa39b33a5faf06a",
+      "sha256_after": "bb37beba1408b4630f232cb7d4220273e8ed471eb04547ffdaa39b33a5faf06a",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/transitions/BlockyR6_Idle_to_Jump.blend",
+      "sha256_before": "0c3755920144e94af0e420c8f7cac78eeb99e9f67d793ab7a92ec583b46f68dd",
+      "sha256_after": "0c3755920144e94af0e420c8f7cac78eeb99e9f67d793ab7a92ec583b46f68dd",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/transitions/BlockyR6_Idle_to_Walk.blend",
+      "sha256_before": "30770df7f450c50758288797770a004f94869ef1a79dcde8933dc5ea5ee97b13",
+      "sha256_after": "30770df7f450c50758288797770a004f94869ef1a79dcde8933dc5ea5ee97b13",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/transitions/BlockyR6_Jump_to_Idle.blend",
+      "sha256_before": "f93a9ca3892b983e5ef83820f02c49be8d787bb588f8744bb4ef60054ed865e5",
+      "sha256_after": "f93a9ca3892b983e5ef83820f02c49be8d787bb588f8744bb4ef60054ed865e5",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/transitions/BlockyR6_Run_to_Walk.blend",
+      "sha256_before": "e43f52af37877c85100fd0edc24725f8f0fcd01d6b2c2960ae0381184ac598bf",
+      "sha256_after": "e43f52af37877c85100fd0edc24725f8f0fcd01d6b2c2960ae0381184ac598bf",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/transitions/BlockyR6_Walk_to_Idle.blend",
+      "sha256_before": "985ffba52cf5e6ce4c21db6373b54a78ffbaa1342c832bcc1c528107dfd2b2ad",
+      "sha256_after": "985ffba52cf5e6ce4c21db6373b54a78ffbaa1342c832bcc1c528107dfd2b2ad",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/transitions/BlockyR6_Walk_to_Run.blend",
+      "sha256_before": "087d065a25f3ad204b3de4ad35853a14c365c58293bbba390b2d37918aaefeee",
+      "sha256_after": "087d065a25f3ad204b3de4ad35853a14c365c58293bbba390b2d37918aaefeee",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/transitions/BoyR6_Idle_to_Jump.blend",
+      "sha256_before": "555b41a3ebc806053170f0b5ec4b01d8a7f6ec8412005742455fa289fc491e3e",
+      "sha256_after": "555b41a3ebc806053170f0b5ec4b01d8a7f6ec8412005742455fa289fc491e3e",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/transitions/BoyR6_Idle_to_Walk.blend",
+      "sha256_before": "79be1954d0947ce5109d19d687c689a153159e1ecc0d1caf7da8a7b38f2aeeb9",
+      "sha256_after": "79be1954d0947ce5109d19d687c689a153159e1ecc0d1caf7da8a7b38f2aeeb9",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/transitions/BoyR6_Jump_to_Idle.blend",
+      "sha256_before": "7428bc52a1ddab43f58d8241ddb8bed6169f92fbb2bbb08afddbe2244c457bc5",
+      "sha256_after": "7428bc52a1ddab43f58d8241ddb8bed6169f92fbb2bbb08afddbe2244c457bc5",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/transitions/BoyR6_Run_to_Walk.blend",
+      "sha256_before": "ffcbf1298dd2b3b6af2398e06ae45b31410bd793175507d07e43d17fe9e58b33",
+      "sha256_after": "ffcbf1298dd2b3b6af2398e06ae45b31410bd793175507d07e43d17fe9e58b33",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/transitions/BoyR6_Walk_to_Idle.blend",
+      "sha256_before": "28abc2fd2fb513d30fccb26323c8daebaeff8f1889525b3d6f1bf4fdd5ef9674",
+      "sha256_after": "28abc2fd2fb513d30fccb26323c8daebaeff8f1889525b3d6f1bf4fdd5ef9674",
+      "unchanged": true
+    },
+    {
+      "path": "assets/characters/transitions/BoyR6_Walk_to_Run.blend",
+      "sha256_before": "f88262bf519ca06958babdc8200c02ecf209046eb64b5fcd47aae0a3cd6f6325",
+      "sha256_after": "f88262bf519ca06958babdc8200c02ecf209046eb64b5fcd47aae0a3cd6f6325",
+      "unchanged": true
+    }
+  ],
+  "changed_previous_files": [
+    "Project Poko/README.md",
+    "Project Poko/docs/structure.md",
+    "Project Poko/assets/characters/README.md"
+  ],
+  "missing_previous_files": []
+}

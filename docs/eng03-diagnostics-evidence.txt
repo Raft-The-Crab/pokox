@@ -1,0 +1,50 @@
+ENG-03 diagnostics/evidence continuation — 2026-11-20
+
+Restored the last delivered clear-seed archive after temporary workspace reset,
+reapplied the continuation, and reran all evidence below on the restored tree.
+Host: Linux x64, GCC 11.5.0. Real SDL/Diligent/GPU dependencies NOT used.
+
+PASS: actual renderer/platform/diagnostics source with dependency doubles for
+Linux, Win32 and Android native layouts, optimized and sanitizer builds.
+PASS: ASan + UBSan + leak detection for those branches and bounded demo.
+PASS: errors injected at create/present/shutdown fail the demo; warnings counted.
+PASS: no-validation flag does not bypass reported graphics errors.
+PASS: callback contention, restoration, prior-callback forwarding/exceptions,
+null messages, saved counts, restart and external interference detection.
+PASS: all 8 deliberate renderer regressions compile and are caught.
+PASS: 12 evidence-handler Python tests (including simulated pipeline runs,
+real small subprocess success/failure, POSIX timeout, and stale-output refusal).
+PASS: existing 23 Python checks (5 D1, 7 UV overlap, 11 golden).
+
+NOT VERIFIED: actual CMake/CTest, real-SDK compile/link, real driver/layer
+callback behavior, visible output, Windows/Android execution, Android packaging,
+Windows timeout handling or device-loss recovery. The laptop runner's real build
+path has not run here. No acceptance gate is closed by these checks.
+
+Pinned callback declarations inspected in upstream EngineFactory.h and
+Primitives/interface/DebugOutput.h at DiligentCore commit
+b036337d68be2353c9950a85929acf796b9a6d50.
+
+Optimized/mutation runner output:
+PASS: LINUX native-window branch with dependency doubles
+PASS: WIN32 native-window branch with dependency doubles
+PASS: ANDROID native-window branch with dependency doubles
+PASS: bounded demo and six invalid-argument cases with doubles
+PASS: diagnostic errors fail create/present/shutdown; warnings counted; no-validation is not a bypass
+CAUGHT: accept_plain_window
+CAUGHT: allow_duplicate_initialization
+CAUGHT: ignore_zero_drawable
+CAUGHT: ignore_resize
+CAUGHT: omit_present
+CAUGHT: omit_idle
+CAUGHT: ignore_window_identity
+CAUGHT: swap_cleanup_order
+Complete. No real SDK, window, GPU, target-platform or pixel validation was performed.
+
+Sanitizer runner output:
+PASS: LINUX native-window branch with dependency doubles
+PASS: WIN32 native-window branch with dependency doubles
+PASS: ANDROID native-window branch with dependency doubles
+PASS: bounded demo and six invalid-argument cases with doubles
+PASS: diagnostic errors fail create/present/shutdown; warnings counted; no-validation is not a bypass
+Complete. No real SDK, window, GPU, target-platform or pixel validation was performed.

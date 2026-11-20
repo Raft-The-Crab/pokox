@@ -1,0 +1,140 @@
+{
+  "file": "BlockyR6_preserved.blend",
+  "blender_version": "5.2.1 LTS",
+  "passed": 19,
+  "total": 19,
+  "attachments": [
+    {
+      "name": "BodyBackAttachment",
+      "method": "rotate_ancestor_xyz_25deg",
+      "ancestor": "Flip",
+      "max_move": 0.28220273448580613,
+      "connected": true
+    },
+    {
+      "name": "BodyFrontAttachment",
+      "method": "rotate_ancestor_xyz_25deg",
+      "ancestor": "Flip",
+      "max_move": 0.28220260412828047,
+      "connected": true
+    },
+    {
+      "name": "FaceCenterAttachment",
+      "method": "rotate_ancestor_xyz_25deg",
+      "ancestor": "Flip",
+      "max_move": 0.8583785763787449,
+      "connected": true
+    },
+    {
+      "name": "FaceFrontAttachment",
+      "method": "rotate_ancestor_xyz_25deg",
+      "ancestor": "Flip",
+      "max_move": 0.7589594528182307,
+      "connected": true
+    },
+    {
+      "name": "HairAttachment",
+      "method": "rotate_ancestor_xyz_25deg",
+      "ancestor": "Flip",
+      "max_move": 1.1195428135574836,
+      "connected": true
+    },
+    {
+      "name": "HatAttachment",
+      "method": "rotate_ancestor_xyz_25deg",
+      "ancestor": "Flip",
+      "max_move": 1.1298146223165528,
+      "connected": true
+    },
+    {
+      "name": "LeftAnkleAttachment",
+      "method": "rotate_ancestor_xyz_25deg",
+      "ancestor": "Flip",
+      "max_move": 1.1172162632473979,
+      "connected": true
+    },
+    {
+      "name": "LeftGripAttachment",
+      "method": "rotate_ancestor_xyz_25deg",
+      "ancestor": "Flip",
+      "max_move": 0.6800557047318782,
+      "connected": true
+    },
+    {
+      "name": "LeftHipAttachment",
+      "method": "rotate_ancestor_xyz_25deg",
+      "ancestor": "Flip",
+      "max_move": 0.3357396652189072,
+      "connected": true
+    },
+    {
+      "name": "LeftShoulderAttachment",
+      "method": "rotate_ancestor_xyz_25deg",
+      "ancestor": "Flip",
+      "max_move": 0.7652489653477221,
+      "connected": true
+    },
+    {
+      "name": "NeckAttachment",
+      "method": "rotate_ancestor_xyz_25deg",
+      "ancestor": "Flip",
+      "max_move": 0.6017019571557825,
+      "connected": true
+    },
+    {
+      "name": "RightAnkleAttachment",
+      "method": "rotate_ancestor_xyz_25deg",
+      "ancestor": "Flip",
+      "max_move": 1.1172163820628573,
+      "connected": true
+    },
+    {
+      "name": "RightGripAttachment",
+      "method": "rotate_ancestor_xyz_25deg",
+      "ancestor": "Flip",
+      "max_move": 0.680055474830412,
+      "connected": true
+    },
+    {
+      "name": "RightHipAttachment",
+      "method": "rotate_ancestor_xyz_25deg",
+      "ancestor": "Flip",
+      "max_move": 0.33573973734140816,
+      "connected": true
+    },
+    {
+      "name": "RightShoulderAttachment",
+      "method": "rotate_ancestor_xyz_25deg",
+      "ancestor": "Flip",
+      "max_move": 0.765249004292331,
+      "connected": true
+    },
+    {
+      "name": "RootAttachment",
+      "method": "translate_armature_x_0.5",
+      "max_move": 0.5,
+      "connected": true
+    },
+    {
+      "name": "WaistBackAttachment",
+      "method": "rotate_ancestor_xyz_25deg",
+      "ancestor": "Flip",
+      "max_move": 0.29469001889795676,
+      "connected": true
+    },
+    {
+      "name": "WaistCenterAttachment",
+      "method": "rotate_ancestor_xyz_25deg",
+      "ancestor": "Flip",
+      "max_move": 0.1999902372659664,
+      "connected": true
+    },
+    {
+      "name": "WaistFrontAttachment",
+      "method": "rotate_ancestor_xyz_25deg",
+      "ancestor": "Flip",
+      "max_move": 0.29469010738764595,
+      "connected": true
+    }
+  ]
+}
