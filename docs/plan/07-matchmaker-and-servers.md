@@ -55,17 +55,22 @@ Donated hardware follows the same registration but is constrained: it runs only 
 
 D1 is the source of truth; Redis is a fast mirror. When platform CCU is 20, allocation returns only donated/BYO slots or a queue.
 
-## Platform capacity degradation (Edgegap)
+## Session hosting model: BYOS is primary
 
-Game sessions default to Edgegap on-demand containers. Verified free-tier limits (2026-11): **1 app, 2 versions, 1 concurrent deployment, up to 1.5 vCPU, unlimited deployments with a 1 h uptime cap per deployment, 3 matchmakers (3 h uptime), 3 server browsers (3 h uptime)**, limited container registry. This means the free tier effectively allows **one live session at a time** — far below the 20 platform CCU target.
+**Donated/BYO servers are the primary production capacity.** Platform-hosted compute is supplemental only:
 
-When Edgegap capacity is exhausted or a deployment hits its uptime cap, allocation must degrade in order:
+- Edgegap free tier (verified 2026-11): 1 app, 2 versions, **1 concurrent deployment**, 1.5 vCPU, unlimited deployments with a 1 h uptime cap, 3 matchmakers (3 h uptime), 3 server browsers (3 h uptime). Effectively one live session platform-wide — suitable for demos and the first official game's launch window, not ongoing capacity.
+- Bonto free: 75 usage hrs/mo, 0.5 CPU / 512 MB per app, no always-on apps at full CPU — a lobby/matchmaking helper at best, not a game sim host.
+- enzonic free: one 512 MB Node.js server, 24/7 — same limitation.
 
-1. Return donated/BYO slots (existing path).
-2. Return queue with "platform capacity full" status.
-3. Surface the BYO self-host flow to the developer: register an external endpoint via `POST /dev/slot/register` (existing signed-registration path). Self-hosted sessions go through the same `.pkB` validator, so authority guarantees do not weaken.
+Allocation order for a session request:
 
-The client never blocks on Edgegap availability; a full platform is a normal queue/BYO state, not an error. Revisit paid Edgegap or additional free providers (Bonto, enzonic) when free usage is measurably exceeded — do not pre-provision.
+1. **Donated/BYO slots** (existing signed-registration path) — preferred, always checked first.
+2. **Edgegap on-demand container** — for official first-party games and as overflow; subject to the 1-concurrent-deployment cap.
+3. **Queue** with "platform capacity full" status.
+4. **Developer self-host prompt** — the developer registers an external endpoint via `POST /dev/slot/register`. Self-hosted sessions go through the same `.pkB` validator, so authority guarantees do not weaken.
+
+The client never blocks on platform-hosted availability; capacity is a normal queue/BYO state, not an error. Revisit paid Edgegap or additional free providers when donated capacity is measurably insufficient — do not pre-provision.
 
 ## Cold start integration
 
