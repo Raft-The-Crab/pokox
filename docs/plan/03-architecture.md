@@ -33,8 +33,8 @@ Rule: one source of truth per fact. Balances live only in Postgres. Redis is rec
 | R2 | 10 GB, zero egress | Immutable CID chunks |
 | D1 | 5 GB total | Account-level row quotas |
 | Firebase Spark | 1 GB Firestore, ~50k reads/~20k writes per day | No card |
-| Hugging Face CPU Basic (1 Space) | Authority server only — HF no longer grants free Docker Spaces to new accounts | Spaces may sleep; one Space per account |
-| Edgegap free tier | On-demand game-session/dedicated-server containers, scale to zero | Free account, no card; usage-billed beyond free |
+| Hugging Face CPU Basic (2 Spaces) | Space #1 = platform backend/authority (accounts, Pokoins, ledger, moderation); Space #2 = official first-party game hosting only | Spaces may sleep; new accounts get no free Docker Spaces — existing account required |
+| Edgegap free tier | On-demand game-session/dedicated-server containers for user-generated games, scale to zero | Free account, no card; usage-billed beyond free |
 | Cloudflare Durable Objects (free) | Lobbies, presence, chat rooms, match-session state (hibernating WebSockets) | SQLite backend only on free plan |
 | Bonto or enzonic free tier | Optional always-on Node.js service if edge coverage is insufficient | No card; ~75 compute hrs/mo or one 512 MB server |
 | Aiven Free | Always-on PostgreSQL, Kafka (250 KiB/s, 5 topics, 3-day retention, schema registry), MySQL, OpenSearch (~20 GB), Valkey | No card |
@@ -53,8 +53,8 @@ Hugging Face CPU Basic is 2 vCPU / 16 GB / **50 GB non-persistent** disk and Spa
 - Durable state lives in D1, Aiven Postgres, Valkey and R2.
 - A Workers Cron Trigger pings the Space every 10–15 min. A Valkey wake lock prevents races.
 - The client sees a "server waking" state during boot, held in a lobby until the authority reports ready.
-- HF now grants free Docker Spaces only to legacy accounts; new accounts get none. The single available Space runs the **authority server**. Game sessions moved to Edgegap on-demand containers; lobbies/presence/chat moved to Cloudflare Durable Objects (free SQLite backend with hibernating WebSockets). If Edgegap/DO capacity is insufficient, the fallback is Workers + D1 + KV validating economy and inventory only. Physics validation is the first thing dropped.
-- Aiven free tier also provides OpenSearch (~20 GB) for catalog/search offload and Kafka (250 KiB/s, 5 topics, 3-day retention, schema registry + REST proxy) for telemetry/analytics events — supporting services that keep the authority hot path free of search and analytics work.
+- HF now grants free Docker Spaces only to legacy accounts; new accounts get none. Space #1 runs the **platform backend/authority** (accounts, Pokoins, ledger, moderation). Space #2 hosts **official first-party games only** — user-generated game sessions run on Edgegap on-demand containers instead; lobbies/presence/chat run on Cloudflare Durable Objects (free SQLite backend with hibernating WebSockets). If Edgegap/DO capacity is insufficient, the fallback is Workers + D1 + KV validating economy and inventory only. Physics validation is the first thing dropped.
+- Aiven free tier also provides OpenSearch (~20 GB per account; multiple Aiven accounts multiply the allowance but produce independent clusters with no cross-account queries) for catalog/search offload and Kafka (250 KiB/s, 5 topics, 3-day retention, schema registry + REST proxy per cluster) for telemetry/analytics events — supporting services that keep the authority hot path free of search and analytics work.
 
 ## Quota budget
 
