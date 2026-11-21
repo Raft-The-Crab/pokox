@@ -32,6 +32,14 @@ class SdlPlatform final : public IPlatform {
   bool initialized_ = false;
   SDL_Window* window_ = nullptr;
   WindowGraphicsApi graphics_api_ = WindowGraphicsApi::none;
+  // SDL3 emits WINDOW_RESIZED and WINDOW_PIXEL_SIZE_CHANGED for one HiDPI
+  // resize; both map to identical WindowSize, so consecutive duplicates are
+  // dropped. Reset whenever the window is (re)created.
+  WindowSize last_resize_{};
+  bool has_last_resize_ = false;
+  // Set when an SDL resize event arrived but the size query failed; retried
+  // on the next poll_event instead of silently dropping the notification.
+  bool pending_resize_ = false;
 };
 
 }  // namespace poko::platform

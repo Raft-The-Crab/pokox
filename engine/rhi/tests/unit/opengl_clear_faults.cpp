@@ -107,7 +107,9 @@ int main() {
     glfake::load_fails=failure==0; glfake::missing_proc=failure==1;
     glfake::framebuffer_linear=failure==2; glfake::gl_error=failure==3; glfake::invalid_proc=failure==4;
     CHECK(r.initialize(w)==RenderError::backend_failure);
-    CHECK(glfake::library_refs==(failure==0 ? 0 : 1) && glfake::framebuffer_binding==7);
+    // A failed initialize() now cleans up immediately (pending impl), so the
+    // GL library is unloaded for every failure mode, not just load failure.
+    CHECK(glfake::library_refs==0 && glfake::framebuffer_binding==7);
     CHECK(r.shutdown());
     CHECK(glfake::library_refs==0);
   }

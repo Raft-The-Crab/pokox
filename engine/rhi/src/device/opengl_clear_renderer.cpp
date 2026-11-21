@@ -118,24 +118,26 @@ RenderError OpenGLClearRenderer::initialize(platform::SdlPlatform& platform, boo
     Diligent::EngineGLCreateInfo info{};
     auto result = native_window(window, info.Window);
     if (result != RenderError::none) return result;
-    impl_ = std::make_unique<Impl>();
-    impl_->platform = &platform; impl_->window_id = SDL_GetWindowID(window);
-    if (!impl_->window_id) return RenderError::invalid_window;
+    // Build into a pending impl so a failed initialize() leaves impl_ null
+    // and a later call can retry instead of returning already_initialized.
+    auto pending = std::make_unique<Impl>();
+    pending->platform = &platform; pending->window_id = SDL_GetWindowID(window);
+    if (!pending->window_id) return RenderError::invalid_window;
     // On Windows, SDL's first GL library load creates a temporary WGL context
     // and clears the current context. Do it before Diligent creates its own.
     if (!SDL_GL_LoadLibrary(nullptr)) {
       std::fprintf(stderr,"OpenGL library load failed: %s\n",SDL_GetError());
       return RenderError::backend_failure;
     }
-    impl_->gl_library_loaded = true;
+    pending->gl_library_loaded = true;
 #if PLATFORM_LINUX
     // The pinned Diligent GLX implementation attaches to a current context.
-    impl_->gl_context = SDL_GL_CreateContext(window);
-    if (!impl_->gl_context) {
+    pending->gl_context = SDL_GL_CreateContext(window);
+    if (!pending->gl_context) {
       std::fprintf(stderr,"OpenGL context creation failed: %s\n",SDL_GetError());
       return RenderError::device_creation_failed;
     }
-    if (!SDL_GL_MakeCurrent(window, impl_->gl_context)) {
+    if (!SDL_GL_MakeCurrent(window, pending->gl_context)) {
       std::fprintf(stderr,"Making the OpenGL context current failed: %s\n",SDL_GetError());
       return RenderError::device_creation_failed;
     }
@@ -146,21 +148,22 @@ RenderError OpenGLClearRenderer::initialize(platform::SdlPlatform& platform, boo
     Diligent::SwapChainDesc desc{};
     desc.Width = size.pixel_width; desc.Height = size.pixel_height;
     desc.DepthBufferFormat = Diligent::TEX_FORMAT_UNKNOWN;
-    factory->CreateDeviceAndSwapChainGL(info, &impl_->device, &impl_->context, desc, &impl_->swapchain);
-    if (!impl_->device || !impl_->context) return RenderError::device_creation_failed;
-    if (!impl_->swapchain) return RenderError::swapchain_creation_failed;
+    factory->CreateDeviceAndSwapChainGL(info, &pending->device, &pending->context, desc, &pending->swapchain);
+    if (!pending->device || !pending->context) return RenderError::device_creation_failed;
+    if (!pending->swapchain) return RenderError::swapchain_creation_failed;
     // The desktop fallback policy requires OpenGL 4.6, not merely a context.
-    const auto version = impl_->device->GetDeviceInfo().APIVersion;
+    const auto version = pending->device->GetDeviceInfo().APIVersion;
     if (version.Major < 4 || (version.Major == 4 && version.Minor < 6))
       return RenderError::backend_failure;
     // Check both Diligent's description and the actual default framebuffer.
     // Either check can fail independently, particularly with legacy WGL formats.
-    if (impl_->swapchain->GetDesc().ColorBufferFormat != Diligent::TEX_FORMAT_RGBA8_UNORM_SRGB ||
+    if (pending->swapchain->GetDesc().ColorBufferFormat != Diligent::TEX_FORMAT_RGBA8_UNORM_SRGB ||
         !default_framebuffer_is_srgb()) {
       std::fputs("OpenGL default framebuffer is not confirmed sRGB; refusing color-parity claim.\n", stderr);
       return RenderError::backend_failure;
     }
-    impl_->initialized = true;
+    pending->initialized = true;
+    impl_ = std::move(pending);
     return RenderError::none;
   } catch (...) { return RenderError::backend_failure; }
 }

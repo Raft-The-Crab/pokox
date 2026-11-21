@@ -143,4 +143,17 @@ RenderError VulkanTrianglePass::draw_and_present(VulkanClearRenderer& renderer,
     return args.impl->draw(device, context, chain, target, *args.color);
   }, &call);
 }
+RenderError VulkanTrianglePass::draw(Diligent::IRenderDevice& device, Diligent::IDeviceContext& context,
+                                     Diligent::ISwapChain& chain, Diligent::ITextureView& target) noexcept {
+  return draw(device, context, chain, target, {1.f, 0.f, 0.f, 1.f});
+}
+RenderError VulkanTrianglePass::draw(Diligent::IRenderDevice& device, Diligent::IDeviceContext& context,
+                                     Diligent::ISwapChain& chain, Diligent::ITextureView& target,
+                                     const std::array<float, 4>& color) noexcept {
+  try {
+    return impl_->draw(device, context, chain, target, color);
+  } catch (...) {
+    return RenderError::backend_failure;
+  }
+}
 }

@@ -78,7 +78,7 @@ with tempfile.TemporaryDirectory(prefix='poko-uniform-visual-') as temp, tempfil
                 image=opened.convert('RGB')
             if image.size != (720,540): raise AssertionError(f'unexpected image size: {image.size}')
             def pixel(rx, ry): return image.getpixel((int(image.width*rx),int(image.height*ry)))
-            near, far, overlap, background = pixel(.25,.72),pixel(.75,.72),pixel(.50,.65),pixel(.05,.05)
+            near, far, overlap, background = pixel(.25,.28),pixel(.75,.28),pixel(.50,.35),pixel(.05,.05)
             if far[1] < max(far[0],far[2])+100 or background[2] < background[0]+30 or max(abs(a-b) for a,b in zip(near,overlap))>4:
                 raise AssertionError(f'depth or background check failed: {near=} {far=} {overlap=} {background=}')
             captures.append((near, path.read_bytes())); time.sleep(0.45)

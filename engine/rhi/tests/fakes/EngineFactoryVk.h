@@ -19,7 +19,7 @@ struct EngineVkCreateInfo { bool EnableValidation = false; Uint32 NumDeferredCon
 struct SwapChainDesc {
   Uint32 Width = 0, Height = 0;
   TEXTURE_FORMAT ColorBufferFormat = TEX_FORMAT_RGBA8_UNORM_SRGB;
-  TEXTURE_FORMAT DepthBufferFormat = TEX_FORMAT_RGBA8_UNORM_SRGB;
+  TEXTURE_FORMAT DepthBufferFormat = TEX_FORMAT_D32_FLOAT;
 };
 struct NativeWindow {
 #if PLATFORM_WIN32
@@ -46,6 +46,7 @@ struct ISwapChain {
   virtual void Resize(Uint32, Uint32) = 0;
   virtual ITextureView* GetCurrentBackBufferRTV() = 0;
   virtual void Present(Uint32) = 0;
+  virtual void SetMaximumFrameLatency(Uint32) = 0;
   virtual void Release() = 0;
   virtual ~ISwapChain() = default;
 };

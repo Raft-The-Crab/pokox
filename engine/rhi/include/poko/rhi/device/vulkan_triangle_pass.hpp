@@ -20,6 +20,14 @@ class VulkanTrianglePass final {
   // Uniform-depth mode consumes four floats (std140 vec4), refreshed each draw.
   [[nodiscard]] RenderError draw_and_present(VulkanClearRenderer& renderer,
                                               const std::array<float, 4>& color) noexcept;
+  // Draw into an already-acquired frame without clearing or presenting; the
+  // caller must supply the objects a renderer draw callback receives. Used to
+  // composite several passes inside one presented frame.
+  [[nodiscard]] RenderError draw(Diligent::IRenderDevice& device, Diligent::IDeviceContext& context,
+                                 Diligent::ISwapChain& chain, Diligent::ITextureView& target) noexcept;
+  [[nodiscard]] RenderError draw(Diligent::IRenderDevice& device, Diligent::IDeviceContext& context,
+                                 Diligent::ISwapChain& chain, Diligent::ITextureView& target,
+                                 const std::array<float, 4>& color) noexcept;
  private:
   struct Impl;
   std::unique_ptr<Impl> impl_;

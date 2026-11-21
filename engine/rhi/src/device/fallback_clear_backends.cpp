@@ -28,10 +28,14 @@ RenderError VulkanClearBackend::clear_and_present(const std::array<float,4>& col
 bool VulkanClearBackend::shutdown() noexcept {
   if (cleanup_error_) return false;
   const auto before=diagnostics_.messages().errors;
-  if (!renderer_.shutdown_checked()) { cleanup_error_=true; return false; }
+  const bool renderer_ok=renderer_.shutdown_checked();
+  // Always release diagnostics and the window even when renderer cleanup
+  // fails; otherwise the SDL window and Diligent callback stay installed.
   diagnostics_.stop();
-  if (diagnostics_.messages().errors > before) { cleanup_error_=true; return false; }
-  window_.shutdown(); return true;
+  const bool diagnostics_ok=diagnostics_.messages().errors<=before;
+  window_.shutdown();
+  if (!renderer_ok || !diagnostics_ok) { cleanup_error_=true; return false; }
+  return true;
 }
 RenderError OpenGLClearBackend::initialize() noexcept {
   if (window_.initialize()!=platform::PlatformError::none) {

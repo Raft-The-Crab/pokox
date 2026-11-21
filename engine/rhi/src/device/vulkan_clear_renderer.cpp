@@ -46,6 +46,7 @@ struct VulkanClearRenderer::Impl {
   Diligent::RefCntAutoPtr<Diligent::ISwapChain> swapchain;
   bool initialized = false;
   bool resize_failed = false;
+  bool validation_enabled = false;
   ~Impl() { (void)shutdown(); }
   bool shutdown() noexcept {
     bool ok = true;
@@ -110,6 +111,10 @@ RenderError VulkanClearRenderer::initialize(platform::SdlPlatform& platform,
     factory->CreateSwapChainVk(pending->device.RawPtr(), pending->context.RawPtr(),
                                 desc, native, &pending->swapchain);
     if (!pending->swapchain) return fail(RenderError::swapchain_creation_failed);
+    // Bound frames in flight so the CPU cannot lap the GPU; without this the
+    // reused acquire semaphore can still have pending waits under validation.
+    pending->swapchain->SetMaximumFrameLatency(1);
+    pending->validation_enabled = config.enable_validation;
     pending->initialized = true;
     impl_ = std::move(pending);
     return RenderError::none;
@@ -166,6 +171,9 @@ RenderError VulkanClearRenderer::draw_and_present(VulkanDrawCallback draw, void*
       return RenderError::resize_attempted;
 #endif
     }
+    // Validation runs are diagnostic, not throughput tests: drain the queue so
+    // the reused acquire semaphore has no pending waits (VUID-...-01779).
+    if (impl_->validation_enabled) impl_->context->WaitForIdle();
     auto* target = impl_->swapchain->GetCurrentBackBufferRTV();
     if (!target) return RenderError::backbuffer_unavailable;
     const auto draw_result = draw(*impl_->device.RawPtr(), *impl_->context.RawPtr(), *impl_->swapchain.RawPtr(), *target, user);

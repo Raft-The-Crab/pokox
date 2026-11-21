@@ -46,7 +46,10 @@ struct VulkanDiagnostics::Impl {
     if (break_on_error_changed)
       Diligent::BasicPlatformDebug::SetBreakOnError(break_on_error);
     if (!owns) return;
-    if (factory && Diligent::DebugMessageCallback == capture) {
+    // Only restore when this scope actually installed capture: an early
+    // return (e.g. failed poisoned-state recovery) leaves previous==nullptr,
+    // and restoring it would clear a still-installed capture callback.
+    if (installed && factory && Diligent::DebugMessageCallback == capture) {
       try {
         factory->SetMessageCallback(previous);
         if (Diligent::DebugMessageCallback != previous) {
@@ -77,9 +80,22 @@ DiagnosticsError VulkanDiagnostics::start_with_factory(Diligent::IEngineFactory*
     auto pending = std::make_unique<Impl>();
     if (owned.test_and_set(std::memory_order_acquire)) return DiagnosticsError::busy;
     pending->owns = true;
-    if (callback_restore_failed.load(std::memory_order_acquire)) return DiagnosticsError::backend_failure;
     pending->factory = factory;
     if (!pending->factory) return DiagnosticsError::factory_unavailable;
+    if (callback_restore_failed.load(std::memory_order_acquire)) {
+      // A previous restore failed, leaving our capture installed. Retry
+      // restoring the original callback (still held in previous_callback);
+      // clear the poison flag only when the global callback is verified
+      // back to the original, otherwise stay failed.
+      const auto original = previous_callback.load(std::memory_order_acquire);
+      try {
+        pending->factory->SetMessageCallback(original);
+        if (Diligent::DebugMessageCallback == original)
+          callback_restore_failed.store(false, std::memory_order_release);
+      } catch (...) {}
+      if (callback_restore_failed.load(std::memory_order_acquire))
+        return DiagnosticsError::backend_failure;
+    }
     pending->previous = Diligent::DebugMessageCallback;
     pending->baseline = totals();
     previous_callback.store(pending->previous, std::memory_order_release);

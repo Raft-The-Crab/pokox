@@ -11,12 +11,13 @@ option(POKO_WITH_SHADER_ARTIFACTS "Compile sample GLSL to SPIR-V using a host gl
 option(POKO_WITH_TRIANGLE_DEMO "Build experimental Vulkan frame-graph triangle demo" OFF)
 option(POKO_WITH_DEPTH_DEMO "Build experimental Vulkan depth-test demo" OFF)
 option(POKO_WITH_UNIFORM_DEMO "Build experimental Vulkan per-frame uniform demo" OFF)
+option(POKO_WITH_IMGUI_DEMO "Build experimental Vulkan ImGui frame-graph demo" OFF)
 option(POKO_IMGUI "Compile the ImGui feature path (UI integration comes later)" OFF)
 option(POKO_D3D12 "Enable D3D12 where the Windows SDK is available" OFF)
 option(POKO_DEBUG "Compile debug-only feature paths" OFF)
 include(CTest)
 
-if((POKO_WITH_TRIANGLE_DEMO OR POKO_WITH_DEPTH_DEMO OR POKO_WITH_UNIFORM_DEMO) AND (NOT POKO_WITH_VULKAN_DEMO OR NOT POKO_WITH_SHADER_ARTIFACTS))
+if((POKO_WITH_TRIANGLE_DEMO OR POKO_WITH_DEPTH_DEMO OR POKO_WITH_UNIFORM_DEMO OR POKO_WITH_IMGUI_DEMO) AND (NOT POKO_WITH_VULKAN_DEMO OR NOT POKO_WITH_SHADER_ARTIFACTS))
   message(FATAL_ERROR "Triangle/depth/uniform demos require POKO_WITH_VULKAN_DEMO=ON and POKO_WITH_SHADER_ARTIFACTS=ON")
 endif()
 if(POKO_WITH_FALLBACK_DEMO AND NOT POKO_WITH_VULKAN_DEMO)
@@ -137,6 +138,13 @@ if(POKO_WITH_SHADER_ARTIFACTS)
     poko_compile_shader("${POKO_UNIFORM_VERTEX_SPV}" "${CMAKE_CURRENT_SOURCE_DIR}/engine/render/shaders/uniform.vert" vert)
     poko_compile_shader("${POKO_UNIFORM_FRAGMENT_SPV}" "${CMAKE_CURRENT_SOURCE_DIR}/engine/render/shaders/uniform.frag" frag)
     list(APPEND POKO_SHADER_OUTPUTS "${POKO_UNIFORM_VERTEX_SPV}" "${POKO_UNIFORM_FRAGMENT_SPV}")
+  endif()
+  if(POKO_WITH_IMGUI_DEMO AND POKO_DEBUG)
+    set(POKO_IMGUI_VERTEX_SPV "${CMAKE_CURRENT_BINARY_DIR}/shaders/$<CONFIG>/imgui.vert.spv")
+    set(POKO_IMGUI_FRAGMENT_SPV "${CMAKE_CURRENT_BINARY_DIR}/shaders/$<CONFIG>/imgui.frag.spv")
+    poko_compile_shader("${POKO_IMGUI_VERTEX_SPV}" "${CMAKE_CURRENT_SOURCE_DIR}/engine/render/shaders/imgui.vert" vert)
+    poko_compile_shader("${POKO_IMGUI_FRAGMENT_SPV}" "${CMAKE_CURRENT_SOURCE_DIR}/engine/render/shaders/imgui.frag" frag)
+    list(APPEND POKO_SHADER_OUTPUTS "${POKO_IMGUI_VERTEX_SPV}" "${POKO_IMGUI_FRAGMENT_SPV}")
   endif()
   add_custom_target(pokox_shaders ALL DEPENDS ${POKO_SHADER_OUTPUTS})
 endif()
@@ -472,6 +480,11 @@ if(POKO_WITH_DEPENDENCIES OR POKO_WITH_VULKAN_DEMO)
 endif()
 
 if(POKO_WITH_DEPENDENCIES)
+  add_library(poko_logging STATIC engine/foundation/src/logging.cpp)
+  target_include_directories(poko_logging PUBLIC engine/foundation/include)
+  target_link_libraries(poko_logging PUBLIC spdlog::spdlog)
+  set_target_properties(poko_logging PROPERTIES CXX_EXTENSIONS OFF)
+  target_compile_features(poko_logging PUBLIC cxx_std_20)
   if(BUILD_TESTING)
     add_executable(pokox_dependency_smoke engine/foundation/tests/integration/dependency_smoke.cpp)
     target_compile_features(pokox_dependency_smoke PRIVATE cxx_std_20)
@@ -480,6 +493,11 @@ if(POKO_WITH_DEPENDENCIES)
       SDL3::SDL3 imgui::imgui spdlog::spdlog Catch2::Catch2WithMain
       Diligent-GraphicsEngine)
     add_test(NAME pokox_dependency_smoke COMMAND pokox_dependency_smoke)
+    add_executable(pokox_logging_file_test engine/foundation/tests/integration/logging_file_test.cpp)
+    target_compile_features(pokox_logging_file_test PRIVATE cxx_std_20)
+    set_target_properties(pokox_logging_file_test PROPERTIES CXX_EXTENSIONS OFF)
+    target_link_libraries(pokox_logging_file_test PRIVATE poko_logging)
+    add_test(NAME pokox_logging_file_test COMMAND pokox_logging_file_test)
   endif()
 endif()
 
@@ -526,6 +544,75 @@ foreach(demo IN ITEMS triangle depth uniform)
     endif()
   endif()
 endforeach()
+
+if(POKO_WITH_IMGUI_DEMO)
+  if(NOT POKO_WITH_DEPENDENCIES)
+    message(FATAL_ERROR "POKO_WITH_IMGUI_DEMO requires POKO_WITH_DEPENDENCIES=ON for the imgui package")
+  endif()
+  set(pokox_imgui_sources engine/render/src/passes/imgui_demo.cpp)
+  if(POKO_DEBUG)
+    # Debug builds keep the ImGui overlay and F1 toggle; release strips every
+    # ImGui code path and never links imgui, so the binary has no ImGui symbols.
+    list(APPEND pokox_imgui_sources engine/rhi/src/device/vulkan_imgui_pass.cpp)
+  endif()
+  add_executable(pokox_imgui_demo ${pokox_imgui_sources}
+    engine/rhi/src/device/vulkan_triangle_pass.cpp)
+  target_include_directories(pokox_imgui_demo PRIVATE "${diligentcore_SOURCE_DIR}/Common/interface")
+  target_compile_definitions(pokox_imgui_demo PRIVATE POKO_DEBUG=$<BOOL:${POKO_DEBUG}>)
+  target_link_libraries(pokox_imgui_demo PRIVATE poko_framegraph poko_rhi_vulkan SDL3::SDL3
+    Diligent-GraphicsEngineVk-static Diligent-TargetPlatform)
+  if(POKO_DEBUG)
+    target_link_libraries(pokox_imgui_demo PRIVATE imgui::imgui)
+  endif()
+  add_dependencies(pokox_imgui_demo pokox_shaders)
+  set_target_properties(pokox_imgui_demo PROPERTIES CXX_EXTENSIONS OFF)
+  set(pokox_imgui_test_targets pokox_imgui_demo)
+  if(POKO_DEBUG)
+    # Strip variant: identical demo compiled with POKO_DEBUG=0 — no ImGui pass
+    # source, no imgui link — proving release binaries carry no ImGui symbols.
+    # (When POKO_DEBUG=OFF, pokox_imgui_demo itself already is the strip build.)
+    add_executable(pokox_imgui_demo_strip
+      engine/render/src/passes/imgui_demo.cpp
+      engine/rhi/src/device/vulkan_triangle_pass.cpp)
+    target_include_directories(pokox_imgui_demo_strip PRIVATE "${diligentcore_SOURCE_DIR}/Common/interface")
+    target_compile_definitions(pokox_imgui_demo_strip PRIVATE POKO_DEBUG=0)
+    target_link_libraries(pokox_imgui_demo_strip PRIVATE poko_framegraph poko_rhi_vulkan SDL3::SDL3
+      Diligent-GraphicsEngineVk-static Diligent-TargetPlatform)
+    add_dependencies(pokox_imgui_demo_strip pokox_shaders)
+    set_target_properties(pokox_imgui_demo_strip PROPERTIES CXX_EXTENSIONS OFF)
+    list(APPEND pokox_imgui_test_targets pokox_imgui_demo_strip)
+  endif()
+  # Fault-injection coverage for VulkanImGuiPass against test-owned Diligent
+  # doubles (engine/rhi/tests/fakes/imgui). Real ImGui produces the draw data;
+  # no GPU or Diligent ABI involved.
+  add_executable(pokox_imgui_pass_faults
+    engine/rhi/tests/unit/imgui_pass_faults.cpp
+    engine/rhi/src/device/vulkan_imgui_pass.cpp
+    engine/rhi/src/debug/vulkan_diagnostics.cpp)
+  target_include_directories(pokox_imgui_pass_faults PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/engine/rhi/tests/fakes/imgui"
+    "${CMAKE_CURRENT_SOURCE_DIR}/engine/rhi/tests/fakes"
+    "${CMAKE_CURRENT_SOURCE_DIR}/engine/rhi/include")
+  target_link_libraries(pokox_imgui_pass_faults PRIVATE imgui::imgui)
+  set_target_properties(pokox_imgui_pass_faults PROPERTIES CXX_EXTENSIONS OFF)
+  if(BUILD_TESTING)
+    add_test(NAME pokox_imgui_pass_faults COMMAND pokox_imgui_pass_faults)
+    set_tests_properties(pokox_imgui_pass_faults PROPERTIES TIMEOUT 30)
+  endif()
+  if(BUILD_TESTING)
+    foreach(target IN LISTS pokox_imgui_test_targets)
+      add_test(NAME ${target}_missing_shader COMMAND ${target}
+        --vertex missing.vert.spv --fragment missing.frag.spv
+        --imgui-vertex missing.imgui.vert.spv --imgui-fragment missing.imgui.frag.spv)
+      set_tests_properties(${target}_missing_shader PROPERTIES WILL_FAIL TRUE TIMEOUT 15)
+      add_test(NAME ${target}_bad_args COMMAND ${target} --frames 0)
+      set_tests_properties(${target}_bad_args PROPERTIES WILL_FAIL TRUE TIMEOUT 15)
+      add_test(NAME ${target}_inputs COMMAND "${Python3_EXECUTABLE}"
+        "${CMAKE_CURRENT_SOURCE_DIR}/engine/render/tests/integration/test_imgui_inputs.py" "$<TARGET_FILE:${target}>")
+      set_tests_properties(${target}_inputs PROPERTIES TIMEOUT 30)
+    endforeach()
+  endif()
+endif()
 
 if(POKO_WITH_FALLBACK_DEMO)
   if(NOT TARGET Diligent-GraphicsEngineOpenGL-static)

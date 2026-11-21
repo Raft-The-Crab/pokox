@@ -80,12 +80,12 @@ with tempfile.TemporaryFile(mode='w+', encoding='utf-8') as log:
         def pixel(rx, ry): return image.getpixel((int(image.width * rx), int(image.height * ry)))
         background = pixel(.05, .05)
         if args.mode == 'triangle':
-            blue, green, red = pixel(.30, .28), pixel(.70, .28), pixel(.50, .70)
+            blue, green, red = pixel(.30, .72), pixel(.70, .72), pixel(.50, .30)
             valid = (blue[2] > max(blue[0], blue[1]) + 50 and
                      green[1] > max(green[0], green[2]) + 50 and red[0] > max(red[1], red[2]) + 50)
             samples = (background, blue, green, red)
         else:
-            near, far, overlap = pixel(.25, .72), pixel(.75, .72), pixel(.50, .65)
+            near, far, overlap = pixel(.25, .28), pixel(.75, .28), pixel(.50, .35)
             def red(pixel_value): return pixel_value[0] > max(pixel_value[1], pixel_value[2]) + 100
             def green(pixel_value): return pixel_value[1] > max(pixel_value[0], pixel_value[2]) + 100
             valid = red(near) and green(far) and (green(overlap) if args.mode == 'depth-control' else red(overlap))

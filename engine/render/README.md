@@ -152,3 +152,24 @@ python3 engine/render/tests/integration/test_uniform_x11_visual.py \
 ```
 
 The script manipulates windows and explicitly disables validation; do not run it on a shared desktop. See `../../docs/eng10-progress.md` for evidence and remaining limitations.
+
+## ENG-11: ImGui pass in the frame graph
+
+`POKO_WITH_IMGUI_DEMO=ON` (requires dependencies, Vulkan and shader artifacts) builds `pokox_imgui_demo` with `imgui.vert`/`imgui.frag` SPIR-V artifacts. A two-node frame graph runs a CPU `ui imgui` pass (`NewFrame`, demo window, `Render`) before a `forward frame` pass that composites the triangle scene and the ImGui draw data inside one presented frame.
+
+```sh
+cmake -S . -B build-imgui -DPOKO_WITH_IMGUI_DEMO=ON
+cmake --build build-imgui --parallel 2
+ctest --test-dir build-imgui --output-on-failure
+./build-imgui/pokox_imgui_demo \
+  --vertex ./build-imgui/shaders/Debug/triangle.vert.spv \
+  --fragment ./build-imgui/shaders/Debug/triangle.frag.spv \
+  --imgui-vertex ./build-imgui/shaders/Debug/imgui.vert.spv \
+  --imgui-fragment ./build-imgui/shaders/Debug/imgui.frag.spv --adapter 0
+```
+
+Only the font atlas texture is supported; other `ImTextureID`s and non-reset draw callbacks fail. Mouse state is fed from SDL; keyboard/text input, `RendererHasTextures` updates and non-Vulkan backends are future work. See `../../docs/eng11-progress.md`.
+
+## ENG-12: ImGui F1 toggle and release strip
+
+With `POKO_DEBUG=ON`, the `pokox_imgui_demo` window's demo panel can be toggled with **F1** (edge-triggered via `SDL_GetKeyboardState`); hiding it still runs an empty ImGui frame so no stale draw data is presented. With `POKO_DEBUG=OFF` every ImGui path is compiled out — `vulkan_imgui_pass.cpp` is excluded, `imgui::imgui` is not linked, and the demo runs the scene-only frame graph — so release binaries contain no ImGui symbols. See `../../docs/eng12-progress.md`.

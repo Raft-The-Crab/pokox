@@ -67,6 +67,7 @@ FrameGraph::Compiled FrameGraph::build_plan() const {
       else if (!imported.contains(resource)) return {FrameGraphError::unproduced_resource, resource, {}};
     }
     for (const auto& name : pass.after) {
+      if (name.empty()) return {FrameGraphError::empty_name, pass.name, {}};
       const auto predecessor = names.find(name);
       if (predecessor == names.end()) return {FrameGraphError::unknown_dependency, name, {}};
       add_edge(predecessor->second, i);

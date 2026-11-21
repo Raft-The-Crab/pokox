@@ -53,7 +53,11 @@ PlatformError SdlPlatform::create_window(const WindowConfig& config) noexcept {
   } catch (...) {
     return PlatformError::platform_failure;
   }
-  if (window_) graphics_api_ = config.graphics_api;
+  if (window_) {
+    graphics_api_ = config.graphics_api;
+    last_resize_ = {};
+    has_last_resize_ = false;
+  }
   return window_ ? PlatformError::none : PlatformError::platform_failure;
 }
 
@@ -62,6 +66,8 @@ void SdlPlatform::destroy_window() noexcept {
     SDL_DestroyWindow(window_);
     window_ = nullptr;
     graphics_api_ = WindowGraphicsApi::none;
+    last_resize_ = {};
+    has_last_resize_ = false;
   }
 }
 
@@ -79,6 +85,22 @@ PlatformError SdlPlatform::get_window_size(WindowSize& size) noexcept {
 
 bool SdlPlatform::poll_event(Event& event) noexcept {
   if (!initialized_) return false;
+  // Retry a resize notification whose earlier size query failed.
+  if (pending_resize_ && window_) {
+    WindowSize size{};
+    if (get_window_size(size) == PlatformError::none) {
+      pending_resize_ = false;
+      const bool same = has_last_resize_ && size.logical_width == last_resize_.logical_width &&
+                        size.logical_height == last_resize_.logical_height &&
+                        size.pixel_width == last_resize_.pixel_width &&
+                        size.pixel_height == last_resize_.pixel_height;
+      if (!same) {
+        last_resize_ = size; has_last_resize_ = true;
+        event = {EventType::window_resized, size};
+        return true;
+      }
+    }
+  }
   SDL_Event raw;
   while (SDL_PollEvent(&raw)) {
     if (raw.type == SDL_EVENT_QUIT) {
@@ -94,7 +116,14 @@ bool SdlPlatform::poll_event(Event& event) noexcept {
     }
     if (raw.type == SDL_EVENT_WINDOW_RESIZED || raw.type == SDL_EVENT_WINDOW_PIXEL_SIZE_CHANGED) {
       WindowSize size{};
-      if (get_window_size(size) != PlatformError::none) continue;
+      if (get_window_size(size) != PlatformError::none) { pending_resize_ = true; continue; }
+      const bool same = has_last_resize_ && size.logical_width == last_resize_.logical_width &&
+                        size.logical_height == last_resize_.logical_height &&
+                        size.pixel_width == last_resize_.pixel_width &&
+                        size.pixel_height == last_resize_.pixel_height;
+      if (same) continue;
+      last_resize_ = size;
+      has_last_resize_ = true;
       event = {EventType::window_resized, size};
       return true;
     }

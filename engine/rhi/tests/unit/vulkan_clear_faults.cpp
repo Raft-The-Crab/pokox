@@ -132,6 +132,7 @@ struct Chain final : ISwapChain {
     if (fake::throw_present) throw std::runtime_error("present failed");
     ++fake::presents;
   }
+  void SetMaximumFrameLatency(Uint32) override {}
   void Release() override { --fake::chains; fake::releases.push_back("swapchain"); delete this; }
 };
 struct Factory final : IEngineFactoryVk {
@@ -387,7 +388,22 @@ int main() {
     broken.stop();
     fake::throw_set_callback = false;
     CHECK(broken.messages().errors == 1);
-    CHECK(next.start() == DiagnosticsError::backend_failure);
+    // Recovery: the next start retries the failed restore; with the fake
+    // healthy again it succeeds, clears the poison flag, and starts normally.
+    CHECK(next.start() == DiagnosticsError::none);
+    next.stop();
+    CHECK(Diligent::DebugMessageCallback == nullptr);
+    // Persistent failure stays fail-closed: poison again, then retry while
+    // the setter still throws — recovery must not clear the flag.
+    rhi::VulkanDiagnostics third, fourth;
+    CHECK(third.start() == DiagnosticsError::none);
+    fake::throw_set_callback = true;
+    third.stop();
+    CHECK(fourth.start() == DiagnosticsError::backend_failure);
+    fake::throw_set_callback = false;
+    // Once the setter works again, the following start recovers.
+    CHECK(fourth.start() == DiagnosticsError::none);
+    fourth.stop();
     // Reset the test-owned pointer; production remains fail-closed for this process.
     Diligent::DebugMessageCallback = nullptr;
   }

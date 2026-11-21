@@ -39,13 +39,14 @@ struct WindowSize {
 };
 
 enum class EventType : std::uint8_t {
+  none,
   quit_requested,
   window_close_requested,
   window_resized,
 };
 
 struct Event {
-  EventType type = EventType::quit_requested;
+  EventType type = EventType::none;
   // Meaningful only for window_resized; otherwise zero-initialized.
   WindowSize size{};
 };

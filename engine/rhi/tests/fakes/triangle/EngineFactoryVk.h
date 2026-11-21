@@ -25,8 +25,9 @@ struct GraphicsPipelineStateCreateInfo {
  struct { int NumRenderTargets=0; TEXTURE_FORMAT RTVFormats[1]{}; struct { bool DepthEnable=false, DepthWriteEnable=false; int DepthFunc=0; } DepthStencilDesc; TEXTURE_FORMAT DSVFormat=0; struct { int CullMode=0; } RasterizerDesc; int PrimitiveTopology=0; } GraphicsPipeline;
  IShader* pVS=nullptr; IShader* pPS=nullptr;
 };
+struct BufferData { const void* pData = nullptr; std::uint64_t DataSize = 0; };
 struct IRenderDevice {
- void CreateBuffer(const BufferDesc& desc, const void*, IBuffer** out) { ++triangle_fake::buffers; if (triangle_fake::fail_at==9) { ++triangle_fake::errors; return; } if(desc.Size!=16 || desc.BindFlags!=BIND_UNIFORM_BUFFER || desc.Usage!=USAGE_DYNAMIC || desc.CPUAccessFlags!=CPU_ACCESS_WRITE) { ++triangle_fake::errors; return; } *out=new IBuffer; }
+ void CreateBuffer(const BufferDesc& desc, const BufferData*, IBuffer** out) { ++triangle_fake::buffers; if (triangle_fake::fail_at==9) { ++triangle_fake::errors; return; } if(desc.Size!=16 || desc.BindFlags!=BIND_UNIFORM_BUFFER || desc.Usage!=USAGE_DYNAMIC || desc.CPUAccessFlags!=CPU_ACCESS_WRITE) { ++triangle_fake::errors; return; } *out=new IBuffer; }
  void CreateShader(const ShaderCreateInfo&, IShader** out) { ++triangle_fake::shaders; if (triangle_fake::fail_at==1 || (triangle_fake::fail_at==8 && triangle_fake::shaders==2)) { ++triangle_fake::errors; return; } *out=new IShader; }
  void CreateGraphicsPipelineState(const GraphicsPipelineStateCreateInfo& info, IPipelineState** out) {
   ++triangle_fake::pipelines; triangle_fake::depth_enabled=info.GraphicsPipeline.DepthStencilDesc.DepthEnable; triangle_fake::depth_write=info.GraphicsPipeline.DepthStencilDesc.DepthWriteEnable; triangle_fake::depth_func=info.GraphicsPipeline.DepthStencilDesc.DepthFunc; triangle_fake::depth_format=info.GraphicsPipeline.DSVFormat;
