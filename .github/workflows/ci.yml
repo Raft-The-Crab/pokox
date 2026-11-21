@@ -111,7 +111,8 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends \
             build-essential cmake ninja-build pkg-config \
-            autoconf autoconf-archive automake libtool autopoint gettext \
+            autoconf autoconf-archive automake libtool libltdl-dev autopoint gettext \
+            libglvnd-dev libegl1-mesa-dev libgles2-mesa-dev \
             libx11-dev libxext-dev libxrandr-dev libxfixes-dev libxi-dev \
             libxcursor-dev libxinerama-dev libxss-dev libxkbcommon-dev \
             wayland-protocols libwayland-dev libdecor-0-dev \
