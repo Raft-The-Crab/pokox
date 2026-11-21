@@ -9,13 +9,14 @@ RenderError VulkanClearBackend::initialize() noexcept {
     std::fprintf(stderr,"Vulkan SDL video initialization failed: %s\n",SDL_GetError());
     return RenderError::backend_failure;
   }
-  if (window_.create_window({"PokoX - Vulkan clear",800,600,platform::WindowGraphicsApi::vulkan})!=platform::PlatformError::none) {
+  if (window_.create_window({"PokoX - Vulkan clear",width_,height_,platform::WindowGraphicsApi::vulkan})!=platform::PlatformError::none) {
     std::fprintf(stderr,"Vulkan SDL window creation failed: %s\n",SDL_GetError());
     return RenderError::invalid_window;
   }
   if (diagnostics_.start()!=DiagnosticsError::none) return RenderError::backend_failure;
   ClearConfig config{};
   config.enable_validation=validation_;
+  config.adapter_id=adapter_id_;
   config.defer_failed_cleanup=true;
   const auto result=renderer_.initialize(window_, config);
   return diagnostics_.messages().errors ? RenderError::backend_failure : result;
@@ -54,7 +55,7 @@ RenderError OpenGLClearBackend::initialize() noexcept {
     return RenderError::backend_failure;
   }
 #endif
-  if (window_.create_window({"PokoX - OpenGL clear",800,600,platform::WindowGraphicsApi::opengl})!=platform::PlatformError::none) {
+  if (window_.create_window({"PokoX - OpenGL clear",width_,height_,platform::WindowGraphicsApi::opengl})!=platform::PlatformError::none) {
     std::fprintf(stderr,"OpenGL SDL window creation failed: %s\n",SDL_GetError());
     return RenderError::invalid_window;
   }

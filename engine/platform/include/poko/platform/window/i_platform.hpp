@@ -43,12 +43,21 @@ enum class EventType : std::uint8_t {
   quit_requested,
   window_close_requested,
   window_resized,
+  mouse_motion,   // relative movement while a button is held (orbit/drag)
+  mouse_button,   // press/release; button is SDL-style button index (1=left)
+  mouse_wheel,    // vertical scroll; `wheel` is signed detents
 };
 
 struct Event {
   EventType type = EventType::none;
   // Meaningful only for window_resized; otherwise zero-initialized.
   WindowSize size{};
+  // mouse_motion: relative pixel deltas. mouse_button: `button` + `pressed`.
+  // mouse_wheel: signed `wheel` detents (positive = away/up).
+  float dx = 0.f, dy = 0.f;
+  std::uint8_t button = 0;
+  bool pressed = false;
+  float wheel = 0.f;
 };
 
 // Platform operations run on the owning thread (normally the main thread).

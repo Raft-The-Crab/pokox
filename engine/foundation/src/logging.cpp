@@ -4,16 +4,20 @@
 #include <spdlog/spdlog.h>
 #include <atomic>
 #include <mutex>
+#include <shared_mutex>
 #include <system_error>
 
 namespace poko::log {
 namespace {
 constexpr const char* kLoggerName = "poko";
-std::mutex g_mutex;
+std::shared_mutex g_mutex;
 std::atomic<bool> g_initialized{false};
 // Records emit through this pinned logger so a foreign set_default_logger()
 // cannot reroute them, and shutdown can drop exactly our logger + file handle.
-// atomic<shared_ptr> keeps lock-free emit() copies race-free vs init/shutdown.
+// atomic<shared_ptr> keeps the emit() copy race-free vs init/shutdown writes;
+// the shared lock below additionally prevents a record from landing in the
+// file after shutdown() returns or interleaving into a re-init's truncated
+// session file.
 std::atomic<std::shared_ptr<spdlog::logger>> g_logger;
 spdlog::level::level_enum to_spdlog(Level level) {
   switch (level) {
@@ -29,6 +33,10 @@ spdlog::level::level_enum to_spdlog(Level level) {
 void emit(Level level, std::string_view category, std::string_view message,
           const std::vector<Field>& fields) noexcept {
   try {
+    if (!g_initialized.load(std::memory_order_acquire)) return;
+    // Shared with other emitters, exclusive against init/shutdown: a record
+    // in flight when shutdown begins completes before the file sink is dropped.
+    std::shared_lock lock{g_mutex};
     if (!g_initialized.load(std::memory_order_acquire)) return;
     auto logger = g_logger.load();
     if (!logger || logger->level() > to_spdlog(level)) return;

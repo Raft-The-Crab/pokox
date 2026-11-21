@@ -1,4 +1,6 @@
 #include "poko/rhi/device/fallback_clear_backends.hpp"
+#include "poko/foundation/config.hpp"
+#include "poko/foundation/config_logging.hpp"
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
 #include <array>
@@ -6,24 +8,39 @@
 #include <chrono>
 #include <cstdint>
 #include <cstdio>
+#include <string>
 #include <string_view>
 #include <system_error>
 int main(int argc, char** argv) {
   using namespace poko;
-  std::uint32_t limit=0; bool force_gl=false, validation=true;
+  std::uint32_t limit=0; bool force_gl=false;
+  std::string config_path;
+  config::Overrides overrides;
   for (int i=1;i<argc;++i) {
     const std::string_view arg{argv[i]};
     if (arg=="--force-opengl") { force_gl=true; continue; }
-    if (arg=="--no-validation") { validation=false; continue; }
+    if (arg=="--no-validation") { overrides.validation=false; overrides.validation_set=true; continue; }
+    if (arg=="--config" && i+1<argc) { config_path=argv[++i]; continue; }
     if (arg=="--frames" && i+1<argc) {
       const std::string_view value{argv[++i]};
       const auto parsed=std::from_chars(value.data(),value.data()+value.size(),limit);
       if (parsed.ec==std::errc{} && parsed.ptr==value.data()+value.size() && limit) continue;
     }
-    std::fputs("Usage: pokox_fallback_clear [--frames positive-integer] [--force-opengl] [--no-validation]\n",stderr); return 2;
+    std::fputs("Usage: pokox_fallback_clear [--frames positive-integer] [--force-opengl] [--no-validation] [--config file.cbor]\n",stderr); return 2;
   }
-  rhi::VulkanClearBackend vulkan{!force_gl,validation};
-  rhi::OpenGLClearBackend opengl{validation};
+  const auto loaded=config::resolve(config_path,overrides);
+  if (loaded.error) {
+    std::fprintf(stderr,"Config load failed: %s (%s)\n",loaded.detail.c_str(),loaded.error.message().c_str());
+    return 2;
+  }
+  for (const auto& key : loaded.unknown_keys)
+    std::fprintf(stderr,"config: unknown key ignored: %s\n",key.c_str());
+  const auto& settings=loaded.config;
+  config::LogGuard log_guard{settings};
+  rhi::VulkanClearBackend vulkan{!force_gl,settings.validation,settings.adapter_id,
+                                settings.window_width,settings.window_height};
+  rhi::OpenGLClearBackend opengl{settings.validation,
+                                 settings.window_width,settings.window_height};
   rhi::ClearBackendSelection selector{vulkan,opengl};
   const auto startup=selector.start();
   if (startup.status!=rhi::StartStatus::success) {
@@ -56,6 +73,6 @@ int main(int argc, char** argv) {
   }
   if (!selector.shutdown()) { std::fputs("Backend cleanup failed.\n",stderr); code=1; }
   if (limit && frames<limit && !code) code=2;
-  std::printf("POKO_FALLBACK_RESULT backend=%s submitted=%u validation_requested=%s\n",is_gl ? "opengl" : "vulkan",frames,validation ? "true" : "false");
+  std::printf("POKO_FALLBACK_RESULT backend=%s submitted=%u validation_requested=%s\n",is_gl ? "opengl" : "vulkan",frames,settings.validation ? "true" : "false");
   return code;
 }

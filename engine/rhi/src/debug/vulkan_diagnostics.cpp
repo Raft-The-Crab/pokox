@@ -84,15 +84,20 @@ DiagnosticsError VulkanDiagnostics::start_with_factory(Diligent::IEngineFactory*
     if (!pending->factory) return DiagnosticsError::factory_unavailable;
     if (callback_restore_failed.load(std::memory_order_acquire)) {
       // A previous restore failed, leaving our capture installed. Retry
-      // restoring the original callback (still held in previous_callback);
-      // clear the poison flag only when the global callback is verified
-      // back to the original, otherwise stay failed.
+      // restoring the original callback (still held in previous_callback)
+      // only while capture is actually the installed callback — a foreign
+      // callback installed since must not be clobbered. If capture is gone,
+      // there is nothing to restore and the poison can clear.
       const auto original = previous_callback.load(std::memory_order_acquire);
-      try {
-        pending->factory->SetMessageCallback(original);
-        if (Diligent::DebugMessageCallback == original)
-          callback_restore_failed.store(false, std::memory_order_release);
-      } catch (...) {}
+      if (Diligent::DebugMessageCallback == capture) {
+        try {
+          pending->factory->SetMessageCallback(original);
+          if (Diligent::DebugMessageCallback == original)
+            callback_restore_failed.store(false, std::memory_order_release);
+        } catch (...) {}
+      } else {
+        callback_restore_failed.store(false, std::memory_order_release);
+      }
       if (callback_restore_failed.load(std::memory_order_acquire))
         return DiagnosticsError::backend_failure;
     }

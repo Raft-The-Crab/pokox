@@ -214,6 +214,23 @@ int main() {
       imgui_fake::buffers, imgui_fake::textures, imgui_fake::pipelines);
     return 1;
   }
+  // ImDrawCallback_ResetRenderState commands carry ElemCount == 0; the pass
+  // must still process them and re-commit shader resources, or the font and
+  // uniform bindings are lost for subsequent draws.
+  ImGui::NewFrame();
+  bg = ImGui::GetBackgroundDrawList();
+  bg->AddCallback(ImDrawCallback_ResetRenderState, nullptr);
+  bg->AddText(ImVec2(1.f, 1.f), 0xFFFFFFFF, "after reset");
+  ImGui::Render();
+  imgui_fake::reset();
+  if (pass.draw(device, context, chain, target) != RenderError::none) {
+    std::fputs("reset-callback draw failed\n", stderr); return 1;
+  }
+  if (imgui_fake::commits != 2 || imgui_fake::draws == 0) {
+    std::fprintf(stderr, "reset callback not honored: commits=%d draws=%d\n",
+      imgui_fake::commits, imgui_fake::draws);
+    return 1;
+  }
   // Device binding: a different device is rejected.
   FakeDevice other;
   if (pass.draw(other, context, chain, target) != RenderError::backend_failure) {

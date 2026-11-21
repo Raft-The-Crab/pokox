@@ -1,0 +1,41 @@
+#pragma once
+// ENG-13/ENG-14 bridge: RAII file logging driven by EngineConfig settings.
+// A no-op unless the target defines POKO_ENGINE_LOGGING=1 and links
+// poko_logging (POKO_WITH_DEPENDENCIES builds).
+#include "poko/foundation/config.hpp"
+#if POKO_ENGINE_LOGGING
+#include "poko/foundation/logging.hpp"
+#include <cstdio>
+#include <string>
+#endif
+
+namespace poko::config {
+
+#if POKO_ENGINE_LOGGING
+class LogGuard {
+ public:
+  explicit LogGuard(const EngineConfig& settings) noexcept {
+    if (settings.log_file.empty()) return;
+    const auto error = log::init({settings.log_file, settings.log_level,
+                                  settings.log_echo_to_console});
+    if (error) {
+      std::fprintf(stderr, "File logging unavailable: %s\n",
+                   error.message().c_str());
+    } else {
+      log::info("config", "settings loaded",
+                {{"adapter", std::to_string(settings.adapter_id)},
+                 {"validation", settings.validation ? "on" : "off"}});
+    }
+  }
+  ~LogGuard() { log::shutdown(); }
+  LogGuard(const LogGuard&) = delete;
+  LogGuard& operator=(const LogGuard&) = delete;
+};
+#else
+class LogGuard {
+ public:
+  explicit LogGuard(const EngineConfig&) noexcept {}
+};
+#endif
+
+}  // namespace poko::config

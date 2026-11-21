@@ -57,6 +57,7 @@ PlatformError SdlPlatform::create_window(const WindowConfig& config) noexcept {
     graphics_api_ = config.graphics_api;
     last_resize_ = {};
     has_last_resize_ = false;
+    pending_resize_ = false;
   }
   return window_ ? PlatformError::none : PlatformError::platform_failure;
 }
@@ -68,6 +69,7 @@ void SdlPlatform::destroy_window() noexcept {
     graphics_api_ = WindowGraphicsApi::none;
     last_resize_ = {};
     has_last_resize_ = false;
+    pending_resize_ = false;
   }
 }
 
@@ -105,6 +107,24 @@ bool SdlPlatform::poll_event(Event& event) noexcept {
   while (SDL_PollEvent(&raw)) {
     if (raw.type == SDL_EVENT_QUIT) {
       event = {EventType::quit_requested, {}};
+      return true;
+    }
+    if (raw.type == SDL_EVENT_MOUSE_MOTION &&
+        (raw.motion.state & SDL_BUTTON_LMASK)) {
+      event.type = EventType::mouse_motion;
+      event.dx = static_cast<float>(raw.motion.xrel);
+      event.dy = static_cast<float>(raw.motion.yrel);
+      return true;
+    }
+    if (raw.type == SDL_EVENT_MOUSE_BUTTON_DOWN || raw.type == SDL_EVENT_MOUSE_BUTTON_UP) {
+      event.type = EventType::mouse_button;
+      event.button = static_cast<std::uint8_t>(raw.button.button);
+      event.pressed = raw.type == SDL_EVENT_MOUSE_BUTTON_DOWN;
+      return true;
+    }
+    if (raw.type == SDL_EVENT_MOUSE_WHEEL) {
+      event.type = EventType::mouse_wheel;
+      event.wheel = static_cast<float>(raw.wheel.y);
       return true;
     }
     if (raw.type != SDL_EVENT_WINDOW_CLOSE_REQUESTED && raw.type != SDL_EVENT_WINDOW_RESIZED &&

@@ -174,9 +174,18 @@ int main() {
     CHECK(fake::refs == 0 && fake::quit_calls == 1 && fake::destroy_calls == 2);
     CHECK(platform.initialize() == PlatformError::none);
     CHECK(platform.create_window(valid) == PlatformError::none);
+    // A resize notification lost to a failed size query must not leak into a
+    // later window's event stream.
+    fake::fail_logical = true;
+    fake::push(SDL_EVENT_WINDOW_RESIZED);
+    CHECK(!platform.poll_event(event));
+    fake::fail_logical = false;
+    platform.destroy_window();
+    CHECK(platform.create_window(valid) == PlatformError::none);
+    CHECK(!platform.poll_event(event));
     // Destructor alone must clean up this new lifecycle.
   }
-  CHECK(fake::refs == 0 && fake::quit_calls == 2 && fake::destroy_calls == 3);
+  CHECK(fake::refs == 0 && fake::quit_calls == 2 && fake::destroy_calls == 4);
   // Never release an independent consumer's video reference.
   CHECK(SDL_InitSubSystem(SDL_INIT_VIDEO));
   {

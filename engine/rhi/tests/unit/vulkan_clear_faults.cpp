@@ -27,9 +27,12 @@ bool throw_device = false, throw_chain = false, no_target = false;
 bool throw_clear = false, throw_present = false, throw_idle = false;
 bool throw_resize = false, resize_no_update = false, emit_resize_error = false;
 bool validation = false, throw_set_callback = false, throw_previous = false, emit_shutdown_error = false;
-int forwarded = 0;
+int forwarded = 0, foreign_forwarded = 0;
 void DILIGENT_CALL_TYPE previous(Diligent::DEBUG_MESSAGE_SEVERITY, const char*, const char*, const char*, int) {
   ++forwarded; if (throw_previous) throw std::runtime_error("previous callback failed");
+}
+void DILIGENT_CALL_TYPE foreign(Diligent::DEBUG_MESSAGE_SEVERITY, const char*, const char*, const char*, int) {
+  ++foreign_forwarded;
 }
 void emit(const char* phase) {
   const char* requested = std::getenv("POKO_TEST_GRAPHICS_MESSAGE");
@@ -405,6 +408,22 @@ int main() {
     CHECK(fourth.start() == DiagnosticsError::none);
     fourth.stop();
     // Reset the test-owned pointer; production remains fail-closed for this process.
+    Diligent::DebugMessageCallback = nullptr;
+  }
+  {
+    // A foreign callback installed while restore is poisoned must not be
+    // clobbered by recovery; the next scope chains to it instead.
+    rhi::VulkanDiagnostics fifth, sixth;
+    CHECK(fifth.start() == DiagnosticsError::none);
+    fake::throw_set_callback = true;
+    fifth.stop();
+    fake::throw_set_callback = false;
+    Diligent::DebugMessageCallback = fake::foreign;
+    CHECK(sixth.start() == DiagnosticsError::none);
+    Diligent::DebugMessageCallback(Diligent::DEBUG_MESSAGE_SEVERITY_INFO, "via foreign", nullptr, nullptr, 0);
+    CHECK(fake::foreign_forwarded == 1);
+    sixth.stop();
+    CHECK(Diligent::DebugMessageCallback == fake::foreign);
     Diligent::DebugMessageCallback = nullptr;
   }
   std::puts("PASS: actual renderer control flow with dependency doubles; no real GPU validation");

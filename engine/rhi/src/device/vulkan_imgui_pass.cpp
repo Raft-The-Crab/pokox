@@ -1,33 +1,17 @@
 #include "poko/rhi/device/vulkan_imgui_pass.hpp"
 #include "poko/rhi/debug/vulkan_diagnostics.hpp"
+#include "read_spirv.hpp"
 #include <EngineFactoryVk.h>
 #include <RefCntAutoPtr.hpp>
 #include <imgui.h>
 #include <algorithm>
 #include <cstdint>
 #include <cstring>
-#include <fstream>
-#include <stdexcept>
 #include <string>
 #include <utility>
 #include <vector>
 
 namespace poko::rhi {
-namespace {
-std::vector<std::uint32_t> read_spirv(const std::string& path) {
-  constexpr std::streamoff max_bytes = 16 * 1024 * 1024;
-  std::ifstream file(path, std::ios::binary | std::ios::ate);
-  if (!file) throw std::runtime_error("Cannot open shader: " + path);
-  const auto length = file.tellg();
-  if (length < 20 || length > max_bytes || length % 4 != 0)
-    throw std::runtime_error("Invalid SPIR-V size: " + path);
-  std::vector<std::uint32_t> words(static_cast<std::size_t>(length) / 4);
-  file.seekg(0);
-  if (!file.read(reinterpret_cast<char*>(words.data()), length) || words[0] != 0x07230203U)
-    throw std::runtime_error("Invalid SPIR-V data or byte order: " + path);
-  return words;
-}
-}
 struct VulkanImGuiPass::Impl {
   static_assert(sizeof(ImDrawVert) == 20 && sizeof(ImDrawIdx) == 2,
                 "ImGui vertex/index layout changed; update the input layout and index type");
@@ -48,7 +32,7 @@ struct VulkanImGuiPass::Impl {
   ImTextureID font_tex_id = ImTextureID_Invalid;
   std::size_t vertex_capacity = 0, index_capacity = 0;
   Impl(const std::string& vs, const std::string& fs, VulkanDiagnostics& d)
-      : vertex(read_spirv(vs)), fragment(read_spirv(fs)), diagnostics(d) {}
+      : vertex(detail::read_spirv(vs)), fragment(detail::read_spirv(fs)), diagnostics(d) {}
   RenderError ensure_font(Diligent::IRenderDevice& device, ImGuiIO& io) {
     if (font_view) return RenderError::none;
     unsigned char* pixels = nullptr;
@@ -303,11 +287,13 @@ struct VulkanImGuiPass::Impl {
       const auto index_base = index_bases[list_index];
       ++list_index;
       for (const ImDrawCmd& cmd : list->CmdBuffer) {
-        if (cmd.ElemCount == 0) continue;
-        if (cmd.UserCallback && cmd.UserCallback != ImDrawCallback_ResetRenderState)
-          return RenderError::backend_failure;
-        if (cmd.UserCallback == ImDrawCallback_ResetRenderState) {
+        // Callback commands carry ElemCount == 0, so they must be handled
+        // before the empty-command skip or ResetRenderState is dead code.
+        if (cmd.UserCallback) {
+          if (cmd.UserCallback != ImDrawCallback_ResetRenderState)
+            return RenderError::backend_failure;
           context.SetPipelineState(pipeline);
+          context.CommitShaderResources(binding, Diligent::RESOURCE_STATE_TRANSITION_MODE_TRANSITION);
           context.SetVertexBuffers(0, 1, &vertex_slot, &vertex_offset,
                                    Diligent::RESOURCE_STATE_TRANSITION_MODE_TRANSITION);
           context.SetIndexBuffer(index_buffer, 0, Diligent::RESOURCE_STATE_TRANSITION_MODE_TRANSITION);
@@ -317,6 +303,7 @@ struct VulkanImGuiPass::Impl {
           context.SetScissorRects(1, &full, desc.Width, desc.Height);
           if (diagnostics.messages().errors) return RenderError::backend_failure;
         }
+        if (cmd.ElemCount == 0) continue;
         if (cmd.GetTexID() != font_tex_id) return RenderError::backend_failure;
         const float x1 = (cmd.ClipRect.x - draw_data->DisplayPos.x) * draw_data->FramebufferScale.x;
         const float y1 = (cmd.ClipRect.y - draw_data->DisplayPos.y) * draw_data->FramebufferScale.y;

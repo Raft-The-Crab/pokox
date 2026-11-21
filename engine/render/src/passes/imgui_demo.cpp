@@ -4,8 +4,15 @@
 #include "poko/rhi/device/vulkan_clear_renderer.hpp"
 #include "poko/rhi/device/vulkan_imgui_pass.hpp"
 #include "poko/rhi/device/vulkan_triangle_pass.hpp"
+#include "poko/foundation/config.hpp"
+#include "poko/foundation/config_logging.hpp"
+#include "poko/foundation/frame_stats.hpp"
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
+#include <DeviceContext.h>
+#include <Query.h>
+#include <RefCntAutoPtr.hpp>
+#include <RenderDevice.h>
 #if POKO_DEBUG
 #include <imgui.h>
 #endif
@@ -24,20 +31,48 @@ struct Frame {
   poko::rhi::VulkanTrianglePass* scene;
   poko::rhi::VulkanImGuiPass* ui = nullptr;
   poko::rhi::RenderError result = poko::rhi::RenderError::not_initialized;
+  // ENG-15 GPU frame timer: 0 = unchecked, 1 = unsupported, 2 = armed query.
+  Diligent::RefCntAutoPtr<Diligent::IQuery> gpu_timer;
+  int gpu_timer_state = 0;
 };
+// Lazily creates the duration query once per device; unsupported devices keep
+// state 1 so gpu_ms() simply stays at zero.
+void ensure_gpu_timer(Diligent::IRenderDevice& device, Frame& frame) {
+  if (frame.gpu_timer_state) return;
+  frame.gpu_timer_state = 1;
+  if (device.GetDeviceInfo().Features.DurationQueries != Diligent::DEVICE_FEATURE_STATE_ENABLED)
+    return;
+  Diligent::QueryDesc desc;
+  desc.Type = Diligent::QUERY_TYPE_DURATION;
+  Diligent::IQuery* query = nullptr;
+  try {
+    device.CreateQuery(desc, &query);
+  } catch (...) { query = nullptr; }
+  if (query) {
+    frame.gpu_timer = query;
+    query->Release();
+    frame.gpu_timer_state = 2;
+  }
+}
 poko::rhi::RenderError composite(Diligent::IRenderDevice& device, Diligent::IDeviceContext& context,
                                  Diligent::ISwapChain& chain, Diligent::ITextureView& target, void* user) {
   auto& frame = *static_cast<Frame*>(user);
+  ensure_gpu_timer(device, frame);
+  const bool timing = frame.gpu_timer_state == 2;
+  if (timing) context.BeginQuery(frame.gpu_timer);
   const auto scene = frame.scene->draw(device, context, chain, target);
-  if (scene != poko::rhi::RenderError::none) return scene;
+  poko::rhi::RenderError out = scene;
 #if POKO_DEBUG
-  if (frame.ui) {
-    frame.result = frame.ui->draw(device, context, chain, target);
-    return frame.result;
-  }
+  if (scene == poko::rhi::RenderError::none && frame.ui) {
+    out = frame.ui->draw(device, context, chain, target);
+    frame.result = out;
+  } else
 #endif
-  frame.result = scene;
-  return frame.result;
+  {
+    frame.result = scene;
+  }
+  if (timing) context.EndQuery(frame.gpu_timer);
+  return out;
 }
 #if POKO_DEBUG
 void update_imgui_io(poko::platform::SdlPlatform& window,
@@ -71,12 +106,14 @@ void update_imgui_io(poko::platform::SdlPlatform& window,
     io.MouseDown[4] = (buttons & SDL_BUTTON_X2MASK) != 0;
   }
 }
-void build_demo_window() {
+void build_demo_window(const poko::stats::FrameStats& stats) {
   ImGui::SetNextWindowPos(ImVec2(10.f, 10.f), ImGuiCond_FirstUseEver);
   ImGui::SetNextWindowSize(ImVec2(320.f, 0.f), ImGuiCond_FirstUseEver);
   if (ImGui::Begin("PokoX ImGui demo")) {
     ImGui::Text("Vulkan triangle + ImGui pass (ENG-11/12 prototype)");
     ImGui::Text("FPS: %.1f", ImGui::GetIO().Framerate);
+    ImGui::Text("CPU: %.2f ms   GPU: %.2f ms",
+                stats.cpu_ms(), stats.gpu_ms() > 0.0 ? stats.gpu_ms() : -1.0);
     ImGui::Separator();
     static bool show_stats = true;
     ImGui::Checkbox("Show stats", &show_stats);
@@ -95,17 +132,19 @@ struct ImGuiContextGuard {
 
 int main(int argc, char** argv) {
   using namespace poko;
-  std::string vertex, fragment, imgui_vertex, imgui_fragment;
+  std::string vertex, fragment, imgui_vertex, imgui_fragment, config_path;
   std::uint32_t limit = 0;
   rhi::ClearConfig config{};
+  config::Overrides overrides;
   for (int i = 1; i < argc; ++i) {
     const std::string_view arg{argv[i]};
-    if (arg == "--no-validation") { config.enable_validation = false; continue; }
+    if (arg == "--no-validation") { overrides.validation = false; overrides.validation_set = true; continue; }
     if (arg == "--adapter" && i + 1 < argc) {
       const std::string_view value{argv[++i]};
-      const auto parsed = std::from_chars(value.data(), value.data() + value.size(), config.adapter_id);
-      if (parsed.ec == std::errc{} && parsed.ptr == value.data() + value.size()) continue;
+      const auto parsed = std::from_chars(value.data(), value.data() + value.size(), overrides.adapter_id);
+      if (parsed.ec == std::errc{} && parsed.ptr == value.data() + value.size()) { overrides.adapter_set = true; continue; }
     }
+    if (arg == "--config" && i + 1 < argc) { config_path = argv[++i]; continue; }
     if (arg == "--vertex" && i + 1 < argc) { vertex = argv[++i]; continue; }
     if (arg == "--fragment" && i + 1 < argc) { fragment = argv[++i]; continue; }
     if (arg == "--imgui-vertex" && i + 1 < argc) { imgui_vertex = argv[++i]; continue; }
@@ -115,7 +154,7 @@ int main(int argc, char** argv) {
       const auto parsed = std::from_chars(value.data(), value.data() + value.size(), limit);
       if (parsed.ec == std::errc{} && parsed.ptr == value.data() + value.size() && limit) continue;
     }
-    std::fprintf(stderr, "Usage: %s --vertex file.spv --fragment file.spv%s [--frames positive-integer] [--adapter index] [--no-validation]\n",
+    std::fprintf(stderr, "Usage: %s --vertex file.spv --fragment file.spv%s [--frames positive-integer] [--adapter index] [--no-validation] [--config file.cbor]\n",
                  "pokox_imgui_demo",
 #if POKO_DEBUG
                  " --imgui-vertex file.spv --imgui-fragment file.spv"
@@ -138,6 +177,18 @@ int main(int argc, char** argv) {
                stderr);
     return 2;
   }
+  const auto loaded = config::resolve(config_path, overrides);
+  if (loaded.error) {
+    std::fprintf(stderr, "Config load failed: %s (%s)\n",
+                 loaded.detail.c_str(), loaded.error.message().c_str());
+    return 2;
+  }
+  for (const auto& key : loaded.unknown_keys)
+    std::fprintf(stderr, "config: unknown key ignored: %s\n", key.c_str());
+  const auto& settings = loaded.config;
+  config.enable_validation = settings.validation;
+  config.adapter_id = settings.adapter_id;
+  config::LogGuard log_guard{settings};
 #if POKO_DEBUG
   ImGuiContextGuard imgui_context;
   ImGui::GetIO().Fonts->AddFontDefault();
@@ -158,6 +209,7 @@ int main(int argc, char** argv) {
   rhi::VulkanClearRenderer renderer;
   std::uint32_t submitted = 0;
   int code = 0;
+  poko::stats::FrameStats stats;
   try {
     // This scope releases the passes before the renderer and window.
     rhi::VulkanTrianglePass triangle{vertex, fragment, diagnostics, rhi::TriangleMode::color};
@@ -165,7 +217,8 @@ int main(int argc, char** argv) {
     rhi::VulkanImGuiPass imgui{imgui_vertex, imgui_fragment, diagnostics};
 #endif
     if (window.initialize() != platform::PlatformError::none ||
-        window.create_window({"PokoX - Vulkan ImGui", 800, 600,
+        window.create_window({"PokoX - Vulkan ImGui", settings.window_width,
+                              settings.window_height,
                               platform::WindowGraphicsApi::vulkan}) != platform::PlatformError::none) {
       std::fprintf(stderr, "SDL setup failed: %s\n", SDL_GetError()); return 1;
     }
@@ -202,7 +255,7 @@ int main(int argc, char** argv) {
           f1_was_down = f1;
           update_imgui_io(window, io_previous);
           ImGui::NewFrame();
-          if (ui_enabled) build_demo_window();
+          if (ui_enabled) build_demo_window(stats);
           ImGui::Render();
         }});
 #endif
@@ -249,6 +302,15 @@ int main(int argc, char** argv) {
       if (!running) break;
       if (diagnostics.messages().errors) { code = 1; break; }
       const auto executed = graph.execute();
+      stats.record_cpu(std::chrono::duration<double>(
+          std::chrono::steady_clock::now() - tick).count());
+      // GPU duration results lag submission by a few frames; GetData with
+      // AutoInvalidate re-arms the query for the next frame.
+      if (frame.gpu_timer_state == 2) {
+        Diligent::QueryDataDuration data{};
+        if (frame.gpu_timer->GetData(&data, sizeof(data), true) && data.Frequency)
+          stats.record_gpu(static_cast<double>(data.Duration) / data.Frequency);
+      }
       if (executed.error != render::FrameGraphError::none || executed.completed != expected_passes ||
           diagnostics.messages().errors) { code = 1; break; }
       if (frame_result == rhi::RenderError::not_drawable) { SDL_Delay(20); continue; }
@@ -274,9 +336,10 @@ int main(int argc, char** argv) {
   const auto messages = diagnostics.messages();
   if (messages.errors) code = 1;
   if (!code && limit && submitted < limit) code = 2;
-  std::printf("POKO_IMGUI_RESULT submitted=%u validation_requested=%s graphics_errors=%llu graphics_warnings=%llu\n",
+  std::printf("POKO_IMGUI_RESULT submitted=%u validation_requested=%s graphics_errors=%llu graphics_warnings=%llu cpu_ms=%.2f gpu_ms=%.2f\n",
     submitted, config.enable_validation ? "true" : "false",
     static_cast<unsigned long long>(messages.errors),
-    static_cast<unsigned long long>(messages.warnings));
+    static_cast<unsigned long long>(messages.warnings),
+    stats.cpu_ms(), stats.gpu_ms());
   return code;
 }

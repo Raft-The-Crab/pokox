@@ -1,11 +1,16 @@
 #include "poko/rhi/device/vulkan_triangle_pass.hpp"
 #include "poko/rhi/debug/vulkan_diagnostics.hpp"
+#include "read_spirv.hpp"
 #include <EngineFactoryVk.h>
 #include <RefCntAutoPtr.hpp>
+#if __has_include(<Sampler.h>)
+#include <Sampler.h>
+#endif
+#if __has_include(<Texture.h>)
+#include <Texture.h>
+#endif
 #include <cstdint>
 #include <cstring>
-#include <fstream>
-#include <stdexcept>
 #include <string>
 #include <utility>
 #include <vector>
@@ -13,19 +18,6 @@
 namespace poko::rhi {
 namespace {
 static_assert(sizeof(float) == 4, "std140 frame color requires 32-bit floats");
-std::vector<std::uint32_t> read_spirv(const std::string& path) {
-  constexpr std::streamoff max_bytes = 16 * 1024 * 1024;
-  std::ifstream file(path, std::ios::binary | std::ios::ate);
-  if (!file) throw std::runtime_error("Cannot open shader: " + path);
-  const auto length = file.tellg();
-  if (length < 20 || length > max_bytes || length % 4 != 0)
-    throw std::runtime_error("Invalid SPIR-V size: " + path);
-  std::vector<std::uint32_t> words(static_cast<std::size_t>(length) / 4);
-  file.seekg(0);
-  if (!file.read(reinterpret_cast<char*>(words.data()), length) || words[0] != 0x07230203U)
-    throw std::runtime_error("Invalid SPIR-V data or byte order: " + path);
-  return words;
-}
 }
 struct VulkanTrianglePass::Impl {
   std::vector<std::uint32_t> vertex, fragment;
@@ -37,13 +29,24 @@ struct VulkanTrianglePass::Impl {
   Diligent::TEXTURE_FORMAT depth_format = Diligent::TEX_FORMAT_UNKNOWN;
   Diligent::IRenderDevice* owner = nullptr;
   TriangleMode mode;
+  // ENG-18 textured mode: CPU copies until first draw, then GPU objects.
+  std::vector<std::vector<std::uint8_t>> tex_levels;
+  std::vector<std::uint32_t> tex_level_w, tex_level_h;
+  std::uint32_t tex_width = 0, tex_height = 0;
+  bool tex_bgra = false, tex_srgb = false, tex_uploaded = false;
+  Diligent::RefCntAutoPtr<Diligent::ITexture> texture;
+  Diligent::RefCntAutoPtr<Diligent::ISampler> sampler;
+  Diligent::ITextureView* tex_view = nullptr;  // owned by texture, no AddRef
   Impl(const std::string& vs, const std::string& fs, VulkanDiagnostics& d, TriangleMode m)
-      : vertex(read_spirv(vs)), fragment(read_spirv(fs)), diagnostics(d), mode(m) {}
+      : vertex(detail::read_spirv(vs)), fragment(detail::read_spirv(fs)), diagnostics(d), mode(m) {}
   RenderError draw(Diligent::IRenderDevice& device, Diligent::IDeviceContext& context,
                    Diligent::ISwapChain& chain, Diligent::ITextureView& target, const std::array<float, 4>& color) {
     if (diagnostics.messages().errors) return RenderError::backend_failure;
     if (owner && owner != &device) return RenderError::backend_failure;
-    const bool has_depth = mode != TriangleMode::color;
+    const bool has_depth = mode == TriangleMode::depth_test ||
+                           mode == TriangleMode::depth_disabled_control ||
+                           mode == TriangleMode::uniform_depth;
+    const bool textured = mode == TriangleMode::textured;
     const auto& desc = chain.GetDesc();
     const auto current_format = desc.ColorBufferFormat;
     const auto current_depth_format = has_depth ? desc.DepthBufferFormat : Diligent::TEX_FORMAT_UNKNOWN;
@@ -51,6 +54,52 @@ struct VulkanTrianglePass::Impl {
     if (current_format == Diligent::TEX_FORMAT_UNKNOWN ||
         (has_depth && (current_depth_format == Diligent::TEX_FORMAT_UNKNOWN || !depth_view)))
       return RenderError::backend_failure;
+    if (textured && !tex_levels.empty() && !tex_uploaded) {
+      // ENG-18: one-time upload of the CPU-side pixels supplied via
+      // set_texture(). Runs inside draw() where device+context exist, and
+      // BEFORE pipeline creation so the static 'Tex' variable can be bound
+      // while the shader-resource binding snapshots its constants.
+      Diligent::TextureDesc tdesc{};
+      tdesc.Name = "Poko textured quad";
+      tdesc.Type = Diligent::RESOURCE_DIM_TEX_2D;
+      tdesc.Format = tex_bgra ? (tex_srgb ? Diligent::TEX_FORMAT_BGRA8_UNORM_SRGB
+                                          : Diligent::TEX_FORMAT_BGRA8_UNORM)
+                              : (tex_srgb ? Diligent::TEX_FORMAT_RGBA8_UNORM_SRGB
+                                          : Diligent::TEX_FORMAT_RGBA8_UNORM);
+      tdesc.Width = tex_width; tdesc.Height = tex_height;
+      tdesc.MipLevels = static_cast<Diligent::Uint32>(tex_levels.size()); tdesc.ArraySize = 1;
+      tdesc.Usage = Diligent::USAGE_DEFAULT;
+      tdesc.BindFlags = Diligent::BIND_SHADER_RESOURCE;
+      device.CreateTexture(tdesc, nullptr, &texture);
+      if (!texture || diagnostics.messages().errors) return RenderError::backend_failure;
+      Diligent::SamplerDesc sdesc{};
+      sdesc.Name = "Poko textured quad sampler";
+      sdesc.MinFilter = Diligent::FILTER_TYPE_LINEAR;
+      sdesc.MagFilter = Diligent::FILTER_TYPE_LINEAR;
+      sdesc.MipFilter = Diligent::FILTER_TYPE_LINEAR;
+      sdesc.AddressU = Diligent::TEXTURE_ADDRESS_CLAMP;
+      sdesc.AddressV = Diligent::TEXTURE_ADDRESS_CLAMP;
+      sdesc.AddressW = Diligent::TEXTURE_ADDRESS_CLAMP;
+      device.CreateSampler(sdesc, &sampler);
+      if (!sampler || diagnostics.messages().errors) return RenderError::backend_failure;
+      tex_view = texture->GetDefaultView(Diligent::TEXTURE_VIEW_SHADER_RESOURCE);
+      if (!tex_view || diagnostics.messages().errors) return RenderError::backend_failure;
+      tex_view->SetSampler(sampler);
+      if (diagnostics.messages().errors) return RenderError::backend_failure;
+      for (Diligent::Uint32 level = 0; level < tex_levels.size(); ++level) {
+        const auto lw = tex_level_w[level], lh = tex_level_h[level];
+        Diligent::Box box{0, lw, 0, lh, 0, 1};
+        Diligent::TextureSubResData sub{};
+        sub.pData = tex_levels[level].data();
+        sub.Stride = static_cast<Diligent::Uint64>(lw) * 4;
+        sub.DepthStride = static_cast<Diligent::Uint64>(lw) * lh * 4;
+        context.UpdateTexture(texture, level, 0, box, sub,
+                              Diligent::RESOURCE_STATE_TRANSITION_MODE_NONE,
+                              Diligent::RESOURCE_STATE_TRANSITION_MODE_TRANSITION);
+        if (diagnostics.messages().errors) return RenderError::backend_failure;
+      }
+      tex_uploaded = true;
+    }
     if (!pipeline || format != current_format || depth_format != current_depth_format) {
       Diligent::RefCntAutoPtr<Diligent::IShader> vs, ps;
       Diligent::ShaderCreateInfo shader{};
@@ -78,19 +127,27 @@ struct VulkanTrianglePass::Impl {
       if (!created || diagnostics.messages().errors) return RenderError::backend_failure;
       Diligent::RefCntAutoPtr<Diligent::IBuffer> created_buffer;
       Diligent::RefCntAutoPtr<Diligent::IShaderResourceBinding> created_binding;
-      if (mode == TriangleMode::uniform_depth) {
-        Diligent::BufferDesc buffer_desc{};
-        buffer_desc.Name = "Poko per-frame color";
-        buffer_desc.Size = sizeof(float) * 4;
-        buffer_desc.BindFlags = Diligent::BIND_UNIFORM_BUFFER;
-        buffer_desc.Usage = Diligent::USAGE_DYNAMIC;
-        buffer_desc.CPUAccessFlags = Diligent::CPU_ACCESS_WRITE;
-        device.CreateBuffer(buffer_desc, nullptr, &created_buffer);
-        if (!created_buffer || diagnostics.messages().errors) return RenderError::backend_failure;
-        auto* variable = created->GetStaticVariableByName(Diligent::SHADER_TYPE_PIXEL, "FrameData");
-        if (!variable || diagnostics.messages().errors) return RenderError::backend_failure;
-        variable->Set(created_buffer);
-        if (diagnostics.messages().errors) return RenderError::backend_failure;
+      if (mode == TriangleMode::uniform_depth || textured) {
+        if (mode == TriangleMode::uniform_depth) {
+          Diligent::BufferDesc buffer_desc{};
+          buffer_desc.Name = "Poko per-frame color";
+          buffer_desc.Size = sizeof(float) * 4;
+          buffer_desc.BindFlags = Diligent::BIND_UNIFORM_BUFFER;
+          buffer_desc.Usage = Diligent::USAGE_DYNAMIC;
+          buffer_desc.CPUAccessFlags = Diligent::CPU_ACCESS_WRITE;
+          device.CreateBuffer(buffer_desc, nullptr, &created_buffer);
+          if (!created_buffer || diagnostics.messages().errors) return RenderError::backend_failure;
+          auto* variable = created->GetStaticVariableByName(Diligent::SHADER_TYPE_PIXEL, "FrameData");
+          if (!variable || diagnostics.messages().errors) return RenderError::backend_failure;
+          variable->Set(created_buffer);
+          if (diagnostics.messages().errors) return RenderError::backend_failure;
+        }
+        if (textured && tex_view) {
+          auto* variable = created->GetStaticVariableByName(Diligent::SHADER_TYPE_PIXEL, "Tex");
+          if (!variable || diagnostics.messages().errors) return RenderError::backend_failure;
+          variable->Set(tex_view);
+          if (diagnostics.messages().errors) return RenderError::backend_failure;
+        }
         created->CreateShaderResourceBinding(&created_binding, true);
         if (!created_binding || diagnostics.messages().errors) return RenderError::backend_failure;
       }
@@ -119,11 +176,11 @@ struct VulkanTrianglePass::Impl {
     }
     context.SetPipelineState(pipeline);
     if (diagnostics.messages().errors) return RenderError::backend_failure;
-    if (mode == TriangleMode::uniform_depth) {
+    if (mode == TriangleMode::uniform_depth || textured) {
       context.CommitShaderResources(binding, Diligent::RESOURCE_STATE_TRANSITION_MODE_TRANSITION);
       if (diagnostics.messages().errors) return RenderError::backend_failure;
     }
-    Diligent::DrawAttribs draw{}; draw.NumVertices = has_depth ? 6 : 3; draw.Flags = Diligent::DRAW_FLAG_VERIFY_ALL;
+    Diligent::DrawAttribs draw{}; draw.NumVertices = (has_depth || textured) ? 6 : 3; draw.Flags = Diligent::DRAW_FLAG_VERIFY_ALL;
     context.Draw(draw);
     return diagnostics.messages().errors ? RenderError::backend_failure : RenderError::none;
   }
@@ -146,6 +203,40 @@ RenderError VulkanTrianglePass::draw_and_present(VulkanClearRenderer& renderer,
 RenderError VulkanTrianglePass::draw(Diligent::IRenderDevice& device, Diligent::IDeviceContext& context,
                                      Diligent::ISwapChain& chain, Diligent::ITextureView& target) noexcept {
   return draw(device, context, chain, target, {1.f, 0.f, 0.f, 1.f});
+}
+void VulkanTrianglePass::set_texture(const void* pixels, std::uint32_t width,
+                                     std::uint32_t height, bool bgra) {
+  const TextureMip mip{pixels, width, height};
+  set_texture_mips(&mip, 1, bgra);
+}
+void VulkanTrianglePass::set_texture_mips(const TextureMip* mips, std::size_t count,
+                                          bool bgra, bool srgb) {
+  auto& impl = *impl_;
+  impl.tex_levels.clear(); impl.tex_level_w.clear(); impl.tex_level_h.clear();
+  impl.tex_levels.reserve(count); impl.tex_level_w.reserve(count);
+  impl.tex_level_h.reserve(count);
+  for (std::size_t i = 0; i < count; ++i) {
+    const auto& mip = mips[i];
+    if (!mip.pixels || mip.width == 0 || mip.height == 0) {
+      impl.tex_levels.clear(); impl.tex_level_w.clear(); impl.tex_level_h.clear();
+      break;
+    }
+    const std::size_t bytes = static_cast<std::size_t>(mip.width) * mip.height * 4;
+    impl.tex_levels.emplace_back(
+        static_cast<const std::uint8_t*>(mip.pixels),
+        static_cast<const std::uint8_t*>(mip.pixels) + bytes);
+    impl.tex_level_w.push_back(mip.width);
+    impl.tex_level_h.push_back(mip.height);
+  }
+  if (count && !impl.tex_levels.empty()) {
+    impl.tex_width = impl.tex_level_w.front();
+    impl.tex_height = impl.tex_level_h.front();
+  }
+  impl.tex_bgra = bgra; impl.tex_srgb = srgb;
+  impl.tex_uploaded = false;
+  impl.texture = Diligent::RefCntAutoPtr<Diligent::ITexture>();
+  impl.sampler = Diligent::RefCntAutoPtr<Diligent::ISampler>();
+  impl.tex_view = nullptr;
 }
 RenderError VulkanTrianglePass::draw(Diligent::IRenderDevice& device, Diligent::IDeviceContext& context,
                                      Diligent::ISwapChain& chain, Diligent::ITextureView& target,

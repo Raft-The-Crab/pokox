@@ -60,3 +60,15 @@ Two fresh-eyes audits of the uncommitted surface found and fixed:
 Verified: build/ 28/28, build-full 49/49 (after pokox rebuild), imgui_pass_faults + logging_file_test + vulkan_faults all pass.
 
 Remaining known fidelity gaps (harness-level, not defects): FakeDevice ignores most descriptor content (bind flags/usage/texture formats), MapBuffer has no bounds check, diagnostics-error path untested, most fake enum values are sequential rather than real Diligent values.
+
+## Independent review round 4 (2026-11-21)
+
+A fresh read of the full ENG-01–13 surface found and fixed:
+
+- `vulkan_imgui_pass.cpp`: `ImDrawCallback_ResetRenderState` commands carry `ElemCount == 0` and were skipped before the callback check, making the reset branch dead code; reordered so callbacks are handled first, and the reset now also re-commits shader resources (`CommitShaderResources`) so font/uniform bindings survive. Covered by a new `imgui_pass_faults` case asserting a second commit on a reset-callback frame.
+- `vulkan_diagnostics.cpp`: poisoned-state recovery called `SetMessageCallback(original)` unconditionally, which could clobber a foreign callback installed after the failed restore; recovery now only restores while `capture` is verifiably installed and clears the poison flag when it is not. Covered by a new `vulkan_clear_faults` case chaining to a foreign callback.
+- `logging.cpp`: `emit()` could write to the file sink after `shutdown()` returned or interleave into a re-init's truncated file; emit now holds a `shared_lock` against init/shutdown's exclusive lock.
+- `sdl_platform.cpp`: `pending_resize_` survived `destroy_window`/`create_window` and could emit a stale `window_resized` for a new window; it is now cleared on both transitions. Covered by a new `sdl_platform_faults` case.
+- `read_spirv` was duplicated verbatim in the triangle and ImGui passes; extracted to `engine/rhi/src/device/read_spirv.hpp`.
+
+Verified: `build/` 28/28 and `build-full/` 49/49 CTest pass, including the three new regression cases.

@@ -3,6 +3,9 @@
 #include "poko/rhi/debug/vulkan_diagnostics.hpp"
 #include "poko/rhi/device/vulkan_clear_renderer.hpp"
 #include "poko/rhi/device/vulkan_triangle_pass.hpp"
+#include "poko/foundation/config.hpp"
+#include "poko/foundation/config_logging.hpp"
+#include "poko/resource/ktx2.hpp"
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
 #include <array>
@@ -12,6 +15,7 @@
 #include <cstdint>
 #include <cstdio>
 #include <exception>
+#include <memory>
 #include <string>
 #include <string_view>
 #include <system_error>
@@ -23,40 +27,71 @@
 #ifndef POKO_DEMO_UNIFORM
 #define POKO_DEMO_UNIFORM 0
 #endif
+#ifndef POKO_TEXTURED_VERTEX_SPV
+#define POKO_TEXTURED_VERTEX_SPV ""
+#endif
+#ifndef POKO_TEXTURED_FRAGMENT_SPV
+#define POKO_TEXTURED_FRAGMENT_SPV ""
+#endif
 
 int main(int argc, char** argv) {
   using namespace poko;
-  std::string vertex, fragment;
+  std::string vertex, fragment, config_path, texture_path;
   std::uint32_t limit = 0;
   rhi::ClearConfig config{};
+  config::Overrides overrides;
   constexpr bool uniform_demo = POKO_DEMO_UNIFORM != 0;
   constexpr bool depth_demo = POKO_DEMO_DEPTH != 0 || uniform_demo;
   bool disable_depth = false;
   config.enable_depth = depth_demo;
   for (int i = 1; i < argc; ++i) {
     const std::string_view arg{argv[i]};
-    if (arg == "--no-validation") { config.enable_validation = false; continue; }
+    if (arg == "--no-validation") { overrides.validation = false; overrides.validation_set = true; continue; }
     if (depth_demo && !uniform_demo && arg == "--show-no-depth") { disable_depth = true; continue; }
     if (arg == "--adapter" && i + 1 < argc) {
       const std::string_view value{argv[++i]};
-      const auto parsed = std::from_chars(value.data(), value.data() + value.size(), config.adapter_id);
-      if (parsed.ec == std::errc{} && parsed.ptr == value.data() + value.size()) continue;
+      const auto parsed = std::from_chars(value.data(), value.data() + value.size(), overrides.adapter_id);
+      if (parsed.ec == std::errc{} && parsed.ptr == value.data() + value.size()) { overrides.adapter_set = true; continue; }
     }
+    if (arg == "--config" && i + 1 < argc) { config_path = argv[++i]; continue; }
     if (arg == "--vertex" && i + 1 < argc) { vertex = argv[++i]; continue; }
     if (arg == "--fragment" && i + 1 < argc) { fragment = argv[++i]; continue; }
+    if (arg == "--texture" && i + 1 < argc) { texture_path = argv[++i]; continue; }
     if (arg == "--frames" && i + 1 < argc) {
       const std::string_view value{argv[++i]};
       const auto parsed = std::from_chars(value.data(), value.data() + value.size(), limit);
       if (parsed.ec == std::errc{} && parsed.ptr == value.data() + value.size() && limit) continue;
     }
-    std::fprintf(stderr, "Usage: %s --vertex file.spv --fragment file.spv [--frames positive-integer] [--adapter index] [--no-validation]%s\n",
-                 uniform_demo ? "pokox_uniform" : depth_demo ? "pokox_depth" : "pokox_triangle", (depth_demo && !uniform_demo) ? " [--show-no-depth]" : "");
+    std::fprintf(stderr, "Usage: %s --vertex file.spv --fragment file.spv [--frames positive-integer] [--adapter index] [--no-validation] [--config file.cbor]%s%s\n",
+                 uniform_demo ? "pokox_uniform" : depth_demo ? "pokox_depth" : "pokox_triangle", (depth_demo && !uniform_demo) ? " [--show-no-depth]" : "",
+                 depth_demo || uniform_demo ? "" : " [--texture file.ktx2]");
     return 2;
+  }
+  // ENG-18: --texture selects the compiled-in textured-quad shaders and mode.
+  if (!texture_path.empty() && (depth_demo || uniform_demo)) {
+    std::fputs("--texture is only supported by pokox_triangle.\n", stderr);
+    return 2;
+  }
+  if (!texture_path.empty()) {
+    if (vertex.empty()) vertex = POKO_TEXTURED_VERTEX_SPV;
+    if (fragment.empty()) fragment = POKO_TEXTURED_FRAGMENT_SPV;
   }
   if (vertex.empty() || fragment.empty()) {
     std::fputs("Both --vertex and --fragment SPIR-V paths are required.\n", stderr);
     return 2;
   }
+  const auto loaded = config::resolve(config_path, overrides);
+  if (loaded.error) {
+    std::fprintf(stderr, "Config load failed: %s (%s)\n",
+                 loaded.detail.c_str(), loaded.error.message().c_str());
+    return 2;
+  }
+  for (const auto& key : loaded.unknown_keys)
+    std::fprintf(stderr, "config: unknown key ignored: %s\n", key.c_str());
+  const auto& settings = loaded.config;
+  config.enable_validation = settings.validation;
+  config.adapter_id = settings.adapter_id;
+  config::LogGuard log_guard{settings};
   platform::SdlPlatform window;
   rhi::VulkanDiagnostics diagnostics;
   rhi::VulkanClearRenderer renderer;
@@ -64,11 +99,34 @@ int main(int argc, char** argv) {
   int code = 0;
   try {
     // This scope releases the pipeline before the renderer and window.
-    const auto mode = uniform_demo ? rhi::TriangleMode::uniform_depth : !depth_demo ? rhi::TriangleMode::color :
+    const auto mode = !texture_path.empty() ? rhi::TriangleMode::textured
+        : uniform_demo ? rhi::TriangleMode::uniform_depth : !depth_demo ? rhi::TriangleMode::color :
         disable_depth ? rhi::TriangleMode::depth_disabled_control : rhi::TriangleMode::depth_test;
+    std::unique_ptr<resource::Ktx2Image> ktx2;
+    if (!texture_path.empty()) {
+      std::string ktx_error;
+      ktx2 = resource::load_ktx2(texture_path, &ktx_error);
+      if (!ktx2) {
+        std::fprintf(stderr, "KTX2 load failed: %s\n", ktx_error.c_str());
+        return 2;
+      }
+    }
     rhi::VulkanTrianglePass triangle{vertex, fragment, diagnostics, mode};
+    if (ktx2 && !ktx2->mips.empty()) {
+      std::vector<rhi::VulkanTrianglePass::TextureMip> mips;
+      mips.reserve(ktx2->mips.size());
+      for (const auto& mip : ktx2->mips)
+        mips.push_back({mip.pixels.data(), mip.width, mip.height});
+      const auto fmt = ktx2->format;
+      triangle.set_texture_mips(mips.data(), mips.size(),
+                                fmt == resource::Ktx2Format::bgra8_unorm ||
+                                fmt == resource::Ktx2Format::bgra8_srgb,
+                                fmt == resource::Ktx2Format::rgba8_srgb ||
+                                fmt == resource::Ktx2Format::bgra8_srgb);
+    }
     if (window.initialize() != platform::PlatformError::none ||
-        window.create_window({uniform_demo ? "PokoX - Vulkan uniform" : depth_demo ? "PokoX - Vulkan depth" : "PokoX - Vulkan triangle", 800, 600,
+        window.create_window({uniform_demo ? "PokoX - Vulkan uniform" : depth_demo ? "PokoX - Vulkan depth" : "PokoX - Vulkan triangle",
+                              settings.window_width, settings.window_height,
                               platform::WindowGraphicsApi::vulkan}) != platform::PlatformError::none) {
       std::fprintf(stderr, "SDL setup failed: %s\n", SDL_GetError()); return 1;
     }

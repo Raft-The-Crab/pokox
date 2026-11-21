@@ -1,42 +1,61 @@
 #include "poko/platform/window/sdl_platform.hpp"
 #include "poko/rhi/device/vulkan_clear_renderer.hpp"
 #include "poko/rhi/debug/vulkan_diagnostics.hpp"
+#include "poko/foundation/config.hpp"
+#include "poko/foundation/config_logging.hpp"
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
 #include <array>
 #include <charconv>
 #include <chrono>
 #include <cstdint>
+#include <string>
 #include <string_view>
 #include <system_error>
 #include <cstdio>
 int main(int argc, char** argv) {
   using namespace poko;
+  std::string config_path;
   std::uint32_t frame_limit = 0;
   rhi::ClearConfig config{};
+  config::Overrides overrides;
   for (int i = 1; i < argc; ++i) {
     const std::string_view arg{argv[i]};
-    if (arg == "--no-validation") { config.enable_validation = false; continue; }
+    if (arg == "--no-validation") { overrides.validation = false; overrides.validation_set = true; continue; }
     if (arg == "--adapter" && i + 1 < argc) {
       const std::string_view value{argv[++i]};
-      const auto parsed = std::from_chars(value.data(), value.data() + value.size(), config.adapter_id);
-      if (parsed.ec == std::errc{} && parsed.ptr == value.data() + value.size()) continue;
+      const auto parsed = std::from_chars(value.data(), value.data() + value.size(), overrides.adapter_id);
+      if (parsed.ec == std::errc{} && parsed.ptr == value.data() + value.size()) { overrides.adapter_set = true; continue; }
     }
+    if (arg == "--config" && i + 1 < argc) { config_path = argv[++i]; continue; }
     if (arg == "--frames" && i + 1 < argc) {
       const std::string_view value{argv[++i]};
       const auto parsed = std::from_chars(value.data(), value.data() + value.size(), frame_limit);
       if (parsed.ec == std::errc{} && parsed.ptr == value.data() + value.size() && frame_limit != 0) continue;
     }
-    std::fprintf(stderr, "Usage: pokox_vulkan_clear [--frames positive-integer] [--no-validation] [--adapter index]\n");
+    std::fprintf(stderr, "Usage: pokox_vulkan_clear [--frames positive-integer] [--no-validation] [--adapter index] [--config file.cbor]\n");
     return 2;
   }
+  const auto loaded = config::resolve(config_path, overrides);
+  if (loaded.error) {
+    std::fprintf(stderr, "Config load failed: %s (%s)\n",
+                 loaded.detail.c_str(), loaded.error.message().c_str());
+    return 2;
+  }
+  for (const auto& key : loaded.unknown_keys)
+    std::fprintf(stderr, "config: unknown key ignored: %s\n", key.c_str());
+  const auto& settings = loaded.config;
+  config.enable_validation = settings.validation;
+  config.adapter_id = settings.adapter_id;
+  config::LogGuard log_guard{settings};
   platform::SdlPlatform window;
   // Reverse destruction: renderer, diagnostics, SDL.
   rhi::VulkanDiagnostics diagnostics;
   rhi::VulkanClearRenderer renderer;
   if (window.initialize() != platform::PlatformError::none ||
-      window.create_window({"PokoX - Vulkan clear seed", 800, 600,
-                             platform::WindowGraphicsApi::vulkan}) != platform::PlatformError::none) {
+      window.create_window({"PokoX - Vulkan clear seed", settings.window_width,
+                            settings.window_height,
+                            platform::WindowGraphicsApi::vulkan}) != platform::PlatformError::none) {
     std::fprintf(stderr, "SDL setup failed: %s\n", SDL_GetError());
     return 1;
   }
