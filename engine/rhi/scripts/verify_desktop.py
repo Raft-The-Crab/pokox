@@ -4,6 +4,7 @@ import argparse
 import datetime
 import hashlib
 import json
+import math
 import os
 import platform
 import re
@@ -70,8 +71,10 @@ def main(argv=None):
     parser.add_argument('--build-timeout', type=float, default=3600)
     parser.add_argument('--output-dir', type=Path)
     args = parser.parse_args(argv)
-    if not 1 <= args.frames <= 0xFFFFFFFF or args.runtime_timeout <= 0 or args.build_timeout <= 0:
-        parser.error('Positive timeouts and uint32 frame count required')
+    if (not 1 <= args.frames <= 0xFFFFFFFF or
+        any(not math.isfinite(value) or value <= 0 for value in
+            (args.runtime_timeout, args.build_timeout))):
+        parser.error('Finite positive timeouts and uint32 frame count required')
     if not re.fullmatch(r'[A-Za-z0-9_-]+', args.config) or any(not x.startswith('-D') for x in args.cmake_arg):
         parser.error('Use a simple configuration name and -D-only extra CMake definitions')
     root = Path(__file__).resolve().parents[3]
@@ -84,8 +87,13 @@ def main(argv=None):
     report = dict(started_utc=stamp, source_root=str(root), host=platform.platform(), accepted=False,
                   visual_output_verified=False, validation_layer_verified=False, status='failed', steps=[])
     report['source_hashes'] = {name: hashlib.sha256((root / name).read_bytes()).hexdigest() for name in (
-        'CMakeLists.txt', 'engine/rhi/src/vulkan_clear_renderer.cpp',
-        'engine/rhi/src/vulkan_diagnostics.cpp', 'engine/rhi/src/vulkan_clear_demo.cpp')}
+        'CMakeLists.txt', 'vcpkg.json', 'engine/platform/include/poko/platform/window/i_platform.hpp',
+        'engine/platform/include/poko/platform/window/sdl_platform.hpp', 'engine/platform/src/window/sdl_platform.cpp',
+        'engine/rhi/include/poko/rhi/device/render_error.hpp',
+        'engine/rhi/include/poko/rhi/device/vulkan_clear_renderer.hpp',
+        'engine/rhi/include/poko/rhi/debug/vulkan_diagnostics.hpp',
+        'engine/rhi/src/device/vulkan_clear_renderer.cpp', 'engine/rhi/src/debug/vulkan_diagnostics.cpp',
+        'engine/rhi/src/device/vulkan_clear_demo.cpp')}
     configure = [args.cmake, '-S', root, '-B', build]
     if args.generator: configure += ['-G', args.generator]
     if args.arch: configure += ['-A', args.arch]

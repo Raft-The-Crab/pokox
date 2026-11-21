@@ -76,5 +76,11 @@ class EvidenceTests(unittest.TestCase):
             output = Path(directory); (output / 'old').write_text('keep')
             with contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit): verify.main(['--output-dir', str(output)])
             self.assertEqual((output / 'old').read_text(), 'keep')
+    def test_refuse_nonfinite_timeouts(self):
+        for flag in ('--build-timeout', '--runtime-timeout'):
+            for value in ('nan', 'inf', '-inf'):
+                with self.subTest(flag=flag, value=value), contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit) as error:
+                    verify.main([flag, value])
+                self.assertEqual(error.exception.code, 2)
 
 if __name__ == '__main__': unittest.main()

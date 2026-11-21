@@ -33,7 +33,12 @@ class VersionIntegrationTests(unittest.TestCase):
             root = Path(temp) / "source"
             build = Path(temp) / "build"
             for relative in ("CMakeLists.txt", "engine/foundation/src/main.cpp",
-                             "engine/foundation/include/build_flags.hpp",
+                             "engine/foundation/include/poko/foundation/build_flags.hpp",
+                             "engine/rhi/include/poko/rhi/device/clear_backend_selection.hpp",
+                             "engine/rhi/include/poko/rhi/device/render_error.hpp",
+                             "engine/rhi/src/device/clear_backend_selection.cpp",
+                             "engine/render/include/poko/render/framegraph/frame_graph.hpp",
+                             "engine/render/src/framegraph/frame_graph.cpp",
                              "tools/version/cmake/generate_version.cmake"):
                 dst = root / relative
                 dst.parent.mkdir(parents=True, exist_ok=True)

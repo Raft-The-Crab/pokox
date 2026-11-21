@@ -115,7 +115,7 @@ On 2026-11-20, a dependency-free Linux GCC 11.5.0 / CMake 4.4.5 build passed all
 
 ## ENG-01 platform interface
 
-`engine/platform/include/poko/platform/i_platform.hpp` defines a small backend-independent, single-window lifecycle and close/resize event contract. `poko_platform` is a header-only CMake interface target. `pokox_platform_contract` compiles the public header and tests its use through a fake backend, including initialization, invalid window sizes, events and repeated shutdown. The test double is not an OS window implementation. Input, audio, timing and native graphics-surface interoperability are explicitly deferred.
+`engine/platform/include/poko/platform/window/i_platform.hpp` defines a small backend-independent, single-window lifecycle and close/resize event contract. `poko_platform` is a header-only CMake interface target. `pokox_platform_contract` compiles the public header and tests its use through a fake backend, including initialization, invalid window sizes, events and repeated shutdown. The test double is not an OS window implementation. Input, audio, timing and native graphics-surface interoperability are explicitly deferred.
 
 On 2026-11-20, a dependency-free Linux x64 GCC 11.5.0 and CMake 3.31.10 Debug build passed 13/13 CTest entries. Linux is the test host, not an added shipping target. MSVC, MSYS2 and Android builds have not been run for ENG-01. INF-02 and INF-04 acceptance remains outstanding. ENG-02 subsequently added an SDL window implementation; see below.
 
@@ -230,3 +230,15 @@ the blue clear color on the AMD Radeon GPU (sRGB pixels match the
 configured linear clear; 123 frames, 0 captured errors) — the ENG-03
 clear-color criterion is met on Windows MinGW. Still open: MSVC leg,
 first GitHub Actions run, Android, and resize recreation (ENG-05).
+
+## ENG-08 — experimental Vulkan triangle
+
+An opt-in graph-driven Vulkan triangle demo now consumes the ENG-07 SPIR-V artifacts. Linux software Vulkan produced a visually checked triangle and passed a three-resize smoke test; this is not Windows GPU or validation-layer acceptance. Build and run instructions and remaining limits are in `../engine/render/README.md` and `eng08-progress.md`.
+
+## ENG-09 — experimental Vulkan depth
+
+The opt-in desktop depth demonstration and its no-depth control are documented in `../engine/render/README.md` and `eng09-progress.md`. Software Vulkan pixel tests passed; hardware and validation-layer acceptance remain open.
+
+## ENG-10 — experimental Vulkan per-frame uniform
+
+The opt-in depth-tested per-frame uniform demo is documented in `../engine/render/README.md` and `eng10-progress.md`. Linux software Vulkan visual checks passed; target hardware and validation-layer acceptance remain open.

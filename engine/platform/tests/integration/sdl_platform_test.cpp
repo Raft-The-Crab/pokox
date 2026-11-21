@@ -1,4 +1,4 @@
-#include "poko/platform/sdl_platform.hpp"
+#include "poko/platform/window/sdl_platform.hpp"
 
 #include <SDL3/SDL.h>
 

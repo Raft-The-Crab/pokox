@@ -1,4 +1,4 @@
-#include "poko/platform/i_platform.hpp"
+#include "poko/platform/window/i_platform.hpp"
 
 #include <array>
 #include <climits>

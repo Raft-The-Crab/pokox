@@ -1,8 +1,8 @@
 # RHI — experimental Vulkan clear seed
 
-**Real Windows MinGW build and GPU smoke run recorded; visual acceptance
-and MSVC/Android remain pending.** This is still not completion of the full
-RHI or the clear-color gate. See `../../docs/eng03-windows-laptop-evidence.txt`.
+**A Windows MinGW Vulkan smoke run and blue-screen capture were recorded.**
+MSVC, independent validation-layer confirmation, Android and the full RHI remain
+unverified. See `../../docs/eng03-windows-laptop-evidence.txt`.
 
 ## Included
 
@@ -10,7 +10,7 @@ RHI or the clear-color gate. See `../../docs/eng03-windows-laptop-evidence.txt`.
 SDL platform. It validates the window's Vulkan intent and nonzero pixel size,
 maps native window properties, asks the pinned Diligent factory for one default
 immediate context/device and a no-depth swapchain, then binds, clears and presents.
-No shaders, geometry, frame graph, backend fallback or resize recreation is added.
+This Vulkan-only seed adds no shaders, geometry, frame graph or backend fallback; the separate experimental fallback demo is described below. Desktop Vulkan and OpenGL resize are experimental; see `../../docs/eng05-progress.md`.
 
 Native bridges are implemented for Win32 HWND, Android ANativeWindow and Linux
 X11 Display/32-bit XID. Linux Wayland is explicitly rejected: this pinned
@@ -26,9 +26,13 @@ intentionally desktop-only until an activity/native-entry-point integration exis
   owned before success is published. Failed/throwing initialization releases them.
 - Shutdown unbinds render targets, waits for the immediate context, then releases
   swapchain, context and device. It is repeatable and best-effort if idling fails.
-- Zero drawable size returns `not_drawable`; the demo waits rather than presents.
-- Pixel-size changes return `resize_required` before another clear. The demo
-  stops with exit code 2; ENG-05 owns resize recreation.
+- Zero drawable size or an SDL-minimized window returns `not_drawable`; the
+  demo waits rather than resizing or presenting until it can draw.
+- On desktop Vulkan, a pixel-size change unbinds and requests swapchain resize
+  before another clear. `resize_attempted` means no frame was submitted: check
+  graphics diagnostics before calling again. Exceptions or mismatched resulting
+  dimensions make the renderer fail closed until shutdown. Android still returns
+  `resize_required`, since orientation and lifecycle handling are not implemented.
 - Window identity changes are rejected. This does not permit destroying a real
   window while GPU objects still reference it; callers must preserve lifetime.
 - Diligent's clear/present calls return void. A success result means the calls
@@ -37,7 +41,7 @@ intentionally desktop-only until an activity/native-entry-point integration exis
   through Diligent diagnostics, and device-loss behavior need actual SDK/GPU
   verification. The demo now fails on captured error/fatal messages, including cleanup-time messages; see the diagnostics continuation below.
 
-## Desktop laptop build (not yet verified)
+## Desktop laptop build (MSVC path not yet verified)
 
 Use CMake 3.28+, a C++20 compiler, Git, Python for tests, a bootstrapped pinned
 vcpkg checkout as described in `../../docs/build.md`, a Vulkan-capable driver,
@@ -68,7 +72,7 @@ Diligent assertion while `--adapter 0` selected the real AMD Radeon GPU.
 
 For an explicitly validation-disabled diagnostic run, use `--no-validation`.
 Do not treat that as a successful validation-layer check. Omit `--frames` for
-an interactive run. With a finite frame count, early close/resize returns 2;
+an interactive run. With a finite frame count, early close returns 2;
 argument errors also return 2 and initialization/backend errors return 1.
 An expected run displays a blue background; submitted frames alone do not
 prove visual correctness. Retain stdout/stderr, device/driver details, a
@@ -107,7 +111,7 @@ The declaration subsets are not replacements for compiling against real SDKs.
 
 CTest registers three dependency-free renderer checks. The optional runner
 also covers CLI behavior and deliberate regressions. Default CTest registration
-is now expected to be 18 entries, or 20 with SDL enabled (before the full
+is now expected to be 20 entries, or 22 with SDL enabled (before the full
 dependency smoke-test entry); this is a static count, not a completed CTest run.
 See `../../docs/eng03-progress.md` for evidence and remaining acceptance work.
 
@@ -156,5 +160,11 @@ Run evidence-handling tests without SDKs:
 python3 engine/rhi/tests/unit/test_verify_desktop.py
 ```
 
-Expected static CTest registration is now 18 entries, or 20 with SDL enabled,
+Expected static CTest registration is now 20 entries, or 22 with SDL enabled,
 before any full dependency smoke-test entry. These are not completed CTest runs.
+
+## ENG-04 desktop fallback prototype (in progress)
+
+The opt-in `pokox_fallback_clear` demo wires Vulkan and desktop OpenGL adapters to `ClearBackendSelection`, using the same linear clear color and attempting OpenGL only after a failed Vulkan startup has been cleaned up. `--force-opengl` tests that backend directly. Failures during rendering do not cause a silent switch; Desktop Vulkan and OpenGL resize are experimental; real OpenGL resize remains unverified.
+
+This is an experimental desktop prototype, not ENG-04 acceptance. Linux supports X11/GLX; Windows WGL integration and the pinned Diligent context-version patch require target testing. Android OpenGL ES and lifecycle support are not implemented. See `../../docs/eng04-progress.md` for build commands, verification limits, safety considerations and remaining acceptance work.

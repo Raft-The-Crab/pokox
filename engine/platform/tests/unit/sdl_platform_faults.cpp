@@ -1,6 +1,6 @@
 // Compile the real sdl_platform.cpp against a test-only SDL function double.
 // These checks validate backend control flow, NOT real SDL/OS compatibility.
-#include "poko/platform/sdl_platform.hpp"
+#include "poko/platform/window/sdl_platform.hpp"
 #include <SDL3/SDL.h>
 #include <climits>
 #include <cstdio>

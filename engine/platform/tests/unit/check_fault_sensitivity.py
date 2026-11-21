@@ -6,7 +6,7 @@ args = parser.parse_args()
 r = Path(__file__).resolve().parents[4]
 workspace = tempfile.TemporaryDirectory(prefix='poko-platform-mutations-')
 work = Path(workspace.name)
-source=(r/'engine/platform/src/sdl_platform.cpp').read_text()
+source=(r/'engine/platform/src/window/sdl_platform.cpp').read_text()
 mutations={
 'duplicate_initialization': ('if (initialized_) return PlatformError::already_initialized;', 'if (false) return PlatformError::already_initialized;'),
 'shutdown_reference_leak': ('SDL_QuitSubSystem(SDL_INIT_VIDEO);', '// deliberately leaked reference'),

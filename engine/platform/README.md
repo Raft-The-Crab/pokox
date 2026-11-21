@@ -1,6 +1,6 @@
 # Platform module
 
-ENG-01 defines the backend-independent single-window `IPlatform` contract in `include/poko/platform/i_platform.hpp`. ENG-02 adds `SdlPlatform` in `include/poko/platform/sdl_platform.hpp` and `src/sdl_platform.cpp`, plus a standalone `pokox_window_demo`. The demo creates a blank, resizable window; it is not a renderer or game.
+ENG-01 defines the backend-independent single-window `IPlatform` contract in `include/poko/platform/window/i_platform.hpp`. ENG-02 adds `SdlPlatform` in `include/poko/platform/window/sdl_platform.hpp` and `src/window/sdl_platform.cpp`, plus a standalone `pokox_window_demo`. The demo creates a blank, resizable window; it is not a renderer or game.
 
 ## Build
 
@@ -34,8 +34,8 @@ Use an isolated X11 display; this test creates a unique window, resizes it, send
 - The platform object owns one SDL video subsystem reference and one window. Initialize, poll and shut it down on the main thread. Destruction releases its own resources; close and quit events are requests, not automatic destruction.
 - Only one platform instance should own the process-wide SDL event queue. The current pump consumes events it does not expose, including input; input is **not implemented**. SDL clients must not poll the same queue independently. This design must be revisited before input and other SDL event consumers are integrated.
 - Resize events report current logical and pixel dimensions. They can be duplicated or reflect the latest size rather than every intermediate size. A failed SDL size query causes that resize event to be skipped.
-- Window creation now accepts an explicit Vulkan intent as an ENG-03 prerequisite; the default remains a plain window. `SdlPlatform::native_window()` provides borrowed backend-specific access for future RHI integration. No GPU device, Vulkan surface, swapchain, Diligent renderer, D3D12/OpenGL backend or automatic fallback is implemented. Real Vulkan-window creation remains unverified. See `../../docs/eng03-progress.md`.
-- Desktop SDL window behavior has been tested only on a Linux virtual X11 display. Windows/MSVC, MSYS2, Android activity/lifecycle integration, real hardware, high-DPI behavior and device-specific failure paths remain unverified.
+- Window creation accepts explicit Vulkan and OpenGL intents; the default remains a plain window. `SdlPlatform::native_window()` provides borrowed access to the separate experimental RHI renderers. The platform module itself does not own GPU resources. The Vulkan and OpenGL fallback prototypes and their limits are described in `../rhi/README.md` and `../../docs/eng04-progress.md`.
+- SDL behavior has been tested on Linux and a Windows MSYS2/MinGW laptop, as described above. The latest changes, Windows MSVC, Android activity/lifecycle integration, high-DPI behavior and device-specific failure paths remain unverified on target devices.
 
 ## ENG-01 / ENG-02 lifecycle hardening
 

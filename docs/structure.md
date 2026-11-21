@@ -1,6 +1,6 @@
 # Actual directory structure
 
-This archive contains **2,710 directories** under the project root, including nested directories. Directories alone do not imply implemented components; see `build.md` for the current build status. Empty leaf directories contain `.gitkeep` markers so Git can retain them.
+This archive contains **2,713 directories** under the project root, including nested directories. Directories alone do not imply implemented components; see `build.md` for the current build status. Empty leaf directories contain `.gitkeep` markers so Git can retain them.
 
 ## Organization
 
@@ -20,7 +20,7 @@ This archive contains **2,710 directories** under the project root, including ne
 | `client` | 98 |
 | `cmake` | 9 |
 | `docs` | 92 |
-| `engine` | 691 |
+| `engine` | 694 |
 | `mod` | 264 |
 | `mute` | 189 |
 | `server` | 389 |
@@ -30,6 +30,26 @@ This archive contains **2,710 directories** under the project root, including ne
 ## Maintenance
 
 When directories are added, removed or moved, update this inventory, counts and path mapping in the same change. Update the relevant plans and build status when implementation or decisions change.
+
+## Engine source organization (2026-11-21)
+
+- Platform window headers and sources are under `engine/platform/include/poko/platform/window/` and `engine/platform/src/window/`.
+- The Vulkan clear seed is under `engine/rhi/include/poko/rhi/device/` and `engine/rhi/src/device/`; diagnostic headers and sources are under the corresponding `debug/` folders.
+- Build flags are under `engine/foundation/include/poko/foundation/`; foundation tests are under `tests/unit/` and `tests/integration/`.
+- Original public header paths remain as forwarding headers. The cross-module include-compatibility test is `engine/rhi/tests/integration/public_header_compat.cpp`.
+- Earlier dated evidence reflects paths at the time of each run; use current CMake targets and scripts to reproduce checks. No directories were added or removed in this pass.
+
+## ENG-04 fallback prototype (2026-11-21)
+
+- `engine/rhi/include/poko/rhi/device/render_error.hpp` — backend-neutral clear errors.
+- `engine/rhi/include/poko/rhi/device/clear_backend_selection.hpp` and `engine/rhi/src/device/clear_backend_selection.cpp` — selection and cleanup protocol.
+- `engine/rhi/tests/unit/clear_backend_selection.cpp` — startup, cleanup and runtime behavior tests using doubles.
+- `engine/rhi/include/poko/rhi/device/opengl_clear_renderer.hpp` and `engine/rhi/src/device/opengl_clear_renderer.cpp` — experimental desktop GL clear.
+- `engine/rhi/include/poko/rhi/device/fallback_clear_backends.hpp`, `engine/rhi/src/device/fallback_clear_backends.cpp` and `fallback_clear_demo.cpp` — concrete adapters and opt-in desktop demo.
+- `engine/rhi/tests/unit/opengl_clear_faults.cpp` and `engine/rhi/tests/fakes/EngineFactoryOpenGL.h` — fault-injection tests and test-only declarations.
+- `docs/eng04-progress.md` — scope, evidence and unimplemented work.
+
+No new permanent directories were added.
 
 ## Platform test additions (2026-11-20)
 
@@ -49,8 +69,8 @@ no new directories or renderer module were added.
 ## ENG-03 clear-seed additions (2026-11-20)
 
 - `engine/rhi/README.md` — experimental build/run and ownership guide.
-- `engine/rhi/include/poko/rhi/vulkan_clear_renderer.hpp` — SDL/Diligent-free public seed header.
-- `engine/rhi/src/vulkan_clear_renderer.cpp` and `vulkan_clear_demo.cpp` — opt-in source candidate.
+- `engine/rhi/include/poko/rhi/device/vulkan_clear_renderer.hpp` — SDL/Diligent-free public seed header.
+- `engine/rhi/src/device/vulkan_clear_renderer.cpp` and `vulkan_clear_demo.cpp` — opt-in source candidate.
 - `engine/rhi/tests/fakes` — isolated test-owned dependencies
 - `engine/rhi/tests/fakes/SDL3` — test-only entry-point shim
 - `engine/rhi/tests/fakes/` — isolated test-owned Diligent declarations and SDL entry shim.
@@ -59,7 +79,7 @@ no new directories or renderer module were added.
 
 ## ENG-03 diagnostics/evidence files (2026-11-20)
 
-- `engine/rhi/include/poko/rhi/vulkan_diagnostics.hpp` and `engine/rhi/src/vulkan_diagnostics.cpp` — exclusive graphics message capture.
+- `engine/rhi/include/poko/rhi/debug/vulkan_diagnostics.hpp` and `engine/rhi/src/debug/vulkan_diagnostics.cpp` — exclusive graphics message capture.
 - `engine/rhi/scripts/verify_desktop.py` — fresh-build laptop evidence runner.
 - `engine/rhi/tests/unit/test_verify_desktop.py` — evidence parser/report/process tests.
 - `docs/eng03-diagnostics-evidence.txt` — outcomes and remaining validation limits.
@@ -72,7 +92,7 @@ Paths are relative to the project root. Purposes from the original plan are reta
 
 - `.github` — container for .github
 - `.github/actions` — composite actions
-- `.github/issue_templates` — issue templates
+- `.github/ISSUE_TEMPLATE` — GitHub issue templates
 - `.github/workflows` — CI workflows
 - `applications` — container for applications
 - `applications/android` — container for android
@@ -1302,11 +1322,13 @@ Paths are relative to the project root. Purposes from the original plan are reta
 - `engine/render/include/poko/render/terrain` — render: terrain public API
 - `engine/render/include/poko/render/vegetation` — render: vegetation public API
 - `engine/render/scripts` — render: scripts
+- `engine/render/shaders` — GLSL shader inputs for build-time compilation
 - `engine/render/src` — render: implementation
 - `engine/render/src/camera` — render: camera implementation
 - `engine/render/src/culling` — render: culling implementation
 - `engine/render/src/debug` — render: debug implementation
 - `engine/render/src/framegraph` — render: framegraph implementation
+- `engine/render/src/passes` — experimental render-pass demos
 - `engine/render/src/lighting` — render: lighting implementation
 - `engine/render/src/material` — render: material implementation
 - `engine/render/src/particles` — render: particles implementation
@@ -2776,3 +2798,17 @@ Paths are relative to the project root. Purposes from the original plan are reta
 - `tools/version/tests/integration` — integration tests
 - `tools/version/tests/regression` — regression tests
 - `tools/version/tests/unit` — isolated unit tests
+
+## ENG-09 additions (2026-11-21)
+
+- `engine/render/shaders/depth.vert` and `depth.frag` — depth-demo shader sources.
+- `engine/rhi/tests/fakes/triangle/` — isolated triangle-pass test declarations; the related test is `engine/rhi/tests/unit/vulkan_triangle_pass_test.cpp`.
+- `docs/eng01-eng08-review.md` and `docs/eng09-progress.md` — audit, evidence and remaining limitations.
+
+## ENG-10 additions (2026-11-21)
+
+- `engine/render/shaders/uniform.vert` and `uniform.frag` — opt-in animated uniform demo shaders.
+- `engine/render/tests/integration/test_uniform_x11_visual.py` — isolated-display color/depth visual smoke test.
+- `docs/eng10-progress.md` — implementation scope, evidence and remaining limitations.
+
+No new permanent directories were added.
