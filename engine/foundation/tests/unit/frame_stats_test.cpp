@@ -34,7 +34,7 @@ int main() {
   }
   {  // window wrap: after kWindow+ samples the mean covers only the tail
     FrameStats s;
-    for (int i = 0; i < FrameStats::kWindow; ++i) s.record_cpu(0.001);
+    for (std::size_t i = 0; i < FrameStats::kWindow; ++i) s.record_cpu(0.001);
     for (int i = 0; i < 10; ++i) s.record_cpu(0.100);
     CHECK(s.frames() == FrameStats::kWindow + 10);
     // Last 120 samples: 110 of 1 ms + 10 of 100 ms → (110+1000)/120 ms

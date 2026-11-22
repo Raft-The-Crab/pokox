@@ -173,3 +173,13 @@ Only the font atlas texture is supported; other `ImTextureID`s and non-reset dra
 ## ENG-12: ImGui F1 toggle and release strip
 
 With `POKO_DEBUG=ON`, the `pokox_imgui_demo` window's demo panel can be toggled with **F1** (edge-triggered via `SDL_GetKeyboardState`); hiding it still runs an empty ImGui frame so no stale draw data is presented. With `POKO_DEBUG=OFF` every ImGui path is compiled out — `vulkan_imgui_pass.cpp` is excluded, `imgui::imgui` is not linked, and the demo runs the scene-only frame graph — so release binaries contain no ImGui symbols. See `../../docs/eng12-progress.md`.
+
+## ENG-21: Directional light prototype
+
+Rebuild the `pokox_cube` target and shader artifacts together. Run `pokox_cube --light 0 0 1` to set a world-space direction from the surface toward the light; left/right arrows rotate it live. Left-drag orbits the camera and the wheel zooms. Zero or non-finite directions are rejected. The default direction is approximately `(0.4, 0.7, 0.6)`, with a fixed ambient component.
+
+The Vulkan-only prototype assumes identity model transforms and does not provide shadows or a material system. Software-Vulkan evidence, audit findings and outstanding target-device gates are in `../../docs/eng01-eng21-audit-2026-11-22.md`.
+
+## ENG-22: Lit-cube golden (opt-in)
+
+`POKO_WITH_CUBE_GOLDEN=ON` registers a real Vulkan screenshot comparison on Linux/X11. It is byte-exact and specific to the pinned llvmpipe software stack, not a universal GPU golden. `pokox_cube --golden-view` fixes the camera and disables interactive orbit/light changes for capture. See `../../docs/eng22-progress.md` for setup, verification, deliberate updates and open CI/platform gates.

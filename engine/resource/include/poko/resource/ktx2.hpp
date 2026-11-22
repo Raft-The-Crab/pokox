@@ -12,10 +12,10 @@ namespace poko::resource {
 // texture path. Basis supercompression (the real AST-02 pipeline) is rejected
 // explicitly; callers get a clear error, not a silent fallback.
 //
-// Supports vkFormat R8G8B8A8_UNORM (37) and B8G8R8A8_UNORM (44), any
-// width/height/depth, mip level 0 only (additional levels are skipped but
-// counted). All offsets/lengths are bounds-checked; files are capped at
-// 64 MiB. Never throws.
+// Supports non-array 2D R8G8B8A8/B8G8R8A8 UNORM and SRGB textures with
+// stored mip levels. File data is capped at 64 MiB. The reader checks the
+// index and DFD bounds, but does not validate DFD semantics or interpret
+// key/value metadata such as orientation. Never throws.
 
 enum class Ktx2Format : std::uint32_t {
   rgba8_unorm = 37,   // VK_FORMAT_R8G8B8A8_UNORM
@@ -37,8 +37,8 @@ struct Ktx2Image {
   std::vector<Ktx2Mip> mips;  // index 0 is the base level
 };
 
-// Loads level 0 of a KTX2 file. Returns nullptr and fills `error` on any
-// malformed input, unsupported format, or I/O failure.
+// Loads the supported stored mips. Returns nullptr on unsupported input,
+// I/O failure, or checked structural errors; error text is best effort.
 [[nodiscard]] std::unique_ptr<Ktx2Image> load_ktx2(
     const std::filesystem::path& path, std::string* error = nullptr) noexcept;
 

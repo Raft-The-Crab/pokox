@@ -68,3 +68,7 @@ Status: implemented and verified on the real AMD Vulkan GPU.
   async texture streaming via ENG-17 queue.
 - No texture streaming integration with ENG-17's async queue yet.
 - `set_texture` replaces GPU objects on each call (no hot-swap diffing).
+
+## Integration review, 2026-11-22
+
+The earlier 96-byte-header claim and fixtures were incorrect. The reader now uses the Khronos 80-byte layout and non-array 2D fields, with bounds and regression tests. Corrected code has not yet been tested against independent KTX tooling or on a GPU. See `project-review-2026-11-22.md`.

@@ -1,5 +1,6 @@
 #include "poko/rhi/device/vulkan_mesh_pass.hpp"
 #include "poko/rhi/debug/vulkan_diagnostics.hpp"
+#include "poko/rhi/directional_light.hpp"
 #include "read_spirv.hpp"
 #include <EngineFactoryVk.h>
 #include <RefCntAutoPtr.hpp>
@@ -8,6 +9,7 @@
 #include <array>
 #include <cstdint>
 #include <cstring>
+#include <limits>
 #include <string>
 #include <utility>
 #include <vector>
@@ -21,9 +23,12 @@ struct VulkanMeshPass::Impl {
   VulkanDiagnostics& diagnostics;
   Diligent::RefCntAutoPtr<Diligent::IPipelineState> pipeline;
   Diligent::RefCntAutoPtr<Diligent::IBuffer> vertex_buffer, index_buffer;
-  Diligent::RefCntAutoPtr<Diligent::IBuffer> camera_buffer;
+  Diligent::RefCntAutoPtr<Diligent::IBuffer> camera_buffer, light_buffer;
+  DirectionalLight light;
   Diligent::RefCntAutoPtr<Diligent::IShaderResourceBinding> binding;
-  std::array<float, 16> view_proj{};
+  // Identity until set_view_proj() — a zero matrix would collapse the draw.
+  std::array<float, 16> view_proj{1.f,0.f,0.f,0.f, 0.f,1.f,0.f,0.f,
+                                  0.f,0.f,1.f,0.f, 0.f,0.f,0.f,1.f};
   Diligent::TEXTURE_FORMAT format = Diligent::TEX_FORMAT_UNKNOWN;
   Diligent::TEXTURE_FORMAT depth_format = Diligent::TEX_FORMAT_UNKNOWN;
   Diligent::IRenderDevice* owner = nullptr;
@@ -46,25 +51,30 @@ struct VulkanMeshPass::Impl {
     if (current_format == Diligent::TEX_FORMAT_UNKNOWN ||
         current_depth_format == Diligent::TEX_FORMAT_UNKNOWN || !depth_view)
       return RenderError::backend_failure;
+    // Resources created below belong to this device even if setup fails.
+    owner = &device;
 
     if (buffers_dirty || !vertex_buffer || !index_buffer) {
       // ENG-19: immutable vertex/index buffers, uploaded once per set_mesh().
+      Diligent::RefCntAutoPtr<Diligent::IBuffer> created_vertices, created_indices;
       Diligent::BufferDesc vb_desc{};
       vb_desc.Name = "Poko mesh vertices";
       vb_desc.Size = mesh_vertices.size() * kVertexStride;
       vb_desc.BindFlags = Diligent::BIND_VERTEX_BUFFER;
       vb_desc.Usage = Diligent::USAGE_IMMUTABLE;
       Diligent::BufferData vb_data{mesh_vertices.data(), vb_desc.Size, nullptr};
-      device.CreateBuffer(vb_desc, &vb_data, &vertex_buffer);
-      if (!vertex_buffer || diagnostics.messages().errors) return RenderError::backend_failure;
+      device.CreateBuffer(vb_desc, &vb_data, &created_vertices);
+      if (!created_vertices || diagnostics.messages().errors) return RenderError::backend_failure;
       Diligent::BufferDesc ib_desc{};
       ib_desc.Name = "Poko mesh indices";
       ib_desc.Size = mesh_indices.size() * sizeof(std::uint32_t);
       ib_desc.BindFlags = Diligent::BIND_INDEX_BUFFER;
       ib_desc.Usage = Diligent::USAGE_IMMUTABLE;
       Diligent::BufferData ib_data{mesh_indices.data(), ib_desc.Size, nullptr};
-      device.CreateBuffer(ib_desc, &ib_data, &index_buffer);
-      if (!index_buffer || diagnostics.messages().errors) return RenderError::backend_failure;
+      device.CreateBuffer(ib_desc, &ib_data, &created_indices);
+      if (!created_indices || diagnostics.messages().errors) return RenderError::backend_failure;
+      vertex_buffer = std::move(created_vertices);
+      index_buffer = std::move(created_indices);
       buffers_dirty = false;
     }
 
@@ -93,6 +103,9 @@ struct VulkanMeshPass::Impl {
       info.GraphicsPipeline.DepthStencilDesc.DepthWriteEnable = Diligent::True;
       info.GraphicsPipeline.DepthStencilDesc.DepthFunc = Diligent::COMPARISON_FUNC_LESS;
       info.GraphicsPipeline.RasterizerDesc.CullMode = Diligent::CULL_MODE_BACK;
+      // Mesh faces are authored CCW from outside. The default is clockwise,
+      // which culls the exterior and exposes the unlit back faces.
+      info.GraphicsPipeline.RasterizerDesc.FrontCounterClockwise = Diligent::True;
       info.GraphicsPipeline.PrimitiveTopology = Diligent::PRIMITIVE_TOPOLOGY_TRIANGLE_LIST;
       info.GraphicsPipeline.InputLayout = Diligent::InputLayoutDesc{kLayout, 2};
       info.pVS = vs; info.pPS = ps;
@@ -106,16 +119,33 @@ struct VulkanMeshPass::Impl {
       cam_desc.BindFlags = Diligent::BIND_UNIFORM_BUFFER;
       cam_desc.Usage = Diligent::USAGE_DYNAMIC;
       cam_desc.CPUAccessFlags = Diligent::CPU_ACCESS_WRITE;
-      device.CreateBuffer(cam_desc, nullptr, &camera_buffer);
-      if (!camera_buffer || diagnostics.messages().errors) return RenderError::backend_failure;
+      Diligent::RefCntAutoPtr<Diligent::IBuffer> created_camera, created_light;
+      Diligent::RefCntAutoPtr<Diligent::IShaderResourceBinding> created_binding;
+      device.CreateBuffer(cam_desc, nullptr, &created_camera);
+      if (!created_camera || diagnostics.messages().errors) return RenderError::backend_failure;
       auto* variable = created->GetStaticVariableByName(Diligent::SHADER_TYPE_VERTEX, "Camera");
       if (!variable || diagnostics.messages().errors) return RenderError::backend_failure;
-      variable->Set(camera_buffer);
+      variable->Set(created_camera);
       if (diagnostics.messages().errors) return RenderError::backend_failure;
-      created->CreateShaderResourceBinding(&binding, true);
-      if (!binding || diagnostics.messages().errors) return RenderError::backend_failure;
-      pipeline = std::move(created); format = current_format;
-      depth_format = current_depth_format; owner = &device;
+      Diligent::BufferDesc light_desc{};
+      light_desc.Name = "Poko directional light";
+      light_desc.Size = sizeof(float) * 4;
+      light_desc.BindFlags = Diligent::BIND_UNIFORM_BUFFER;
+      light_desc.Usage = Diligent::USAGE_DYNAMIC;
+      light_desc.CPUAccessFlags = Diligent::CPU_ACCESS_WRITE;
+      device.CreateBuffer(light_desc, nullptr, &created_light);
+      if (!created_light || diagnostics.messages().errors) return RenderError::backend_failure;
+      auto* light_var = created->GetStaticVariableByName(Diligent::SHADER_TYPE_PIXEL, "DirectionalLight");
+      if (!light_var || diagnostics.messages().errors) return RenderError::backend_failure;
+      light_var->Set(created_light);
+      if (diagnostics.messages().errors) return RenderError::backend_failure;
+      created->CreateShaderResourceBinding(&created_binding, true);
+      if (!created_binding || diagnostics.messages().errors) return RenderError::backend_failure;
+      pipeline = std::move(created);
+      camera_buffer = std::move(created_camera);
+      light_buffer = std::move(created_light);
+      binding = std::move(created_binding);
+      format = current_format; depth_format = current_depth_format;
     }
 
     auto* view = &target;
@@ -132,6 +162,12 @@ struct VulkanMeshPass::Impl {
     if (!mapped) return RenderError::backend_failure;
     if (!diagnostics.messages().errors) std::memcpy(mapped, view_proj.data(), sizeof(view_proj));
     context.UnmapBuffer(camera_buffer, Diligent::MAP_WRITE);
+    if (diagnostics.messages().errors) return RenderError::backend_failure;
+    mapped = nullptr;
+    context.MapBuffer(light_buffer, Diligent::MAP_WRITE, Diligent::MAP_FLAG_DISCARD, mapped);
+    if (!mapped) return RenderError::backend_failure;
+    if (!diagnostics.messages().errors) std::memcpy(mapped, light.data().data(), sizeof(float) * 4);
+    context.UnmapBuffer(light_buffer, Diligent::MAP_WRITE);
     if (diagnostics.messages().errors) return RenderError::backend_failure;
     context.CommitShaderResources(binding, Diligent::RESOURCE_STATE_TRANSITION_MODE_TRANSITION);
     if (diagnostics.messages().errors) return RenderError::backend_failure;
@@ -157,6 +193,9 @@ VulkanMeshPass::VulkanMeshPass(const std::string& vs, const std::string& fs, Vul
     : impl_(std::make_unique<Impl>(vs, fs, d)) {}
 VulkanMeshPass::~VulkanMeshPass() = default;
 
+bool VulkanMeshPass::set_light_direction(float x, float y, float z) noexcept {
+  return impl_->light.set_direction(x, y, z);
+}
 void VulkanMeshPass::set_view_proj(const float* mat16) noexcept {
   if (!mat16) return;
   auto& impl = *impl_;
@@ -165,8 +204,24 @@ void VulkanMeshPass::set_view_proj(const float* mat16) noexcept {
 void VulkanMeshPass::set_mesh(const MeshVertex* vertices, std::size_t vertex_count,
                               const std::uint32_t* indices, std::size_t index_count) {
   auto& impl = *impl_;
-  impl.mesh_vertices.assign(vertices, vertices + vertex_count);
-  impl.mesh_indices.assign(indices, indices + index_count);
+  // Validate counts before reading raw pointers, and retain the old mesh if
+  // allocation throws. Invalid/empty input intentionally clears the mesh.
+  bool valid = vertices && indices && vertex_count && index_count &&
+      index_count <= std::numeric_limits<Diligent::Uint32>::max() &&
+      vertex_count <= std::numeric_limits<std::size_t>::max() / sizeof(MeshVertex) &&
+      index_count <= std::numeric_limits<std::size_t>::max() / sizeof(std::uint32_t);
+  if (valid) {
+    for (std::size_t i = 0; i < index_count; ++i)
+      if (indices[i] >= vertex_count) { valid = false; break; }
+  }
+  std::vector<MeshVertex> vertices_copy;
+  std::vector<std::uint32_t> indices_copy;
+  if (valid) {
+    vertices_copy.assign(vertices, vertices + vertex_count);
+    indices_copy.assign(indices, indices + index_count);
+  }
+  impl.mesh_vertices.swap(vertices_copy);
+  impl.mesh_indices.swap(indices_copy);
   impl.buffers_dirty = true;
   impl.vertex_buffer = Diligent::RefCntAutoPtr<Diligent::IBuffer>();
   impl.index_buffer = Diligent::RefCntAutoPtr<Diligent::IBuffer>();

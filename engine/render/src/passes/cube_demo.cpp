@@ -1,4 +1,4 @@
-// ENG-19: cube demo — renders an indexed mesh with per-vertex normals.
+// ENG-19/21/22: indexed cube, adjustable light and fixed golden view.
 // Default geometry is a builtin 24-vertex cube; --mesh file.pmes loads a
 // hand-written PMES binary instead (positions + normals + u32 indices).
 #include "poko/platform/window/sdl_platform.hpp"
@@ -6,12 +6,14 @@
 #include "poko/rhi/debug/vulkan_diagnostics.hpp"
 #include "poko/rhi/device/vulkan_clear_renderer.hpp"
 #include "poko/rhi/device/vulkan_mesh_pass.hpp"
+#include "poko/rhi/directional_light.hpp"
 #include "poko/foundation/config.hpp"
 #include "poko/foundation/config_logging.hpp"
 #include "poko/resource/pokomesh.hpp"
 #include "poko/render/camera.hpp"
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
+#include <algorithm>
 #include <charconv>
 #include <chrono>
 #include <cmath>
@@ -71,11 +73,26 @@ int main(int argc, char** argv) {
   using namespace poko;
   std::string vertex, fragment, config_path, mesh_path;
   std::uint32_t limit = 0;
+  bool golden_view = false;
   rhi::ClearConfig config{};
+  rhi::DirectionalLight light;
   config::Overrides overrides;
   config.enable_depth = true;
   for (int i = 1; i < argc; ++i) {
     const std::string_view arg{argv[i]};
+    if (arg == "--golden-view") { golden_view = true; continue; }
+    if (arg == "--light" && i + 3 < argc) {
+      float value[3]{};
+      bool valid = true;
+      for (auto& component : value) {
+        const std::string_view text{argv[++i]};
+        const auto result = std::from_chars(text.data(), text.data() + text.size(), component);
+        valid = valid && result.ec == std::errc{} && result.ptr == text.data() + text.size();
+      }
+      if (valid && light.set_direction(value[0], value[1], value[2])) continue;
+      std::fputs("--light requires three finite components and a nonzero direction.\n", stderr);
+      return 2;
+    }
     if (arg == "--no-validation") { overrides.validation = false; overrides.validation_set = true; continue; }
     if (arg == "--adapter" && i + 1 < argc) {
       const std::string_view value{argv[++i]};
@@ -91,7 +108,7 @@ int main(int argc, char** argv) {
       const auto parsed = std::from_chars(value.data(), value.data() + value.size(), limit);
       if (parsed.ec == std::errc{} && parsed.ptr == value.data() + value.size() && limit) continue;
     }
-    std::fprintf(stderr, "Usage: pokox_cube --vertex file.spv --fragment file.spv [--mesh file.pmes] [--frames positive-integer] [--adapter index] [--no-validation] [--config file.cbor]\n");
+    std::fprintf(stderr, "Usage: pokox_cube --vertex file.spv --fragment file.spv [--mesh file.pmes] [--frames positive-integer] [--adapter index] [--no-validation] [--config file.cbor] [--light x y z] [--golden-view]\n");
     return 2;
   }
   if (vertex.empty()) vertex = POKO_MESH_VERTEX_SPV;
@@ -120,6 +137,8 @@ int main(int argc, char** argv) {
   try {
     // This scope releases the pipeline before the renderer and window.
     rhi::VulkanMeshPass cube{vertex, fragment, diagnostics};
+    const auto& initial_light = light.data();
+    if (!cube.set_light_direction(initial_light[0], initial_light[1], initial_light[2])) return 2;
     if (!mesh_path.empty()) {
       std::string mesh_error;
       auto mesh = resource::load_pokomesh(mesh_path, &mesh_error);
@@ -155,8 +174,11 @@ int main(int argc, char** argv) {
     render::FrameGraph graph;
     rhi::RenderError frame_result = rhi::RenderError::not_initialized;
     render::OrbitCamera camera;
-    camera.set_aspect(static_cast<float>(settings.window_width) /
-                      static_cast<float>(settings.window_height));
+    if (golden_view) camera.zoom(-6.f);  // deterministic full-cube composition
+    camera.set_viewport(settings.window_width, settings.window_height);
+    platform::WindowSize actual_size{};
+    if (window.get_window_size(actual_size) == platform::PlatformError::none)
+      camera.set_viewport(actual_size.pixel_width, actual_size.pixel_height);
     const auto added = graph.add_pass({"forward mesh", {},
         {"swapchain color", "depth"}, {},
         [&] {
@@ -167,7 +189,9 @@ int main(int argc, char** argv) {
     if (added != render::FrameGraphError::none || graph.compile().error != render::FrameGraphError::none) {
       std::fputs("Could not compile mesh frame graph.\n", stderr); return 1;
     }
-    std::puts("Vulkan mesh: shaded cube (normals drive the lambert term). Close to exit.");
+    std::puts(golden_view ? "Vulkan mesh: fixed golden view. Close to exit." :
+              "Vulkan mesh: left-drag orbits; arrow keys rotate the world-space light. Close to exit.");
+    auto previous = std::chrono::steady_clock::now();
     bool running = true;
     while (running) {
       const auto tick = std::chrono::steady_clock::now();
@@ -177,12 +201,27 @@ int main(int argc, char** argv) {
             event.type == platform::EventType::window_close_requested) running = false;
         // ENG-20: left-drag orbits, wheel dollies. Motion arrives only while
         // the left button is held (platform gates on SDL_BUTTON_LMASK).
-        if (event.type == platform::EventType::mouse_motion)
+        if (event.type == platform::EventType::window_resized)
+          camera.set_viewport(event.size.pixel_width, event.size.pixel_height);
+        if (!golden_view && event.type == platform::EventType::mouse_motion)
           camera.orbit(event.dx * 0.01f, -event.dy * 0.01f);
-        if (event.type == platform::EventType::mouse_wheel)
+        if (!golden_view && event.type == platform::EventType::mouse_wheel)
           camera.zoom(event.wheel);
       }
       if (!running) break;
+      const float elapsed = std::min(0.1f, std::chrono::duration<float>(tick - previous).count());
+      previous = tick;
+      const bool* keys = SDL_GetKeyboardState(nullptr);
+      const int turn = static_cast<int>(keys[SDL_SCANCODE_RIGHT]) - static_cast<int>(keys[SDL_SCANCODE_LEFT]);
+      if (!golden_view && turn != 0) {
+        const auto direction = light.data();
+        const float angle = static_cast<float>(turn) * elapsed * 1.5f;
+        const float x = direction[0] * std::cos(angle) + direction[2] * std::sin(angle);
+        const float z = -direction[0] * std::sin(angle) + direction[2] * std::cos(angle);
+        if (!light.set_direction(x, direction[1], z) || !cube.set_light_direction(x, direction[1], z)) {
+          std::fputs("Invalid light direction.\n", stderr); code = 1; break;
+        }
+      }
       if (diagnostics.messages().errors) { code = 1; break; }
       const auto executed = graph.execute();
       if (executed.error != render::FrameGraphError::none || executed.completed != 1 ||

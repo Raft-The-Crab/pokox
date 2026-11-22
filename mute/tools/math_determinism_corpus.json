@@ -1,0 +1,146 @@
+[
+  {
+    "op": "sin",
+    "input": "0000000000000000"
+  },
+  {
+    "op": "sin",
+    "input": "8000000000000000"
+  },
+  {
+    "op": "sin",
+    "input": "0000000000000001"
+  },
+  {
+    "op": "sin",
+    "input": "8000000000000001"
+  },
+  {
+    "op": "sin",
+    "input": "0010000000000000"
+  },
+  {
+    "op": "sin",
+    "input": "3fe921fb54442d18"
+  },
+  {
+    "op": "sin",
+    "input": "bfe921fb54442d18"
+  },
+  {
+    "op": "sin",
+    "input": "3ff0000000000000"
+  },
+  {
+    "op": "sin",
+    "input": "bff0000000000000"
+  },
+  {
+    "op": "sin",
+    "input": "3ff921fb54442d18"
+  },
+  {
+    "op": "sin",
+    "input": "400921fb54442d18"
+  },
+  {
+    "op": "sin",
+    "input": "400921fb54442d19"
+  },
+  {
+    "op": "sin",
+    "input": "41dfffffffc00000"
+  },
+  {
+    "op": "sin",
+    "input": "4415af1d78b58c40"
+  },
+  {
+    "op": "sin",
+    "input": "7fefffffffffffff"
+  },
+  {
+    "op": "sin",
+    "input": "7ff0000000000000"
+  },
+  {
+    "op": "sin",
+    "input": "fff0000000000000"
+  },
+  {
+    "op": "sin",
+    "input": "7ff8000000000000"
+  },
+  {
+    "op": "cos",
+    "input": "0000000000000000"
+  },
+  {
+    "op": "cos",
+    "input": "8000000000000000"
+  },
+  {
+    "op": "cos",
+    "input": "0000000000000001"
+  },
+  {
+    "op": "cos",
+    "input": "8000000000000001"
+  },
+  {
+    "op": "cos",
+    "input": "0010000000000000"
+  },
+  {
+    "op": "cos",
+    "input": "3fe921fb54442d18"
+  },
+  {
+    "op": "cos",
+    "input": "bfe921fb54442d18"
+  },
+  {
+    "op": "cos",
+    "input": "3ff0000000000000"
+  },
+  {
+    "op": "cos",
+    "input": "bff0000000000000"
+  },
+  {
+    "op": "cos",
+    "input": "3ff921fb54442d18"
+  },
+  {
+    "op": "cos",
+    "input": "400921fb54442d18"
+  },
+  {
+    "op": "cos",
+    "input": "400921fb54442d19"
+  },
+  {
+    "op": "cos",
+    "input": "41dfffffffc00000"
+  },
+  {
+    "op": "cos",
+    "input": "4415af1d78b58c40"
+  },
+  {
+    "op": "cos",
+    "input": "7fefffffffffffff"
+  },
+  {
+    "op": "cos",
+    "input": "7ff0000000000000"
+  },
+  {
+    "op": "cos",
+    "input": "fff0000000000000"
+  },
+  {
+    "op": "cos",
+    "input": "7ff8000000000000"
+  }
+]

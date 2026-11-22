@@ -1,0 +1,18 @@
+@state var s:i32=1;
+@state var a:i32=0;
+@state var b:i32=0;
+@state var c:i32=0;
+@state var n:i32=0;
+fn tick()->i32 {
+  n=n+1;
+  s=(s*31+n*7+13)%46336;
+  var r:i32=s%251;
+  var q:i32=(s/251)%64;
+  if r<128 { a=(a+r*3+q)%1000003; } else { a=(a+r+q*5)%1000003; }
+  var k:i32=0;
+  var lim:i32=r%9;
+  while k<lim { c=(c+k*k+q)%1000003; k=k+1; }
+  b=(b*3+a+c)%1000003;
+  return (a+b*7+c*13+n)%2147483647;
+}
+tick()

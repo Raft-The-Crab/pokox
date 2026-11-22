@@ -39,3 +39,175 @@ To complete ENG-04, build/run the actual fallback on Windows with a suitable Ope
 Linux x64, GCC 11.5.0, CMake 3.31.10: the default Debug build passed 26/26 CTest entries; the SDL 3.4.20-enabled build passed 28/28 using SDL's dummy video driver. The new OpenGL/native-platform and demo tests use fakes, including both Win32 and Linux branches and simulated Vulkan failure. The platform and Vulkan-seed fault-sensitivity mutations were caught. The Windows WGL patch anchor matched the pinned source in a local text check; that is not a Windows build. These results are not real Win32, GLX, GPU, Android or visual validation.
 
 At this earlier check, the fallback, Vulkan, diagnostics and demo translation units compiled as objects against real SDL and Diligent headers, but the linked graphics build and runtime had not yet completed. The later ENG-01–ENG-04 audit completed a Linux linked build and a software Vulkan smoke test; see `eng01-eng04-audit.md` for results and the unsuccessful real GL attempt.
+
+## Android OpenGL ES primitive — 2026-11-22 (physical device, offscreen)
+
+First real Android GPU evidence for the ENG-04 fallback direction. New files:
+
+- `engine/rhi/include/poko/rhi/device/opengles_clear_renderer.hpp` and
+  `engine/rhi/src/device/opengles_clear_renderer.cpp`: an EGL + OpenGL ES 3.2
+  clear renderer over an offscreen EGL **pbuffer** surface (320x240). There is
+  no ANativeWindow, swapchain, surface lifecycle or activity integration yet;
+  `clear_and_present()` clears and `glFinish`es without a real present.
+  Non-Android builds compile to an `unsupported_window_system` stub.
+- `engine/rhi/src/device/opengles_clear_demo.cpp`: `pokox_gles_clear` clears N
+  frames with the same linear color as the desktop fallback demo
+  ({0.035,0.12,0.28,1}) and verifies the center pixel via `glReadPixels`.
+
+Device run (Xiaomi 24117RN76G / tanzanite, arm64, Mali GPU, Android 15-ish,
+NDK r25 `aarch64-linux-android30` clang++, `-lEGL -lGLESv3`):
+`pokox_gles_clear --frames 60` submitted 60 clears and the center pixel read
+back as bytes 9/31/71/255 — matching the linear clear within tolerance,
+**PASS, exit 0**. The driver rejected `EGL_GL_COLORSPACE_SRGB` (no
+`EGL_KHR_gl_colorspace` pbuffer support), so the framebuffer is linear and the
+demo verified linear-encoded bytes; `framebuffer_is_srgb()` reports which
+encoding was negotiated.
+
+This is **not** ENG-04 acceptance: it proves a GLES 3.2 context, clear and
+pixel readback work on the real Android GPU, but it is offscreen, bypasses the
+`ClearBackend` selection contract, does not exercise Vulkan→ES fallback, and
+has no window/swapchain/lifecycle path. Still required: ANativeWindow/EGL
+surface integration (SDL Android or native activity), the ES backend behind
+the same RHI contract, controlled Vulkan-failure fallback on device, and
+displayed-color comparison.
+
+## Android ES backend behind ClearBackend contract — 2026-11-22 (same session)
+
+Added `engine/rhi/include/poko/rhi/device/opengles_clear_backend.hpp` +
+`engine/rhi/src/device/opengles_clear_backend.cpp`: `OpenGLESClearBackend`
+implements the shared `ClearBackend` interface (`initialize` /
+`clear_and_present` / `shutdown`) over the pbuffer GLES renderer, exposing
+`framebuffer_is_srgb()` and `read_center_pixel()` for evidence runs.
+
+`pokox_gles_clear --select` now drives `ClearBackendSelection` with a stub
+primary that always fails `initialize()` (standing in for a Vulkan startup
+failure) and the ES backend as fallback. On-device result:
+
+```
+selection status=0 selected=2 primary_error=13 fallback_error=0
+submitted 60 clear frames via fallback; shutdown ok
+center pixel rgba = 0.0353 0.1216 0.2784 1.0000
+expected linear bytes 9 31 71 255; PASS (exit 0)
+```
+
+This exercises the real selection contract — primary failure → fallback
+initialize → clear via `owned_->clear_and_present` → verified shutdown — on
+the Android GPU. Still not ENG-04 acceptance: the primary failure is
+simulated (no real Vulkan attempt on device), the surface is offscreen
+pbuffer (no ANativeWindow/present/swapchain), and there is no activity
+lifecycle or displayed-color comparison.
+
+## Android windowed GLES surface — 2026-11-22 (real display, physical device)
+
+Extended `opengles_clear_renderer` with `initialize_window(ANativeWindow*, w, h)`
+(EGL window surface + `eglSwapBuffers` on present) and `clear_and_verify()`
+(clear → readback → swap, deterministic because post-swap back-buffer contents
+are undefined). Non-windowed pbuffer path unchanged.
+
+New `engine/rhi/src/device/opengles_native_activity.cpp`: a minimal
+`android_native_app_glue` activity that waits for `APP_CMD_INIT_WINDOW`,
+presents 120 clear frames on the real surface, verifies the final frame's
+center pixel, writes `gles_result.txt` to the app's external files dir, holds
+800 ms so the color is visible, and finishes.
+
+Packaging is fully scripted in `engine/rhi/android/gles-clear/`:
+`AndroidManifest.xml` (NativeActivity, `hasCode=false`) and `build_apk.sh`
+(NDK clang .so + `libc++_shared.so` + aapt2 link + zipalign + apksigner debug
+key). Two packaging lessons recorded: the APK must bundle `libc++_shared.so`,
+and `-static-libstdc++` does not apply to NDK libc++.
+
+On-device result (Xiaomi 24117RN76G, Mali GPU):
+
+```
+windowed surface: 120 frames, 2400x1080, pixel 9 31 71 255,
+expected linear 9 31 71 255 -> PASS
+```
+
+This is real presented-frame evidence on the Android display path — still not
+ENG-04 acceptance: the clear goes through the renderer directly (not the
+`ClearBackendSelection` contract with a real Vulkan primary), there is no
+Vulkan→ES fallback triggered by an actual Vulkan failure on device, no
+resize/orientation lifecycle handling (configChanges are fixed for the probe),
+and displayed-color comparison is readback-based, not a screen capture.
+
+## Android Vulkan primary attempt — 2026-11-22 (physical device)
+
+`engine/rhi/src/device/vulkan_clear_android.cpp` + `.hpp`: minimal Vulkan
+clear/present renderer over `ANativeWindow` (instance + `VK_KHR_android_surface`
++ `VK_KHR_swapchain`, FIFO present, one clear render pass per frame, per-image
+framebuffers/views). Non-Android builds stub to `unsupported_window_system`.
+
+`opengles_native_activity.cpp` now runs the **real primary-first path**: Vulkan
+on the ANativeWindow surface, OpenGL ES only on init failure (or a
+`force_gles` flag file in the app files dir). The Vulkan attempt runs on a
+worker thread with a 15 s watchdog after an earlier build ANR'd inside driver
+init; a timed-out worker is intentionally leaked (probe code, documented).
+
+On-device result (Xiaomi 24117RN76G, Mali `vulkan.mali.so` driver):
+
+```
+trying vulkan primary
+vulkan primary: 4/120 frames presented on 1080x2400
+```
+
+Vulkan **works** on this device — instance, surface, device, swapchain,
+render pass and FIFO present all function — but `clear_and_present` failed on
+the ~5th frame (likely `VK_ERROR_OUT_OF_DATE_KHR`/suboptimal or device loss
+after rotation/first real composition). Swapchain recreation on
+out-of-date/suboptimal is the required next fix; after that the same probe
+can demonstrate a genuine Vulkan→ES fallback by forcing a Vulkan failure.
+Earlier GLES-only runs remain valid fallback evidence (120 frames, PASS).
+
+## Android Vulkan debugging session — 2026-11-22 (continued)
+
+Fixes applied to `vulkan_clear_android.cpp` / `opengles_native_activity.cpp`:
+- `vkResetFences` before each submit (fence was never reset — spec violation,
+  plausible cause of mid-run present failures).
+- Swapchain recreation on `VK_ERROR_OUT_OF_DATE_KHR` from acquire AND present,
+  with `poko_vulkan` logcat instrumentation on every failure path.
+- Watchdog wait loop now pumps `ALooper_pollOnce` — the previous blocking wait
+  was itself an ANR (confirmed via MIUIScout backtrace: main thread starved
+  in `onInputQueueCreatedNative`).
+- Result file moved from `/sdcard` (FUSE, can stall) to `internalDataPath`;
+  manifest now `android:debuggable="true"` for `run-as` reads.
+
+Observed on-device behavior across builds: Vulkan init+surface+swapchain+present
+consistently works for ~3-7 frames before a silent failure; later builds stall
+before `APP_CMD_INIT_WINDOW` entirely (native thread polls but the command
+never arrives despite the window existing and the activity being resumed —
+points to a MIUI/NativeActivity lifecycle interaction rather than renderer
+code). GLES-only path remained PASS throughout. This remains experimental
+probe code; ENG-04 is not closeable until the Vulkan frame loop survives
+hundreds of presents and a real Vulkan-failure fallback is demonstrated.
+
+## ENG-04 Android acceptance evidence — 2026-11-22 (BREAKTHROUGH)
+
+The NativeActivity/`android_native_app_glue` probe was abandoned after repeated
+MIUI lifecycle stalls (window command never delivered). Replaced with a real
+Activity: `engine/rhi/android/gles-clear/PokoActivity.java` (SurfaceView +
+SurfaceHolder.Callback) + `engine/rhi/src/device/poko_jni.cpp` (JNI →
+`ANativeWindow_fromSurface`, render on worker thread, UI thread never blocks).
+
+On-device results (Xiaomi 24117RN76G, Mali GPU, arm64):
+
+```
+vulkan primary: 120/120 frames on 1080x2400 -> PASS   (real Vulkan, real Surface)
+gles fallback:  1080x2400 pixel 9 31 71 255 expected linear 9 31 71 255 -> PASS
+               (force_gles flag file skips Vulkan → real fallback path)
+```
+
+Displayed-color validation via `adb shell screencap` during the post-frame
+hold, decoded and sampled at screen center:
+
+```
+poko_vk.png   center = [9, 31, 71, 255]
+poko_gles.png center = [9, 31, 71, 255]
+```
+
+Both backends present the identical clear color on the physical display —
+the ENG-04 "same clear on fallback device" criterion is now evidenced on real
+hardware, not just readback. Remaining honest gaps: single fixed resolution
+(configChanges handled, no rotation test), no Vulkan→ES fallback triggered by
+a *real* Vulkan runtime failure (fallback proven via forced skip + earlier
+simulated-primary selector run), single-device evidence, and this is still
+probe code — not integrated into a shipping shell (SHL-15+ remains the plan).

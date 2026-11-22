@@ -20,7 +20,7 @@ RenderError VulkanClearRenderer::draw_and_present(VulkanDrawCallback cb, void* u
 }
 }
 #define CHECK(x) do { if (!(x)) { std::cerr << "failed: " << #x << " at line " << __LINE__ << '\n'; return 1; } } while(false)
-void reset() { using namespace triangle_fake; errors=presents=shaders=pipelines=bindings=clears=depth_clears=states=draws=vertices=fail_at=0; depth_enabled=depth_write=false; depth_func=depth_format=0; depth_clear=-1.f; buffers=variables=srbs=maps=unmaps=commits=0; for(auto& x: uploaded) x=0; device=&device1; chain=Diligent::ISwapChain{}; chain.depth=&depth; }
+void reset() { using namespace triangle_fake; errors=presents=shaders=pipelines=bindings=clears=depth_clears=states=draws=vertices=fail_at=0; depth_enabled=depth_write=false; depth_func=depth_format=0; depth_clear=-1.f; buffers=variables=srbs=maps=unmaps=commits=texture_updates=0; for(auto& x: uploaded) x=0; device=&device1; chain=Diligent::ISwapChain{}; chain.depth=&depth; }
 int main(int argc, char** argv) {
  CHECK(argc==2); const std::uint32_t words[5]={0x07230203U,0x00010000U,0,1,0}; { std::ofstream f(argv[1],std::ios::binary); f.write(reinterpret_cast<const char*>(words),sizeof(words)); CHECK(f.good()); }
  using namespace poko::rhi; using namespace triangle_fake;
@@ -55,6 +55,26 @@ int main(int argc, char** argv) {
   if(stage==13) CHECK(maps==1 && unmaps==0);
   if(stage==14 || stage==15) CHECK(maps==1 && unmaps==1);
   if(stage==16) CHECK(commits==1);
+ }
+ reset(); {
+  VulkanTrianglePass pass(argv[1],argv[1],diag,TriangleMode::textured);
+  const std::uint8_t pixels[4]={255,0,0,255};
+  pass.set_texture(pixels,1,1,false);
+  CHECK(pass.draw_and_present(renderer)==RenderError::none);
+  CHECK(pipelines==1 && texture_updates==1);
+  pass.set_texture(pixels,1,1,false);
+  CHECK(pass.draw_and_present(renderer)==RenderError::none);
+  CHECK(pipelines==2 && texture_updates==2); // new SRB must capture new view
+  pass.set_texture_mips(nullptr,1,false,false); // malformed input is safe
+ }
+ reset(); {
+  VulkanTrianglePass pass(argv[1],argv[1],diag,TriangleMode::textured);
+  const std::uint8_t pixels[4]={255,0,0,255};
+  pass.set_texture(pixels,1,1,false);
+  fail_at=1; CHECK(pass.draw_and_present(renderer)==RenderError::backend_failure);
+  fail_at=0; errors=0; device=&device2;
+  CHECK(pass.draw_and_present(renderer)==RenderError::backend_failure);
+  CHECK(texture_updates==1 && pipelines==0);
  }
  std::remove(argv[1]); std::cout << "triangle pass control-flow checks passed\n";
 }

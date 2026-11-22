@@ -66,3 +66,7 @@ Extends `poko::resource` (ENG-16) with non-blocking loads:
 - Completed-but-never-acquired async loads stay resident until store
   destruction (same cache semantics as sync loads).
 - No priority lanes, cancellation, or progress reporting yet.
+
+## Integration review, 2026-11-22
+
+Fixed unpolled-failure retry state, queue insertion rollback and allocation-failure handling. `last_error()` can now throw when copying its result. See `project-review-2026-11-22.md` for tests and remaining validation.

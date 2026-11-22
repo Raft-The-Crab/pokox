@@ -7,6 +7,7 @@
 #include "poko/foundation/config.hpp"
 #include "poko/foundation/config_logging.hpp"
 #include "poko/foundation/frame_stats.hpp"
+#include "poko/foundation/duration_query_state.hpp"
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
 #include <DeviceContext.h>
@@ -15,6 +16,8 @@
 #include <RenderDevice.h>
 #if POKO_DEBUG
 #include <imgui.h>
+#include "poko/mute/console.hpp"
+#include <array>
 #endif
 #include <cfloat>
 #include <charconv>
@@ -28,12 +31,13 @@
 
 namespace {
 struct Frame {
-  poko::rhi::VulkanTrianglePass* scene;
+  poko::rhi::VulkanTrianglePass* scene = nullptr;
   poko::rhi::VulkanImGuiPass* ui = nullptr;
   poko::rhi::RenderError result = poko::rhi::RenderError::not_initialized;
   // ENG-15 GPU frame timer: 0 = unchecked, 1 = unsupported, 2 = armed query.
   Diligent::RefCntAutoPtr<Diligent::IQuery> gpu_timer;
   int gpu_timer_state = 0;
+  poko::stats::DurationQueryState query_state;
 };
 // Lazily creates the duration query once per device; unsupported devices keep
 // state 1 so gpu_ms() simply stays at zero.
@@ -58,8 +62,8 @@ poko::rhi::RenderError composite(Diligent::IRenderDevice& device, Diligent::IDev
                                  Diligent::ISwapChain& chain, Diligent::ITextureView& target, void* user) {
   auto& frame = *static_cast<Frame*>(user);
   ensure_gpu_timer(device, frame);
-  const bool timing = frame.gpu_timer_state == 2;
-  if (timing) context.BeginQuery(frame.gpu_timer);
+  const bool timing = frame.gpu_timer_state == 2 &&
+      frame.query_state.begin([&] { context.BeginQuery(frame.gpu_timer); });
   const auto scene = frame.scene->draw(device, context, chain, target);
   poko::rhi::RenderError out = scene;
 #if POKO_DEBUG
@@ -71,7 +75,7 @@ poko::rhi::RenderError composite(Diligent::IRenderDevice& device, Diligent::IDev
   {
     frame.result = scene;
   }
-  if (timing) context.EndQuery(frame.gpu_timer);
+  if (timing) frame.query_state.end([&] { context.EndQuery(frame.gpu_timer); });
   return out;
 }
 #if POKO_DEBUG
@@ -106,18 +110,107 @@ void update_imgui_io(poko::platform::SdlPlatform& window,
     io.MouseDown[4] = (buttons & SDL_BUTTON_X2MASK) != 0;
   }
 }
-void build_demo_window(const poko::stats::FrameStats& stats) {
+ImGuiKey imgui_key(SDL_Scancode code) {
+  if (code >= SDL_SCANCODE_A && code <= SDL_SCANCODE_Z)
+    return static_cast<ImGuiKey>(ImGuiKey_A + (code - SDL_SCANCODE_A));
+  if (code >= SDL_SCANCODE_1 && code <= SDL_SCANCODE_9)
+    return static_cast<ImGuiKey>(ImGuiKey_1 + (code - SDL_SCANCODE_1));
+  switch (code) {
+    case SDL_SCANCODE_0: return ImGuiKey_0;
+    case SDL_SCANCODE_RETURN: return ImGuiKey_Enter;
+    case SDL_SCANCODE_KP_ENTER: return ImGuiKey_KeypadEnter;
+    case SDL_SCANCODE_ESCAPE: return ImGuiKey_Escape;
+    case SDL_SCANCODE_BACKSPACE: return ImGuiKey_Backspace;
+    case SDL_SCANCODE_DELETE: return ImGuiKey_Delete;
+    case SDL_SCANCODE_TAB: return ImGuiKey_Tab;
+    case SDL_SCANCODE_LEFT: return ImGuiKey_LeftArrow;
+    case SDL_SCANCODE_RIGHT: return ImGuiKey_RightArrow;
+    case SDL_SCANCODE_UP: return ImGuiKey_UpArrow;
+    case SDL_SCANCODE_DOWN: return ImGuiKey_DownArrow;
+    case SDL_SCANCODE_HOME: return ImGuiKey_Home;
+    case SDL_SCANCODE_END: return ImGuiKey_End;
+    case SDL_SCANCODE_PAGEUP: return ImGuiKey_PageUp;
+    case SDL_SCANCODE_PAGEDOWN: return ImGuiKey_PageDown;
+    default: return ImGuiKey_None;
+  }
+}
+void feed_imgui_event(const SDL_Event& event, void* user) noexcept {
+  const auto id = SDL_GetWindowID(static_cast<SDL_Window*>(user));
+  auto& io = ImGui::GetIO();
+  if (event.type == SDL_EVENT_TEXT_INPUT && event.text.windowID == id && event.text.text)
+    io.AddInputCharactersUTF8(event.text.text);
+  else if ((event.type == SDL_EVENT_KEY_DOWN || event.type == SDL_EVENT_KEY_UP) && event.key.windowID == id) {
+    const auto mods = event.key.mod;
+    io.AddKeyEvent(ImGuiMod_Ctrl, (mods & SDL_KMOD_CTRL) != 0);
+    io.AddKeyEvent(ImGuiMod_Shift, (mods & SDL_KMOD_SHIFT) != 0);
+    io.AddKeyEvent(ImGuiMod_Alt, (mods & SDL_KMOD_ALT) != 0);
+    io.AddKeyEvent(ImGuiMod_Super, (mods & SDL_KMOD_GUI) != 0);
+    const auto key=imgui_key(event.key.scancode);
+    if (key != ImGuiKey_None) io.AddKeyEvent(key, event.type == SDL_EVENT_KEY_DOWN);
+  } else if ((event.type == SDL_EVENT_WINDOW_FOCUS_GAINED || event.type == SDL_EVENT_WINDOW_FOCUS_LOST) && event.window.windowID == id)
+    io.AddFocusEvent(event.type == SDL_EVENT_WINDOW_FOCUS_GAINED);
+  else if (event.type == SDL_EVENT_MOUSE_WHEEL && event.wheel.windowID == id)
+    io.AddMouseWheelEvent(event.wheel.x, event.wheel.y);
+}
+struct Console {
+  std::array<char,4096> input{};
+  std::string output = "Enter an arithmetic expression or print(...).";
+  poko::mute::ConsoleLog log;
+  poko::mute::ProgramState state;
+  bool scroll_to_end = false;
+};
+bool print_to_console(std::string_view text, void* user) {
+  auto& console=*static_cast<Console*>(user);
+  if (!console.log.append(text)) return false;
+  console.scroll_to_end = true;
+  return true;
+}
+void build_demo_window(const poko::stats::FrameStats& stats, Console& console) {
   ImGui::SetNextWindowPos(ImVec2(10.f, 10.f), ImGuiCond_FirstUseEver);
   ImGui::SetNextWindowSize(ImVec2(320.f, 0.f), ImGuiCond_FirstUseEver);
   if (ImGui::Begin("PokoX ImGui demo")) {
     ImGui::Text("Vulkan triangle + ImGui pass (ENG-11/12 prototype)");
     ImGui::Text("FPS: %.1f", ImGui::GetIO().Framerate);
-    ImGui::Text("CPU: %.2f ms   GPU: %.2f ms",
-                stats.cpu_ms(), stats.gpu_ms() > 0.0 ? stats.gpu_ms() : -1.0);
+    ImGui::Text("CPU: %.2f ms", stats.cpu_ms());
+    if (stats.has_gpu_sample()) ImGui::Text("GPU: %.2f ms", stats.gpu_ms());
+    else ImGui::TextUnformatted("GPU: unavailable");
     ImGui::Separator();
     static bool show_stats = true;
     ImGui::Checkbox("Show stats", &show_stats);
-    if (show_stats) ImGui::Text("F1 toggles this UI. Drag the window; close the app to exit.");
+    if (show_stats) ImGui::TextWrapped("F1 toggles this UI. Drag the window; close the app to exit.");
+    ImGui::Separator();
+    ImGui::TextUnformatted("Mute console");
+    ImGui::SameLine();
+    if (ImGui::SmallButton("Reset state")) console.state = {};
+    ImGui::SetNextItemWidth(-1.f);
+    if (ImGui::InputText("##expression", console.input.data(), console.input.size(), ImGuiInputTextFlags_EnterReturnsTrue)) {
+      if (poko::mute::console_input_full(console.input)) {
+        // A full buffer may have silently rejected later input or paste bytes.
+        // Do not execute a potentially truncated expression.
+        console.output = "Input limit reached; shorten the expression.";
+      } else {
+        console.output = poko::mute::execute_console_stateful(console.input.data(), console.state, {print_to_console, &console});
+        console.input.fill('\0');
+      }
+      ImGui::SetKeyboardFocusHere(-1);
+    }
+    ImGui::TextWrapped("%s",console.output.c_str());
+    if (console.state.initialized) {
+      const auto hash=poko::mute::hash_state(console.state);
+      if (const auto* value=std::get_if<std::uint64_t>(&hash)) ImGui::Text("State hash: %016llx",static_cast<unsigned long long>(*value));
+    }
+    ImGui::Separator();
+    ImGui::TextUnformatted("Print log");
+    ImGui::SameLine();
+    if (ImGui::SmallButton("Clear")) console.log.clear();
+    if (ImGui::BeginChild("##print_log", ImVec2(0.f,90.f), ImGuiChildFlags_Borders,
+                          ImGuiWindowFlags_HorizontalScrollbar)) {
+      for (const auto& line:console.log.entries())
+        ImGui::TextUnformatted(line.data(),line.data()+line.size());
+      if (console.scroll_to_end) ImGui::SetScrollHereY(1.f);
+      console.scroll_to_end = false;
+    }
+    ImGui::EndChild();
   }
   ImGui::End();
 }
@@ -232,11 +325,14 @@ int main(int argc, char** argv) {
     }
     render::FrameGraph graph;
     rhi::RenderError frame_result = rhi::RenderError::not_initialized;
-    Frame frame{&triangle};
+    Frame frame{};
+    frame.scene = &triangle;
 #if POKO_DEBUG
     frame.ui = &imgui;
 #endif
 #if POKO_DEBUG
+    Console console;
+    bool text_input_active = false;
     bool ui_enabled = true;
     bool f1_was_down = false;
     auto io_previous = std::chrono::steady_clock::now();
@@ -255,8 +351,13 @@ int main(int argc, char** argv) {
           f1_was_down = f1;
           update_imgui_io(window, io_previous);
           ImGui::NewFrame();
-          if (ui_enabled) build_demo_window(stats);
+          if (ui_enabled) build_demo_window(stats, console);
           ImGui::Render();
+          const bool wants_text = ui_enabled && ImGui::GetIO().WantTextInput;
+          if (wants_text != text_input_active) {
+            const bool ok = wants_text ? SDL_StartTextInput(window.native_window()) : SDL_StopTextInput(window.native_window());
+            if (ok) text_input_active = wants_text;
+          }
         }});
 #endif
     const auto frame_added = graph.add_pass({"forward frame",
@@ -295,7 +396,11 @@ int main(int argc, char** argv) {
     while (running) {
       const auto tick = std::chrono::steady_clock::now();
       platform::Event event;
-      while (window.poll_event(event)) {
+      while (window.poll_event(event
+#if POKO_DEBUG
+                               , feed_imgui_event, window.native_window()
+#endif
+                               )) {
         if (event.type == platform::EventType::quit_requested ||
             event.type == platform::EventType::window_close_requested) running = false;
       }
@@ -304,11 +409,14 @@ int main(int argc, char** argv) {
       const auto executed = graph.execute();
       stats.record_cpu(std::chrono::duration<double>(
           std::chrono::steady_clock::now() - tick).count());
-      // GPU duration results lag submission by a few frames; GetData with
-      // AutoInvalidate re-arms the query for the next frame.
+      // Poll only submitted queries. Do not reuse one until its result is
+      // ready: Diligent discards an outstanding result on BeginQuery.
       if (frame.gpu_timer_state == 2) {
         Diligent::QueryDataDuration data{};
-        if (frame.gpu_timer->GetData(&data, sizeof(data), true) && data.Frequency)
+        const bool collected = frame.query_state.poll([&] {
+          return frame.gpu_timer->GetData(&data, sizeof(data), true);
+        });
+        if (collected && data.Frequency)
           stats.record_gpu(static_cast<double>(data.Duration) / data.Frequency);
       }
       if (executed.error != render::FrameGraphError::none || executed.completed != expected_passes ||
@@ -326,6 +434,9 @@ int main(int argc, char** argv) {
         SDL_Delay(static_cast<std::uint32_t>(
             std::chrono::duration_cast<std::chrono::milliseconds>(budget - spent).count()));
     }
+#if POKO_DEBUG
+    if (text_input_active) (void)SDL_StopTextInput(window.native_window());
+#endif
   } catch (const std::exception& error) {
     std::fprintf(stderr, "ImGui demo setup failed: %s\n", error.what()); code = 1;
   } catch (...) {
@@ -336,10 +447,10 @@ int main(int argc, char** argv) {
   const auto messages = diagnostics.messages();
   if (messages.errors) code = 1;
   if (!code && limit && submitted < limit) code = 2;
-  std::printf("POKO_IMGUI_RESULT submitted=%u validation_requested=%s graphics_errors=%llu graphics_warnings=%llu cpu_ms=%.2f gpu_ms=%.2f\n",
+  std::printf("POKO_IMGUI_RESULT submitted=%u validation_requested=%s graphics_errors=%llu graphics_warnings=%llu cpu_ms=%.2f gpu_ms=%.2f gpu_available=%s\n",
     submitted, config.enable_validation ? "true" : "false",
     static_cast<unsigned long long>(messages.errors),
     static_cast<unsigned long long>(messages.warnings),
-    stats.cpu_ms(), stats.gpu_ms());
+    stats.cpu_ms(), stats.gpu_ms(), stats.has_gpu_sample() ? "true" : "false");
   return code;
 }

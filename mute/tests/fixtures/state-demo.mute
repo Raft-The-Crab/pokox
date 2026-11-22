@@ -1,0 +1,4 @@
+@state var count:i32=0;
+@state var score:i32=0;
+fn tick()->i32 {count=count+1;score=score+count;return score;}
+tick()

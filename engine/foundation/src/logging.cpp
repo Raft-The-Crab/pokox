@@ -3,6 +3,7 @@
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include <spdlog/spdlog.h>
 #include <atomic>
+#include <memory>
 #include <mutex>
 #include <shared_mutex>
 #include <system_error>
@@ -14,11 +15,10 @@ std::shared_mutex g_mutex;
 std::atomic<bool> g_initialized{false};
 // Records emit through this pinned logger so a foreign set_default_logger()
 // cannot reroute them, and shutdown can drop exactly our logger + file handle.
-// atomic<shared_ptr> keeps the emit() copy race-free vs init/shutdown writes;
-// the shared lock below additionally prevents a record from landing in the
-// file after shutdown() returns or interleaving into a re-init's truncated
-// session file.
-std::atomic<std::shared_ptr<spdlog::logger>> g_logger;
+// All accesses to the pointer are protected by g_mutex: shared for emit and
+// exclusive for init/shutdown. The lock also prevents records landing after
+// shutdown or interleaving with a re-init's truncated session file.
+std::shared_ptr<spdlog::logger> g_logger;
 spdlog::level::level_enum to_spdlog(Level level) {
   switch (level) {
     case Level::trace: return spdlog::level::trace;
@@ -38,7 +38,7 @@ void emit(Level level, std::string_view category, std::string_view message,
     // in flight when shutdown begins completes before the file sink is dropped.
     std::shared_lock lock{g_mutex};
     if (!g_initialized.load(std::memory_order_acquire)) return;
-    auto logger = g_logger.load();
+    auto logger = g_logger;
     if (!logger || logger->level() > to_spdlog(level)) return;
     std::string line{category};
     line += ": ";
@@ -78,14 +78,14 @@ std::error_code init(const Config& config) noexcept {
     auto logger = std::make_shared<spdlog::logger>(kLoggerName, sinks.begin(), sinks.end());
     logger->set_level(to_spdlog(config.level));
     logger->set_pattern("[%Y-%m-%d %H:%M:%S.%e] [%^%l%$] [%n] %v");
-    g_logger.store(logger);
+    g_logger = logger;
     // Deliberately NOT installed as the process default logger: emit() uses
     // the pinned logger, and dropping "poko" at shutdown must not leave
     // spdlog's default_logger_ null for unrelated callers.
     g_initialized.store(true, std::memory_order_release);
     return {};
   } catch (...) {
-    g_logger.store(nullptr);
+    g_logger.reset();
     return std::make_error_code(std::errc::io_error);
   }
 }
@@ -95,7 +95,7 @@ void shutdown() noexcept {
   // Drop only our logger: flushes and closes the file sink without tearing
   // down unrelated spdlog loggers elsewhere in the process.
   try { spdlog::drop(kLoggerName); } catch (...) {}
-  g_logger.store(nullptr);
+  g_logger.reset();
 }
 void trace(std::string_view c, std::string_view m, std::vector<Field> f) { emit(Level::trace, c, m, f); }
 void debug(std::string_view c, std::string_view m, std::vector<Field> f) { emit(Level::debug, c, m, f); }

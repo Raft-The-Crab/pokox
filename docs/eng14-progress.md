@@ -65,3 +65,7 @@ Status: implemented and verified on Windows (MSYS2 UCRT64, GCC 16, Ninja).
   surface to apply).
 - OpenGL backend ignores `adapter_id` (GL has no adapter selection); the
   Vulkan fallback path honors it.
+
+## Integration review, 2026-11-22
+
+The configuration loader now catches allocation failures at its public boundary. Allocation-fault coverage was added; see `project-review-2026-11-22.md` for limitations.

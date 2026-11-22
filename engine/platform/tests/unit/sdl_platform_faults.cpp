@@ -114,6 +114,13 @@ int main() {
     CHECK((fake::flags & SDL_WINDOW_HIGH_PIXEL_DENSITY) != 0);
     CHECK(platform.create_window(valid) == PlatformError::window_exists);
     CHECK(fake::create_calls == 2);
+    // A synchronous observer sees otherwise-unhandled events once in order.
+    int observed=0;
+    const auto observer=[](const SDL_Event& e,void* p) noexcept { auto& n=*static_cast<int*>(p); n=n*10+(e.type==0x998 ? 1 : e.type==0x999 ? 2 : 9); };
+    fake::push(0x998); fake::push(0x999);
+    CHECK(!platform.poll_event(event,observer,&observed));
+    CHECK(observed==12);
+    CHECK(!platform.poll_event(event,observer,&observed) && observed==12);
     // Unhandled and foreign-window events are skipped, not delivered.
     fake::push(0x999); fake::push(SDL_EVENT_WINDOW_CLOSE_REQUESTED, 999);
     CHECK(!platform.poll_event(event));

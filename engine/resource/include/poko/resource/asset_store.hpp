@@ -7,9 +7,9 @@
 
 namespace poko::resource {
 
-// ENG-16: refcounted asset handles. Single-threaded seed — the async load
-// queue (ENG-17) will own concurrency later. A handle keeps its store state
-// alive, so handles may outlive the AssetStore object safely.
+// ENG-16/17: refcounted asset handles and a single async loader worker.
+// Store and handle operations belong to one owner thread. A handle keeps its
+// store state alive, so handles may outlive the AssetStore object safely.
 
 // Type-erased payload; the loader decides the concrete type. Recover it with
 // AssetHandle::typed<T>() or payload().
@@ -18,7 +18,8 @@ using AssetPayload = std::shared_ptr<void>;
 using AssetLoader = std::function<AssetPayload(const std::string& key)>;
 
 // Observable load state for one key (ENG-17 async loads).
-enum class LoadState : std::uint8_t { none, loading, ready, failed };
+// ready means installed and acquirable; awaiting_install requires poll_async().
+enum class LoadState : std::uint8_t { none, loading, ready, failed, awaiting_install };
 
 class AssetHandle;
 
@@ -40,19 +41,24 @@ class AssetStore {
                                     std::string* error = nullptr);
 
   [[nodiscard]] std::size_t resident_count() const noexcept;
-  [[nodiscard]] std::size_t load_count() const noexcept;    // loader invocations
-  [[nodiscard]] std::size_t unload_count() const noexcept;  // payload destructions
+  [[nodiscard]] std::size_t load_count() const noexcept;    // payloads installed
+  [[nodiscard]] std::size_t unload_count() const noexcept;  // resident entries removed
 
   // ENG-17 async loads. request_async enqueues `loader` on the store's
-  // single worker thread and returns immediately — the frame never blocks.
-  // Repeated requests for a key already loading return the same job.
-  // poll_async() must be called once per frame (cheap): it installs finished
-  // payloads into the store and records failures. All map/refcount mutation
-  // stays on the calling thread; the worker only produces payloads.
+  // single worker thread without waiting for the loader. Thread startup and
+  // allocation can still take time or throw. Empty keys throw invalid_argument.
+  // Calls and handle operations must stay on one owner thread; only the loader
+  // runs on the worker. Repeated requests for an active key are deduplicated.
+  // poll_async() installs completed payloads and records failures; call it
+  // regularly, including when load_state() is awaiting_install. Destruction of
+  // the shared store state joins the worker and may wait for a running loader.
   void request_async(const std::string& key, const AssetLoader& loader);
+  // Memory-pressure failures remain queued for a later poll.
   void poll_async() noexcept;
   [[nodiscard]] LoadState load_state(const std::string& key) const noexcept;
-  [[nodiscard]] std::string last_error(const std::string& key) const noexcept;
+  // Returns the most recent failure after poll_async; retry/success clears it.
+  // Returns a copy and may throw on allocation failure.
+  [[nodiscard]] std::string last_error(const std::string& key) const;
   // True while a job for `key` is queued or running.
   [[nodiscard]] bool is_loading(const std::string& key) const noexcept;
 
@@ -75,7 +81,8 @@ class AssetHandle {
   [[nodiscard]] std::string key() const;
   // The shared payload, or nullptr when invalid.
   [[nodiscard]] AssetPayload payload() const;
-  // Typed view of the payload; nullptr when invalid or the type differs.
+  // Unchecked typed view; caller must use the payload's actual type.
+  // Returns nullptr only when the payload is absent.
   template <typename T>
   [[nodiscard]] std::shared_ptr<T> typed() const {
     auto p = payload();
@@ -84,7 +91,7 @@ class AssetHandle {
 
  private:
   friend class AssetStore;
-  AssetHandle(std::shared_ptr<AssetStore::State> state, std::string key);
+  AssetHandle(std::shared_ptr<AssetStore::State> state, std::string key) noexcept;
   void release() noexcept;
   std::shared_ptr<AssetStore::State> state_;
   std::string key_;

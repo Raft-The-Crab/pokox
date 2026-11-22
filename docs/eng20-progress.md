@@ -12,7 +12,7 @@ Status: implemented and verified on the real AMD Vulkan GPU.
 - **`poko::render::OrbitCamera`** (`engine/render/camera.*`): dependency-free
   orbit camera — yaw/pitch clamped, exponential wheel zoom, perspective
   projection (fov 0.9, near 0.1, far 100), produces a column-major
-  view*projection mat4 for a std140 uniform.
+  projection*view mat4 for a std140 uniform.
 - **`VulkanMeshPass::set_view_proj()`**: per-frame mat4 uploaded through a
   dynamic uniform buffer (`BIND_UNIFORM_BUFFER`, `USAGE_DYNAMIC`,
   `MAP_WRITE`/`DISCARD`) bound to the vertex shader's `Camera` block
@@ -46,3 +46,17 @@ Status: implemented and verified on the real AMD Vulkan GPU.
   but real view-space lighting lands with ENG-21.
 - Camera matrices are CPU-side float; Q16.16 deterministic math is
   ENG-60/MUT-09 scope.
+
+## Integration review, 2026-11-22
+
+A CPU regression test found and fixed a homogeneous-coordinate and Vulkan depth-range defect in the camera projection. See `integration-review-2026-11-22.md` for before/after evidence and verification limits. The corrected revision has not yet been visually verified on a GPU; prior submitted-frame counts do not establish visible output. Resize aspect remains open.
+
+
+### Review update — 2026-11-22
+
+The cube demo now derives camera aspect from drawable pixel dimensions at startup and on resize; zero-sized viewports retain the last valid aspect. CPU regression tests cover the calculation and the demo passed a stub-based syntax check. This supersedes earlier notes that aspect is fixed at startup. Actual SDL/Diligent, high-DPI and GPU resize behavior still require device validation. See `project-review-2026-11-22.md`.
+
+
+### Linux software-rendering update — 2026-11-22
+
+The corrected cube and camera built against real SDL3 and the pinned DiligentCore Vulkan backend. On Xvfb + Mesa llvmpipe, a synthetic mouse drag changed the rendered image, a resize produced a nonuniform frame, and 300 frames completed with validation requested and zero reported graphics errors/warnings. This is CPU software rendering, not physical-GPU or high-DPI acceptance. See `graphics-setup-2026-11-22.md`.

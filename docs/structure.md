@@ -1,35 +1,58 @@
-# Actual directory structure
+# Project directory structure
 
-This archive contains **2,713 directories** under the project root, including nested directories. Directories alone do not imply implemented components; see `build.md` for the current build status. Empty leaf directories contain `.gitkeep` markers so Git can retain them.
+The MUT-03 archive contains **145 directories** (excluding the project root and `.git`), as counted from its ZIP entries and their implied parents. This is a snapshot including hidden configuration, installed skill files and graph cache; future builds, extractions or cache updates may change the count. The older 2,714-directory figure described a proposed scaffold, not the actual delivered archive.
 
 ## Organization
 
-- The existing project files and character assets are retained.
-- The original planning inventory is preserved in `structure-plan.md`. Its `applications/android/client` and `applications/windows/client` paths have been mapped to `client/android` and `client/windows`; Studio paths are mapped to `studio/android` and `studio/windows`.
-- `applications/common` and `applications/shared` remain where the plan placed them. Other planned top-level folders, including `mod`, `assets`, and `docs`, are retained.
-- The expanded test directories are proposed placeholders for unit, integration, regression, and fixture work. Their presence does not imply tests exist or should all be implemented.
+- Source, tests, shaders, test doubles and fixtures follow the module layout under `engine/`. See the layout check report for current details.
+- Character assets and the existing user files are retained. Some older test copies and forwarding headers remain for compatibility or preservation; CMake selects the canonical test paths.
+- The original planning inventory is preserved in `structure-plan.md` and below as a **plan**, not a list of directories guaranteed to exist. In particular, proposed `applications`, top-level `cmake` and `mod` directories are not present in the audited archive. Missing planned placeholders are not evidence of implemented functionality.
 
-## Counts
+## MUT-03 archive snapshot counts
 
 | Top level | Directories |
 |---|---:|
+| `.agents` | 16 |
+| `.claude` | 4 |
 | `.github` | 4 |
-| `applications` | 108 |
-| `assets` | 272 |
-| `backend` | 289 |
-| `client` | 98 |
-| `cmake` | 9 |
-| `docs` | 92 |
-| `engine` | 694 |
-| `mod` | 264 |
-| `mute` | 189 |
-| `server` | 389 |
-| `studio` | 103 |
-| `tools` | 202 |
+| `assets` | 14 |
+| `backend` | 6 |
+| `client` | 1 |
+| `docs` | 3 |
+| `engine` | 63 |
+| `graphify-out` | 5 |
+| `mute` | 23 |
+| `server` | 1 |
+| `studio` | 1 |
+| `tools` | 11 |
+| `vcpkg_installed` | 4 |
 
 ## Maintenance
 
 When directories are added, removed or moved, update this inventory, counts and path mapping in the same change. Update the relevant plans and build status when implementation or decisions change.
+
+## MUT-01 source organization (2026-11-22)
+
+- `mute/include/poko/mute/` contains public lexer, arithmetic-parser, evaluator, program and console APIs; `mute/src/` contains per-module implementation subfolders (`lexer`, `parser`, `evaluator`, `math`, `program`, `bytecode`, `vm`, `state`, `pkb`, `console`) and `mute/data/unicode/` retains the pinned Unicode data.
+- `mute/data/unicode/` retains the pinned Unicode data and license; `mute/tools/` contains its deterministic generator.
+- `mute/tests/unit/` contains unit and golden drivers; `mute/tests/fixtures/golden/` contains source and expected results.
+- `mute/LEXICAL-CONTRACT.md`, `mute/ARITHMETIC-PARSER.md` and `mute/ARITHMETIC-EVALUATOR.md` define Mute contracts; `docs/mut01-progress.md`, `docs/mut02-progress.md`, `docs/mut03-progress.md` and the Mute audit record scope and evidence.
+- The root `.gitattributes` preserves exact-byte Mute lexer/parser fixtures and Unicode input across Git checkout configurations. No new directories were added for MUT-02 through MUT-06.
+
+The ENG-01–22 audit snapshot had 134 directories; MUT-01 adds 11 under `mute/`.
+
+## MUT-04 console organization (2026-11-22)
+
+- `mute/include/poko/mute/console.hpp`, `mute/src/console.cpp` and `mute/tests/unit/console_test.cpp` contain the arithmetic presentation adapter and tests.
+- `engine/render/src/passes/imgui_demo.cpp` hosts the debug-only UI; `engine/render/tests/integration/test_mute_console_x11.py` is the optional software-display interaction check.
+- `docs/mut04-progress.md` documents the build, limitations and test evidence. No new permanent directories were added.
+
+## MUT-05 print hostcall organization (2026-11-22)
+
+- `mute/include/poko/mute/console.hpp` and `mute/src/console.cpp` contain the console host interface, dispatch and bounded log.
+- `mute/tests/unit/console_test.cpp` and `engine/render/tests/integration/test_mute_console_x11.py` cover the hostcall and debug UI.
+- `mute/include/poko/mute/program.hpp`, `mute/src/program.cpp` and `mute/tests/unit/program_test.cpp` implement and test the initial functions-and-locals subset.
+- `docs/mut05-progress.md` records the contract, tests and limitations. No new permanent directories were added.
 
 ## Engine source organization (2026-11-21)
 
@@ -86,9 +109,9 @@ no new directories or renderer module were added.
 
 No new permanent directories were added for this step.
 
-## Directory inventory
+## Planned directory inventory
 
-Paths are relative to the project root. Purposes from the original plan are retained where available; test subfolders are proposed additions.
+The paths below are the preserved planning inventory, not a claim that each directory exists in the current archive. Paths are relative to the project root; purposes and proposed test subfolders are retained from the plan.
 
 - `.github` — container for .github
 - `.github/actions` — composite actions
@@ -2812,3 +2835,75 @@ Paths are relative to the project root. Purposes from the original plan are reta
 - `docs/eng10-progress.md` — implementation scope, evidence and remaining limitations.
 
 No new permanent directories were added.
+
+## Integration review additions (2026-11-22)
+
+- `engine/render/tests/unit/camera_test.cpp` — dependency-free camera projection and orbit regression coverage.
+- `docs/integration-review-2026-11-22.md` — review scope, evidence and outstanding risks.
+
+## Further review additions (2026-11-22)
+
+- `engine/foundation/tests/unit/config_allocation_test.cpp` — configuration allocation-failure test.
+- `engine/resource/tests/unit/asset_allocation_test.cpp` — asset handle and async allocation-failure tests.
+- `docs/project-review-2026-11-22.md` — broader review, changes and remaining gates.
+
+
+## Linux graphics and review tools (2026-11-22)
+
+- `.agents/skills/modern-cpp/`, `variant-analysis/`, `address-sanitizer/` — project-local Trail of Bits skills; provenance and license accompany them.
+- `tools/dependencies/linux-graphics-conda-explicit.txt` — Linux development/test environment package list, not a replacement for vcpkg.
+- `engine/foundation/tests/unit/config_logging_guard_test.cpp` and `engine/foundation/tests/integration/config_logging_guard_real_test.cpp` — logging-guard regressions with doubles and real spdlog respectively.
+- `engine/render/tests/integration/test_cube_x11_smoke.py` — optional Xvfb/software-Vulkan interaction smoke test.
+- `docs/graphics-setup-2026-11-22.md` — setup, evidence and outstanding gates.
+
+## ENG-21 directional-light prototype (2026-11-22)
+
+- `engine/rhi/include/poko/rhi/directional_light.hpp` — validated, normalized light data for the mesh pass.
+- `engine/rhi/tests/unit/directional_light_test.cpp` — direction and invalid-input tests.
+- `engine/render/tests/integration/test_cube_light_inputs.py` — cube CLI rejection checks.
+- `engine/render/tests/integration/test_directional_light_x11.py` — optional isolated X11 live light-response smoke test.
+- `docs/eng01-eng21-audit-2026-11-22.md` — per-task audit, verification and unresolved gates.
+
+No permanent directories were added.
+
+## ENG-22 lit-cube golden (2026-11-22)
+
+- `engine/render/tests/integration/cube_golden.py` — isolated X11 capture, deterministic PNG and exact comparison.
+- `engine/render/tests/integration/test_cube_golden_unit.py` — encoder, output safety and reference-image checks.
+- `engine/render/tests/integration/test_cube_fixed_view_x11.py` — optional test that input cannot move the golden view.
+- `engine/render/tests/fixtures/golden/lit_cube_llvmpipe.png` — reviewed software-rendered reference.
+- `docs/eng22-progress.md` — reproduction, verification and outstanding gates.
+
+The `engine/render/tests/fixtures` and `fixtures/golden` directories exist in the audited archive; the snapshot counts at the top include them.
+
+## ENG-01–22 hardening additions (2026-11-22)
+
+- `engine/rhi/tests/fakes/mesh/` — isolated mesh resource fault doubles.
+- `engine/rhi/tests/unit/vulkan_mesh_pass_test.cpp` — mesh recovery and device checks.
+- `engine/foundation/include/poko/foundation/duration_query_state.hpp` and `engine/foundation/tests/unit/duration_query_state_test.cpp` — nonblocking query scheduling and tests.
+- `engine/render/tests/integration/test_imgui_toggle_x11.py` — optional software-X11 F1 smoke check.
+- `docs/eng01-eng22-hardening-audit-2026-11-22.md` — findings, evidence and remaining gates.
+
+## MUT-11 state and schema preview (2026-11-22)
+
+- `mute/include/poko/mute/state.hpp`, `mute/src/state.cpp` and `mute/tests/unit/state_test.cpp` contain the initial state/hash API, implementation and tests. Program execution is integrated in existing `program.cpp` and `program_vm.inc`.
+- `mute/include/poko/mute/pkb_draft.hpp`, `mute/src/pkb_draft.cpp`, and `mute/tools/pkb_schema_draft.cpp` implement an unsigned, non-authoritative schema preview, not a `.pkB`; unit and CLI tests are under `mute/tests/unit/`.
+- `mute/tools/state_determinism_probe.cpp` emits cross-build state hashes; `mute/tests/fixtures/state-demo.mute` is a sample program. `engine/render/tests/integration/test_mute_state_console_x11.py` exercises the optional debug UI. `mute/STATE.md`, `mute/PKB-SCHEMA-DRAFT.md` and `docs/mut11-pkb-audit-2026-11-22.md` describe scope and limitations. No new permanent directories were added.
+
+
+## MUT-12 snapshot (2026-11-22)
+
+- `mute/include/poko/mute/state_snapshot.hpp` and `mute/src/state_snapshot.cpp` contain the bounded state snapshot API and codec; `mute/tests/unit/state_snapshot_test.cpp` tests its file and memory round trips, malformed data and replay continuation.
+- `mute/STATE-SNAPSHOT.md` specifies the experimental format; `docs/mut01-mut12-three-pass-audit-2026-11-22.md` records the three review passes and open work. Files follow existing header/source/unit-test conventions; no new permanent directories.
+
+
+## Post-MUT audit fixes and gate preflight (2026-11-22)
+
+- `docs/mut01-mut12-final-audit-2026-11-22.md` records the audit as originally performed; `docs/g1-g2-preflight-2026-11-22.md` records subsequent fixes, validation, and open gates.
+- Existing `program.cpp`, `program_codec.inc`, `state_test.cpp`, `CMakeLists.txt` and `.github/workflows/ci.yml` contain the initializer validation and optional integration-test wiring. No files were moved.
+
+
+## Mute src subfolder reorganization (2026-11-22)
+
+- `mute/src/` was flat; implementations now live in per-module subfolders: `lexer/` (lexer.cpp, unicode_xid.hpp), `parser/`, `evaluator/`, `math/` (deterministic_math.cpp), `program/` (program.cpp, program_vm.inc, program_codec.inc), `bytecode/`, `vm/` (register_vm.cpp), `state/` (state.cpp, state_snapshot.cpp), `pkb/` (pkb_draft.cpp) and `console/` (console.cpp).
+- `CMakeLists.txt` source lists, the `poko_mute_lexer_test` private include dir (`mute/src/lexer`) and the `pokox_imgui_sources` console path were updated; `tools/version/tests/integration/test_version.py` copies the new paths. Public headers remain flat under `mute/include/poko/mute/`. Dated sections above retain their original paths as history.

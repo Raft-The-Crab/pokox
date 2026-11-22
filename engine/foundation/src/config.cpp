@@ -4,13 +4,14 @@
 
 #include <fstream>
 #include <iterator>
+#include <new>
 #include <system_error>
 
 namespace poko::config {
 namespace {
 constexpr std::uintmax_t kMaxFileBytes = 1024 * 1024;
 
-LoadResult fail(std::error_code code, std::string detail) noexcept {
+LoadResult fail(std::error_code code, std::string detail) {
   LoadResult result;
   result.error = code;
   result.detail = std::move(detail);
@@ -28,7 +29,7 @@ const cbor::Value* find_key(const cbor::Value& map, std::string_view key) noexce
 
 // First matching text key wins; later duplicates are ignored.
 bool read_u32(const cbor::Value& section, std::string_view key,
-              std::uint32_t& out, std::string& detail) noexcept {
+              std::uint32_t& out, std::string& detail) {
   const auto* v = find_key(section, key);
   if (!v) return true;
   if (v->type != cbor::Type::uint || v->u > 0xFFFFFFFFULL) {
@@ -40,7 +41,7 @@ bool read_u32(const cbor::Value& section, std::string_view key,
 }
 
 bool read_bool(const cbor::Value& section, std::string_view key,
-               bool& out, std::string& detail) noexcept {
+               bool& out, std::string& detail) {
   const auto* v = find_key(section, key);
   if (!v) return true;
   if (v->type != cbor::Type::boolean) {
@@ -53,7 +54,7 @@ bool read_bool(const cbor::Value& section, std::string_view key,
 
 // Returns false and fills detail on type/parse failure.
 bool read_text(const cbor::Value& section, std::string_view key,
-               std::string& out, std::string& detail) noexcept {
+               std::string& out, std::string& detail) {
   const auto* v = find_key(section, key);
   if (!v) return true;
   if (v->type != cbor::Type::text) {
@@ -78,7 +79,7 @@ bool parse_level(const std::string& text, log::Level& out) noexcept {
 // Known keys per section; anything else is reported, not fatal.
 void collect_unknown(const cbor::Value& section, const char* const* known,
                      std::size_t known_count, const std::string& prefix,
-                     std::vector<std::string>& unknown) noexcept {
+                     std::vector<std::string>& unknown) {
   if (section.type != cbor::Type::map) return;
   for (const auto& entry : section.entries) {
     if (entry.first.type != cbor::Type::text) {
@@ -95,6 +96,7 @@ void collect_unknown(const cbor::Value& section, const char* const* known,
 }  // namespace
 
 LoadResult load_file(const std::filesystem::path& path) noexcept {
+  try {
   std::ifstream in(path, std::ios::binary | std::ios::ate);
   if (!in) return fail(std::make_error_code(std::errc::no_such_file_or_directory),
                       "cannot open config file");
@@ -154,6 +156,15 @@ LoadResult load_file(const std::filesystem::path& path) noexcept {
       return bad("logging.level must be trace|debug|info|warn|error|critical");
   }
   return result;
+  } catch (const std::bad_alloc&) {
+    LoadResult result;
+    result.error = std::make_error_code(std::errc::not_enough_memory);
+    return result;
+  } catch (...) {
+    LoadResult result;
+    result.error = std::make_error_code(std::errc::io_error);
+    return result;
+  }
 }
 
 LoadResult resolve(const std::filesystem::path& path,

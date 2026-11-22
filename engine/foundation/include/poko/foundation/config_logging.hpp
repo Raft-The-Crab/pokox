@@ -16,20 +16,28 @@ class LogGuard {
  public:
   explicit LogGuard(const EngineConfig& settings) noexcept {
     if (settings.log_file.empty()) return;
-    const auto error = log::init({settings.log_file, settings.log_level,
-                                  settings.log_echo_to_console});
-    if (error) {
-      std::fprintf(stderr, "File logging unavailable: %s\n",
-                   error.message().c_str());
-    } else {
-      log::info("config", "settings loaded",
-                {{"adapter", std::to_string(settings.adapter_id)},
-                 {"validation", settings.validation ? "on" : "off"}});
+    try {
+      const auto error = log::init({settings.log_file, settings.log_level,
+                                    settings.log_echo_to_console});
+      if (error) {
+        std::fprintf(stderr, "File logging unavailable: %s\n",
+                     error.message().c_str());
+      } else {
+        owns_logger_ = true;
+        log::info("config", "settings loaded",
+                  {{"adapter", std::to_string(settings.adapter_id)},
+                   {"validation", settings.validation ? "on" : "off"}});
+      }
+    } catch (...) {
+      // Logging is optional; argument construction and diagnostics may allocate.
+      std::fputs("File logging setup or diagnostics unavailable.\n", stderr);
     }
   }
-  ~LogGuard() { log::shutdown(); }
+  ~LogGuard() { if (owns_logger_) log::shutdown(); }
   LogGuard(const LogGuard&) = delete;
   LogGuard& operator=(const LogGuard&) = delete;
+ private:
+  bool owns_logger_ = false;
 };
 #else
 class LogGuard {

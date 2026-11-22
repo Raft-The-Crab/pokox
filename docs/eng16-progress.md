@@ -65,3 +65,7 @@ operators now call it instead of the explicit destructor.
   those under `resource`; later ENG tasks).
 - `typed<T>()` is an unchecked `static_pointer_cast` — caller must match
   the loader's concrete type.
+
+## Integration review, 2026-11-22
+
+Fixed a reference leak when handle key allocation throws; added fault-injection coverage. Typed payload access is unchecked. See `project-review-2026-11-22.md`.

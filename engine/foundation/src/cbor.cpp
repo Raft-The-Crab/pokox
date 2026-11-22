@@ -30,7 +30,11 @@ struct Cursor {
   }
   bool take_bytes(std::string& out, std::uint64_t length) noexcept {
     if (length > size - pos) return false;
-    out.assign(data + pos, static_cast<std::size_t>(length));
+    try {
+      out.assign(data + pos, static_cast<std::size_t>(length));
+    } catch (...) {
+      return false;  // allocation failure — reported as truncated upstream
+    }
     pos += static_cast<std::size_t>(length);
     return true;
   }
@@ -128,7 +132,9 @@ Result decode_item(Cursor& c, Value& out, unsigned depth) noexcept {
     case 4: {
       out.type = Type::array;
       if (arg > kMaxValues) return fail(Error::too_many_items, c.pos);
-      out.items.reserve(static_cast<std::size_t>(std::min<std::uint64_t>(arg, c.size - c.pos)));
+      try {
+        out.items.reserve(static_cast<std::size_t>(std::min<std::uint64_t>(arg, c.size - c.pos)));
+      } catch (...) { return fail(Error::too_many_items, c.pos); }
       for (std::uint64_t i = 0; i < arg; ++i) {
         Value item;
         auto sub = decode_item(c, item, depth + 1);
@@ -141,7 +147,9 @@ Result decode_item(Cursor& c, Value& out, unsigned depth) noexcept {
     case 5: {
       out.type = Type::map;
       if (arg > kMaxValues) return fail(Error::too_many_items, c.pos);
-      out.entries.reserve(static_cast<std::size_t>(std::min<std::uint64_t>(arg, c.size - c.pos)));
+      try {
+        out.entries.reserve(static_cast<std::size_t>(std::min<std::uint64_t>(arg, c.size - c.pos)));
+      } catch (...) { return fail(Error::too_many_items, c.pos); }
       for (std::uint64_t i = 0; i < arg; ++i) {
         Value key, val;
         auto sub = decode_item(c, key, depth + 1);

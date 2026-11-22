@@ -1,10 +1,12 @@
 #include "poko/resource/asset_store.hpp"
 
+#include <algorithm>
 #include <atomic>
 #include <condition_variable>
 #include <deque>
 #include <mutex>
 #include <thread>
+#include <stdexcept>
 #include <unordered_map>
 #include <utility>
 #include <vector>
@@ -62,19 +64,19 @@ struct AssetStore::State {
       }
       job->phase.store(1, std::memory_order_relaxed);
       AssetPayload produced;
-      std::string error;
       try {
         produced = job->loader ? job->loader(job->key) : AssetPayload{};
+        if (!produced) job->error = "asset loader produced no payload";
       } catch (const std::exception& e) {
-        error = e.what();
+        try { job->error = e.what(); } catch (...) {}
       } catch (...) {
-        error = "asset loader threw an unknown exception";
+        try { job->error = "asset loader threw an unknown exception"; } catch (...) {}
       }
       if (produced) {
         job->payload = std::move(produced);
         job->phase.store(2, std::memory_order_release);
       } else {
-        job->error = error.empty() ? "asset loader produced no payload" : error;
+        // Error text is best-effort under memory pressure; phase still publishes.
         job->phase.store(3, std::memory_order_release);
       }
     }
@@ -102,6 +104,7 @@ std::size_t AssetStore::load_count() const noexcept { return state_ ? state_->lo
 std::size_t AssetStore::unload_count() const noexcept { return state_ ? state_->unloads : 0; }
 
 void AssetStore::request_async(const std::string& key, const AssetLoader& loader) {
+  if (key.empty()) throw std::invalid_argument("asset key is empty");
   if (!state_) state_ = std::make_shared<State>();
   auto& s = *state_;
   {
@@ -119,8 +122,16 @@ void AssetStore::request_async(const std::string& key, const AssetLoader& loader
     auto job = std::make_shared<State::Job>();
     job->key = key;
     job->loader = loader;
-    s.queue.push_back(job);
+    // Register first; roll back if queue allocation fails so no untracked
+    // job can run after request_async throws.
     s.jobs.push_back(job);
+    try { s.queue.push_back(job); }
+    catch (...) { s.jobs.pop_back(); throw; }
+    // Once the retry is safely queued, retire superseded failures.
+    std::erase_if(s.jobs, [&key](const auto& prior) {
+      return prior->key == key && prior->phase.load(std::memory_order_acquire) == 3;
+    });
+    s.failures.erase(key);
   }
   s.cv.notify_one();
 }
@@ -143,11 +154,14 @@ void AssetStore::poll_async() noexcept {
         }
         installed = true;
       } catch (...) {
-        s.failures[job->key] = "failed to install async payload";
+        // Keep the completed job and retry installation on the next poll.
+        ++it;
+        continue;
       }
       if (installed) s.failures.erase(job->key);
     } else {
-      s.failures[job->key] = job->error;
+      try { s.failures[job->key] = job->error; }
+      catch (...) { ++it; continue; }  // retain job and retry later
     }
     it = s.jobs.erase(it);
   }
@@ -159,17 +173,20 @@ LoadState AssetStore::load_state(const std::string& key) const noexcept {
   if (const auto it = s.assets.find(key);
       it != s.assets.end() && it->second.payload)
     return LoadState::ready;
-  for (const auto& job : s.jobs) {
+  // A failed job may remain unpolled when a retry is queued. The newest
+  // job describes the current attempt, not the older failure.
+  for (auto it = s.jobs.rbegin(); it != s.jobs.rend(); ++it) {
+    const auto& job = *it;
     if (job->key != key) continue;
     const int phase = job->phase.load(std::memory_order_acquire);
     if (phase == 0 || phase == 1) return LoadState::loading;
-    if (phase == 2) return LoadState::ready;  // awaiting poll_async install
+    if (phase == 2) return LoadState::awaiting_install;
     return LoadState::failed;
   }
   return s.failures.count(key) ? LoadState::failed : LoadState::none;
 }
 
-std::string AssetStore::last_error(const std::string& key) const noexcept {
+std::string AssetStore::last_error(const std::string& key) const {
   if (!state_) return {};
   const auto it = state_->failures.find(key);
   return it == state_->failures.end() ? std::string{} : it->second;
@@ -190,8 +207,9 @@ AssetHandle AssetStore::acquire(const std::string& key, const AssetLoader& loade
   // Fast path: live entry, no loader call, no reference held across it.
   if (const auto it = state_->assets.find(key);
       it != state_->assets.end() && it->second.payload) {
+    std::string handle_key = key;  // may throw before changing the refcount
     ++it->second.refs;
-    return AssetHandle{state_, key};
+    return AssetHandle{state_, std::move(handle_key)};
   }
   // An in-flight async load must not be duplicated or blocked on. Phase 2
   // (done, awaiting poll_async install) counts as busy too.
@@ -218,16 +236,22 @@ AssetHandle AssetStore::acquire(const std::string& key, const AssetLoader& loade
     return {};
   }
   // Re-find after the loader ran: the map may have changed underneath us.
+  std::string handle_key = key;  // complete potentially throwing work first
   auto& entry = state_->assets[key];
   if (!entry.payload) {
     entry.payload = std::move(produced);
     ++state_->loads;
   }
   ++entry.refs;
-  return AssetHandle{state_, key};
+  // A successful synchronous recovery supersedes any unpolled failed job.
+  std::erase_if(state_->jobs, [&key](const auto& job) {
+    return job->key == key && job->phase.load(std::memory_order_acquire) == 3;
+  });
+  state_->failures.erase(key);
+  return AssetHandle{state_, std::move(handle_key)};
 }
 
-AssetHandle::AssetHandle(std::shared_ptr<AssetStore::State> state, std::string key)
+AssetHandle::AssetHandle(std::shared_ptr<AssetStore::State> state, std::string key) noexcept
     : state_(std::move(state)), key_(std::move(key)) {}
 
 void AssetHandle::release() noexcept {

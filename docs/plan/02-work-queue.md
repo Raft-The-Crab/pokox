@@ -19,7 +19,7 @@ One canonical queue. Per-system docs used overlapping IDs (three different `R01`
 |---|---|---|
 | INF | Infrastructure | T00–T04 |
 | ENG | Engine renderer and production basics | R01–R12, P01–P10 |
-| MUT | Mute language and VM | M01–M12 |
+| MUT | Mute language and VM | M01–M12; MUT-13–59 are new v1 planning |
 | NET | Wire protocol | N01–N08 |
 | BAK | Backend foundation | B01–B08 |
 | SHL | Windows and Android shells | U01–U08, shell C01–C14 |
@@ -73,6 +73,24 @@ One canonical queue. Per-system docs used overlapping IDs (three different `R01`
 - **FIX-05:** The D1 migration creates `word_reservations` and its global `publish` row. Verified in local SQLite tests and a local D1 database using Wrangler 4.165.0, including migration reapplication and duplicate rejection. No remote database has been deployed or migrated. Reservation lookup and the first-release exception remain later validator/publishing work; see `08-publishing-and-versions.md`.
 - **Character validation repair, 2026-11-20:** Portable adaptation output paths and corrected cross-mesh UV validation were added, with Blender reports for both rigs. BoyR6 has 37 source-existing cross-mesh triangle overlap pairs; later view-layer inspection found helpers hidden but exposed reversed face attachment placement; see `29-boyr6-character-adaptation.md`. This does not advance AST-04 or waive INF acceptance.
 - **LEG-01 and subsequent tasks:** Not implemented or verified in this scaffold.
+- **Linux software-graphics review, 2026-11-22:** Real SDL3 and pinned Diligent Vulkan/cube builds passed; 44/44 configured CTest entries passed, and a synthetic orbit/resize smoke test completed 300 frames on Xvfb + CPU llvmpipe with validation requested and zero reported graphics errors/warnings. Real spdlog tests passed after logger safety/portability fixes. This is not physical-device or full vcpkg acceptance; earlier gates remain open. See `../graphics-setup-2026-11-22.md`.
+- **OpenGL fallback check, 2026-11-22:** The real Diligent OpenGL target compiled, but forced OpenGL failed safely on the virtual X11 display: its 240 GLX framebuffer configurations reported no sRGB capability. No OpenGL color or target-device acceptance is claimed. See `../graphics-setup-2026-11-22.md`.
+- **ENG-01–20 audit and ENG-21 prototype, 2026-11-22:** Owner requested continuing despite open gates. Added adjustable world-space directional lighting and live arrow-key controls; software Vulkan showed a live image response. Audit identified an ENG-15 pending GPU-query issue and ENG-17 ready/install ambiguity, with OpenGL, target-platform and full ImGui coverage still open. No gate is waived. See `../eng01-eng21-audit-2026-11-22.md`.
+- **ENG-22 software golden candidate, 2026-11-22:** Owner requested continuing with ENG-22. A fixed-view screenshot comparison and Linux CI job were added; local comparisons caught and fixed outward-face culling and reject a deliberately dimmed shader. The GitHub job has not run, so CI acceptance and all earlier gates remain open. See `../eng22-progress.md`.
+- **ENG-01–22 hardening audit, 2026-11-22:** Fixed pending GPU queries, async asset state/retry errors, renderer resource recovery, texture replacement, and pinned-ImGui GCC compatibility. Added regression coverage and verified a real software-Vulkan ImGui demo and F1 toggle. Full vcpkg, target-platform and CI gates remain open. See `../eng01-eng22-hardening-audit-2026-11-22.md`.
+- **Archive layout check, 2026-11-22:** Confirmed engine source/test placement, preserved compatibility files, checked CMake archive references and built a clean extraction. Corrected the structure document to distinguish the planned scaffold from the actual ZIP. See `../eng01-eng22-layout-check-2026-11-22.md`.
+- **MUT-01 lexer, 2026-11-22:** At the owner’s request, completed the initial C++20 lexer contract and local token-golden criterion despite earlier open gates. Hosted/target-platform verification and formal gate acceptance remain open. See `../mut01-progress.md` and `../../mute/LEXICAL-CONTRACT.md`.
+- **MUT-02 arithmetic AST, 2026-11-22:** At the owner’s request, implemented the arithmetic parser and passed AST goldens locally. Earlier hosted CI and platform gates remain open; no gate is waived. See `../mut02-progress.md`.
+- **MUT-03 arithmetic evaluator and MUT-01–03 audit, 2026-11-22:** Owner requested the next task and an audit. Initial checked arithmetic and local tests pass. A follow-up added floating remainder, bounded input and read-only host numeric bindings; full numeric semantics and hosted/target-platform gates remain open. See `../mut03-progress.md` and `../mut01-mut03-followup-audit-2026-11-22.md`.
+- **MUT-04 console, 2026-11-22:** Implemented the optional debug ImGui arithmetic console with real SDL text/key input, local software-Vulkan interaction evidence and release stripping. Full engine console, cross-platform tests and earlier gates remain open. See `../mut04-progress.md`.
+- **MUT-05 print, 2026-11-22:** Added an initial top-level print-to-ImGui host bridge and bounded log, with local integration tests. General function calls, VM hostcalls and target-platform gates remain open. See `../mut05-progress.md`.
+- **MUT-06 functions and locals, 2026-11-22:** Initial bounded i32 tree-walk subset demonstrates recursion and local scope; broader language/VM and inherited gates remain open. See `../mut06-progress.md` and `../mut01-mut05-audit-2026-11-22.md`.
+- **MUT-07 control flow, 2026-11-22:** Initial i32/bool branching and while loops with bounded tree-walk execution; a follow-up audit fixed stale console-input capacity checks. Production VM, platform and determinism gates remain open. See `../mut07-progress.md` and `../mut01-mut07-audit-2026-11-22.md`.
+- **MUT-08–10 progress and audit, 2026-11-22:** The existing program subset runs on a register VM and now round-trips through a source-backed compiled-program snapshot; pinned sin/cos match x64 and emulated ARM64 vectors. The short/extended-long branch encoding is decided and implemented in the low-level codec. Real Windows/Android evidence, the final `.pkB` compiler and verifier, and existing gates remain open. See `../mut08-mut10-completion-audit-2026-11-22.md`.
+- **MUT-11 initial state, 2026-11-22:** Added bounded i32 state, transactional ticks, declaration-order xxHash64 and an unsigned CBOR schema preview; real-device replay gates and production `.pkB` authority remain open. See `../mut11-pkb-audit-2026-11-22.md`.
+- **MUT-12 initial state snapshot, 2026-11-22:** Added bounded exact-source-bound i32 save/load, corruption checks, and round-trip tests. This is not a full input replay or gate acceptance. See `../mut01-mut12-three-pass-audit-2026-11-22.md`.
+- **Post-MUT audit fixes / G1–G2 preflight, 2026-11-22:** State initializers are checked consistently when compiling and decoding prototype bytecode; optional exhaustive and software-X11 console tests are registered for the Linux CI lane. 10,000-tick local and emulated ARM64 traces match, but G1/G2, real target and hosted CI evidence remain open. See `../g1-g2-preflight-2026-11-22.md`.
+- **Mute v1 planning extension, 2026-11-22:** Added MUT-13–59 as proposed work and a v1 completion review. Scope and API compatibility are not yet approved; no existing task or gate is newly accepted. See `30-mute-v1-completion.md`.
 - Maintain `../structure.md` and the relevant status documents in the same change whenever the actual layout or project progress changes.
 
 ## Wave 0 — Infrastructure (INF)
@@ -129,6 +147,60 @@ One canonical queue. Per-system docs used overlapping IDs (three different `R01`
 | MUT-11 | @state and state hash | MUT-10 | Two runs identical hash |
 | MUT-12 | State serialize for replay | MUT-11 | Save/load roundtrip |
 | **GATE** | **G1, G2** | MUT-12, ENG-22 | Stop if hashes differ |
+
+### Mute v1 completion tasks (planned; span later waves)
+
+MUT-01–12 are the deterministic-core seed, **not** completion of the language. MUT-13–59 are planned and unimplemented. They use existing infrastructure/engine/backend work; follow the existing phase gates and each task's prerequisites rather than treating this table as permission to jump gates. These IDs extend the canonical queue, not the first-20 execution order. The v1 scope and exact API/compatibility commitments require owner review in MUT-13; the initial target and unresolved decisions are in `30-mute-v1-completion.md`. No Roblox/Luau compatibility is implied.
+
+| ID | Task | Depends on | Done when |
+|---|---|---|---|
+| MUT-13 | Review and freeze Mute v1 scope and API matrix | MUT-12 | Owner-approved versioned feature, device, compatibility and deferral matrix with testable criteria |
+| MUT-14 | Complete v1 expression parser | MUT-13 | Precedence, spans and invalid-expression goldens cover approved operators |
+| MUT-15 | Complete v1 statement and control-flow parser | MUT-14 | Approved branches, loops, `break`, `continue`, `return` and malformed cases have AST goldens |
+| MUT-16 | Parse v1 type and declaration forms | MUT-15 | Struct, enum, function and state declarations round-trip through parser goldens |
+| MUT-17 | Resolve names and lexical scopes | MUT-16 | Shadowing, duplicates, unknown names and cross-scope references have deterministic diagnostics |
+| MUT-18 | Type-check v1 scalar expressions and calls | MUT-17 | Valid calls pass and bad argument, return and numeric conversions fail at compile time |
+| MUT-19 | Type-check v1 aggregates and variants | MUT-18 | Approved arrays, maps, structs, enums, option and result cases have positive/negative tests |
+| MUT-20 | Type-check approved generic/trait subset | MUT-19 | Instantiation and documented trait constraints pass and invalid uses fail deterministically |
+| MUT-21 | Resolve packages, imports and lockfile | MUT-17 | Pinned dependency graph resolves reproducibly; missing, conflicting or cyclic imports are diagnosed |
+| MUT-22 | Implement aggregate VM values and lifetimes | MUT-19, MUT-08 | Approved string/aggregate creation, access, copies, releases and bounds traps pass lifetime tests |
+| MUT-23 | Implement approved cooperative async scheduling | MUT-22 | Await and FIFO spawn order replay identically; cancellation is tested |
+| MUT-24 | Enforce determinism and capability analysis | MUT-18, MUT-21 | Disallowed nondeterministic operations and excess capabilities fail with locations |
+| MUT-25 | Introduce validated typed SSA IR | MUT-19, MUT-24 | Lowering goldens and verifier reject malformed control flow and types |
+| MUT-26 | Emit bytecode from IR | MUT-25, MUT-10, MUT-22 | Specified functions and control flow compile and execute; the agreed branch encoding and boundary tests pass |
+| MUT-27 | Verify bytecode before execution | MUT-26 | Malformed opcodes, registers, control flow and host signatures are rejected without execution |
+| MUT-28 | Optimize proven-safe constant expressions | MUT-27 | Safe constant folding works; overflow, floats and trap-order regressions match unoptimized execution |
+| MUT-29 | Eliminate proven-dead pure computations | MUT-28 | Dead code disappears without suppressing observable traps, effects or defined budget behavior |
+| MUT-30 | Simplify proven-safe control flow | MUT-29 | Branch simplification preserves behavior and does not evaluate a formerly skipped branch |
+| MUT-31 | Differential-test optimized and baseline programs | MUT-30, MUT-37 | Corpus covers values, state, hostcall order, traps, source locations and documented budget semantics |
+| MUT-32 | Add optimizer benchmark and reporting harness | MUT-31 | Pinned workloads report time/size and detect specified regressions; no unmeasured speedup claim |
+| MUT-33 | Emit source mappings and useful diagnostics | MUT-26, MUT-30 | Runtime trap and compile errors identify source location, including optimized code |
+| MUT-34 | Add debugger breakpoints and stepping | MUT-33, MUT-27 | Breakpoint, step and stack inspection work on a sample without changing sim state |
+| MUT-35 | Add versioned, typed hostcall boundary | MUT-27 | Valid calls dispatch; unknown IDs, malformed arguments and signatures trap before dispatch |
+| MUT-36 | Enforce runtime capabilities | MUT-35, MUT-24 | Missing, narrowed and nonserializable capabilities are rejected; denied hostcalls do not run |
+| MUT-37 | Enforce VM resource limits | MUT-35 | Budget, call-depth, heap and hostcall quotas trap at tested boundaries without corruption |
+| MUT-38 | Provide deterministic input snapshots | MUT-35, ENG-02, ENG-30 | Recorded input yields identical tick snapshots; focus loss and event ordering are tested |
+| MUT-39 | Provide actions and rebindable key bindings | MUT-38 | Scripts read named actions; remaps, conflicts and persistence follow the approved v1 contract |
+| MUT-40 | Support approved pointer, gamepad and touch inputs | MUT-39 | Device mappings, connect/disconnect and touch behavior pass approved target-device tests |
+| MUT-41 | Expose UI bindings and events | MUT-35, STU-06 | Mute state updates UI and a button invokes its handler; invalid bindings fail |
+| MUT-42 | Expose physics queries and body operations | MUT-35, ENG-63, ENG-64, ENG-65 | Raycast, overlap, body and character operations follow authority policy; denied writes fail |
+| MUT-43 | Expose world/entity queries | MUT-35, ENG-33 | Filtered queries have stable order and stale or unauthorized handles are rejected |
+| MUT-44 | Expose scene/entity commands and transforms | MUT-43, ENG-90 | Approved create, remove and transform commands respect deferred ordering and stale handles |
+| MUT-45 | Expose approved camera controls | MUT-44, ENG-20 | Camera target and transforms respond to authorized scripts without mutating validated state |
+| MUT-46 | Expose asset loading and handles | MUT-35, ENG-17 | Approved load, release and invalid-handle cases are covered without leaks |
+| MUT-47 | Expose approved audio hostcalls | MUT-35, ENG-70 | Play/stop and capability denial work; cosmetic audio cannot mutate validated state |
+| MUT-48 | Expose animation markers and parameters | MUT-35, ENG-81, ENG-82 | Clip marker and parameter dispatch obey their validated/trusted policy |
+| MUT-49 | Expose approved network messaging and replication | MUT-35, NET-09, MUT-11 | Allowed messages/replication work and unauthorized or malformed calls are rejected |
+| MUT-50 | Expose namespaced storage | MUT-36, GAME-05 | Approved get/set/delete, isolation, failure and offline/conflict behavior pass contract tests |
+| MUT-51 | Complete approved deterministic math, time and RNG APIs | MUT-09, MUT-35 | Pinned vectors, seeded replay and simulation wall-clock rejection pass |
+| MUT-52 | Complete approved string and collection library | MUT-22 | Documented operations, ordering, Unicode behavior and bounds failures pass golden tests |
+| MUT-53 | Expose approved cryptographic APIs | MUT-36 | Approved hash, HMAC and signature verification vectors pass; unauthorized calls fail |
+| MUT-54 | Dispatch lifecycle and game events to Mute | MUT-23, MUT-35 | Approved event order, subscriptions and teardown are deterministic and tested |
+| MUT-55 | Provide package/build tooling and v1 documentation | MUT-21, MUT-26, MUT-33 | Fresh sample builds from a pinned lockfile with documented diagnostics and API reference |
+| MUT-56 | Provide editor diagnostics and contextual completion | MUT-17, MUT-18, MUT-33, STU-04 | Agreed editor interface reports matching diagnostics and symbol/type completion; stale-edit behavior is tested |
+| MUT-57 | Run v1 conformance, security and platform suite | MUT-31, MUT-36, MUT-37, MUT-39, MUT-40, MUT-41, MUT-42, MUT-43, MUT-44, MUT-45, MUT-46, MUT-47, MUT-48, MUT-49, MUT-50, MUT-51, MUT-52, MUT-53, MUT-54, MUT-55, MUT-56, INF-04 | Approved matrix passes on Windows x64, Android arm64 and Linux x64; no required gate is waived |
+| MUT-58 | Run integrated Mute v1 game slice | MUT-57 | Approved sample exercises v1 APIs and replay end-to-end on the agreed device matrix |
+| MUT-59 | Mute v1 completion review and release gate | MUT-01–58, G1, G2 | Owner accepts the frozen v1 matrix, evidence and documented deferrals; every required task and gate passes |
 
 ### Engine completion tasks (specs 21–28)
 
@@ -453,4 +525,12 @@ These are the first twenty commits. No task may be skipped or reordered without 
 | 19 | ENG-11 | ImGui pass | ImGui demo window renders over triangle | — |
 | 20 | ENG-12 | ImGui toggle and strip | Debug shows UI, release has no ImGui symbols | — |
 
-Task 21 begins MUT-01. The engine seed ends at ENG-22 and the deterministic gate at MUT-12.
+Task 21 begins MUT-01. The engine seed ends at ENG-22 and the deterministic-core gate follows MUT-12. Mute v1 completion is separately planned through MUT-59.
+
+## Integration review, 2026-11-22
+
+Camera projection and Vulkan depth-range defects were fixed with a dependency-free regression test; strict-warning CTest passed on Linux. Target GPU visual verification and existing platform gates remain open. See `../integration-review-2026-11-22.md`.
+
+## Broader review, 2026-11-22
+
+KTX2 parsing, configuration allocation safety and asset lifetime/retry failures were repaired with regression tests. Target SDK, device and earlier phase-gate verification remain open. See `../project-review-2026-11-22.md`.

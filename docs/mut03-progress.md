@@ -1,0 +1,7 @@
+# MUT-03 — initial arithmetic evaluator (2026-11-22)
+
+The owner requested MUT-03 and a subsequent audit. Under the existing execution-order exception, a C++20 iterative AST evaluator now supports checked signed/unsigned integer arithmetic and guarded f32/f64 `+ - * /`, with explicit typed errors, no implicit integer-to-float conversion, and a configurable AST-node cap. The initial arithmetic implementation and local tests pass; full numeric semantics, hosted CI and cross-platform determinism are not accepted. Follow-up: floating `%`, bounded source input, and read-only host numeric bindings are implemented; full language locals remain a later task. See `../mute/ARITHMETIC-EVALUATOR.md` for exact rules and `mut01-mut03-audit-2026-11-22.md` for findings, fixes and evidence. No parser, VM, UI, target-platform or infrastructure gate is closed by this change.
+
+Strict, sanitizer and clean-extraction Linux suites each passed **54/54** CTest entries; the software graphics suite passed **70/70**. An independent oracle and exhaustive 8-bit check passed. The next queued development task is MUT-04 (ImGui console REPL), but it should not be treated as closing the open MUT-03 or earlier gates. Numeric, full-language binding and sandbox limitations must be accounted for before presenting this evaluator as a full language runtime.
+
+Follow-up fixes and audit: see `mut01-mut03-followup-audit-2026-11-22.md`; earlier results above are historical and not a claim of cross-platform validation.

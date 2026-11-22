@@ -14,9 +14,10 @@ void perspective(std::array<float, 16>& m, float fovy, float aspect,
   m.fill(0.f);
   m[0] = f / aspect;
   m[5] = f;
-  m[10] = (zf + zn) / (zn - zf);
+  // Vulkan uses a [0, 1] NDC depth range.
+  m[10] = zf / (zn - zf);
   m[11] = -1.f;
-  m[14] = (2.f * zf * zn) / (zn - zf);
+  m[14] = (zf * zn) / (zn - zf);
 }
 void look_at(std::array<float, 16>& m, const float eye[3], const float target[3],
              const float up[3]) {
@@ -34,7 +35,7 @@ void look_at(std::array<float, 16>& m, const float eye[3], const float target[3]
        s[2], u[2], -f[2], 0.f,
        -(s[0] * eye[0] + s[1] * eye[1] + s[2] * eye[2]),
        -(u[0] * eye[0] + u[1] * eye[1] + u[2] * eye[2]),
-       (f[0] * eye[0] + f[1] * eye[1] + f[2] * eye[2]), 0.f};
+       (f[0] * eye[0] + f[1] * eye[1] + f[2] * eye[2]), 1.f};
 }
 void multiply(std::array<float, 16>& out, const std::array<float, 16>& a,
               const std::array<float, 16>& b) {

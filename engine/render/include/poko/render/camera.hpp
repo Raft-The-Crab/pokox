@@ -14,7 +14,12 @@ class OrbitCamera {
   void orbit(float delta_yaw, float delta_pitch) noexcept;
   void zoom(float wheel_detents) noexcept;  // wheel >0 moves closer
   void set_aspect(float aspect) noexcept { aspect_ = aspect > 0.f ? aspect : 1.f; }
-  // Column-major view*projection, ready to memcpy into a mat4 uniform.
+  // Drawable pixel dimensions determine projection; preserve the previous
+  // aspect while minimized or otherwise without a drawable area.
+  void set_viewport(std::uint32_t width, std::uint32_t height) noexcept {
+    if (width && height) set_aspect(static_cast<float>(width) / static_cast<float>(height));
+  }
+  // Column-major projection * view with Vulkan [0, 1] depth, ready for a mat4 uniform.
   [[nodiscard]] std::array<float, 16> view_proj() const noexcept;
   [[nodiscard]] float yaw() const noexcept { return yaw_; }
   [[nodiscard]] float pitch() const noexcept { return pitch_; }

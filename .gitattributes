@@ -1,0 +1,7 @@
+# Exact-byte fixtures and pinned UCD input must not be rewritten on checkout.
+/mute/tests/fixtures/golden/*.mute -text
+/mute/tests/fixtures/golden/*.tokens text eol=lf
+/mute/data/unicode/DerivedCoreProperties-15.1.0.txt -text
+/mute/tests/fixtures/golden/*.expr -text
+/mute/tests/fixtures/golden/*.ast text eol=lf
+/mute/tests/fixtures/golden/*.value text eol=lf

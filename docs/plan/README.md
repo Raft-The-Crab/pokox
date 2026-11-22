@@ -4,7 +4,7 @@ This folder is the durable record of the PokoX planning sessions. Read `00-decis
 
 ## Status
 
-Planning is complete. The folder scaffold and seven main README stubs are present. The minimal build and all five dependency link checks have passed on Linux; INF-02 remains open pending the two Windows toolchains. INF-03 flag contracts have been implemented and tested on Linux; an INF-04 Windows CI workflow has been prepared but not run. The INF-05 golden harness and INF-06 Git-tag version generator pass local tests. Work proceeded under the execution-order exception recorded in the work queue. An SDL window demo is implemented and tested on a Linux virtual display, but is unverified on the Windows/Android targets. No product-ready application is implemented. No money in, no money out. See `../structure.md` for the actual layout and `../build.md` for build status.
+The foundational plan exists; the proposed Mute v1 completion scope is awaiting review. The folder scaffold and seven main README stubs are present. The minimal build and all five dependency link checks have passed on Linux; INF-02 remains open pending the two Windows toolchains. INF-03 flag contracts have been implemented and tested on Linux; an INF-04 Windows CI workflow has been prepared but not run. The INF-05 golden harness and INF-06 Git-tag version generator pass local tests. Work proceeded under the execution-order exception recorded in the work queue. An SDL window demo is implemented and tested on a Linux virtual display, but is unverified on the Windows/Android targets. No product-ready application is implemented. No money in, no money out. See `../structure.md` for the actual layout and `../build.md` for build status.
 
 ## Current continuation
 
@@ -47,6 +47,7 @@ and clear-color acceptance remain open. See `../eng03-progress.md`. No phase gat
 | 28 | `27-engine-scene.md` | Scene graph, prefabs, serialization, streaming, editor integration |
 | 29 | `28-engine-diagnostics.md` | Profiler, debug draw, replay, console, crash handler |
 | 30 | `29-boyr6-character-adaptation.md` | Head UV normalisation, 15 pin attachments, verification, MCP limits |
+| 31 | `30-mute-v1-completion.md` | Proposed language, optimizer, game APIs and v1 completion gate |
 
 `11-engine.md` remains the capability contract (tiers and decisions). Documents 21–28 are the implementation-level engine specs that expand it.
 

@@ -22,6 +22,7 @@ class FrameStats {
   void record_gpu(double seconds) noexcept;
 
   std::uint64_t frames() const noexcept { return frames_; }
+  bool has_gpu_sample() const noexcept { return gpu_count_ != 0; }
   // Frames per second over the CPU-sample window (0 before the first sample).
   double fps() const noexcept;
   // Rolling mean CPU/GPU frame time in milliseconds; gpu_ms() is 0 until the

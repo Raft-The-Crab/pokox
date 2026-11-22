@@ -3,12 +3,13 @@
 #include "poko/platform/window/i_platform.hpp"
 
 struct SDL_Window;
+union SDL_Event;
 
 namespace poko::platform {
 
 // SDL video/event operations must run on the main thread. One SdlPlatform
 // instance must own event polling for the process; it consumes unhandled SDL
-// events too. Input is not exposed by ENG-02 and must not depend on this pump.
+// events too. An optional synchronous SDL event observer supports backend UI integration.
 class SdlPlatform final : public IPlatform {
  public:
   SdlPlatform() noexcept = default;
@@ -27,6 +28,12 @@ class SdlPlatform final : public IPlatform {
   [[nodiscard]] SDL_Window* native_window() const noexcept { return window_; }
   [[nodiscard]] WindowGraphicsApi graphics_api() const noexcept { return graphics_api_; }
   [[nodiscard]] bool poll_event(Event& event) noexcept override;
+  // Called synchronously on the polling thread for each raw SDL event before
+  // translation, including events otherwise ignored. The event is borrowed
+  // only for the call. Observer must filter window IDs, must not poll or
+  // mutate the platform, and must not throw. No observer is retained.
+  using EventObserver = void (*)(const SDL_Event&, void*) noexcept;
+  [[nodiscard]] bool poll_event(Event& event, EventObserver observer, void* user) noexcept;
 
  private:
   bool initialized_ = false;

@@ -17,8 +17,9 @@ using namespace poko::rhi;
 namespace imgui_fake {
 inline int buffers = 0, textures = 0, samplers = 0, shaders = 0, pipelines = 0, srbs = 0;
 inline int maps = 0, unmapped = 0, draws = 0, scissors = 0, commits = 0, rendertargets = 0, errors = 0;
+inline int fail_sampler_creates = 0;
 inline int fail_buffer_creates = 0;   // next N CreateBuffer calls return null
-inline void reset() { buffers=textures=samplers=shaders=pipelines=srbs=maps=unmapped=draws=scissors=commits=rendertargets=errors=0; fail_buffer_creates=0; }
+inline void reset() { buffers=textures=samplers=shaders=pipelines=srbs=maps=unmapped=draws=scissors=commits=rendertargets=errors=0; fail_buffer_creates=0; fail_sampler_creates=0; }
 }
 namespace Diligent {
 DebugMessageCallbackType DebugMessageCallback = nullptr;
@@ -27,14 +28,14 @@ IEngineFactoryVk* GetEngineFactoryVk() { return nullptr; }
 
 namespace {
 using namespace Diligent;
-struct FakeBuffer : IBuffer { std::vector<char> storage; int releases = 0; void Release() override { ++releases; } };
-struct FakeTextureView : ITextureView { ISampler* sampler = nullptr; void SetSampler(ISampler* s) override { sampler = s; } void Release() override {} };
+struct FakeBuffer : IBuffer { std::vector<char> storage; void Release() override { delete this; } };
+struct FakeTextureView : ITextureView { ISampler* sampler = nullptr; void SetSampler(ISampler* s) override { sampler = s; } void Release() override { delete this; } };
 struct FakeTexture : ITexture {
   void CreateView(const TextureViewDesc&, ITextureView** out) override { *out = new FakeTextureView{}; }
-  void Release() override {}
+  void Release() override { delete this; }
 };
-struct FakeSampler : ISampler { void Release() override {} };
-struct FakeShader : IShader { SHADER_TYPE type = SHADER_TYPE_VERTEX; explicit FakeShader(SHADER_TYPE t) : type(t) {} void Release() override {} };
+struct FakeSampler : ISampler { void Release() override { delete this; } };
+struct FakeShader : IShader { SHADER_TYPE type = SHADER_TYPE_VERTEX; explicit FakeShader(SHADER_TYPE t) : type(t) {} void Release() override { delete this; } };
 struct FakeVariable : IShaderResourceVariable {
   IDeviceObject* object = nullptr;
   IBuffer* buffer = nullptr; ITextureView* view = nullptr;
@@ -45,7 +46,7 @@ struct FakeVariable : IShaderResourceVariable {
   }
   void Release() override {}
 };
-struct FakeSRB : IShaderResourceBinding { void Release() override {} };
+struct FakeSRB : IShaderResourceBinding { void Release() override { delete this; } };
 struct FakePipeline : IPipelineState {
   FakeVariable frame_data, font_texture;
   IShaderResourceVariable* GetStaticVariableByName(SHADER_TYPE t, const Char* name) override {
@@ -54,7 +55,7 @@ struct FakePipeline : IPipelineState {
     return nullptr;
   }
   void CreateShaderResourceBinding(IShaderResourceBinding** out, bool) override { ++imgui_fake::srbs; *out = new FakeSRB{}; }
-  void Release() override {}
+  void Release() override { delete this; }
 };
 struct FakeDevice : IRenderDevice {
   FakePipeline* last_pipeline = nullptr;
@@ -76,7 +77,7 @@ struct FakeDevice : IRenderDevice {
     }
     ++imgui_fake::textures; *out = new FakeTexture{};
   }
-  void CreateSampler(const SamplerDesc&, ISampler** out) override { ++imgui_fake::samplers; *out = new FakeSampler{}; }
+  void CreateSampler(const SamplerDesc&, ISampler** out) override { ++imgui_fake::samplers; if (imgui_fake::fail_sampler_creates > 0) { --imgui_fake::fail_sampler_creates; *out = nullptr; return; } *out = new FakeSampler{}; }
   void CreateShader(const ShaderCreateInfo& i, IShader** out) override {
     // Bytecode must be non-empty and 4-byte aligned, as read_spirv guarantees.
     if (!i.ByteCode || !i.ByteCodeSize || (i.ByteCodeSize % 4) != 0) { ++imgui_fake::errors; *out = nullptr; return; }
@@ -162,6 +163,19 @@ int main() {
   // leaves capacity at zero, so the next frame retries creation instead of
   // mapping a null buffer (the ensure_buffers regression this harness guards).
   ImGui::NewFrame(); ImGui::ShowDemoWindow(); ImGui::Render();
+  // A failure after creating the view must not mark the font as initialized.
+  {
+    VulkanImGuiPass font_retry(vs, fs_path, diag);
+    imgui_fake::reset(); imgui_fake::fail_sampler_creates = 1;
+    if (font_retry.draw(device, context, chain, target) != RenderError::backend_failure) {
+      std::fputs("sampler failure was not reported\n", stderr); return 1;
+    }
+    imgui_fake::reset();
+    if (font_retry.draw(device, context, chain, target) != RenderError::none ||
+        imgui_fake::textures != 1 || imgui_fake::samplers != 1) {
+      std::fputs("font retry did not rebuild resources\n", stderr); return 1;
+    }
+  }
   imgui_fake::fail_buffer_creates = 1;
   imgui_fake::reset(); imgui_fake::fail_buffer_creates = 1;
   if (pass.draw(device, context, chain, target) != RenderError::backend_failure) {

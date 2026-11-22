@@ -1,0 +1,5 @@
+# Pinned deterministic sin/cos kernels
+
+Adapted from musl v1.2.5, commit `0784374d561435f7c787a555aeab8ede699ed298`, `src/math/{sin,cos,__sin,__cos,__rem_pio2,__rem_pio2_large,floor,scalbn}.c`; upstream: https://github.com/ifduyue/musl/tree/v1.2.5. The full upstream copyright notices are in `COPYRIGHT` and original per-file notices are retained. The high-level algorithms derive from Sun fdlibm as described in those files.
+
+Local adaptations: C++20 namespace and symbol names, `std::bit_cast` in place of C union type-punning, a small local header replacing musl's internal header, and explicitly local `floor_value`/`scalbn_value`. No native system sin/cos is called. `double_t` requires `FLT_EVAL_METHOD=0`; compiler flags disable fast math and FMA contraction. The public wrapper checks round-to-nearest and gradual-subnormal behavior and canonicalizes NaN/infinity results. It can alter FP exception flags and does not promise correctly-rounded transcendental results. See `docs/mut08-mut10-final-audit-2026-11-22.md` for verification scope and open target gates.

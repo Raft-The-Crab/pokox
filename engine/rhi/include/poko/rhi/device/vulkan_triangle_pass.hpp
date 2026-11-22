@@ -31,7 +31,9 @@ class VulkanTrianglePass final {
   void set_texture(const void* pixels, std::uint32_t width, std::uint32_t height,
                    bool bgra = false);
   // Full mip chain: `count` levels, index 0 = base. Each level's pixels are
-  // tightly packed at that level's dimensions (halving per level).
+  // tightly packed at that level's dimensions (halving per level). Invalid
+  // inputs clear the texture; allocation failure preserves the previous one.
+  // The caller supplies valid readable arrays throughout the call.
   struct TextureMip {
     const void* pixels = nullptr;
     std::uint32_t width = 0;

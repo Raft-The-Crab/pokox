@@ -55,7 +55,7 @@ struct BlendModeRenderTargetDesc { bool BlendEnable = false; BLEND_FACTOR SrcBle
 struct BlendDesc { bool IndependentBlendEnable = false; BlendModeRenderTargetDesc RenderTargets[8]; };
 struct RasterizerDesc { CULL_MODE CullMode = CULL_MODE_BACK; FILL_MODE FillMode = FILL_MODE_SOLID; bool ScissorEnable = false; };
 struct DepthStencilDesc { bool DepthEnable = false; bool DepthWriteEnable = false; };
-struct GraphicsPipelineDesc { InputLayoutDesc InputLayout{}; Uint32 NumRenderTargets = 0; TEXTURE_FORMAT RTVFormats[8]{}; TEXTURE_FORMAT DSVFormat = TEX_FORMAT_UNKNOWN; BlendDesc BlendDesc{}; RasterizerDesc RasterizerDesc{}; DepthStencilDesc DepthStencilDesc{}; PRIMITIVE_TOPOLOGY PrimitiveTopology = PRIMITIVE_TOPOLOGY_TRIANGLE_LIST; };
+struct GraphicsPipelineDesc { InputLayoutDesc InputLayout{}; Uint32 NumRenderTargets = 0; TEXTURE_FORMAT RTVFormats[8]{}; TEXTURE_FORMAT DSVFormat = TEX_FORMAT_UNKNOWN; Diligent::BlendDesc BlendDesc{}; Diligent::RasterizerDesc RasterizerDesc{}; Diligent::DepthStencilDesc DepthStencilDesc{}; PRIMITIVE_TOPOLOGY PrimitiveTopology = PRIMITIVE_TOPOLOGY_TRIANGLE_LIST; };
 struct PipelineStateDesc { const Char* Name = nullptr; };
 struct GraphicsPipelineStateCreateInfo { PipelineStateDesc PSODesc{}; GraphicsPipelineDesc GraphicsPipeline{}; struct IShader* pVS = nullptr; struct IShader* pPS = nullptr; };
 struct Viewport { float X = 0, Y = 0, Width = 0, Height = 0, MinDepth = 0, MaxDepth = 1; };

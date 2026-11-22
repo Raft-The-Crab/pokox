@@ -27,12 +27,17 @@ class VulkanMeshPass final {
   ~VulkanMeshPass();
   VulkanMeshPass(const VulkanMeshPass&) = delete;
   VulkanMeshPass& operator=(const VulkanMeshPass&) = delete;
-  // Replaces the mesh; safe to call between draws. Empty input clears it.
+  // Replaces the mesh between draws. Empty/invalid input clears it; allocation
+  // failure throws and preserves the previous mesh. Caller owns valid input
+  // arrays for the duration of the call. Index counts must fit in uint32_t.
   void set_mesh(const MeshVertex* vertices, std::size_t vertex_count,
                 const std::uint32_t* indices, std::size_t index_count);
   // ENG-20: column-major view*projection mat4 uploaded per draw. Until set,
-  // a perspective default looking at the origin is used.
+  // the identity matrix is used.
   void set_view_proj(const float* mat16) noexcept;
+  // Set the world-space direction from a surface toward the light. Invalid,
+  // non-finite or zero vectors are rejected without changing the last value.
+  [[nodiscard]] bool set_light_direction(float x, float y, float z) noexcept;
   [[nodiscard]] RenderError draw_and_present(VulkanClearRenderer& renderer) noexcept;
   // Draw into an already-acquired frame without clearing or presenting; the
   // caller must supply the objects a renderer draw callback receives.

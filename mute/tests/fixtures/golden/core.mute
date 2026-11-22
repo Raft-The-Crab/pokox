@@ -1,0 +1,5 @@
+/// Account example
+package "com.poko.hub"
+@state let café = 0xffu8
+fn buy(item) { balance -= item.price; ui.toast("Bought {item.name}") }
+1..2 3.5f32 // comment

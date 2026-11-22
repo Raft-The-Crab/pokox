@@ -11,6 +11,8 @@
 #endif
 #include <cstdint>
 #include <cstring>
+#include <limits>
+#include <algorithm>
 #include <string>
 #include <utility>
 #include <vector>
@@ -54,6 +56,8 @@ struct VulkanTrianglePass::Impl {
     if (current_format == Diligent::TEX_FORMAT_UNKNOWN ||
         (has_depth && (current_depth_format == Diligent::TEX_FORMAT_UNKNOWN || !depth_view)))
       return RenderError::backend_failure;
+    // Bind before any GPU allocation, even if initialization later fails.
+    owner = &device;
     if (textured && !tex_levels.empty() && !tex_uploaded) {
       // ENG-18: one-time upload of the CPU-side pixels supplied via
       // set_texture(). Runs inside draw() where device+context exist, and
@@ -70,8 +74,10 @@ struct VulkanTrianglePass::Impl {
       tdesc.MipLevels = static_cast<Diligent::Uint32>(tex_levels.size()); tdesc.ArraySize = 1;
       tdesc.Usage = Diligent::USAGE_DEFAULT;
       tdesc.BindFlags = Diligent::BIND_SHADER_RESOURCE;
-      device.CreateTexture(tdesc, nullptr, &texture);
-      if (!texture || diagnostics.messages().errors) return RenderError::backend_failure;
+      Diligent::RefCntAutoPtr<Diligent::ITexture> created_texture;
+      Diligent::RefCntAutoPtr<Diligent::ISampler> created_sampler;
+      device.CreateTexture(tdesc, nullptr, &created_texture);
+      if (!created_texture || diagnostics.messages().errors) return RenderError::backend_failure;
       Diligent::SamplerDesc sdesc{};
       sdesc.Name = "Poko textured quad sampler";
       sdesc.MinFilter = Diligent::FILTER_TYPE_LINEAR;
@@ -80,11 +86,11 @@ struct VulkanTrianglePass::Impl {
       sdesc.AddressU = Diligent::TEXTURE_ADDRESS_CLAMP;
       sdesc.AddressV = Diligent::TEXTURE_ADDRESS_CLAMP;
       sdesc.AddressW = Diligent::TEXTURE_ADDRESS_CLAMP;
-      device.CreateSampler(sdesc, &sampler);
-      if (!sampler || diagnostics.messages().errors) return RenderError::backend_failure;
-      tex_view = texture->GetDefaultView(Diligent::TEXTURE_VIEW_SHADER_RESOURCE);
-      if (!tex_view || diagnostics.messages().errors) return RenderError::backend_failure;
-      tex_view->SetSampler(sampler);
+      device.CreateSampler(sdesc, &created_sampler);
+      if (!created_sampler || diagnostics.messages().errors) return RenderError::backend_failure;
+      auto* created_view = created_texture->GetDefaultView(Diligent::TEXTURE_VIEW_SHADER_RESOURCE);
+      if (!created_view || diagnostics.messages().errors) return RenderError::backend_failure;
+      created_view->SetSampler(created_sampler);
       if (diagnostics.messages().errors) return RenderError::backend_failure;
       for (Diligent::Uint32 level = 0; level < tex_levels.size(); ++level) {
         const auto lw = tex_level_w[level], lh = tex_level_h[level];
@@ -93,11 +99,14 @@ struct VulkanTrianglePass::Impl {
         sub.pData = tex_levels[level].data();
         sub.Stride = static_cast<Diligent::Uint64>(lw) * 4;
         sub.DepthStride = static_cast<Diligent::Uint64>(lw) * lh * 4;
-        context.UpdateTexture(texture, level, 0, box, sub,
+        context.UpdateTexture(created_texture, level, 0, box, sub,
                               Diligent::RESOURCE_STATE_TRANSITION_MODE_NONE,
                               Diligent::RESOURCE_STATE_TRANSITION_MODE_TRANSITION);
         if (diagnostics.messages().errors) return RenderError::backend_failure;
       }
+      texture = std::move(created_texture);
+      sampler = std::move(created_sampler);
+      tex_view = created_view;
       tex_uploaded = true;
     }
     if (!pipeline || format != current_format || depth_format != current_depth_format) {
@@ -212,28 +221,35 @@ void VulkanTrianglePass::set_texture(const void* pixels, std::uint32_t width,
 void VulkanTrianglePass::set_texture_mips(const TextureMip* mips, std::size_t count,
                                           bool bgra, bool srgb) {
   auto& impl = *impl_;
-  impl.tex_levels.clear(); impl.tex_level_w.clear(); impl.tex_level_h.clear();
-  impl.tex_levels.reserve(count); impl.tex_level_w.reserve(count);
-  impl.tex_level_h.reserve(count);
-  for (std::size_t i = 0; i < count; ++i) {
+  std::vector<std::vector<std::uint8_t>> levels;
+  std::vector<std::uint32_t> widths, heights;
+  bool valid = mips && count && count <= 32;
+  std::uint32_t expected_w = valid ? mips[0].width : 0;
+  std::uint32_t expected_h = valid ? mips[0].height : 0;
+  for (std::size_t i = 0; valid && i < count; ++i) {
     const auto& mip = mips[i];
-    if (!mip.pixels || mip.width == 0 || mip.height == 0) {
-      impl.tex_levels.clear(); impl.tex_level_w.clear(); impl.tex_level_h.clear();
-      break;
-    }
+    valid = mip.pixels && mip.width && mip.height &&
+        mip.width == expected_w && mip.height == expected_h &&
+        static_cast<std::size_t>(mip.width) <=
+            std::numeric_limits<std::size_t>::max() / 4 / mip.height;
+    if (!valid) break;
     const std::size_t bytes = static_cast<std::size_t>(mip.width) * mip.height * 4;
-    impl.tex_levels.emplace_back(
-        static_cast<const std::uint8_t*>(mip.pixels),
-        static_cast<const std::uint8_t*>(mip.pixels) + bytes);
-    impl.tex_level_w.push_back(mip.width);
-    impl.tex_level_h.push_back(mip.height);
+    const auto* begin = static_cast<const std::uint8_t*>(mip.pixels);
+    levels.emplace_back(begin, begin + bytes);
+    widths.push_back(mip.width); heights.push_back(mip.height);
+    if (i + 1 < count && expected_w == 1 && expected_h == 1) valid = false;
+    expected_w = std::max<std::uint32_t>(1, expected_w / 2);
+    expected_h = std::max<std::uint32_t>(1, expected_h / 2);
   }
-  if (count && !impl.tex_levels.empty()) {
-    impl.tex_width = impl.tex_level_w.front();
-    impl.tex_height = impl.tex_level_h.front();
-  }
-  impl.tex_bgra = bgra; impl.tex_srgb = srgb;
-  impl.tex_uploaded = false;
+  if (!valid) { levels.clear(); widths.clear(); heights.clear(); }
+  impl.tex_levels.swap(levels); impl.tex_level_w.swap(widths); impl.tex_level_h.swap(heights);
+  impl.tex_width = impl.tex_levels.empty() ? 0 : impl.tex_level_w.front();
+  impl.tex_height = impl.tex_levels.empty() ? 0 : impl.tex_level_h.front();
+  impl.tex_bgra = bgra; impl.tex_srgb = srgb; impl.tex_uploaded = false;
+  // Static texture bindings are captured by the SRB; a replacement must
+  // rebuild the pipeline/binding rather than continue sampling the old view.
+  impl.pipeline = Diligent::RefCntAutoPtr<Diligent::IPipelineState>();
+  impl.binding = Diligent::RefCntAutoPtr<Diligent::IShaderResourceBinding>();
   impl.texture = Diligent::RefCntAutoPtr<Diligent::ITexture>();
   impl.sampler = Diligent::RefCntAutoPtr<Diligent::ISampler>();
   impl.tex_view = nullptr;

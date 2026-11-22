@@ -85,7 +85,9 @@ PlatformError SdlPlatform::get_window_size(WindowSize& size) noexcept {
   return PlatformError::none;
 }
 
-bool SdlPlatform::poll_event(Event& event) noexcept {
+bool SdlPlatform::poll_event(Event& event) noexcept { return poll_event(event, nullptr, nullptr); }
+
+bool SdlPlatform::poll_event(Event& event, EventObserver observer, void* user) noexcept {
   if (!initialized_) return false;
   // Retry a resize notification whose earlier size query failed.
   if (pending_resize_ && window_) {
@@ -105,9 +107,22 @@ bool SdlPlatform::poll_event(Event& event) noexcept {
   }
   SDL_Event raw;
   while (SDL_PollEvent(&raw)) {
+    if (observer) observer(raw, user);
     if (raw.type == SDL_EVENT_QUIT) {
       event = {EventType::quit_requested, {}};
       return true;
+    }
+    // Mouse events carry a windowID — drop events not addressed to our window
+    // (and everything while no window exists).
+    const bool mouse_event = raw.type == SDL_EVENT_MOUSE_MOTION ||
+        raw.type == SDL_EVENT_MOUSE_BUTTON_DOWN || raw.type == SDL_EVENT_MOUSE_BUTTON_UP ||
+        raw.type == SDL_EVENT_MOUSE_WHEEL;
+    if (mouse_event) {
+      if (!window_) continue;
+      const auto owner = SDL_GetWindowID(window_);
+      const auto ev_window = raw.type == SDL_EVENT_MOUSE_MOTION ? raw.motion.windowID
+          : raw.type == SDL_EVENT_MOUSE_WHEEL ? raw.wheel.windowID : raw.button.windowID;
+      if (ev_window != owner) continue;
     }
     if (raw.type == SDL_EVENT_MOUSE_MOTION &&
         (raw.motion.state & SDL_BUTTON_LMASK)) {

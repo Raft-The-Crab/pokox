@@ -116,7 +116,10 @@ jobs:
             libx11-dev libxext-dev libxrandr-dev libxfixes-dev libxi-dev \
             libxcursor-dev libxinerama-dev libxss-dev libxkbcommon-dev \
             wayland-protocols libwayland-dev libdecor-0-dev \
-            libvulkan-dev glslang-tools xvfb
+            libvulkan-dev glslang-tools xvfb xauth mesa-vulkan-drivers vulkan-validationlayers
+
+      - name: Install pinned console test dependencies
+        run: python -m pip install "python-xlib==0.33" "Pillow==11.3.0"
 
       - name: Check out pinned vcpkg
         uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
@@ -135,6 +138,8 @@ jobs:
           "-DCMAKE_TOOLCHAIN_FILE=$GITHUB_WORKSPACE/_vcpkg/scripts/buildsystems/vcpkg.cmake"
           -DVCPKG_TARGET_TRIPLET=x64-linux
           -DPOKO_WITH_DEPENDENCIES=ON -DPOKO_WITH_SDL_PLATFORM=ON -DBUILD_TESTING=ON
+          -DPOKO_WITH_VULKAN_DEMO=ON -DPOKO_WITH_SHADER_ARTIFACTS=ON -DPOKO_WITH_IMGUI_DEMO=ON
+          -DPOKO_MUTE_EXHAUSTIVE_TESTS=ON -DPOKO_MUTE_X11_INTERACTION_TESTS=ON
           -DPOKO_IMGUI=ON -DPOKO_DEBUG=ON -DPOKO_D3D12=OFF
 
       - name: Build
@@ -142,3 +147,73 @@ jobs:
 
       - name: Run tests under Xvfb (real X11 display for visual tests)
         run: xvfb-run -a ctest --test-dir build-ci --output-on-failure --no-tests=error
+
+  linux-lit-cube-golden:
+    name: Linux Vulkan lit-cube golden (software)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    defaults:
+      run:
+        shell: bash -el {0}
+    env:
+      SDL_VIDEODRIVER: x11
+      LIBGL_ALWAYS_SOFTWARE: '1'
+      LP_NATIVE_VECTOR_WIDTH: '128'
+      LP_NUM_THREADS: '1'
+    steps:
+      - name: Check out PokoX
+        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+        with:
+          persist-credentials: false
+
+      - name: Install build and X11 dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            g++-11 cmake pkg-config libx11-dev libxext-dev \
+            libxrandr-dev libxfixes-dev libxi-dev libxcursor-dev \
+            libxinerama-dev libxss-dev libxkbcommon-dev xvfb xauth
+
+      - name: Set up pinned software graphics environment
+        uses: mamba-org/setup-micromamba@add3a49764cedee8ee24e82dfde87f5bc2914462 # v2.0.7
+        with:
+          micromamba-version: '2.0.5-0'
+          environment-name: poko-graphics
+          environment-file: tools/dependencies/linux-graphics-conda-explicit.txt
+          cache-environment: false
+
+      - name: Configure environment
+        run: |
+          echo "CMAKE_PREFIX_PATH=$CONDA_PREFIX" >> "$GITHUB_ENV"
+          echo "LD_LIBRARY_PATH=$CONDA_PREFIX/lib" >> "$GITHUB_ENV"
+          echo "PKG_CONFIG_PATH=$CONDA_PREFIX/lib/pkgconfig" >> "$GITHUB_ENV"
+          echo "VK_ICD_FILENAMES=$CONDA_PREFIX/share/vulkan/icd.d/lvp_icd.x86_64.json" >> "$GITHUB_ENV"
+          echo "LIBGL_DRIVERS_PATH=$CONDA_PREFIX/lib/dri" >> "$GITHUB_ENV"
+          install -d -m 700 "$RUNNER_TEMP/poko-runtime"
+          echo "XDG_RUNTIME_DIR=$RUNNER_TEMP/poko-runtime" >> "$GITHUB_ENV"
+
+      - name: Configure golden build
+        run: >-
+          cmake -S . -B build-golden -G Ninja -DCMAKE_BUILD_TYPE=Release
+          -DCMAKE_CXX_COMPILER=g++-11 -DBUILD_TESTING=ON
+          -DPOKO_WITH_SDL_PLATFORM=ON -DPOKO_WITH_VULKAN_DEMO=ON
+          -DPOKO_WITH_SHADER_ARTIFACTS=ON -DPOKO_WITH_CUBE_DEMO=ON
+          -DPOKO_WITH_CUBE_GOLDEN=ON -DDILIGENT_NO_OPENGL=ON
+
+      - name: Build cube and shaders
+        run: cmake --build build-golden --target pokox_cube --parallel 2
+
+      - name: Compare the rendered lit cube to the reference
+        run: >-
+          xvfb-run -a -s '-screen 0 1280x800x24 -nolisten tcp'
+          ctest --test-dir build-golden -R '^pokox_cube_golden$'
+          --output-on-failure --no-tests=error
+
+      - name: Upload actual screenshot on failure
+        if: failure()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: lit-cube-golden-actual
+          path: build-golden/lit_cube_actual.png
+          if-no-files-found: ignore
+          retention-days: 7

@@ -1,0 +1,1 @@
+(binary - (binary + (integer "1") (binary * (integer "2") (integer "3"))) (binary / (integer "4") (binary % (integer "5") (integer "2"))))

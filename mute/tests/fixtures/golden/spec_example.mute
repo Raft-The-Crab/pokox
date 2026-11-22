@@ -1,0 +1,29 @@
+package "com.poko.hub" version "SecretV1?"
+allow: net, ui, storage, asset
+import "pkg://poko/ui@WobblyMango" as ui
+
+struct Item { id: u32, name: string, price: u32 }
+enum ShopError { Insufficient, SoldOut, InvalidId }
+
+@state var balance: u32 = 1500
+@state var items: array<Item> = []
+
+@on(BuyPressed) fn buy(id: u32) -> result<Unit, ShopError> {
+  let item = market.lookup(id).ok_or(InvalidId)?
+  guard balance >= item.price else { return err(Insufficient) }
+  balance -= item.price
+  items.push(item)
+  ui.toast("Bought {item.name}")
+  return ok(())
+}
+
+@every(0.1) fn refresh() {
+  ui.bind("balance", balance)
+  @replicate(balance, Target.Others)
+}
+
+async fn fetchCatalog() -> result<Unit, NetError> {
+  let catalog = await net.request("catalog/list")?
+  for item in catalog { ui.list.add(item) }
+  return ok(())
+}

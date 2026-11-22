@@ -2,6 +2,7 @@
 // no leaks across copies, moves, failures, and store teardown.
 #include "poko/resource/asset_store.hpp"
 
+#include <atomic>
 #include <chrono>
 #include <cstdio>
 #include <memory>
@@ -142,7 +143,11 @@ int main() {
   {  // ENG-17: async load does not block; poll installs the payload.
     AssetStore store;
     int loads = 0;
-    store.request_async("async_tex", counting_loader(&loads));
+    std::atomic<bool> release{false};
+    store.request_async("async_tex", [&loads, &release](const std::string& key) -> AssetPayload {
+      while (!release.load()) std::this_thread::yield();
+      return counting_loader(&loads)(key);
+    });
     CHECK(store.is_loading("async_tex"));
     CHECK(store.load_state("async_tex") == LoadState::loading);
     // Dedup: a second request while loading does not enqueue another job.
@@ -151,10 +156,13 @@ int main() {
     std::string error;
     auto early = store.acquire("async_tex", counting_loader(&loads), &error);
     CHECK(!early.valid() && !error.empty());
+    release.store(true);
     // Wait for the worker (bounded), then poll.
     for (int i = 0; i < 200 && store.is_loading("async_tex"); ++i)
       std::this_thread::sleep_for(std::chrono::milliseconds(5));
     CHECK(!store.is_loading("async_tex"));
+    CHECK(store.load_state("async_tex") == LoadState::awaiting_install);
+    CHECK(!store.acquire("async_tex", counting_loader(&loads)).valid());
     store.poll_async();
     CHECK(store.load_state("async_tex") == LoadState::ready);
     auto h = store.acquire("async_tex", counting_loader(&loads));
@@ -174,12 +182,70 @@ int main() {
     CHECK(store.last_error("bad") == "io error");
     int loads = 0;
     store.request_async("bad", counting_loader(&loads));  // explicit retry
+    CHECK(store.last_error("bad").empty());
     for (int i = 0; i < 200 && store.is_loading("bad"); ++i)
       std::this_thread::sleep_for(std::chrono::milliseconds(5));
     store.poll_async();
     CHECK(store.load_state("bad") == LoadState::ready);
     auto h = store.acquire("bad", counting_loader(&loads));
     CHECK(h.valid());
+  }
+  {  // Retrying a failure before poll must expose the newer job's state.
+    AssetStore store;
+    store.request_async("retry", [](const std::string&) -> AssetPayload { return {}; });
+    for (int i = 0; i < 200 && store.is_loading("retry"); ++i)
+      std::this_thread::sleep_for(std::chrono::milliseconds(5));
+    CHECK(store.load_state("retry") == LoadState::failed);
+    std::atomic<bool> release{false};
+    store.request_async("retry", [&release](const std::string&) -> AssetPayload {
+      while (!release.load()) std::this_thread::yield();
+      return std::make_shared<Payload>();
+    });
+    CHECK(store.load_state("retry") == LoadState::loading);
+    release.store(true);
+    for (int i = 0; i < 200 && store.is_loading("retry"); ++i)
+      std::this_thread::sleep_for(std::chrono::milliseconds(5));
+    store.poll_async();
+    CHECK(store.load_state("retry") == LoadState::ready);
+  }
+  {  // A retry supersedes an unpolled failure, even if polled while running.
+    AssetStore store;
+    store.request_async("stale", [](const std::string&) -> AssetPayload { return {}; });
+    for (int i = 0; i < 200 && store.is_loading("stale"); ++i)
+      std::this_thread::sleep_for(std::chrono::milliseconds(5));
+    CHECK(store.load_state("stale") == LoadState::failed);
+    std::atomic<bool> release{false};
+    store.request_async("stale", [&release](const std::string&) -> AssetPayload {
+      while (!release.load()) std::this_thread::yield();
+      return std::make_shared<Payload>();
+    });
+    store.poll_async();
+    CHECK(store.last_error("stale").empty());
+    release.store(true);
+    for (int i = 0; i < 200 && store.is_loading("stale"); ++i)
+      std::this_thread::sleep_for(std::chrono::milliseconds(5));
+    store.poll_async();
+  }
+  {  // Successful synchronous recovery must not resurrect an old async error.
+    AssetStore store;
+    store.request_async("recover", [](const std::string&) -> AssetPayload { return {}; });
+    for (int i = 0; i < 200 && store.is_loading("recover"); ++i)
+      std::this_thread::sleep_for(std::chrono::milliseconds(5));
+    int loads = 0;
+    auto h = store.acquire("recover", counting_loader(&loads));
+    CHECK(h.valid());
+    store.poll_async();
+    CHECK(store.last_error("recover").empty());
+    h = AssetHandle{};
+    CHECK(store.load_state("recover") == LoadState::none);
+  }
+  {  // Empty async keys cannot produce unreachable resident assets.
+    AssetStore store;
+    bool rejected = false;
+    try { store.request_async("", [](const std::string&) -> AssetPayload { return {}; }); }
+    catch (const std::invalid_argument&) { rejected = true; }
+    CHECK(rejected);
+    CHECK(store.resident_count() == 0);
   }
   {  // Store destruction with a queued/running job shuts down cleanly.
     {

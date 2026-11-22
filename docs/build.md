@@ -231,6 +231,40 @@ configured linear clear; 123 frames, 0 captured errors) — the ENG-03
 clear-color criterion is met on Windows MinGW. Still open: MSVC leg,
 first GitHub Actions run, Android, and resize recreation (ENG-05).
 
+## Windows laptop verification — 2026-11-22 (MSYS2 UCRT64 MinGW, full demo set)
+
+Host: same MSYS2 UCRT64 laptop, g++ 16.2.0, CMake 4.4.2. vcpkg checkout at
+`~/vcpkg` (2026-10-29); manifest installed SDL3 3.4.20, ImGui 1.93.0,
+spdlog 1.17.0, Catch2 3.16.1 into `vcpkg_installed/x64-mingw-dynamic`
+(restored from binary cache).
+
+- Configure used `-G "MinGW Makefiles"` (DiligentCore auto-detects MinGW
+  via the generator name; the Ninja path still requires
+  `-DMINGW_BUILD=TRUE` as noted above) with `POKO_WITH_DEPENDENCIES`,
+  `POKO_WITH_SDL_PLATFORM`, `POKO_WITH_VULKAN_DEMO`,
+  `POKO_WITH_SHADER_ARTIFACTS`, `POKO_WITH_TRIANGLE_DEMO`,
+  `POKO_WITH_IMGUI_DEMO`, `POKO_WITH_CUBE_DEMO`, Debug, `x64-mingw-dynamic`
+  target+host triplets.
+- One interrupted parallel build left a 0-byte
+  `SPIRV-Tools-opt.dir/build_module.cpp.obj`; deleting it fixed the
+  `spvtools::BuildModule` link failure. No source changes needed.
+- `pokox_config_logging_guard_real_test` failed on Windows because the
+  test deleted its log while `std::ifstream` was still open; the stream is
+  now scoped before `std::filesystem::remove`.
+- **80/80 CTest passed** including all mute tests, SDL dummy-driver
+  tests, shader-pipeline, triangle/cube/imgui demo input checks and
+  `version_integration`.
+- `pokox_vulkan_clear.exe --frames 60` and `--frames 30 --no-validation`
+  both exited 0 on the real GPU, but Diligent logged a debug assertion
+  `FindQueueFamily(), VulkanPhysicalDevice.cpp:435` during adapter
+  enumeration on these runs — needs investigation; earlier `--adapter 0`
+  runs were clean.
+- `mute_evaluator_unit` previously crashed on MinGW: `feholdexcept` does
+  not mask SSE exceptions there, so `FloatEnvironment` now also
+  saves/masks/restores MXCSR on SSE targets.
+- Still open: MSVC leg, GitHub Actions run, Android, physical-device
+  gates.
+
 ## ENG-08 — experimental Vulkan triangle
 
 An opt-in graph-driven Vulkan triangle demo now consumes the ENG-07 SPIR-V artifacts. Linux software Vulkan produced a visually checked triangle and passed a three-resize smoke test; this is not Windows GPU or validation-layer acceptance. Build and run instructions and remaining limits are in `../engine/render/README.md` and `eng08-progress.md`.

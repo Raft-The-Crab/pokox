@@ -1,5 +1,7 @@
 # 04 — Mute language and VM
 
+**Planning status:** MUT-01–12 cover the deterministic-core seed, not the full design below. Proposed completion tasks and the unresolved v1 scope are in `30-mute-v1-completion.md`; no future feature is implied to be implemented.
+
 ## Goals
 
 Typed by default, one source for two runtimes, networking and UI as language features, deterministic or it does not ship, sandboxed by construction. No nil ambiguity, no separate client/server code paths.
@@ -80,7 +82,16 @@ Bidirectional inference; all `pub` signatures and `@state` explicit. Unsuffixed 
 
 ## Bytecode ISA
 
-32-bit words: `opcode:8 | a:8 | b:8 | c:8`, three-address form, 256 registers per frame, max depth 64. Constant pool indexed by `c`; branches pack a signed 24-bit offset into `b|c`. Hostcall uses `a` for id, `b` for arg base, `c` for return.
+32-bit words: `opcode:8 | a:8 | b:8 | c:8`, three-address form, 256 registers per frame, max depth 64. Constant pool indexed by `c`. Hostcall uses `a` for id, `b` for arg base, `c` for return.
+
+### Branch encoding decision
+
+The old statement that `b|c` holds 24 bits was inconsistent: those fields hold 16 bits. The selected v1 branch design is:
+
+- **Short:** `jmp` uses `a=0`; `br_true`/`br_false` use `a` as the condition register. `b:c` is a signed two's-complement 16-bit instruction-word displacement, most significant byte in `b`, from the word immediately after the branch. Range −32,768 to 32,767.
+- **Long:** `ext_prefix` (`0x60`) uses `a=1` for unconditional, `2` for true, `3` for false; `b` is the condition register for conditional forms and zero otherwise; `c=0`. The next complete word is a signed two's-complement 32-bit displacement in little-endian byte order from the word **after the payload**. It is data, never an instruction or legal branch target. The pair consumes one VM instruction-budget step.
+- A compiler must prefer short when the target is in range and otherwise emit long. Both representations are accepted by the decoder; bytecode order is fixed and relocation changes the displacement. Targets must be instruction starts within the same function, and overflow or an out-of-range target is rejected. The current low-level codec supports up to 65,536 words; its long form therefore spans any location in its allowed stream.
+- The implemented `MUTB` codec uses this design. The current separate source-backed `MUTP` program snapshot stores its own signed 32-bit instruction-relative branch operands; it is not the final `.pkB` ISA. Full lowering into the selected word ISA remains MUT-26, and control-flow/type/capability verification remains MUT-27. This branch decision does not approve the rest of the proposed v1 language or settle the production package format.
 
 | Range | Opcodes |
 |---|---|
@@ -92,7 +103,7 @@ Bidirectional inference; all `pub` signatures and `@state` explicit. Unsuffixed 
 | 0x50–0x5F | replicate broadcast ui_bind ui_toast ui_animate net_request net_respond emit subscribe entity_create entity_destroy entity_query physics_query storage_get storage_set log |
 | 0x60–0x6F | ext_prefix loadk64 loadf64 budget_add capability_check hash_state promote to_weak trap_ext |
 
-`ext_prefix` consumes the next word as an extended opcode. Disassembler prints names and interleaves source.
+`ext_prefix` uses `a` as an extension selector; long branches consume the next word as a displacement payload, as specified above. Other extensions require their own defined layouts. The disassembler prints names; production source mapping remains future work.
 
 ## Memory model
 
