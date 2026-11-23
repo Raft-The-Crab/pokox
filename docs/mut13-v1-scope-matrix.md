@@ -1,11 +1,9 @@
-# MUT-13 — Mute v1 scope and API matrix (DRAFT for owner review)
+# MUT-13 — Mute v1 scope and API matrix (APPROVED)
 
-**Status: draft proposal with researched recommendations, not approved.**
-MUT-13's done-when is an *owner-approved* versioned matrix. §5 now carries
-evidence-based recommendations for each open decision; the owner ratifies
-or overrides them before MUT-14 may start. Nothing here waives G1/G2, the
-existing gates, or the security/authority model in `04-mute.md` and
-`30-mute-v1-completion.md`.
+**Status: approved by owner.** This is the frozen v1 contract for MUT-14
+and later tasks. Changes require a new owner decision recorded here. G1/G2,
+the existing gates, and the security/authority model in `04-mute.md` and
+`30-mute-v1-completion.md` remain in force.
 
 ## 1. Language feature matrix (proposed v1 decisions)
 
@@ -69,9 +67,9 @@ validated data enters replay. This matches the existing authority model.
 | Bytecode versioning | `muteVersion` semver-by-word in manifest; decoder rejects unknown versions |
 | State snapshot format | `MUTS` stays internal; versioned, no migration promise beyond v1 |
 
-## 5. Open decisions — researched recommendations (owner to ratify)
+## 5. Decisions — APPROVED by owner
 
-Each recommendation cites the evidence basis; the owner may override any row.
+Approved as recommended on 2026-11-23.
 
 1. **Budget accounting under optimization → semantic-cost accounting.**
    Charge a stable semantic cost per source-level operation, not per VM
