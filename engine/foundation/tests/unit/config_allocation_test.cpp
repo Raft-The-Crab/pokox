@@ -60,6 +60,14 @@ void operator delete[](void* p) noexcept { std::free(p); }
 void operator delete[](void* p, std::size_t) noexcept { std::free(p); }
 
 int main() {
+#if defined(_MSC_VER) && (!defined(_ITERATOR_DEBUG_LEVEL) || _ITERATOR_DEBUG_LEVEL > 0)
+  // With MSVC's default debug iterator level every STL container construction
+  // allocates a proxy, so no noexcept path using the STL can survive injected
+  // failures; the project only guarantees this contract at level 0, which is
+  // impossible when linking prebuilt C++ dependencies. Report a CTest skip.
+  std::puts("config allocation injection requires _ITERATOR_DEBUG_LEVEL=0");
+  return 77;
+#endif
   const auto path = std::filesystem::temp_directory_path() / "poko_config_oom.cbor";
   // One unknown, long text key: exercises CBOR strings and unknown-key lists.
   std::string data{"\xa1\x78\x64", 3}; data.append(100, 'x'); data.push_back('\x01');

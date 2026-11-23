@@ -1,15 +1,6 @@
 cmake_minimum_required(VERSION 3.28)
 project(PokoX LANGUAGES CXX)
 
-# MSVC's debug STL heap-allocates an iterator-debugging proxy for every
-# string/vector construction, so noexcept APIs terminate on an injected
-# bad_alloc (see pokox_config_allocation_test). Level 0 keeps _DEBUG checks
-# (RTC, asserts) without container proxies; it must apply to every TU so STL
-# layouts stay consistent.
-if(MSVC)
-  add_compile_definitions(_ITERATOR_DEBUG_LEVEL=0)
-endif()
-
 # Project-wide C++20: per-target cxx_std_20 features miss test/fault targets
 # and the VS generator then defaults them to C++14.
 set(CMAKE_CXX_STANDARD 20)
@@ -55,6 +46,17 @@ if(POKO_WITH_VULKAN_DEMO AND NOT POKO_WITH_SDL_PLATFORM)
 endif()
 if(POKO_WITH_VULKAN_DEMO AND (ANDROID OR APPLE OR EMSCRIPTEN))
   message(FATAL_ERROR "The clear demo is desktop Windows/Linux-X11 only; Android activity/lifecycle packaging remains future work")
+endif()
+
+# MSVC's debug STL heap-allocates an iterator-debugging proxy for every
+# string/vector construction, so noexcept APIs terminate on an injected
+# bad_alloc (see pokox_config_allocation_test). Level 0 keeps _DEBUG checks
+# (RTC, asserts) without container proxies; it must apply to every TU so STL
+# layouts stay consistent. It is only possible when no prebuilt C++
+# dependency (Catch2/imgui/spdlog from vcpkg) is linked: those binaries are
+# compiled at the default level and mixing levels fails LNK2038.
+if(MSVC AND NOT POKO_WITH_DEPENDENCIES)
+  add_compile_definitions(_ITERATOR_DEBUG_LEVEL=0)
 endif()
 
 if(POKO_D3D12)
@@ -314,7 +316,7 @@ if(BUILD_TESTING)
   target_link_libraries(pokox_config_allocation_test PRIVATE poko_config)
   set_target_properties(pokox_config_allocation_test PROPERTIES CXX_EXTENSIONS OFF)
   add_test(NAME pokox_config_allocation_test COMMAND pokox_config_allocation_test)
-  set_tests_properties(pokox_config_allocation_test PROPERTIES TIMEOUT 15)
+  set_tests_properties(pokox_config_allocation_test PROPERTIES TIMEOUT 15 SKIP_RETURN_CODE 77)
   add_executable(pokox_config_file_test engine/foundation/tests/integration/config_file_test.cpp)
   target_link_libraries(pokox_config_file_test PRIVATE poko_config)
   set_target_properties(pokox_config_file_test PROPERTIES CXX_EXTENSIONS OFF)
