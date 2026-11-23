@@ -870,9 +870,9 @@
     "semantic_hash": ""
   },
   "CMakeLists.txt": {
-    "mtime": 1795471493.1595907,
-    "seen": 1795471984.4877024,
-    "ast_hash": "6ba3648986c94d0e742693c6451b9d07",
+    "mtime": 1795473316.7560186,
+    "seen": 1795473498.7545688,
+    "ast_hash": "2e4e008f6379b92644be1fcb4488967b",
     "semantic_hash": ""
   },
   "CODE_OF_CONDUCT.md": {
@@ -1164,9 +1164,9 @@
     "semantic_hash": ""
   },
   "docs/plan/02-work-queue.md": {
-    "mtime": 1795471956.187644,
-    "seen": 1795471984.4882104,
-    "ast_hash": "fc40d40b0e3703bd7fcc86ae8de0e9bd",
+    "mtime": 1795473463.7338676,
+    "seen": 1795473498.7550566,
+    "ast_hash": "e01027057e50e1e57488fbeb8d441128",
     "semantic_hash": ""
   },
   "docs/plan/03-architecture.md": {
@@ -3066,9 +3066,9 @@
     "semantic_hash": ""
   },
   ".workbuddy-ai/memory/2026-11-24.md": {
-    "mtime": 1795470622.6125824,
-    "seen": 1795471984.4876862,
-    "ast_hash": "5f43b3880329df23bc06246309cf140e",
+    "mtime": 1795473465.0808356,
+    "seen": 1795473498.75455,
+    "ast_hash": "63c057a7392a3fad958e9a50bc2a36ff",
     "semantic_hash": ""
   }
 }

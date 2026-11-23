@@ -539,7 +539,8 @@ if(BUILD_TESTING)
   add_executable(poko_mute_g1_replay_probe mute/tools/g1_replay_probe.cpp)
   target_link_libraries(poko_mute_g1_replay_probe PRIVATE poko_mute_program)
   add_test(NAME mute_g1_replay COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/mute/tests/unit/test_g1_replay.py" "$<TARGET_FILE:poko_mute_g1_replay_probe>")
-  set_tests_properties(mute_g1_replay PROPERTIES TIMEOUT 120)
+  # ASan builds verified at ~123s; keep headroom without masking a hang.
+  set_tests_properties(mute_g1_replay PROPERTIES TIMEOUT 300)
   add_test(NAME mute_evaluator_golden COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/mute/tests/unit/test_evaluator_golden.py" "$<TARGET_FILE:poko_mute_evaluator_dump>")
   add_test(NAME mute_evaluator_reference COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/mute/tests/unit/test_evaluator_reference.py" "$<TARGET_FILE:poko_mute_evaluator_dump>")
   add_test(NAME pokox_cube_golden_encoder
