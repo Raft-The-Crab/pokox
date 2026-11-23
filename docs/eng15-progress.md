@@ -15,8 +15,10 @@ Status: implemented and verified on the AMD GPU (Windows, MSYS2 UCRT64).
   - CPU frame time measured around `graph.execute()` (event poll + passes +
     submit).
   - GPU frame time via a lazily created Diligent `QUERY_TYPE_DURATION` query
-    bracketing the scene+ImGui composite in `composite()`; results are polled
-    each frame with `GetData(AutoInvalidate)` since they lag submission.
+    bracketing the scene+ImGui composite in `composite()`. A
+    `DurationQueryState` gate allows only one outstanding query: `BeginQuery`
+    is skipped while a previous result is still pending, and `GetData` is
+    polled only then, so Diligent never discards an uncollected sample.
     Devices without `DurationQueries` support keep `gpu_ms()` at 0.
   - The ImGui demo window shows `CPU: x.xx ms   GPU: x.xx ms` alongside FPS.
   - `POKO_IMGUI_RESULT` now reports `cpu_ms=`/`gpu_ms=` averages.

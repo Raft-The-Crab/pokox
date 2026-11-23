@@ -12,7 +12,10 @@ Extends `poko::resource` (ENG-16) with non-blocking loads:
 - `AssetStore::poll_async()` — call once per frame; installs finished
   payloads into the asset map and records failures. Cheap when idle.
 - `load_state(key)` / `is_loading(key)` / `last_error(key)` —
-  `LoadState::{none, loading, ready, failed}`.
+  `LoadState::{none, loading, ready, awaiting_install, failed}`.
+  `ready` means installed and acquirable; `awaiting_install` is a
+  worker-finished job that still needs `poll_async()` before `acquire()`
+  can return a handle (audit ENG-17 contract clarification).
 - `acquire()` on an in-flight key fails fast with "still loading"
   instead of blocking or double-loading; the sync `acquire()` path is
   unchanged for callers that want it.
