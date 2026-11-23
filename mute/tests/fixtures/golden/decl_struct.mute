@@ -1,0 +1,1 @@
+struct Item { id: u32, name: string, price: u32 }

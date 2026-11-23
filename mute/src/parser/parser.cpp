@@ -186,6 +186,16 @@ class ExpressionParser {
         }
         if (is_punct('(')) {
           take();
+          if (is_punct(')')) {
+            const auto close=take();
+            ExprNode node;
+            node.kind=ExprKind::unit;
+            node.begin=t.begin; node.end_byte=close.end_byte;
+            node.token_begin=t.begin; node.token_end_byte=close.end_byte;
+            values_.push_back(add_node(std::move(node)));
+            want_operand_=false;
+            continue;
+          }
           frames_.push_back({FrameKind::group,ExprOp::none,t});
           continue;
         }
@@ -359,7 +369,8 @@ std::string dump_ast(const Ast& ast) {
     switch (k) {
       case ExprKind::integer: return "integer"; case ExprKind::floating: return "floating";
       case ExprKind::string: return "string"; case ExprKind::boolean: return "boolean";
-      case ExprKind::identifier: return "identifier"; case ExprKind::unary: return "unary";
+      case ExprKind::identifier: return "identifier"; case ExprKind::unit: return "unit";
+      case ExprKind::unary: return "unary";
       case ExprKind::binary: return "binary"; case ExprKind::call: return "call";
       case ExprKind::index: return "index"; case ExprKind::member: return "member";
       case ExprKind::question: return "question"; case ExprKind::await: return "await";
@@ -373,6 +384,7 @@ std::string dump_ast(const Ast& ast) {
     if (task.action == Action::raw) { out += task.text; continue; }
     const auto& node = nodes[task.index];
     const auto k=node.kind;
+    if (k==ExprKind::unit) { out += "(unit)"; continue; }
     if (k==ExprKind::integer || k==ExprKind::floating || k==ExprKind::string ||
         k==ExprKind::boolean || k==ExprKind::identifier) {
       out += '('; out += kind_name(k); out += ' ';

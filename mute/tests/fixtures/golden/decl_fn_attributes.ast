@@ -1,0 +1,1 @@
+(module (fn "buy" (attr "@on(BuyPressed)") (param "id" (named "u32")) (block (return (call (identifier "ok") (unit))))))

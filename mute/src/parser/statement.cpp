@@ -308,6 +308,17 @@ StatementResult parse_statements(std::string_view source,LexOptions options) {
     return failure.result;
   }
 }
+StatementResult parse_statements(std::string_view source, const std::vector<Token>& tokens, std::size_t first, std::size_t last) {
+  if (first>last || last>tokens.size()) throw std::invalid_argument("invalid statement token range");
+  std::vector<Token> subset(tokens.begin()+static_cast<std::ptrdiff_t>(first),tokens.begin()+static_cast<std::ptrdiff_t>(last));
+  const Position end_position=last<tokens.size() ? tokens[last].begin : Position{source.size(),1,1};
+  subset.push_back({TokenKind::end,end_position,end_position.byte});
+  try {
+    return detail::StatementParser(source,std::move(subset)).run();
+  } catch (const detail::StatementFailure& failure) {
+    return failure.result;
+  }
+}
 std::string_view name(StatementErrorCode code) {
   constexpr auto names=std::to_array<std::string_view>({
     "expected_statement","expected_identifier","expected_expression","expected_semicolon",

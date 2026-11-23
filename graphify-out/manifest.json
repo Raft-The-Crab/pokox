@@ -810,9 +810,9 @@
     "semantic_hash": ""
   },
   "tools/version/tests/integration/test_version.py": {
-    "mtime": 1795435144.7929277,
-    "seen": 1795435207.8095894,
-    "ast_hash": "fbd2ada87d1f01c458a23827de089a20",
+    "mtime": 1795470150.3786058,
+    "seen": 1795470336.7488914,
+    "ast_hash": "cf301ea7adebeb6eff5d3e3b55fd085a",
     "semantic_hash": ""
   },
   "vcpkg.json": {
@@ -870,9 +870,9 @@
     "semantic_hash": ""
   },
   "CMakeLists.txt": {
-    "mtime": 1795434307.5260603,
-    "seen": 1795434995.4101198,
-    "ast_hash": "5cf33fedcbd1506cca2b1805346c1398",
+    "mtime": 1795469632.185439,
+    "seen": 1795470336.7490754,
+    "ast_hash": "39f5b07998cb5fce0e9de52d64ec94e0",
     "semantic_hash": ""
   },
   "CODE_OF_CONDUCT.md": {
@@ -1164,9 +1164,9 @@
     "semantic_hash": ""
   },
   "docs/plan/02-work-queue.md": {
-    "mtime": 1795435524.1991267,
-    "seen": 1795435558.2028904,
-    "ast_hash": "0f3956bfe6a97395712e2078d997fbc5",
+    "mtime": 1795470291.35839,
+    "seen": 1795470336.7496085,
+    "ast_hash": "a1f94d758957d196348ff1488f6095be",
     "semantic_hash": ""
   },
   "docs/plan/03-architecture.md": {
@@ -2310,9 +2310,9 @@
     "semantic_hash": ""
   },
   "mute/include/poko/mute/parser.hpp": {
-    "mtime": 1795434110.6891043,
-    "seen": 1795434995.4095428,
-    "ast_hash": "6971e40614d34a7cf4418c5660abc424",
+    "mtime": 1795469889.4843576,
+    "seen": 1795470336.7481384,
+    "ast_hash": "cfc7d4e568429a21fbbd3ccefc41bf18",
     "semantic_hash": ""
   },
   "mute/tests/unit/parser_dump.cpp": {
@@ -2322,9 +2322,9 @@
     "semantic_hash": ""
   },
   "mute/tests/unit/parser_test.cpp": {
-    "mtime": 1795432458.4574327,
-    "seen": 1795433082.9002755,
-    "ast_hash": "50d310a2a2a2b8489075100c122de162",
+    "mtime": 1795470017.8146968,
+    "seen": 1795470336.7484546,
+    "ast_hash": "2c75ae63ae8b0d7ab7be26aad96e9d0e",
     "semantic_hash": ""
   },
   "mute/tests/unit/test_parser_golden.py": {
@@ -2796,9 +2796,9 @@
     "semantic_hash": ""
   },
   "mute/src/parser/parser.cpp": {
-    "mtime": 1795434131.6177692,
-    "seen": 1795434995.4096146,
-    "ast_hash": "d320ebd08a277f46ad9c4173e4003390",
+    "mtime": 1795469922.5144434,
+    "seen": 1795470336.7482631,
+    "ast_hash": "4dffd164c1edce842786dbbed0379f11",
     "semantic_hash": ""
   },
   "mute/src/pkb/pkb_draft.cpp": {
@@ -2970,15 +2970,15 @@
     "semantic_hash": ""
   },
   "mute/include/poko/mute/statement.hpp": {
-    "mtime": 1795434449.765517,
-    "seen": 1795434995.409573,
-    "ast_hash": "ca4241af36430f1f1bb2b67ca5a00051",
+    "mtime": 1795469547.8840666,
+    "seen": 1795470336.7481925,
+    "ast_hash": "549e03bd63beedde65c4b2cc635d297d",
     "semantic_hash": ""
   },
   "mute/src/parser/statement.cpp": {
-    "mtime": 1795434877.5137033,
-    "seen": 1795434995.409619,
-    "ast_hash": "c2ffd6ac43099d25377c6ca61415b6f7",
+    "mtime": 1795469554.4301243,
+    "seen": 1795470336.7482715,
+    "ast_hash": "5df08c8f6c80dda058839e3bb383dd6e",
     "semantic_hash": ""
   },
   "mute/tests/unit/statement_dump.cpp": {
@@ -3000,9 +3000,39 @@
     "semantic_hash": ""
   },
   ".workbuddy-ai/memory/2026-11-23.md": {
-    "mtime": 1795433459.6910388,
-    "seen": 1795434995.4101024,
-    "ast_hash": "9ed01ee32b6101766f4f2cda8ccb965d",
+    "mtime": 1795435599.4667273,
+    "seen": 1795470336.749057,
+    "ast_hash": "f400c11b36e36284ea2f8bbd45b0cfa4",
+    "semantic_hash": ""
+  },
+  "mute/include/poko/mute/declaration.hpp": {
+    "mtime": 1795469691.632691,
+    "seen": 1795470336.7480946,
+    "ast_hash": "65e91cbdc08779c301702e0cb2ede738",
+    "semantic_hash": ""
+  },
+  "mute/src/parser/declaration.cpp": {
+    "mtime": 1795469830.498044,
+    "seen": 1795470336.748254,
+    "ast_hash": "a10d94c90041959a17fb178dae65d0c1",
+    "semantic_hash": ""
+  },
+  "mute/tests/unit/declaration_dump.cpp": {
+    "mtime": 1795469638.7791545,
+    "seen": 1795470336.7483733,
+    "ast_hash": "d10c59fad4ab31bd84405885cc6b71c9",
+    "semantic_hash": ""
+  },
+  "mute/tests/unit/declaration_test.cpp": {
+    "mtime": 1795470370.802116,
+    "seen": 1795470446.6458132,
+    "ast_hash": "cea7bcf3753d14665c827d2334a9d49f",
+    "semantic_hash": ""
+  },
+  "mute/tests/unit/test_declaration_golden.py": {
+    "mtime": 1795470059.4873977,
+    "seen": 1795470336.7485087,
+    "ast_hash": "6e7838279b1f8311cd0b07a068af1a6a",
     "semantic_hash": ""
   }
 }

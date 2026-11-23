@@ -59,6 +59,10 @@ using StatementResult = std::variant<StatementAst, Diagnostic, ParseDiagnostic, 
 // Parses a whole source as a statement block. Lexer and expression errors are
 // passed through unchanged so diagnostics keep their original positions.
 [[nodiscard]] StatementResult parse_statements(std::string_view source, LexOptions options = {});
+// Parse the token range [first,last) as a statement block with absolute
+// positions, allowing callers that own a token stream (e.g. the declaration
+// parser) to embed function bodies without renumbering diagnostics.
+[[nodiscard]] StatementResult parse_statements(std::string_view source, const std::vector<Token>& tokens, std::size_t first, std::size_t last);
 [[nodiscard]] std::string_view name(StatementErrorCode code);
 // Deterministic S-expression including a final newline. Throws
 // std::invalid_argument for a moved-from/empty AST.

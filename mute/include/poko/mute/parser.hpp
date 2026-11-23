@@ -12,7 +12,7 @@
 
 namespace poko::mute {
 
-enum class ExprKind { integer, floating, string, boolean, identifier, unary, binary, call, index, member, question, await };
+enum class ExprKind { integer, floating, string, boolean, identifier, unit, unary, binary, call, index, member, question, await };
 enum class ArithmeticOp { none, plus, minus, multiply, divide, remainder };
 // Full v1 operator set. ArithmeticOp is the subset the tree-walk evaluator
 // understands; to_arithmetic() maps everything else to none.

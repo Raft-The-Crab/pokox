@@ -1,0 +1,1 @@
+enum ShopError { Insufficient, SoldOut, InvalidId }

@@ -1,0 +1,1 @@
+@state var balance: u32 = 1500

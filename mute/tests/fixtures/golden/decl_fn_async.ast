@@ -1,0 +1,1 @@
+(module (fn "fetch" (block (return (integer "0")))))
