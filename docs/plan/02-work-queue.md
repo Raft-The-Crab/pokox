@@ -91,6 +91,7 @@ One canonical queue. Per-system docs used overlapping IDs (three different `R01`
 - **MUT-12 initial state snapshot, 2026-11-22:** Added bounded exact-source-bound i32 save/load, corruption checks, and round-trip tests. This is not a full input replay or gate acceptance. See `../mut01-mut12-three-pass-audit-2026-11-22.md`.
 - **Post-MUT audit fixes / G1–G2 preflight, 2026-11-22:** State initializers are checked consistently when compiling and decoding prototype bytecode; optional exhaustive and software-X11 console tests are registered for the Linux CI lane. 10,000-tick local and emulated ARM64 traces match, but G1/G2, real target and hosted CI evidence remain open. See `../g1-g2-preflight-2026-11-22.md`.
 - **Mute v1 planning extension, 2026-11-22:** Added MUT-13–59 as proposed work and a v1 completion review. Scope and API compatibility are not yet approved; no existing task or gate is newly accepted. See `30-mute-v1-completion.md`.
+- **MUT-13 approved, 2026-11-23:** Owner approved the v1 scope/API/device/compatibility/deferral matrix in `../mut13-v1-scope-matrix.md` (semantic-cost budget accounting, channels deferred, authority attributes inactive until MUT-49, publishing deferred, Win10+/Android minSdk26/targetSdk35+, spec-default limits, no Luau parity). MUT-14 is in progress (uncommitted parser rewrite).
 - Maintain `../structure.md` and the relevant status documents in the same change whenever the actual layout or project progress changes.
 
 ## Wave 0 — Infrastructure (INF)
