@@ -1,6 +1,15 @@
 cmake_minimum_required(VERSION 3.28)
 project(PokoX LANGUAGES CXX)
 
+# MSVC's debug STL heap-allocates an iterator-debugging proxy for every
+# string/vector construction, so noexcept APIs terminate on an injected
+# bad_alloc (see pokox_config_allocation_test). Level 0 keeps _DEBUG checks
+# (RTC, asserts) without container proxies; it must apply to every TU so STL
+# layouts stay consistent.
+if(MSVC)
+  add_compile_definitions(_ITERATOR_DEBUG_LEVEL=0)
+endif()
+
 # A dependency-free executable verifies the compiler and generator first.
 # Opt in to resolving and compiling against the vcpkg libraries separately.
 option(POKO_WITH_DEPENDENCIES "Enable vcpkg dependency smoke test" OFF)
@@ -461,6 +470,11 @@ if(BUILD_TESTING)
   add_test(NAME mute_state_unit COMMAND poko_mute_state_test)
   add_executable(poko_mute_program_test mute/tests/unit/program_test.cpp)
   target_link_libraries(poko_mute_program_test PRIVATE poko_mute_program)
+  if(MSVC)
+    # The recursive reference/compiled interpreters use large stack frames;
+    # MSVC debug frames overflow the default 1 MiB reserve where GCC fits.
+    target_link_options(poko_mute_program_test PRIVATE /STACK:8388608)
+  endif()
   add_test(NAME mute_program_unit COMMAND poko_mute_program_test)
   add_test(NAME mute_console_unit COMMAND poko_mute_console_test)
   add_executable(poko_mute_evaluator_test mute/tests/unit/evaluator_test.cpp)

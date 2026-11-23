@@ -2,6 +2,7 @@
 
 #include <cstddef>
 #include <cstdint>
+#include <optional>
 #include <string>
 #include <string_view>
 #include <utility>
@@ -27,15 +28,27 @@ enum class Type : std::uint8_t {
   real,       // Type::real (half/single/double all widen to double)
 };
 
+// Map entries cannot be std::pair<Value, Value>: pair is not an incomplete
+// type, so naming it inside Value's own definition is ill-formed (Clang
+// rejects it; GCC accepts by luck). Member is completed after Value.
+struct Member;
 struct Value {
   Type type = Type::null;
   std::uint64_t u = 0;
   std::int64_t i = 0;
-  std::string string;
+  // optional so default-constructed Values allocate nothing: MSVC's debug STL
+  // gives every std::string a heap proxy, which would let bad_alloc escape the
+  // noexcept decode path. Engaged for Type::bytes and Type::text.
+  std::optional<std::string> string;
   std::vector<Value> items;
-  std::vector<std::pair<Value, Value>> entries;
+  std::vector<Member> entries;
   bool boolean = false;
   double real = 0.0;
+};
+struct Member {
+  Value first;
+  Value second;
+  Member(Value f, Value s) : first(std::move(f)), second(std::move(s)) {}
 };
 
 enum class Error : std::uint8_t {

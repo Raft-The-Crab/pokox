@@ -21,7 +21,8 @@ LoadResult fail(std::error_code code, std::string detail) {
 const cbor::Value* find_key(const cbor::Value& map, std::string_view key) noexcept {
   if (map.type != cbor::Type::map) return nullptr;
   for (const auto& entry : map.entries) {
-    if (entry.first.type == cbor::Type::text && entry.first.string == key)
+    if (entry.first.type == cbor::Type::text && entry.first.string &&
+        std::string_view(*entry.first.string) == key)
       return &entry.second;
   }
   return nullptr;
@@ -61,7 +62,8 @@ bool read_text(const cbor::Value& section, std::string_view key,
     detail = "field must be text: " + std::string(key);
     return false;
   }
-  out = v->string;
+  if (v->string) out = *v->string;
+  else out.clear();
   return true;
 }
 
@@ -88,8 +90,8 @@ void collect_unknown(const cbor::Value& section, const char* const* known,
     }
     bool found = false;
     for (std::size_t i = 0; i < known_count; ++i)
-      if (entry.first.string == known[i]) { found = true; break; }
-    if (!found) unknown.push_back(prefix + entry.first.string);
+      if (entry.first.string && std::string_view(*entry.first.string) == known[i]) { found = true; break; }
+    if (!found) unknown.push_back(entry.first.string ? prefix + *entry.first.string : prefix + "<missing>");
   }
 }
 

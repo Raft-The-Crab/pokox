@@ -7,12 +7,14 @@
 #include <fstream>
 #include <new>
 #include <string>
+#include <system_error>
 
 namespace {
 std::atomic<long> fail_after{-1};
 std::atomic<unsigned> injected{0};
 }
-void* operator new(std::size_t size) {
+namespace {
+void* allocate_or_throw(std::size_t size) {
   const auto n = fail_after.load();
   if (n >= 0) {
     if (n == 0) { fail_after.store(-1); ++injected; throw std::bad_alloc(); }
@@ -21,8 +23,41 @@ void* operator new(std::size_t size) {
   if (void* p = std::malloc(size ? size : 1)) return p;
   throw std::bad_alloc();
 }
+}
+void* operator new(std::size_t size) { return allocate_or_throw(size); }
+void* operator new[](std::size_t size) { return allocate_or_throw(size); }
+void* operator new(std::size_t size, const std::nothrow_t&) noexcept {
+  try { return allocate_or_throw(size); } catch (...) { return nullptr; }
+}
+void* operator new[](std::size_t size, const std::nothrow_t&) noexcept {
+  try { return allocate_or_throw(size); } catch (...) { return nullptr; }
+}
+#if defined(_MSC_VER)
+#include <malloc.h>
+#endif
+#if defined(_MSC_VER)
+// MSVC's debug STL uses aligned allocation for over-aligned types; leaving
+// these un-overridden pairs mismatched alloc/free paths and trips the CRT.
+void* operator new(std::size_t size, std::align_val_t alignment) {
+  const auto n = fail_after.load();
+  if (n >= 0) {
+    if (n == 0) { fail_after.store(-1); ++injected; throw std::bad_alloc(); }
+    fail_after.store(n - 1);
+  }
+  const auto al = static_cast<std::size_t>(alignment);
+  if (void* p = _aligned_malloc(size ? size : 1, al)) return p;
+  throw std::bad_alloc();
+}
+void* operator new[](std::size_t size, std::align_val_t alignment) {
+  return operator new(size, alignment);
+}
+void operator delete(void* p, std::align_val_t) noexcept { _aligned_free(p); }
+void operator delete[](void* p, std::align_val_t) noexcept { _aligned_free(p); }
+#endif
 void operator delete(void* p) noexcept { std::free(p); }
 void operator delete(void* p, std::size_t) noexcept { std::free(p); }
+void operator delete[](void* p) noexcept { std::free(p); }
+void operator delete[](void* p, std::size_t) noexcept { std::free(p); }
 
 int main() {
   const auto path = std::filesystem::temp_directory_path() / "poko_config_oom.cbor";
@@ -41,7 +76,10 @@ int main() {
       std::fprintf(stderr, "partial config at allocation %ld\n", n); return 1;
     }
   }
-  std::filesystem::remove(path);
+  // Best-effort cleanup: a throwing remove would terminate via the noexcept
+  // boundary under some sanitizers/AV scanners that briefly lock the file.
+  std::error_code ec;
+  std::filesystem::remove(path, ec);
   if (injected.load() == 0) return 1;
   std::printf("PASS: %u injected allocation failures\n", injected.load());
   return 0;

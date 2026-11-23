@@ -19,6 +19,14 @@
 #else
 #define POKO_MUTE_SSE_ENV 0
 #endif
+// MSVC's feholdexcept/fesetenv reject environments with unmasked exceptions
+// and do not round-trip MXCSR. On x64 the SSE control register already covers
+// every FP state the evaluator touches, so the fenv calls are skipped there.
+#if defined(_MSC_VER) && defined(_M_X64)
+#define POKO_MUTE_MSVC_SSE_ENV 1
+#else
+#define POKO_MUTE_MSVC_SSE_ENV 0
+#endif
 
 #ifndef POKO_MUTE_FP_FLAGS_CONFIGURED
 #define POKO_MUTE_FP_FLAGS_CONFIGURED 0
@@ -95,6 +103,11 @@ class FloatEnvironment {
 #if POKO_MUTE_SSE_ENV
     mxcsr_ = _mm_getcsr();
 #endif
+#if POKO_MUTE_MSVC_SSE_ENV
+    active_ = true;
+    _mm_setcsr(mxcsr_ | 0x1f80U);
+    return active_;
+#else
     active_ = std::feholdexcept(&saved_) == 0;
 #if POKO_MUTE_SSE_ENV
     // feholdexcept does not mask SSE exceptions on every platform (e.g. MinGW);
@@ -102,13 +115,16 @@ class FloatEnvironment {
     if (active_) _mm_setcsr(mxcsr_ | 0x1f80U);
 #endif
     return active_;
+#endif
   }
   bool restore() {
     if (!active_) return true;
 #if POKO_MUTE_SSE_ENV
     _mm_setcsr(mxcsr_);
 #endif
+#if !POKO_MUTE_MSVC_SSE_ENV
     if (std::fesetenv(&saved_) != 0) return false;
+#endif
     active_ = false;
     return true;
   }
@@ -117,7 +133,9 @@ class FloatEnvironment {
 #if POKO_MUTE_SSE_ENV
     _mm_setcsr(mxcsr_);
 #endif
+#if !POKO_MUTE_MSVC_SSE_ENV
     (void)std::fesetenv(&saved_);
+#endif
   }
 };
 template<class F> bool supported_float() {

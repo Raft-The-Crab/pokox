@@ -4,6 +4,7 @@
 
 #include <cmath>
 #include <cstdio>
+#include <limits>
 
 namespace {
 int failures = 0;
@@ -45,7 +46,7 @@ int main() {
   }
   {  // invalid samples are rejected, not averaged in
     FrameStats s;
-    s.record_cpu(-1.0); s.record_cpu(0.0 / 0.0); s.record_cpu(1.0 / 0.0);
+    s.record_cpu(-1.0); s.record_cpu(std::numeric_limits<double>::quiet_NaN()); s.record_cpu(std::numeric_limits<double>::infinity());
     s.record_gpu(-0.5);
     CHECK(s.frames() == 0 && s.cpu_ms() == 0.0 && s.gpu_ms() == 0.0);
     s.record_cpu(0.004);

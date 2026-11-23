@@ -28,10 +28,10 @@ struct Cursor {
     for (unsigned i = 0; i < count; ++i) out = (out << 8) | static_cast<std::uint8_t>(data[pos++]);
     return true;
   }
-  bool take_bytes(std::string& out, std::uint64_t length) noexcept {
+  bool take_bytes(std::optional<std::string>& out, std::uint64_t length) noexcept {
     if (length > size - pos) return false;
     try {
-      out.assign(data + pos, static_cast<std::size_t>(length));
+      out.emplace(data + pos, static_cast<std::size_t>(length));
     } catch (...) {
       return false;  // allocation failure — reported as truncated upstream
     }
@@ -126,7 +126,7 @@ Result decode_item(Cursor& c, Value& out, unsigned depth) noexcept {
     case 3:
       out.type = Type::text;
       if (!c.take_bytes(out.string, arg)) return fail(Error::truncated, c.pos);
-      if (!valid_utf8(out.string.data(), out.string.size()))
+      if (!valid_utf8(out.string->data(), out.string->size()))
         return fail(Error::invalid_utf8, c.pos - static_cast<std::size_t>(arg));
       return {};
     case 4: {
@@ -138,7 +138,7 @@ Result decode_item(Cursor& c, Value& out, unsigned depth) noexcept {
       for (std::uint64_t i = 0; i < arg; ++i) {
         Value item;
         auto sub = decode_item(c, item, depth + 1);
-        if (sub.error != Error::none) return sub;
+        if (sub.error != Error::none) return std::move(sub);
         try { out.items.push_back(std::move(item)); }
         catch (...) { return fail(Error::too_many_items, c.pos); }
       }
@@ -153,9 +153,9 @@ Result decode_item(Cursor& c, Value& out, unsigned depth) noexcept {
       for (std::uint64_t i = 0; i < arg; ++i) {
         Value key, val;
         auto sub = decode_item(c, key, depth + 1);
-        if (sub.error != Error::none) return sub;
+        if (sub.error != Error::none) return std::move(sub);
         sub = decode_item(c, val, depth + 1);
-        if (sub.error != Error::none) return sub;
+        if (sub.error != Error::none) return std::move(sub);
         try { out.entries.emplace_back(std::move(key), std::move(val)); }
         catch (...) { return fail(Error::too_many_items, c.pos); }
       }
@@ -196,7 +196,7 @@ Result decode(std::string_view input) noexcept {
   try {
     Result top;
     auto sub = decode_item(c, top.value, 0);
-    if (sub.error != Error::none) return sub;
+    if (sub.error != Error::none) return std::move(sub);
     if (c.pos != c.size) return fail(Error::malformed, c.pos);  // trailing bytes
     top.offset = c.pos;
     return top;

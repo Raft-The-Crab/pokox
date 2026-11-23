@@ -89,12 +89,12 @@ void test_decoder() {
     std::string cbor; put_t(cbor, "h\xC3\xA9llo");  // "héllo" UTF-8
     auto r = poko::cbor::decode(cbor);
     CHECK(r.error == Error::none && r.value.type == Type::text &&
-          r.value.string == "h\xC3\xA9llo");
+          r.value.string && *r.value.string == "h\xC3\xA9llo");
   }
   {
     std::string cbor; put_b(cbor, std::string_view("\x01\x02", 2));
     auto r = poko::cbor::decode(cbor);
-    CHECK(r.error == Error::none && r.value.type == Type::bytes && r.value.string.size() == 2);
+    CHECK(r.error == Error::none && r.value.type == Type::bytes && r.value.string && r.value.string->size() == 2);
   }
   {
     std::string cbor; put_half(cbor, 0x3C00);  // 1.0
