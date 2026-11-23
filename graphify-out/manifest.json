@@ -810,9 +810,9 @@
     "semantic_hash": ""
   },
   "tools/version/tests/integration/test_version.py": {
-    "mtime": 1795325743.1283996,
-    "seen": 1795326781.8751442,
-    "ast_hash": "4555b8e3eb4ee45845bf7c1daab271db",
+    "mtime": 1795435144.7929277,
+    "seen": 1795435207.8095894,
+    "ast_hash": "fbd2ada87d1f01c458a23827de089a20",
     "semantic_hash": ""
   },
   "vcpkg.json": {
