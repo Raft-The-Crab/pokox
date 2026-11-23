@@ -1,7 +1,7 @@
 # Graph Report - Project Poko  (2026-11-23)
 
 ## Corpus Check
-- 446 files · ~401,251 words
+- 446 files · ~401,332 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 196 file(s) not represented in the graph (top: .blend 60, .mute 28, .ast 25)
 - WARNING: 196 of 697 files seen (28%) have no supported extractor and are missing from this graph entirely. It may look complete while representing only part of the codebase.
@@ -12,7 +12,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `533918a2`
+- Built from commit: `c705b7f1`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -1792,13 +1792,13 @@ Nodes (3): 2026-11-23, Conventions confirmed this session, MUT-14 v1 expression 
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `transform()` connect `transform` to `array`, `OpenGLClearESRenderer`, `OrbitCamera`?**
-  _High betweenness centrality (0.049) - this node is a cross-community bridge._
+  _High betweenness centrality (0.057) - this node is a cross-community bridge._
 - **What connects `after`, `execute`, `name` to the rest of the system?**
   _1053 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `json` be split into smaller, more focused modules?**
   _Cohesion score 0.06656426011264721 - nodes in this community are weakly interconnected._
 - **Why does `Ranges` connect `transform` to `C++20 Features (Default Practice)`?**
-  _High betweenness centrality (0.049) - this node is a cross-community bridge._
+  _High betweenness centrality (0.056) - this node is a cross-community bridge._
 - **Should `21 — Engine core` be split into smaller, more focused modules?**
   _Cohesion score 0.044444444444444446 - nodes in this community are weakly interconnected._
 - **Should `12 — App interface (egui and Kotlin)` be split into smaller, more focused modules?**
