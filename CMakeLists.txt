@@ -10,6 +10,12 @@ if(MSVC)
   add_compile_definitions(_ITERATOR_DEBUG_LEVEL=0)
 endif()
 
+# Project-wide C++20: per-target cxx_std_20 features miss test/fault targets
+# and the VS generator then defaults them to C++14.
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
 # A dependency-free executable verifies the compiler and generator first.
 # Opt in to resolving and compiling against the vcpkg libraries separately.
 option(POKO_WITH_DEPENDENCIES "Enable vcpkg dependency smoke test" OFF)
