@@ -208,6 +208,7 @@ class ExpressionParser {
           node.token_begin=frame.token.begin; node.token_end_byte=t.end_byte;
           node.left=frame.left; node.children=std::move(frame.args);
           values_.push_back(add_node(std::move(node)));
+          want_operand_=false;
           continue;
         }
         if (t.kind==TokenKind::integer || t.kind==TokenKind::floating ||

@@ -269,6 +269,7 @@ class DeclarationParser {
             }
           }
           if (!is_punct(')')) decl_fail(DeclarationErrorCode::expected_rparen,peek().begin);
+          take();
         }
         variant.end_byte=tokens_[pos_-1].end_byte; variant.token_end_byte=variant.end_byte;
         node.children.push_back(add_node(std::move(variant)));
@@ -295,12 +296,18 @@ class DeclarationParser {
     if (!is_op("=")) decl_fail(DeclarationErrorCode::expected_equal,peek().begin);
     take();
     const auto first=pos_;
-    while (!at_end() && !is_punct(';')) {
-      const auto& next=peek(1);
-      if (next.kind==TokenKind::keyword || (next.kind==TokenKind::identifier &&
-          (text(next)=="struct" || text(next)=="enum" || text(next)=="state" || text(next)=="fn" ||
-           text(next)=="package" || text(next)=="version" || text(next)=="allow" || text(next)=="import"))) break;
+    for (;;) {
+      if (at_end() || is_punct(';')) break;
       take();
+      if (at_end() || is_punct(';')) break;
+      const auto& next=peek();
+      const auto value=text(next);
+      constexpr auto starts=std::to_array<std::string_view>({
+        "struct","enum","fn","package","version","allow","import"});
+      const bool declaration_start=next.kind==TokenKind::keyword &&
+        std::find(starts.begin(),starts.end(),value)!=starts.end();
+      const bool state_attribute=is_punct('@') && is_name("state",peek(1));
+      if (declaration_start || state_attribute) break;
     }
     if (first==pos_) decl_fail(DeclarationErrorCode::expected_expression,peek().begin);
     auto value=parse_arithmetic(source_,tokens_,first,pos_);
@@ -314,8 +321,9 @@ class DeclarationParser {
   }
   std::size_t fn_decl(const std::vector<std::size_t>& attributes) {
     const auto begin=peek().begin;
+    if (is_keyword("pub")) take();
     const bool is_async=is_keyword("async");
-    if (is_async || is_name("pub")) take();
+    if (is_async) take();
     expect_keyword("fn");
     auto node=make_node(DeclarationKind::fn_decl,begin,0);
     node.spelling=std::string(expect_identifier());
@@ -363,7 +371,7 @@ class DeclarationParser {
       }
       if (is_keyword("struct")) { module.children.push_back(struct_decl(attributes)); continue; }
       if (is_keyword("enum")) { module.children.push_back(enum_decl(attributes)); continue; }
-      if (is_keyword("fn") || is_keyword("async") || is_name("pub")) {
+      if (is_keyword("fn") || is_keyword("async") || is_keyword("pub")) {
         module.children.push_back(fn_decl(attributes));
         continue;
       }
@@ -511,9 +519,16 @@ std::string dump_declaration_ast(const DeclarationAst& ast) {
       stack.push_back({Action::visit_type,node.type,{}});
       stack.push_back({Action::raw,0," "});
     }
+    // Variant payload children are type indices; all other children are nodes.
+    const bool type_children=node.kind==DeclarationKind::variant;
     for (auto i=node.children.size();i-->0;) {
-      if (node.children[i]>=nodes.size()) throw std::invalid_argument("invalid declaration child index");
-      stack.push_back({Action::visit_node,node.children[i],{}});
+      if (type_children) {
+        if (node.children[i]>=types.size()) throw std::invalid_argument("invalid variant type index");
+        stack.push_back({Action::visit_type,node.children[i],{}});
+      } else {
+        if (node.children[i]>=nodes.size()) throw std::invalid_argument("invalid declaration child index");
+        stack.push_back({Action::visit_node,node.children[i],{}});
+      }
       stack.push_back({Action::raw,0," "});
     }
   }

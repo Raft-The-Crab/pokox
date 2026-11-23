@@ -49,6 +49,7 @@ void cases() {
   parse_error("",ParseErrorCode::expected_expression,0,1,1);
   parse_error("1 +",ParseErrorCode::expected_expression,3,1,4);
   tree("()","(unit)\n");
+  tree("f()","(call (identifier \"f\"))\n");
   parse_error("(1+2",ParseErrorCode::expected_closing_parenthesis,4,1,5);
   parse_error("(1+2))",ParseErrorCode::unexpected_closing_parenthesis,5,1,6);
   parse_error("1 2",ParseErrorCode::unexpected_token,2,1,3);

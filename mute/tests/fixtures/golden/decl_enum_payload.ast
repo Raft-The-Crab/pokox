@@ -1,0 +1,1 @@
+(module (enum "E" (variant "A") (variant "B" (named "i32")) (variant "C" (named "i32") (named "string"))))

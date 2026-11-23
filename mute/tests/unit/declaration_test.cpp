@@ -23,7 +23,7 @@ void tree(std::string_view input,std::string_view expected) {
   for (std::size_t i=0;i<nodes.size();++i) {
     const auto& n=nodes[i];
     check(n.begin.byte<=n.token_begin.byte && n.token_end_byte<=n.end_byte,"bad node span");
-    for (const auto child:n.children) check(child<i,"child not earlier");
+    for (const auto child:n.children) if (n.kind!=DeclarationKind::variant) check(child<i,"child not earlier");
   }
   const auto types=ast->types();
   for (const auto& type:types) for (const auto arg:type.args) check(arg<types.size(),"type arg invalid");
@@ -37,11 +37,15 @@ void error(std::string_view input,DeclarationErrorCode code,std::size_t line,std
 }
 void cases() {
   tree("struct Item { id: u32, name: string, price: u32 }","(module (struct \"Item\" (field \"id\" (named \"u32\")) (field \"name\" (named \"string\")) (field \"price\" (named \"u32\"))))\n");
+  tree("enum E { A, B(i32), C(i32, string) }","(module (enum \"E\" (variant \"A\") (variant \"B\" (named \"i32\")) (variant \"C\" (named \"i32\") (named \"string\"))))\n");
   tree("enum ShopError { Insufficient, SoldOut, InvalidId }","(module (enum \"ShopError\" (variant \"Insufficient\") (variant \"SoldOut\") (variant \"InvalidId\")))\n");
   tree("struct Box { value: result<Unit, ShopError> }","(module (struct \"Box\" (field \"value\" (generic \"result\" (named \"Unit\") (named \"ShopError\")))))\n");
   tree("struct Map { values: map<u32, array<string>> }","(module (struct \"Map\" (field \"values\" (generic \"map\" (named \"u32\") (generic \"array\" (named \"string\"))))))\n");
   tree("struct Pair { data: (i32, string) }","(module (struct \"Pair\" (field \"data\" (tuple (named \"i32\") (named \"string\")))))\n");
   tree("@state var balance: u32 = 1500","(module (state \"balance\" (named \"u32\") (integer \"1500\")))\n");
+  tree("pub fn f() { return 0; }","(module (fn \"f\" (block (return (integer \"0\")))))\n");
+  tree("fn g() -> i32 { return f(); }","(module (fn \"g\" (named \"i32\") (block (return (call (identifier \"f\"))))))\n");
+  tree("@state var x: i32 = 0 fn g() -> i32 { return 2; }","(module (state \"x\" (named \"i32\") (integer \"0\")) (fn \"g\" (named \"i32\") (block (return (integer \"2\")))))\n");
   tree("fn f() -> i32 { return 1; }","(module (fn \"f\" (named \"i32\") (block (return (integer \"1\")))))\n");
   tree("fn buy(id: u32) -> result<Unit, E> { return ok(()); }","(module (fn \"buy\" (param \"id\" (named \"u32\")) (generic \"result\" (named \"Unit\") (named \"E\")) (block (return (call (identifier \"ok\") (unit))))))\n");
   tree("async fn fetch() { return 0; }","(module (fn \"fetch\" (block (return (integer \"0\")))))\n");
@@ -76,7 +80,7 @@ void randomized_input() {
       check(ast->root()<nodes.size(),"randomized root invalid");
       for (const auto& node:nodes) {
         check(node.end_byte<=input.size(),"randomized span invalid");
-        for (const auto child:node.children) check(child<nodes.size(),"randomized child invalid");
+        for (const auto child:node.children) if (node.kind!=DeclarationKind::variant) check(child<nodes.size(),"randomized child invalid");
       }
       (void)dump_declaration_ast(*ast);
     }

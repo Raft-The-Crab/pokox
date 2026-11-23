@@ -36,6 +36,7 @@ void error(std::string_view input, StatementErrorCode code, std::size_t line, st
 void cases() {
   dump("{ let x = 1; }","(block (let \"x\" (integer \"1\")))\n");
   dump("{ var y = 2; y = y + 1; }","(block (var \"y\" (integer \"2\")) (expr (binary = (identifier \"y\") (binary + (identifier \"y\") (integer \"1\")))))\n");
+  dump("{ return f(); }","(block (return (call (identifier \"f\"))))\n");
   dump("{ if x { return 1; } }","(block (if (identifier \"x\") (block (return (integer \"1\")))))\n");
   dump("{ while i < 3 { i = i + 1; } }","(block (while (binary < (identifier \"i\") (integer \"3\")) (block (expr (binary = (identifier \"i\") (binary + (identifier \"i\") (integer \"1\")))))))\n");
   dump("{ loop { break; } }","(block (loop (block (break))))\n");
