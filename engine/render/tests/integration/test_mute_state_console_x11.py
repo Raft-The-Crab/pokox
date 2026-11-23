@@ -77,7 +77,9 @@ def main():
                 p.terminate()
                 try: p.wait(timeout=5)
                 except subprocess.TimeoutExpired: p.kill();p.wait()
-            log.seek(0);print(f'FAIL: {error}\n'+'\n'.join(log.read().splitlines()[-30:]),file=sys.stderr);return 1
+            log.seek(0);lines=log.read().splitlines()
+            diagnostics=[line for line in lines if '[Poko graphics warning]' in line or '[Poko graphics error]' in line]
+            print(f'FAIL: {error}\n'+'\n'.join(diagnostics+lines[-30:]),file=sys.stderr);return 1
         finally: d.close()
 
 if __name__=='__main__': sys.exit(main())
