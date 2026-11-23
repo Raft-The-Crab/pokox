@@ -158,8 +158,20 @@ def run(exe, golden, capture, fragment, actual_output):
                         raise RuntimeError('cube window not found')
                     previous = None
                     image = None
+                    transient_failures = 0
                     while time.monotonic() < deadline and process.poll() is None:
-                        current = x11.capture(window)
+                        try:
+                            current = x11.capture(window)
+                        except RuntimeError:
+                            # XGetImage fails with BadMatch while the window is
+                            # briefly not viewable (remap/resize); retry until
+                            # the deadline instead of failing the whole run.
+                            transient_failures += 1
+                            if transient_failures > 40:
+                                raise
+                            time.sleep(0.15)
+                            continue
+                        transient_failures = 0
                         # Wait for a nonblank, stable presented image; the camera and light are fixed.
                         colors = {current[i:i + 3] for i in range(0, len(current), 3)}
                         if len(colors) >= 3 and current == previous:
