@@ -98,6 +98,9 @@ jobs:
     runs-on: windows-2022
     timeout-minutes: 60
     steps:
+      - name: Preserve Unix line endings
+        run: git config --global core.autocrlf input
+
       - name: Check out PokoX
         uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
         with:
