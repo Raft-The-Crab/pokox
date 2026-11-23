@@ -1,0 +1,1 @@
+(block (guard (binary >= (identifier "balance") (identifier "price")) (block (return (integer "1")))) (return (integer "0")))

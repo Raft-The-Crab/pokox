@@ -1,0 +1,1 @@
+(block (let "x" (binary + (integer "1") (binary * (integer "2") (integer "3")))) (var "y" (identifier "x")) (expr (binary = (identifier "y") (binary - (identifier "y") (integer "1")))) (expr (identifier "y")))

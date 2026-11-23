@@ -336,6 +336,13 @@ ParseResult parse_arithmetic(std::string_view source, LexOptions options) {
   if (auto* error = std::get_if<Diagnostic>(&result)) return *error;
   return detail::ExpressionParser(source, std::get<std::vector<Token>>(std::move(result))).run();
 }
+ParseResult parse_arithmetic(std::string_view source, const std::vector<Token>& tokens, std::size_t first, std::size_t last) {
+  if (first>last || last>tokens.size()) throw std::invalid_argument("invalid expression token range");
+  std::vector<Token> subset(tokens.begin()+static_cast<std::ptrdiff_t>(first),tokens.begin()+static_cast<std::ptrdiff_t>(last));
+  const Position end_position=last<tokens.size() ? tokens[last].begin : Position{source.size(),1,1};
+  subset.push_back({TokenKind::end,end_position,end_position.byte});
+  return detail::ExpressionParser(source,std::move(subset)).run();
+}
 std::string_view name(ParseErrorCode code) {
   constexpr auto names = std::to_array<std::string_view>({"expected_expression", "expected_closing_parenthesis", "unexpected_closing_parenthesis", "unexpected_token", "expected_closing_bracket", "expected_member_name"});
   return names.at(static_cast<std::size_t>(code));

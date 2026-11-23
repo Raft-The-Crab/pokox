@@ -1,0 +1,1 @@
+{ match x { Some(v) => { use(v); } None => { return 0; } } }

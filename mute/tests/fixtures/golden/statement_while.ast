@@ -1,0 +1,1 @@
+(block (while (binary < (identifier "i") (integer "10")) (block (expr (binary = (identifier "i") (binary + (identifier "i") (integer "1")))))))

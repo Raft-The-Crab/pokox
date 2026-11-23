@@ -75,6 +75,10 @@ struct ParseDiagnostic { ParseErrorCode code; Position position; };
 // A lexical error is returned unchanged. All AST spellings are owned.
 using ParseResult = std::variant<Ast, Diagnostic, ParseDiagnostic>;
 [[nodiscard]] ParseResult parse_arithmetic(std::string_view source, LexOptions options = {});
+// Parse the token range [first,last) of an already-lexed source. Diagnostic
+// positions are absolute offsets into source, so callers that own the token
+// stream (e.g. the statement parser) can embed expressions without renumbering.
+[[nodiscard]] ParseResult parse_arithmetic(std::string_view source, const std::vector<Token>& tokens, std::size_t first, std::size_t last);
 [[nodiscard]] std::string_view name(ParseErrorCode code);
 // Deterministic ASCII S-expression including a final newline. Throws
 // std::invalid_argument for a moved-from AST; allocation failures may propagate.

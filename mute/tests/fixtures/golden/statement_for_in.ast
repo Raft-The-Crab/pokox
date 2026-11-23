@@ -1,0 +1,1 @@
+(block (for "item" (identifier "catalog") (block (expr (call (identifier "use") (identifier "item"))))))
