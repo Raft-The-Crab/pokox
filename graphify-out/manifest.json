@@ -810,9 +810,9 @@
     "semantic_hash": ""
   },
   "tools/version/tests/integration/test_version.py": {
-    "mtime": 1795470150.3786058,
-    "seen": 1795470336.7488914,
-    "ast_hash": "cf301ea7adebeb6eff5d3e3b55fd085a",
+    "mtime": 1795471823.0330145,
+    "seen": 1795471984.4875176,
+    "ast_hash": "62a619c8333f0477498f0d1bd2b57ef9",
     "semantic_hash": ""
   },
   "vcpkg.json": {
@@ -870,9 +870,9 @@
     "semantic_hash": ""
   },
   "CMakeLists.txt": {
-    "mtime": 1795469632.185439,
-    "seen": 1795470336.7490754,
-    "ast_hash": "39f5b07998cb5fce0e9de52d64ec94e0",
+    "mtime": 1795471493.1595907,
+    "seen": 1795471984.4877024,
+    "ast_hash": "6ba3648986c94d0e742693c6451b9d07",
     "semantic_hash": ""
   },
   "CODE_OF_CONDUCT.md": {
@@ -1164,9 +1164,9 @@
     "semantic_hash": ""
   },
   "docs/plan/02-work-queue.md": {
-    "mtime": 1795470291.35839,
-    "seen": 1795470336.7496085,
-    "ast_hash": "a1f94d758957d196348ff1488f6095be",
+    "mtime": 1795471956.187644,
+    "seen": 1795471984.4882104,
+    "ast_hash": "fc40d40b0e3703bd7fcc86ae8de0e9bd",
     "semantic_hash": ""
   },
   "docs/plan/03-architecture.md": {
@@ -3033,6 +3033,42 @@
     "mtime": 1795470059.4873977,
     "seen": 1795470336.7485087,
     "ast_hash": "6e7838279b1f8311cd0b07a068af1a6a",
+    "semantic_hash": ""
+  },
+  "mute/include/poko/mute/semantic.hpp": {
+    "mtime": 1795471434.095629,
+    "seen": 1795471984.4870584,
+    "ast_hash": "4b4e9b28c21f9a423c22d909970d4df0",
+    "semantic_hash": ""
+  },
+  "mute/src/semantic/semantic.cpp": {
+    "mtime": 1795471732.116012,
+    "seen": 1795471984.487157,
+    "ast_hash": "0f165bdadb19badfe732937d9d896eb7",
+    "semantic_hash": ""
+  },
+  "mute/tests/unit/semantic_dump.cpp": {
+    "mtime": 1795471501.9374,
+    "seen": 1795471984.4872694,
+    "ast_hash": "b033c50b7e1d992dec7c3c1489d1b4a5",
+    "semantic_hash": ""
+  },
+  "mute/tests/unit/semantic_test.cpp": {
+    "mtime": 1795471706.4952402,
+    "seen": 1795471984.4872744,
+    "ast_hash": "e6bb2054590bb47f4ec9407069eb0403",
+    "semantic_hash": ""
+  },
+  "mute/tests/unit/test_semantic_golden.py": {
+    "mtime": 1795471539.0943644,
+    "seen": 1795471984.4873593,
+    "ast_hash": "4dc5c455af5b76f5debc12a63630a4b1",
+    "semantic_hash": ""
+  },
+  ".workbuddy-ai/memory/2026-11-24.md": {
+    "mtime": 1795470622.6125824,
+    "seen": 1795471984.4876862,
+    "ast_hash": "5f43b3880329df23bc06246309cf140e",
     "semantic_hash": ""
   }
 }

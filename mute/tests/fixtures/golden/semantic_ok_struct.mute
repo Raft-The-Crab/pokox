@@ -1,0 +1,1 @@
+struct Item { id: u32 } fn f(i: Item) -> u32 { return i.id; }

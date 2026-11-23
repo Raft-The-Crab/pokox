@@ -1,0 +1,1 @@
+struct E {} fn f() -> result<Unit, E> { return ok(()); }

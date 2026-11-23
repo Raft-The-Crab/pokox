@@ -1,0 +1,1 @@
+struct A {} fn f(a: A) -> A { return a; } fn g() -> A { return f(1); }
