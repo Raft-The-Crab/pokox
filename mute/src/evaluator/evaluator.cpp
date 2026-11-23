@@ -168,7 +168,7 @@ template<class F> Step literal_float(const ExprNode& node,T type) {
   return Entry{false,0,{type,number}};
 }
 Step unary(const ExprNode& node,const ExprNode& child,Entry operand,T type) {
-  if (node.op==ArithmeticOp::minus && operand.pending_integer && !is_unsigned(type) && !is_float(type)) {
+  if (to_arithmetic(node.op)==ArithmeticOp::minus && operand.pending_integer && !is_unsigned(type) && !is_float(type)) {
     const auto limit=magnitude(signed_min(width(type)));
     if (operand.integer>limit) return fail(E::literal_out_of_range,child);
     return Entry{false,0,{type,negative(operand.integer)}};
@@ -176,8 +176,8 @@ Step unary(const ExprNode& node,const ExprNode& child,Entry operand,T type) {
   auto ready=materialize(operand,type,child);
   if (auto* error=std::get_if<EvalDiagnostic>(&ready)) return *error;
   auto value=std::get<Entry>(ready);
-  if (node.op==ArithmeticOp::plus) return value;
-  if (node.op!=ArithmeticOp::minus) return fail(E::invalid_ast,node);
+  if (to_arithmetic(node.op)==ArithmeticOp::plus) return value;
+  if (to_arithmetic(node.op)!=ArithmeticOp::minus) return fail(E::invalid_ast,node);
   if (is_unsigned(type)) return fail(E::invalid_unary,node);
   if (type==T::f32) return Entry{false,0,{type,-std::get<float>(value.value.data)}};
   if (type==T::f64) return Entry{false,0,{type,-std::get<double>(value.value.data)}};
@@ -187,7 +187,7 @@ Step unary(const ExprNode& node,const ExprNode& child,Entry operand,T type) {
 }
 Step unsigned_binary(const ExprNode& node,T type,std::uint64_t a,std::uint64_t b) {
   const auto max=unsigned_max(width(type)); std::uint64_t result=0;
-  switch (node.op) {
+  switch (to_arithmetic(node.op)) {
     case ArithmeticOp::plus: if (a>max-b) return fail(E::arithmetic_overflow,node); result=a+b; break;
     case ArithmeticOp::minus: if (a<b) return fail(E::arithmetic_overflow,node); result=a-b; break;
     case ArithmeticOp::multiply: if (b && a>max/b) return fail(E::arithmetic_overflow,node); result=a*b; break;
@@ -199,7 +199,7 @@ Step unsigned_binary(const ExprNode& node,T type,std::uint64_t a,std::uint64_t b
 }
 Step signed_binary(const ExprNode& node,T type,std::int64_t a,std::int64_t b) {
   const auto min=signed_min(width(type)), max=signed_max(width(type)); std::int64_t result=0;
-  switch (node.op) {
+  switch (to_arithmetic(node.op)) {
     case ArithmeticOp::plus:
       if ((b>0 && a>max-b) || (b<0 && a<min-b)) return fail(E::arithmetic_overflow,node);
       result=a+b; break;
@@ -215,14 +215,14 @@ Step signed_binary(const ExprNode& node,T type,std::int64_t a,std::int64_t b) {
     case ArithmeticOp::divide: case ArithmeticOp::remainder:
       if (!b) return fail(E::divide_by_zero,node);
       if (a==min && b==-1) return fail(E::arithmetic_overflow,node);
-      result=node.op==ArithmeticOp::divide ? a/b : a%b; break;
+      result=to_arithmetic(node.op)==ArithmeticOp::divide ? a/b : a%b; break;
     default: return fail(E::invalid_ast,node);
   }
   return Entry{false,0,{type,result}};
 }
 template<class F> Step float_binary(const ExprNode& node,T type,F a,F b) {
   F result{};
-  switch (node.op) {
+  switch (to_arithmetic(node.op)) {
     case ArithmeticOp::plus: result=a+b; break;
     case ArithmeticOp::minus: result=a-b; break;
     case ArithmeticOp::multiply: result=a*b; break;

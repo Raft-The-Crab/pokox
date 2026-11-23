@@ -22,9 +22,13 @@ void tree(std::string_view input, std::string_view expected) {
   for (std::size_t i=0; i<nodes.size(); ++i) {
     const auto& n=nodes[i];
     check(n.begin.byte<=n.token_begin.byte && n.token_end_byte<=n.end_byte && n.end_byte<=input.size(),"bad node span");
-    if (n.kind==ExprKind::unary || n.kind==ExprKind::binary) check(n.left<i,"left child not earlier");
-    if (n.kind==ExprKind::binary) check(n.right<i,"right child not earlier");
+    if (n.kind==ExprKind::unary || n.kind==ExprKind::binary || n.kind==ExprKind::call ||
+        n.kind==ExprKind::index || n.kind==ExprKind::member || n.kind==ExprKind::question ||
+        n.kind==ExprKind::await) check(n.left<i,"left child not earlier");
+    if (n.kind==ExprKind::binary || n.kind==ExprKind::index) check(n.right<i,"right child not earlier");
     else check(n.right==no_node,"unexpected right child");
+    if (n.kind==ExprKind::call) for (const auto c:n.children) check(c<i,"call arg not earlier");
+    else check(n.children.empty(),"unexpected children");
   }
 }
 void parse_error(std::string_view input, ParseErrorCode code, std::size_t byte, std::size_t line, std::size_t col) {
@@ -48,8 +52,17 @@ void cases() {
   parse_error("(1+2",ParseErrorCode::expected_closing_parenthesis,4,1,5);
   parse_error("(1+2))",ParseErrorCode::unexpected_closing_parenthesis,5,1,6);
   parse_error("1 2",ParseErrorCode::unexpected_token,2,1,3);
-  parse_error("1 << 2",ParseErrorCode::unexpected_token,2,1,3);
-  parse_error("true",ParseErrorCode::expected_expression,0,1,1);
+  tree("1 << 2", "(binary << (integer \"1\") (integer \"2\"))\n");
+  tree("a || b && c", "(binary || (identifier \"a\") (binary && (identifier \"b\") (identifier \"c\")))\n");
+  tree("a | b ^ c & d", "(binary | (identifier \"a\") (binary ^ (identifier \"b\") (binary & (identifier \"c\") (identifier \"d\"))))\n");
+  tree("a << b + c", "(binary << (identifier \"a\") (binary + (identifier \"b\") (identifier \"c\")))\n");
+  tree("a == b < c", "(binary == (identifier \"a\") (binary < (identifier \"b\") (identifier \"c\")))\n");
+  tree("a..b..=c", "(binary ..= (binary .. (identifier \"a\") (identifier \"b\")) (identifier \"c\"))\n");
+  tree("x = y += 1", "(binary = (identifier \"x\") (binary += (identifier \"y\") (integer \"1\")))\n");
+  tree("f(1, g(2)).name[0]?", "(question (index (member (call (identifier \"f\") (integer \"1\") (call (identifier \"g\") (integer \"2\"))) \"name\") (integer \"0\")))\n");
+  tree("await net.request(\"x\")?", "(await (question (call (member (identifier \"net\") \"request\") (string \"\\x22x\\x22\"))))\n");
+  tree("!ok && move(x)", "(binary && (unary ! (identifier \"ok\")) (unary move (identifier \"x\")))\n");
+  tree("true", "(boolean \"true\")\n");
   parse_error("1\r\n * )",ParseErrorCode::expected_expression,6,2,4);
   parse_error("/// doc\n1",ParseErrorCode::expected_expression,0,1,1);
   auto limited=parse_arithmetic("1+2",LexOptions{2});
@@ -94,8 +107,11 @@ void randomized_input() {
       for (std::size_t i=0;i<nodes.size();++i) {
         const auto& node=nodes[i];
         check(node.end_byte<=input.size(),"randomized node span invalid");
-        if (node.kind==ExprKind::unary || node.kind==ExprKind::binary) check(node.left<i,"randomized left invalid");
-        if (node.kind==ExprKind::binary) check(node.right<i,"randomized right invalid");
+        if (node.kind==ExprKind::unary || node.kind==ExprKind::binary || node.kind==ExprKind::call ||
+            node.kind==ExprKind::index || node.kind==ExprKind::member || node.kind==ExprKind::question ||
+            node.kind==ExprKind::await) check(node.left<i,"randomized left invalid");
+        if (node.kind==ExprKind::binary || node.kind==ExprKind::index) check(node.right<i,"randomized right invalid");
+        if (node.kind==ExprKind::call) for (const auto c:node.children) check(c<i,"randomized call arg invalid");
       }
       (void)dump_ast(*ast);
     } else if (auto diagnostic=std::get_if<Diagnostic>(&result)) check(diagnostic->position.byte<=input.size(),"random lexical error offset invalid");

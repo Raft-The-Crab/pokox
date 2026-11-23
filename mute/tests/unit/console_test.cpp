@@ -58,11 +58,11 @@ int main() {
   test(execute_console("print(\n  1/0)",host),"eval error divide_by_zero at 2:4");
   test(execute_console("print(\r\n  1/0)",host),"eval error divide_by_zero at 2:4");
   test(execute_console("print(\"hi {name}\")",host),"host error unsupported_interpolation at 1:7");
-  test(execute_console("print(\"a\", \"b\")",host),"parse error expected_expression at 1:7");
+  test(execute_console("print(\"a\", \"b\")",host),"parse error unexpected_token at 1:10");
   test(execute_console("print()",host),"parse error expected_expression at 1:7");
   test(execute_console("print(1) + 2",host),"host error invalid_print_call at 1:1");
   test(execute_console("print(1",host),"host error invalid_print_call at 1:1");
-  test(execute_console("print(print(1))",host),"parse error unexpected_token at 1:12");
+  test(execute_console("print(print(1))",host),"eval error unknown_identifier at 1:7");
   test(execute_console("print(0b2)",host),"lex error invalid_number at 1:7");
   test(execute_console("print(1)",{}),"host error print_unavailable at 1:1");
   test(execute_console("print",host),"eval error unknown_identifier at 1:1");
