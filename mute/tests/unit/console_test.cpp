@@ -84,6 +84,12 @@ int main() {
   if (!log.append("a\n") || !log.append("a\\n") || log.entries()[1]==log.entries()[2] || log.entries()[2]!="a\\\\n") { std::cerr << "ambiguous log escape\n"; ++failures; }
   if (log.append(std::string(ConsoleLog::max_input_bytes+1,'x'))) { std::cerr << "oversized log accepted\n"; ++failures; }
   log.clear();
+  // Unicode format controls (bidi overrides, zero-width, tag characters) must
+  // be escaped; ordinary non-ASCII text and invalid bytes stay unambiguous.
+  if (!log.append("a\xe2\x80\xae" "b\xe2\x80\x8b" "c\xef\xbb\xbf" "d\xf0\x9d\x90\x80" "e\xff\xfe")) { std::cerr << "unicode log append\n"; ++failures; }
+  if (log.entries().back()!="a\\u202eb\\u200bc\\ufeffd" "\xf0\x9d\x90\x80" "e\\xff\\xfe") {
+    std::cerr << "unicode format control not escaped: " << log.entries().back() << '\n'; ++failures;
+  }
   for (int i=0;i<105;++i) if (!log.append(std::to_string(i))) ++failures;
   if (log.entries().size()!=100 || log.entries().front()!="5" || log.entries().back()!="104") { std::cerr << "FIFO entry eviction\n"; ++failures; }
   log.clear();

@@ -119,21 +119,68 @@ bool console_input_full(std::span<const char> buffer) noexcept {
   const auto end=std::find(buffer.begin(),buffer.end(),'\0');
   return end==buffer.end() || static_cast<std::size_t>(end-buffer.begin())==buffer.size()-1;
 }
+namespace {
+// Decode the UTF-8 sequence starting at text[i]; returns the code point and
+// advances i past it, or returns -1 (leaving i unchanged) on invalid input.
+std::int32_t decode_utf8(std::string_view text,std::size_t& i) noexcept {
+  const auto c=static_cast<unsigned char>(text[i]);
+  if (c<0x80) return c;
+  std::uint32_t cp; unsigned need;
+  if ((c&0xe0)==0xc0) { cp=c&0x1f; need=1; if (cp<2) return -1; }
+  else if ((c&0xf0)==0xe0) { cp=c&0x0f; need=2; }
+  else if ((c&0xf8)==0xf0) { cp=c&0x07; need=3; if (cp>4) return -1; }
+  else return -1;
+  if (i+need>=text.size()) return -1;
+  for (unsigned k=1;k<=need;++k) {
+    const auto t=static_cast<unsigned char>(text[i+k]);
+    if ((t&0xc0)!=0x80) return -1;
+    cp=(cp<<6)|(t&0x3f);
+  }
+  // Reject overlong forms, surrogates and out-of-range values.
+  const std::uint32_t min_value=need==1?0x80:need==2?0x800:0x10000;
+  if (cp<min_value || (cp>=0xd800&&cp<=0xdfff) || cp>0x10ffff) return -1;
+  i+=need+1; return static_cast<std::int32_t>(cp);
+}
+// Unicode category Cf (format) controls: bidi overrides/embeddings/isolates,
+// zero-width characters, word joiner, tag characters and similar. These can
+// visually reorder or hide log text, so they are escaped like ASCII controls.
+bool is_format_control(std::uint32_t cp) noexcept {
+  return cp==0x00ad || (cp>=0x0600&&cp<=0x0605) || cp==0x061c || cp==0x06dd ||
+    cp==0x070f || (cp>=0x0890&&cp<=0x0891) || cp==0x08e2 || cp==0x180e ||
+    (cp>=0x200b&&cp<=0x200f) || (cp>=0x202a&&cp<=0x202e) ||
+    (cp>=0x2060&&cp<=0x2064) || (cp>=0x2066&&cp<=0x206f) || cp==0xfeff ||
+    (cp>=0xfff9&&cp<=0xfffb) || cp==0x110bd || cp==0x110cd ||
+    (cp>=0x13430&&cp<=0x1343f) || (cp>=0x1bca0&&cp<=0x1bca3) ||
+    (cp>=0x1d173&&cp<=0x1d17a) || cp==0xe0001 || (cp>=0xe0020&&cp<=0xe007f);
+}
+}
 bool ConsoleLog::append(std::string_view text) {
   if (text.size()>max_input_bytes) return false;
   constexpr char hex[]="0123456789abcdef";
   std::string line; line.reserve(text.size());
-  for (const unsigned char c:text) {
-    switch (c) {
-      case '\\': line+="\\\\"; break;
-      case '\n': line+="\\n"; break;
-      case '\r': line+="\\r"; break;
-      case '\t': line+="\\t"; break;
-      case '\0': line+="\\0"; break;
-      default:
-        if (c<0x20 || c==0x7f) { line+="\\x"; line.push_back(hex[c>>4]); line.push_back(hex[c&15]); }
-        else line.push_back(static_cast<char>(c));
+  auto escape_codepoint=[&](std::uint32_t cp) {
+    if (cp<=0xffff) {
+      line+="\\u";
+      for (int shift=12;shift>=0;shift-=4) line.push_back(hex[(cp>>shift)&15]);
+    } else {
+      line+="\\U";
+      for (int shift=28;shift>=0;shift-=4) line.push_back(hex[(cp>>shift)&15]);
     }
+  };
+  for (std::size_t i=0;i<text.size();) {
+    const unsigned char c=static_cast<unsigned char>(text[i]);
+    if (c=='\\') { line+="\\\\"; ++i; continue; }
+    if (c=='\n') { line+="\\n"; ++i; continue; }
+    if (c=='\r') { line+="\\r"; ++i; continue; }
+    if (c=='\t') { line+="\\t"; ++i; continue; }
+    if (c=='\0') { line+="\\0"; ++i; continue; }
+    if (c<0x20 || c==0x7f) { line+="\\x"; line.push_back(hex[c>>4]); line.push_back(hex[c&15]); ++i; continue; }
+    if (c<0x80) { line.push_back(static_cast<char>(c)); ++i; continue; }
+    const auto at=i;
+    const auto cp=decode_utf8(text,i);
+    if (cp<0) { line+="\\x"; line.push_back(hex[c>>4]); line.push_back(hex[c&15]); ++i; continue; }
+    if (is_format_control(static_cast<std::uint32_t>(cp))) escape_codepoint(static_cast<std::uint32_t>(cp));
+    else line.append(text.substr(at,i-at));
   }
   const auto length=line.size();
   entries_.push_back(std::move(line)); // Strong guarantee if allocation fails.

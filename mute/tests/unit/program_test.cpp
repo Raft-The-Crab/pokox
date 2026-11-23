@@ -1,4 +1,5 @@
 #include "poko/mute/program.hpp"
+#include "poko/mute/state_snapshot.hpp"
 #include <cstdint>
 #include <iostream>
 #include <random>
@@ -192,5 +193,29 @@ int main() {
   auto bad_listing=listing;bad_listing.back()='X';
   if (!std::holds_alternative<ProgramDiagnostic>(assemble_program_bytecode(bad_listing)) || !std::holds_alternative<ProgramDiagnostic>(assemble_program_bytecode("MUTP1 zz\n"))) {std::cerr<<"invalid program listing accepted\n";++failures;}
   if (listing.find("function 0\n")==std::string::npos || listing.find("literal")==std::string::npos || listing.find("main\n")==std::string::npos) {std::cerr<<"program listing missing content\n";++failures;}
+  // MUT-12 audit regression: a state initializer outside the i32 range must
+  // be rejected identically by compile, run and snapshot; successful bytecode
+  // emission must not imply the declaration can initialize.
+  {
+    const auto bad_state="@state var x: i32 = 2147483648;\nfn f()->i32 {return x;} f()";
+    const auto run=run_program(bad_state);
+    const auto* run_error=std::get_if<ProgramDiagnostic>(&run);
+    if (!run_error || run_error->code!="literal_out_of_range") {std::cerr<<"out-of-range state literal accepted by run_program\n";++failures;}
+    const auto compiled=compile_program_bytecode(bad_state);
+    const auto* compile_error=std::get_if<ProgramDiagnostic>(&compiled);
+    if (!compile_error || compile_error->code!="literal_out_of_range" || compile_error->stage!=run_error->stage) {
+      std::cerr<<"out-of-range state literal not rejected consistently by compile_program_bytecode\n";++failures;
+    }
+    ProgramState empty_state;
+    const auto saved=save_state_snapshot(bad_state,empty_state);
+    if (std::holds_alternative<std::vector<std::uint8_t>>(saved)) {std::cerr<<"out-of-range state literal accepted by save_state_snapshot\n";++failures;}
+    const auto min_state="@state var x: i32 = -2147483648;\nfn f()->i32 {return x;} f()";
+    const auto max_state="@state var x: i32 = 2147483647;\nfn f()->i32 {return x;} f()";
+    for (const auto boundary : {min_state,max_state}) {
+      const auto boundary_run=run_program(boundary);
+      if (std::holds_alternative<ProgramDiagnostic>(boundary_run)) {std::cerr<<"i32 boundary state literal rejected\n";++failures;}
+      if (std::holds_alternative<ProgramDiagnostic>(compile_program_bytecode(boundary))) {std::cerr<<"i32 boundary state literal rejected by compiler\n";++failures;}
+    }
+  }
   return failures ? 1 : 0;
 }
