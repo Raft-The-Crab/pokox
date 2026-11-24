@@ -61,6 +61,21 @@ def main():
                 xtest.fake_input(d,X.MotionNotify,x=pos.x,y=pos.y); d.sync(); time.sleep(.1)
                 xtest.fake_input(d,X.ButtonPress,1); d.sync(); time.sleep(.1)
                 xtest.fake_input(d,X.ButtonRelease,1); d.sync(); time.sleep(settle)
+            # Wait for the console to actually accept typed input. On a loaded
+            # Xvfb runner the window can appear before ImGui is processing
+            # events; measuring from those first lost keystrokes made this
+            # test intermittently report zero pixel change.
+            def changed(a,b):
+                diff=ImageChops.difference(a.crop((15,240,320,345)),b.crop((15,240,320,345)))
+                return any(px!=(0,0,0) for px in getattr(diff,'get_flattened_data',diff.getdata)())
+            ready=False
+            for _ in range(20):
+                click_input(settle=.2); probe=image()
+                press('1'); time.sleep(.4)
+                if changed(probe,image()):
+                    click_input(110,236,.3)  # clear the probe text
+                    ready=True; break
+            if not ready: raise RuntimeError('console did not accept input within 20 attempts')
             click_input(settle=.4)
             before=image()
             click_input()
