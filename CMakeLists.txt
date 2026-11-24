@@ -110,7 +110,7 @@ set_target_properties(poko_mute_parser PROPERTIES CXX_EXTENSIONS OFF)
 
 # MUT-03: deterministic-mode arithmetic evaluator; never compile with fast math.
 # MUT-17–20: name resolution and type checking over the v1 ASTs.
-add_library(poko_mute_semantic STATIC mute/src/semantic/semantic.cpp mute/src/semantic/determinism.cpp mute/src/semantic/ssa.cpp mute/src/semantic/emit.cpp mute/src/semantic/lower.cpp)
+add_library(poko_mute_semantic STATIC mute/src/semantic/semantic.cpp mute/src/semantic/determinism.cpp mute/src/semantic/ssa.cpp mute/src/semantic/emit.cpp mute/src/semantic/lower.cpp mute/src/semantic/fold.cpp)
 target_link_libraries(poko_mute_semantic PUBLIC poko_mute_parser)
 target_compile_features(poko_mute_semantic PUBLIC cxx_std_20)
 set_target_properties(poko_mute_semantic PROPERTIES CXX_EXTENSIONS OFF)
@@ -549,6 +549,9 @@ if(BUILD_TESTING)
   add_executable(poko_mute_lower_test mute/tests/unit/lower_test.cpp)
   target_link_libraries(poko_mute_lower_test PRIVATE poko_mute_semantic poko_mute_program poko_mute_parser)
   add_test(NAME mute_lower_unit COMMAND poko_mute_lower_test)
+  add_executable(poko_mute_fold_test mute/tests/unit/fold_test.cpp)
+  target_link_libraries(poko_mute_fold_test PRIVATE poko_mute_semantic poko_mute_program poko_mute_parser)
+  add_test(NAME mute_fold_unit COMMAND poko_mute_fold_test)
   add_executable(poko_mute_package_test mute/tests/unit/package_test.cpp)
   target_link_libraries(poko_mute_package_test PRIVATE poko_mute_package)
   add_test(NAME mute_package_unit COMMAND poko_mute_package_test)

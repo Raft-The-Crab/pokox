@@ -48,6 +48,7 @@ The ENG-01–22 audit snapshot had 134 directories; MUT-01 adds 11 under `mute/`
 
 ## MUT-25 typed SSA IR (2026-11-24)
 
+- `mute/include/poko/mute/fold.hpp`, `mute/src/semantic/fold.cpp` and `mute/tests/unit/fold_test.cpp` contain the MUT-28 same-block constant-folding pass and tests (part of `poko_mute_semantic`).
 - `mute/include/poko/mute/ssa.hpp`, `mute/src/semantic/ssa.cpp` and `mute/tests/unit/ssa_test.cpp` contain the IR model, verifier and tests (part of `poko_mute_semantic`).
 - `docs/mut25-progress.md` records scope, verifier rules and evidence.
 

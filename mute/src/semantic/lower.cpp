@@ -223,31 +223,53 @@ class Lowerer {
         cur_=then_i; env_=pre; stmt(n.children[0]); then_env=env_;
         if (!terminated()) jump_to(join);
         const auto then_last=cur_;
+        std::size_t else_last=0;
         if (else_i) {
           cur_=else_i; env_=pre; stmt(n.children[1]); else_env=env_;
           if (!terminated()) jump_to(join);
+          else_last=cur_;
         }
         // Merge envs at join: phi for names whose value differs per arm.
+        // Join predecessors are actual blocks: the then fall-through, the
+        // else fall-through, or — with no else — the branch block itself,
+        // which carries the pre-if env on the false edge.
         cur_=join; env_=pre;
         const auto preds=preds_of(join);
         std::set<std::string> names;
         for (const auto& [k,_]:then_env) names.insert(k);
         for (const auto& [k,_]:else_env) names.insert(k);
         for (const auto& name:names) {
-          const auto in_then=then_env.count(name), in_else=else_env.count(name);
-          const Val tv=in_then?then_env[name]:Val{0,i32t()};
-          const Val ev=else_i&&in_else?else_env[name]:Val{0,i32t()};
-          if (tv.id==ev.id) { env_[name]=tv; continue; }
-          IrInstr phi; phi.op=IrOp::phi; phi.result=tv.type;
+          // Per-predecessor value: then fall-through, else fall-through, or
+          // the branch block's false edge carrying the pre-if env.
+          auto src_for=[&](std::size_t p)->const Val* {
+            if (p==then_last) return then_env.count(name)?&then_env.at(name):nullptr;
+            if (else_i && p==else_last) return else_env.count(name)?&else_env.at(name):nullptr;
+            return pre.count(name)?&pre.at(name):nullptr;
+          };
+          std::uint32_t first_id=0; Type first_ty{}; bool uniform=true, seen=false;
           for (const auto p:preds) {
-            const auto id=(p==then_last?tv.id:ev.id);
-            const auto ty=(p==then_last?tv.type:ev.type);
+            const auto* s=src_for(p);
+            const auto id=s?s->id:0;
+            if (!seen) { seen=true; first_id=id; if (s) first_ty=s->type; }
+            else if (id!=first_id) uniform=false;
+          }
+          if (uniform) {
+            if (first_id!=0) env_[name]={first_id,first_ty};
+            continue;
+          }
+          Type name_ty=i32t();
+          if (then_env.count(name)) name_ty=then_env.at(name).type;
+          else if (else_env.count(name)) name_ty=else_env.at(name).type;
+          else if (pre.count(name)) name_ty=pre.at(name).type;
+          IrInstr phi; phi.op=IrOp::phi; phi.result=name_ty;
+          for (const auto p:preds) {
+            const auto* s=src_for(p);
+            const auto id=s?s->id:0;
             phi.args.push_back(pv(id,static_cast<std::uint64_t>(p+1)));
             phi.args.push_back(pv(id,static_cast<std::uint64_t>(p+1)));
-            (void)ty;
           }
           phi.def=0; const auto id=emit(std::move(phi));
-          env_[name]={id,tv.type};
+          env_[name]={id,phi.result};
         }
         break;
       }

@@ -38,6 +38,7 @@ std::int32_t branch_offset(const Instruction& i) {
   return u<0x8000U ? static_cast<std::int32_t>(u) : static_cast<std::int32_t>(u)-65536;
 }
 std::variant<std::monostate, BytecodeError> validate_bytecode(std::span<const Instruction> code) {
+  if (code.empty()) return BytecodeError{BytecodeErrorCode::invalid_operands,0};
   if (code.size()>max_words) return BytecodeError{BytecodeErrorCode::size_limit,0};
   std::vector<bool> payload(code.size(),false);
   for (std::size_t pc=0;pc<code.size();++pc) {
@@ -71,6 +72,18 @@ std::variant<std::monostate, BytecodeError> validate_bytecode(std::span<const In
     } else if (i.op==Opcode::move || i.op==Opcode::neg) {
       if (i.a==0 || i.c!=0) return BytecodeError{BytecodeErrorCode::invalid_operands,pc};
     } else if (i.a==0) return BytecodeError{BytecodeErrorCode::invalid_operands,pc};
+  }
+  // The last real instruction must not fall through past the end of the
+  // stream: ret/halt terminate, jump and unconditional long jumps (ext
+  // mode 1) transfer unconditionally. Conditional ext modes may fall
+  // through, so they cannot be last.
+  for (std::size_t pc=code.size();pc-- >0;) {
+    if (payload[pc]) continue;
+    const auto& last=code[pc];
+    const bool terminator=last.op==Opcode::ret || last.op==Opcode::halt ||
+      last.op==Opcode::jump || (last.op==Opcode::ext_prefix && last.a==1);
+    if (!terminator) return BytecodeError{BytecodeErrorCode::invalid_operands,pc};
+    break;
   }
   return std::monostate{};
 }

@@ -23,7 +23,7 @@ std::int32_t run_source(std::string_view src,std::string_view what) {
   if (!lr.ok()) { std::cerr << "lower diags: " << what << '\n'; for (auto& x:lr.diagnostics) std::cerr<<"  code="<<(int)x.code<<" blk="<<x.block<<"\n"; return -1; }
   IrModule mod; mod.functions.push_back(lr.fn);
   auto ver=verify(mod);
-  if (!ver.ok()) { std::cerr << "verify failed: " << what << '\n'; return -1; }
+  if (!ver.ok()) { std::cerr << "verify failed: " << what << '\n'; for (auto& dg:ver.diagnostics) std::cerr<<"  vcode="<<(int)dg.code<<" fn="<<dg.function<<" blk="<<dg.block<<" "<<dg.detail<<"\n"; return -1; }
   auto em=emit_bytecode(mod);
   if (!em.ok()) { std::cerr << "emit failed: " << what << '\n'; for (auto& x:em.errors) std::cerr<<"  ecode="<<(int)x.code<<"\n"; return -1; }
   std::array<std::int32_t,256> r{};
