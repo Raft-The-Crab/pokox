@@ -90,20 +90,20 @@ def main():
                      '}':('bracketright',True),':':('semicolon',True),
                      '=':('equal',False),'-':('minus',False),'>':('period',True),
                      '*':('8',True),'+':('equal',True),'<':('comma',True),';':('semicolon',False),' ':('space',False)}
-            click_input(.2)
+            click_input(settle=.2)
             source='fn f(n:i32)->i32{if n==0{return 1;}return n*f(n-1);}f(5)'
             for char in source:
                 name,shift=special.get(char,(char,False)); press(name,shift)
             press('Return'); time.sleep(.5); recursive=image()
-            click_input(.2)
+            click_input(settle=.2)
             for name in ('5','5','Return'): press(name)
             time.sleep(.4); loop_reference=image()
-            click_input(.2)
+            click_input(settle=.2)
             source='fn f()->i32{var i=0;var s=0;while i<10{i=i+1;s=s+i;}return s;}f()'
             for char in source:
                 name,shift=special.get(char,(char,False)); press(name,shift)
             press('Return'); time.sleep(.5); loop_result=image()
-            click_input(.2)
+            click_input(settle=.2)
             source='fn f()->i32{while true{}return 0;}f()'
             for char in source:
                 name,shift=special.get(char,(char,False)); press(name,shift)
