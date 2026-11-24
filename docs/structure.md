@@ -41,6 +41,11 @@ When directories are added, removed or moved, update this inventory, counts and 
 
 The ENG-01–22 audit snapshot had 134 directories; MUT-01 adds 11 under `mute/`.
 
+## MUT-24 determinism/capability analysis (2026-11-24)
+
+- `mute/include/poko/mute/determinism.hpp`, `mute/src/semantic/determinism.cpp` and `mute/tests/unit/determinism_test.cpp` contain the analysis pass (part of `poko_mute_semantic`) and tests.
+- `docs/mut24-progress.md` records scope, rules and evidence.
+
 ## MUT-23 cooperative scheduler (2026-11-24)
 
 - `mute/include/poko/mute/scheduler.hpp`, `mute/src/vm/scheduler.cpp` and `mute/tests/unit/scheduler_test.cpp` contain the deterministic task scheduler and tests.
