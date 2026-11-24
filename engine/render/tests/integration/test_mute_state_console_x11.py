@@ -28,13 +28,19 @@ def main():
                 if p.poll() is not None: raise RuntimeError('demo exited before window appeared')
                 time.sleep(.05)
             else: raise RuntimeError('window did not appear')
-            w=windows[0];w.set_input_focus(X.RevertToParent,X.CurrentTime);d.sync();time.sleep(1)
+            w=windows[0]
+            def focus():
+                w.set_input_focus(X.RevertToParent,X.CurrentTime)
+                w.raise_window();d.sync();time.sleep(.15)
+            focus();time.sleep(1)
             def click(x,y):
+                focus()
                 pos=d.screen().root.translate_coords(w,x,y)
                 xtest.fake_input(d,X.MotionNotify,x=pos.x,y=pos.y);d.sync();time.sleep(.1)
                 xtest.fake_input(d,X.ButtonPress,1);d.sync();time.sleep(.1)
                 xtest.fake_input(d,X.ButtonRelease,1);d.sync();time.sleep(.3)
             def press(name,shift=False):
+                focus()
                 key=d.keysym_to_keycode(XK.string_to_keysym(name));sk=d.keysym_to_keycode(XK.string_to_keysym('Shift_L'))
                 if not key or not sk: raise RuntimeError(f'unavailable key {name}')
                 if shift: xtest.fake_input(d,X.KeyPress,sk)

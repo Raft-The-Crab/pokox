@@ -33,11 +33,16 @@ def main():
                 if p.poll() is not None: raise RuntimeError('demo exited before window appeared')
                 time.sleep(.05)
             else: raise RuntimeError('window did not appear')
-            w=windows[0]; w.set_input_focus(X.RevertToParent,X.CurrentTime); d.sync(); time.sleep(1)
+            w=windows[0]
+            def focus():
+                w.set_input_focus(X.RevertToParent,X.CurrentTime)
+                w.raise_window(); d.sync(); time.sleep(.15)
+            focus(); time.sleep(1)
             def image():
                 g=w.get_geometry(); raw=w.get_image(0,0,g.width,g.height,X.ZPixmap,0xffffffff)
                 return Image.frombytes('RGB',(g.width,g.height),raw.data,'raw','BGRX')
             def press(name, shift=False):
+                focus()
                 key=d.keysym_to_keycode(XK.string_to_keysym(name))
                 shiftkey=d.keysym_to_keycode(XK.string_to_keysym('Shift_L'))
                 if not key or not shiftkey: raise RuntimeError(f'unavailable key {name}')
@@ -47,6 +52,7 @@ def main():
                 if shift: xtest.fake_input(d,X.KeyRelease,shiftkey)
                 d.sync(); time.sleep(.05)
             # First-use layout at 800x600: expression field below stats.
+            focus()
             pos=d.screen().root.translate_coords(w,80,194)
             xtest.fake_input(d,X.MotionNotify,x=pos.x,y=pos.y); d.sync(); time.sleep(.1)
             xtest.fake_input(d,X.ButtonPress,1); d.sync(); time.sleep(.1)
@@ -71,6 +77,7 @@ def main():
             xtest.fake_input(d,X.ButtonPress,1); d.sync(); time.sleep(.1)
             xtest.fake_input(d,X.ButtonRelease,1); d.sync(); time.sleep(.4); cleared=image()
             # Compare the recursive program's exact result region with a known 120.
+            focus()
             pos=d.screen().root.translate_coords(w,80,194)
             xtest.fake_input(d,X.MotionNotify,x=pos.x,y=pos.y); d.sync(); time.sleep(.1)
             xtest.fake_input(d,X.ButtonPress,1); d.sync(); time.sleep(.1)
