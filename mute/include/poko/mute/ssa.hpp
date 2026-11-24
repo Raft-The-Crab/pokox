@@ -34,9 +34,13 @@ struct IrInstr {
   IrOp op{};
   std::uint32_t def{0};              // produced value id; 0 = no result
   Type result{};               // result type; unit for side-effect ops
-  std::vector<IrOperand> args; // value operands (phis get 2*preds entries)
+  std::vector<IrOperand> args; // value operands
   std::uint32_t target{0};     // jump/branch target block index +1; 0 none
   std::uint32_t target2{0};    // branch false target +1
+  std::uint8_t detail{0};      // sub-operation: binary 0=add 1=sub 2=mul 3=div
+                               // 4=mod; unary 0=neg; compare 0=eq 1=ne 2=lt
+                               // 3=le 4=gt 5=ge; phi operands carry
+                               // imm = predecessor block index + 1
 };
 struct IrBlock {
   std::string label;

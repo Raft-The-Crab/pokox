@@ -41,6 +41,11 @@ When directories are added, removed or moved, update this inventory, counts and 
 
 The ENG-01–22 audit snapshot had 134 directories; MUT-01 adds 11 under `mute/`.
 
+## MUT-26 IR->bytecode emission (2026-11-24)
+
+- `mute/include/poko/mute/emit.hpp`, `mute/src/semantic/emit.cpp` and `mute/tests/unit/emit_test.cpp` contain the emitter (part of `poko_mute_semantic`) and tests; `IrInstr` gained a `detail` sub-op field in `ssa.hpp`.
+- `docs/mut26-progress.md` records scope, emission rules and evidence.
+
 ## MUT-25 typed SSA IR (2026-11-24)
 
 - `mute/include/poko/mute/ssa.hpp`, `mute/src/semantic/ssa.cpp` and `mute/tests/unit/ssa_test.cpp` contain the IR model, verifier and tests (part of `poko_mute_semantic`).
