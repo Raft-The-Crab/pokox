@@ -386,7 +386,7 @@ if(BUILD_TESTING)
     add_executable(${test_target}
       engine/platform/src/window/sdl_platform.cpp
       engine/rhi/src/device/vulkan_clear_renderer.cpp
-      engine/rhi/src/debug/vulkan_diagnostics.cpp
+      engine/rhi/src/debug/vulkan_diagnostics.cpp engine/rhi/src/debug/vulkan_diagnostics_filter.cpp
       engine/rhi/tests/unit/vulkan_clear_faults.cpp)
     target_include_directories(${test_target} PRIVATE
       engine/rhi/include engine/rhi/tests/fakes engine/platform/tests/fakes)
@@ -396,6 +396,14 @@ if(BUILD_TESTING)
     add_test(NAME ${test_target} COMMAND ${test_target})
     set_tests_properties(${test_target} PROPERTIES TIMEOUT 15)
   endforeach()
+
+  # Narrow allowlist for the pinned-headers/older-layer CI mismatch.
+  add_executable(pokox_vulkan_diagnostics_filter
+    engine/rhi/src/debug/vulkan_diagnostics_filter.cpp
+    engine/rhi/tests/unit/vulkan_diagnostics_filter_test.cpp)
+  target_include_directories(pokox_vulkan_diagnostics_filter PRIVATE engine/rhi/include)
+  set_target_properties(pokox_vulkan_diagnostics_filter PROPERTIES CXX_EXTENSIONS OFF)
+  add_test(NAME pokox_vulkan_diagnostics_filter COMMAND pokox_vulkan_diagnostics_filter)
 
   # Production triangle/depth pass against isolated SDK doubles; not GPU acceptance.
   add_executable(pokox_mesh_pass_faults
@@ -422,7 +430,7 @@ if(BUILD_TESTING)
     add_executable(${test_target}
       engine/platform/src/window/sdl_platform.cpp
       engine/rhi/src/device/vulkan_clear_renderer.cpp
-      engine/rhi/src/debug/vulkan_diagnostics.cpp
+      engine/rhi/src/debug/vulkan_diagnostics.cpp engine/rhi/src/debug/vulkan_diagnostics_filter.cpp
       engine/rhi/src/device/opengl_clear_renderer.cpp
       engine/rhi/src/device/fallback_clear_backends.cpp
       engine/rhi/src/device/clear_backend_selection.cpp
@@ -442,7 +450,7 @@ if(BUILD_TESTING)
   target_compile_definitions(pokox_fallback_fake_fixture PRIVATE PLATFORM_LINUX=1 main=poko_gl_fixture_main)
   add_executable(pokox_fallback_demo_double
     engine/platform/src/window/sdl_platform.cpp
-    engine/rhi/src/device/vulkan_clear_renderer.cpp engine/rhi/src/debug/vulkan_diagnostics.cpp
+    engine/rhi/src/device/vulkan_clear_renderer.cpp engine/rhi/src/debug/vulkan_diagnostics.cpp engine/rhi/src/debug/vulkan_diagnostics_filter.cpp
     engine/rhi/src/device/opengl_clear_renderer.cpp engine/rhi/src/device/fallback_clear_backends.cpp
     engine/rhi/src/device/clear_backend_selection.cpp engine/rhi/src/device/fallback_clear_demo.cpp
     $<TARGET_OBJECTS:pokox_fallback_fake_fixture>)
@@ -791,7 +799,7 @@ if(POKO_WITH_VULKAN_DEMO)
     message(FATAL_ERROR "Pinned Diligent Vulkan backend is unavailable; configure with DILIGENT_NO_VULKAN=OFF")
   endif()
   add_library(poko_rhi_vulkan STATIC
-    engine/rhi/src/device/vulkan_clear_renderer.cpp engine/rhi/src/debug/vulkan_diagnostics.cpp)
+    engine/rhi/src/device/vulkan_clear_renderer.cpp engine/rhi/src/debug/vulkan_diagnostics.cpp engine/rhi/src/debug/vulkan_diagnostics_filter.cpp)
   target_include_directories(poko_rhi_vulkan PUBLIC engine/rhi/include
     PRIVATE "${diligentcore_SOURCE_DIR}/Common/interface")
   target_link_libraries(poko_rhi_vulkan PUBLIC poko_platform_sdl
@@ -927,7 +935,7 @@ if(POKO_WITH_IMGUI_DEMO)
   add_executable(pokox_imgui_pass_faults
     engine/rhi/tests/unit/imgui_pass_faults.cpp
     engine/rhi/src/device/vulkan_imgui_pass.cpp
-    engine/rhi/src/debug/vulkan_diagnostics.cpp)
+    engine/rhi/src/debug/vulkan_diagnostics.cpp engine/rhi/src/debug/vulkan_diagnostics_filter.cpp)
   target_include_directories(pokox_imgui_pass_faults PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/engine/rhi/tests/fakes/imgui"
     "${CMAKE_CURRENT_SOURCE_DIR}/engine/rhi/tests/fakes"

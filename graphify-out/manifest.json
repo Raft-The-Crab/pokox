@@ -594,9 +594,9 @@
     "semantic_hash": ""
   },
   "engine/rhi/include/poko/rhi/debug/vulkan_diagnostics.hpp": {
-    "mtime": 1795325329.4270906,
-    "seen": 1795326781.8747764,
-    "ast_hash": "24f796119bcd4f854cc9ac8d56be535a",
+    "mtime": 1795478501.7756302,
+    "seen": 1795478792.947124,
+    "ast_hash": "b1cb872f8728231f516a307c6e21c216",
     "semantic_hash": ""
   },
   "engine/rhi/include/poko/rhi/device/clear_backend_selection.hpp": {
@@ -660,9 +660,9 @@
     "semantic_hash": ""
   },
   "engine/rhi/src/debug/vulkan_diagnostics.cpp": {
-    "mtime": 1795325329.830043,
-    "seen": 1795326781.8748157,
-    "ast_hash": "29de69ef4dffe3e04ed43746e9795e81",
+    "mtime": 1795478521.6186776,
+    "seen": 1795478792.947194,
+    "ast_hash": "c95d63cd9a9924458fbb3bd3d76bc23b",
     "semantic_hash": ""
   },
   "engine/rhi/src/device/clear_backend_selection.cpp": {
@@ -870,9 +870,9 @@
     "semantic_hash": ""
   },
   "CMakeLists.txt": {
-    "mtime": 1795473316.7560186,
-    "seen": 1795473498.7545688,
-    "ast_hash": "2e4e008f6379b92644be1fcb4488967b",
+    "mtime": 1795478514.217141,
+    "seen": 1795478792.9478438,
+    "ast_hash": "3d4fafe14b9611afe7c8db6506d21f53",
     "semantic_hash": ""
   },
   "CODE_OF_CONDUCT.md": {
@@ -2412,9 +2412,9 @@
     "semantic_hash": ""
   },
   "engine/render/tests/integration/test_mute_console_x11.py": {
-    "mtime": 1795325328.4206405,
-    "seen": 1795326781.8747156,
-    "ast_hash": "d4b4acf2085ebdc3aa3271ba3a64cb4e",
+    "mtime": 1795477247.4510837,
+    "seen": 1795478792.9470346,
+    "ast_hash": "a7a628849763ef89311db13530ae5645",
     "semantic_hash": ""
   },
   "mute/include/poko/mute/console.hpp": {
@@ -2664,9 +2664,9 @@
     "semantic_hash": ""
   },
   "engine/render/tests/integration/test_mute_state_console_x11.py": {
-    "mtime": 1795325328.393641,
-    "seen": 1795326781.874719,
-    "ast_hash": "1d69411d39f990cc806626d2a3fdd097",
+    "mtime": 1795477252.3642037,
+    "seen": 1795478792.9470403,
+    "ast_hash": "191dfdf7519b078a826b9f59cf70539a",
     "semantic_hash": ""
   },
   "mute/include/poko/mute/pkb_draft.hpp": {
@@ -3066,9 +3066,27 @@
     "semantic_hash": ""
   },
   ".workbuddy-ai/memory/2026-11-24.md": {
-    "mtime": 1795473465.0808356,
-    "seen": 1795473498.75455,
-    "ast_hash": "63c057a7392a3fad958e9a50bc2a36ff",
+    "mtime": 1795475353.0438426,
+    "seen": 1795478792.9478328,
+    "ast_hash": "b6fa82a4bdca623350dec08b6a561880",
+    "semantic_hash": ""
+  },
+  "engine/rhi/include/poko/rhi/debug/vulkan_diagnostics_filter.hpp": {
+    "mtime": 1795478501.9126244,
+    "seen": 1795478792.947128,
+    "ast_hash": "ad9c0f3ec90ebc17aa6deaad6c133a63",
+    "semantic_hash": ""
+  },
+  "engine/rhi/src/debug/vulkan_diagnostics_filter.cpp": {
+    "mtime": 1795478507.119764,
+    "seen": 1795478792.9471977,
+    "ast_hash": "c471b8539b8946eb524c0dd93db909c7",
+    "semantic_hash": ""
+  },
+  "engine/rhi/tests/unit/vulkan_diagnostics_filter_test.cpp": {
+    "mtime": 1795478643.0075698,
+    "seen": 1795478792.9473493,
+    "ast_hash": "83e95c569f93e75c921cb5453a801544",
     "semantic_hash": ""
   }
 }

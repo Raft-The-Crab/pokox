@@ -1,8 +1,10 @@
 #include "poko/rhi/debug/vulkan_diagnostics.hpp"
+#include "poko/rhi/debug/vulkan_diagnostics_filter.hpp"
 #include <BasicPlatformDebug.hpp>
 #include <EngineFactoryVk.h>
 #include <atomic>
 #include <cstdio>
+#include <string_view>
 #include <utility>
 namespace poko::rhi {
 namespace {
@@ -21,11 +23,15 @@ void DILIGENT_CALL_TYPE capture(Diligent::DEBUG_MESSAGE_SEVERITY severity,
     const Diligent::Char* message, const Diligent::Char* function,
     const Diligent::Char* file, int line) noexcept {
   const bool error = severity >= Diligent::DEBUG_MESSAGE_SEVERITY_ERROR;
+  const bool warning = severity == Diligent::DEBUG_MESSAGE_SEVERITY_WARNING;
+  const char* text = message ? message : "(no message)";
+  const bool environment_warning = warning && is_environment_layer_version_warning(text);
   if (error) errors.fetch_add(1, std::memory_order_release);
-  else if (severity == Diligent::DEBUG_MESSAGE_SEVERITY_WARNING) warnings.fetch_add(1, std::memory_order_release);
-  std::fprintf(stderr, "[Poko graphics %s] %s (%s:%d; %s)\n",
-    error ? "error" : severity == Diligent::DEBUG_MESSAGE_SEVERITY_WARNING ? "warning" : "info",
-    message ? message : "(no message)", file ? file : "?", line, function ? function : "?");
+  else if (warning && !environment_warning) warnings.fetch_add(1, std::memory_order_release);
+  std::fprintf(stderr, "[Poko graphics %s%s] %s (%s:%d; %s)\n",
+    error ? "error" : warning ? "warning" : "info",
+    environment_warning ? " (known environment)" : "",
+    text, file ? file : "?", line, function ? function : "?");
   const auto previous = previous_callback.load(std::memory_order_acquire);
   if (previous && previous != capture) {
     try { previous(severity, message, function, file, line); }
