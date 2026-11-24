@@ -870,9 +870,9 @@
     "semantic_hash": ""
   },
   "CMakeLists.txt": {
-    "mtime": 1795517771.4851396,
-    "seen": 1795519092.622132,
-    "ast_hash": "5d30598f576eaec4fc085a8f3c60c9af",
+    "mtime": 1795519237.743803,
+    "seen": 1795519503.5374854,
+    "ast_hash": "1982e37cc98f69fe00b57a2880c1cfa4",
     "semantic_hash": ""
   },
   "CODE_OF_CONDUCT.md": {
@@ -1164,9 +1164,9 @@
     "semantic_hash": ""
   },
   "docs/plan/02-work-queue.md": {
-    "mtime": 1795519062.8330746,
-    "seen": 1795519092.6224988,
-    "ast_hash": "74c85fff0cd6f2be1d31fa49277cf3af",
+    "mtime": 1795519486.3708274,
+    "seen": 1795519503.5379996,
+    "ast_hash": "fe75fa84addef7b9a0b5b246176b4775",
     "semantic_hash": ""
   },
   "docs/plan/03-architecture.md": {
@@ -1350,9 +1350,9 @@
     "semantic_hash": ""
   },
   "docs/structure.md": {
-    "mtime": 1795519068.4916494,
-    "seen": 1795519092.622622,
-    "ast_hash": "e3c503ff92fed970a5c68223c0803926",
+    "mtime": 1795519486.3753562,
+    "seen": 1795519503.5381465,
+    "ast_hash": "eece842003a14a0e3d63721bb92a22b8",
     "semantic_hash": ""
   },
   "engine/README.md": {
@@ -3285,6 +3285,36 @@
     "mtime": 1795519038.1068532,
     "seen": 1795519092.6224883,
     "ast_hash": "d5ccd5cb979b1e8ee9ee1e8bd8a79a0b",
+    "semantic_hash": ""
+  },
+  "mute/include/poko/mute/optimize.hpp": {
+    "mtime": 1795519164.9144933,
+    "seen": 1795519503.536784,
+    "ast_hash": "412b3129bff4fc094d2094805a872806",
+    "semantic_hash": ""
+  },
+  "mute/src/semantic/optimize.cpp": {
+    "mtime": 1795519366.769763,
+    "seen": 1795519503.5369368,
+    "ast_hash": "e5eb15b9c7d50c2cbb5a2554dde2f198",
+    "semantic_hash": ""
+  },
+  "mute/tests/unit/optimize_test.cpp": {
+    "mtime": 1795519320.5349085,
+    "seen": 1795519503.5370543,
+    "ast_hash": "8accf49293fa48313c450b006972bdee",
+    "semantic_hash": ""
+  },
+  "docs/mut29-progress.md": {
+    "mtime": 1795519477.558313,
+    "seen": 1795519503.537981,
+    "ast_hash": "6cccaafb3dd576b60d04ef62b1e93f73",
+    "semantic_hash": ""
+  },
+  "docs/mut30-progress.md": {
+    "mtime": 1795519477.8515265,
+    "seen": 1795519503.537985,
+    "ast_hash": "524d7cf756675b4339a970005b58dc75",
     "semantic_hash": ""
   }
 }
