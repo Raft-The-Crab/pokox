@@ -84,7 +84,7 @@ When implementation or layout changes, update in the same change:
 - `docs/structure.md` (actual directory inventory);
 - `docs/build.md` (build status and verification records);
 - `docs/plan/02-work-queue.md` scaffold progress;
-- task-specific progress/evidence docs (for example `docs/eng03-progress.md`
+- task-specific progress/evidence docs (for example `docs/eng-progress.md`
   and `docs/eng*-evidence.txt`).
 
 Record exactly what was verified, on which host/toolchain, and what

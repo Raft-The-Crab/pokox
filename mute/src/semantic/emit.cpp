@@ -102,7 +102,7 @@ EmitResult emit_bytecode(const IrModule& module) {
       return op==IrOp::jump?1:op==IrOp::return_?2:op==IrOp::branch?3:0;
     };
     auto instrs_size=[&](std::size_t bi)->std::size_t {
-      if (bi>=B) { const auto& t=tramps[bi-B]; return t.mv.size()+1; }
+      if (bi>=B) { const auto& t=tramps[bi-B]; return t.mv.size()+(ext_jump[bi]?2:1); }
       const auto& blk=fn.blocks[bi];
       std::size_t n=0;
       for (const auto& in:blk.instrs) {
@@ -138,6 +138,12 @@ EmitResult emit_bytecode(const IrModule& module) {
           if (ej2!=static_cast<bool>(ext_jump[i])) { ext_jump[i]=ej2; changed=true; }
         }
       }
+      // Trampolines are unconditional jumps to their join block.
+      for (std::size_t i=B;i<NB;++i) {
+        const auto d=static_cast<std::int64_t>(start[tramps[i-B].join])-static_cast<std::int64_t>(start[i]);
+        const bool ej=d>30000 || d< -30000;
+        if (ej!=static_cast<bool>(ext_jump[i])) { ext_jump[i]=ej; changed=true; }
+      }
       if (!changed) break;
     }
     // Emit.
@@ -150,7 +156,8 @@ EmitResult emit_bytecode(const IrModule& module) {
         const auto& t=tramps[bi-B];
         emit_moves(t.mv);
         const auto disp=static_cast<std::int32_t>(start[t.join])-static_cast<std::int32_t>(code.size()+1);
-        code.push_back(br16(Opcode::jump,0,disp));
+        if (ext_jump[bi]) { auto p=br32(1,0,disp); code.push_back(p.first); code.push_back(p.second); }
+        else code.push_back(br16(Opcode::jump,0,disp));
         continue;
       }
       const auto& blk=fn.blocks[bi];

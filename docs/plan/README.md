@@ -11,7 +11,7 @@ The foundational plan exists; the proposed Mute v1 completion scope is awaiting 
 ENG-03 has started under the owner's explicit deferral of laptop-based
 Windows/Android checks. Its graphics-window prerequisite and an opt-in Diligent/Vulkan clear-color
 source candidate are implemented and dependency-double tested; real-SDK build
-and clear-color acceptance remain open. See `../eng03-progress.md`. No phase gate is waived.
+and clear-color acceptance remain open. See `../eng-progress.md`. No phase gate is waived.
 
 ## Reading order
 

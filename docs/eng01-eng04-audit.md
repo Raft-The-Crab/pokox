@@ -17,7 +17,7 @@ Regression tests cover the new failure cases with dependency doubles. The origin
 
 - The pinned Diligent Windows backend uses legacy WGL pixel-format selection, which does not guarantee an sRGB-capable default framebuffer. The new check intentionally rejects a non-sRGB result; a suitable WGL selection/attachment path and real Windows driver tests may be needed for a working fallback. The existing WGL context-version patch also requires a real target build/test.
 - The sRGB encoding check and matching linear clear inputs do not prove equal displayed pixels or equal presentation color spaces. Compare actual captured pixels on target devices and exercise a controlled automatic Vulkan-to-GL fallback before accepting ENG-04.
-- At the time of this audit, Android OpenGL ES/EGL/activity lifecycle, device-loss recovery and resize recreation were not implemented. For subsequent desktop Vulkan resize work, see `eng05-progress.md`. Linux X11 and test doubles are not Windows/MSVC, Android, real target-GPU, or CI validation.
+- At the time of this audit, Android OpenGL ES/EGL/activity lifecycle, device-loss recovery and resize recreation were not implemented. For subsequent desktop Vulkan resize work, see `eng-progress.md`. Linux X11 and test doubles are not Windows/MSVC, Android, real target-GPU, or CI validation.
 
 ## Audit verification
 

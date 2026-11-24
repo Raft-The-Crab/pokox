@@ -68,7 +68,7 @@ the first release tag exists.
 
 - Windows (MSVC and MSYS2) and Android acceptance checks are still open
   for INF-02/INF-04 and ENG-01/02/03; see `docs/build.md`,
-  `docs/plan/02-work-queue.md`, and `docs/eng03-progress.md`.
+  `docs/plan/02-work-queue.md`, and `docs/eng-progress.md`.
 - The Vulkan clear demo is a source candidate verified against dependency
   doubles; real SDK compilation, GPU output, and validation-layer
   acceptance remain pending.

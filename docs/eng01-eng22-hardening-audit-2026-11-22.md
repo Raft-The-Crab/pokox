@@ -2,7 +2,7 @@
 
 ## Scope
 
-A source/integration review of the existing engine tasks, building on `eng01-eng21-audit-2026-11-22.md` and `eng22-progress.md`. This is not proof that every defect has been found, a new feature wave, or a waiver of pending gates. No anti-aliasing, new renderer capability, or next queue task was added. Historical evidence applies to its original revision only.
+A source/integration review of the existing engine tasks, building on `eng01-eng21-audit-2026-11-22.md` and `eng-progress.md`. This is not proof that every defect has been found, a new feature wave, or a waiver of pending gates. No anti-aliasing, new renderer capability, or next queue task was added. Historical evidence applies to its original revision only.
 
 ## Findings and fixes
 

@@ -57,4 +57,4 @@ New modules: `engine/foundation` (cbor, config, frame_stats),
 `engine/resource` (asset_store, ktx2, pokomesh), `engine/render`
 (camera, textured/mesh shaders, cube_demo), `engine/rhi`
 (vulkan_mesh_pass + texture paths on triangle pass).
-Progress docs: `docs/eng14..eng20-progress.md`.
+Progress docs: `docs/eng14..eng-progress.md`.

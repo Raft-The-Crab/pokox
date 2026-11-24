@@ -5,7 +5,7 @@ The owner requested another review of file placement and potential problems befo
 ## Improvements
 
 - Expanded CPU frame-graph tests with 64 deterministic, varied eight-pass acyclic resource graphs registered in reverse order. An independent ordering check verifies producer/consumer dependencies; this strengthens coverage rather than claiming GPU integration.
-- Implemented the next task, ENG-07, including checks for failed shader builds, stale artifacts, compiler changes, unsupported includes, path quoting and source/output collision. See `eng07-progress.md`.
+- Implemented the next task, ENG-07, including checks for failed shader builds, stale artifacts, compiler changes, unsupported includes, path quoting and source/output collision. See `eng-progress.md`.
 
 ## Verification (Linux, GCC 11.5 and CMake 3.31)
 

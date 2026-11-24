@@ -161,7 +161,7 @@ initialization, rendering, fallback, or completed ENG-03 acceptance.
 Current contract and backend/function-double tests pass strict warnings,
 optimized builds and ASan/UBSan/leak detection. Eleven deliberate regressions
 are caught; the 23 Python checks pass. Real-SDL, CMake, target-platform and GPU
-validation remain pending. See `eng03-progress.md` for the interface extension,
+validation remain pending. See `eng-progress.md` for the interface extension,
 resource-lifetime obligations, evidence limits and next implementation steps.
 
 ## ENG-03 continuation — opt-in clear-color source candidate
@@ -177,7 +177,7 @@ The default build gains three dependency-free native-layout checks; selecting
 Win32/Android layouts in these tests is not executing on those OSes. No real
 CMake/CTest run, SDK compile/link, visible blue frame or validation-layer pass
 is claimed. See `../engine/rhi/README.md` for unverified laptop build commands,
-`eng03-progress.md` for acceptance limits and `eng03-clear-seed-evidence.txt`
+`eng-progress.md` for acceptance limits and `eng03-clear-seed-evidence.txt`
 for the final local test record. ENG-03 and infrastructure acceptance stay open.
 
 ## ENG-03 graphics diagnostics and desktop evidence runner
@@ -267,12 +267,12 @@ spdlog 1.17.0, Catch2 3.16.1 into `vcpkg_installed/x64-mingw-dynamic`
 
 ## ENG-08 — experimental Vulkan triangle
 
-An opt-in graph-driven Vulkan triangle demo now consumes the ENG-07 SPIR-V artifacts. Linux software Vulkan produced a visually checked triangle and passed a three-resize smoke test; this is not Windows GPU or validation-layer acceptance. Build and run instructions and remaining limits are in `../engine/render/README.md` and `eng08-progress.md`.
+An opt-in graph-driven Vulkan triangle demo now consumes the ENG-07 SPIR-V artifacts. Linux software Vulkan produced a visually checked triangle and passed a three-resize smoke test; this is not Windows GPU or validation-layer acceptance. Build and run instructions and remaining limits are in `../engine/render/README.md` and `eng-progress.md`.
 
 ## ENG-09 — experimental Vulkan depth
 
-The opt-in desktop depth demonstration and its no-depth control are documented in `../engine/render/README.md` and `eng09-progress.md`. Software Vulkan pixel tests passed; hardware and validation-layer acceptance remain open.
+The opt-in desktop depth demonstration and its no-depth control are documented in `../engine/render/README.md` and `eng-progress.md`. Software Vulkan pixel tests passed; hardware and validation-layer acceptance remain open.
 
 ## ENG-10 — experimental Vulkan per-frame uniform
 
-The opt-in depth-tested per-frame uniform demo is documented in `../engine/render/README.md` and `eng10-progress.md`. Linux software Vulkan visual checks passed; target hardware and validation-layer acceptance remain open.
+The opt-in depth-tested per-frame uniform demo is documented in `../engine/render/README.md` and `eng-progress.md`. Linux software Vulkan visual checks passed; target hardware and validation-layer acceptance remain open.

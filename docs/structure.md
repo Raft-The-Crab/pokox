@@ -36,7 +36,7 @@ When directories are added, removed or moved, update this inventory, counts and 
 - `mute/include/poko/mute/` contains public lexer, arithmetic-parser, evaluator, program and console APIs; `mute/src/` contains per-module implementation subfolders (`lexer`, `parser`, `evaluator`, `math`, `program`, `bytecode`, `vm`, `state`, `pkb`, `console`) and `mute/data/unicode/` retains the pinned Unicode data.
 - `mute/data/unicode/` retains the pinned Unicode data and license; `mute/tools/` contains its deterministic generator.
 - `mute/tests/unit/` contains unit and golden drivers; `mute/tests/fixtures/golden/` contains source and expected results.
-- `mute/LEXICAL-CONTRACT.md`, `mute/ARITHMETIC-PARSER.md` and `mute/ARITHMETIC-EVALUATOR.md` define Mute contracts; `docs/mut01-progress.md`, `docs/mut02-progress.md`, `docs/mut03-progress.md` and the Mute audit record scope and evidence.
+- `mute/LEXICAL-CONTRACT.md`, `mute/ARITHMETIC-PARSER.md` and `mute/ARITHMETIC-EVALUATOR.md` define Mute contracts; `docs/mute-progress.md`, `docs/mute-progress.md`, `docs/mute-progress.md` and the Mute audit record scope and evidence.
 - The root `.gitattributes` preserves exact-byte Mute lexer/parser fixtures and Unicode input across Git checkout configurations. No new directories were added for MUT-02 through MUT-06.
 
 The ENG-01–22 audit snapshot had 134 directories; MUT-01 adds 11 under `mute/`.
@@ -44,47 +44,47 @@ The ENG-01–22 audit snapshot had 134 directories; MUT-01 adds 11 under `mute/`
 ## MUT-26 IR->bytecode + AST lowering (2026-11-24)
 
 - `mute/include/poko/mute/emit.hpp`, `mute/include/poko/mute/lower.hpp`, `mute/src/semantic/emit.cpp`, `mute/src/semantic/lower.cpp` and `mute/tests/unit/{emit,lower}_test.cpp` contain the emitter, AST→SSA lowering (part of `poko_mute_semantic`) and tests; `IrInstr` gained a `detail` sub-op field in `ssa.hpp`; `Opcode::load_imm` added to `bytecode.hpp`.
-- `docs/mut26-progress.md` records scope, emission/lowering rules and evidence.
+- `docs/mute-progress.md` records scope, emission/lowering rules and evidence.
 
 ## MUT-25 typed SSA IR (2026-11-24)
 
 - `mute/include/poko/mute/optimize.hpp`, `mute/src/semantic/optimize.cpp` and `mute/tests/unit/optimize_test.cpp` contain the MUT-29 dead-code and MUT-30 control-flow passes and tests.
 - `mute/include/poko/mute/fold.hpp`, `mute/src/semantic/fold.cpp` and `mute/tests/unit/fold_test.cpp` contain the MUT-28 same-block constant-folding pass and tests (part of `poko_mute_semantic`).
 - `mute/include/poko/mute/ssa.hpp`, `mute/src/semantic/ssa.cpp` and `mute/tests/unit/ssa_test.cpp` contain the IR model, verifier and tests (part of `poko_mute_semantic`).
-- `docs/mut25-progress.md` records scope, verifier rules and evidence.
+- `docs/mute-progress.md` records scope, verifier rules and evidence.
 
 ## MUT-24 determinism/capability analysis (2026-11-24)
 
 - `mute/include/poko/mute/determinism.hpp`, `mute/src/semantic/determinism.cpp` and `mute/tests/unit/determinism_test.cpp` contain the analysis pass (part of `poko_mute_semantic`) and tests.
-- `docs/mut24-progress.md` records scope, rules and evidence.
+- `docs/mute-progress.md` records scope, rules and evidence.
 
 ## MUT-23 cooperative scheduler (2026-11-24)
 
 - `mute/include/poko/mute/scheduler.hpp`, `mute/src/vm/scheduler.cpp` and `mute/tests/unit/scheduler_test.cpp` contain the deterministic task scheduler and tests.
-- `docs/mut23-progress.md` records scope, semantics and evidence.
+- `docs/mute-progress.md` records scope, semantics and evidence.
 
 ## MUT-22 aggregate value runtime (2026-11-24)
 
 - `mute/include/poko/mute/values.hpp`, `mute/src/vm/values.cpp` and `mute/tests/unit/values_test.cpp` contain the refcounted aggregate store, arena/RC lifetimes and tests.
-- `docs/mut22-progress.md` records scope, lifetime rules and evidence.
+- `docs/mute-progress.md` records scope, lifetime rules and evidence.
 
 ## MUT-21 package resolution organization (2026-11-24)
 
 - `mute/include/poko/mute/package.hpp`, `mute/src/package/package.cpp` and `mute/tests/unit/package_test.cpp` contain package/import resolution, the deterministic `mute.lock` dump and tests.
-- `docs/mut21-progress.md` records scope, rules and evidence. No other new permanent directories were added.
+- `docs/mute-progress.md` records scope, rules and evidence. No other new permanent directories were added.
 
 ## MUT-04 console organization (2026-11-22)
 
 - `mute/include/poko/mute/console.hpp`, `mute/src/console.cpp` and `mute/tests/unit/console_test.cpp` contain the arithmetic presentation adapter and tests.
 - `engine/render/src/passes/imgui_demo.cpp` hosts the debug-only UI; `engine/render/tests/integration/test_mute_console_x11.py` is the optional software-display interaction check.
-- `docs/mut04-progress.md` documents the build, limitations and test evidence. No new permanent directories were added.
+- `docs/mute-progress.md` documents the build, limitations and test evidence. No new permanent directories were added.
 
 ## MUT-05 print hostcall organization (2026-11-22)
 
 - `mute/include/poko/mute/console.hpp` and `mute/src/console.cpp` contain the console host interface, dispatch and bounded log.
 - `mute/tests/unit/console_test.cpp` and `engine/render/tests/integration/test_mute_console_x11.py` cover the hostcall and debug UI.
 - `mute/include/poko/mute/program.hpp`, `mute/src/program.cpp` and `mute/tests/unit/program_test.cpp` implement and test the initial functions-and-locals subset.
-- `docs/mut05-progress.md` records the contract, tests and limitations. No new permanent directories were added.
+- `docs/mute-progress.md` records the contract, tests and limitations. No new permanent directories were added.
 
 ## Engine source organization (2026-11-21)
 
@@ -102,7 +102,7 @@ The ENG-01–22 audit snapshot had 134 directories; MUT-01 adds 11 under `mute/`
 - `engine/rhi/include/poko/rhi/device/opengl_clear_renderer.hpp` and `engine/rhi/src/device/opengl_clear_renderer.cpp` — experimental desktop GL clear.
 - `engine/rhi/include/poko/rhi/device/fallback_clear_backends.hpp`, `engine/rhi/src/device/fallback_clear_backends.cpp` and `fallback_clear_demo.cpp` — concrete adapters and opt-in desktop demo.
 - `engine/rhi/tests/unit/opengl_clear_faults.cpp` and `engine/rhi/tests/fakes/EngineFactoryOpenGL.h` — fault-injection tests and test-only declarations.
-- `docs/eng04-progress.md` — scope, evidence and unimplemented work.
+- `docs/eng-progress.md` — scope, evidence and unimplemented work.
 
 No new permanent directories were added.
 
@@ -117,7 +117,7 @@ No new permanent directories were added.
 
 ## ENG-03 continuation (2026-11-20)
 
-`docs/eng03-progress.md` records the graphics-window prerequisite and remaining
+`docs/eng-progress.md` records the graphics-window prerequisite and remaining
 renderer work. Existing platform headers, backend, demo and tests were extended;
 no new directories or renderer module were added.
 
@@ -2858,13 +2858,13 @@ The paths below are the preserved planning inventory, not a claim that each dire
 
 - `engine/render/shaders/depth.vert` and `depth.frag` — depth-demo shader sources.
 - `engine/rhi/tests/fakes/triangle/` — isolated triangle-pass test declarations; the related test is `engine/rhi/tests/unit/vulkan_triangle_pass_test.cpp`.
-- `docs/eng01-eng08-review.md` and `docs/eng09-progress.md` — audit, evidence and remaining limitations.
+- `docs/eng01-eng08-review.md` and `docs/eng-progress.md` — audit, evidence and remaining limitations.
 
 ## ENG-10 additions (2026-11-21)
 
 - `engine/render/shaders/uniform.vert` and `uniform.frag` — opt-in animated uniform demo shaders.
 - `engine/render/tests/integration/test_uniform_x11_visual.py` — isolated-display color/depth visual smoke test.
-- `docs/eng10-progress.md` — implementation scope, evidence and remaining limitations.
+- `docs/eng-progress.md` — implementation scope, evidence and remaining limitations.
 
 No new permanent directories were added.
 
@@ -2904,7 +2904,7 @@ No permanent directories were added.
 - `engine/render/tests/integration/test_cube_golden_unit.py` — encoder, output safety and reference-image checks.
 - `engine/render/tests/integration/test_cube_fixed_view_x11.py` — optional test that input cannot move the golden view.
 - `engine/render/tests/fixtures/golden/lit_cube_llvmpipe.png` — reviewed software-rendered reference.
-- `docs/eng22-progress.md` — reproduction, verification and outstanding gates.
+- `docs/eng-progress.md` — reproduction, verification and outstanding gates.
 
 The `engine/render/tests/fixtures` and `fixtures/golden` directories exist in the audited archive; the snapshot counts at the top include them.
 
