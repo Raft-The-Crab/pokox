@@ -45,15 +45,31 @@ remain open.
   suite run after this change.
 - `tools/version` integration source list updated.
 
-## Limits
+## Limits — resolved in the follow-up pass (same day)
 
-- No AST→SSA lowering exists yet; `IrModule` is still test-built. That is
-  the missing middle of the pipeline (MUT-25 produced the IR, this emits
-  bytecode from it).
-- No literal pool: `constant` is unsupported until the ISA grows an
-  immediate-load op or a constant region.
-- No calls, floats, strings, aggregates or hostcalls in emitted code.
-- Register allocation is identity-mapping (no spilling); 255-value cap.
-- Phi lowering assumes verifier-clean input; malformed phi operand
-  attribution is `bad_phi_operand`.
+- **AST→SSA lowering added.** `mute/include/poko/mute/lower.hpp` +
+  `mute/src/semantic/lower.cpp`: `lower_function` converts a `StatementAst`
+  body plus params into an `IrFunction` that passes `verify()`. Supported:
+  block, let/var, expression, if/else (env merge via phi on actual
+  predecessors), while, loop, break/continue, return; expressions integer,
+  boolean, unit, identifier, unary, binary incl. `land`/`lor` short-circuit.
+  `match`/`guard`/`for`, calls, member/index, await, strings and floats
+  produce typed diagnostics. Loop-carried variable merging is conservative
+  (pre-loop env) — documented v1 limit.
+- **Literal support added.** New `Opcode::load_imm` (0x70): `li rX, imm`
+  with a payload word carrying a signed i32 immediate — wired through
+  `bytecode.cpp` (mnemonic, validate payload marking, assembler, disassembler)
+  and `register_vm.cpp`. `emit` lowers `IrOp::constant` to it (i32 range
+  checked). Constants now compile *and execute*.
+- **End-to-end pipeline proven.** `mute_lower_unit` parses real Mute source
+  (`package ... fn f() -> i32 { ... }`), lowers, verifies, emits and runs it
+  through `run_register_vm`: arithmetic, if/else phi select, loop+break and
+  while-false cases all return correct values; unknown names are rejected.
+
+## Still open
+
+- `for`/`match`/`guard` statements, function calls, member/index access,
+  await/spawn lowering, floats/strings/aggregates, assignments
+  (loop-carried vars), register spilling, and hostcalls remain unsupported.
+- `load_imm` is i32-only; i64/f64 literal pools are later work.
 - No gate is accepted by this milestone; G1/G2 and platform gates unchanged.

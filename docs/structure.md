@@ -41,10 +41,10 @@ When directories are added, removed or moved, update this inventory, counts and 
 
 The ENG-01–22 audit snapshot had 134 directories; MUT-01 adds 11 under `mute/`.
 
-## MUT-26 IR->bytecode emission (2026-11-24)
+## MUT-26 IR->bytecode + AST lowering (2026-11-24)
 
-- `mute/include/poko/mute/emit.hpp`, `mute/src/semantic/emit.cpp` and `mute/tests/unit/emit_test.cpp` contain the emitter (part of `poko_mute_semantic`) and tests; `IrInstr` gained a `detail` sub-op field in `ssa.hpp`.
-- `docs/mut26-progress.md` records scope, emission rules and evidence.
+- `mute/include/poko/mute/emit.hpp`, `mute/include/poko/mute/lower.hpp`, `mute/src/semantic/emit.cpp`, `mute/src/semantic/lower.cpp` and `mute/tests/unit/{emit,lower}_test.cpp` contain the emitter, AST→SSA lowering (part of `poko_mute_semantic`) and tests; `IrInstr` gained a `detail` sub-op field in `ssa.hpp`; `Opcode::load_imm` added to `bytecode.hpp`.
+- `docs/mut26-progress.md` records scope, emission/lowering rules and evidence.
 
 ## MUT-25 typed SSA IR (2026-11-24)
 

@@ -24,6 +24,13 @@ VmResult run_register_vm(std::span<const Instruction> code,std::array<std::int32
       case Opcode::lt:value=x<y;break; case Opcode::le:value=x<=y;break;
       case Opcode::gt:value=x>y;break; case Opcode::ge:value=x>=y;break;
       case Opcode::move:value=x;break;
+      case Opcode::load_imm: {
+        const auto pay=code[pc++];
+        const auto u=static_cast<std::uint32_t>(pay.op) | (static_cast<std::uint32_t>(pay.a)<<8) |
+          (static_cast<std::uint32_t>(pay.b)<<16) | (static_cast<std::uint32_t>(pay.c)<<24);
+        r[i.a]=std::bit_cast<std::int32_t>(u);
+        continue;
+      }
       case Opcode::ext_prefix: {
         const auto payload=code[pc++];
         const auto bits=static_cast<std::uint32_t>(payload.op) | (static_cast<std::uint32_t>(payload.a)<<8) |

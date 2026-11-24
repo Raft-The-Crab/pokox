@@ -61,9 +61,17 @@ void cases() {
   }
   // Unsupported ops and failed verification are typed errors.
   {
-    auto m=arith_module(); IrInstr konst; konst.op=IrOp::constant; konst.def=9; konst.result=i32(); konst.args={pv(0,5)};
+    auto m=arith_module(); IrInstr konst; konst.op=IrOp::call; konst.def=9; konst.result=i32();
     m.functions[0].blocks[0].instrs.insert(m.functions[0].blocks[0].instrs.begin(),konst);
-    auto e=emit_bytecode(m); check(!e.ok() && !e.errors.empty(),"constant rejected");
+    auto e=emit_bytecode(m); check(!e.ok() && !e.errors.empty(),"call rejected");
+    // Constants now emit via load_imm and execute.
+    { auto cm=arith_module(); IrInstr k; k.op=IrOp::constant; k.def=9; k.result=i32(); k.args={pv(0,40)};
+      cm.functions[0].blocks[0].instrs.insert(cm.functions[0].blocks[0].instrs.begin(),k);
+      cm.functions[0].blocks[0].instrs.back().args={v(9)}; // return the constant
+      auto ce=emit_bytecode(cm); check(ce.ok(),"constant emits");
+      std::array<std::int32_t,256> rr{}; rr[1]=2;
+      auto rr2=run_register_vm(ce.functions[0],rr);
+      check(std::holds_alternative<std::int32_t>(rr2) && std::get<std::int32_t>(rr2)==40,"constant executes"); }
     auto bad=arith_module(); bad.functions[0].blocks.clear();
     auto e2=emit_bytecode(bad); check(!e2.diagnostics.empty(),"verify failure reported");
   }

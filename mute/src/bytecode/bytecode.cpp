@@ -18,6 +18,7 @@ std::string_view mnemonic(Opcode op) {
     case Opcode::branch_false:return "br_false"; case Opcode::move:return "mov";
     case Opcode::ret:return "ret"; case Opcode::halt:return "halt";
     case Opcode::ext_prefix:return "ext";
+    case Opcode::load_imm:return "li";
   }
   return {};
 }
@@ -41,6 +42,11 @@ std::variant<std::monostate, BytecodeError> validate_bytecode(std::span<const In
   std::vector<bool> payload(code.size(),false);
   for (std::size_t pc=0;pc<code.size();++pc) {
     const auto& i=code[pc];
+    if (i.op==Opcode::load_imm) {
+      if (i.a==0 || i.b!=0 || i.c!=0) return BytecodeError{BytecodeErrorCode::invalid_operands,pc};
+      if (pc+1>=code.size()) return BytecodeError{BytecodeErrorCode::truncated,pc};
+      payload[++pc]=true; continue;
+    }
     if (i.op!=Opcode::ext_prefix) continue;
     if (i.a<1 || i.a>3 || i.c!=0 || (i.a==1 && i.b!=0)) return BytecodeError{BytecodeErrorCode::invalid_operands,pc};
     if (pc+1>=code.size()) return BytecodeError{BytecodeErrorCode::truncated,pc};
@@ -60,6 +66,8 @@ std::variant<std::monostate, BytecodeError> validate_bytecode(std::span<const In
       if (i.b || i.c) return BytecodeError{BytecodeErrorCode::invalid_operands,pc};
     } else if (i.op==Opcode::halt) {
       if (i.a || i.b || i.c) return BytecodeError{BytecodeErrorCode::invalid_operands,pc};
+    } else if (i.op==Opcode::load_imm) {
+      // handled by payload pass; nothing else to check
     } else if (i.op==Opcode::move || i.op==Opcode::neg) {
       if (i.a==0 || i.c!=0) return BytecodeError{BytecodeErrorCode::invalid_operands,pc};
     } else if (i.a==0) return BytecodeError{BytecodeErrorCode::invalid_operands,pc};
@@ -95,7 +103,7 @@ DecodeResult assemble_bytecode(std::string_view listing) {
   if (listing.size()>4*1024*1024) return BytecodeError{BytecodeErrorCode::size_limit,0};
   const auto original=listing;
   constexpr std::array ops{Opcode::add,Opcode::sub,Opcode::mul,Opcode::div,Opcode::mod,Opcode::neg,
-    Opcode::eq,Opcode::ne,Opcode::lt,Opcode::le,Opcode::gt,Opcode::ge,Opcode::jump,
+    Opcode::eq,Opcode::ne,Opcode::lt,Opcode::le,Opcode::gt,Opcode::ge,Opcode::load_imm,Opcode::jump,
     Opcode::branch_true,Opcode::branch_false,Opcode::move,Opcode::ret,Opcode::halt};
   Bytecode code;
   auto bad=[&] { return DecodeResult{BytecodeError{BytecodeErrorCode::invalid_assembly,code.size()}}; };
@@ -137,6 +145,9 @@ DecodeResult assemble_bytecode(std::string_view listing) {
       ins.b=static_cast<std::uint8_t>(packed>>8);ins.c=static_cast<std::uint8_t>(packed);
     } else if (ins.op==Opcode::ret) {
       if (!take(" ") || !reg(ins.a)) return bad();
+    } else if (ins.op==Opcode::load_imm) {
+      int imm=0;if (!take(" ") || !reg(ins.a) || !take(", ") || !number(imm)) return bad();
+      ins.b=0;ins.c=0;code.push_back(ins);code.push_back(long_payload(imm));continue;
     } else if (ins.op!=Opcode::halt) {
       if (!take(" ") || !reg(ins.a) || !take(", ") || !reg(ins.b)) return bad();
       if (ins.op!=Opcode::move && ins.op!=Opcode::neg && (!take(", ") || !reg(ins.c))) return bad();
@@ -161,6 +172,7 @@ std::variant<std::string,BytecodeError> disassemble_bytecode(std::span<const Ins
     }
     out+=std::to_string(pc)+": "+std::string(mnemonic(i.op));
     if (branch(i.op)) { if (i.op!=Opcode::jump) out+=" r"+std::to_string(i.a)+","; out+=" "+std::to_string(branch_offset(i)); }
+    else if (i.op==Opcode::load_imm) { out+=" r"+std::to_string(i.a)+", "+std::to_string(long_offset(code[++pc])); continue; }
     else if (i.op==Opcode::ret) out+=" r"+std::to_string(i.a);
     else if (i.op!=Opcode::halt) {
       out+=" r"+std::to_string(i.a)+", r"+std::to_string(i.b);

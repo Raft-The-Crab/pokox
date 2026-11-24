@@ -41,6 +41,8 @@ class VersionIntegrationTests(unittest.TestCase):
                              "mute/src/semantic/determinism.cpp",
                              "mute/src/semantic/ssa.cpp",
                              "mute/src/semantic/emit.cpp",
+                             "mute/src/semantic/lower.cpp",
+                             "mute/include/poko/mute/lower.hpp",
                              "mute/include/poko/mute/ssa.hpp",
                              "mute/include/poko/mute/emit.hpp",
                              "mute/include/poko/mute/determinism.hpp",

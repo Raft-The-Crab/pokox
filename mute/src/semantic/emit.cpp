@@ -2,6 +2,7 @@
 #include <array>
 #include <map>
 #include <set>
+#include <limits>
 namespace poko::mute {
 namespace {
 bool is_terminator_pub(IrOp op) { return op==IrOp::jump || op==IrOp::branch || op==IrOp::return_; }
@@ -50,7 +51,7 @@ EmitResult emit_bytecode(const IrModule& module) {
     // Supported ops only.
     for (std::size_t bi=0;bi<B;++bi) for (std::size_t ii=0;ii<fn.blocks[bi].instrs.size();++ii) {
       const auto op=fn.blocks[bi].instrs[ii].op;
-      if (op==IrOp::constant || op==IrOp::call || op==IrOp::load || op==IrOp::store) {
+      if (op==IrOp::call || op==IrOp::load || op==IrOp::store) {
         out.errors.push_back({EmitErrorCode::unsupported_op,fi,bi,ii}); return out;
       }
     }
@@ -106,7 +107,7 @@ EmitResult emit_bytecode(const IrModule& module) {
       std::size_t n=0;
       for (const auto& in:blk.instrs) {
         if (in.op==IrOp::phi || is_terminator_pub(in.op)) continue;
-        ++n;
+        n+=in.op==IrOp::constant?2:1;
       }
       const int tk=term_kind(bi);
       if (tk==1) n+=ext_jump[bi]?2:1;
@@ -157,6 +158,16 @@ EmitResult emit_bytecode(const IrModule& module) {
         if (in.op==IrOp::phi || is_terminator_pub(in.op)) continue;
         const auto d=static_cast<std::uint8_t>(in.def); const auto op=alu(in.op,in.detail);
         switch (in.op) {
+          case IrOp::constant: {
+            const auto imm=static_cast<std::int64_t>(in.args.empty()?0:in.args[0].imm);
+            if (imm<std::numeric_limits<std::int32_t>::min() || imm>std::numeric_limits<std::int32_t>::max()) {
+              out.errors.push_back({EmitErrorCode::unsupported_op,fi,bi,0}); return out;
+            }
+            const auto u=static_cast<std::uint32_t>(static_cast<std::int32_t>(imm));
+            code.push_back(mk(Opcode::load_imm,d,0,0));
+            code.push_back({static_cast<Opcode>(u&0xFF),static_cast<std::uint8_t>((u>>8)&0xFF),static_cast<std::uint8_t>((u>>16)&0xFF),static_cast<std::uint8_t>((u>>24)&0xFF)});
+            break;
+          }
           case IrOp::copy: code.push_back(mov(d,static_cast<std::uint8_t>(in.args[0].value))); break;
           case IrOp::unary: code.push_back(mk(op,d,static_cast<std::uint8_t>(in.args[0].value),0)); break;
           case IrOp::binary: case IrOp::compare:
