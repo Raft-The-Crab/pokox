@@ -1164,9 +1164,9 @@
     "semantic_hash": ""
   },
   "docs/plan/02-work-queue.md": {
-    "mtime": 1795495158.6254635,
-    "seen": 1795495186.0474484,
-    "ast_hash": "f8277bb7292e14700dfb348022813229",
+    "mtime": 1795496979.9729507,
+    "seen": 1795497012.1176682,
+    "ast_hash": "8777f3c34e8e369b766c6139211e39e6",
     "semantic_hash": ""
   },
   "docs/plan/03-architecture.md": {
@@ -2412,9 +2412,9 @@
     "semantic_hash": ""
   },
   "engine/render/tests/integration/test_mute_console_x11.py": {
-    "mtime": 1795493647.77602,
-    "seen": 1795495186.0444593,
-    "ast_hash": "8d11a95f67bb99be3d15385cf87ec371",
+    "mtime": 1795496892.6216097,
+    "seen": 1795497012.1154456,
+    "ast_hash": "5fec3ac6d9b70f3bf14d096fabefabeb",
     "semantic_hash": ""
   },
   "mute/include/poko/mute/console.hpp": {
@@ -3066,9 +3066,9 @@
     "semantic_hash": ""
   },
   ".workbuddy-ai/memory/2026-11-24.md": {
-    "mtime": 1795495158.6369894,
-    "seen": 1795495186.045891,
-    "ast_hash": "7e8ba6b239e92463abe5672415d9fe78",
+    "mtime": 1795496979.9658322,
+    "seen": 1795497012.1170847,
+    "ast_hash": "3624e30c35f824ea729a523227489754",
     "semantic_hash": ""
   },
   "engine/rhi/include/poko/rhi/debug/vulkan_diagnostics_filter.hpp": {
