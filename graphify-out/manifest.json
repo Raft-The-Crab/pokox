@@ -810,9 +810,9 @@
     "semantic_hash": ""
   },
   "tools/version/tests/integration/test_version.py": {
-    "mtime": 1795502516.3290932,
-    "seen": 1795503026.2329276,
-    "ast_hash": "ba7b4bfb65bb6f9911c264bede6ec3a1",
+    "mtime": 1795503464.4391062,
+    "seen": 1795503644.4479496,
+    "ast_hash": "a66a35bd0a9b1bac0090174ca62670bb",
     "semantic_hash": ""
   },
   "vcpkg.json": {
@@ -870,9 +870,9 @@
     "semantic_hash": ""
   },
   "CMakeLists.txt": {
-    "mtime": 1795502515.9129875,
-    "seen": 1795503026.2331023,
-    "ast_hash": "e08ec77f37b1b8daec50b3526c3d20a8",
+    "mtime": 1795503463.9591353,
+    "seen": 1795503644.4481113,
+    "ast_hash": "38d3e1d7df6e829b93c3f0f1df16f02a",
     "semantic_hash": ""
   },
   "CODE_OF_CONDUCT.md": {
@@ -1164,9 +1164,9 @@
     "semantic_hash": ""
   },
   "docs/plan/02-work-queue.md": {
-    "mtime": 1795502784.0734074,
-    "seen": 1795503026.2336009,
-    "ast_hash": "599d2a704882c39a68044b4d53bcb5b7",
+    "mtime": 1795503596.6379423,
+    "seen": 1795503644.448734,
+    "ast_hash": "9c52b01006e4e889a62c904c55476e41",
     "semantic_hash": ""
   },
   "docs/plan/03-architecture.md": {
@@ -1350,9 +1350,9 @@
     "semantic_hash": ""
   },
   "docs/structure.md": {
-    "mtime": 1795502784.895988,
-    "seen": 1795503026.2337837,
-    "ast_hash": "0321376a8d0cc6d2374cab808d061b26",
+    "mtime": 1795503597.3078492,
+    "seen": 1795503644.449015,
+    "ast_hash": "f56637e01fdaceee036e6b18324c95c8",
     "semantic_hash": ""
   },
   "engine/README.md": {
@@ -3192,9 +3192,9 @@
     "semantic_hash": ""
   },
   "mute/include/poko/mute/ssa.hpp": {
-    "mtime": 1795502458.7208593,
-    "seen": 1795503026.232345,
-    "ast_hash": "64e92f557014f5981700ccbd636d800b",
+    "mtime": 1795503159.0357628,
+    "seen": 1795503644.4474483,
+    "ast_hash": "c960fa068dfe82776a58f640f72bd558",
     "semantic_hash": ""
   },
   "mute/src/semantic/ssa.cpp": {
@@ -3213,6 +3213,30 @@
     "mtime": 1795502778.4323719,
     "seen": 1795503026.2335846,
     "ast_hash": "d65fb36d48585791d0ef365986bd94d6",
+    "semantic_hash": ""
+  },
+  "mute/include/poko/mute/emit.hpp": {
+    "mtime": 1795503159.4342854,
+    "seen": 1795503644.4473877,
+    "ast_hash": "5744f179358c03aff6ebc4306310fedc",
+    "semantic_hash": ""
+  },
+  "mute/src/semantic/emit.cpp": {
+    "mtime": 1795503524.1281712,
+    "seen": 1795503644.447556,
+    "ast_hash": "43b9a8b0779343f08f0bf4594aebb2ef",
+    "semantic_hash": ""
+  },
+  "mute/tests/unit/emit_test.cpp": {
+    "mtime": 1795503511.6741529,
+    "seen": 1795503644.4476523,
+    "ast_hash": "de4df69201cf1f50d4576c5dcf8b69d1",
+    "semantic_hash": ""
+  },
+  "docs/mut26-progress.md": {
+    "mtime": 1795503595.831421,
+    "seen": 1795503644.4486902,
+    "ast_hash": "7d359303d2aa2487f4fdcd619be96f6d",
     "semantic_hash": ""
   }
 }
