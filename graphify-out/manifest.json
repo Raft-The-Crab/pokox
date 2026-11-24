@@ -1164,9 +1164,9 @@
     "semantic_hash": ""
   },
   "docs/plan/02-work-queue.md": {
-    "mtime": 1795500163.6837242,
-    "seen": 1795500193.3622243,
-    "ast_hash": "f680ee16b9f0f68ea870e5a3bd839dac",
+    "mtime": 1795501060.3607366,
+    "seen": 1795501107.4220877,
+    "ast_hash": "75d398bcef2fa0d5b5c20f095c727fc8",
     "semantic_hash": ""
   },
   "docs/plan/03-architecture.md": {
@@ -3090,15 +3090,15 @@
     "semantic_hash": ""
   },
   "mute/include/poko/mute/package.hpp": {
-    "mtime": 1795499396.091223,
-    "seen": 1795499930.0041134,
-    "ast_hash": "bf508845bd6b1a6036b01641036bed68",
+    "mtime": 1795500502.7931578,
+    "seen": 1795501107.4209626,
+    "ast_hash": "0fee6482f94aebfaec59dfd68b81e55b",
     "semantic_hash": ""
   },
   "mute/src/package/package.cpp": {
-    "mtime": 1795499520.674084,
-    "seen": 1795499930.0041957,
-    "ast_hash": "23235e87084ebc14ddaf90d0a656f88a",
+    "mtime": 1795500503.4267366,
+    "seen": 1795501107.4210508,
+    "ast_hash": "e9f684f68c09ec137875b1e07b6c7add",
     "semantic_hash": ""
   },
   "mute/tests/unit/package_test.cpp": {
@@ -3108,21 +3108,21 @@
     "semantic_hash": ""
   },
   "mute/include/poko/mute/values.hpp": {
-    "mtime": 1795500077.6757565,
-    "seen": 1795500193.36122,
-    "ast_hash": "4212f7a2bdcdbed96c04659ab1267506",
+    "mtime": 1795500485.8360722,
+    "seen": 1795501107.4210138,
+    "ast_hash": "8fc901d7df172f49027770b81f0380d5",
     "semantic_hash": ""
   },
   "mute/src/vm/values.cpp": {
-    "mtime": 1795500143.654648,
-    "seen": 1795500193.3613212,
-    "ast_hash": "301e1bb8f17207fb1a26d9a9897c6fdc",
+    "mtime": 1795500752.6146445,
+    "seen": 1795501107.421113,
+    "ast_hash": "0066145f9b2ae0306b4f072ef91f7982",
     "semantic_hash": ""
   },
   "mute/tests/unit/values_test.cpp": {
-    "mtime": 1795500120.03109,
-    "seen": 1795500193.3615222,
-    "ast_hash": "784595307645a1bfd2a00502df7c40e8",
+    "mtime": 1795500783.3729963,
+    "seen": 1795501107.4213202,
+    "ast_hash": "dc62da952a993c8419c260efaef6c30b",
     "semantic_hash": ""
   },
   "docs/mut21-progress.md": {
@@ -3135,6 +3135,12 @@
     "mtime": 1795500162.388896,
     "seen": 1795500193.3622098,
     "ast_hash": "e2ef27f1ae8731edb688d2eff79f894d",
+    "semantic_hash": ""
+  },
+  "docs/mut21-mut22-audit-2026-11-24.md": {
+    "mtime": 1795501059.827463,
+    "seen": 1795501107.4220479,
+    "ast_hash": "b36252446e851a0119c78764e815f93a",
     "semantic_hash": ""
   }
 }
