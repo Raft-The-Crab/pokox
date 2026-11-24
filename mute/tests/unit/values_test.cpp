@@ -69,6 +69,35 @@ void cases() {
     check(std::holds_alternative<ValueError>(deep.copy(v)),"deep copy traps");
     check(std::holds_alternative<ValueError>(deep.promote(v)),"deep promote traps");
   }
+  // Borrowed get_index results cannot be released; the slot still owns its ref.
+  {
+    auto parent=unwrap(s.make_array(1,str),"borrow parent");
+    auto borrowed=unwrap(s.get_index(parent,0),"borrowed get");
+    check(!borrowed.owned,"get_index must be borrowed");
+    s.release(borrowed); // no-op: must not corrupt the child's refcount
+    check(unwrap(s.as_string(unwrap(s.get_index(parent,0),"re-get")),"still alive")=="hello","borrowed release safe");
+    s.release(parent);   // drops the slot's ref; str has other owners so survives
+  }
+  // Stale handles never alias a recycled slot (generation tagging).
+  {
+    auto doomed=unwrap(s.make_string("doomed"),"doomed");
+    const auto stale=doomed.handle;
+    s.release(doomed);
+    auto recycled=unwrap(s.make_string("new"),"recycled"); // likely reuses the slot
+    check(recycled.handle!=stale,"slot reuse gets a new generation");
+    auto forged=doomed; // old handle value
+    check(std::holds_alternative<ValueError>(s.as_string(forged)),"stale handle rejected");
+    s.release(recycled);
+  }
+  // Cycle formation is rejected at insertion time.
+  {
+    auto a=unwrap(s.make_array(1),"cycle a");
+    auto b=unwrap(s.make_array(1),"cycle b");
+    check(std::holds_alternative<Value>(s.set_index(a,0,b)),"a<-b ok");
+    check(std::holds_alternative<ValueError>(s.set_index(b,0,a)),"b<-a cycle rejected");
+    check(std::holds_alternative<ValueError>(s.set_index(a,0,a)),"self cycle rejected");
+    s.release(a); s.release(b);
+  }
 }
 } // namespace
 int main() {

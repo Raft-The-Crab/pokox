@@ -38,11 +38,19 @@ variants — no UB, no exceptions across the boundary.
   scalar pass-through).
 - `tools/version` integration source list updated for the new files.
 
-## Limits
+## Limits — all resolved (2026-11-24 follow-up)
+
+- `get_index` returns `owned=false` borrowed values; `release()` ignores
+  them, so container refcounts cannot be corrupted through borrows.
+- Handles are generation-tagged 64-bit values; stale handles always fail
+  validation instead of aliasing recycled slots.
+- `set_index` rejects cycle-forming insertions (`ValueErrorCode::cycle`).
+- Regression tests cover all three; see `mut21-mut22-audit-2026-11-24.md`.
+
+## Still open
 
 - Not yet wired into `run_program`/the register VM or bytecode (MUT-26
   lowering); no Mute surface syntax for aggregates exists yet.
-- Stale handles are detected by slot/kind check but slot reuse means a
-  poisoned handle can alias a new object — acceptable for the trusted
-  compiler path; untrusted bytecode must wait for MUT-27 verification.
+- Struct/enum/map/option/result aggregates are not yet represented — only
+  string and array exist in the store.
 - No gate is accepted by this milestone; G1/G2 and platform gates unchanged.
