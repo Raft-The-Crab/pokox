@@ -55,50 +55,55 @@ def main():
                 if shift: xtest.fake_input(d,X.KeyRelease,shiftkey)
                 d.sync(); time.sleep(.05)
             # First-use layout at 800x600: expression field below stats.
-            pos=d.screen().root.translate_coords(window(),80,194)
-            xtest.fake_input(d,X.MotionNotify,x=pos.x,y=pos.y); d.sync(); time.sleep(.1)
-            xtest.fake_input(d,X.ButtonPress,1); d.sync(); time.sleep(.1)
-            xtest.fake_input(d,X.ButtonRelease,1); d.sync(); time.sleep(.4)
+            # Re-click before every entry: the field can lose focus after Return.
+            def click_input(x=80,y=194,settle=.3):
+                pos=d.screen().root.translate_coords(window(),x,y)
+                xtest.fake_input(d,X.MotionNotify,x=pos.x,y=pos.y); d.sync(); time.sleep(.1)
+                xtest.fake_input(d,X.ButtonPress,1); d.sync(); time.sleep(.1)
+                xtest.fake_input(d,X.ButtonRelease,1); d.sync(); time.sleep(settle)
+            click_input(settle=.4)
             before=image()
+            click_input()
             for name,shift in [('1',False),('equal',True),('2',False),('8',True),('3',False),('Return',False)]: press(name,shift)
             time.sleep(.6); answer=image()
+            click_input()
             for name in ('1','slash','0','Return'): press(name)
             time.sleep(.6); error=image()
             # Send a string and then a numeric print hostcall through real SDL text events.
+            click_input()
             for name,shift in [('p',False),('r',False),('i',False),('n',False),('t',False),
                                ('9',True),('apostrophe',True),('h',False),('e',False),('l',False),
                                ('l',False),('o',False),('apostrophe',True),('0',True),('Return',False)]:
                 press(name,shift)
             time.sleep(.6); printed=image()
+            click_input()
             for name,shift in [('p',False),('r',False),('i',False),('n',False),('t',False),('9',True),
                                ('2',False),('equal',True),('3',False),('0',True),('Return',False)]:
                 press(name,shift)
             time.sleep(.6); printed_again=image()
-            clear_pos=d.screen().root.translate_coords(window(),110,236)
-            xtest.fake_input(d,X.MotionNotify,x=clear_pos.x,y=clear_pos.y); d.sync(); time.sleep(.1)
-            xtest.fake_input(d,X.ButtonPress,1); d.sync(); time.sleep(.1)
-            xtest.fake_input(d,X.ButtonRelease,1); d.sync(); time.sleep(.4); cleared=image()
+            click_input(110,236,.4); cleared=image()
             # Compare the recursive program's exact result region with a known 120.
-            pos=d.screen().root.translate_coords(window(),80,194)
-            xtest.fake_input(d,X.MotionNotify,x=pos.x,y=pos.y); d.sync(); time.sleep(.1)
-            xtest.fake_input(d,X.ButtonPress,1); d.sync(); time.sleep(.1)
-            xtest.fake_input(d,X.ButtonRelease,1); d.sync(); time.sleep(.2)
+            click_input(80,194,.2)
             for name in ('1','2','0','Return'): press(name)
             time.sleep(.4); reference=image()
             special={'(':('9',True),')':('0',True),'{':('bracketleft',True),
                      '}':('bracketright',True),':':('semicolon',True),
                      '=':('equal',False),'-':('minus',False),'>':('period',True),
                      '*':('8',True),'+':('equal',True),'<':('comma',True),';':('semicolon',False),' ':('space',False)}
+            click_input(.2)
             source='fn f(n:i32)->i32{if n==0{return 1;}return n*f(n-1);}f(5)'
             for char in source:
                 name,shift=special.get(char,(char,False)); press(name,shift)
             press('Return'); time.sleep(.5); recursive=image()
+            click_input(.2)
             for name in ('5','5','Return'): press(name)
             time.sleep(.4); loop_reference=image()
+            click_input(.2)
             source='fn f()->i32{var i=0;var s=0;while i<10{i=i+1;s=s+i;}return s;}f()'
             for char in source:
                 name,shift=special.get(char,(char,False)); press(name,shift)
             press('Return'); time.sleep(.5); loop_result=image()
+            click_input(.2)
             source='fn f()->i32{while true{}return 0;}f()'
             for char in source:
                 name,shift=special.get(char,(char,False)); press(name,shift)
