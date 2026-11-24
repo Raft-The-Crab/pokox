@@ -41,6 +41,11 @@ When directories are added, removed or moved, update this inventory, counts and 
 
 The ENG-01–22 audit snapshot had 134 directories; MUT-01 adds 11 under `mute/`.
 
+## MUT-23 cooperative scheduler (2026-11-24)
+
+- `mute/include/poko/mute/scheduler.hpp`, `mute/src/vm/scheduler.cpp` and `mute/tests/unit/scheduler_test.cpp` contain the deterministic task scheduler and tests.
+- `docs/mut23-progress.md` records scope, semantics and evidence.
+
 ## MUT-22 aggregate value runtime (2026-11-24)
 
 - `mute/include/poko/mute/values.hpp`, `mute/src/vm/values.cpp` and `mute/tests/unit/values_test.cpp` contain the refcounted aggregate store, arena/RC lifetimes and tests.

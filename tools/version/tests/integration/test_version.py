@@ -42,6 +42,8 @@ class VersionIntegrationTests(unittest.TestCase):
                              "mute/include/poko/mute/package.hpp",
                              "mute/src/vm/values.cpp",
                              "mute/include/poko/mute/values.hpp",
+                             "mute/src/vm/scheduler.cpp",
+                             "mute/include/poko/mute/scheduler.hpp",
                              "mute/src/evaluator/evaluator.cpp",
                              "mute/src/program/program.cpp",
                              "mute/src/state/state.cpp",
