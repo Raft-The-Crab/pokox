@@ -41,6 +41,11 @@ When directories are added, removed or moved, update this inventory, counts and 
 
 The ENG-01–22 audit snapshot had 134 directories; MUT-01 adds 11 under `mute/`.
 
+## MUT-21 package resolution organization (2026-11-24)
+
+- `mute/include/poko/mute/package.hpp`, `mute/src/package/package.cpp` and `mute/tests/unit/package_test.cpp` contain package/import resolution, the deterministic `mute.lock` dump and tests.
+- `docs/mut21-progress.md` records scope, rules and evidence. No other new permanent directories were added.
+
 ## MUT-04 console organization (2026-11-22)
 
 - `mute/include/poko/mute/console.hpp`, `mute/src/console.cpp` and `mute/tests/unit/console_test.cpp` contain the arithmetic presentation adapter and tests.
