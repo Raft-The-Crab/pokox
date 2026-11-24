@@ -1164,9 +1164,9 @@
     "semantic_hash": ""
   },
   "docs/plan/02-work-queue.md": {
-    "mtime": 1795504543.0351734,
-    "seen": 1795504754.4400756,
-    "ast_hash": "c8e459e5bfa33ebb35335793ee39d758",
+    "mtime": 1795505161.8481462,
+    "seen": 1795505163.221687,
+    "ast_hash": "459269ea27e765aa91fee5bcd0f1306d",
     "semantic_hash": ""
   },
   "docs/plan/03-architecture.md": {
@@ -3198,9 +3198,9 @@
     "semantic_hash": ""
   },
   "mute/src/semantic/ssa.cpp": {
-    "mtime": 1795502665.2248607,
-    "seen": 1795503026.2324986,
-    "ast_hash": "2949f91ede877c6eb9cf8774f2b2489c",
+    "mtime": 1795504879.7347374,
+    "seen": 1795505163.2206979,
+    "ast_hash": "5faaeca47e1c8408a59f27a271090de8",
     "semantic_hash": ""
   },
   "mute/tests/unit/ssa_test.cpp": {
@@ -3234,9 +3234,9 @@
     "semantic_hash": ""
   },
   "docs/mut26-progress.md": {
-    "mtime": 1795504542.5901845,
-    "seen": 1795504754.440059,
-    "ast_hash": "e3d1b29ab51b81d48d54cf60481a1e15",
+    "mtime": 1795505137.5587108,
+    "seen": 1795505163.2216728,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
     "semantic_hash": ""
   },
   "mute/include/poko/mute/lower.hpp": {
@@ -3246,15 +3246,15 @@
     "semantic_hash": ""
   },
   "mute/src/semantic/lower.cpp": {
-    "mtime": 1795504299.9695477,
-    "seen": 1795504754.4389834,
-    "ast_hash": "7591b0a1ef6797d9ab65e73174d46ea4",
+    "mtime": 1795504854.3063033,
+    "seen": 1795505163.2206852,
+    "ast_hash": "0f9853d28f744969195ba1deec736b39",
     "semantic_hash": ""
   },
   "mute/tests/unit/lower_test.cpp": {
-    "mtime": 1795504343.1347635,
-    "seen": 1795504754.4391105,
-    "ast_hash": "504341a8803207f63e6d95ba42533ce8",
+    "mtime": 1795504854.4518273,
+    "seen": 1795505163.2208252,
+    "ast_hash": "217ac6db0ef3aa25e381b51179ebfafe",
     "semantic_hash": ""
   }
 }
