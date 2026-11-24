@@ -62,6 +62,10 @@ class Lowerer {
     blk().instrs.push_back(std::move(in)); return in.def;
   }
   void term(IrInstr in) { blk().instrs.push_back(std::move(in)); }
+  std::uint32_t emit_into(std::size_t block,IrInstr in) {
+    if (in.def==0) in.def=++next_id_;
+    fn_.blocks[block].instrs.push_back(std::move(in)); return in.def;
+  }
   void jump_to(std::size_t target) {
     IrInstr j; j.op=IrOp::jump; j.target=static_cast<std::uint32_t>(target+1); term(j);
   }
@@ -174,7 +178,34 @@ class Lowerer {
       case StatementKind::let_stmt: case StatementKind::var_stmt: {
         auto val=eval(n.expression); env_[n.spelling]=val; break;
       }
-      case StatementKind::expression: eval(n.expression); break;
+      case StatementKind::expression: {
+        // Assignment statements rebind the environment (SSA values are
+        // immutable; the name simply points at the new def).
+        if (n.expression!=no_statement && n.expression<body_.expressions().size()) {
+          const auto& ast=body_.expressions()[n.expression];
+          if (ast.root()<ast.nodes().size()) {
+            const auto& root=ast.nodes()[ast.root()];
+            if (root.kind==ExprKind::binary && root.left<ast.nodes().size() &&
+                ast.nodes()[root.left].kind==ExprKind::identifier &&
+                (root.op==ExprOp::assign||root.op==ExprOp::assign_add||root.op==ExprOp::assign_sub||
+                 root.op==ExprOp::assign_mul||root.op==ExprOp::assign_div||root.op==ExprOp::assign_mod)) {
+              const auto name=ast.nodes()[root.left].spelling;
+              auto it=env_.find(name);
+              if (it==env_.end()) { diag(IrErrorCode::undefined_value,"assign to unknown "+name); break; }
+              if (root.op==ExprOp::assign) { env_[name]=eval_node(ast,root.right); break; }
+              const auto rhs=eval_node(ast,root.right);
+              const auto bop=root.op==ExprOp::assign_add?ExprOp::plus:root.op==ExprOp::assign_sub?ExprOp::minus:
+                root.op==ExprOp::assign_mul?ExprOp::multiply:root.op==ExprOp::assign_div?ExprOp::divide:
+                ExprOp::remainder;
+              IrInstr in; in.op=IrOp::binary; in.detail=bin_detail(bop);
+              in.result=it->second.type; in.args={v(it->second.id),v(rhs.id)};
+              env_[name]={emit(std::move(in)),in.result};
+              break;
+            }
+          }
+        }
+        eval(n.expression); break;
+      }
       case StatementKind::return_stmt: {
         Val val{0,unit_t()};
         if (n.expression!=no_statement) val=eval(n.expression);
@@ -223,17 +254,42 @@ class Lowerer {
       case StatementKind::while_stmt: {
         const auto pre=env_;
         const auto header=new_block("while.cond"), body_b=new_block("while.body"), exit=new_block("while.exit");
+        const auto preheader=cur_;
         jump_to(header);
-        cur_=header; env_=pre;
+        // Pre-assign a phi id for every live name: the header phi merges the
+        // pre-loop value (preheader edge) with the body-end value (back edge).
+        Env loop_env;
+        std::vector<std::pair<std::string,std::uint32_t>> phi_ids;
+        for (const auto& [name,val]:pre) {
+          IrInstr phi; phi.op=IrOp::phi; phi.result=val.type; phi.def=0;
+          const auto id=emit_into(header,std::move(phi));
+          phi_ids.push_back({name,id});
+          loop_env[name]={id,val.type};
+        }
+        cur_=header; env_=loop_env;
         const auto cond=eval(n.expression);
         IrInstr br; br.op=IrOp::branch; br.args={v(cond.id)}; br.target=body_b+1; br.target2=exit+1;
         term(std::move(br));
-        cur_=body_b; env_=pre;
+        cur_=body_b; env_=loop_env;
         loop_stack_.push_back({exit,header});
         stmt(n.children[0]);
         if (!terminated()) jump_to(header);
         loop_stack_.pop_back();
-        cur_=exit; env_=pre; // loop-carried assignments not merged (v1)
+        const auto body_last=cur_;
+        // Fill phi operands now that both preds are known.
+        const auto preds=preds_of(header);
+        for (auto& [name,id]:phi_ids) {
+          for (auto& in:fn_.blocks[header].instrs) {
+            if (in.op!=IrOp::phi || in.def!=id) continue;
+            in.args.clear();
+            for (const auto p:preds) {
+              const auto vid=(p==preheader?pre.at(name).id:env_.at(name).id);
+              in.args.push_back(pv(vid,static_cast<std::uint64_t>(p+1)));
+              in.args.push_back(pv(vid,static_cast<std::uint64_t>(p+1)));
+            }
+          }
+        }
+        cur_=exit; env_=loop_env;
         break;
       }
       case StatementKind::loop_stmt: {

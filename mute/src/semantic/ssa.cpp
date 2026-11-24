@@ -1,5 +1,6 @@
 #include "poko/mute/ssa.hpp"
 #include <array>
+#include <map>
 #include <set>
 namespace poko::mute {
 namespace {
@@ -30,9 +31,13 @@ IrResult verify(const IrModule& module) {
     }
     for (std::size_t bi=0;bi<fn.blocks.size();++bi)
       if (!reachable[bi]) report(IrErrorCode::unreachable_block,"block "+std::to_string(bi),fi,bi);
-    // Value defs: params are ids 1..N; instruction defs must be unique and
-    // operands may only reference ids defined earlier in layout order
-    // (a conservative approximation of dominance for the foundation pass).
+    // Pre-scan: every def id in the function (phi back-edge operands may
+    // reference defs that appear later in layout order).
+    std::map<std::uint32_t,Type> all_defs;
+    for (const auto& b:fn.blocks) for (const auto& in:b.instrs)
+      if (in.def!=0) all_defs[in.def]=in.result;
+    // Value defs: params are ids 1..N; non-phi operands may only reference
+    // ids defined earlier in layout order (conservative dominance approx).
     std::vector<Type> defs(1);
     std::set<std::uint32_t> defined_ids;
     for (std::size_t pi=0;pi<fn.params.size();++pi) { defs.push_back(fn.params[pi]); defined_ids.insert(static_cast<std::uint32_t>(pi+1)); }
@@ -70,11 +75,17 @@ IrResult verify(const IrModule& module) {
           defs[in.def]=in.result; defined_ids.insert(in.def);
         }
         for (const auto& arg:in.args) {
-          if (arg.value!=0 && !defined_ids.count(arg.value)) {
+          const bool phi_arg=in.op==IrOp::phi;
+          const bool known=phi_arg ? all_defs.count(arg.value)||defined_ids.count(arg.value)
+                                   : defined_ids.count(arg.value);
+          if (arg.value!=0 && !known) {
             report(IrErrorCode::undefined_value,"value "+std::to_string(arg.value),fi,bi); continue;
           }
-          if (in.op==IrOp::phi && arg.value!=0 && defs[arg.value].tag==TypeTag::unknown)
-            report(IrErrorCode::type_mismatch,"phi input type",fi,bi);
+          if (phi_arg && arg.value!=0) {
+            const auto it=all_defs.find(arg.value);
+            const Type& t=it!=all_defs.end()?it->second:(arg.value<defs.size()?defs[arg.value]:Type{});
+            if (t.tag==TypeTag::unknown) report(IrErrorCode::type_mismatch,"phi input type",fi,bi);
+          }
         }
         if (in.op==IrOp::phi && in.args.size()!=2*expected.size())
           report(IrErrorCode::phi_arity,"phi operands "+std::to_string(in.args.size())+" vs preds "+std::to_string(expected.size()),fi,bi);

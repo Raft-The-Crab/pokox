@@ -36,6 +36,7 @@ void cases() {
   check(run_source("package \"a\" version \"A\" fn f() -> i32 { let x = 1; if x < 2 { let y = 5; } else { let y = 9; } return y; }","if-phi")==5,"if true -> 5");
   check(run_source("package \"a\" version \"A\" fn f() -> i32 { let x = 3; if x < 2 { let y = 5; } else { let y = 9; } return y; }","if-phi-f")==9,"if false -> 9");
   check(run_source("package \"a\" version \"A\" fn f() -> i32 { loop { break; } return 7; }","loop-break")==7,"loop break -> 7");
+  check(run_source("package \"a\" version \"A\" fn f() -> i32 { let x = 0; while x < 3 { x = x + 1; } return x; }","while-count")==3,"while counter -> 3");
   check(run_source("package \"a\" version \"A\" fn f() -> i32 { let x = 5; while x < 3 { let y = 1; } return x; }","while")==5,"while false -> 5");
   // Unsupported constructs produce diagnostics, not crashes.
   check(run_source("package \"a\" version \"A\" fn f() -> i32 { return missing_name; }","unknown")==-1,"unknown name rejected");
