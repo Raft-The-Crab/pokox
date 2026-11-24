@@ -40,6 +40,8 @@ class VersionIntegrationTests(unittest.TestCase):
                              "mute/src/semantic/semantic.cpp",
                              "mute/src/package/package.cpp",
                              "mute/include/poko/mute/package.hpp",
+                             "mute/src/vm/values.cpp",
+                             "mute/include/poko/mute/values.hpp",
                              "mute/src/evaluator/evaluator.cpp",
                              "mute/src/program/program.cpp",
                              "mute/src/state/state.cpp",

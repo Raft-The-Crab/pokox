@@ -41,6 +41,11 @@ When directories are added, removed or moved, update this inventory, counts and 
 
 The ENG-01–22 audit snapshot had 134 directories; MUT-01 adds 11 under `mute/`.
 
+## MUT-22 aggregate value runtime (2026-11-24)
+
+- `mute/include/poko/mute/values.hpp`, `mute/src/vm/values.cpp` and `mute/tests/unit/values_test.cpp` contain the refcounted aggregate store, arena/RC lifetimes and tests.
+- `docs/mut22-progress.md` records scope, lifetime rules and evidence.
+
 ## MUT-21 package resolution organization (2026-11-24)
 
 - `mute/include/poko/mute/package.hpp`, `mute/src/package/package.cpp` and `mute/tests/unit/package_test.cpp` contain package/import resolution, the deterministic `mute.lock` dump and tests.
