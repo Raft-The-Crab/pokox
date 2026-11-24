@@ -292,6 +292,75 @@ class Lowerer {
         cur_=exit; env_=loop_env;
         break;
       }
+      case StatementKind::for_stmt: {
+        // for name in lo..hi { body }  desugars to a counted while loop.
+        const auto pre=env_;
+        if (n.expression==no_statement || n.expression>=body_.expressions().size()) {
+          diag(IrErrorCode::bad_operand_count,"for without iterable"); break;
+        }
+        const auto& ast=body_.expressions()[n.expression];
+        if (ast.root()>=ast.nodes().size()) { diag(IrErrorCode::bad_operand_count,"bad iterable"); break; }
+        const auto& it=ast.nodes()[ast.root()];
+        const bool inclusive=it.op==ExprOp::range_inclusive;
+        if (it.kind!=ExprKind::binary || (it.op!=ExprOp::range && !inclusive)) {
+          diag(IrErrorCode::type_mismatch,"for requires a range iterable"); break;
+        }
+        const auto lo=eval_node(ast,it.left), hi=eval_node(ast,it.right);
+        env_[n.spelling]=lo;
+        const auto pre2=env_;
+        const auto header=new_block("for.cond"), body_b=new_block("for.body"),
+                   inc=new_block("for.inc"), exit=new_block("for.exit");
+        const auto preheader=cur_;
+        jump_to(header);
+        Env loop_env; std::vector<std::pair<std::string,std::uint32_t>> phi_ids;
+        for (const auto& [name,val]:pre2) {
+          IrInstr phi; phi.op=IrOp::phi; phi.result=val.type; phi.def=0;
+          const auto id=emit_into(header,std::move(phi));
+          phi_ids.push_back({name,id}); loop_env[name]={id,val.type};
+        }
+        cur_=header; env_=loop_env;
+        // cond: name <= hi (or < hi for exclusive range)
+        IrInstr cmp; cmp.op=IrOp::compare; cmp.detail=inclusive?3:2; cmp.result=boolt();
+        cmp.args={v(loop_env[n.spelling].id),v(hi.id)};
+        const auto cid=emit(std::move(cmp));
+        IrInstr br; br.op=IrOp::branch; br.args={v(cid)}; br.target=body_b+1; br.target2=exit+1;
+        term(std::move(br));
+        cur_=body_b; env_=loop_env;
+        loop_stack_.push_back({exit,inc});
+        stmt(n.children[0]);
+        if (!terminated()) jump_to(inc);
+        const auto body_last=cur_;
+        // increment block: name = name + 1; jump header
+        cur_=inc; env_=env_; // body-end env carries loop var value
+        {
+          auto curv=env_[n.spelling];
+          IrInstr one; one.op=IrOp::constant; one.result=i32t(); one.args={pv(0,1)};
+          const auto one_id=emit(std::move(one));
+          IrInstr add; add.op=IrOp::binary; add.detail=0; add.result=i32t();
+          add.args={v(curv.id),v(one_id)};
+          env_[n.spelling]={emit(std::move(add)),i32t()};
+          jump_to(header);
+        }
+        loop_stack_.pop_back();
+        const auto inc_last=cur_;
+        const auto preds=preds_of(header);
+        for (auto& [name,id]:phi_ids) {
+          for (auto& in:fn_.blocks[header].instrs) {
+            if (in.op!=IrOp::phi || in.def!=id) continue;
+            in.args.clear();
+            for (const auto p:preds) {
+              std::uint32_t vid;
+              if (p==preheader) vid=pre2.at(name).id;
+              else if (p==inc_last) vid=env_.at(name).id;   // post-increment value
+              else vid=env_.count(name)?env_[name].id:pre2.at(name).id;
+              in.args.push_back(pv(vid,static_cast<std::uint64_t>(p+1)));
+              in.args.push_back(pv(vid,static_cast<std::uint64_t>(p+1)));
+            }
+          }
+        }
+        cur_=exit; env_=loop_env;
+        break;
+      }
       case StatementKind::loop_stmt: {
         const auto pre=env_;
         const auto body_b=new_block("loop.body"), exit=new_block("loop.exit");

@@ -38,6 +38,10 @@ void cases() {
   check(run_source("package \"a\" version \"A\" fn f() -> i32 { loop { break; } return 7; }","loop-break")==7,"loop break -> 7");
   check(run_source("package \"a\" version \"A\" fn f() -> i32 { let x = 0; while x < 3 { x = x + 1; } return x; }","while-count")==3,"while counter -> 3");
   check(run_source("package \"a\" version \"A\" fn f() -> i32 { let x = 5; while x < 3 { let y = 1; } return x; }","while")==5,"while false -> 5");
+  check(run_source("package \"a\" version \"A\" fn f() -> i32 { let s = 0; for i in 0..3 { s = s + i; } return s; }","for-range")==3,"for 0..3 sum -> 3");
+  check(run_source("package \"a\" version \"A\" fn f() -> i32 { let s = 0; for i in 0..=3 { s = s + i; } return s; }","for-range-inc")==6,"for 0..=3 sum -> 6");
+  check(run_source("package \"a\" version \"A\" fn f() -> i32 { for i in 5..2 { let x = 1; } return 9; }","for-empty")==9,"for empty -> 9");
+  check(run_source("package \"a\" version \"A\" fn f() -> i32 { let s = 0; for i in 0..4 { if i == 2 { break; } s = s + i; } return s; }","for-break")==1,"for break -> 1");
   // Unsupported constructs produce diagnostics, not crashes.
   check(run_source("package \"a\" version \"A\" fn f() -> i32 { return missing_name; }","unknown")==-1,"unknown name rejected");
 }
