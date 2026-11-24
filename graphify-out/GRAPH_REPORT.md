@@ -1,18 +1,18 @@
 # Graph Report - Project Poko  (2026-11-24)
 
 ## Corpus Check
-- 469 files · ~412,959 words
+- 469 files · ~413,638 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 258 file(s) not represented in the graph (top: .blend 60, .mute 59, .ast 56)
 - WARNING: 258 of 782 files seen (33%) have no supported extractor and are missing from this graph entirely. It may look complete while representing only part of the codebase.
 
 ## Summary
-- 5528 nodes · 9097 edges · 481 communities (358 shown, 123 thin omitted)
-- Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 334 edges (avg confidence: 0.88)
+- 5540 nodes · 9115 edges · 490 communities (368 shown, 122 thin omitted)
+- Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 335 edges (avg confidence: 0.88)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `5edd00c0`
+- Built from commit: `964ba8a9`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -28,14 +28,14 @@
 - test_triangle_x11_visual.py
 - VulkanTrianglePass
 - OpenGLClearRenderer::Impl
-- imgui/EngineFactoryVk.h
+- VulkanClearBackend
 - VulkanImGuiPass::Impl
 - subprocess
 - find_cross_mesh_overlaps
 - Build status
 - README.md
 - 04 — Mute language and VM
-- vector
+- cstdio
 - 29 — R6 character asset adaptation (BoyR6 and BlockyR6)
 - SdlPlatform
 - 02 — Ordered work queue
@@ -86,6 +86,7 @@
 - IDeviceContext
 - 00 — Decision log
 - 19 — Economy simulator
+- OpenGLClearRenderer::Impl
 - config_file_test.cpp
 - BufferDesc
 - GraphicsPipelineStateCreateInfo
@@ -177,12 +178,12 @@
 - Analyzer
 - rules
 - Box
-- BufferDesc
+- imgui/EngineFactoryVk.h
 - LayoutElement
 - FakeDevice
 - BlendModeRenderTargetDesc
 - TextureData
-- LayoutElement
+- vulkan_clear_android.cpp
 - Safe C++ Idioms
 - OpenGLClearESRenderer
 - IDeviceContext
@@ -254,7 +255,7 @@
 - parse_arithmetic
 - VulkanClearAndroidRenderer::Impl
 - interface
-- FakeContext
+- TestPlatform
 - Object
 - ENG-22 — lit-cube screenshot golden
 - StatementParser
@@ -276,7 +277,7 @@
 - SnapshotErrorCode
 - Integration review — 2026-11-22
 - OpenGLClearRenderer
-- sdl_platform_faults.cpp
+- ENG-20 — Camera with view/projection
 - IEngineFactoryOpenGL
 - Reporting a Variant Hunt
 - math_internal.hpp
@@ -322,14 +323,14 @@
 - Post-MUT audit fixes and G1/G2 preflight
 - Error
 - Position
-- Renderer — frame-graph skeleton
+- SdlPlatform::poll_event
 - ClearConfig
 - lexer_test.cpp
 - ENG-04 — desktop fallback clear prototype (in progress)
 - MUT-08–10 completion audit — 2026-11-22
 - MUT-01–12: MUT-12 implementation and three audit passes
 - declaration_test.cpp
-- SHADER_TYPE
+- pokomesh_test.cpp
 - lexer.cpp
 - main
 - FloatEnvironment
@@ -357,11 +358,11 @@
 - TypeDef
 - Device
 - .draw
-- frame_stats.cpp
+- build_refined.py
 - ENG-14 — CBOR config loader
 - run_register_vm
 - MUT-13 — Mute v1 scope and API matrix (APPROVED)
-- 11 — Engine, rendering and physics
+- WindowSize
 - VulkanDiagnostics::Impl
 - PokoMesh
 - TextureMip
@@ -381,11 +382,11 @@
 - load_ktx2
 - Poko Engine Development
 - MUT-05 — print hostcall to the debug console (2026-11-22)
-- IRenderDevice
+- SDL_MouseMotionEvent
 - VulkanDiagnostics
 - FakeTextureView
 - RefCntAutoPtr
-- Program
+- StateDecl
 - ResolvedPackage
 - Entry
 - Concepts
@@ -399,31 +400,39 @@
 - Limits
 - decode_item
 - EventType
-- FakeVariable
-- Stmt
+- SDL_MouseWheelEvent
+- Program
 - MUT-21 — packages, imports and lockfile
 - transform
 - Binding
 - DiagnosticsError
 - StartStatus
-- Viewport
+- SDL_MouseButtonEvent
+- unicode_xid.hpp
 - Factory
 - BasicPlatformDebug
-- IPipelineState
+- Kind
 - string
 - VulkanDiagnostics
 - Mute bytecode and program snapshots
-- test_evaluator_reference.py
+- Overrides
 - Dependency-enabled builds
+- operator new
+- Preservation-first R6 prototype
+- Result
+- LogGuard
+- TypeKind
+- Depth
+- checksum
 
 ## God Nodes (most connected - your core abstractions)
 1. `RenderError` - 58 edges
 2. `Position` - 49 edges
 3. `StatementParser` - 45 edges
 4. `ExprOp` - 45 edges
-5. `VulkanClearAndroidRenderer::Impl` - 42 edges
-6. `DeclarationParser` - 41 edges
-7. `AggregateStore` - 39 edges
+5. `AggregateStore` - 43 edges
+6. `VulkanClearAndroidRenderer::Impl` - 42 edges
+7. `DeclarationParser` - 41 edges
 8. `VulkanImGuiPass::Impl` - 37 edges
 9. `VulkanTrianglePass::Impl` - 37 edges
 10. `Token` - 33 edges
@@ -433,25 +442,25 @@
   docs/mut22-progress.md → mute/include/poko/mute/values.hpp
 - ``resolve_packages` (package.cpp)` --references--> `resolve_packages()`  [INFERRED]
   docs/mut21-mut22-audit-2026-11-24.md → mute/src/package/package.cpp
-- `Remaining limits (documented, not fixed here)` --references--> `run_program()`  [INFERRED]
+- `Still open (by design, not defects)` --references--> `run_program()`  [INFERRED]
   docs/mut21-mut22-audit-2026-11-24.md → mute/src/program/program.cpp
+- `Still open` --references--> `run_program()`  [INFERRED]
+  docs/mut22-progress.md → mute/src/program/program.cpp
 - `Bugs found during implementation` --references--> `Box`  [INFERRED]
   docs/eng18-progress.md → engine/rhi/tests/fakes/triangle/EngineFactoryVk.h
-- `State behavior` --references--> `ProgramState`  [INFERRED]
-  docs/mut11-pkb-audit-2026-11-22.md → mute/include/poko/mute/state.hpp
 
 ## Import Cycles
 - None detected.
 
-## Communities (481 total, 123 thin omitted)
+## Communities (490 total, 122 thin omitted)
 
 ### Community 0 - "json"
-Cohesion: 0.06
-Nodes (7): foot(), interp(), smooth(), ease(), foot(), interp(), dump_tree()
+Cohesion: 0.07
+Nodes (4): foot(), interp(), smooth(), dump_tree()
 
 ### Community 1 - "21 — Engine core"
-Cohesion: 0.12
-Nodes (17): 21 — Engine core, Coding standards, Console and CVars, Design principles, ECS, Error handling, Filesystem abstraction, Hot reload (+9 more)
+Cohesion: 0.04
+Nodes (41): 11 — Engine, rendering and physics, Determinism split, Frame graph, Graphics tiers, Layer structure, Performance budgets, Physics tiers, Platform differences (+33 more)
 
 ### Community 2 - "12 — App interface (egui and Kotlin)"
 Cohesion: 0.05
@@ -474,8 +483,8 @@ Cohesion: 0.12
 Nodes (17): with, cache-environment, environment-file, environment-name, fetch-depth, if-no-files-found, install, micromamba-version (+9 more)
 
 ### Community 7 - "pokomesh_test.cpp"
-Cohesion: 0.13
-Nodes (12): count_stamps(), main(), read_file(), main(), make_pmes(), put32(), putf(), write() (+4 more)
+Cohesion: 0.20
+Nodes (7): count_stamps(), main(), read_file(), GetEngineFactoryVk(), main(), reset(), write_spirv()
 
 ### Community 8 - "test_triangle_x11_visual.py"
 Cohesion: 0.13
@@ -486,12 +495,12 @@ Cohesion: 0.11
 Nodes (11): Bugs found during implementation, ENG-18 — KTX2 placeholder texture on quad, Integration review, 2026-11-22, Mip-chain continuation, Not done / future, Verified, What was built, VulkanTrianglePass (+3 more)
 
 ### Community 10 - "OpenGLClearRenderer::Impl"
-Cohesion: 0.07
-Nodes (22): SDL_FunctionPointer, SDL_GLContext, default_framebuffer_is_srgb(), OpenGLClearRenderer::Impl, cleanup_uncertain, context, device, gl_context (+14 more)
+Cohesion: 0.13
+Nodes (11): SDL_FunctionPointer, SDL_GLContext, default_framebuffer_is_srgb(), OpenGLClearRenderer::initialize(), OpenGLClearRenderer::shutdown(), SDL_GL_CreateContext(), SDL_GL_DestroyContext(), SDL_GL_GetProcAddress() (+3 more)
 
-### Community 11 - "imgui/EngineFactoryVk.h"
-Cohesion: 0.08
-Nodes (19): CPU_ACCESS_FLAGS, CPU_ACCESS_NONE, CPU_ACCESS_WRITE, DebugMessageCallbackType, Int32, IShaderResourceBinding, IShaderResourceVariable, NativeWindow (+11 more)
+### Community 11 - "VulkanClearBackend"
+Cohesion: 0.13
+Nodes (10): VulkanClearBackend, adapter_id_, cleanup_error_, diagnostics_, enabled_, height_, renderer_, validation_ (+2 more)
 
 ### Community 12 - "VulkanImGuiPass::Impl"
 Cohesion: 0.07
@@ -499,7 +508,7 @@ Nodes (18): VulkanImGuiPass::Impl, binding, font_sampler, font_tex_id, font_text
 
 ### Community 13 - "subprocess"
 Cohesion: 0.09
-Nodes (7): main(), find_window(), main(), main(), find_window(), main(), run()
+Nodes (8): main(), find_window(), main(), main(), find_window(), main(), expression(), run()
 
 ### Community 14 - "find_cross_mesh_overlaps"
 Cohesion: 0.18
@@ -510,24 +519,24 @@ Cohesion: 0.09
 Nodes (22): Build status, Character-validation regression check, Dependency setup, ENG-01 / ENG-02 test hardening — 2026-11-20, ENG-01 platform interface, ENG-02 SDL window backend, ENG-03 continuation — opt-in clear-color source candidate, ENG-03 graphics diagnostics and desktop evidence runner (+14 more)
 
 ### Community 16 - "README.md"
-Cohesion: 0.11
-Nodes (13): Evidence and limits, Preservation-first R6 prototype, Proposed engine integration — not implemented, Reproduce with Blender 5.2.1, Folder scaffold, Directory structure, Tools, Golden-file harness (+5 more)
+Cohesion: 0.15
+Nodes (9): Folder scaffold, Directory structure, Tools, Golden-file harness, Layout, Usage, Build version metadata, Layout (+1 more)
 
 ### Community 17 - "04 — Mute language and VM"
 Cohesion: 0.12
 Nodes (16): 04 — Mute language and VM, Branch encoding decision, Bytecode ISA, Capabilities, Compiler passes, Determinism contract, Goals, Lexical rules (+8 more)
 
-### Community 18 - "vector"
-Cohesion: 0.07
-Nodes (13): Bytecode, MathError, unsupported_environment, MathResult, calculate(), deterministic_cos(), deterministic_sin(), supported() (+5 more)
+### Community 18 - "cstdio"
+Cohesion: 0.13
+Nodes (4): VulkanClearRenderer::Impl, VulkanDiagnostics::Impl, check(), main()
 
 ### Community 19 - "29 — R6 character asset adaptation (BoyR6 and BlockyR6)"
 Cohesion: 0.12
 Nodes (16): 1. Head shading architecture, 29 — R6 character asset adaptation (BoyR6 and BlockyR6), 2. Missing pin attachments, Connection method, Diagnosed problems, Earlier simplified adaptation (legacy), Files, Known remaining issues (+8 more)
 
 ### Community 20 - "SdlPlatform"
-Cohesion: 0.10
-Nodes (18): Scope and safety, WindowGraphicsApi, none, opengl, vulkan, SdlPlatform, has_last_resize_, initialized_ (+10 more)
+Cohesion: 0.12
+Nodes (13): WindowGraphicsApi, none, opengl, vulkan, SdlPlatform, has_last_resize_, initialized_, last_resize_ (+5 more)
 
 ### Community 21 - "02 — Ordered work queue"
 Cohesion: 0.11
@@ -626,8 +635,8 @@ Cohesion: 0.31
 Nodes (6): fail(), finite_vec3(), load_pokomesh(), parse_pokomesh(), read_f32(), read_u32()
 
 ### Community 47 - "string"
-Cohesion: 0.13
-Nodes (5): feed_imgui_event(), imgui_key(), ImGuiContextGuard, print_to_console(), VulkanDiagnostics
+Cohesion: 0.07
+Nodes (10): feed_imgui_event(), imgui_key(), ImGuiContextGuard, print_to_console(), operator delete(), operator new(), Payload, tag (+2 more)
 
 ### Community 48 - "FrameGraph"
 Cohesion: 0.18
@@ -670,12 +679,12 @@ Cohesion: 0.09
 Nodes (29): ConsoleLog, max_bytes, max_entries, max_input_bytes, PrintHost, context, StateField, name (+21 more)
 
 ### Community 59 - "Kind"
-Cohesion: 0.15
-Nodes (13): Expr, args, Kind, binary, boolean, call, integer, unary (+5 more)
+Cohesion: 0.29
+Nodes (7): Kind, binary, boolean, call, integer, unary, variable
 
 ### Community 60 - "DeclarationNode"
-Cohesion: 0.07
-Nodes (27): DeclarationAst, DeclarationNode, begin, body, children, end_byte, kind, spelling (+19 more)
+Cohesion: 0.09
+Nodes (23): DeclarationAst, DeclarationNode, begin, body, children, end_byte, kind, spelling (+15 more)
 
 ### Community 62 - "OrbitCamera"
 Cohesion: 0.12
@@ -708,6 +717,10 @@ Nodes (10): 00 — Decision log, Community, Economy, Final open items resolved, 
 ### Community 69 - "19 — Economy simulator"
 Cohesion: 0.18
 Nodes (10): 19 — Economy simulator, Agents, Analysis output, Contract, Gate, Honest limit, Scenario, Simulated week (+2 more)
+
+### Community 70 - "OpenGLClearRenderer::Impl"
+Cohesion: 0.13
+Nodes (11): OpenGLClearRenderer::Impl, cleanup_uncertain, context, device, gl_context, gl_library_loaded, initialized, platform (+3 more)
 
 ### Community 71 - "config_file_test.cpp"
 Cohesion: 0.23
@@ -746,28 +759,24 @@ Cohesion: 0.20
 Nodes (9): 20 — Legal and privacy, Data map, Donor and contributor documents, Entity and documents, Jurisdictions, Operational legal tasks, Pre-launch gates, Privacy by design already in the architecture (+1 more)
 
 ### Community 80 - "Event"
-Cohesion: 0.10
-Nodes (13): Event, button, dx, dy, pressed, size, type, wheel (+5 more)
-
-### Community 81 - "IPlatform"
-Cohesion: 0.24
-Nodes (3): IPlatform, ENG-03 prerequisite: graphics intent and initial dimensions, main()
+Cohesion: 0.18
+Nodes (8): Event, button, dx, dy, pressed, size, type, wheel
 
 ### Community 82 - "cube_golden.py"
-Cohesion: 0.12
-Nodes (9): canonical_png(), main(), png_chunk(), run(), X11, XImage, decode(), GoldenEncoderTests (+1 more)
+Cohesion: 0.10
+Nodes (10): canonical_png(), main(), png_chunk(), run(), X11, XImage, decode(), GoldenEncoderTests (+2 more)
 
 ### Community 83 - "ExprNode"
 Cohesion: 0.11
 Nodes (14): AST and dump, MUT-02 arithmetic parser contract, Ast, ExprNode, begin, children, end_byte, kind (+6 more)
 
 ### Community 84 - "fakes/EngineFactoryVk.h"
-Cohesion: 0.19
-Nodes (12): Char, EngineVkCreateInfo, AdapterId, EnableValidation, NumDeferredContexts, ITextureView, RenderDeviceInfo, APIVersion (+4 more)
+Cohesion: 0.12
+Nodes (16): Char, EngineVkCreateInfo, AdapterId, EnableValidation, NumDeferredContexts, IRenderDevice, ITextureView, RenderDeviceInfo (+8 more)
 
 ### Community 85 - "config.cpp"
-Cohesion: 0.07
-Nodes (22): What was built, EngineConfig, adapter_id, log_echo_to_console, log_file, log_level, validation, window_height (+14 more)
+Cohesion: 0.13
+Nodes (13): EngineConfig, adapter_id, log_echo_to_console, log_file, log_level, validation, window_height, window_width (+5 more)
 
 ### Community 86 - "SwapChainDesc"
 Cohesion: 0.20
@@ -782,8 +791,8 @@ Cohesion: 0.22
 Nodes (8): Attribution, Contributor Covenant Code of Conduct, Enforcement, Enforcement Guidelines, Enforcement Responsibilities, Our Pledge, Our Standards, Scope
 
 ### Community 89 - "IDeviceObject"
-Cohesion: 0.10
-Nodes (6): IBuffer, IDeviceObject, ISampler, IShader, ITexture, ITextureView
+Cohesion: 0.09
+Nodes (9): IBuffer, IDeviceObject, ISampler, IShader, ITexture, ITextureView, FakeVariable, buffer (+1 more)
 
 ### Community 90 - "AssetStore"
 Cohesion: 0.13
@@ -815,15 +824,15 @@ Nodes (8): Desktop laptop build (MSVC path not yet verified), ENG-04 desktop fal
 
 ### Community 97 - "FrameStats"
 Cohesion: 0.09
-Nodes (17): ENG-15 — Frame timing and stats, Not done / future, Verification, What was built, FrameStats, cpu_count_, cpu_head_, cpu_window_ (+9 more)
+Nodes (20): ENG-15 — Frame timing and stats, Not done / future, Verification, What was built, FrameStats, cpu_count_, cpu_head_, cpu_window_ (+12 more)
 
 ### Community 98 - "evaluator.cpp"
-Cohesion: 0.22
+Cohesion: 0.24
 Nodes (24): to_arithmetic(), E, evaluate_arithmetic(), fail(), float_binary(), integer_suffix(), is_float(), is_unsigned() (+16 more)
 
 ### Community 99 - "PlatformError"
-Cohesion: 0.09
-Nodes (18): PlatformError, already_initialized, invalid_window_config, none, not_initialized, platform_failure, window_exists, window_not_created (+10 more)
+Cohesion: 0.12
+Nodes (15): PlatformError, already_initialized, invalid_window_config, none, not_initialized, platform_failure, window_exists, window_not_created (+7 more)
 
 ### Community 100 - "[Unreleased]"
 Cohesion: 0.25
@@ -898,8 +907,8 @@ Cohesion: 0.33
 Nodes (5): Checks, ENG-01–ENG-05 folder and code audit, Fixes, Folder layout, Still open
 
 ### Community 122 - "array"
-Cohesion: 0.06
-Nodes (10): allocate_or_throw(), operator delete(), operator new(), operator delete(), operator new(), operator delete(), operator new(), Payload (+2 more)
+Cohesion: 0.09
+Nodes (3): operator delete(), operator new(), SdlPlatform
 
 ### Community 123 - "GitHub repositories"
 Cohesion: 0.33
@@ -990,8 +999,8 @@ Cohesion: 0.17
 Nodes (10): Audit round — defects found and fixed, ENG-17 — Async load queue, Not done / future, Verification, Job, error, key, loader (+2 more)
 
 ### Community 145 - "vulkan_clear_android.cpp"
-Cohesion: 0.12
-Nodes (15): VulkanClearAndroidRenderer, cleanup_uncertain_, impl_, destroy_swapchain_resources(), make_device_objects(), make_instance(), make_surface(), make_swapchain() (+7 more)
+Cohesion: 0.17
+Nodes (6): VulkanClearAndroidRenderer, cleanup_uncertain_, impl_, VulkanClearAndroidRenderer::shutdown(), VulkanClearAndroidRenderer::shutdown_checked(), VulkanClearAndroidRenderer::VulkanClearAndroidRenderer()
 
 ### Community 146 - "rules"
 Cohesion: 0.11
@@ -1049,13 +1058,17 @@ Nodes (18): exclude, pattern, pattern, pattern, pattern, pattern-either, pattern
 Cohesion: 0.14
 Nodes (12): Box, MaxX, MaxY, MaxZ, MinX, MinY, MinZ, TextureSubResData (+4 more)
 
-### Community 164 - "BufferDesc"
-Cohesion: 0.08
-Nodes (25): BufferData, DataSize, pData, BufferDesc, BindFlags, CPUAccessFlags, Name, Size (+17 more)
+### Community 164 - "imgui/EngineFactoryVk.h"
+Cohesion: 0.05
+Nodes (34): BufferData, DataSize, pData, BufferDesc, BindFlags, CPUAccessFlags, Name, Size (+26 more)
 
 ### Community 165 - "LayoutElement"
 Cohesion: 0.14
 Nodes (14): InputLayoutDesc, n, p, LayoutElement, BufferSlot, Frequency, InputIndex, InstanceDataStepRate (+6 more)
+
+### Community 166 - "FakeDevice"
+Cohesion: 0.06
+Nodes (11): DILIGENT_CALL_TYPE capture(), SHADER_TYPE, SHADER_TYPE_PIXEL, SHADER_TYPE_VERTEX, FakeDevice, last_pipeline, FakePipeline, font_texture (+3 more)
 
 ### Community 167 - "BlendModeRenderTargetDesc"
 Cohesion: 0.11
@@ -1065,9 +1078,9 @@ Nodes (18): BLEND_FACTOR, BLEND_FACTOR_INV_SRC_ALPHA, BLEND_FACTOR_ONE, BLEND_FA
 Cohesion: 0.12
 Nodes (11): TEXTURE_VIEW_TYPE, TEXTURE_VIEW_SHADER_RESOURCE, TextureData, NumSubresources, pSubresources, TextureSubResData, pData, Stride (+3 more)
 
-### Community 169 - "LayoutElement"
-Cohesion: 0.12
-Nodes (16): INPUT_ELEMENT_FREQUENCY, INPUT_ELEMENT_FREQUENCY_PER_VERTEX, LayoutElement, BufferSlot, Frequency, HLSLSemantic, InputIndex, IsNormalized (+8 more)
+### Community 169 - "vulkan_clear_android.cpp"
+Cohesion: 0.30
+Nodes (9): destroy_swapchain_resources(), make_device_objects(), make_instance(), make_surface(), make_swapchain(), pick_device(), pick_surface_format(), VulkanClearAndroidRenderer::clear_and_present() (+1 more)
 
 ### Community 170 - "Safe C++ Idioms"
 Cohesion: 0.09
@@ -1086,8 +1099,8 @@ Cohesion: 0.12
 Nodes (17): Anti-Patterns to Avoid, Best Practices Checklist, Clang-Specific, Compiler Hardening Quick Reference, Decision Tree, Essential Flags (GCC + Clang), Feature Tiers, Hardened libc++ (Clang/libc++ only) (+9 more)
 
 ### Community 177 - "GraphicsPipelineDesc"
-Cohesion: 0.14
-Nodes (14): DepthStencilDesc, DepthEnable, DepthWriteEnable, GraphicsPipelineDesc, BlendDesc, DepthStencilDesc, DSVFormat, InputLayout (+6 more)
+Cohesion: 0.11
+Nodes (19): DepthStencilDesc, DepthEnable, DepthWriteEnable, GraphicsPipelineDesc, BlendDesc, DepthStencilDesc, DSVFormat, InputLayout (+11 more)
 
 ### Community 178 - "semantic.cpp"
 Cohesion: 0.21
@@ -1102,8 +1115,8 @@ Cohesion: 0.13
 Nodes (10): VulkanClearRenderer::Impl, context, device, initialized, platform, resize_failed, swapchain, validation_enabled (+2 more)
 
 ### Community 181 - "Parser"
-Cohesion: 0.34
-Nodes (6): fail(), Parser, at_, parse_depth_, program_, source_
+Cohesion: 0.37
+Nodes (5): Parser, at_, parse_depth_, program_, source_
 
 ### Community 182 - "ENG-17 — Async load queue"
 Cohesion: 0.22
@@ -1112,6 +1125,10 @@ Nodes (7): Integration review, 2026-11-22, Project map and review scope, Project
 ### Community 183 - "TextureDesc"
 Cohesion: 0.09
 Nodes (22): RESOURCE_DIMENSION, RESOURCE_DIM_TEX_2D, SwapChainDesc, ColorBufferFormat, DepthBufferFormat, Height, Width, TEXTURE_FORMAT (+14 more)
+
+### Community 184 - "FakeChain"
+Cohesion: 0.09
+Nodes (15): Int32, Rect, Bottom, Left, Right, Top, Viewport, Height (+7 more)
 
 ### Community 186 - "MUT-01 — lexer core progress (2026-11-22)"
 Cohesion: 0.25
@@ -1130,8 +1147,8 @@ Cohesion: 0.08
 Nodes (20): Android ES backend behind ClearBackend contract — 2026-11-22 (same session), Android OpenGL ES primitive — 2026-11-22 (physical device, offscreen), ClearBackend, ClearBackendSelection, owned_, SelectedBackend, fallback, none (+12 more)
 
 ### Community 191 - "vulkan_clear_faults.cpp"
-Cohesion: 0.06
-Nodes (34): "dependency libraries are available", "dependency libraries are available", SDL_Event, SDL_GLContextState, SDL_PropertiesID, SDL_Window, SDL_WindowFlags, SDL_WindowID (+26 more)
+Cohesion: 0.05
+Nodes (42): "dependency libraries are available", "dependency libraries are available", SDL_Event, SDL_GLContextState, SDL_InitFlags, SDL_PropertiesID, SDL_Window, SDL_WindowFlags (+34 more)
 
 ### Community 193 - "C++20 Features (Default Practice)"
 Cohesion: 0.18
@@ -1142,8 +1159,8 @@ Cohesion: 0.18
 Nodes (10): False Positive Patterns, Findings, Immediate, Original Vulnerability, Preventive, Recommendations, Search Methodology, Summary (+2 more)
 
 ### Community 197 - "DrawIndexedAttribs"
-Cohesion: 0.12
-Nodes (17): Final audit round (pre-closeout), BIND_FLAGS, BIND_INDEX_BUFFER, BIND_NONE, BIND_SHADER_RESOURCE, BIND_UNIFORM_BUFFER, BIND_VERTEX_BUFFER, DRAW_FLAGS (+9 more)
+Cohesion: 0.10
+Nodes (21): Final audit round (pre-closeout), BIND_FLAGS, BIND_INDEX_BUFFER, BIND_NONE, BIND_SHADER_RESOURCE, BIND_UNIFORM_BUFFER, BIND_VERTEX_BUFFER, DRAW_FLAGS (+13 more)
 
 ### Community 199 - "verify_desktop.py"
 Cohesion: 0.16
@@ -1158,8 +1175,8 @@ Cohesion: 0.22
 Nodes (8): Build status, Build status, Commands, Full dependencies, Golden files, Historical build notes — not current status, Historical build notes (unverified), Toolchain matrix
 
 ### Community 205 - "string"
-Cohesion: 0.10
-Nodes (4): DeclarationParser, Result, ExpressionParser, StatementParser
+Cohesion: 0.09
+Nodes (6): Bytecode, DeclarationParser, Result, ExpressionParser, StatementParser, write()
 
 ### Community 206 - "StatementNode"
 Cohesion: 0.12
@@ -1174,8 +1191,8 @@ Cohesion: 0.33
 Nodes (5): Findings to address, Scope and outcome, Task-by-task evidence and gaps, Audit round 2 — additional defects found and fixed, What was built
 
 ### Community 209 - "SDL_Event"
-Cohesion: 0.05
-Nodes (40): Bugs found during implementation, ENG-20 — Camera with view/projection, Integration review, 2026-11-22, Linux software-rendering update — 2026-11-22, Not done / future, Review update — 2026-11-22, Verified, What was built (+32 more)
+Cohesion: 0.18
+Nodes (10): SDL_Event, button, motion, type, wheel, window, SDL_WindowEvent, type (+2 more)
 
 ### Community 210 - "AssetStore::State"
 Cohesion: 0.10
@@ -1203,15 +1220,15 @@ Nodes (5): VulkanMeshPass, impl_, VulkanMeshPass::draw_and_present(), VulkanMesh
 
 ### Community 216 - "program.cpp"
 Cohesion: 0.12
-Nodes (22): Audit fixes, ProgramBytecodeResult, ProgramOptions, max_allowed_steps, max_steps, ProgramResult, ProgramState, fields (+14 more)
+Nodes (23): Audit fixes, ProgramBytecodeResult, ProgramOptions, max_allowed_steps, max_steps, ProgramResult, ProgramState, fields (+15 more)
 
 ### Community 217 - "Value"
 Cohesion: 0.12
 Nodes (12): Member, first, second, Value, boolean, entries, i, items (+4 more)
 
 ### Community 218 - "values.cpp"
-Cohesion: 0.22
-Nodes (15): object, ValueError, code, AggregateStore::alloc(), AggregateStore::as_string(), AggregateStore::free_object(), AggregateStore::get_index(), AggregateStore::length() (+7 more)
+Cohesion: 0.17
+Nodes (19): object, ValueError, code, AggregateStore::alloc(), AggregateStore::as_string(), AggregateStore::copy(), AggregateStore::free_slot(), AggregateStore::get_index() (+11 more)
 
 ### Community 219 - "steps"
 Cohesion: 0.31
@@ -1238,8 +1255,8 @@ Cohesion: 0.12
 Nodes (15): sRGB continuation, Ktx2Format, bgra8_srgb, bgra8_unorm, rgba8_srgb, rgba8_unorm, Ktx2Image, format (+7 more)
 
 ### Community 227 - "FakeContext"
-Cohesion: 0.14
-Nodes (8): MAP_FLAGS, MAP_FLAG_DISCARD, MAP_FLAG_NONE, MAP_TYPE, MAP_READ, MAP_WRITE, FakeBuffer, storage
+Cohesion: 0.09
+Nodes (10): MAP_FLAGS, MAP_FLAG_DISCARD, MAP_FLAG_NONE, MAP_TYPE, MAP_READ, MAP_WRITE, FakeBuffer, storage (+2 more)
 
 ### Community 228 - "Triage: Deciding Whether a Candidate Is Real"
 Cohesion: 0.22
@@ -1275,7 +1292,7 @@ Nodes (9): LoadState, awaiting_install, failed, loading, none, ready, AssetHandl
 
 ### Community 237 - "device/vulkan_clear_renderer.hpp"
 Cohesion: 0.05
-Nodes (22): IEngineFactory, IDeviceContext, IRenderDevice, ISwapChain, ITextureView, SdlPlatform, VulkanDrawCallback, IDeviceContext (+14 more)
+Nodes (19): IEngineFactory, IDeviceContext, IRenderDevice, ISwapChain, ITextureView, SdlPlatform, VulkanDrawCallback, IDeviceContext (+11 more)
 
 ### Community 238 - "evaluator_test.cpp"
 Cohesion: 0.26
@@ -1294,8 +1311,8 @@ Cohesion: 0.08
 Nodes (24): Errors and cost, Floating-point safeguards and limitations, Host numeric bindings, MUT-03 arithmetic evaluator — initial contract, Numeric rules for this baseline, EvalDiagnostic, code, position (+16 more)
 
 ### Community 242 - "SDL_Delay"
-Cohesion: 0.21
-Nodes (10): main(), cube_indices(), cube_vertices(), main(), main(), VulkanClearBackend::initialize(), main(), main() (+2 more)
+Cohesion: 0.14
+Nodes (13): main(), cube_indices(), cube_vertices(), main(), build_demo_window(), main(), update_imgui_io(), main() (+5 more)
 
 ### Community 243 - "GraphicsPipelineStateCreateInfo"
 Cohesion: 0.20
@@ -1325,9 +1342,13 @@ Nodes (24): VulkanClearAndroidRenderer::Impl, color_space, command_buffer, comma
 Cohesion: 0.29
 Nodes (6): interface, brand_color, display_name, icon_large, icon_small, short_description
 
+### Community 251 - "TestPlatform"
+Cohesion: 0.20
+Nodes (5): TestPlatform, events_, initialized_, next_, window_
+
 ### Community 252 - "Object"
-Cohesion: 0.10
-Nodes (18): Object, arena, bytes, handle, items, kind, refs, text (+10 more)
+Cohesion: 0.09
+Nodes (19): Object, arena, bytes, generation, items, kind, occupied, refs (+11 more)
 
 ### Community 255 - "ENG-22 — lit-cube screenshot golden"
 Cohesion: 0.29
@@ -1358,12 +1379,12 @@ Cohesion: 0.22
 Nodes (8): Environment, Linux graphics setup and review — 2026-11-22, Next task and outstanding gates, Repeat the X11 smoke test, Scope, Skills and C++20, Subsequent ENG-01–21 audit, Verification
 
 ### Community 264 - "mute/README.md"
-Cohesion: 0.12
-Nodes (10): Build, MUT-04 — debug ImGui arithmetic console (2026-11-22), Tests and remaining gates, Input and positions, MUT-01 lexical contract, initial implementation, Tokens, Unsigned `.pkB` schema preview, Host API (+2 more)
+Cohesion: 0.17
+Nodes (7): Input and positions, MUT-01 lexical contract, initial implementation, Tokens, Unsigned `.pkB` schema preview, Host API, Initial Mute state and deterministic hash, Validation
 
 ### Community 265 - "AggregateStore"
-Cohesion: 0.13
-Nodes (7): AggregateStore, arena_bytes_, heap_bytes_, live_, objects_, AggregateStore::copy(), AggregateStore::copy_impl()
+Cohesion: 0.12
+Nodes (7): AggregateStore, arena_bytes_, heap_bytes_, live_, objects_, AggregateStore::copy_impl(), AggregateStore::handle_for()
 
 ### Community 266 - "ExpressionParser"
 Cohesion: 0.15
@@ -1382,7 +1403,7 @@ Cohesion: 0.46
 Nodes (3): head(), make_pkb_schema_draft(), text()
 
 ### Community 271 - "resolve_packages"
-Cohesion: 0.20
+Cohesion: 0.18
 Nodes (12): What was added, Scaffold progress, PackageInput, name, source, version, dump_lockfile(), resolve_packages() (+4 more)
 
 ### Community 272 - "The Ladder"
@@ -1398,12 +1419,12 @@ Cohesion: 0.33
 Nodes (5): Integration review — 2026-11-22, Remaining limitations and risks, Scope and findings, Subsequent review, Verification on this host
 
 ### Community 276 - "OpenGLClearRenderer"
-Cohesion: 0.05
-Nodes (27): SDL_GLAttr, OpenGLClearBackend, cleanup_error_, diagnostics_, height_, renderer_, validation_, width_ (+19 more)
+Cohesion: 0.08
+Nodes (17): SDL_GLAttr, OpenGLClearBackend, cleanup_error_, diagnostics_, height_, renderer_, validation_, width_ (+9 more)
 
-### Community 277 - "sdl_platform_faults.cpp"
-Cohesion: 0.21
-Nodes (10): SDL_Window, Contract and limits, SDL_InitFlags, main(), main(), push(), SDL_InitSubSystem(), SDL_QuitSubSystem() (+2 more)
+### Community 277 - "ENG-20 — Camera with view/projection"
+Cohesion: 0.20
+Nodes (8): Bugs found during implementation, ENG-20 — Camera with view/projection, Integration review, 2026-11-22, Linux software-rendering update — 2026-11-22, Not done / future, Review update — 2026-11-22, Verified, What was built
 
 ### Community 278 - "IEngineFactoryOpenGL"
 Cohesion: 0.25
@@ -1414,8 +1435,8 @@ Cohesion: 0.40
 Nodes (5): Leave a Regression Guard, Quote the Real Code, Reporting a Variant Hunt, Structure, The Methodology Table
 
 ### Community 280 - "math_internal.hpp"
-Cohesion: 0.15
-Nodes (9): cosine(), kernel_cos(), floor_value(), Pinned deterministic sin/cos kernels, rem_pio2_large(), rem_pio2(), scalbn_value(), kernel_sin() (+1 more)
+Cohesion: 0.09
+Nodes (16): MathError, unsupported_environment, MathResult, calculate(), deterministic_cos(), deterministic_sin(), supported(), cosine() (+8 more)
 
 ### Community 281 - "StatementErrorCode"
 Cohesion: 0.09
@@ -1430,8 +1451,8 @@ Cohesion: 0.33
 Nodes (5): DrawIndexedAttribs, Flags, IndexType, NumIndices, Uint32
 
 ### Community 284 - "Platform module"
-Cohesion: 0.18
-Nodes (6): Build, ENG-01 / ENG-02 lifecycle hardening, Platform module, Renderer continuation, Target acceptance checklist (still open), Engine
+Cohesion: 0.22
+Nodes (8): SDL_Window, Build, Contract and limits, ENG-01 / ENG-02 lifecycle hardening, ENG-03 prerequisite: graphics intent and initial dimensions, Platform module, Renderer continuation, Target acceptance checklist (still open)
 
 ### Community 286 - "OpenGLClearESRenderer::Impl"
 Cohesion: 0.15
@@ -1447,7 +1468,7 @@ Nodes (5): DEBUG_MESSAGE_SEVERITY, DEBUG_MESSAGE_SEVERITY_ERROR, DEBUG_MESSAGE_S
 
 ### Community 291 - "DeclarationErrorCode"
 Cohesion: 0.10
-Nodes (21): DeclarationDiagnostic, code, position, DeclarationErrorCode, depth_exceeded, expected_arrow, expected_colon, expected_declaration (+13 more)
+Nodes (20): DeclarationDiagnostic, code, position, DeclarationErrorCode, depth_exceeded, expected_arrow, expected_colon, expected_declaration (+12 more)
 
 ### Community 292 - "StatementKind"
 Cohesion: 0.13
@@ -1462,24 +1483,24 @@ Cohesion: 0.12
 Nodes (15): Bugs fixed, Config, echo_to_console, file_path, level, Level, critical, debug (+7 more)
 
 ### Community 295 - "config.cpp"
-Cohesion: 0.38
-Nodes (8): collect_unknown(), fail(), find_key(), load_file(), parse_level(), read_bool(), read_text(), read_u32()
+Cohesion: 0.33
+Nodes (9): collect_unknown(), fail(), find_key(), load_file(), parse_level(), read_bool(), read_text(), read_u32() (+1 more)
 
 ### Community 297 - "Memory Safety"
 Cohesion: 0.40
 Nodes (5): Memory Safety, Non-Owning Views, Optional vs Nullable Pointers, Ownership: Smart Pointers, Value Semantics by Default
 
 ### Community 298 - "primary"
-Cohesion: 0.43
-Nodes (5): expression(), reference(), add(), mul(), primary()
+Cohesion: 1.00
+Nodes (4): reference(), add(), mul(), primary()
 
 ### Community 299 - "lexer_contract_test.cpp"
 Cohesion: 0.47
 Nodes (7): check(), deterministic_streams(), diagnostic(), examples(), Expected, main(), tokens()
 
 ### Community 300 - "Uint32"
-Cohesion: 0.15
-Nodes (13): EngineVkCreateInfo, AdapterId, EnableValidation, NumDeferredContexts, InputLayoutDesc, LayoutElements, NumElements, RenderDeviceInfo (+5 more)
+Cohesion: 0.08
+Nodes (25): EngineVkCreateInfo, AdapterId, EnableValidation, NumDeferredContexts, INPUT_ELEMENT_FREQUENCY, INPUT_ELEMENT_FREQUENCY_PER_VERTEX, InputLayoutDesc, LayoutElements (+17 more)
 
 ### Community 301 - "Essential Compiler Flags"
 Cohesion: 0.25
@@ -1494,8 +1515,8 @@ Cohesion: 0.12
 Nodes (14): GraphicsMessages, errors, warnings, VulkanDiagnostics, impl_, saved_, since(), totals() (+6 more)
 
 ### Community 305 - "ValueErrorCode"
-Cohesion: 0.22
-Nodes (9): ValueErrorCode, arena_exceeded, bounds, depth_exceeded, heap_exceeded, invalid_handle, not_aggregate, ok (+1 more)
+Cohesion: 0.20
+Nodes (10): ValueErrorCode, arena_exceeded, bounds, cycle, depth_exceeded, heap_exceeded, invalid_handle, not_aggregate (+2 more)
 
 ### Community 306 - "Deducing this"
 Cohesion: 0.40
@@ -1562,16 +1583,16 @@ Cohesion: 0.29
 Nodes (6): Current gate status, Evidence, G1 replay scenario v0 (2026-11-22, Windows x64 leg only), Outstanding work, Post-MUT audit fixes and G1/G2 preflight, Windows laptop run (2026-11-22, MSYS2 UCRT64 MinGW g++ 16.2)
 
 ### Community 331 - "Error"
-Cohesion: 0.15
-Nodes (12): Error, invalid_utf8, malformed, none, too_deep, too_many_items, truncated, unsupported (+4 more)
+Cohesion: 0.25
+Nodes (8): Error, invalid_utf8, malformed, none, too_deep, too_many_items, truncated, unsupported
 
 ### Community 332 - "Position"
-Cohesion: 0.14
-Nodes (18): NumericData, NumericValue, data, type, Position, byte, column, line (+10 more)
+Cohesion: 0.12
+Nodes (23): NumericData, NumericValue, data, type, Position, byte, column, line (+15 more)
 
-### Community 333 - "Renderer — frame-graph skeleton"
-Cohesion: 0.17
-Nodes (12): Boundaries, Build and verify, ENG-07: build-time SPIR-V, ENG-08: Vulkan triangle through the frame graph, ENG-09: experimental depth test, ENG-10: per-frame uniform-buffer demo, ENG-11: ImGui pass in the frame graph, ENG-12: ImGui F1 toggle and release strip (+4 more)
+### Community 333 - "SdlPlatform::poll_event"
+Cohesion: 0.22
+Nodes (5): Build, MUT-04 — debug ImGui arithmetic console (2026-11-22), Scope and safety, Tests and remaining gates, SdlPlatform::poll_event()
 
 ### Community 334 - "ClearConfig"
 Cohesion: 0.22
@@ -1597,13 +1618,13 @@ Nodes (8): Audit 1 — Task behavior and feature coverage, Audit 2 — Inputs, s
 Cohesion: 0.26
 Nodes (12): DeclarationResult, inner_position(), DeclarationFailure, result, parse_declarations(), cases(), check(), depth_guard() (+4 more)
 
-### Community 340 - "SHADER_TYPE"
-Cohesion: 0.22
-Nodes (5): SHADER_TYPE, SHADER_TYPE_PIXEL, SHADER_TYPE_VERTEX, FakeShader, type
+### Community 340 - "pokomesh_test.cpp"
+Cohesion: 0.53
+Nodes (5): main(), make_pmes(), put32(), putf(), write()
 
 ### Community 341 - "lexer.cpp"
-Cohesion: 0.05
-Nodes (43): Diagnostic, code, position, ErrorCode, bom, invalid_escape, invalid_number, invalid_utf8 (+35 more)
+Cohesion: 0.06
+Nodes (39): Diagnostic, code, position, ErrorCode, bom, invalid_escape, invalid_number, invalid_utf8 (+31 more)
 
 ### Community 342 - "main"
 Cohesion: 0.43
@@ -1614,8 +1635,8 @@ Cohesion: 0.22
 Nodes (3): FloatEnvironment, active_, saved_
 
 ### Community 344 - "MUT-01–03 follow-up fixes and audit (2026-11-22)"
-Cohesion: 0.33
-Nodes (5): Fixed or improved, MUT-01–03 follow-up fixes and audit (2026-11-22), Scope and result, Still open / not safely closable here, Verification
+Cohesion: 0.22
+Nodes (7): Fixed or improved, MUT-01–03 follow-up fixes and audit (2026-11-22), Scope and result, Still open / not safely closable here, Verification, LexOptions, max_source_bytes
 
 ### Community 345 - "main"
 Cohesion: 0.20
@@ -1638,16 +1659,16 @@ Cohesion: 0.33
 Nodes (6): Character assets, Current scaffold status, Important caveat, Live Blender, PokoX — Project Root, Where things are
 
 ### Community 355 - "2026-11-24"
-Cohesion: 0.18
-Nodes (8): DILIGENT_CALL_TYPE capture(), is_environment_layer_version_warning(), main(), 2026-11-24, CI check at start of session, CI fixed — green on all 5 legs (d6139c3, run 45324845861), CI verification blocked by billing (after final X11 robustness fix), Full MUT-01–20 audit — committed and pushed (c7a411f)
+Cohesion: 0.25
+Nodes (7): is_environment_layer_version_warning(), main(), 2026-11-24, CI check at start of session, CI fixed — green on all 5 legs (d6139c3, run 45324845861), CI verification blocked by billing (after final X11 robustness fix), Full MUT-01–20 audit — committed and pushed (c7a411f)
 
 ### Community 356 - "MUT-06 — initial functions and locals"
 Cohesion: 0.40
 Nodes (4): Evidence and open gates, Implemented, Limits and safety boundaries, MUT-06 — initial functions and locals
 
 ### Community 357 - "Token"
-Cohesion: 0.25
-Nodes (6): LexOptions, max_source_bytes, Token, begin, end_byte, kind
+Cohesion: 0.29
+Nodes (5): Token, begin, end_byte, kind, name()
 
 ### Community 358 - "ParseErrorCode"
 Cohesion: 0.20
@@ -1674,8 +1695,8 @@ Cohesion: 0.33
 Nodes (5): Build dirs, Debug profile flags (cl.exe), MSVC Toolchain (this machine), Performance tuning (Ryzen 7 5700U, 16 GB), Test
 
 ### Community 368 - "cases"
-Cohesion: 0.39
-Nodes (5): make_bool(), cases(), check(), main(), unwrap()
+Cohesion: 0.48
+Nodes (4): cases(), check(), main(), unwrap()
 
 ### Community 369 - "SemanticDiagnostic"
 Cohesion: 0.16
@@ -1686,28 +1707,28 @@ Cohesion: 0.29
 Nodes (6): ProgramDiagnostic, code, position, stage, Failure, diagnostic
 
 ### Community 371 - "decode_item"
-Cohesion: 0.22
-Nodes (6): Cursor, data, pos, size, values, read_argument()
+Cohesion: 0.20
+Nodes (5): Cursor, data, pos, size, values
 
 ### Community 372 - "TypeDef"
 Cohesion: 0.20
 Nodes (9): FunctionSig, parameters, position, result, TypeDef, is_enum, member_types, members (+1 more)
 
-### Community 376 - "frame_stats.cpp"
-Cohesion: 0.36
-Nodes (6): FrameStats::cpu_ms(), FrameStats::fps(), FrameStats::gpu_ms(), FrameStats::record_cpu(), FrameStats::record_gpu(), window_mean()
+### Community 376 - "build_refined.py"
+Cohesion: 0.32
+Nodes (3): ease(), foot(), interp()
 
 ### Community 377 - "ENG-14 — CBOR config loader"
-Cohesion: 0.25
-Nodes (6): Defects found by the new tests during implementation, ENG-14 — CBOR config loader, Integration review, 2026-11-22, Not done / future, Verification, half_to_double()
+Cohesion: 0.33
+Nodes (5): ENG-14 — CBOR config loader, Integration review, 2026-11-22, Not done / future, Verification, What was built
 
 ### Community 379 - "MUT-13 — Mute v1 scope and API matrix (APPROVED)"
 Cohesion: 0.22
 Nodes (8): 1. Language feature matrix (proposed v1 decisions), 2. Device and platform matrix (proposed), 3. Game-facing API matrix (proposed v1 contract), 4. Compatibility matrix (proposed), 5. Decisions — APPROVED by owner, 6. Testable criteria this matrix implies, 7. Explicit deferrals (proposed), MUT-13 — Mute v1 scope and API matrix (APPROVED)
 
-### Community 380 - "11 — Engine, rendering and physics"
-Cohesion: 0.18
-Nodes (11): 11 — Engine, rendering and physics, Determinism split, Frame graph, Graphics tiers, Layer structure, Performance budgets, Physics tiers, Platform differences (+3 more)
+### Community 380 - "WindowSize"
+Cohesion: 0.25
+Nodes (6): WindowSize, logical_height, logical_width, pixel_height, pixel_width, SdlPlatform::get_window_size()
 
 ### Community 388 - "VulkanDiagnostics::Impl"
 Cohesion: 0.18
@@ -1730,11 +1751,11 @@ Cohesion: 0.50
 Nodes (3): Poko UI Design, Rules, Workflow
 
 ### Community 425 - "composite"
-Cohesion: 0.21
+Cohesion: 0.18
 Nodes (4): composite(), ensure_gpu_timer(), Context, emit()
 
 ### Community 426 - "AppState"
-Cohesion: 0.12
+Cohesion: 0.13
 Nodes (15): android_main(), AppState, app, done, frames_done, have_size, height, renderer_ready (+7 more)
 
 ### Community 427 - "ModuleInfo"
@@ -1742,8 +1763,8 @@ Cohesion: 0.18
 Nodes (9): ModuleInfo, has_name, has_version, imports, input, name, name_pos, version (+1 more)
 
 ### Community 428 - "MUT-22 — aggregate VM values and lifetimes (foundation)"
-Cohesion: 0.29
-Nodes (6): Evidence, Lifetime model, Limits, MUT-22 — aggregate VM values and lifetimes (foundation), Traps, What was added
+Cohesion: 0.25
+Nodes (7): Evidence, Lifetime model, Limits — all resolved (2026-11-24 follow-up), MUT-22 — aggregate VM values and lifetimes (foundation), Still open, Traps, What was added
 
 ### Community 430 - "main"
 Cohesion: 0.38
@@ -1762,8 +1783,8 @@ Cohesion: 0.40
 Nodes (4): Deterministic execution budget, Implemented subset, MUT-07 — initial if/while and runaway trap (2026-11-22), Test evidence and remaining gates
 
 ### Community 437 - "DeclarationParser"
-Cohesion: 0.22
-Nodes (9): decl_fail(), DeclarationParser, ast_, depth_, Depth, depth_limit, pos_, source_ (+1 more)
+Cohesion: 0.25
+Nodes (8): decl_fail(), DeclarationParser, ast_, depth_, depth_limit, pos_, source_, tokens_
 
 ### Community 438 - "Session report — ENG-14 through ENG-20 + audits"
 Cohesion: 0.29
@@ -1777,17 +1798,17 @@ Nodes (4): Architecture, Hard rules, Poko Engine Development, Verify before done
 Cohesion: 0.50
 Nodes (3): Evidence and known limitations, Initial contract and boundaries, MUT-05 — print hostcall to the debug console (2026-11-22)
 
-### Community 444 - "IRenderDevice"
-Cohesion: 0.24
-Nodes (4): IRenderDevice, RESOURCE_STATE_TRANSITION_MODE, RESOURCE_STATE_TRANSITION_MODE_NONE, RESOURCE_STATE_TRANSITION_MODE_TRANSITION
+### Community 444 - "SDL_MouseMotionEvent"
+Cohesion: 0.25
+Nodes (8): SDL_MouseMotionEvent, state, type, windowID, x, xrel, y, yrel
 
 ### Community 446 - "FakeTextureView"
 Cohesion: 0.22
 Nodes (4): FakeSampler, FakeTargetView, FakeTextureView, sampler
 
-### Community 448 - "Program"
-Cohesion: 0.12
-Nodes (13): Depth, name, Program, exprs, functions, main, states, run_program_reference() (+5 more)
+### Community 448 - "StateDecl"
+Cohesion: 0.40
+Nodes (5): StateDecl, literal, name, negative, pos
 
 ### Community 449 - "ResolvedPackage"
 Cohesion: 0.12
@@ -1818,28 +1839,28 @@ Cohesion: 0.40
 Nodes (4): Sink, accept, calls, text
 
 ### Community 460 - "MUT-21–22 audit — 2026-11-24"
-Cohesion: 0.25
-Nodes (7): `AggregateStore` (values.cpp), Defects found and fixed, MUT-21–22 audit — 2026-11-24, Regression coverage added, Remaining limits (documented, not fixed here), `resolve_packages` (package.cpp), Verification
+Cohesion: 0.20
+Nodes (9): `AggregateStore` (values.cpp), Defects found and fixed, MUT-21–22 audit — 2026-11-24, Regression coverage added, Remaining limits — resolved in the follow-up pass (same day), `resolve_packages` (package.cpp), Still open (by design, not defects), Verification (+1 more)
 
 ### Community 461 - "Limits"
 Cohesion: 0.33
 Nodes (6): Limits, heap_bytes, heap_objects, max_array_length, max_depth, max_string_bytes
 
 ### Community 462 - "decode_item"
-Cohesion: 0.39
-Nodes (4): decode(), decode_item(), fail(), valid_utf8()
+Cohesion: 0.29
+Nodes (7): Defects found by the new tests during implementation, decode(), decode_item(), fail(), half_to_double(), read_argument(), valid_utf8()
 
 ### Community 463 - "EventType"
 Cohesion: 0.25
 Nodes (8): EventType, mouse_button, mouse_motion, mouse_wheel, none, quit_requested, window_close_requested, window_resized
 
-### Community 464 - "FakeVariable"
-Cohesion: 0.22
-Nodes (6): FakePipeline, font_texture, frame_data, FakeVariable, buffer, view
+### Community 464 - "SDL_MouseWheelEvent"
+Cohesion: 0.25
+Nodes (8): SDL_MouseWheelEvent, direction, mouse_x, mouse_y, type, windowID, x, y
 
-### Community 465 - "Stmt"
-Cohesion: 0.09
-Nodes (22): Frame, local_count, scopes, Function, body, name, params, pos (+14 more)
+### Community 465 - "Program"
+Cohesion: 0.08
+Nodes (24): Depth, Expr, args, left, pos, right, text, Function (+16 more)
 
 ### Community 466 - "MUT-21 — packages, imports and lockfile"
 Cohesion: 0.40
@@ -1861,9 +1882,17 @@ Nodes (6): DiagnosticsError, already_active, backend_failure, busy, factory_unav
 Cohesion: 0.33
 Nodes (6): StartStatus, already_started, cleanup_failed, deferred, failed, success
 
-### Community 471 - "Viewport"
-Cohesion: 0.25
-Nodes (7): Viewport, Height, MaxDepth, MinDepth, Width, X, Y
+### Community 471 - "SDL_MouseButtonEvent"
+Cohesion: 0.29
+Nodes (6): SDL_MouseButtonEvent, button, clicks, state, type, windowID
+
+### Community 472 - "unicode_xid.hpp"
+Cohesion: 0.33
+Nodes (4): contains(), Range, first, last
+
+### Community 475 - "Kind"
+Cohesion: 0.29
+Nodes (7): Kind, assign, conditional, declare_let, declare_var, ret, while_loop
 
 ### Community 476 - "string"
 Cohesion: 0.50
@@ -1873,28 +1902,48 @@ Nodes (3): name(), parse_import_spec(), unquote()
 Cohesion: 0.50
 Nodes (3): Mute bytecode and program snapshots, Source-backed compiled-program snapshot `MUTP` v1, Word ISA branch decision and `MUTB` v1
 
+### Community 479 - "Overrides"
+Cohesion: 0.33
+Nodes (5): Overrides, adapter_id, adapter_set, validation, validation_set
+
 ### Community 480 - "Dependency-enabled builds"
 Cohesion: 0.67
 Nodes (3): Dependency-enabled builds, MSVC (PowerShell), MSYS2 MinGW x64
 
+### Community 481 - "operator new"
+Cohesion: 0.47
+Nodes (3): allocate_or_throw(), operator delete(), operator new()
+
+### Community 482 - "Preservation-first R6 prototype"
+Cohesion: 0.40
+Nodes (4): Evidence and limits, Preservation-first R6 prototype, Proposed engine integration — not implemented, Reproduce with Blender 5.2.1
+
+### Community 483 - "Result"
+Cohesion: 0.40
+Nodes (4): Result, error, offset, value
+
+### Community 485 - "TypeKind"
+Cohesion: 0.50
+Nodes (4): TypeKind, generic, named, tuple
+
 ## Knowledge Gaps
-- **1226 isolated node(s):** `name`, `version`, `source`, `name`, `version` (+1221 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 3246 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **123 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **1229 isolated node(s):** `integer`, `boolean`, `string`, `array`, `ok` (+1224 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 3255 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **122 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `transform()` connect `transform` to `array`, `OpenGLClearESRenderer`, `OrbitCamera`?**
-  _High betweenness centrality (0.062) - this node is a cross-community bridge._
-- **What connects `name`, `version`, `source` to the rest of the system?**
-  _1226 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Why does `C++20 Features (Default Practice)` connect `C++20 Features (Default Practice)` to `modern-cpp/SKILL.md`, `Concepts`, `transform`?**
+  _High betweenness centrality (0.064) - this node is a cross-community bridge._
+- **What connects `integer`, `boolean`, `string` to the rest of the system?**
+  _1229 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `json` be split into smaller, more focused modules?**
-  _Cohesion score 0.0579476861167002 - nodes in this community are weakly interconnected._
-- **Why does `Ranges` connect `transform` to `C++20 Features (Default Practice)`?**
-  _High betweenness centrality (0.062) - this node is a cross-community bridge._
+  _Cohesion score 0.06656426011264721 - nodes in this community are weakly interconnected._
+- **Why does `transform()` connect `transform` to `array`, `OpenGLClearESRenderer`, `OrbitCamera`?**
+  _High betweenness centrality (0.064) - this node is a cross-community bridge._
 - **Should `21 — Engine core` be split into smaller, more focused modules?**
-  _Cohesion score 0.11764705882352941 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.044444444444444446 - nodes in this community are weakly interconnected._
 - **Should `12 — App interface (egui and Kotlin)` be split into smaller, more focused modules?**
   _Cohesion score 0.04878048780487805 - nodes in this community are weakly interconnected._
 - **Should `VulkanTrianglePass::Impl` be split into smaller, more focused modules?**
