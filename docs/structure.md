@@ -41,6 +41,11 @@ When directories are added, removed or moved, update this inventory, counts and 
 
 The ENG-01–22 audit snapshot had 134 directories; MUT-01 adds 11 under `mute/`.
 
+## MUT-25 typed SSA IR (2026-11-24)
+
+- `mute/include/poko/mute/ssa.hpp`, `mute/src/semantic/ssa.cpp` and `mute/tests/unit/ssa_test.cpp` contain the IR model, verifier and tests (part of `poko_mute_semantic`).
+- `docs/mut25-progress.md` records scope, verifier rules and evidence.
+
 ## MUT-24 determinism/capability analysis (2026-11-24)
 
 - `mute/include/poko/mute/determinism.hpp`, `mute/src/semantic/determinism.cpp` and `mute/tests/unit/determinism_test.cpp` contain the analysis pass (part of `poko_mute_semantic`) and tests.

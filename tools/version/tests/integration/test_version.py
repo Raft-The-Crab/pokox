@@ -39,6 +39,8 @@ class VersionIntegrationTests(unittest.TestCase):
                              "mute/src/parser/declaration.cpp",
                              "mute/src/semantic/semantic.cpp",
                              "mute/src/semantic/determinism.cpp",
+                             "mute/src/semantic/ssa.cpp",
+                             "mute/include/poko/mute/ssa.hpp",
                              "mute/include/poko/mute/determinism.hpp",
                              "mute/src/package/package.cpp",
                              "mute/include/poko/mute/package.hpp",
