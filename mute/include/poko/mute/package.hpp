@@ -35,7 +35,8 @@ struct ResolvedPackage {
 enum class PackageErrorCode {
   parse_failed, missing_package_decl, missing_version_decl,
   identity_mismatch, duplicate_package, invalid_import_spec,
-  missing_dependency, version_conflict, ambiguous_version, cyclic_import
+  missing_dependency, version_conflict, ambiguous_version, cyclic_import,
+  input_limit
 };
 struct PackageDiagnostic {
   PackageErrorCode code;

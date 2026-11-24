@@ -15,7 +15,7 @@ void cases() {
   auto str=unwrap(s.make_string("hello"),"make_string");
   check(unwrap(s.length(str),"strlen")==5,"string length");
   check(unwrap(s.as_string(str),"as_string")=="hello","string bytes");
-  check(std::holds_alternative<ValueError>(s.get_index(str,0)),"string index wrong kind"); // variant index 1 = error
+  check(std::holds_alternative<ValueError>(s.get_index(str,0)),"string index wrong kind");
   // Array creation, fill, bounds.
   auto arr=unwrap(s.make_array(4,make_int(7)),"make_array");
   check(unwrap(s.length(arr),"arrlen")==4,"array length");
@@ -34,7 +34,7 @@ void cases() {
   auto str2=unwrap(s.get_index(got,1),"inner get");
   check(unwrap(s.as_string(str2),"nested string")=="hello","nested string bytes");
   // Refcounted release: shared child survives one release.
-  s.release(inner); // outer still holds a ref via its items? outer copied `inner` handle with refs++
+  s.release(inner); // outer still holds a ref via its items
   check(s.live_objects()>0,"objects alive");
   // Promotion survives reset_tick.
   auto p=unwrap(s.promote(outer),"promote");
@@ -52,6 +52,23 @@ void cases() {
   // Scalars pass through copy/promote untouched.
   check(unwrap(s.copy(make_int(42)),"copy int").scalar==42,"copy scalar");
   check(unwrap(s.promote(make_bool(true)),"promote bool").scalar==1,"promote scalar");
+  // Heap parent must promote arena children on insert, or reset_tick dangles.
+  {
+    auto hp=unwrap(s.promote(unwrap(s.make_array(1),"heap parent")),"promote parent");
+    auto arena_str=unwrap(s.make_string("tick"),"arena child");
+    check(std::holds_alternative<Value>(s.set_index(hp,0,arena_str)),"set into heap");
+    s.reset_tick();
+    auto back=unwrap(s.get_index(hp,0),"heap child after reset");
+    check(unwrap(s.as_string(back),"promoted child")=="tick","arena child promoted into heap parent");
+  }
+  // Deep nesting is bounded: copy must trap, not overflow the stack.
+  {
+    AggregateStore deep{AggregateStore::Limits{.max_string_bytes=1024,.max_array_length=4,.max_depth=8,.heap_objects=4096,.heap_bytes=1<<22}};
+    Value v=make_int(0);
+    for (int i=0;i<12;++i) { auto n=unwrap(deep.make_array(1,v),"nest"); v=n; }
+    check(std::holds_alternative<ValueError>(deep.copy(v)),"deep copy traps");
+    check(std::holds_alternative<ValueError>(deep.promote(v)),"deep promote traps");
+  }
 }
 } // namespace
 int main() {

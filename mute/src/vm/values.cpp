@@ -12,16 +12,24 @@ AggregateStore::Object* AggregateStore::object(const Value& v) const {
   if (o.handle!=v.handle || o.kind!=v.kind) return nullptr;
   return const_cast<Object*>(&o);
 }
+// Iterative post-order free: an explicit stack avoids recursion overflow on
+// deep or cyclic aggregate graphs.
 void AggregateStore::free_object(std::uint32_t handle) {
-  auto& o=objects_[handle-1];
-  if (o.kind==ValueKind::array) {
-    for (const auto& item:o.items)
-      if (item.kind==ValueKind::string || item.kind==ValueKind::array) {
-        if (auto* child=object(item)) { if (--child->refs==0) free_object(item.handle); }
-      }
+  std::vector<std::uint32_t> stack{handle};
+  while (!stack.empty()) {
+    const auto h=stack.back(); stack.pop_back();
+    auto& o=objects_[h-1];
+    if (o.handle!=h) continue;
+    if (o.kind==ValueKind::array) {
+      for (const auto& item:o.items)
+        if (item.kind==ValueKind::string || item.kind==ValueKind::array) {
+          if (auto* child=object(item))
+            if (--child->refs==0) stack.push_back(item.handle);
+        }
+    }
+    heap_bytes_-=o.bytes; --live_;
+    o=Object{}; o.handle=0;
   }
-  heap_bytes_-=o.bytes; --live_;
-  o=Object{}; o.handle=0;
 }
 std::variant<std::uint32_t,ValueError> AggregateStore::alloc(ValueKind kind,std::size_t bytes) {
   std::uint32_t handle=0;
@@ -70,6 +78,13 @@ std::variant<Value,ValueError> AggregateStore::set_index(const Value& array,std:
   if (slot.kind==ValueKind::string || slot.kind==ValueKind::array) {
     if (auto* old=object(slot)) { if (--old->refs==0) free_object(slot.handle); }
   }
+  // A heap-resident parent must never reference arena children: reset_tick
+  // would free them. Promote the inserted value (and its children) instead.
+  if (!o->arena && (item.kind==ValueKind::string || item.kind==ValueKind::array)) {
+    auto p=promote(item,0);
+    if (const auto* e=std::get_if<ValueError>(&p)) return *e;
+    item=std::get<Value>(p);
+  }
   if (item.kind==ValueKind::string || item.kind==ValueKind::array) {
     if (auto* child=object(const_cast<Value&>(item))) ++child->refs;
   }
@@ -87,18 +102,32 @@ std::variant<std::size_t,ValueError> AggregateStore::length(const Value& v) cons
   return ValueError{ValueErrorCode::wrong_kind};
 }
 std::variant<Value,ValueError> AggregateStore::copy(const Value& v) {
+  return copy_impl(v,0);
+}
+std::variant<Value,ValueError> AggregateStore::copy_impl(const Value& v,std::size_t depth) {
+  if (depth>limits_.max_depth) return ValueError{ValueErrorCode::depth_exceeded};
   if (v.kind==ValueKind::integer || v.kind==ValueKind::boolean) return v;
   const auto* o=object(v); if (!o) return ValueError{ValueErrorCode::invalid_handle};
   if (v.kind==ValueKind::string) return make_string(o->text);
   if (v.kind==ValueKind::array) {
-    auto result=make_array(o->items.size());
-    if (const auto* e=std::get_if<ValueError>(&result)) return *e;
-    auto* dst=object(std::get<Value>(result));
-    dst->items.clear(); dst->items.reserve(o->items.size());
-    for (const auto& item:o->items) {
-      auto c=copy(item); if (const auto* e=std::get_if<ValueError>(&c)) return *e;
-      dst->items.push_back(std::get<Value>(c));
+    // Snapshot items before recursing: child copies allocate and may
+    // reallocate objects_, invalidating any held Object pointer.
+    const std::vector<Value> src(o->items.begin(),o->items.end());
+    std::vector<Value> copied; copied.reserve(src.size());
+    for (const auto& item:src) {
+      auto c=copy_impl(item,depth+1);
+      if (const auto* e=std::get_if<ValueError>(&c)) return *e;
+      copied.push_back(std::get<Value>(c));
     }
+    auto result=make_array(src.size());
+    if (const auto* e=std::get_if<ValueError>(&result)) {
+      for (const auto& item:copied) release(item); // drop completed siblings
+      return *e;
+    }
+    // Fresh object: no allocation between lookup and use. Each copied child
+    // already owns one ref, which the slot now holds.
+    auto* dst=object(std::get<Value>(result));
+    dst->items=std::move(copied);
     return std::get<Value>(result);
   }
   return ValueError{ValueErrorCode::wrong_kind};
@@ -110,6 +139,15 @@ void AggregateStore::release(const Value& v) {
 }
 void AggregateStore::reset_tick() {
   for (auto& o:objects_) if (o.handle!=0 && o.arena) {
+    // Release this arena object's references to heap children so they can
+    // die; arena children are reclaimed wholesale below.
+    if (o.kind==ValueKind::array) {
+      for (const auto& item:o.items)
+        if (item.kind==ValueKind::string || item.kind==ValueKind::array) {
+          if (auto* child=object(item); child && !child->arena)
+            if (--child->refs==0) free_object(item.handle);
+        }
+    }
     heap_bytes_-=o.bytes; --live_; o=Object{}; o.handle=0;
   }
   arena_bytes_=0;

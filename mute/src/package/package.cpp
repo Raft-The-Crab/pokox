@@ -50,6 +50,12 @@ bool parse_import_spec(std::string_view spec, std::string& name, std::string& ve
 
 PackageResult resolve_packages(std::span<const PackageInput> inputs) {
   PackageResult result;
+  // Bound the graph so DFS recursion and diagnostic volume stay finite.
+  constexpr std::size_t max_inputs=4096;
+  if (inputs.size()>max_inputs) {
+    result.diagnostics.push_back({PackageErrorCode::input_limit,{},std::to_string(inputs.size())});
+    return result;
+  }
   std::vector<ModuleInfo> modules;
   modules.reserve(inputs.size());
 
@@ -229,7 +235,7 @@ std::string_view name(PackageErrorCode code) {
   constexpr auto names=std::to_array<std::string_view>({
     "parse_failed","missing_package_decl","missing_version_decl",
     "identity_mismatch","duplicate_package","invalid_import_spec",
-    "missing_dependency","version_conflict","ambiguous_version","cyclic_import"});
+    "missing_dependency","version_conflict","ambiguous_version","cyclic_import","input_limit"});
   return names.at(static_cast<std::size_t>(code));
 }
 } // namespace poko::mute

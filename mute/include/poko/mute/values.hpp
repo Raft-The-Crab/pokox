@@ -80,6 +80,7 @@ class AggregateStore {
   };
   [[nodiscard]] std::variant<std::uint32_t,ValueError> alloc(ValueKind kind, std::size_t bytes);
   [[nodiscard]] Object* object(const Value& v) const;
+  [[nodiscard]] std::variant<Value,ValueError> copy_impl(const Value& v, std::size_t depth);
   void free_object(std::uint32_t handle);
   Limits limits_;
   std::vector<Object> objects_;
