@@ -7,7 +7,7 @@ Nine phases in dependency order. Each phase has an exit gate. A failed gate stop
 | Phase | Name | Contents | Exit gate |
 |---|---|---|---|
 | 0 | Contracts | Schemas, repos, CI, quota budget, conformance harnesses | All schemas versioned; CI green on empty project |
-| 1 | Deterministic core | IPlatform, SDL3, Vulkan RHI, frame graph, Mute VM, deterministic math, fixed-point sim physics | **G1/G2**: identical state hashes on Windows x64, Android arm64, Linux x64 |
+| 1 | Deterministic core | IPlatform, SDL3, Vulkan RHI, frame graph, Mute VM, deterministic math, fixed-point sim physics | **G1/G2**: identical traces on Windows x64 and physical Android arm64 (owner decision 2026-11-25; Linux is build/CI only) |
 | 2 | Trust primitives | `.pkB`, rule evaluator, BitBuffer, frame/HMAC/seq, UDP + uWS, Firebase, TOFU | **G3/G4/G5**: invalid state rejected, replay dropped, new device needs step-up |
 | 3 | Authoring | Studio shell, Mute debugger, UI maker, asset importer, KTX2/Basis | **G6/G7**: bindings compile-validated; KTX2 parity on Vulkan + GL/ES |
 | 4 | Delivery | Client shell, patcher, cache, offline, handshake, Android lifecycle, localization basics | **G8/G9**: chunk integrity and resume; offline grants nothing |
@@ -36,8 +36,8 @@ Phases 3 and 4 may overlap after Phase 2. Phases 6 and 7 may overlap after Phase
 
 | Gate | Test | Consequence |
 |---|---|---|
-| G1 | 10,000-tick log produces identical state hashes on three platforms | Stop all development until fixed |
-| G2 | Sim physics deterministic across x64 and arm64 | No Slice B until fixed |
+| G1 | 10,000-tick log produces byte-identical traces on Windows x64 and physical Android arm64 | Stop all development until fixed |
+| G2 | Sim physics deterministic across Windows x64 and physical Android arm64 | No Slice B until fixed |
 | G3 | Crafted invalid state always rejected | No network layer above it |
 | G4 | Replayed packet always dropped | No game plane |
 | G5 | New device cannot reach Device trust without step-up | No economy |

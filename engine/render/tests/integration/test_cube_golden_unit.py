@@ -65,18 +65,19 @@ class GoldenEncoderTests(unittest.TestCase):
             reference = Path(directory) / 'reference.png'
             reference.write_bytes(b'unchanged')
             paths = [reference]
+            skipped_links = []
             link = Path(directory) / 'actual.png'
             try:
                 link.symlink_to(reference)
                 paths.append(link)
             except OSError:  # Windows may not grant symlink creation privilege.
-                pass
+                skipped_links.append('symlink')
             hardlink = Path(directory) / 'hardlink.png'
             try:
                 os.link(reference, hardlink)
                 paths.append(hardlink)
             except (OSError, NotImplementedError):
-                pass
+                skipped_links.append('hardlink')
             for actual in paths:
                 result = subprocess.run([sys.executable, str(script), '--exe', 'missing',
                                          '--golden', str(reference), '--actual', str(actual)],
@@ -84,6 +85,8 @@ class GoldenEncoderTests(unittest.TestCase):
                 self.assertEqual(result.returncode, 2)
                 self.assertIn('actual must not', result.stderr)
                 self.assertEqual(reference.read_bytes(), b'unchanged')
+            if skipped_links:
+                print('SKIP: cube-golden link guards: ' + ', '.join(skipped_links), flush=True)
 
     def test_capture_cannot_replace_shipped_reference(self):
         script = Path(__file__).with_name('cube_golden.py')

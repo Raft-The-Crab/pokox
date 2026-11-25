@@ -1152,3 +1152,88 @@ xvfb-run -a -s '-screen 0 1280x800x24 -nolisten tcp' \
 ## Remaining
 
 First verify the hosted CI job and resolve any reproducibility or dependency failures without weakening the comparison. Then complete the existing ENG-15/17 fixes and target-device, OpenGL, Windows/MSVC, Android and infrastructure acceptance gates. ENG-22 is not accepted until CI actually compares the golden successfully.
+
+---
+
+## eng30-progress
+
+# ENG-30 — main loop with fixed accumulator and spiral guard (2026-11-25)
+
+## Implemented
+
+- `poko/foundation/loop.hpp` + `engine/foundation/src/loop.cpp` (`poko_loop`,
+  dependency-free): `FixedStepLoop` feeds one presented frame delta to
+  `advance()` and returns how many 20 Hz sim steps to execute now. `alpha()`
+  supplies the render interpolation weight; `backlog_seconds()`,
+  `total_steps()`, `frames()` and `clamped_last_frame()` expose loop state.
+  `reset_backlog()` drops debt after focus loss/minimize/debugger break.
+- Spiral guard: per-frame delta is clamped to 0.25 s, at most 5 sim steps run
+  per frame, and any debt beyond one step after a capped frame is discarded.
+  Repeated 5 s stalls therefore run exactly 5 steps each frame with bounded
+  backlog — no catch-up spiral. Invalid or non-finite deltas pause the loop;
+  absurd limits pause instead of overflowing.
+- Accumulation is on integer nanoseconds internally, so long runs cannot
+  drift the way repeated floating-point addition does. Identical delta
+  sequences produce identical step counts, backlog and alpha — MUT-38 input
+  snapshots can drive the same clock for replay.
+
+## Verified
+
+- `pokox_loop_test` (`engine/foundation/tests/unit/loop_test.cpp`):
+  20 Hz default and 60 Hz sim rates, 60 Hz variable render over 3 s (one step
+  per 50 ms accumulated tick), 0.2 s catch-up (4 steps), 5 s stall clamp (5
+  steps, debt discarded), repeated-stall bound, backlog reset, invalid delta
+  and limit handling, alpha bounds, determinism, and two 10,000-frame drift
+  runs (0.1 s → exactly 20,000 steps; 0.049 s → exactly 9,800).
+- Full Debug MSVC `ctest`: **89/89**, including `version_integration`.
+  `pokox_loop_test` under ASan: **1/1**, no sanitizer errors.
+
+## Defect fixed
+
+- `tools/version/tests/integration/test_version.py` copies a hard-coded file
+  set into a temp source tree, which had fallen behind the real CMakeLists:
+  `fold.cpp`, `optimize.cpp`, `vm_core.cpp`, `debugger.cpp`, `hostcall.cpp`
+  and their headers were missing, so the minimal `pokox` configure failed.
+  Added those plus ENG-30's `loop.cpp`/`loop.hpp`. This is the MUT-15
+  hard-coded-source-list failure mode recurring; full ctest is green again.
+
+## Remaining
+
+- The clock is a standalone component; existing demos still use their own
+  ad-hoc frame loops. Wiring the engine-owned loop into a demo/sim driver
+  belongs with ENG-31 (jobs) and ENG-33 (ECS), when there is a real sim to
+  step. Formal MUT-38 still needs ENG-02 target-platform acceptance; this
+  milestone does not accept any gate.
+
+# ENG-02 — target-platform window evidence (2026-11-25)
+
+## Implemented and verified
+
+- Windows 11 x64: `sdl_platform.cpp` and the real SDL integration test were
+  compiled with MSVC against the vendored SDL3 3.4.20 headers/DLL (an MSVC
+  import library was generated from the DLL exports in
+  `artifacts/sdl-msvc/`). Running with the real `windows` video driver passed
+  create, resize, close translation, quit, teardown, repeat-init and
+  destructor-only cleanup.
+- Physical Android arm64 (`24117RN76G`, Android 16/API 36): the NativeActivity
+  GLES/Vulkan window probe was rebuilt and installed after uninstalling the
+  old app. It presented 120/120 frames on the real surface at both
+  `1080x2400` and `720x1600`; display size was restored afterward. The
+  activity finishes after presenting, covering teardown.
+- Repairs exposed by this evidence: `FixedStepLoop` now uses separate default
+  and explicit constructors so NDK libc++ accepts the header; `build_apk.sh`
+  builds from a stable cwd, signs with `java -jar apksigner.jar`, and links
+  `vulkan_clear_android.cpp` plus `-lvulkan`; the native activity picks up an
+  already-published `ANativeWindow` and uses a small looper timeout.
+- Full two-target G1/ENG-02 evidence is in
+  `docs/two-target-gate-evidence-2026-11-25.md`. G1 was accepted; G2 remains
+  deferred to ENG-60→63.
+
+## Limitations
+
+- Live Android rotation/resize is not exercised here; it remains ENG-05 work.
+  This evidence covers window creation, presentation at two sizes and
+  teardown on the real device.
+- The MSVC SDL3 link uses an import library generated from the vendored
+  MinGW SDL3 DLL, not an MSVC vcpkg SDL3 package. The ABI surface exercised is
+  the SDL3 C API used by `SdlPlatform`.

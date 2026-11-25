@@ -1,4 +1,7 @@
 #include "poko/mute/lower.hpp"
+#include "poko/mute/determinism.hpp"
+#include "poko/mute/hostcall.hpp"
+#include <array>
 #include <map>
 #include <set>
 namespace poko::mute {
@@ -8,6 +11,54 @@ Type boolt() { return {TypeTag::scalar,"bool",{}}; }
 Type unit_t() { return {TypeTag::unit,"",{}}; }
 IrOperand v(std::uint32_t id) { return {id,0}; }
 IrOperand pv(std::uint32_t id,std::uint64_t imm) { return {id,imm}; }
+
+// TypeNode -> Type, mirroring semantic.cpp's conversion. Aggregate names the
+// VM cannot represent become unknown (verify treats unknown as compatible).
+Type convert_type(const DeclarationAst& ast,std::size_t index) {
+  const auto& types=ast.types();
+  if (index>=types.size()) return unit_t();
+  const auto& node=types[index];
+  if (node.kind==TypeKind::tuple) {
+    Type t{TypeTag::tuple,"",{}};
+    for (const auto arg:node.args) t.args.push_back(convert_type(ast,arg));
+    return t;
+  }
+  if (node.kind==TypeKind::generic) {
+    Type t;
+    t.tag = node.spelling=="array"?TypeTag::array : node.spelling=="option"?TypeTag::option :
+            node.spelling=="map"?TypeTag::map : node.spelling=="result"?TypeTag::result :
+            TypeTag::unknown;
+    t.name=node.spelling;
+    for (const auto arg:node.args) t.args.push_back(convert_type(ast,arg));
+    return t;
+  }
+  if (node.spelling=="Unit" || node.spelling=="unit") return unit_t();
+  if (node.spelling=="Never" || node.spelling=="never") return {TypeTag::never,"Never",{}};
+  constexpr auto scalars=std::to_array<std::string_view>({
+    "bool","i8","i16","i32","i64","u8","u16","u32","u64","f32","f64","string"});
+  for (const auto s:scalars) if (node.spelling==s) return {TypeTag::scalar,node.spelling,{}};
+  return {TypeTag::unknown,node.spelling,{}};
+}
+// `@requires(Net, Time)` -> mask. Unknown names contribute no bits, matching
+// program_capability_mask's allow: handling (the safe direction: narrower).
+std::uint32_t requires_mask(std::string_view spelling) {
+  const auto open=spelling.find('(');
+  if (open==std::string_view::npos) return 0;
+  const auto close=spelling.rfind(')');
+  if (close==std::string_view::npos || close<open) return 0;
+  std::uint32_t mask=0;
+  auto list=spelling.substr(open+1,close-open-1);
+  while (!list.empty()) {
+    const auto comma=list.find(',');
+    auto item=list.substr(0,comma);
+    while (!item.empty() && (item.front()==' '||item.front()=='\t')) item.remove_prefix(1);
+    while (!item.empty() && (item.back()==' '||item.back()=='\t')) item.remove_suffix(1);
+    mask |= capability_from_name(item);
+    if (comma==std::string_view::npos) break;
+    list.remove_prefix(comma+1);
+  }
+  return mask;
+}
 
 std::uint8_t bin_detail(ExprOp op) {
   switch (op) {
@@ -37,14 +88,20 @@ using Env = std::map<std::string,Val>;
 
 class Lowerer {
  public:
-  Lowerer(const StatementAst& body,const Type& result,std::span<const LowerParam> params)
-      : body_(body),result_(result) {
-    fn_.name="f"; fn_.result=result;
+  Lowerer(const StatementAst& body,const Type& result,std::span<const LowerParam> params,
+          std::span<const LowerSignature> sigs,std::uint32_t capabilities)
+      : body_(body),result_(result),sigs_(sigs) {
+    fn_.name="f"; fn_.result=result; fn_.capabilities=capabilities;
     for (const auto& p:params) {
       env_[p.name]={static_cast<std::uint32_t>(fn_.params.size()+1),p.type};
       fn_.params.push_back(p.type);
     }
+    for (std::size_t i=0;i<sigs_.size();++i)
+      sig_index_.emplace(sigs_[i].name,i);
     fn_.blocks.push_back(IrBlock{"entry"});
+    used_labels_.insert("entry");
+    // Params occupy ids 1..N; generated defs must not collide with them.
+    next_id_=static_cast<std::uint32_t>(params.size());
   }
   LowerResult run() {
     if (body_.root()<body_.nodes().size()) stmt(body_.root());
@@ -52,18 +109,28 @@ class Lowerer {
     return {std::move(fn_),std::move(diags_)};
   }
  private:
-  void diag(IrErrorCode c,std::string d,std::size_t b=0) { diags_.push_back({c,std::move(d),0,b}); }
+  void diag(IrErrorCode c,std::string d,std::size_t b=0) { diags_.push_back({c,std::move(d),0,b,pos_}); }
   IrBlock& blk() { return fn_.blocks[cur_]; }
   bool terminated() const { const auto& b=fn_.blocks[cur_]; return !b.instrs.empty() && is_term(b.instrs.back().op); }
   static bool is_term(IrOp op) { return op==IrOp::jump||op==IrOp::branch||op==IrOp::return_; }
-  std::size_t new_block(std::string label) { fn_.blocks.push_back(IrBlock{std::move(label)}); return fn_.blocks.size()-1; }
+  // Block labels must be unique for verify(); nested control flow reuses
+  // the same base names, so collisions get a deterministic .N suffix.
+  std::size_t new_block(std::string label) {
+    if (!used_labels_.insert(label).second) {
+      for (std::size_t n=1;;++n) {
+        auto cand=label+"."+std::to_string(n);
+        if (used_labels_.insert(cand).second) { label=std::move(cand); break; }
+      }
+    }
+    fn_.blocks.push_back(IrBlock{std::move(label)}); return fn_.blocks.size()-1;
+  }
   std::uint32_t emit(IrInstr in) {
-    if (in.def==0) in.def=++next_id_;
+    if (in.pos.line==0) in.pos=pos_; if (in.def==0) in.def=++next_id_;
     blk().instrs.push_back(std::move(in)); return in.def;
   }
-  void term(IrInstr in) { blk().instrs.push_back(std::move(in)); }
+  void term(IrInstr in) { if (in.pos.line==0) in.pos=pos_; blk().instrs.push_back(std::move(in)); }
   std::uint32_t emit_into(std::size_t block,IrInstr in) {
-    if (in.def==0) in.def=++next_id_;
+    if (in.pos.line==0) in.pos=pos_; if (in.def==0) in.def=++next_id_;
     fn_.blocks[block].instrs.push_back(std::move(in)); return in.def;
   }
   void jump_to(std::size_t target) {
@@ -97,7 +164,7 @@ class Lowerer {
   }
   Val eval_node(const Ast& ast,std::size_t ni) {
     if (ni>=ast.nodes().size()) { diag(IrErrorCode::undefined_value,"bad expr node"); return {0,unit_t()}; }
-    const auto& n=ast.nodes()[ni];
+    const auto& n=ast.nodes()[ni]; pos_=n.begin;
     switch (n.kind) {
       case ExprKind::integer: {
         std::int64_t x=0; try { x=std::stoll(n.spelling); } catch (...) { x=0; }
@@ -120,11 +187,11 @@ class Lowerer {
       case ExprKind::unary: {
         auto a=eval_node(ast,n.left);
         if (n.op==ExprOp::neg || n.op==ExprOp::pos) {
-          IrInstr u; u.op=IrOp::unary; u.detail=0; u.result=a.type; u.args={v(a.id)};
+          IrInstr u; u.op=IrOp::unary; u.detail=0; u.result=a.type; u.args={v(a.id)}; u.pos=n.begin;
           return {emit(std::move(u)),a.type};
         }
         if (n.op==ExprOp::not_op) {
-          IrInstr u; u.op=IrOp::compare; u.detail=1; u.result=boolt(); u.args={v(a.id),v(0)};
+          IrInstr u; u.op=IrOp::compare; u.detail=1; u.result=boolt(); u.args={v(a.id),v(0)}; u.pos=n.begin;
           return {emit(std::move(u)),boolt()};
         }
         diag(IrErrorCode::bad_operand_count,"unsupported unary"); return {0,i32t()};
@@ -157,11 +224,36 @@ class Lowerer {
           return {id,boolt()};
         }
         auto l=eval_node(ast,n.left), r=eval_node(ast,n.right);
-        IrInstr in;
+        IrInstr in; in.pos=n.begin;
         if (is_arith(n.op)) { in.op=IrOp::binary; in.detail=bin_detail(n.op); in.result=i32t(); }
         else if (is_cmp(n.op)) { in.op=IrOp::compare; in.detail=cmp_detail(n.op); in.result=boolt(); }
         else { diag(IrErrorCode::bad_operand_count,"unsupported binary"); return {0,i32t()}; }
-        in.args={v(l.id),v(r.id)}; return {emit(std::move(in)),in.result};
+        in.args={v(l.id),v(r.id)}; const Type rty=in.result; return {emit(std::move(in)),rty};
+      }
+      case ExprKind::call: {
+        if (n.left>=ast.nodes().size() || ast.nodes()[n.left].kind!=ExprKind::identifier) {
+          diag(IrErrorCode::type_mismatch,"call target must be a function name");
+          return {0,i32t()};
+        }
+        const auto& target=ast.nodes()[n.left];
+        const auto it=sig_index_.find(target.spelling);
+        if (it==sig_index_.end()) {
+          diag(IrErrorCode::undefined_value,"unknown function "+target.spelling,n.left);
+          return {0,i32t()};
+        }
+        const auto& sig=sigs_[it->second];
+        if (n.children.size()!=sig.params.size()) {
+          diag(IrErrorCode::bad_operand_count,
+               "call arity "+std::to_string(n.children.size())+" vs "+std::to_string(sig.params.size()));
+          return {0,sig.result};
+        }
+        IrInstr call; call.op=IrOp::call; call.pos=n.begin;
+        call.callee=static_cast<std::uint32_t>(it->second+1); call.result=sig.result;
+        for (const auto c:n.children) {
+          const auto arg=eval_node(ast,c);
+          call.args.push_back(v(arg.id));
+        }
+        return {emit(std::move(call)),sig.result};
       }
       default:
         diag(IrErrorCode::type_mismatch,"unsupported expression kind");
@@ -170,7 +262,7 @@ class Lowerer {
   }
   void stmt(std::size_t si) {
     if (si>=body_.nodes().size() || terminated()) return;
-    const auto& n=body_.nodes()[si];
+    const auto& n=body_.nodes()[si]; pos_=n.begin;
     switch (n.kind) {
       case StatementKind::block:
         for (const auto c:n.children) stmt(c);
@@ -199,7 +291,7 @@ class Lowerer {
                 ExprOp::remainder;
               IrInstr in; in.op=IrOp::binary; in.detail=bin_detail(bop);
               in.result=it->second.type; in.args={v(it->second.id),v(rhs.id)};
-              env_[name]={emit(std::move(in)),in.result};
+              const Type aty=in.result; env_[name]={emit(std::move(in)),aty};
               break;
             }
           }
@@ -269,7 +361,7 @@ class Lowerer {
             phi.args.push_back(pv(id,static_cast<std::uint64_t>(p+1)));
           }
           phi.def=0; const auto id=emit(std::move(phi));
-          env_[name]={id,phi.result};
+          env_[name]={id,name_ty}; // phi.result is moved-from after emit()
         }
         break;
       }
@@ -416,14 +508,78 @@ class Lowerer {
   std::uint32_t next_id_{0};
   std::vector<std::pair<std::size_t,std::size_t>> loop_stack_;
   std::vector<IrDiagnostic> diags_;
+  std::set<std::string> used_labels_;
+  Position pos_{};
+  std::span<const LowerSignature> sigs_;
+  std::map<std::string,std::size_t> sig_index_;
 };
 } // namespace
 
-LowerResult lower_function(const StatementAst& body,std::string_view name,const Type& result,std::span<const LowerParam> params) {
-  Lowerer l(body,result,params);
+LowerResult lower_function(const StatementAst& body,std::string_view name,const Type& result,
+                           std::span<const LowerParam> params) {
+  return lower_function_ex(body,name,result,params,{});
+}
+
+LowerResult lower_function_ex(const StatementAst& body,std::string_view name,const Type& result,
+                              std::span<const LowerParam> params,
+                              std::span<const LowerSignature> sigs,
+                              std::uint32_t capabilities) {
+  Lowerer l(body,result,params,sigs,capabilities);
   // params must be bound before run; Lowerer ctor already did env_/params.
   auto r=l.run(); r.fn.name=std::string(name);
   // Append implicit return for any unterminated tail already handled in run().
   return r;
+}
+
+LowerModuleResult lower_module(const DeclarationAst& ast) {
+  LowerModuleResult out;
+  const auto& nodes=ast.nodes();
+  const auto ceiling=program_capability_mask(ast);
+  std::vector<LowerSignature> sigs;
+  std::vector<std::size_t> decls;
+  for (std::size_t i=0;i<nodes.size();++i) {
+    const auto& n=nodes[i];
+    if (n.kind!=DeclarationKind::fn_decl) continue;
+    LowerSignature sig;
+    sig.name=n.spelling;
+    sig.result=n.type==no_declaration?unit_t():convert_type(ast,n.type);
+    bool narrowed=false;
+    std::uint32_t required=0;
+    for (const auto child:n.children) {
+      if (child>=nodes.size()) continue;
+      const auto& c=nodes[child];
+      if (c.kind==DeclarationKind::attribute) {
+        if (c.spelling.rfind("@requires",0)==0) {
+          narrowed=true; required|=requires_mask(c.spelling);
+        }
+      } else if (c.kind==DeclarationKind::param) {
+        sig.params.push_back(c.type==no_declaration?unit_t():convert_type(ast,c.type));
+      }
+    }
+    if (narrowed) sig.capabilities=ceiling&required;
+    sigs.push_back(std::move(sig));
+    decls.push_back(i);
+  }
+  for (std::size_t fi=0;fi<decls.size();++fi) {
+    const auto& n=nodes[decls[fi]];
+    const auto& sig=sigs[fi];
+    std::vector<LowerParam> params;
+    for (const auto child:n.children) {
+      if (child>=nodes.size() || nodes[child].kind!=DeclarationKind::param) continue;
+      const auto& p=nodes[child];
+      params.push_back({p.spelling,p.type==no_declaration?unit_t():convert_type(ast,p.type)});
+    }
+    if (n.body>=ast.bodies().size()) {
+      out.diagnostics.push_back({IrErrorCode::missing_entry,"missing body",fi,0,n.begin});
+      out.module.functions.push_back(IrFunction{sig.name,sig.result,sig.params,sig.capabilities,{}});
+      continue;
+    }
+    auto lr=lower_function_ex(ast.bodies()[n.body],sig.name,sig.result,params,sigs,sig.capabilities);
+    for (auto& d:lr.diagnostics) { d.function=fi; out.diagnostics.push_back(std::move(d)); }
+    // Keep one IR function per signature entry even on diagnostics: callee
+    // indices are part of the module contract and must stay aligned.
+    out.module.functions.push_back(std::move(lr.fn));
+  }
+  return out;
 }
 } // namespace poko::mute

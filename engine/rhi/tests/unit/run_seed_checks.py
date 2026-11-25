@@ -2,6 +2,7 @@
 from pathlib import Path
 import argparse
 import os
+import shutil
 import subprocess
 import tempfile
 
@@ -10,6 +11,9 @@ parser.add_argument('--cxx', default='c++')
 parser.add_argument('--sanitize', action='store_true')
 parser.add_argument('--mutations', action='store_true')
 args = parser.parse_args()
+if shutil.which(args.cxx) is None:
+    print(f'SKIP: GCC/Clang-compatible compiler not found: {args.cxx}', flush=True)
+    raise SystemExit(0)
 root = Path(__file__).resolve().parents[4]
 source = root / 'engine/rhi/src/device/vulkan_clear_renderer.cpp'
 platform_source = root / 'engine/platform/src/window/sdl_platform.cpp'

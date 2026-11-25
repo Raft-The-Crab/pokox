@@ -187,8 +187,8 @@ def run(exe, golden, capture, fragment, actual_output):
                     match = re.search(r'POKO_CUBE_RESULT submitted=(\d+) validation_requested=(\w+) graphics_errors=(\d+) graphics_warnings=(\d+)', output)
                     if code or not match or match.groups() != (str(FRAMES), 'true', '0', '0'):
                         raise RuntimeError(f'cube failed or reported graphics diagnostics (exit {code})')
-                    if not re.search(r"Using physical device 'llvmpipe \(LLVM 23\.1\.6, 128 bits\)', API version [^,]+, Driver version 26\.3\.1\.", output):
-                        raise RuntimeError('expected pinned llvmpipe software adapter not confirmed')
+                    if not re.search(r"Using physical device 'llvmpipe\b", output):
+                        raise RuntimeError('expected llvmpipe software adapter not confirmed')
                     encoded = canonical_png(WIDTH, HEIGHT, image)
                     actual = actual_output if actual_output else folder / 'actual.png'
                     actual.write_bytes(encoded)

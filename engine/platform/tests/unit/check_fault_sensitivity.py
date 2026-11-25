@@ -1,8 +1,11 @@
 from pathlib import Path
-import subprocess, json, argparse, tempfile
+import subprocess, json, argparse, shutil, tempfile
 parser = argparse.ArgumentParser(description='Optional GCC/Clang/MinGW sensitivity check; not real SDL validation.')
 parser.add_argument('--cxx', default='c++', help='GCC/Clang-compatible C++ compiler executable')
 args = parser.parse_args()
+if shutil.which(args.cxx) is None:
+    print(f'SKIP: GCC/Clang-compatible compiler not found: {args.cxx}', flush=True)
+    raise SystemExit(0)
 r = Path(__file__).resolve().parents[4]
 workspace = tempfile.TemporaryDirectory(prefix='poko-platform-mutations-')
 work = Path(workspace.name)

@@ -1,0 +1,4 @@
+# MUT-55 sample project. Local sources only; no registry or fetch.
+name = "sample"
+version = "V1?"
+sources = ["app.mute", "dep.mute"]

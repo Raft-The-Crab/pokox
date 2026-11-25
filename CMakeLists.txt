@@ -145,17 +145,79 @@ else()
   target_compile_options(poko_mute_math PRIVATE -fno-fast-math -ffp-contract=off)
 endif()
 
+# MUT-51: deterministic stdlib math, seeded RNG and tick-only time API.
+add_library(poko_mute_stdlib_math STATIC mute/src/stdlib/stdlib_math.cpp)
+target_include_directories(poko_mute_stdlib_math PUBLIC mute/include)
+target_link_libraries(poko_mute_stdlib_math PUBLIC poko_mute_math)
+target_compile_features(poko_mute_stdlib_math PUBLIC cxx_std_20)
+set_target_properties(poko_mute_stdlib_math PROPERTIES CXX_EXTENSIONS OFF)
+if(MSVC)
+  target_compile_options(poko_mute_stdlib_math PRIVATE /fp:strict)
+else()
+  target_compile_options(poko_mute_stdlib_math PRIVATE -fno-fast-math -ffp-contract=off)
+endif()
+
+# MUT-52: deterministic string and bounded ordered collection operations.
+add_library(poko_mute_stdlib_collections STATIC
+  mute/src/stdlib/stdlib_string.cpp
+  mute/src/stdlib/stdlib_collections.cpp)
+target_include_directories(poko_mute_stdlib_collections PUBLIC mute/include)
+target_compile_features(poko_mute_stdlib_collections PUBLIC cxx_std_20)
+set_target_properties(poko_mute_stdlib_collections PROPERTIES CXX_EXTENSIONS OFF)
+
+# MUT-53: fixed crypto implementations and capability descriptors.
+add_library(poko_mute_stdlib_crypto STATIC mute/src/stdlib/stdlib_crypto.cpp)
+target_include_directories(poko_mute_stdlib_crypto PUBLIC mute/include)
+target_link_libraries(poko_mute_stdlib_crypto PUBLIC poko_mute_program)
+target_compile_features(poko_mute_stdlib_crypto PUBLIC cxx_std_20)
+set_target_properties(poko_mute_stdlib_crypto PROPERTIES CXX_EXTENSIONS OFF)
+
+# MUT-54: tick-tagged lifecycle and game event dispatch.
+add_library(poko_mute_events STATIC mute/src/stdlib/events.cpp)
+target_include_directories(poko_mute_events PUBLIC mute/include)
+target_compile_features(poko_mute_events PUBLIC cxx_std_20)
+set_target_properties(poko_mute_events PROPERTIES CXX_EXTENSIONS OFF)
+
+# MUT-55: local package build tool and v1 sample project validation.
+add_library(poko_mute_build_tool STATIC mute/src/package/build_tool.cpp)
+target_include_directories(poko_mute_build_tool PUBLIC mute/include)
+target_link_libraries(poko_mute_build_tool PUBLIC poko_mute_package)
+target_compile_features(poko_mute_build_tool PUBLIC cxx_std_20)
+set_target_properties(poko_mute_build_tool PROPERTIES CXX_EXTENSIONS OFF)
+add_executable(poko_mute_build mute/tools/mute_build.cpp)
+target_link_libraries(poko_mute_build PRIVATE poko_mute_build_tool)
+target_compile_features(poko_mute_build PRIVATE cxx_std_20)
+
 # MUT-06: bounded initial functions and locals interpreter.
 add_library(poko_mute_program STATIC
   mute/src/program/program.cpp
   mute/src/bytecode/bytecode.cpp
   mute/src/vm/register_vm.cpp
+  mute/src/vm/vm_core.cpp
+  mute/src/vm/debugger.cpp
+  mute/src/vm/hostcall.cpp
   mute/src/state/state.cpp
   mute/src/state/state_snapshot.cpp
   mute/src/pkb/pkb_draft.cpp)
 target_link_libraries(poko_mute_program PUBLIC poko_mute_evaluator)
 target_compile_features(poko_mute_program PUBLIC cxx_std_20)
 set_target_properties(poko_mute_program PROPERTIES CXX_EXTENSIONS OFF)
+
+# MUT-38: tick-tagged input recording/replay and deterministic tick snapshots.
+add_library(poko_mute_input STATIC
+  mute/src/input/input_snapshot.cpp
+  mute/src/input/device_router.cpp)
+target_include_directories(poko_mute_input PUBLIC mute/include)
+target_link_libraries(poko_mute_input PUBLIC poko_mute_program)
+target_compile_features(poko_mute_input PUBLIC cxx_std_20)
+set_target_properties(poko_mute_input PROPERTIES CXX_EXTENSIONS OFF)
+
+# MUT-39: named actions and rebindable bindings over the input timeline.
+add_library(poko_mute_action STATIC mute/src/input/action_map.cpp)
+target_include_directories(poko_mute_action PUBLIC mute/include)
+target_link_libraries(poko_mute_action PUBLIC poko_mute_input)
+target_compile_features(poko_mute_action PUBLIC cxx_std_20)
+set_target_properties(poko_mute_action PROPERTIES CXX_EXTENSIONS OFF)
 
 add_library(poko_mute_values STATIC mute/src/vm/values.cpp)
 target_include_directories(poko_mute_values PUBLIC mute/include)
@@ -186,6 +248,13 @@ add_library(poko_stats STATIC engine/foundation/src/frame_stats.cpp)
 target_include_directories(poko_stats PUBLIC engine/foundation/include)
 target_compile_features(poko_stats PUBLIC cxx_std_20)
 set_target_properties(poko_stats PROPERTIES CXX_EXTENSIONS OFF)
+
+# Dependency-free fixed-step main-loop clock (ENG-30): 20 Hz sim
+# accumulator, variable-rate render alpha, spiral-guard clamp.
+add_library(poko_loop STATIC engine/foundation/src/loop.cpp)
+target_include_directories(poko_loop PUBLIC engine/foundation/include)
+target_compile_features(poko_loop PUBLIC cxx_std_20)
+set_target_properties(poko_loop PROPERTIES CXX_EXTENSIONS OFF)
 
 # Dependency-free CBOR decoder and typed engine config loader (ENG-14).
 add_library(poko_config STATIC engine/foundation/src/cbor.cpp engine/foundation/src/config.cpp)
@@ -353,6 +422,12 @@ if(BUILD_TESTING)
   set_target_properties(pokox_frame_stats_test PROPERTIES CXX_EXTENSIONS OFF)
   add_test(NAME pokox_frame_stats_test COMMAND pokox_frame_stats_test)
   set_tests_properties(pokox_frame_stats_test PROPERTIES TIMEOUT 15)
+
+  add_executable(pokox_loop_test engine/foundation/tests/unit/loop_test.cpp)
+  target_link_libraries(pokox_loop_test PRIVATE poko_loop)
+  set_target_properties(pokox_loop_test PROPERTIES CXX_EXTENSIONS OFF)
+  add_test(NAME pokox_loop_test COMMAND pokox_loop_test)
+  set_tests_properties(pokox_loop_test PROPERTIES TIMEOUT 15)
   add_executable(pokox_asset_allocation_test engine/resource/tests/unit/asset_allocation_test.cpp)
   target_link_libraries(pokox_asset_allocation_test PRIVATE poko_resource)
   set_target_properties(pokox_asset_allocation_test PROPERTIES CXX_EXTENSIONS OFF)
@@ -494,6 +569,24 @@ if(BUILD_TESTING)
   add_executable(poko_mute_math_test mute/tests/unit/deterministic_math_test.cpp)
   target_link_libraries(poko_mute_math_test PRIVATE poko_mute_math)
   add_test(NAME mute_math_unit COMMAND poko_mute_math_test)
+  add_executable(poko_mute_stdlib_math_test mute/tests/unit/stdlib_math_test.cpp)
+  target_link_libraries(poko_mute_stdlib_math_test PRIVATE poko_mute_stdlib_math)
+  add_test(NAME mute_stdlib_math_unit COMMAND poko_mute_stdlib_math_test)
+  add_executable(poko_mute_stdlib_collections_test mute/tests/unit/stdlib_collections_test.cpp)
+  target_link_libraries(poko_mute_stdlib_collections_test PRIVATE poko_mute_stdlib_collections)
+  add_test(NAME mute_stdlib_collections_unit COMMAND poko_mute_stdlib_collections_test)
+  add_executable(poko_mute_stdlib_crypto_test mute/tests/unit/stdlib_crypto_test.cpp)
+  target_link_libraries(poko_mute_stdlib_crypto_test PRIVATE poko_mute_stdlib_crypto)
+  add_test(NAME mute_stdlib_crypto_unit COMMAND poko_mute_stdlib_crypto_test)
+  add_executable(poko_mute_events_test mute/tests/unit/events_test.cpp)
+  target_link_libraries(poko_mute_events_test PRIVATE poko_mute_events)
+  add_test(NAME mute_events_unit COMMAND poko_mute_events_test)
+  add_executable(poko_mute_build_tool_test mute/tests/unit/build_tool_test.cpp)
+  target_link_libraries(poko_mute_build_tool_test PRIVATE poko_mute_build_tool)
+  add_test(NAME mute_build_tool_unit COMMAND poko_mute_build_tool_test
+           "${CMAKE_CURRENT_SOURCE_DIR}/mute/tests/fixtures/mut55_sample")
+  add_test(NAME mute_build_cli COMMAND poko_mute_build
+           "${CMAKE_CURRENT_SOURCE_DIR}/mute/tests/fixtures/mut55_sample")
   add_executable(poko_mute_math_dump mute/tests/unit/deterministic_math_dump.cpp)
   target_link_libraries(poko_mute_math_dump PRIVATE poko_mute_math)
   add_executable(poko_mute_bytecode_vm_test mute/tests/unit/bytecode_vm_test.cpp)
@@ -567,6 +660,33 @@ if(BUILD_TESTING)
   add_executable(poko_mute_scheduler_test mute/tests/unit/scheduler_test.cpp)
   target_link_libraries(poko_mute_scheduler_test PRIVATE poko_mute_scheduler)
   add_test(NAME mute_scheduler_unit COMMAND poko_mute_scheduler_test)
+  add_executable(poko_mute_hostcall_test mute/tests/unit/hostcall_test.cpp)
+  target_link_libraries(poko_mute_hostcall_test PRIVATE poko_mute_program)
+  add_test(NAME mute_hostcall_unit COMMAND poko_mute_hostcall_test)
+  add_executable(poko_mute_capability_test mute/tests/unit/capability_test.cpp)
+  target_link_libraries(poko_mute_capability_test PRIVATE poko_mute_semantic poko_mute_program)
+  add_test(NAME mute_capability_unit COMMAND poko_mute_capability_test)
+  add_executable(poko_mute_input_test mute/tests/unit/input_snapshot_test.cpp)
+  target_link_libraries(poko_mute_input_test PRIVATE poko_mute_input poko_loop)
+  add_test(NAME mute_input_unit COMMAND poko_mute_input_test)
+  add_executable(poko_mute_action_test mute/tests/unit/action_map_test.cpp)
+  target_link_libraries(poko_mute_action_test PRIVATE poko_mute_action poko_mute_input poko_loop)
+  add_test(NAME mute_action_unit COMMAND poko_mute_action_test)
+  add_executable(poko_mute_device_test mute/tests/unit/device_router_test.cpp)
+  target_link_libraries(poko_mute_device_test PRIVATE poko_mute_action poko_mute_input)
+  add_test(NAME mute_device_unit COMMAND poko_mute_device_test)
+  add_executable(poko_mute_limits_test mute/tests/unit/limits_test.cpp)
+  target_link_libraries(poko_mute_limits_test PRIVATE poko_mute_semantic poko_mute_program)
+  add_test(NAME mute_limits_unit COMMAND poko_mute_limits_test)
+  add_executable(poko_mute_debugger_test mute/tests/unit/debugger_test.cpp)
+  target_link_libraries(poko_mute_debugger_test PRIVATE poko_mute_program)
+  add_test(NAME mute_debugger_unit COMMAND poko_mute_debugger_test)
+  add_executable(poko_mute_diff_test mute/tests/unit/diff_test.cpp)
+  target_link_libraries(poko_mute_diff_test PRIVATE poko_mute_semantic poko_mute_program)
+  add_test(NAME mute_diff_unit COMMAND poko_mute_diff_test)
+  add_executable(poko_mute_bench_test mute/tests/unit/bench_test.cpp)
+  target_link_libraries(poko_mute_bench_test PRIVATE poko_mute_semantic poko_mute_program)
+  add_test(NAME mute_optbench_unit COMMAND poko_mute_bench_test)
   add_executable(poko_mute_lexer_test mute/tests/unit/lexer_test.cpp)
   target_include_directories(poko_mute_lexer_test PRIVATE mute/src/lexer)
   target_link_libraries(poko_mute_lexer_test PRIVATE poko_mute_lexer)

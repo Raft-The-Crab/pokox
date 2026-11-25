@@ -13,13 +13,15 @@ ROOT="$(cd "$(dirname "$0")/../../../.." && pwd)"
 WORK=$(mktemp -d)
 trap 'rm -rf "$WORK"' EXIT
 mkdir -p "$WORK/lib/arm64-v8a"
+cd "$WORK"
 "$NDK_BIN/aarch64-linux-android30-clang" -O2 -fPIC -c "$NDK_SRC/android_native_app_glue.c" -o "$WORK/glue.o" -I"$NDK_SRC"
 "$NDK_BIN/aarch64-linux-android30-clang++" -std=c++2a -O2 -fPIC -shared \
   -I"$ROOT/engine/rhi/include" -I"$NDK_SRC" \
   "$ROOT/engine/rhi/src/device/opengles_native_activity.cpp" \
   "$ROOT/engine/rhi/src/device/opengles_clear_renderer.cpp" \
+  "$ROOT/engine/rhi/src/device/vulkan_clear_android.cpp" \
   "$WORK/glue.o" -o "$WORK/lib/arm64-v8a/libpoko_gles.so" \
-  -lEGL -lGLESv3 -llog -landroid
+  -lEGL -lGLESv3 -lvulkan -llog -landroid
 cp "$NDK_BIN/../sysroot/usr/lib/aarch64-linux-android/libc++_shared.so" "$WORK/lib/arm64-v8a/"
 "$BT/aapt2" link -o "$WORK/app-unsigned.apk" -I "$JAR" --manifest "$ROOT/engine/rhi/android/gles-clear/AndroidManifest.xml"
 "$BT/aapt" add "$WORK/app-unsigned.apk" lib/arm64-v8a/libpoko_gles.so lib/arm64-v8a/libc++_shared.so
@@ -29,7 +31,7 @@ if [ ! -f "$WORK/debug.keystore" ]; then
     -keyalg RSA -keysize 2048 -validity 10000 -storepass android -keypass android \
     -dname "CN=Android Debug,O=Android,C=US"
 fi
-"$BT/apksigner" sign --ks "$WORK/debug.keystore" --ks-pass pass:android \
+java -jar "$BT/lib/apksigner.jar" sign --ks "$WORK/debug.keystore" --ks-pass pass:android \
   --key-pass pass:android --out "$WORK/app-signed.apk" "$WORK/app-aligned.apk"
 cp "$WORK/app-signed.apk" "$ROOT/engine/rhi/android/gles-clear/pokox_gles_clear.apk"
 echo "APK: $ROOT/engine/rhi/android/gles-clear/pokox_gles_clear.apk"

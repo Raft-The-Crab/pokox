@@ -16,7 +16,9 @@ std::string_view mnemonic(Opcode op) {
     case Opcode::le:return "le"; case Opcode::gt:return "gt"; case Opcode::ge:return "ge";
     case Opcode::jump:return "jmp"; case Opcode::branch_true:return "br_true";
     case Opcode::branch_false:return "br_false"; case Opcode::move:return "mov";
-    case Opcode::ret:return "ret"; case Opcode::halt:return "halt";
+    case Opcode::call:return "call";
+    case Opcode::ret:return "ret"; case Opcode::call_host:return "call_host";
+    case Opcode::halt:return "halt";
     case Opcode::ext_prefix:return "ext";
     case Opcode::load_imm:return "li";
   }
@@ -65,10 +67,15 @@ std::variant<std::monostate, BytecodeError> validate_bytecode(std::span<const In
       if (target<0 || target>=static_cast<std::int64_t>(code.size()) || payload[static_cast<std::size_t>(target)]) return BytecodeError{BytecodeErrorCode::invalid_target,pc};
     } else if (i.op==Opcode::ret) {
       if (i.b || i.c) return BytecodeError{BytecodeErrorCode::invalid_operands,pc};
+    } else if (i.op==Opcode::call) {
+      // a=function index, b=argument window base, c=return register (0 discards).
+      if (i.b>call_arg_base) return BytecodeError{BytecodeErrorCode::invalid_operands,pc};
     } else if (i.op==Opcode::halt) {
       if (i.a || i.b || i.c) return BytecodeError{BytecodeErrorCode::invalid_operands,pc};
     } else if (i.op==Opcode::load_imm) {
       // handled by payload pass; nothing else to check
+    } else if (i.op==Opcode::call_host) {
+      // a=id, b=arg base, c=return register; arity is table-defined at runtime
     } else if (i.op==Opcode::move || i.op==Opcode::neg) {
       if (i.a==0 || i.c!=0) return BytecodeError{BytecodeErrorCode::invalid_operands,pc};
     } else if (i.a==0) return BytecodeError{BytecodeErrorCode::invalid_operands,pc};
@@ -117,7 +124,7 @@ DecodeResult assemble_bytecode(std::string_view listing) {
   const auto original=listing;
   constexpr std::array ops{Opcode::add,Opcode::sub,Opcode::mul,Opcode::div,Opcode::mod,Opcode::neg,
     Opcode::eq,Opcode::ne,Opcode::lt,Opcode::le,Opcode::gt,Opcode::ge,Opcode::load_imm,Opcode::jump,
-    Opcode::branch_true,Opcode::branch_false,Opcode::move,Opcode::ret,Opcode::halt};
+    Opcode::branch_true,Opcode::branch_false,Opcode::move,Opcode::call,Opcode::ret,Opcode::call_host,Opcode::halt};
   Bytecode code;
   auto bad=[&] { return DecodeResult{BytecodeError{BytecodeErrorCode::invalid_assembly,code.size()}}; };
   while (!listing.empty()) {
@@ -158,6 +165,14 @@ DecodeResult assemble_bytecode(std::string_view listing) {
       ins.b=static_cast<std::uint8_t>(packed>>8);ins.c=static_cast<std::uint8_t>(packed);
     } else if (ins.op==Opcode::ret) {
       if (!take(" ") || !reg(ins.a)) return bad();
+    } else if (ins.op==Opcode::call) {
+      int fn=0;
+      if (!take(" ") || !number(fn) || fn<0 || fn>255 || !take(", ") || !reg(ins.b) || !take(", ") || !reg(ins.c)) return bad();
+      ins.a=static_cast<std::uint8_t>(fn);
+    } else if (ins.op==Opcode::call_host) {
+      int id=0;
+      if (!take(" ") || !number(id) || id<0 || id>255 || !take(", ") || !reg(ins.b) || !take(", ") || !reg(ins.c)) return bad();
+      ins.a=static_cast<std::uint8_t>(id);
     } else if (ins.op==Opcode::load_imm) {
       int imm=0;if (!take(" ") || !reg(ins.a) || !take(", ") || !number(imm)) return bad();
       ins.b=0;ins.c=0;code.push_back(ins);code.push_back(long_payload(imm));continue;
@@ -187,6 +202,8 @@ std::variant<std::string,BytecodeError> disassemble_bytecode(std::span<const Ins
     if (branch(i.op)) { if (i.op!=Opcode::jump) out+=" r"+std::to_string(i.a)+","; out+=" "+std::to_string(branch_offset(i)); }
     else if (i.op==Opcode::load_imm) { out+=" r"+std::to_string(i.a)+", "+std::to_string(long_offset(code[++pc])); continue; }
     else if (i.op==Opcode::ret) out+=" r"+std::to_string(i.a);
+    else if (i.op==Opcode::call) out+=" "+std::to_string(i.a)+", r"+std::to_string(i.b)+", r"+std::to_string(i.c);
+    else if (i.op==Opcode::call_host) out+=" "+std::to_string(i.a)+", r"+std::to_string(i.b)+", r"+std::to_string(i.c);
     else if (i.op!=Opcode::halt) {
       out+=" r"+std::to_string(i.a)+", r"+std::to_string(i.b);
       if (i.op!=Opcode::move && i.op!=Opcode::neg) out+=", r"+std::to_string(i.c);

@@ -1,22 +1,18 @@
 #include "poko/mute/determinism.hpp"
+#include "poko/mute/hostcall.hpp"
 #include "poko/mute/statement.hpp"
 #include <array>
 #include <set>
 #include <string>
 namespace poko::mute {
 namespace {
-constexpr auto approved=std::to_array<std::string_view>({
-  "Net","Physics","Storage","Ui","Asset","Crypto","Log","Time","Replicate","Spawn"});
-constexpr auto capability_names=approved;
-
-bool is_capability(std::string_view s) {
-  for (auto c:capability_names) if (c==s) return true;
-  return false;
-}
+bool is_capability(std::string_view s) { return capability_from_name(s) != 0; }
 // Nondeterministic builtins -> required capability; empty = always banned.
 struct Builtin { std::string_view name; std::string_view capability; };
 constexpr auto builtins=std::to_array<Builtin>({
-  {"now","Time"},{"time","Time"},{"clock","Time"},{"timestamp","Time"},
+  // Wall-clock reads are never valid in simulation code, even with Time.
+  // Tick-based tick()/dt()/simNow() are the approved Time surface.
+  {"now",""},{"time",""},{"clock",""},{"timestamp",""},
   {"random","Crypto"},{"rand","Crypto"},{"uuid","Crypto"},{"guid","Crypto"},
   {"env",""},{"getenv",""},{"hostname",""},{"username",""},{"pid",""},{"addr",""}});
 const Builtin* builtin(std::string_view name) {
@@ -118,6 +114,20 @@ class Analyzer {
 } // namespace
 
 DeterminismResult analyze_determinism(const DeclarationAst& ast) { return Analyzer(ast).run(); }
+
+std::uint32_t program_capability_mask(const DeclarationAst& ast) {
+  std::uint32_t mask = 0;
+  const auto nodes = ast.nodes();
+  if (ast.root() >= nodes.size()) return mask;
+  for (const auto child : nodes[ast.root()].children) {
+    if (child >= nodes.size() || nodes[child].kind != DeclarationKind::allow) continue;
+    for (const auto cap : nodes[child].children) {
+      if (cap >= nodes.size()) continue;
+      mask |= capability_from_name(nodes[cap].spelling);
+    }
+  }
+  return mask;
+}
 std::string_view name(DeterminismErrorCode code) {
   constexpr auto names=std::to_array<std::string_view>({
     "unknown_capability","duplicate_capability","capability_in_state","nondeterministic_operation"});

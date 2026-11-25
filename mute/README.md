@@ -42,7 +42,15 @@ The program VM supports an initial bool/i32 control-flow subset and bounded `whi
 
 `run_program` compiles the supported program subset into an internal register instruction stream. Arithmetic operations dispatch through the checked i32 register machine; the previous tree-walk implementation remains a differential-test oracle. The debug console uses this path for `fn` programs. The complete current subset instruction stream can round-trip via the source-backed `MUTP` snapshot APIs in `program.hpp`, with a canonical listing and source recompile validation; it is separate from the low-level `MUTB` codec. The full Mute ISA, independent verifier, production compiler and sandbox remain future work.
 
-`poko_mute_math` exposes binary64 `deterministic_sin` and `deterministic_cos`, based on pinned, locally adapted musl/fdlibm kernels. They are host C++ APIs, not yet exposed in Mute source. The wrapper checks its floating-point environment. See the [completion audit](../docs/mut08-mut10-completion-audit-2026-11-22.md), [math provenance](third_party/musl_math/README.md) and [experimental bytecode contract](BYTECODE-EXPERIMENT.md). Native Windows/Android evidence and G1/G2 remain open.
+`poko_mute_math` exposes binary64 `deterministic_sin` and `deterministic_cos`, based on pinned, locally adapted musl/fdlibm kernels. They are host C++ APIs, not yet exposed in Mute source. The wrapper checks its floating-point environment. See the [completion audit](../docs/mut08-mut10-completion-audit-2026-11-22.md), [math provenance](third_party/musl_math/README.md) and [experimental bytecode contract](BYTECODE-EXPERIMENT.md). G1 and ENG-02 have two-target evidence; G2 remains deferred to ENG-60→63.
+
+## v1 standard API core
+
+MUT-51–54 add host-side deterministic math/vector/RNG, tick-only time, UTF-8 strings, bounded ordered collections, fixed SHA-256/HMAC/detached verify, and deterministic lifecycle/game event dispatch. See [V1-API.md](V1-API.md) for the exact surface and approved deferrals. These APIs do not use wall clocks, files, network or entropy.
+
+## Local build tool
+
+MUT-55 adds `poko_mute_build`: a local manifest/lock validator and build-plan printer. See [BUILD-TOOL.md](BUILD-TOOL.md). Registry, fetch and publishing remain deferred by the approved v1 matrix.
 
 ## State and schema preview
 

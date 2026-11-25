@@ -9,17 +9,41 @@ import sys
 import tempfile
 import unittest
 
-parser = argparse.ArgumentParser()
-parser.add_argument("--cmake", required=True)
-parser.add_argument("--git", required=True)
-parser.add_argument("--generator", required=True)
-parser.add_argument("--platform", default="")
-OPTIONS = parser.parse_args()
-sys.argv[:] = [sys.argv[0]]
+OPTIONS = None
 PROJECT = Path(__file__).resolve().parents[4]
+SOURCE_FILES = ("CMakeLists.txt",)
+SOURCE_TREES = ("engine", "mute", "tools/version/cmake")
+COPY_IGNORE = shutil.ignore_patterns(
+    ".git", "__pycache__", "*.py[cod]", "build-*", "artifacts", "graphify-out",
+    ".workbuddy-ai", ".serena", "*.exe", "*.lib", "*.obj", "*.pdb", "*.apk")
+
+
+def parse_options() -> argparse.Namespace:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--cmake", required=True)
+    parser.add_argument("--git", required=True)
+    parser.add_argument("--generator", required=True)
+    parser.add_argument("--platform", default="")
+    return parser.parse_args()
+
+
+def copy_sources(root: Path) -> None:
+    for relative in SOURCE_FILES:
+        source = PROJECT / relative
+        if not source.is_file():
+            raise AssertionError(f"missing source file: {relative}")
+        destination = root / relative
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source, destination)
+    for relative in SOURCE_TREES:
+        source = PROJECT / relative
+        if not source.is_dir():
+            raise AssertionError(f"missing source tree: {relative}")
+        shutil.copytree(source, root / relative, ignore=COPY_IGNORE, dirs_exist_ok=True)
 
 
 def command(args, **kwargs):
+    kwargs.setdefault("timeout", 900)
     result = subprocess.run(args, text=True, stdout=subprocess.PIPE,
                             stderr=subprocess.STDOUT, encoding="utf-8", errors="replace", **kwargs)
     if result.returncode:
@@ -32,83 +56,7 @@ class VersionIntegrationTests(unittest.TestCase):
         with tempfile.TemporaryDirectory(prefix="poko version test ") as temp:
             root = Path(temp) / "source"
             build = Path(temp) / "build"
-            for relative in ("CMakeLists.txt", "mute/src/lexer/lexer.cpp",
-                             "mute/src/lexer/unicode_xid.hpp",
-                             "mute/src/parser/parser.cpp",
-                             "mute/src/parser/statement.cpp",
-                             "mute/src/parser/declaration.cpp",
-                             "mute/src/semantic/semantic.cpp",
-                             "mute/src/semantic/determinism.cpp",
-                             "mute/src/semantic/ssa.cpp",
-                             "mute/src/semantic/emit.cpp",
-                             "mute/src/semantic/lower.cpp",
-                             "mute/include/poko/mute/lower.hpp",
-                             "mute/include/poko/mute/ssa.hpp",
-                             "mute/include/poko/mute/emit.hpp",
-                             "mute/include/poko/mute/determinism.hpp",
-                             "mute/src/package/package.cpp",
-                             "mute/include/poko/mute/package.hpp",
-                             "mute/src/vm/values.cpp",
-                             "mute/include/poko/mute/values.hpp",
-                             "mute/src/vm/scheduler.cpp",
-                             "mute/include/poko/mute/scheduler.hpp",
-                             "mute/src/evaluator/evaluator.cpp",
-                             "mute/src/program/program.cpp",
-                             "mute/src/state/state.cpp",
-                             "mute/src/state/state_snapshot.cpp",
-                             "mute/include/poko/mute/state_snapshot.hpp",
-                             "mute/src/pkb/pkb_draft.cpp",
-                             "mute/tools/pkb_schema_draft.cpp",
-                             "mute/include/poko/mute/pkb_draft.hpp",
-                             "mute/include/poko/mute/state.hpp",
-                             "mute/src/program/program_vm.inc",
-                             "mute/src/program/program_codec.inc",
-                             "mute/src/math/deterministic_math.cpp",
-                             "mute/include/poko/mute/deterministic_math.hpp",
-                             "mute/third_party/musl_math/math_internal.hpp",
-                             "mute/third_party/musl_math/sin.cpp",
-                             "mute/third_party/musl_math/cos.cpp",
-                             "mute/third_party/musl_math/__sin.cpp",
-                             "mute/third_party/musl_math/__cos.cpp",
-                             "mute/third_party/musl_math/__rem_pio2.cpp",
-                             "mute/third_party/musl_math/__rem_pio2_large.cpp",
-                             "mute/third_party/musl_math/floor.cpp",
-                             "mute/third_party/musl_math/scalbn.cpp",
-                             "mute/src/bytecode/bytecode.cpp",
-                             "mute/src/vm/register_vm.cpp",
-                             "mute/include/poko/mute/evaluator.hpp",
-                             "mute/include/poko/mute/program.hpp",
-                             "mute/include/poko/mute/bytecode.hpp",
-                             "mute/include/poko/mute/register_vm.hpp",
-                             "mute/include/poko/mute/parser.hpp",
-                             "mute/include/poko/mute/statement.hpp",
-                             "mute/include/poko/mute/declaration.hpp",
-                             "mute/include/poko/mute/semantic.hpp",
-                             "mute/include/poko/mute/lexer.hpp",
-                             "engine/foundation/src/main.cpp",
-                             "engine/foundation/src/cbor.cpp",
-                             "engine/foundation/src/config.cpp",
-                             "engine/foundation/src/frame_stats.cpp",
-                             "engine/foundation/include/poko/foundation/cbor.hpp",
-                             "engine/foundation/include/poko/foundation/config.hpp",
-                             "engine/foundation/include/poko/foundation/frame_stats.hpp",
-                             "engine/foundation/include/poko/foundation/logging.hpp",
-                             "engine/foundation/include/poko/foundation/build_flags.hpp",
-                             "engine/resource/src/asset_store.cpp",
-                             "engine/resource/src/ktx2.cpp",
-                             "engine/resource/src/pokomesh.cpp",
-                             "engine/resource/include/poko/resource/asset_store.hpp",
-                             "engine/resource/include/poko/resource/ktx2.hpp",
-                             "engine/resource/include/poko/resource/pokomesh.hpp",
-                             "engine/rhi/include/poko/rhi/device/clear_backend_selection.hpp",
-                             "engine/rhi/include/poko/rhi/device/render_error.hpp",
-                             "engine/rhi/src/device/clear_backend_selection.cpp",
-                             "engine/render/include/poko/render/framegraph/frame_graph.hpp",
-                             "engine/render/src/framegraph/frame_graph.cpp",
-                             "tools/version/cmake/generate_version.cmake"):
-                dst = root / relative
-                dst.parent.mkdir(parents=True, exist_ok=True)
-                shutil.copy2(PROJECT / relative, dst)
+            copy_sources(root)
             configure = [OPTIONS.cmake, "-S", str(root), "-B", str(build),
                          "-G", OPTIONS.generator, "-DBUILD_TESTING=OFF",
                          "-DPOKO_WITH_DEPENDENCIES=OFF", "-DCMAKE_BUILD_TYPE=Debug"]
@@ -138,7 +86,9 @@ class VersionIntegrationTests(unittest.TestCase):
             git("tag", "-a", "Alpha", "-m", "test")
             self.assertEqual(build_and_version()[1], "PokoX build: Alpha")
             git("tag", "-d", "Alpha", "Zulu")
-            # Double quotes are valid Git ref characters but invalid Windows filenames.
+            # Double quotes are valid Git ref characters but invalid in
+            # Windows paths, so keep this case portable while still checking
+            # semicolon handling on Windows.
             odd_tag = 'A-odd;semicolon' if os.name == "nt" else 'A-quote"and;semicolon'
             git("tag", odd_tag)
             self.assertEqual(build_and_version()[1], "PokoX build: " + odd_tag)
@@ -154,5 +104,12 @@ class VersionIntegrationTests(unittest.TestCase):
             self.assertEqual(header.stat().st_mtime_ns, old_time, "unchanged header was rewritten")
 
 
-if __name__ == "__main__":
+def main() -> None:
+    global OPTIONS
+    OPTIONS = parse_options()
+    sys.argv[:] = [sys.argv[0]]
     unittest.main(verbosity=2)
+
+
+if __name__ == "__main__":
+    main()

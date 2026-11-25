@@ -17,8 +17,15 @@ enum class Opcode : std::uint8_t {
   add=0x00, sub=0x01, mul=0x02, div=0x03, mod=0x04, neg=0x05,
   eq=0x20, ne=0x21, lt=0x22, le=0x23, gt=0x24, ge=0x25,
   jump=0x28, branch_true=0x29, branch_false=0x2a,
-  move=0x31, ret=0x42, halt=0x4f, ext_prefix=0x60, load_imm=0x70
+  move=0x31, call=0x40, ret=0x42, call_host=0x44, halt=0x4f,
+  ext_prefix=0x60, load_imm=0x70
 };
+// Call frames own 256 i32 registers. Arguments are staged by the caller in a
+// fixed window at the top of the file (registers 224..255) and copied into the
+// callee frame by the VM; the callee prologue moves them to params 1..N.
+// Value ids therefore must stay below call_arg_base.
+inline constexpr std::uint8_t call_arg_base = 224;
+inline constexpr std::uint8_t call_arg_window = 32;
 struct Instruction { Opcode op; std::uint8_t a, b, c; bool operator==(const Instruction&) const = default; };
 enum class BytecodeErrorCode { bad_header, unsupported_version, truncated, size_limit, invalid_opcode, invalid_operands, invalid_target, invalid_assembly };
 // Framing errors use byte offsets; invalid instruction errors use instruction indices.

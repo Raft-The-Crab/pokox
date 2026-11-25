@@ -1,0 +1,6 @@
+package "sample" version "V1?"
+import "pkg://sample/dep@CalmOtter" as dep
+
+fn main() -> i32 {
+  return dep.value();
+}

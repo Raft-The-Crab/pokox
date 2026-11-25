@@ -2,7 +2,20 @@
 
 ## Current gate status
 
-**G1 and G2 remain open.** The work below is preparation, not formal gate acceptance. G1 requires the specified 10,000-tick replay on Windows x64, Android ARM64 and Linux x64; this local sample uses a fixed stateful counter/sum, not a full recorded-input simulation or cross-platform product replay. G2 requires deterministic simulation physics on x64/arm64; the planned fixed-point simulation physics is not yet implemented in this seed. Hosted CI, physical targets, Windows/MSVC, Android and required platform tests are not verified.
+**Historical 2026-11-22 status; superseded by the owner decision recorded in
+`mut13-v1-scope-matrix.md` on 2026-11-25.** Linux x64 was removed as a gate
+target and remains a build/CI environment only. G1 and G2 now require
+Windows x64 and physical Android arm64. The 2026-11-25 gate run accepted G1
+from the approved scenario and two-target evidence; G2 remains open pending
+the canonical ENG-60→63 physics chain.
+
+At the time below, G1 and G2 were open: the work was preparation, not formal
+gate acceptance. G1 then named Windows x64, Android ARM64 and Linux x64; the
+local sample used a fixed stateful counter/sum, not a full recorded-input
+simulation or cross-platform product replay. G2 required deterministic
+simulation physics on x64/arm64; the planned fixed-point simulation physics
+was not yet implemented in this seed. Hosted CI, physical targets,
+Windows/MSVC, Android and required platform tests were not verified.
 
 ## Audit fixes
 

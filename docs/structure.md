@@ -36,7 +36,7 @@ When directories are added, removed or moved, update this inventory, counts and 
 - `mute/include/poko/mute/` contains public lexer, arithmetic-parser, evaluator, program and console APIs; `mute/src/` contains per-module implementation subfolders (`lexer`, `parser`, `evaluator`, `math`, `program`, `bytecode`, `vm`, `state`, `pkb`, `console`) and `mute/data/unicode/` retains the pinned Unicode data.
 - `mute/data/unicode/` retains the pinned Unicode data and license; `mute/tools/` contains its deterministic generator.
 - `mute/tests/unit/` contains unit and golden drivers; `mute/tests/fixtures/golden/` contains source and expected results.
-- `mute/LEXICAL-CONTRACT.md`, `mute/ARITHMETIC-PARSER.md` and `mute/ARITHMETIC-EVALUATOR.md` define Mute contracts; `docs/mute-progress.md`, `docs/mute-progress.md`, `docs/mute-progress.md` and the Mute audit record scope and evidence.
+- `mute/LEXICAL-CONTRACT.md`, `mute/ARITHMETIC-PARSER.md`, `mute/ARITHMETIC-EVALUATOR.md`, `mute/V1-API.md` and `mute/BUILD-TOOL.md` define Mute contracts; `docs/mute-progress.md` and the Mute audits record scope and evidence.
 - The root `.gitattributes` preserves exact-byte Mute lexer/parser fixtures and Unicode input across Git checkout configurations. No new directories were added for MUT-02 through MUT-06.
 
 The ENG-01–22 audit snapshot had 134 directories; MUT-01 adds 11 under `mute/`.

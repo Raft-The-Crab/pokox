@@ -38,7 +38,9 @@ def run_step(command, log, timeout):
         try:
             proc = subprocess.Popen(command, stdout=out, stderr=subprocess.STDOUT, **options)
         except OSError as exc:
-            out.write(str(exc)); return dict(result, returncode=None, error=str(exc))
+            out.write(str(exc))
+            return dict(result, returncode=None, error=str(exc),
+                        elapsed_seconds=round(time.monotonic() - started, 3))
         try:
             proc.wait(timeout=timeout)
         except subprocess.TimeoutExpired:
@@ -86,14 +88,19 @@ def main(argv=None):
     build = output / 'build'
     report = dict(started_utc=stamp, source_root=str(root), host=platform.platform(), accepted=False,
                   visual_output_verified=False, validation_layer_verified=False, status='failed', steps=[])
-    report['source_hashes'] = {name: hashlib.sha256((root / name).read_bytes()).hexdigest() for name in (
+    source_names = (
         'CMakeLists.txt', 'vcpkg.json', 'engine/platform/include/poko/platform/window/i_platform.hpp',
         'engine/platform/include/poko/platform/window/sdl_platform.hpp', 'engine/platform/src/window/sdl_platform.cpp',
         'engine/rhi/include/poko/rhi/device/render_error.hpp',
         'engine/rhi/include/poko/rhi/device/vulkan_clear_renderer.hpp',
         'engine/rhi/include/poko/rhi/debug/vulkan_diagnostics.hpp',
         'engine/rhi/src/device/vulkan_clear_renderer.cpp', 'engine/rhi/src/debug/vulkan_diagnostics.cpp',
-        'engine/rhi/src/device/vulkan_clear_demo.cpp')}
+        'engine/rhi/src/device/vulkan_clear_demo.cpp')
+    report['source_hashes'] = {}
+    for name in source_names:
+        path = root / name
+        report['source_hashes'][name] = (hashlib.sha256(path.read_bytes()).hexdigest()
+                                         if path.is_file() else None)
     configure = [args.cmake, '-S', root, '-B', build]
     if args.generator: configure += ['-G', args.generator]
     if args.arch: configure += ['-A', args.arch]
@@ -119,7 +126,10 @@ def main(argv=None):
         step = run_step([exe, '--frames', str(args.frames)], log, args.runtime_timeout)
         report['steps'].append(dict(step, stage='runtime'))
         if step.get('returncode') != 0 or step['timed_out']: raise RuntimeError('Runtime failed; inspect its log')
-        report.update(classify(parse_runtime(log.read_text(encoding='utf-8', errors='replace'), args.frames)))
+        runtime = parse_runtime(log.read_text(encoding='utf-8', errors='replace'), args.frames)
+        if runtime['graphics_warnings']:
+            raise RuntimeError('Graphics warnings are not accepted as desktop evidence')
+        report.update(classify(runtime))
         return 0
     except Exception as exc:
         report['reason'] = str(exc); return 1

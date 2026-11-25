@@ -2,6 +2,7 @@
 
 #include "poko/mute/declaration.hpp"
 #include <cstddef>
+#include <cstdint>
 #include <string>
 #include <string_view>
 #include <vector>
@@ -33,6 +34,10 @@ struct DeterminismResult {
 };
 
 [[nodiscard]] DeterminismResult analyze_determinism(const DeclarationAst& ast);
+// The program's allow: ceiling as a capability mask (MUT-36). Unknown names
+// contribute no bits; run analyze_determinism for those diagnostics. This is
+// the ceiling a VmEnvironment's capabilities must not exceed.
+[[nodiscard]] std::uint32_t program_capability_mask(const DeclarationAst& ast);
 [[nodiscard]] std::string_view name(DeterminismErrorCode code);
 [[nodiscard]] std::string dump_determinism(const DeterminismResult& result);
 } // namespace poko::mute

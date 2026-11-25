@@ -5,6 +5,15 @@ and later tasks. Changes require a new owner decision recorded here. G1/G2,
 the existing gates, and the security/authority model in `04-mute.md` and
 `30-mute-v1-completion.md` remain in force.
 
+**Owner decision, 2026-11-25:** Linux x64 is not a product or determinism
+target. It was used as a build/test environment and remains useful as an
+optional CI lane, but G1/G2 acceptance requires only Windows x64 and a
+physical Android arm64 device. The candidate `mute/tests/fixtures/g1-replay.mute`
+is approved as the G1 scenario. G2 remains open until the canonical physics
+task chain (ENG-60→63) is implemented and verified; no shortcut probe was
+accepted. G1 was accepted on 2026-11-25 from the byte-identical two-target
+10,000-tick evidence in `two-target-gate-evidence-2026-11-25.md`.
+
 ## 1. Language feature matrix (proposed v1 decisions)
 
 | Area | Spec (`04-mute.md`) | Proposed v1 decision | Rationale / testable criterion |
@@ -32,9 +41,9 @@ the existing gates, and the security/authority model in `04-mute.md` and
 
 | Target | Role | Proposed v1 requirement |
 |---|---|---|
-| Windows x64 | product target | required: build, tests, G1 replay leg |
-| Android arm64 | product target | required: build, tests, G1 replay leg, real-device evidence (not emulator-only) |
-| Linux x64 | determinism/test target | required: GCC + ASan/UBSan legs, golden tests |
+| Windows x64 | product target | required: native MSVC build, tests, G1/G2 legs |
+| Android arm64 | product target | required: native arm64 build, tests, G1/G2 legs, real-device evidence (not emulator-only) |
+| Linux x64 | build/CI environment only | optional: build/sanitizer/golden checks; not a gate target |
 | Input modalities | — | keyboard/mouse required everywhere; gamepad required on Windows+Android; touch required on Android only |
 | OS versions | — | owner to pin: propose Windows 10/11 x64, Android API 26+ arm64-v8a |
 
@@ -121,8 +130,10 @@ Approved as recommended on 2026-11-23.
 
 - Every "include" row maps to ≥1 positive and ≥1 negative test before its
   MUT task closes; goldens for parser/typechecker where applicable.
-- G1: identical 10,000-tick state hash on Windows x64, Android arm64
-  (real device), Linux x64. G2: deterministic physics sim unchanged.
+- G1: byte-identical 10,000-tick trace on Windows x64 and Android arm64
+  (real device). G2 remains the canonical deterministic sim-physics gate
+  across those two targets, to be met through ENG-60→63. Linux x64 is not
+  a gate target.
 - Optimized vs unoptimized builds must produce identical observable
   behavior under the approved budget policy (MUT-31).
 - Capability violations fail at compile time with source locations;

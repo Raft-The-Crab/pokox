@@ -30,6 +30,7 @@ def check_spirv(path):
 
 with tempfile.TemporaryDirectory(prefix='poko shader pipeline ') as temp:
     work = Path(temp)
+    skipped = []
     source = work / 'source with spaces'; build = work / 'build with spaces'
     source.mkdir()
     for file in ('PokoShaders.cmake', 'compile_shader.cmake'):
@@ -62,6 +63,8 @@ add_custom_target(shader ALL DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/output.spv")
         run([args.cmake, '--build', build])
         assert artifact.stat().st_mtime_ns > first_mtime, 'changed compiler did not rebuild shader'
         check_spirv(artifact)
+    else:
+        skipped.append('compiler-identity rebuild (Windows SDK executable DLL adjacency)')
     # Age the output instead of putting inputs in the future (which causes
     # make clock-skew warnings), then verify the normal dependency rebuild.
     def update_shader(text):
@@ -113,6 +116,8 @@ add_custom_target(shader ALL DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/output.spv")
                       '-DPOKO_SHADER_STAGE=vert', '-DPOKO_SHADER_COMPILER=' + args.compiler,
                       '-P', source / 'compile_shader.cmake'], ok=False)
         assert 'must not overwrite' in output and shader.read_text(encoding='utf-8') == good
+    else:
+        skipped.append('symlinked-parent overwrite guard (Windows symlink privilege)')
     # The temporary output can also collide, including via a directory alias.
     temp_source = source / 'temporary-output.spv.tmp'
     temp_source.write_text(good, encoding='utf-8')
@@ -138,3 +143,5 @@ add_custom_target(shader ALL DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/output.spv")
                       '-P', source / 'compile_shader.cmake'], ok=False)
         assert 'must not overwrite' in output and protected_tool.read_bytes() == tool_bytes
 print('PASS: real shader compile, path quoting, rebuild, failure cleanup, include and overwrite guards')
+if skipped:
+    print('SKIP: ' + '; '.join(skipped))

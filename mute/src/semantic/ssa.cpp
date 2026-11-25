@@ -11,8 +11,8 @@ bool is_terminator(IrOp op) { return op==IrOp::jump || op==IrOp::branch || op==I
 
 IrResult verify(const IrModule& module) {
   IrResult result;
-  auto report=[&](IrErrorCode c,std::string d,std::size_t f,std::size_t b){
-    result.diagnostics.push_back({c,std::move(d),f,b});
+  auto report=[&](IrErrorCode c,std::string d,std::size_t f,std::size_t b,Position pos={}){
+    result.diagnostics.push_back({c,std::move(d),f,b,pos});
   };
   for (std::size_t fi=0;fi<module.functions.size();++fi) {
     const auto& fn=module.functions[fi];
@@ -20,7 +20,8 @@ IrResult verify(const IrModule& module) {
     std::set<std::string> labels;
     for (std::size_t bi=0;bi<fn.blocks.size();++bi)
       if (!labels.insert(fn.blocks[bi].label).second)
-        report(IrErrorCode::duplicate_label,fn.blocks[bi].label,fi,bi);
+        report(IrErrorCode::duplicate_label,fn.blocks[bi].label,fi,bi,
+               fn.blocks[bi].instrs.empty()?Position{}:fn.blocks[bi].instrs.back().pos);
     // Reachability from entry block 0 via terminator targets.
     std::vector<char> reachable(fn.blocks.size(),0); reachable[0]=1;
     for (bool grew=true;grew;) {
@@ -32,7 +33,8 @@ IrResult verify(const IrModule& module) {
       }
     }
     for (std::size_t bi=0;bi<fn.blocks.size();++bi)
-      if (!reachable[bi]) report(IrErrorCode::unreachable_block,"block "+std::to_string(bi),fi,bi);
+      if (!reachable[bi]) report(IrErrorCode::unreachable_block,"block "+std::to_string(bi),fi,bi,
+        fn.blocks[bi].instrs.empty()?Position{}:fn.blocks[bi].instrs.back().pos);
     // Pre-scan: every def id in the function with its defining block and
     // instruction index, plus result types.
     std::map<std::uint32_t,Type> all_defs;
@@ -93,14 +95,14 @@ IrResult verify(const IrModule& module) {
       if (block.instrs.empty()) { report(IrErrorCode::missing_terminator,block.label,fi,bi); continue; }
       if (!reachable[bi]) continue; // still check structure below via preds
       const auto& term=block.instrs.back();
-      if (!is_terminator(term.op)) report(IrErrorCode::missing_terminator,block.label,fi,bi);
+      if (!is_terminator(term.op)) report(IrErrorCode::missing_terminator,block.label,fi,bi,term.pos);
       if (term.op==IrOp::jump && (term.target==0 || term.target>fn.blocks.size()))
-        report(IrErrorCode::bad_terminator,"jump target",fi,bi);
+        report(IrErrorCode::bad_terminator,"jump target",fi,bi,term.pos);
       if (term.op==IrOp::branch && (term.target==0 || term.target2==0 ||
           term.target>fn.blocks.size() || term.target2>fn.blocks.size()))
-        report(IrErrorCode::bad_terminator,"branch target",fi,bi);
+        report(IrErrorCode::bad_terminator,"branch target",fi,bi,term.pos);
       if (term.op==IrOp::return_ && !same_type(term.result,fn.result))
-        report(IrErrorCode::type_mismatch,"return type",fi,bi);
+        report(IrErrorCode::type_mismatch,"return type",fi,bi,term.pos);
       // Actual predecessor edges must equal declared preds.
       std::set<std::uint32_t> expected,actual(block.preds.begin(),block.preds.end());
       for (std::size_t pj=0;pj<fn.blocks.size();++pj) {
@@ -108,38 +110,82 @@ IrResult verify(const IrModule& module) {
         const auto& pt=fn.blocks[pj].instrs.back();
         if (pt.target==bi+1 || pt.target2==bi+1) expected.insert(static_cast<std::uint32_t>(pj+1));
       }
-      if (expected!=actual) report(IrErrorCode::bad_terminator,"predecessor set mismatch",fi,bi);
+      if (expected!=actual) report(IrErrorCode::bad_terminator,"predecessor set mismatch",fi,bi,term.pos);
       for (std::size_t ii=0;ii<block.instrs.size();++ii) {
         const auto& in=block.instrs[ii];
         const bool last=ii+1==block.instrs.size();
-        if (is_terminator(in.op) && !last) { report(IrErrorCode::bad_terminator,"mid-block terminator",fi,bi); break; }
-        if (!is_terminator(in.op) && last) { report(IrErrorCode::missing_terminator,block.label,fi,bi); break; }
+        if (is_terminator(in.op) && !last) { report(IrErrorCode::bad_terminator,"mid-block terminator",fi,bi,in.pos); break; }
+        if (!is_terminator(in.op) && last) { report(IrErrorCode::missing_terminator,block.label,fi,bi,in.pos); break; }
         if (in.def!=0) {
           if (!seen_defs.insert(in.def).second)
-            report(IrErrorCode::type_mismatch,"duplicate def "+std::to_string(in.def),fi,bi);
+            report(IrErrorCode::type_mismatch,"duplicate def "+std::to_string(in.def),fi,bi,in.pos);
         }
         for (const auto& arg:in.args) {
           const bool phi_arg=in.op==IrOp::phi;
           const bool known=phi_arg ? (all_defs.count(arg.value) || (arg.value>=1 && arg.value<=nparams))
                                    : (arg.value==0 || dominates(arg.value,bi,ii));
           if (arg.value!=0 && !known) {
-            report(IrErrorCode::undefined_value,"value "+std::to_string(arg.value),fi,bi); continue;
+            report(IrErrorCode::undefined_value,"value "+std::to_string(arg.value),fi,bi,in.pos); continue;
           }
           if (phi_arg && arg.value!=0) {
             const auto it=all_defs.find(arg.value);
             const Type& t=it!=all_defs.end()?it->second:(arg.value>=1 && arg.value<=nparams?fn.params[arg.value-1]:Type{});
-            if (t.tag==TypeTag::unknown) report(IrErrorCode::type_mismatch,"phi input type",fi,bi);
+            if (t.tag==TypeTag::unknown) report(IrErrorCode::type_mismatch,"phi input type",fi,bi,in.pos);
           }
         }
         if (in.op==IrOp::phi && in.args.size()!=2*expected.size())
-          report(IrErrorCode::phi_arity,"phi operands "+std::to_string(in.args.size())+" vs preds "+std::to_string(expected.size()),fi,bi);
+          report(IrErrorCode::phi_arity,"phi operands "+std::to_string(in.args.size())+" vs preds "+std::to_string(expected.size()),fi,bi,in.pos);
+        if (in.op==IrOp::call) {
+          // callee = IrModule::functions index + 1; args are the parameters
+          // in order, result must match the callee's declared result type.
+          if (in.callee==0 || in.callee>module.functions.size()) {
+            report(IrErrorCode::bad_operand_count,"call target",fi,bi,in.pos);
+          } else {
+            const auto& cf=module.functions[in.callee-1];
+            if (in.args.size()!=cf.params.size())
+              report(IrErrorCode::bad_operand_count,"call arity "+std::to_string(in.args.size())+" vs "+std::to_string(cf.params.size()),fi,bi,in.pos);
+            else {
+              for (std::size_t ai=0;ai<in.args.size();++ai) {
+                const auto& a=in.args[ai];
+                if (a.value==0) continue;
+                const Type& at=all_defs.count(a.value)?all_defs.at(a.value):(a.value>=1&&a.value<=nparams?fn.params[a.value-1]:Type{});
+                if (at.tag!=TypeTag::unknown && !same_type(at,cf.params[ai]))
+                  report(IrErrorCode::type_mismatch,"call arg "+std::to_string(ai)+" type",fi,bi,in.pos);
+              }
+            }
+            if (in.def!=0 && !same_type(in.result,cf.result))
+              report(IrErrorCode::type_mismatch,"call result type",fi,bi,in.pos);
+          }
+        }
+        if (in.op==IrOp::call_host) {
+          // callee = IrModule::hostcalls index + 1; arity/types/result mirror
+          // call verification against the declared hostcall signature.
+          if (in.callee==0 || in.callee>module.hostcalls.size()) {
+            report(IrErrorCode::bad_operand_count,"hostcall target",fi,bi,in.pos);
+          } else {
+            const auto& hc=module.hostcalls[in.callee-1];
+            if (in.args.size()!=hc.params.size())
+              report(IrErrorCode::bad_operand_count,"hostcall arity "+std::to_string(in.args.size())+" vs "+std::to_string(hc.params.size()),fi,bi,in.pos);
+            else {
+              for (std::size_t ai=0;ai<in.args.size();++ai) {
+                const auto& a=in.args[ai];
+                if (a.value==0) continue;
+                const Type& at=all_defs.count(a.value)?all_defs.at(a.value):(a.value>=1&&a.value<=nparams?fn.params[a.value-1]:Type{});
+                if (at.tag!=TypeTag::unknown && !same_type(at,hc.params[ai]))
+                  report(IrErrorCode::type_mismatch,"hostcall arg "+std::to_string(ai)+" type",fi,bi,in.pos);
+              }
+            }
+            if (in.def!=0 && !same_type(in.result,hc.result))
+              report(IrErrorCode::type_mismatch,"hostcall result type",fi,bi,in.pos);
+          }
+        }
         if (in.op==IrOp::binary || in.op==IrOp::compare) {
-          if (in.args.size()<2) report(IrErrorCode::bad_operand_count,"binary needs 2",fi,bi);
+          if (in.args.size()<2) report(IrErrorCode::bad_operand_count,"binary needs 2",fi,bi,in.pos);
           else {
             const auto ta=all_defs.count(in.args[0].value)?all_defs.at(in.args[0].value):(in.args[0].value>=1&&in.args[0].value<=nparams?fn.params[in.args[0].value-1]:Type{});
             const auto tb=all_defs.count(in.args[1].value)?all_defs.at(in.args[1].value):(in.args[1].value>=1&&in.args[1].value<=nparams?fn.params[in.args[1].value-1]:Type{});
             if (ta.tag!=TypeTag::unknown && tb.tag!=TypeTag::unknown && !same_type(ta,tb))
-              report(IrErrorCode::type_mismatch,"operand types differ",fi,bi);
+              report(IrErrorCode::type_mismatch,"operand types differ",fi,bi,in.pos);
           }
         }
       }
@@ -155,7 +201,7 @@ std::string dump_ir(const IrModule& module) {
       out+="  "+b.label+":\n";
       for (const auto& in:b.instrs) {
         out+="    op="+std::to_string(static_cast<int>(in.op))+" def="+std::to_string(in.def)+
-             " args="+std::to_string(in.args.size())+" target="+std::to_string(in.target)+
+             " type="+in.result.name+" args="+std::to_string(in.args.size())+" target="+std::to_string(in.target)+
              "/"+std::to_string(in.target2)+"\n";
       }
     }

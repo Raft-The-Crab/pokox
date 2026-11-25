@@ -18,7 +18,7 @@ namespace poko::mute {
 // from the AST lands in MUT-26; this module is the verified target.
 
 enum class IrOp : std::uint8_t {
-  constant, copy, unary, binary, compare, phi, call, load, store,
+  constant, copy, unary, binary, compare, phi, call, call_host, load, store,
   jump, branch, return_
 };
 
@@ -41,6 +41,9 @@ struct IrInstr {
                                // 4=mod; unary 0=neg; compare 0=eq 1=ne 2=lt
                                // 3=le 4=gt 5=ge; phi operands carry
                                // imm = predecessor block index + 1
+  std::uint32_t callee{0};     // call: IrModule::functions index + 1;
+                               // call_host: IrModule::hostcalls index + 1; 0 none
+  Position pos{};              // source position for diagnostics (MUT-33)
 };
 struct IrBlock {
   std::string label;
@@ -51,10 +54,21 @@ struct IrFunction {
   std::string name;
   Type result{};
   std::vector<Type> params;
+  // Narrowed capability grant for this function (package ceiling intersected
+  // with an explicit `@requires(...)`, MUT-36). 0x3FF = no narrowing.
+  std::uint32_t capabilities{0x3FFu};
   std::vector<IrBlock> blocks;
+};
+// Hostcalls referenced by IrOp::call_host. `id` is the registered hostcall id;
+// the instruction's callee indexes this table (index + 1).
+struct IrHostcall {
+  std::uint32_t id{};
+  std::vector<Type> params;
+  Type result{};
 };
 struct IrModule {
   std::vector<IrFunction> functions;
+  std::vector<IrHostcall> hostcalls;
 };
 
 enum class IrErrorCode : std::uint8_t {
@@ -62,7 +76,7 @@ enum class IrErrorCode : std::uint8_t {
   undefined_value, phi_arity, type_mismatch, bad_operand_count,
   duplicate_label, unreachable_block
 };
-struct IrDiagnostic { IrErrorCode code; std::string detail; std::size_t function{}, block{}; };
+struct IrDiagnostic { IrErrorCode code; std::string detail; std::size_t function{}, block{}; Position pos{}; };
 struct IrResult {
   std::vector<IrDiagnostic> diagnostics;
   [[nodiscard]] bool ok() const noexcept { return diagnostics.empty(); }

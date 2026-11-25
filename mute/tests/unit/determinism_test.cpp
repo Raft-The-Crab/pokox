@@ -37,8 +37,12 @@ void cases() {
   error("package \"a\" version \"A\" @state var t: i32 = now()",DeterminismErrorCode::nondeterministic_operation);
   error("package \"a\" version \"A\" @state var t: i32 = env(\"X\")",DeterminismErrorCode::nondeterministic_operation);
   error("package \"a\" version \"A\" @state var r: i32 = random()",DeterminismErrorCode::nondeterministic_operation);
-  // Declared capability permits the builtin outside @state.
-  ok("package \"a\" version \"A\" allow: Time fn f() -> i32 { return now(); }");
+  // Wall-clock builtins are rejected even with Time; tick-based APIs are valid.
+  error("package \"a\" version \"A\" allow: Time fn f() -> i32 { return now(); }",DeterminismErrorCode::nondeterministic_operation);
+  error("package \"a\" version \"A\" allow: Time, Crypto fn f() -> i32 { return timestamp(); }",DeterminismErrorCode::nondeterministic_operation);
+  ok("package \"a\" version \"A\" allow: Time fn f() -> i32 { return tick(); }");
+  ok("package \"a\" version \"A\" allow: Time fn f() -> i32 { return simNow(); }");
+  // Declared capability permits the approved nondeterministic source outside @state.
   ok("package \"a\" version \"A\" allow: Crypto fn f() -> i32 { return random(); }");
   // Missing capability still fails outside @state.
   error("package \"a\" version \"A\" fn f() -> i32 { return now(); }",DeterminismErrorCode::nondeterministic_operation);

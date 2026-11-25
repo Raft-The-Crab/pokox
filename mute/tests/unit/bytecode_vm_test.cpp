@@ -98,7 +98,7 @@ int main() {
   check(std::holds_alternative<std::int32_t>(sum_result) && std::get<std::int32_t>(sum_result)==55,"loop result");
   auto loop=Bytecode{{O::jump,0,0xff,0xff}};
   check(std::get<VmError>(run_register_vm(loop,{},4)).code==VmErrorCode::budget_exceeded,"infinite loop budget");
-  check(std::get<VmError>(run_register_vm(code,r,100001)).code==VmErrorCode::invalid_budget,"budget cap");
+  check(std::get<VmError>(run_register_vm(code,r,1'000'001)).code==VmErrorCode::invalid_budget,"budget cap");
   check(std::get<VmError>(run_register_vm(code,r,0)).code==VmErrorCode::budget_exceeded,"zero budget");
   r={};r[1]=std::numeric_limits<std::int32_t>::max();r[2]=1;
   check(std::get<VmError>(run_register_vm(code,r)).code==VmErrorCode::overflow,"add overflow");

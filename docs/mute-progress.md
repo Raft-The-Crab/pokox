@@ -1,4 +1,33 @@
-# Mute milestone progress (MUT-01..30)
+# Mute milestone progress (MUT-01..55)
+
+## Current status — authoritative (2026-11-25)
+
+This section overrides stale milestone-local "Remaining"/gate notes below.
+Historical sections keep their original context; when they say a gate was
+open, that was true at that milestone.
+
+- Implemented through **MUT-55**: deterministic input snapshots, named actions,
+  device-slot routing, and the host-side v1 standard libraries for math/time/
+  RNG, UTF-8 strings/collections, SHA-256/HMAC/sign-verify and lifecycle/game
+  events, plus the local pinned-lock build tool. `MUTI`, `MUTA`, device events
+  and `mute.lock` use canonical byte formats. There is no registry, on-disk
+  settings adapter, VM string/byte-buffer hostcall or script-facing action
+  hostcall.
+- There is still **no Mute-specific SDL/console host adapter**. Hosts and tests
+  construct `InputEvent`s directly; focus events are explicit host inputs.
+  ENG-02 window/platform evidence was collected separately on Windows and the
+  physical Android device.
+- **G1: accepted** for the approved Windows x64 + physical Android arm64 scope.
+  **ENG-02: accepted** for window create/resize/teardown and Android surface
+  presentation. **G2: deferred** to the canonical ENG-60→63 physics chain.
+  No shortcut physics probe was accepted.
+- Latest verification (final 2026-11-26 audit): full Debug MSVC `ctest`
+  **98/98**, full MSVC ASan `ctest` **98/98**, Android Mute binaries **12/12**,
+  and byte-identical G1 traces on both targets. Optional GCC/Clang mutation
+  scripts are explicit SKIP on this MSVC host. See
+  `two-target-gate-evidence-2026-11-25.md`.
+- Touch gestures beyond tap remain deferred. Gate acceptance belongs only to
+  the owner decision recorded in the scope matrix and evidence docs.
 
 ---
 
@@ -37,9 +66,9 @@ The MUT-01 implementation and token-golden criterion are **complete locally for 
 - A clean extraction of the final archive built with strict warning-as-error flags and passed **48/48** CTest entries.
 - Source graph refresh succeeded but excluded 111 unsupported files and reported stale community labels; it is not a complete project map.
 
-## Remaining gates
+## Remaining gates at this milestone (historical)
 
-Formal acceptance remains open because earlier INF-02/04/05 hosted/target-platform checks and existing ENG device/hosted-golden gates have not been verified. Linux results and the simulated Git checkout are not Windows/MSVC, Android or hosted-CI evidence. Under the owner's existing execution-order exception, MUT-02 (arithmetic parser and AST golden) is the next development task; it consumes the initial contract but must not be represented as closing any prior gate. Additional escapes, exponent/separator syntax and interpolation-expression parsing are future language decisions, not implemented capabilities.
+At this milestone, formal acceptance remained open because earlier INF-02/04/05 hosted/target-platform checks and existing ENG device/hosted-golden gates had not been verified. Linux results and the simulated Git checkout were not Windows/MSVC, Android or hosted-CI evidence. Under the owner's execution-order exception, MUT-02 was the next development task; it consumed the initial contract but did not close any prior gate. Additional escapes, exponent/separator syntax and interpolation-expression parsing were future language decisions, not implemented capabilities. Current gate status is at the top of this document.
 
 ## Unicode data provenance
 
@@ -65,9 +94,9 @@ The C++20 `poko_mute_parser` library links the lexer and parses one complete exp
 - A clean extraction of the packaged archive built with strict warning-as-error flags and passed **51/51** CTest entries.
 - Source-graph update succeeded but excluded 127 unsupported files and reported stale community labels; it is not a complete project map.
 
-## Remaining
+## Remaining at this milestone (historical)
 
-Hosted GitHub CI, Windows/MSVC/MinGW, Android and prior ENG device/graphics acceptance remain unverified. The parser's Windows-specific binary-output test branch was not run on Windows here. Earlier INF-02/04/05 and ENG gates remain open. Under the owner's prior exception the next development task is MUT-03, a tree-walk evaluator; its numeric, error and resource semantics require explicit design and tests. A future evaluator must avoid recursively walking arbitrarily deep ASTs or impose a safe depth/size policy.
+At this milestone, hosted GitHub CI, Windows/MSVC/MinGW, Android and prior ENG device/graphics acceptance had not been verified. The parser's Windows-specific binary-output test branch had not been run on Windows there. Earlier INF-02/04/05 and ENG gates were open. Under the owner's prior exception, MUT-03 was the next development task; current gate status is at the top of this document. The parser's deep-AST constraints were design notes for that future evaluator, not a claim that MUT-39/MUT-40 input layers recurse over ASTs.
 
 ---
 
@@ -122,7 +151,7 @@ Single-configuration generators use the configured build-type shader directory; 
 
 - Local strict Linux/GCC and ASan/UBSan suites each pass 55/55 tests. The real SDL3/Diligent/ImGui software-Vulkan suite passes 78/78. New unit tests check results, errors, caps and synchronous SDL observer behavior.
 - A separate Xvfb/XTest keyboard run clicked the real field, typed `1+2*3` and `1/0`, and visibly rendered `i32: 7` and `eval error divide_by_zero at 1:2`; 600 frames reported zero graphics errors/warnings. The optional script `engine/render/tests/integration/test_mute_console_x11.py` compares rendered output-area changes, not OCR; its captured results were visually inspected. It uses synthetic X11 input, not physical devices. Existing F1 XTest passed; `nm` found no `ImGui::` or `poko::mute::` symbols in the strip binary. The UI translation unit also passed `-Wall -Wextra -Wpedantic -Werror` after fixing an existing missing-initializer warning.
-- Graphics configuration still reports 21 upstream CMake deprecation warnings; Xvfb may report nonfatal keyboard-map warnings. Graphify skipped 155 unsupported files and partially extracted the demo at a preprocessor region; its graph is not complete. Windows/MSVC/MinGW, Android, physical GPU and hosted CI acceptance remain unverified. No cross-platform floating determinism gate or full sandbox is closed. See `mut01-mut03-followup-audit-2026-11-22.md` for the remaining numeric and resource findings.
+- Historical milestone note: graphics configuration reported 21 upstream CMake deprecation warnings; Xvfb could report nonfatal keyboard-map warnings. Graphify skipped 155 unsupported files and partially extracted the demo at a preprocessor region. Windows/MSVC/MinGW, Android, physical GPU and hosted CI acceptance were unverified at that time. No cross-platform floating determinism gate or full sandbox was closed then. See `mut01-mut03-followup-audit-2026-11-22.md` for the historical numeric and resource findings, and the authoritative current status at the top of this document.
 
 The next queued task is **MUT-05**, the `print` hostcall to the ImGui log; MUT-04's single-result display is not that hostcall.
 
@@ -147,7 +176,7 @@ The optional debug ImGui console accepts a top-level `print(...)` call and appen
 
 - `mute_console_unit` checks strings, escapes, UTF-8, numeric values, sink count and errors, interpolation rejection, multiline source positions, bounded FIFO eviction, clearing, non-copyable/non-movable log invariants, and 10,000 random byte inputs plus 1,000 generated arithmetic prints. An audit caught a potential moved-from byte-count mismatch in the new log; implicit copy/move operations were removed before delivery. This does not establish full language conformance.
 - Strict Linux/GCC and ASan/UBSan suites each pass 55/55. The SDL3/pinned Diligent/ImGui software-Vulkan suite passes 78/78. The optional Xvfb/XTest integration script types expressions and two print calls, observes changes in the output and log areas, and clicks Clear. Its screenshots were visually inspected for `hello` and `5`; pixel-difference checks are not OCR. Software Vulkan and synthetic events do not validate a physical GPU, real keyboard, Windows or Android.
-- Hosted CI, Windows/MSVC/MinGW, Android, cross-platform float determinism, full VM budgets and finalized numeric semantics remain open. Graphics configuration still has 21 upstream CMake deprecation warnings; the graph has extractor limitations. See the MUT-01–03 follow-up audit and MUT-04 report for the earlier findings.
+- Historical status: hosted CI, Windows/MSVC/MinGW, Android, cross-platform float determinism, full VM budgets and finalized numeric semantics were open at this milestone; see the authoritative current status above. Graphics configuration still has 21 upstream CMake deprecation warnings; the graph has extractor limitations. See the MUT-01–03 follow-up audit and MUT-04 report for the earlier findings.
 
 The next queued task is **MUT-06 — functions and locals**; this print bridge does not implement recursion or general call expressions.
 
@@ -180,7 +209,7 @@ factorial(5)
 
 ## Evidence and open gates
 
-Unit coverage includes factorial, Fibonacci, mutual recursion, scope/shadowing, reassignment, argument counts, unknown names, missing returns, immutable locals, overflow, divide-by-zero, source/nesting/call/budget traps and deterministic malformed-input exercises. Strict GCC and ASan/UBSan suites each passed 56/56; the software-Vulkan suite passed 79/79 on rerun. An interactive X11 check compared the recursion result to a known `i32: 120` result. One prior graphics run hit an intermittent cube-golden X11 capture failure; see the MUT-01–05 audit. Passing the local recursion criterion does not establish general Mute language compatibility, production safety, performance or Windows/Android/physical-GPU behavior. Those checks and the inherited determinism/platform gates remain open.
+Unit coverage includes factorial, Fibonacci, mutual recursion, scope/shadowing, reassignment, argument counts, unknown names, missing returns, immutable locals, overflow, divide-by-zero, source/nesting/call/budget traps and deterministic malformed-input exercises. Strict GCC and ASan/UBSan suites each passed 56/56; the software-Vulkan suite passed 79/79 on rerun. An interactive X11 check compared the recursion result to a known `i32: 120` result. One prior graphics run hit an intermittent cube-golden X11 capture failure; see the MUT-01–05 audit. Passing the local recursion criterion does not establish general Mute language compatibility, production safety, performance or Windows/Android/physical-GPU behavior. Those checks and the inherited determinism/platform gates were open at this milestone; see the authoritative current status above.
 
 ---
 
@@ -223,7 +252,7 @@ Unit tests cover true/false and zero-iteration loops, nested loops, fresh scopes
 
 # MUT-21 — packages, imports and lockfile
 
-Status: implemented locally; hosted CI and target-platform gates remain open.
+Historical status: implemented locally at this milestone; see the authoritative current status above.
 
 ## What was added
 
@@ -268,7 +297,7 @@ Status: implemented locally; hosted CI and target-platform gates remain open.
 - The resolver works on caller-supplied sources only; there is no registry,
   fetch, or `mute.lock` reader/writer yet (MUT-55 tooling).
 - Import aliases are recorded but not yet bound into semantic analysis.
-- No gate is accepted by this milestone; G1/G2 and platform gates unchanged.
+- Historical status: no gate was accepted at this milestone; see the authoritative current status above.
 
 ---
 
@@ -277,7 +306,7 @@ Status: implemented locally; hosted CI and target-platform gates remain open.
 # MUT-22 — aggregate VM values and lifetimes (foundation)
 
 Status: runtime foundation implemented and unit-tested locally; compiler/VM
-integration and hosted/target gates remain open.
+integration and hosted/target gates were open at this milestone; see the authoritative current status above.
 
 ## What was added
 
@@ -329,7 +358,7 @@ variants — no UB, no exceptions across the boundary.
   lowering); no Mute surface syntax for aggregates exists yet.
 - Struct/enum/map/option/result aggregates are not yet represented — only
   string and array exist in the store.
-- No gate is accepted by this milestone; G1/G2 and platform gates unchanged.
+- Historical status: no gate was accepted at this milestone; see the authoritative current status above.
 
 ---
 
@@ -338,7 +367,7 @@ variants — no UB, no exceptions across the boundary.
 # MUT-23 — cooperative async scheduling (foundation)
 
 Status: runtime foundation implemented and unit-tested locally; `await`/`spawn`
-syntax lowering and hosted/target gates remain open.
+syntax lowering and hosted/target gates were open at this milestone; see the authoritative current status above.
 
 ## What was added
 
@@ -379,7 +408,7 @@ syntax lowering and hosted/target gates remain open.
   the deterministic ordering contract is what the compiler must target.
 - Waiter wake order is task-id order (deterministic), not arrival order —
   acceptable for v1 replay but noted for the conformance suite.
-- No gate is accepted by this milestone; G1/G2 and platform gates unchanged.
+- Historical status: no gate was accepted at this milestone; see the authoritative current status above.
 
 ---
 
@@ -388,7 +417,7 @@ syntax lowering and hosted/target gates remain open.
 # MUT-24 — determinism and capability analysis (foundation)
 
 Status: static analysis pass implemented and unit-tested locally; integration
-into the compiler pipeline and hosted/target gates remain open.
+into the compiler pipeline and hosted/target gates were open at this milestone; see the authoritative current status above.
 
 ## What was added
 
@@ -435,7 +464,7 @@ into the compiler pipeline and hosted/target gates remain open.
   MUT-25–27 and MUT-36.
 - Hostcall whitelisting is unchanged; this pass only gates source-level
   capability/determinism policy.
-- No gate is accepted by this milestone; G1/G2 and platform gates unchanged.
+- Historical status: no gate was accepted at this milestone; see the authoritative current status above.
 
 ---
 
@@ -444,7 +473,7 @@ into the compiler pipeline and hosted/target gates remain open.
 # MUT-25 — typed SSA IR (foundation)
 
 Status: IR model and verifier implemented and unit-tested locally; AST→SSA
-lowering and hosted/target gates remain open.
+lowering and hosted/target gates were open at this milestone; see the authoritative current status above.
 
 ## What was added
 
@@ -505,7 +534,7 @@ lowering and hosted/target gates remain open.
   trait/subtyping checks belong to lowering/verification milestones.
 - No AST→SSA lowering exists yet; `IrModule` is currently only built by
   tests.
-- No gate is accepted by this milestone; G1/G2 and platform gates unchanged.
+- Historical status: no gate was accepted at this milestone; see the authoritative current status above.
 
 ---
 
@@ -513,7 +542,7 @@ lowering and hosted/target gates remain open.
 
 # MUT-26 progress — IR to bytecode emission + AST lowering
 
-Status: foundation implemented and verified locally. No gate accepted.
+Status: foundation implemented and verified locally. Historical status: no gate was accepted at this milestone.
 
 ## Delivered
 
@@ -582,7 +611,7 @@ values): clean.
   break-value env merging, register spilling, hostcalls.
 - `load_imm` is i32-only; i64/f64 literal pools are later work.
 - `for` supports range iterables only; other iterables are diagnosed.
-- No gate is accepted by this milestone; G1/G2 and platform gates unchanged.
+- Historical status: no gate was accepted at this milestone; see the authoritative current status above.
 
 ---
 
@@ -590,7 +619,7 @@ values): clean.
 
 # MUT-27 progress — bytecode verification before execution
 
-Status: implemented and verified locally. No gate accepted.
+Status: implemented and verified locally. Historical status: no gate was accepted at this milestone.
 
 ## Delivered
 
@@ -642,7 +671,7 @@ hostcall boundary itself is MUT-35.
 
 # MUT-28 progress — proven-safe constant folding
 
-Status: implemented and verified locally. No gate accepted.
+Status: implemented and verified locally. Historical status: no gate was accepted at this milestone.
 
 ## Delivered
 
@@ -697,7 +726,7 @@ fall-through, or the branch block's false edge carrying the pre-if env).
   no branch-on-constant folding (MUT-29/30 territory).
 - `fold_constants` is a library pass; it is not yet wired into a single
   `compile()` pipeline entry point.
-- No gate accepted.
+- Historical status: no gate was accepted at this milestone.
 
 ---
 
@@ -705,7 +734,7 @@ fall-through, or the branch block's false edge carrying the pre-if env).
 
 # MUT-29 progress — dead pure-code elimination
 
-Status: implemented and verified locally. No gate accepted.
+Status: implemented and verified locally. Historical status: no gate was accepted at this milestone.
 
 ## Delivered
 
@@ -737,7 +766,7 @@ ASan subset clean.
 - No unreachable-block removal here (that is MUT-30's job).
 - Side-effect-free but non-pure ops (e.g. provably non-trapping arithmetic
   on bounded constants) are conservatively kept.
-- No gate accepted.
+- Historical status: no gate was accepted at this milestone.
 
 ---
 
@@ -745,7 +774,7 @@ ASan subset clean.
 
 # MUT-30 progress — proven-safe control-flow simplification
 
-Status: implemented and verified locally. No gate accepted.
+Status: implemented and verified locally. Historical status: no gate was accepted at this milestone.
 
 ## Delivered
 
@@ -782,7 +811,7 @@ ASan subset clean.
 - Only same-block-earlier constant conditions fold (no dominator-based
   constant propagation — conservative and safe).
 - No jump threading, loop rotation, or branch-to-same-target merging.
-- No gate accepted.
+- Historical status: no gate was accepted at this milestone.
 
 ---
 
@@ -880,4 +909,691 @@ generation counter (caught by the new stale-handle test), and `promote`/
 ## Still open (by design, not defects)
 
 - `values` is not yet wired into `run_program`/bytecode; `package` has no
-  registry/fetch/lockfile reader. No gate is accepted by this audit.
+  registry/fetch/lockfile reader. Historical status: no gate was accepted by this audit; see the authoritative current status above.
+
+---
+
+## mut35-progress
+
+# MUT-35 progress — versioned, typed hostcall boundary
+
+## Delivered
+
+- `poko/mute/hostcall.hpp` + `mute/src/vm/hostcall.cpp`: `HostcallTable` of
+  versioned, typed `HostcallDef`s (id ≤255, signature version, i32/boolean/unit
+  params and result, required capability mask, serializable flag, handler).
+  `add()` rejects duplicates, out-of-range ids, version 0, unit params,
+  unknown capability bits, missing handlers and oversized arity (>256).
+- `Opcode::call_host = 0x44` (spec ordering: call=0x40, tailcall=0x41,
+  ret=0x42, ret_void=0x43, call_host=0x44, … halt=0x4f) with `a`=id,
+  `b`=arg-base register, `c`=return register (0 = discard). Wired through
+  `validate_bytecode`, `disassemble_bytecode` (`call_host 7, r200, r3`) and
+  `assemble_bytecode` round-trips.
+- `VmEnvironment` on `run_register_vm` (new optional 4th parameter; existing
+  callers unchanged): dispatch order is unknown-id (0x0A) → capability (0x0C)
+  → signature (0x0B: ABI version, arg-window overflow, non-0/1 boolean args,
+  unit-result-with-return-reg, out-of-range boolean result) → handler.
+  Handler `HostcallError` traps `hostcall_failed` after dispatch.
+
+## Verified
+
+`mute_hostcall_unit` (new): registration rejections, arg-window dispatch,
+discard/unit results, every pre-dispatch trap, capability denial before
+dispatch, handler failure, codec goldens/round-trips. Full `ctest -R mute_`:
+41/41 pass on Debug MSVC.
+
+## Still open
+
+- `call_host` is not yet emitted by `emit_bytecode` (IrOp::call remains
+  `unsupported_op`); no `call`/`await`/`spawn` opcodes yet.
+- Signatures are i32/bool/unit only until registers can hold Values.
+- Historical status: no gate was accepted at this milestone.
+
+---
+
+## mut36-progress
+
+# MUT-36 progress — runtime capability enforcement
+
+## Delivered
+
+- Canonical capability name↔bit table in `hostcall.hpp`
+  (`capability_entries`, `capability_from_name`, `capability_name`);
+  `determinism.cpp` now resolves `allow:` names through it (single source).
+- `program_capability_mask(ast)` in `determinism.cpp`: the `allow:` ceiling
+  as a mask (unknown names contribute no bits; `analyze_determinism` still
+  reports them).
+- `effective_capabilities(ceiling, host)` = intersection (narrowing) and
+  `unauthorized_hostcalls(table, granted)` for bind-time rejection.
+- `HostcallDef::serializable` + `VmEnvironment::serialized_run`: non-
+  serializable hostcalls are denied with `capability_denied` during
+  replay/snapshot verification but run normally live.
+
+## Verified
+
+`mute_capability_unit` (new): ceiling masks, narrowing, bind-time
+unauthorized ids, missing-capability denial with handler-not-run proof,
+serializable flag live-vs-replay behavior, @state token ban spot-check.
+41/41 `ctest -R mute_` pass.
+
+## Still open
+
+- Per-function `requires(...)` narrowing is not modeled (no call frames yet).
+- Capability tokens in serialized artifacts are prevented structurally
+  (@state ban, i32-only state) rather than by a serializer-side check.
+- Historical status: no gate was accepted at this milestone.
+
+---
+
+## mut37-progress
+
+# MUT-37 progress — VM resource limits
+
+## Delivered
+
+- `VmRunState` + `VmEnvironment::{max_hostcalls=1000, max_call_depth=64,
+  state}`: shared per-run accounting that also bounds host-mediated VM
+  recursion (a hostcall handler re-entering `run_register_vm`).
+- New traps: `call_depth_exceeded` (spec 0x02-class, depth-64 boundary) and
+  `hostcall_quota` (spec 1,000 hostcalls/tick) with RAII depth restore on
+  every exit path; quota charged only on actual dispatch.
+- Instruction-budget hard cap raised 100k → 1M to match the approved v1
+  spec default (1M instructions/tick); `bytecode_vm_test` boundary updated.
+- Heap quotas remain in `AggregateStore` (64 MiB / 65,536 objects, MUT-22),
+  already covered by `mute_values_unit`; register count is structurally 256.
+
+## Verified
+
+`mute_limits_unit` (new): budget cap boundary, instruction-budget trap,
+hostcall quota at exactly max dispatches, shared-state accumulation,
+depth-64 boundary, nested-run depth sharing/restore, untracked-run fallback.
+41/41 `ctest -R mute_` pass.
+
+## Still open
+
+- `Opcode::call` does not exist yet, so call-depth currently bounds only
+  host-mediated recursion; wire the same counter when calls land.
+- Heap quota is per-store, not per-VM-frame; unified accounting is later work.
+- Historical status: no gate was accepted at this milestone.
+
+---
+
+## mut33-progress
+
+# MUT-33 progress — source mappings and useful diagnostics
+
+## Delivered
+
+- `IrInstr::pos` / `IrDiagnostic::pos` (ssa.hpp): every lowered instruction
+  and diagnostic carries a `Position` (byte/line/column).
+- `lower.cpp` threads positions: `pos_` tracks the current AST node in
+  `eval_node`/`stmt`; `emit`/`term`/`emit_into` fill `in.pos` only when
+  unset so explicit node positions win; `diag()` stamps diagnostics.
+- `emit.cpp` builds a pc→Position map into `EmitResult::positions`
+  (parallel to `functions`, one entry per emitted word). ALU/constant/
+  copy words carry their IR instruction's position; phi-move words carry
+  the phi's position; trampoline moves carry the phi position and the
+  trampoline jump carries the originating conditional branch's position;
+  ext_prefix payload words share their branch's position.
+- `source_position(result, fn, pc)` lookup: exact pc, else nearest earlier
+  known position, else unset (`Position{}`, line 0).
+- Diagnostics carry positions end-to-end: `verify()` stamps
+  `IrDiagnostic::pos` from the offending instruction/terminator;
+  `EmitError::pos` is set for `unsupported_op` (call/load/store and
+  out-of-range constants).
+- Optimizer coverage is structural: `fold_constants`,
+  `simplify_control_flow` and `eliminate_dead_code` mutate/copy
+  `IrInstr`s in place, so positions survive optimization.
+
+## Verified
+
+`mute_emit_unit` extended: per-word map sizing, phi-move/terminator
+positions, out-of-range lookups, a runtime `divide_by_zero` trap mapping
+back to the division's source position through both the baseline and the
+fold+DCE+control-flow pipeline, lower-diagnostic byte-offset assertions,
+and verify/emit diagnostic position propagation. `mute_lower_unit`,
+`mute_ssa_unit` still pass; Debug MSVC build clean.
+
+## Still open
+
+- Positions are byte/line/column only — no source-file identity yet
+  (single-file lowering today).
+- `Opcode::call`/`load`/`store` still unsupported in emit; debugger
+  integration is MUT-34.
+- Gate (MUT-33 row) not formally accepted; see work queue.
+
+---
+
+## mut34-progress
+
+# MUT-34 progress — debugger breakpoints and stepping
+
+## Delivered
+
+- `VmCore` (`mute/src/vm/vm_core.{hpp,cpp}`): the register-VM loop extracted
+  into a steppable core — `step()` executes exactly one instruction
+  (long-form payload words count as part of their instruction), exposing
+  `pc()`, `last_pc()`, `steps()` and the live register file. `run_register_vm`
+  is now a thin driver over it, so trap/budget/hostcall/capability semantics
+  are literally the same code path.
+- `VmDebugger` (`mute/include/poko/mute/debugger.hpp` +
+  `mute/src/vm/debugger.cpp`): owns its own register copy (caller arrays are
+  never touched), pc breakpoints (`add/remove/has/clear`), `step()` (one
+  instruction; ignores breakpoints for that instruction), `run()` (until
+  breakpoint/return/trap), register and stack inspection
+  (`registers()`, `pc()`, `last_pc()`, `steps()`, `stack()`).
+- Debugging cannot mutate validated sim state: the debugger executes the
+  same bytecode with the same `VmEnvironment` quotas on private registers;
+  `@state` commit semantics live above this layer and are untouched.
+
+## Verified
+
+`mute_debugger_unit` (new): entry/step inspection, mid-run and ret
+breakpoints, trap surfacing with trapping pc, step-over-breakpoint,
+caller-state immutability, result equality with `run_register_vm`, budget
+and invalid-bytecode traps. Full `ctest -R mute_`: 42/42 pass on Debug
+MSVC — the VmCore refactor is regression-clean across bytecode_vm,
+limits, hostcall, capability, program and scheduler tests.
+
+## Still open
+
+- No `Opcode::call` yet, so `stack()` reports the single live frame;
+  source-level (line/column) breakpoints need a Position→pc index over
+  `EmitResult::positions` (MUT-33 map exists; wiring is later work).
+- No watchpoints, no reverse execution, no multi-function debug info.
+- Gate (MUT-34 row) not formally accepted; see work queue.
+
+---
+
+## mut31-progress
+
+# MUT-31 progress — differential-test optimized and baseline programs
+
+## Delivered
+
+- `mute/tests/unit/diff_test.cpp` (`mute_diff_unit`): compiles a pinned
+  corpus of Mute sources through parse -> lower -> verify -> emit twice —
+  baseline and the MUT-28/29/30 pipeline (fold_constants ->
+  simplify_control_flow -> eliminate_dead_code) — then runs both on
+  `run_register_vm` and compares observable results.
+- Corpus (24 cases): constants/arithmetic, if/else phis, while/for loops,
+  break/continue, &&/|| short-circuit, unary, dead lets, constant branches
+  (both taken and dead arms), div/mod-by-zero, add/neg overflow traps,
+  traps after loops, shared subexpressions.
+- Comparison contract: identical i32 result, or identical `VmErrorCode`
+  (pc may legitimately differ between layouts). For real traps
+  (divide_by_zero, overflow) the MUT-33 `source_position` maps of both
+  runs must resolve to the same source Position — optimized traps still
+  identify the same source construct.
+- Budget semantics documented: a shared tiny budget case asserts both
+  sides report `budget_exceeded`; instruction-count differences after
+  optimization are expected and not asserted equal. Optimized emission
+  size must never exceed baseline on the corpus.
+
+## Verified
+
+`mute_diff_unit` passes on Debug MSVC. Hostcall-order and serialized-state
+coverage is NOT yet possible: `emit_bytecode` still rejects `IrOp::call`,
+so no corpus program can dispatch hostcalls (MUT-35 open). State snapshots
+are covered separately by `mute_snapshot_unit`.
+
+## Still open
+
+- Hostcall order/trap coverage awaits IR-level `call`/`call_host`
+  emission; float/string/aggregate corpus entries await those types.
+- Gate (MUT-31 row) not formally accepted; see work queue.
+
+---
+
+## mut32-progress
+
+# MUT-32 progress — optimizer benchmark and reporting harness
+
+## Delivered
+
+- `mute/tests/unit/bench_test.cpp` (`mute_optbench_unit`): pinned
+  workloads (loop-sum, for-heavy, branchy, dead-heavy, phi-merge) compiled
+  baseline and optimized, executed 5x each on `run_register_vm` with a
+  1M-instruction budget; reports per-workload instruction counts and
+  best-of-5 wall times.
+- Regression detection: fails on optimized code-size growth over baseline,
+  result divergence, or >2x best-time slowdown (deliberately loose for
+  debug-build noise). Times are reported only — no speedup is claimed.
+- Nested `for` and if-in-`else` initially failed `verify()` — root cause
+  was `duplicate_label` (nested control flow reusing block labels), fixed
+  in lower.cpp via deterministic `.N` suffixes; regression cases added to
+  `mute_lower_unit`, the diff corpus and the bench workloads.
+
+## Verified
+
+`mute_optbench_unit` passes; sample report shows dead-heavy 42->24 instrs
+and ~1.7x best-time improvement, loop workloads neutral — consistent with
+DCE/control-flow only removing provably dead work.
+
+## Still open
+
+- No Release-mode numbers yet; pinned corpus should grow with the ISA
+  (calls, floats, aggregates) as those land.
+- Gate (MUT-32 row) not formally accepted; see work queue.
+
+---
+
+## mut34-followup
+
+# MUT-34 follow-up — source-level breakpoint lookup
+
+- `source_pcs(result, fn, pos)` in emit.hpp/emit.cpp: returns every pc in
+  an emitted function whose recorded source position exactly matches a
+  `Position` — the bridge from MUT-33's map to source-level breakpoints
+  (`VmDebugger::add_breakpoint` takes pcs).
+- `mute_emit_unit` covers hit/miss/consistency; `mute_debugger_unit` still
+  green. Multi-frame stacks still await `Opcode::call`.
+
+---
+
+## mut35-37-closure
+
+# MUT-35/36/37 closure — gates locked 2026-11-25
+
+Done-when review against the test suite (all `ctest -R mute_` 44/44):
+
+- **MUT-35** — `mute_hostcall_unit`: valid dispatch, arg-window capture,
+  unit/discard results, unknown-id/null-env/abi/signature traps before
+  dispatch. Gate met; IR emission of `call_host` remains future work.
+- **MUT-36** — `mute_capability_unit`: allow-ceiling masks, narrowing,
+  bind-time unauthorized ids, missing-capability denial with
+  handler-not-run proof, serialized-run denial. Gate met;
+  per-function `requires()` awaits call frames.
+- **MUT-37** — `mute_limits_unit` + `mute_values_unit`: 1M/tick budget
+  cap and `budget_exceeded`, 1,000 hostcalls/tick `hostcall_quota`,
+  depth-64 `call_depth_exceeded` with RAII restore, AggregateStore heap
+  quotas. Gate met; `Opcode::call` still absent.
+
+---
+
+## mut-call-plan
+
+# Function calls — implementation plan (MUT-31..37 closure path)
+
+Facts established 2026-11-25:
+
+- Parser already emits `ExprKind::call` nodes: `left` = callee expr index,
+  `children` = argument expr indices (`parser.cpp` ~L311). No grammar work.
+- `lower.cpp eval_node` hits `default:` -> `type_mismatch` diagnostic for
+  calls today. `lower_function` lowers ONE function body; calls need
+  module-level context (callee name -> signature/index).
+- `IrInstr` has no function-reference field; `IrOp::call` exists in the
+  enum but emit rejects it (`unsupported_op`) and verify has no call rules.
+- VM: `Opcode` has no call/ret; `VmCore` is single-frame flat r[256];
+  `VmDebugger::stack()` assumes one frame; MUT-37 depth bound currently
+  covers only host-mediated recursion.
+
+Ordered slices (each independently testable):
+
+1. IR: add function reference to call instrs (e.g. `IrFunction::functions`
+   index via new field or `detail`+name table); verify call arg count/types
+   against callee signature.
+2. Lower: `lower_module` (or extended `lower_function`) taking a function
+   signature table; eval_node `ExprKind::call` -> evaluate args, emit
+   `IrOp::call`.
+3. Emit: calling convention — args into consecutive regs, `Opcode::call`
+   with function index + return reg; frame model decision (register
+   windows vs spill slots) — biggest design choice, affects VM + debugger.
+4. VM: `Opcode::call`/`ret` + frame stack in `VmCore`; wire MUT-37
+   max_call_depth to real calls; `VmDebugger::stack()` reports frames.
+5. `call_host` emission: hostcall defs -> `Opcode::call_host` sequences.
+6. Tests: call round-trips, recursion vs depth-64, arg/return marshalling,
+   diff-corpus entries with calls, debugger multi-frame inspection,
+   MUT-36 `requires()` narrowing once frames exist.
+
+---
+
+## mut-call-slice1
+
+# Function calls — slice 1 landed (IR call verification)
+
+- `IrInstr::callee` (ssa.hpp): `IrOp::call` instructions reference
+  `IrModule::functions` by index+1.
+- `verify()` (ssa.cpp) now checks calls: callee in range, arg count ==
+  callee param count, per-arg type match, result type == callee result —
+  all reported with `IrDiagnostic::pos`.
+- emit still rejects `IrOp::call` as `unsupported_op` (unchanged); emit
+  tests updated to use verify-valid self-calls.
+- Verified: `mute_ssa_unit`, `mute_emit_unit`, `mute_diff_unit` pass.
+
+Next slices per `mut-call-plan` above: lowering (`ExprKind::call` ->
+`IrOp::call`, needs module-level signature context), emit calling
+convention + frame model, VM `Opcode::call`/`ret` + frame stack,
+`call_host` emission, then MUT-31/34/36/37 residual coverage.
+
+---
+
+## mut-call-slice2-design
+
+# Slice 2 design notes (lowering calls) — captured before context reset
+
+Established facts:
+
+- `DeclarationAst`: `fn_decl` nodes carry `spelling` (name), `type` (index
+  into `types()` = return TypeNode), `children` (param decl nodes),
+  `body` (index into `bodies()` = StatementAst). `TypeNode` has
+  kind/spelling/args; semantic.cpp already converts TypeNode->Type
+  (Analyzer::convert_type ~L110) — reuse or factor it out.
+- Parser emits `ExprKind::call`: `left` = callee expr node index,
+  `children` = arg expr node indices (parser.cpp ~L311).
+- `IrInstr::callee` = IrModule::functions index + 1; verify() already
+  checks arity/types/result for IrOp::call.
+
+Minimal API proposal:
+
+```cpp
+struct LowerSignature { std::string name; std::vector<Type> params; Type result; };
+// sigs[i] MUST correspond to IrModule::functions[i]; self-recursion works
+// because the function's own sig is in the table.
+LowerResult lower_function_ex(
+    const StatementAst& body, std::string_view name, const Type& result,
+    std::span<const LowerParam> params,
+    std::span<const LowerSignature> sigs);
+```
+
+`lower_function` keeps its signature and delegates with an empty table
+(calls then diagnose `undefined_value`/unsupported as today).
+
+Lowerer changes: store `sigs_` + build `name -> index` map. In
+`eval_node`, `ExprKind::call`: callee node must be `ExprKind::identifier`
+(resolved via sigs; unknown -> `undefined_value` diag); eval each child
+arg; emit `IrOp::call` with `callee=index+1`, `args`=arg value ids,
+`def`=fresh id, `result`=sig.result; return `{id,sig.result}`.
+
+Module driver (later or same slice): a `lower_module(const DeclarationAst&)`
+that walks fn_decl nodes, converts TypeNodes, lowers each body with the
+full sig table, returns IrModule + diagnostics — this is what tests and
+the compiler frontend will call.
+
+---
+
+## mut-call-slices2-6
+
+# Function calls — slices 2, 3, 4, 5 and 6 landed (2026-11-25)
+
+## Slice 2 — lowering with a signature table
+
+- `LowerSignature`/`LowerModuleResult` and `lower_function_ex`/`lower_module`
+  (`poko/mute/lower.hpp`, `mute/src/semantic/lower.cpp`): the module driver
+  builds one signature entry per `fn_decl` before lowering any body, so
+  forward references, self recursion and mutual recursion all resolve.
+- `eval_node(ExprKind::call)` requires an identifier callee, checks arity,
+  evaluates arguments left to right, and emits `IrOp::call` with
+  `callee = signature index + 1`, the argument value ids and a fresh result
+  def. Unknown callees and bad arity are typed diagnostics. One IR function
+  is emitted per signature even when a body fails, so callee indices remain
+  aligned.
+- `@requires(...)` is parsed into each function's capability mask,
+  intersected with the program's `allow:` ceiling (`program_capability_mask`).
+  Functions without the attribute keep `0x3FF`.
+
+## Slice 4 — VM frames (landed before emit, fixing the calling convention)
+
+- `Opcode::call/ret` (`0x40`/`0x42`) are wired through validation,
+  encoding/decoding, assembly and disassembly. `call a,b,c` names a function
+  index, an argument-window base and a destination register.
+- `VmCore` keeps a frame stack (code span, return pc, destination register,
+  capability mask, full 256-register file). A call copies only the 32-register
+  staging window into a fresh frame; `ret` restores the caller and binds the
+  result. `run_register_module` is the module entry point;
+  `VmEnvironment::max_call_depth` now bounds real frames as well as nested
+  host-mediated runs, with depth restored on every exit.
+- `VmDebugger` has a module-aware constructor and `stack()` reports one entry
+  per live frame (suspended return pcs, then the current pc).
+
+## Slice 3 — emit
+
+- `IrOp::call` stages arguments into registers 224..255, emits `call`, and the
+  callee prologue moves the window into params 1..N. `ret` carries the IR
+  return value. Branch trampolines, phi moves and source positions still work
+  across calls.
+- Defect fixed while closing coverage: a call with more than 32 arguments
+  wrapped the `uint8_t` staging index and wrote r0/r1. `emit_bytecode` now
+  rejects oversized call/hostcall argument lists with `too_many_values`.
+
+## Slice 5 — `call_host` emission from IR
+
+- `IrHostcall` entries map IR `call_host` instructions to registered hostcall
+  ids. The emitter stages arguments in the same window, emits
+  `call_host id, r224, dest`, and discards the result for unit/no-def calls.
+  `verify()` checks hostcall callee index, arity, argument types and result
+  type; `EmitResult::capabilities` runs parallel to emitted functions for
+  per-frame narrowing.
+- `mute_emit_unit` builds a real IR module, checks the emitted operand layout
+  and source position, dispatches through a `HostcallTable`, and proves a
+  missing grant traps before the handler runs.
+
+## Slice 6 — coverage
+
+- `mute_lower_unit`: module calls, nested calls, recursion, mutual recursion,
+  unknown callees and `@requires` mask narrowing.
+- `mute_diff_unit`: four call corpus entries (direct, nested, recursive,
+  mutual) compared baseline vs optimized, including emitted size.
+- `mute_limits_unit`: real recursion at limits 10/11 and at the spec depth-64
+  boundary (63 nested calls pass, the 64th traps), with depth restored after
+  both success and trap.
+- `mute_debugger_unit`: breakpoint in a callee, two-frame `stack()`, register
+  save/restore across `ret`, and final result.
+- `mute_capability_unit`: per-frame `requires()` narrowing at runtime —
+  callee mask, caller mask and host grant must all allow the hostcall.
+
+Verified: full Debug MSVC `ctest -R mute_` 44/44; ASan subset
+(emit/lower/diff/limits/debugger/capability/ssa/bytecode_vm) 8/8. The ASan
+build's pre-existing `/EHsc` warnings remain; no sanitizer errors.
+
+## Remaining
+
+- No source-level hostcall syntax: `call_host` is emitted from hand-built IR
+  only, so the differential corpus covers calls but not hostcall ordering.
+- No cross-module calls, register spilling, or calls with aggregate values.
+- Historical status: no gate was accepted at this milestone; see the authoritative current status above.
+
+---
+
+## mut38-progress
+
+# MUT-38 — deterministic input snapshots (2026-11-25)
+
+## Implemented
+
+- `poko/mute/input_snapshot.hpp` + `mute/src/input/input_snapshot.cpp`
+  (`poko_mute_input`): a flat, tick-tagged `InputTimeline` records key,
+  mouse button, motion, wheel, resize, quit and focus events in arrival
+  order. `InputReplay` yields each recorded tick's events; `InputState`
+  applies them deterministically. `focus_lost` clears all held keys/buttons
+  and suspends motion/wheel accumulation until `focus_gained`, so a replay
+  cannot inherit stuck input across a focus change.
+- `InputTimeline::snapshot_hash(tick, state)` hashes the tick, post-event
+  input state and exact event sequence using the shared `xxhash64`, so
+  record/replay equality is checkable per tick and event reordering is
+  observable. Canonical binary `encode`/`decode` uses a strict "MUTI" v1
+  format (32-byte records) with monotonic-tick, count and trailing-byte
+  validation.
+- The host adapter converts native events (SDL/`platform::Event`) to
+  `InputEvent`; nothing in this library reads the clock or an OS event
+  queue, so recorded replays do not depend on device timing or driver
+  ordering.
+
+## Verified
+
+- `mute_input_unit` (`mute/tests/unit/input_snapshot_test.cpp`): held-key
+  and button tracking, focus-loss clear/suspend/resume, tick grouping,
+  monotonicity and bound, strict event validation, encode/decode roundtrip
+  and six corruption classes, two identical replays with equal per-tick
+  hashes, order-sensitive snapshot hashing, and an ENG-30 integration run
+  where the same 12 deltas drive the fixed-step clock during record and
+  replay (13 ticks including a clamped 5 s stall) with identical hashes.
+- Full Debug MSVC `ctest`: **90/90**, including `version_integration`.
+  `mute_input_unit` under ASan: **1/1**, no sanitizer errors.
+- Queue decision: ENG-31 (jobs) was skipped — it is only a transitive
+  prerequisite of MUT-43/44 via ENG-32/33; the next MUT tasks do not need
+  it. MUT-38 now builds on ENG-30's fixed-step clock.
+
+## Remaining at this milestone
+
+- No Mute-specific SDL/console event adapter is wired here: hosts and tests
+  construct `InputEvent`s directly. ENG-02 window/platform evidence is
+  separate from this event bridge.
+- Key-name/action mapping and canonical `encode`/`decode` landed later in
+  MUT-39/MUT-40. On-disk settings persistence and a script-facing hostcall
+  wrapper remain deferred.
+- G1 and ENG-02 were accepted later on the approved two-target matrix. See
+  the authoritative current status above; G2 remains deferred to ENG-60→63.
+
+# MUT-39 — actions and rebindable key bindings (2026-11-25)
+
+## Implemented
+
+- `poko/mute/action_map.hpp` + `mute/src/input/action_map.cpp`
+  (`poko_mute_action`): named actions are defined in stable declaration order
+  and bound to keyboard keys, mouse buttons/wheel, gamepad buttons/axes or
+  touch taps. `replace_binding`/`set_bindings`/`clear_bindings` rebind without
+  changing action names; `bindings_conflict` reports exact digital collisions
+  and overlapping same-direction axis windows. The map stays unmutated when
+  conflicts are reported so a host can persist an in-progress rebind.
+- `ActionSampler` produces one `ActionFrame` per tick with `held`, `pressed`,
+  `released` and signed `value` reads by name. It keeps only the previous
+  tick's held bits; empty ticks must be sampled so edges stay aligned. The
+  first matching binding in declaration order supplies an action's value, and
+  `ActionFrame::hash()` covers names plus samples for replay comparison.
+- `InputState`/`InputTimeline` gained minimal gamepad-button, gamepad-axis and
+  touch-tap sources for MUT-39 bindings. They reuse the existing 32-byte
+  `MUTI` v1 record payload; focus loss clears them and suspends later events
+  just like keys and mouse buttons. Device connect/disconnect and gestures
+  remain MUT-40.
+- `ActionMap::encode`/`decode` uses a strict canonical `"MUTA"` v1 format
+  (action order, binding order, u8 name length, 7-byte bindings) with name,
+  binding, version, truncation and trailing-byte validation. No disk adapter
+  is included; persistence is byte-format only, matching MUT-38.
+
+## Verified
+
+- `mute_action_unit` (`mute/tests/unit/action_map_test.cpp`): validation,
+  rebind and conflict policy, canonical persistence and corruption classes,
+  per-tick digital/axis/wheel edge behavior, rebinding observability, and a
+  decoded-map replay over the ENG-30 fixed clock with identical action hashes
+  across 13 ticks including a clamped 5 s stall.
+- `mute_input_unit` was extended for gamepad/touch state, focus clearing,
+  strict event validation and `MUTI` v1 roundtrip of the new source kinds.
+- Full Debug MSVC `ctest`: **91/91**, including `version_integration`.
+  `mute_input_unit` and `mute_action_unit` under ASan: **2/2**, no sanitizer
+  errors. The version integration fixture list was updated for the new files.
+
+## Remaining at this milestone
+
+- No Mute-specific SDL/native host adapter or on-disk settings file: hosts and
+  tests construct events and call `encode`/`decode` directly. ENG-02 window
+  evidence was collected separately.
+- No script-facing hostcall wrapper for named actions; scripts can consume a
+  host-provided integer action id once the host registers it. That bridge is
+  still deferred.
+- MUT-40 device routing landed later and passed on Windows and the physical
+  Android device. G1 and ENG-02 were accepted later; G2 remains deferred to
+  ENG-60→63. See the authoritative current status above.
+
+# G1 replay gate — two-target evidence (2026-11-25)
+
+- Owner decision removed Linux x64 as a gate target and approved
+  `mute/tests/fixtures/g1-replay.mute` as the G1 scenario. The two targets are
+  Windows x64 and a physical Android arm64 device.
+- `tools/targets/run_dual_target_tests.py` runs the Windows MSVC/Ninja suite
+  and an NDK-built Android unit set concurrently through adb, then compares
+  the complete 10,000-tick G1 traces byte-for-byte after LF normalization.
+- Verified: Windows `ctest` 91/91; Android 7/7 Mute binaries on the Xiaomi
+  `24117RN76G`; both traces are 10,000 lines with SHA-256
+  `a274e74dab510f615686a4ff2600fdd793309a3cedeab840ddf87a31a0ddad68` and
+  are byte-identical. Details in `../two-target-gate-evidence-2026-11-25.md`.
+- G1 is accepted for the approved two-target scope. G2 remains explicitly
+  deferred to the canonical ENG-60→63 physics chain; no shortcut probe was
+  accepted.
+
+# MUT-40 — approved pointer, gamepad and touch inputs (2026-11-25)
+
+## Implemented
+
+- `poko/mute/device_router.hpp/.cpp` provides deterministic device mapping.
+  Keyboard and mouse are fixed slot-0 sources; gamepads and touch displays get
+  the lowest free stable slot. Native device handles stay host-side. Only the
+  stable slot and `device_connected`/`device_disconnected` events enter the
+  MUT-38 timeline, so replay does not depend on OS device ids.
+- Gamepad and touch event codes pack slot and control into the existing 16-bit
+  `code` field. Slot 0 keeps the MUT-38/MUT-39 byte layout unchanged.
+  `InputState` now tracks per-slot gamepad buttons/axes, per-display touch
+  contacts and connected-device masks; disconnects clear only that device,
+  and focus loss clears held state without disconnecting devices.
+- MUT-39 action bindings can target a slot by packing it into `Binding::code`.
+  Conflicts are slot-sensitive: the same button on two gamepads is allowed;
+  the same button on one gamepad is still a conflict. MUTA v1 binding bytes
+  are unchanged.
+- Touch support remains tap-only, as approved. Gestures beyond tap stay
+  deferred.
+
+## Verified
+
+- `mute_device_unit` covers packed codes, slot-scoped gamepad and touch state,
+  deterministic lowest-free-slot routing, duplicate native ids,
+  connect/disconnect event generation, slot-sensitive action bindings,
+  disconnect edges and byte-identical replay.
+- Full Debug MSVC `ctest`: **92/92**, including `version_integration`.
+  ASan input/action/device subset: **3/3**.
+- The dual-target runner now also builds and runs `device_router_test` on the
+  Xiaomi `24117RN76G`: **8/8 Android Mute binaries** pass, and the paired
+  Windows run remains byte-identical on the G1 trace.
+- `tools/version/tests/integration/test_version.py` and the dual-target
+  runner source list include the new device-router files.
+
+## Remaining
+
+- No native SDL/AGDK adapter is bundled here; hosts still translate native
+  events into MUT-38 `InputEvent`s.
+- Device-map persistence to disk is not added; replay persistence is covered
+  by the timeline's connect/disconnect events.
+- Historical status: no gate was accepted by this milestone; G2 remains deferred to ENG-60→63 under the current status above.
+
+# MUT-51–55 — v1 standard API core and build tool (2026-11-25)
+
+## Implemented
+
+- **MUT-51:** `poko_mute_stdlib_math` adds pinned scalar math, `Vec2/3/4`,
+  `Mat4`, `Quat`, serializable `XorShift128Plus`, a tick-only `SimClock` and
+  Time hostcall definitions (ids 201–203). Wall-clock builtins are now always
+  rejected by the determinism analyzer; `tick()`, `dt()` and `simNow()` are
+  the approved Time surface.
+- **MUT-52:** `poko_mute_stdlib_collections` adds canonical UTF-8 validation,
+  codepoint count/slicing, concat/compare/find/ASCII-lower, bounded
+  `ByteArray` and sorted `OrderedStringMap` with canonical dump/hash.
+- **MUT-53:** `poko_mute_stdlib_crypto` adds fixed SHA-256, HMAC-SHA256,
+  hex conversion and detached HMAC sign/verify with constant-time comparison.
+  `Crypto` hostcall descriptors are bind-time validated. Asymmetric publisher
+  signatures remain a backend concern.
+- **MUT-54:** `poko_mute_events` adds a tick-tagged, bounded FIFO event bus
+  with startup/simulation/teardown phases, deterministic subscription order,
+  unsubscribe/clear and replay hashes.
+- **MUT-55:** `poko_mute_build_tool` plus `poko_mute_build` parse `mute.toml`,
+  resolve local sources, require an exact canonical `mute.lock` match and
+  print a deterministic build plan. Fixture:
+  `mute/tests/fixtures/mut55_sample`.
+
+## Verified
+
+- Full Debug MSVC `ctest`: **98/98**, including `version_integration`.
+- ASan subset (stdlib math/collections/crypto, events, build tool,
+  determinism): **6/6**.
+- Dual-target runner: **12/12** Android Mute binaries on the Xiaomi
+  `24117RN76G`; byte-identical G1 traces remain intact;
+  `all_tests_ok: true`.
+- Contract docs: `mute/V1-API.md` and `mute/BUILD-TOOL.md`. Version fixture
+  and dual-target source lists include the new files.
+
+## Remaining
+
+- Host-side libraries only: no Mute-source syntax, VM string/byte-buffer
+  hostcalls or native SDL/AGDK adapters in this slice.
+- No registry/fetch/publishing, on-disk settings adapter or script-facing
+  action hostcall.
+- No gate accepted by this slice. G2 remains deferred to ENG-60→63.

@@ -201,11 +201,20 @@ void android_main(android_app* app) {
   const char* internal = app->activity->internalDataPath;
   state.result_path = internal ? std::string(internal) + "/gles_result.txt" : "/data/local/tmp/gles_result.txt";
   write_result(state, "android_main entered");
+  // The glue can publish the first ANativeWindow before this thread starts.
+  // Pick it up directly as well as through APP_CMD_INIT_WINDOW so a fast
+  // surface creation is not missed by the command pump on newer Android.
+  if (app->window) {
+    state.window = app->window;
+    state.width = ANativeWindow_getWidth(app->window);
+    state.height = ANativeWindow_getHeight(app->window);
+    state.have_size = state.width > 0 && state.height > 0;
+  }
   int msgs = 0;
   while (!state.done) {
     int events;
     android_poll_source* source;
-    while (ALooper_pollOnce(0, nullptr, &events, (void**)&source) >= 0) {
+    while (ALooper_pollOnce(10, nullptr, &events, (void**)&source) >= 0) {
       if (source) source->process(app, source);
     }
     if (!state.done && state.window && !state.frames_done) {
