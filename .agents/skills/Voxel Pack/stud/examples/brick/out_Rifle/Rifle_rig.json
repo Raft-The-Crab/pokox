@@ -1,0 +1,46 @@
+{
+ "id": "Rifle",
+ "glb": "Rifle_rig.glb",
+ "studs_per_brick": 0.10416666666666667,
+ "max_tris_per_piece": 20000,
+ "note": "pivots: roblox = model space in studs after the 3D Importer (Y up, front = -Z); blender = studs in the .glb source scene",
+ "bones": [
+  {
+   "name": "root",
+   "parent": null,
+   "roblox_head": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "roblox_tail": [
+    0.0,
+    25.208,
+    0.0
+   ],
+   "blender_head": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "blender_tail": [
+    0.0,
+    0.0,
+    25.20833396911621
+   ],
+   "bricks": 42250
+  }
+ ],
+ "pieces": [
+  {
+   "name": "root",
+   "bone": "root",
+   "tris": 10262
+  },
+  {
+   "name": "root_glow2",
+   "bone": "root",
+   "tris": 100
+  }
+ ]
+}
