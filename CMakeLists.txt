@@ -25,6 +25,7 @@ option(POKO_WITH_CUBE_GOLDEN "Enable pinned Linux software-Vulkan screenshot tes
 option(POKO_IMGUI "Compile the ImGui feature path (UI integration comes later)" OFF)
 option(POKO_D3D12 "Enable D3D12 where the Windows SDK is available" OFF)
 option(POKO_DEBUG "Compile debug-only feature paths" OFF)
+option(POKO_SOFT_BODY "Enable visual soft-body and cloth physics" ON)
 include(CTest)
 
 if(POKO_MUTE_X11_INTERACTION_TESTS AND (NOT BUILD_TESTING OR NOT POKO_WITH_IMGUI_DEMO OR NOT POKO_DEBUG OR NOT CMAKE_SYSTEM_NAME STREQUAL "Linux"))
@@ -75,7 +76,8 @@ target_include_directories(poko_build_options INTERFACE engine/foundation/includ
 target_compile_definitions(poko_build_options INTERFACE
   POKO_IMGUI=$<BOOL:${POKO_IMGUI}>
   POKO_D3D12=$<BOOL:${POKO_D3D12}>
-  POKO_DEBUG=$<BOOL:${POKO_DEBUG}>)
+  POKO_DEBUG=$<BOOL:${POKO_DEBUG}>
+  POKO_SOFT_BODY=$<BOOL:${POKO_SOFT_BODY}>)
 
 # Always check Git at build time; only rewrite the header when its value changes.
 find_package(Git QUIET)
@@ -262,6 +264,17 @@ target_include_directories(poko_config PUBLIC engine/foundation/include)
 target_compile_features(poko_config PUBLIC cxx_std_20)
 set_target_properties(poko_config PROPERTIES CXX_EXTENSIONS OFF)
 
+# ENG-61: deterministic Q16.16 sim physics — SAP broadphase first; the
+# narrowphase and solver join this module in ENG-62/63.
+add_library(poko_physics STATIC engine/physics/src/sap_broadphase.cpp
+  engine/physics/src/convex_shape.cpp engine/physics/src/narrowphase.cpp
+  engine/physics/src/solver.cpp engine/physics/src/character_controller.cpp
+  engine/physics/src/visual_solver.cpp engine/physics/src/soft_body.cpp)
+target_include_directories(poko_physics PUBLIC engine/physics/include)
+target_compile_features(poko_physics PUBLIC cxx_std_20)
+set_target_properties(poko_physics PROPERTIES CXX_EXTENSIONS OFF)
+target_link_libraries(poko_physics PUBLIC poko_build_options)
+
 # Backend-independent platform contract, usable without SDL.
 add_library(poko_platform INTERFACE)
 target_include_directories(poko_platform INTERFACE engine/platform/include)
@@ -428,6 +441,50 @@ if(BUILD_TESTING)
   set_target_properties(pokox_loop_test PROPERTIES CXX_EXTENSIONS OFF)
   add_test(NAME pokox_loop_test COMMAND pokox_loop_test)
   set_tests_properties(pokox_loop_test PROPERTIES TIMEOUT 15)
+  # ENG-60: header-only Q16.16 fixed-point primitives; the sqrt reference
+  # sweep makes this heavier than a typical unit test.
+  add_executable(pokox_fixed_test engine/foundation/tests/unit/fixed_test.cpp)
+  target_include_directories(pokox_fixed_test PRIVATE engine/foundation/include)
+  target_compile_features(pokox_fixed_test PRIVATE cxx_std_20)
+  set_target_properties(pokox_fixed_test PROPERTIES CXX_EXTENSIONS OFF)
+  add_test(NAME pokox_fixed_test COMMAND pokox_fixed_test)
+  set_tests_properties(pokox_fixed_test PROPERTIES TIMEOUT 60)
+  add_executable(pokox_sap_broadphase_test engine/physics/tests/unit/sap_broadphase_test.cpp)
+  target_link_libraries(pokox_sap_broadphase_test PRIVATE poko_physics)
+  set_target_properties(pokox_sap_broadphase_test PROPERTIES CXX_EXTENSIONS OFF)
+  add_test(NAME pokox_sap_broadphase_test COMMAND pokox_sap_broadphase_test)
+  set_tests_properties(pokox_sap_broadphase_test PROPERTIES TIMEOUT 15)
+  add_executable(pokox_narrowphase_test engine/physics/tests/unit/narrowphase_test.cpp)
+  target_link_libraries(pokox_narrowphase_test PRIVATE poko_physics)
+  set_target_properties(pokox_narrowphase_test PROPERTIES CXX_EXTENSIONS OFF)
+  add_test(NAME pokox_narrowphase_test COMMAND pokox_narrowphase_test)
+  set_tests_properties(pokox_narrowphase_test PROPERTIES TIMEOUT 60)
+  add_executable(pokox_solver_test engine/physics/tests/unit/solver_test.cpp)
+  target_link_libraries(pokox_solver_test PRIVATE poko_physics)
+  set_target_properties(pokox_solver_test PROPERTIES CXX_EXTENSIONS OFF)
+  add_test(NAME pokox_solver_test COMMAND pokox_solver_test)
+  set_tests_properties(pokox_solver_test PROPERTIES TIMEOUT 60)
+  add_executable(pokox_character_controller_test engine/physics/tests/unit/character_controller_test.cpp)
+  target_link_libraries(pokox_character_controller_test PRIVATE poko_physics)
+  set_target_properties(pokox_character_controller_test PROPERTIES CXX_EXTENSIONS OFF)
+  add_test(NAME pokox_character_controller_test COMMAND pokox_character_controller_test)
+  set_tests_properties(pokox_character_controller_test PROPERTIES TIMEOUT 900)
+  add_executable(pokox_visual_solver_test engine/physics/tests/unit/visual_solver_test.cpp)
+  target_link_libraries(pokox_visual_solver_test PRIVATE poko_physics)
+  set_target_properties(pokox_visual_solver_test PROPERTIES CXX_EXTENSIONS OFF)
+  add_test(NAME pokox_visual_solver_test COMMAND pokox_visual_solver_test)
+  set_tests_properties(pokox_visual_solver_test PROPERTIES TIMEOUT 60)
+  if(POKO_SOFT_BODY)
+    add_executable(pokox_soft_body_test engine/physics/tests/unit/soft_body_test.cpp)
+    target_link_libraries(pokox_soft_body_test PRIVATE poko_physics)
+    set_target_properties(pokox_soft_body_test PROPERTIES CXX_EXTENSIONS OFF)
+    add_test(NAME pokox_soft_body_test COMMAND pokox_soft_body_test)
+    set_tests_properties(pokox_soft_body_test PROPERTIES TIMEOUT 60)
+  endif()
+  # G2 gate probe: deterministic physics replay trace compared byte-for-byte
+  # across Windows x64 and Android arm64 by tools/targets/run_dual_target_tests.py.
+  add_executable(poko_physics_g2_replay_probe engine/physics/tools/g2_replay_probe.cpp)
+  target_link_libraries(poko_physics_g2_replay_probe PRIVATE poko_physics)
   add_executable(pokox_asset_allocation_test engine/resource/tests/unit/asset_allocation_test.cpp)
   target_link_libraries(pokox_asset_allocation_test PRIVATE poko_resource)
   set_target_properties(pokox_asset_allocation_test PROPERTIES CXX_EXTENSIONS OFF)
@@ -751,11 +808,12 @@ if(BUILD_TESTING)
 
   # Independently compile both branches for each flag. D3D12's enabled
   # contract test is platform-neutral; it does not exercise the backend.
-  foreach(flag IN ITEMS IMGUI D3D12 DEBUG)
+  foreach(flag IN ITEMS IMGUI D3D12 DEBUG SOFT_BODY)
     foreach(value IN ITEMS 0 1)
       set(imgui 0)
       set(d3d12 0)
       set(debug 0)
+      set(soft_body 0)
       string(TOLOWER "${flag}" flag_lower)
       set(${flag_lower} ${value})
       set(test_target "pokox_flag_${flag_lower}_${value}")
@@ -764,7 +822,9 @@ if(BUILD_TESTING)
       target_compile_features(${test_target} PRIVATE cxx_std_20)
       target_compile_definitions(${test_target} PRIVATE
         POKO_IMGUI=${imgui} POKO_D3D12=${d3d12} POKO_DEBUG=${debug}
-        EXPECT_IMGUI=${imgui} EXPECT_D3D12=${d3d12} EXPECT_DEBUG=${debug})
+        POKO_SOFT_BODY=${soft_body}
+        EXPECT_IMGUI=${imgui} EXPECT_D3D12=${d3d12} EXPECT_DEBUG=${debug}
+        EXPECT_SOFT_BODY=${soft_body})
       add_test(NAME ${test_target} COMMAND ${test_target})
     endforeach()
   endforeach()

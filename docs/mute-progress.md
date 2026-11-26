@@ -19,8 +19,9 @@ open, that was true at that milestone.
   physical Android device.
 - **G1: accepted** for the approved Windows x64 + physical Android arm64 scope.
   **ENG-02: accepted** for window create/resize/teardown and Android surface
-  presentation. **G2: deferred** to the canonical ENG-60→63 physics chain.
-  No shortcut physics probe was accepted.
+  presentation. **G2: accepted** (2026-11-26) — the canonical ENG-60→63 physics
+  chain produced byte-identical 10,000-tick traces on Windows x64 and the
+  physical Android arm64 device. See `two-target-gate-evidence-2026-11-26.md`.
 - Latest verification (final 2026-11-26 audit): full Debug MSVC `ctest`
   **98/98**, full MSVC ASan `ctest` **98/98**, Android Mute binaries **12/12**,
   and byte-identical G1 traces on both targets. Optional GCC/Clang mutation

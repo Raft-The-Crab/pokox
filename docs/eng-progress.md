@@ -1237,3 +1237,389 @@ First verify the hosted CI job and resolve any reproducibility or dependency fai
 - The MSVC SDL3 link uses an import library generated from the vendored
   MinGW SDL3 DLL, not an MSVC vcpkg SDL3 package. The ABI surface exercised is
   the SDL3 C API used by `SdlPlatform`.
+
+# ENG-60 — Q16.16 math primitive suite (2026-11-26)
+
+## Implemented and verified
+
+- `engine/foundation/include/poko/foundation/fixed.hpp`: header-only,
+  `constexpr`-clean `poko::math::Fixed` — a signed 32-bit Q16.16 scalar
+  (range [-32768.0, 32767.99998], resolution 1/65536). Pure integer
+  arithmetic only: no libm, no float literal or operation, no SIMD, so
+  sim-path results are bit-identical on x64 and arm64 (spec 24 rules 1–2).
+- Arithmetic policy, all documented on the type: add/sub wrap modulo 2^32
+  (plain integer ops); mul uses a 64-bit intermediate with truncation
+  toward zero and saturates to the int32 raw range; `divide` returns
+  `std::optional<Fixed>` — a zero divisor yields `std::nullopt`, never a
+  silent infinity; `sqrt` is an exact integer Newton iteration (fixed 32
+  steps from a power-of-two seed, final min-of-pair correction — integer
+  Newton can settle into a 2-cycle one unit above the floor, e.g. raw
+  inputs just below a perfect square) returning `floor(isqrt(raw << 16))`;
+  negative input yields zero.
+- Trigonometry: `sin`/`cos` take radians as `Fixed`, reduce modulo 2*pi in
+  64-bit (cannot overflow), and evaluate a 1024-entry Q16.16 sine table
+  with linear interpolation. cos reuses the sine path at +pi/2. Worst-case
+  error measured at 1.94 LSB, inside the documented <= 2 LSB bound
+  (table quantization <= 0.5 LSB/entry + segment curvature ~0.31 LSB +
+  interpolation truncation < 1 LSB).
+- `pokox_fixed_test` (`engine/foundation/tests/unit/fixed_test.cpp`):
+  exact integer goldens for every operator (including truncation-toward-
+  zero vs floor cases, saturation, INT32_MIN negation), constexpr
+  `static_assert`s, an exhaustive sqrt check for every raw input in
+  [0, 400000) plus 200k deterministic pseudo-random inputs across the full
+  positive int32 domain against an independent bit-by-bit isqrt, trig
+  anchors/symmetry/periodicity checks, and a dense libm-reference sweep
+  asserting the 2 LSB bound.
+
+## Verified
+
+- `pokox_fixed_test`: all checks passed; trig max error 1.9413 LSB.
+- Full Debug MSVC `ctest`: **99/99** (was 98/98; +1 new test).
+- `pokox_fixed_test` under MSVC ASan (`build-msvc-asan`): clean.
+
+## Scope boundary and remaining
+
+- Scalar primitives + trig only, per the ENG-60 row ("Q16.16 math
+  primitive suite"). Spec-21 vector/matrix types (`Vec*`, `Mat4`, `Quat`,
+  `AABB`, ...) land with their first consumer — ENG-61 broadphase needs
+  fixed vectors — rather than speculatively now.
+- Fixed-point vectors are the expected next math increment inside this
+  lane; the determinism lint that rejects float literals in sim physics
+  code is still unimplemented (spec calls for it; no such tool exists yet).
+- Execution-order exception, same pattern as ENG-30: wave-21/22 engine
+  lanes (ENG-31–44, ENG-50–53) stay queued; this lands the G2 critical
+  path first. No gate accepted — G2 remains open until ENG-60→63 complete
+  and produce the dual-target physics replay evidence.
+
+# ENG-61 — SAP broadphase with sorted pair output (2026-11-26)
+
+## Implemented and verified
+
+- New `physics` module (`engine/physics/`, `poko_physics`): first engine
+  module in the spec-21 dependency chain after `scene` (which does not
+  exist yet — physics is self-contained on foundation math for now).
+- `engine/foundation/include/poko/foundation/fixed_vec.hpp`:
+  `poko::math::FixedVec3`, the Q16.16 fixed vector — first consumer of
+  the spec-21 "two precision paths" math library. Component-wise
+  add/sub/negate, scalar multiply, `min`/`max` for bounds normalization.
+  Vec2/4, Mat4, Quat remain deferred to their first consumers.
+- `poko/physics/sap_broadphase.hpp` + `src/sap_broadphase.cpp`:
+  `SapBroadphase` sweep-and-prune on the X axis.
+  - Bodies are caller-indexed u32s carrying normalized AABB bounds
+    (component-wise min/max applied on insert, so corner order is free).
+  - `insert`/`remove` are a deterministic FIFO command buffer applied in
+    submission order by `commit()`; insert upserts, remove of an absent
+    index is a no-op. `pairs()` reflects the last commit only.
+  - Endpoint sort is a strict total order — (x, min-before-max,
+    body slot), with bodies_ kept sorted by index — so the sweep cannot
+    depend on insertion order, command history or scheduling.
+  - Each overlapping pair is emitted exactly once at the later min
+    endpoint as (min(index), max(index)); the final list is sorted by
+    (a, b). Touching X intervals count as overlapping (inclusive),
+    matching broadphase candidate semantics.
+- `pokox_sap_broadphase_test`: empty/single/disjoint/touching cases,
+  X-only overlap semantics, command-buffer staleness and upsert/remove
+  ordering, inverted-corner normalization, insertion-order independence,
+  a 200-body deterministic pseudo-random cross-check against a brute-force
+  O(n^2) reference, and a 50-tick churn loop asserting sorted canonical
+  output every tick.
+
+## Verified
+
+- `pokox_sap_broadphase_test`: all checks passed.
+- Full Debug MSVC `ctest`: **100/100** (was 99/99; +1 new test).
+- `pokox_sap_broadphase_test` under MSVC ASan (`build-msvc-asan`): clean.
+
+## Scope boundary and remaining
+
+- X-axis SAP only, per ENG-61. Multi-axis SAP, incremental endpoint
+  resort, and the 512-body island structures belong to ENG-62/63 when
+  there is a real consumer; endpoints are fully re-sorted per commit
+  (documented deviation — identical pair set, deferred optimization).
+- Pairs are X-overlap candidates only; Y/Z rejection and actual contact
+  generation are ENG-62 narrowphase work.
+- No gate accepted — G2 remains open until ENG-60→63 complete.
+
+# ENG-62 — GJK/EPA narrowphase and manifolds (2026-11-26)
+
+## Implemented and verified
+
+- `engine/foundation/include/poko/foundation/fixed_vec.hpp`: added `dot`,
+  `cross`, `lengthSquared`, `normalized` (optional on zero vector) — the
+  narrowphase vector primitives, all Q16.16.
+- `poko/physics/convex_shape.hpp/.cpp`: `ConvexShape` — world-space
+  vertices + sphere-sweep radius covering sphere (1v+r), capsule (2v+r),
+  AABB/box (8v) and hull (<=64v) uniformly; `support(d)` = argmax dot with
+  lowest-index tie-break plus radius*normalize(d). Sphere/box "fast paths"
+  hold by construction (1/8-vertex scans).
+- `poko/physics/narrowphase.hpp/.cpp`: `collide(a, b) -> ContactManifold`.
+  - GJK: CSO support `sA(d)-sB(-d)`, simplex <= 4 with Johnson-style
+    reduction via winning-subset mask, closest-point-on-hull by subset
+    enumeration (segment/triangle Ericson regions/tetra inside test),
+    fixed 64-iteration cap, duplicate-vertex and no-progress termination.
+  - EPA: seed tetra searched over GJK simplex + 6 axis supports (first
+    origin-containing tetra in fixed enumeration order), horizon-edge
+    expansion with sorted edge order, fixed 64-iteration cap, convergence
+    on expansion progress (`reach - dist <= eps`), NOT absolute distance.
+  - Manifold: up to 4 contact points — deepest barycentric witness plus
+    the three EPA-face vertex witness pairs; coincident contacts merged
+    within fixed tolerance; sorted by (depth-proxy, witness coords) for
+    stable contact order. normal = -closest-face normal (B -> A).
+- `pokox_narrowphase_test`: separated/overlapping/identical spheres,
+  AABB-sphere overlap and separation, exact touch, capsule-sphere,
+  determinism (bit-identical manifold), empty shape.
+
+## Verified
+
+- `pokox_narrowphase_test`: all checks passed.
+- Full Debug MSVC `ctest`: **101/101** (+1).
+- `pokox_narrowphase_test` under MSVC ASan: clean.
+
+## Scope boundary and remaining
+
+- EPA depth is polytope-approximated (measured ~1.9% over true on the
+  sphere case; deterministic). Face-clipping manifolds with reference/
+  incident faces need hull topology — current manifold uses EPA-face
+  witness pairs (documented simplification, still genuine touch pairs).
+- Vertices are world-space; per-tick transform baking is the caller's job
+  until ENG-63/scene provides placement.
+- No gate accepted — G2 remains open until ENG-60->63.
+
+# ENG-63 — sequential impulse solver, translational (2026-11-26)
+
+## Implemented and verified
+
+- `poko/physics/solver.hpp/.cpp`: `SequentialImpulseSolver` — PGS
+  sequential impulse over `ContactConstraint`s derived from narrowphase
+  manifolds, all Q16.16 Fixed (no float in the solve path).
+  - Constraint model: `vn = dot(n, vA - vB)` with `n` the B->A manifold
+    normal (solver normalizes it once); positive accumulated normal
+    impulse `lambda_n >= 0` separates. Target separating velocity =
+    Baumgarte (`beta=0.2`, slop `0.05`, `/dt`, dt<=0 disables bias) +
+    restitution (`e * approach`, gated at approach > 1.0).
+  - Friction: two deterministic tangent axes (least-aligned coordinate
+    axis cross product), accumulated tangential impulses clamped to
+    `+/-(mu * lambda_n)`; negative friction coefficients treated as 0.
+  - Effective mass is translational only: `kn = 1/(invMassA + invMassB)`
+    per contact; both-static and degenerate contacts (missing body,
+    zero normal, zero mass sum, failed division) are skipped without
+    disturbing canonical order.
+  - Warm start: accumulated `(normal, t1, t2)` impulses persist in a
+    member map keyed by caller-stable `contact_key`, replayed once per
+    solve before iterations; keys absent from a step are evicted at the
+    next `solve()`. Keys must be unique within a step's contact set.
+  - Determinism: contacts sorted canonically by (min body, max body,
+    key); union-find islands ordered by lowest member body index with
+    stable in-island canonical order; fixed iteration count (default 8,
+    no early-out); all lookups binary search over index-sorted bodies.
+  - `integrate(dt)` does `position += velocity * dt` for non-static
+    bodies only; positions are never touched inside `solve()`.
+- `pokox_solver_test`: floor push-off, no-op when separating faster
+  than target, restitution bounce (~e*approach), symmetric two-body
+  impulse split, friction bleed-off, 60-step warm-started resting
+  stability, bit-identical determinism across runs, body
+  upsert/remove/replace and missing-body contact robustness.
+
+## Verified
+
+- `pokox_solver_test`: all checks passed.
+- Full Debug MSVC `ctest`: **102/102** (+1). `version_integration`
+  requires the MSVC env on PATH (fresh CMake configure); passes with
+  `tools/msvc/msvcenv.bat` env — same caveat as before, not a regression.
+- Full MSVC ASan `ctest`: **102/102**, `pokox_solver_test` clean.
+
+## Scope boundary and remaining (contractual limitations)
+
+- Translational dynamics only: no angular velocity, inertia tensor or
+  torque. `point_a`/`point_b` are carried on `ContactConstraint` but
+  unused — lever arms (`r x n`) are the first thing rotational dynamics
+  needs. Box/hull contacts are point approximations; correct for spheres.
+- No sleep/wake (bodies never sleep; static is inv_mass = 0 only), no
+  split impulses (Baumgarte bias can add energy on deep penetration —
+  positional correction is the documented future fix), no joint
+  constraints, no island parallelism (islands are computed for solve
+  ORDER only; the solve itself is sequential).
+- Warm-start cache is per-solver-instance and keyed by caller-supplied
+  `key`; key reuse across different contact pairs silently inherits the
+  old impulse — callers must keep keys pair+point stable and unique.
+- Tuning constants are fixed (beta 0.2, slop 0.05, restitution gate
+  1.0, 8 iterations default); per-material or per-island iteration
+  budgets are future work.
+- G2 primitive chain ENG-60->63 is now code-complete on this branch;
+  gate acceptance still requires the spec's remaining evidence (target
+  platforms, replay/determinism harness wiring) — NOT claimed here.
+
+# G2 — two-target determinism evidence (2026-11-26)
+
+- `engine/physics/tools/g2_replay_probe.cpp` (`poko_physics_g2_replay_probe`):
+  compiled-in deterministic scenario (static floor slab + pillar, 8 spheres,
+  4 boxes; staggered drops, varied mass/friction/restitution/horizontal
+  velocity). Per tick: gravity -> SAP bounds -> `collide()` per pair ->
+  `ContactConstraint`s -> warm-started sequential impulse solve ->
+  `integrate()` -> `tick pairs contacts hash` line; the hash is 64-bit
+  FNV-1a over raw Q16.16 position/velocity bits — integer-only, no floats,
+  pointers or platform state.
+- `tools/targets/run_dual_target_tests.py` extended: `PHYSICS_SOURCES`
+  (sap_broadphase, convex_shape, narrowphase, solver) added to the NDK
+  Android build, a `g2_replay_probe` target linked on device, G2 probe legs
+  on both targets, LF-normalized byte comparison, G2 gate status in
+  `gate-report.json` and the exit code; probe timeouts raised for the
+  10,000-tick physics trace.
+- `CMakeLists.txt`: `poko_physics_g2_replay_probe` executable (not a ctest;
+  gate tool like the G1 probe).
+
+## Narrowphase fixes driven by probe validation
+
+- `origin_in_tetra` accepted coplanar "tetrahedra" unconditionally (the
+  sign test is vacuous when every opposite vertex lies in the face plane),
+  so EPA's seed search could lock onto a `vol = 0` sliver for separated
+  shapes and expand a garbage hull — observed depths ~34 world units on a
+  sphere 8 units below a floor slab. Added a minimum per-face altitude
+  check (`kTetraMinAltRaw` ~0.001 units); separated pairs now correctly
+  report `touching = false`.
+- Sphere-sphere pairs hit EPA's iteration cap every call (~8.5 ms; the CSO
+  is curved so expansion never reaches `depth_eps`). Added an analytic
+  fast path for two single-vertex radius shapes — exact penetration,
+  B->A normal, same near-touch window — ~10,000x faster and more accurate.
+- Post-fix column sweep (sphere vs 80x2x80 floor slab, centers y = +0.49
+  to -10): touching/depth/normal sane across the whole range, separated
+  cases clean.
+
+## Verified
+
+- `pokox_narrowphase_test`, `pokox_solver_test`: all checks passed.
+- Full MSVC Debug `ctest`: **102/102**.
+- `tools/targets/run_dual_target_tests.py` full run (Windows x64 MSVC Debug
+  + physical Xiaomi `24117RN76G` arm64, NDK r22 `-O2`):
+  - Windows ctest 102/102; Android 12/12 Mute binaries.
+  - G1 re-verified byte-identical, sha256
+    `a274e74dab510f615686a4ff2600fdd793309a3cedeab840ddf87a31a0ddad68`.
+  - **G2 byte-identical**: both legs exit 0, 10,000 LF trace lines each,
+    sha256 `dd383cc338cd4ba179622aa64918d896de994c9ce20366b7018ba28c4eba1385`.
+  - Runner verdict: `all_tests_ok: true`, `G1: accepted-evidence`,
+    `G2: accepted-evidence`.
+- Evidence doc: `docs/two-target-gate-evidence-2026-11-26.md`;
+  artifacts under `artifacts/dual-target/` (traces + `gate-report.json`).
+
+## Remaining (unchanged scope boundaries)
+
+- Solver stays translational-only; EPA depth polytope-approximated;
+  scale-guard widens the near-touch window in scaled units for large
+  scenes; no sleep/wake, split impulses or joints (ENG-63 documented).
+- G2 covers the probe scenario + unit suites on the two gate targets —
+  not production-scene coverage or ENG-64+ features.
+
+# ENG-64 — character controller through the solver (2026-11-26)
+
+## Implemented and verified
+
+- `SimBody::kinematic` (`poko/physics/solver.hpp`): inv_mass = 0 bodies
+  flagged kinematic are skipped by solver impulses (infinite mass) but
+  DO integrate under their velocity in `integrate()` — static bodies
+  (inv_mass = 0, !kinematic) are still skipped. This is the mechanism
+  the controller uses to move through the solver as a velocity target.
+- `poko/physics/character_controller.hpp/.cpp`:
+  `CharacterController::update()` (pre-solve, once per tick) reads the
+  body, builds the capsule (`capsule_at`: vertical segment +/- half_length
+  + sweep radius), runs a downward shape cast for ground detection,
+  classifies walkability by `ground_normal.y >= slope_cos`, tests each
+  wish axis independently against the next-tick pose (per-axis slide),
+  probes a step-up path when grounded + blocked, then writes the velocity
+  target via `upsert_body`. `resolve()` (post-integrate) pushes the
+  capsule out of penetration along manifold normals, total correction
+  capped at `max_depenetration`.
+- Grounding semantics that made it correct: `grounded` requires the down
+  cast to come to rest within a 0.3-unit snap of the capsule (a distant
+  floor must NOT ground — the first implementation let the character
+  hover mid-air because `vy` was zeroed while still falling); gravity
+  always applies with a -10 u/s terminal clamp sized so per-tick fall
+  stays inside the depenetration budget; grounded vertical velocity is a
+  constant -0.5 u/s "stick" (not accumulating, not zero) so the capsule
+  presses gently into the ground and `resolve()` cancels the ~0.008
+  u/tick penetration — no floating, no tunneling.
+- Step-up is a bounded POSITIONAL lift of exactly `step_height`, applied
+  in `update()` only when the probe passes (raised capsule clear,
+  raised destination wall-free, landing cast drops > ~0.02 below the
+  raised pose). It is deliberately NOT a velocity: `vy = step_height/dt`
+  persists as body velocity and launches the capsule ballistically
+  (observed apex ~47 units). The `grounded_` gate prevents mid-air
+  re-lifts, so tall walls cannot be ratcheted.
+- Contacts with `depth < ~0.002` and degenerate EPA manifolds
+  (`touching` with ~0 depth and garbage normals) are filtered before
+  being treated as walls/blockers — tangent grazes were falsely
+  triggering step-up on flat ground.
+- `pokox_character_controller_test`: fall-and-land, walk + step-up +
+  wall stop, close-range block stop, jump apex/landing, depenetration
+  from inside the floor, 30-deg walkable vs 56-deg non-walkable slope,
+  bit-identical determinism. ctest `TIMEOUT 900` — the test is
+  EPA-cast-heavy and takes ~207 s in MSVC Debug.
+
+## Verified
+
+- `pokox_character_controller_test`: all checks passed (Debug).
+- Physics subset (`fixed`, `sap_broadphase`, `narrowphase`, `solver`,
+  `character_controller`): all pass; full Debug `ctest` 103/103 with
+  `version_integration` passing under the MSVC env (environmental caveat
+  unchanged).
+
+## Scope boundary and remaining
+
+- Capsule is axis-aligned vertical only; no rotation, no angular response,
+  no stair-snapping below step_height, no vault/mantle, no moving-
+  platform carry (kinematic ground is not yet a concept).
+- `resolve()` depenetration uses manifold normals summed then length-
+  clamped; EPA depth is polytope-approximated so resting penetration
+  jitters ~ +/-0.03 units (bounded, deterministic).
+- Per-axis slide tests each axis independently — diagonal motion into a
+  corner is approximate (standard kinematic-controller simplification).
+- The test's `tick()` adds solver contacts with a dummy static partner
+  that the solver skips (im_sum = 0); kinematic bodies get no impulse
+  response by design — `resolve()` is the only positional correction.
+- ENG-65 (visual f32 solver + soft bodies) is STARTED, not complete —
+  see below.
+
+# ENG-65 — visual physics and soft body path (2026-11-26)
+
+## Implemented and verified
+
+- `engine/foundation/include/poko/foundation/vec3f.hpp`: `poko::math::Vec3f`
+  — f32 3-vector for the visual physics path only (distinct type from
+  `FixedVec3`, not implicitly convertible, never used in sim physics).
+- `engine/physics/include/poko/physics/visual_solver.hpp` &
+  `engine/physics/src/visual_solver.cpp`:
+  `VisualSolver` (f32 PGS mirror of `SequentialImpulseSolver`,
+  `kDefaultIterations = 12` per spec 24, warm-start cache, canonical
+  contact ordering + union-find islands, kinematic support), `collide_visual`
+  (analytic f32 narrowphase for sphere-sphere, sphere-AABB, AABB-sphere,
+  AABB-AABB), and `VisualWorld` (gravity + narrowphase + solve + integrate).
+- `engine/physics/include/poko/physics/soft_body.hpp` &
+  `engine/physics/src/soft_body.cpp`:
+  Feature-flagged under `POKO_SOFT_BODY` (`option(POKO_SOFT_BODY ... ON)` in
+  `CMakeLists.txt`, `poko::build::soft_body` in `poko/foundation/build_flags.hpp`,
+  and `pokox_flag_soft_body_0`/`1` in `flags_contract.cpp`). Implements
+  `SoftBody` (Verlet mass-spring lattice with `kMaxSoftBodyNodes = 256`,
+  structural + shear springs, pinning, plane/sphere collision) and
+  `ClothGrid` (2D grid with top-row pinning and wind driven by `sim_time_seconds`).
+- `tools/targets/run_dual_target_tests.py`: added `visual_solver.cpp` and
+  `soft_body.cpp` to `PHYSICS_SOURCES` and `POKO_*` flag defines to the
+  Android NDK compile flags.
+- `pokox_visual_solver_test` and `pokox_soft_body_test`: cover PGS
+  separation/restitution/friction/kinematic, all 4 `collide_visual` shape
+  pairs, `VisualWorld` settling, `Vec3f`/`FixedVec3` type-split `static_assert`s,
+  256-node cap enforcement, pinned lattice sag, sphere collision, and
+  `ClothGrid` wind response.
+
+## Verified
+
+- MSVC Debug `ctest`: 107/107 passed (including `version_integration` under
+  `tools/msvc/msvcenv.bat`).
+- MSVC ASan `ctest` physics + flag subset (`fixed`, `sap_broadphase`,
+  `narrowphase`, `solver`, `visual_solver`, `soft_body`, `pokox_flag_*`):
+  14/14 passed, ASan-clean.
+
+## Scope boundary and remaining
+
+- Visual physics is f32 and client-only; Mute compiler enforcement of
+  `ServerOwned` field binding rejection remains MUT-42 scope.
+- Soft-body collision is limited to plane/sphere helpers (no general mesh
+  or self-collision).

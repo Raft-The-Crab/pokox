@@ -58,6 +58,16 @@ MUTE_STDLIB_SOURCES = [
     "mute/src/stdlib/stdlib_crypto.cpp",
     "mute/src/stdlib/events.cpp",
 ]
+PHYSICS_SOURCES = [
+    "engine/physics/src/sap_broadphase.cpp",
+    "engine/physics/src/convex_shape.cpp",
+    "engine/physics/src/narrowphase.cpp",
+    "engine/physics/src/solver.cpp",
+    "engine/physics/src/character_controller.cpp",
+    "engine/physics/src/visual_solver.cpp",
+    "engine/physics/src/soft_body.cpp",
+]
+ALL_NATIVE_SOURCES = MUTE_COMMON_SOURCES + MUTE_INPUT_SOURCES + MUTE_STDLIB_SOURCES + PHYSICS_SOURCES
 ANDROID_TESTS = [
     ("state_test", "mute/tests/unit/state_test.cpp", [], []),
     ("program_test", "mute/tests/unit/program_test.cpp", [], []),
@@ -195,6 +205,14 @@ def windows_leg(repo: pathlib.Path, build: pathlib.Path, out: pathlib.Path,
     (out / "g1-windows.trace").write_bytes(trace_lf)
     result["g1"] = {"lines": trace_lf.count(b"\n"), "sha256": sha256(trace_lf),
                     "exit_code": trace["exit_code"]}
+    g2_probe = build / "poko_physics_g2_replay_probe.exe"
+    g2_trace = run_command([str(g2_probe), str(ticks)], env=env,
+                           log=log_dir / "windows-g2-probe.log", timeout=2400)
+    result["steps"]["g2_probe"] = {k: v for k, v in g2_trace.items() if k != "stdout"}
+    g2_lf = normalize_lf(g2_trace["stdout"])
+    (out / "g2-windows.trace").write_bytes(g2_lf)
+    result["g2"] = {"lines": g2_lf.count(b"\n"), "sha256": sha256(g2_lf),
+                    "exit_code": g2_trace["exit_code"]}
     result["finished"] = now()
     return result
 
@@ -222,17 +240,20 @@ def android_compile(clangxx: pathlib.Path, repo: pathlib.Path, out: pathlib.Path
     log_dir = out / "logs"
     base = ["--target=aarch64-linux-android30", "-std=c++20", "-O2",
             "-fno-fast-math", "-ffp-contract=off",
-            "-DPOKO_MUTE_FP_FLAGS_CONFIGURED=1", "-include", str(shim),
-            f"-I{repo / 'mute' / 'include'}", f"-I{repo / 'engine' / 'foundation' / 'include'}"]
+            "-DPOKO_MUTE_FP_FLAGS_CONFIGURED=1",
+            "-DPOKO_IMGUI=0", "-DPOKO_D3D12=0", "-DPOKO_DEBUG=0",
+            "-DPOKO_SOFT_BODY=1", "-include", str(shim),
+            f"-I{repo / 'mute' / 'include'}", f"-I{repo / 'engine' / 'foundation' / 'include'}",
+            f"-I{repo / 'engine' / 'physics' / 'include'}"]
     key_source = "\n".join(base) + "\n" + shim.read_text(encoding="utf-8", errors="replace")
-    for source in MUTE_COMMON_SOURCES + MUTE_INPUT_SOURCES + MUTE_STDLIB_SOURCES:
+    for source in ALL_NATIVE_SOURCES:
         key_source += "\n" + (repo / source).read_text(encoding="utf-8", errors="replace")
     build_key = sha256(key_source.encode("utf-8", errors="replace"))
     key_path = obj_dir / "build-key.txt"
     force_rebuild = not key_path.is_file() or key_path.read_text(encoding="utf-8") != build_key
     objects: dict[str, pathlib.Path] = {}
     failures: list[dict[str, Any]] = []
-    for source in MUTE_COMMON_SOURCES + MUTE_INPUT_SOURCES + MUTE_STDLIB_SOURCES:
+    for source in ALL_NATIVE_SOURCES:
         src = repo / source
         obj = obj_dir / (source.replace("/", "_").replace(".cpp", ".o"))
         objects[source] = obj
@@ -243,7 +264,9 @@ def android_compile(clangxx: pathlib.Path, repo: pathlib.Path, out: pathlib.Path
         if step["exit_code"] != 0:
             failures.append({"source": source, **step})
     executables: dict[str, pathlib.Path] = {}
-    targets = [("g1_replay_probe", "mute/tools/g1_replay_probe.cpp", [], [])] + ANDROID_TESTS
+    targets = ([("g1_replay_probe", "mute/tools/g1_replay_probe.cpp", [], []),
+                ("g2_replay_probe", "engine/physics/tools/g2_replay_probe.cpp",
+                 PHYSICS_SOURCES, [])] + ANDROID_TESTS)
     for name, main_source, extra, _ in targets:
         exe = bin_dir / name
         executables[name] = exe
@@ -324,6 +347,17 @@ def android_leg(repo: pathlib.Path, sdk_root: pathlib.Path, out: pathlib.Path,
     (out / "g1-android.trace").write_bytes(trace_lf)
     result["g1"] = {"lines": trace_lf.count(b"\n"), "sha256": sha256(trace_lf),
                     "exit_code": probe["exit_code"] if trace["exit_code"] == 0 else trace["exit_code"]}
+    g2_probe = adb_shell(adb, f"{remote}/g2_replay_probe {ticks} > {remote}/g2.trace",
+                         timeout=3600)
+    result["steps"]["g2_probe"] = {"exit_code": g2_probe["exit_code"],
+                                   "stderr": g2_probe["stderr"].strip()}
+    g2_trace = adb_shell(adb, f"cat {remote}/g2.trace", timeout=300)
+    result["steps"]["g2_cat"] = {k: v for k, v in g2_trace.items() if k != "stdout"}
+    g2_lf = normalize_lf(g2_trace["stdout"])
+    (out / "g2-android.trace").write_bytes(g2_lf)
+    result["g2"] = {"lines": g2_lf.count(b"\n"), "sha256": sha256(g2_lf),
+                    "exit_code": g2_probe["exit_code"] if g2_trace["exit_code"] == 0
+                    else g2_trace["exit_code"]}
     result["finished"] = now()
     return result
 
@@ -345,11 +379,12 @@ def main() -> int:
     build = (args.windows_build or repo / "build-msvc").resolve()
     out = (args.out or repo / "artifacts" / "dual-target").resolve()
     # Clear previous-run artifacts: stale traces and binaries must never pass.
-    for stale in ("g1-windows.trace", "g1-android.trace", "gate-report.json"):
+    for stale in ("g1-windows.trace", "g1-android.trace",
+                  "g2-windows.trace", "g2-android.trace", "gate-report.json"):
         (out / stale).unlink(missing_ok=True)
     out.mkdir(parents=True, exist_ok=True)
     report: dict[str, Any] = {"started": now(), "repo": str(repo), "ticks": args.ticks,
-                              "gates": {"G1": "pending", "G2": "deferred", "ENG-02": "separate"}}
+                              "gates": {"G1": "pending", "G2": "pending", "ENG-02": "separate"}}
     with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
         futures = {}
         if not args.android_only:
@@ -391,20 +426,45 @@ def main() -> int:
                          "android_sha256": android.get("sha256"),
                          "passed": bool(match and windows_ok and android_ok)}
         report["g1_comparison"] = g1_comparison
+    win_g2 = report.get("windows", {}).get("g2", {})
+    android_g2 = report.get("android", {}).get("g2", {})
+
+    def leg_g2_ok(leg: dict[str, Any]) -> bool:
+        return bool(leg and leg.get("exit_code") == 0 and leg.get("lines") == args.ticks)
+
+    g2_comparison = None
+    if win_g2 and android_g2:
+        g2_match = ((out / "g2-windows.trace").read_bytes()
+                    == (out / "g2-android.trace").read_bytes())
+        g2_comparison = {"byte_identical": g2_match,
+                         "windows_sha256": win_g2.get("sha256"),
+                         "android_sha256": android_g2.get("sha256"),
+                         "passed": bool(g2_match and leg_g2_ok(win_g2)
+                                        and leg_g2_ok(android_g2))}
+        report["g2_comparison"] = g2_comparison
+    g2_passed = bool(g2_comparison and g2_comparison["passed"])
+    single_leg = args.windows_only or args.android_only
     if args.android_only:
         all_tests_ok = android_ok
     elif args.windows_only:
         all_tests_ok = windows_ok
     else:
-        all_tests_ok = bool(windows_ok and android_ok and g1_comparison and g1_comparison["passed"])
-    report["all_tests_ok"] = bool(all_tests_ok)
+        all_tests_ok = bool(windows_ok and android_ok and g1_comparison
+                            and g1_comparison["passed"])
+    # G2 evidence requires both legs; single-leg runs keep the G1 semantics.
+    report["all_tests_ok"] = bool(all_tests_ok and (g2_passed or single_leg))
     report["gates"]["G1"] = ("accepted-evidence" if all_tests_ok and win and android
                               else "single-leg-only" if all_tests_ok else "failed")
+    g2_leg = win_g2 if args.windows_only else android_g2 if args.android_only else None
+    report["gates"]["G2"] = ("accepted-evidence" if g2_passed
+                              else "single-leg-only" if single_leg and leg_g2_ok(g2_leg or {})
+                              else "failed")
     report["finished"] = now()
     (out / "gate-report.json").write_text(json.dumps(report, indent=2, ensure_ascii=False),
                                           encoding="utf-8")
     summary = {"report": str(out / "gate-report.json"),
-               "all_tests_ok": report.get("all_tests_ok"), "g1": report.get("g1_comparison")}
+               "all_tests_ok": report.get("all_tests_ok"), "g1": report.get("g1_comparison"),
+               "g2": report.get("g2_comparison")}
     print(json.dumps(summary, indent=2))
     return 0 if report.get("all_tests_ok") else 1
 
