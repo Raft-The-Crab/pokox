@@ -1,7 +1,10 @@
 #pragma once
 
 #include <cstdint>
+#include <cstddef>
 #include <span>
+#include <unordered_map>
+#include <vector>
 
 #include "poko/foundation/fixed.hpp"
 #include "poko/foundation/fixed_vec.hpp"
@@ -50,6 +53,27 @@ struct CharacterParams {
   // Walkable when ground normal.y >= slope_cos (cos of max slope angle).
   math::Fixed slope_cos = math::Fixed::from_raw(46341);     // ~0.707 (45 deg)
   math::Fixed max_depenetration = math::Fixed::from_raw(13107);  // 0.2
+};
+
+// Cast-path touch memo. The controller's shape-cast boolean ("does this
+// translated pose touch any collider?") is a pure function of the exact
+// Fixed values of the pose, the colliders and the depth threshold:
+// narrowphase collide() is deterministic fixed-point. Standing on ground
+// or wedged against a wall re-queries byte-identical poses every tick,
+// and each re-query costs a full GJK+EPA — the dominant cast-path cost.
+// Keys are the exact raw values (never pointers or identities), so a hit
+// returns the same answer the recompute would: results are bit-identical.
+struct TouchCacheKey {
+  std::size_t hash = 0;               // FNV-1a over raws; raws still compared
+  std::vector<std::int32_t> raws;     // min_depth, shape, colliders — exact
+};
+struct TouchCacheEntry {
+  TouchCacheKey key;
+  bool touching = false;
+};
+struct TouchCache {
+  std::unordered_map<std::size_t, std::vector<TouchCacheEntry>> buckets;
+  std::size_t entries = 0;
 };
 
 class CharacterController {
@@ -105,6 +129,10 @@ class CharacterController {
   math::FixedVec3 ground_normal_ = math::FixedVec3{math::Fixed::zero(),
                                                     math::Fixed::one(),
                                                     math::Fixed::zero()};
+  // Pure-value memo of cast_fraction's touch queries (see TouchCache above).
+  // Cleared wholesale when it grows past kTouchCacheMaxEntries so long runs
+  // stay bounded; clearing only costs hit rate, never correctness.
+  mutable TouchCache touch_cache_;
 };
 
 }  // namespace poko::physics
