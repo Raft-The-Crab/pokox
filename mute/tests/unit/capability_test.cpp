@@ -115,6 +115,7 @@ int main() {
   {
     HostcallTable table; bool ran=false;
     HostcallDef d=def(9,capability_log);
+    d.params={HostType::integer};  // module signature passes one i32 arg
     d.handler=[&](HostcallArgs args){ ran=true; return HostcallResult{std::int32_t{args[0]+1}}; };
     check(table.add(d)==HostcallTable::AddError::ok,"register hostcall 9");
     VmEnvironment env; env.hostcalls=&table; env.capabilities=capability_log;

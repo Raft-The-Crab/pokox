@@ -117,15 +117,22 @@ target_link_libraries(poko_mute_semantic PUBLIC poko_mute_parser)
 target_compile_features(poko_mute_semantic PUBLIC cxx_std_20)
 set_target_properties(poko_mute_semantic PROPERTIES CXX_EXTENSIONS OFF)
 
+# Shared deterministic-FP compile flags (MUT-51 review fix): one definition
+# so the three FP-sensitive targets cannot drift apart.
+add_library(poko_fp_strict_flags INTERFACE)
+if(MSVC)
+  target_compile_options(poko_fp_strict_flags INTERFACE /fp:strict)
+elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+  target_compile_options(poko_fp_strict_flags INTERFACE
+    -fno-fast-math -ffp-contract=off -frounding-math)
+endif()
+
 add_library(poko_mute_evaluator STATIC mute/src/evaluator/evaluator.cpp)
 target_link_libraries(poko_mute_evaluator PUBLIC poko_mute_parser)
 target_compile_features(poko_mute_evaluator PUBLIC cxx_std_20)
 set_target_properties(poko_mute_evaluator PROPERTIES CXX_EXTENSIONS OFF)
-if(MSVC)
-  target_compile_options(poko_mute_evaluator PRIVATE /fp:strict)
-  target_compile_definitions(poko_mute_evaluator PRIVATE POKO_MUTE_FP_FLAGS_CONFIGURED=1)
-elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
-  target_compile_options(poko_mute_evaluator PRIVATE -fno-fast-math -ffp-contract=off -frounding-math)
+if(CMAKE_CXX_COMPILER_ID MATCHES "MSVC|GNU|Clang")
+  target_link_libraries(poko_mute_evaluator PRIVATE poko_fp_strict_flags)
   target_compile_definitions(poko_mute_evaluator PRIVATE POKO_MUTE_FP_FLAGS_CONFIGURED=1)
 else()
   target_compile_definitions(poko_mute_evaluator PRIVATE POKO_MUTE_FP_FLAGS_CONFIGURED=0)
@@ -141,11 +148,7 @@ add_library(poko_mute_math STATIC mute/src/math/deterministic_math.cpp
 target_include_directories(poko_mute_math PUBLIC mute/include)
 target_compile_features(poko_mute_math PUBLIC cxx_std_20)
 set_target_properties(poko_mute_math PROPERTIES CXX_EXTENSIONS OFF)
-if(MSVC)
-  target_compile_options(poko_mute_math PRIVATE /fp:strict)
-else()
-  target_compile_options(poko_mute_math PRIVATE -fno-fast-math -ffp-contract=off)
-endif()
+target_link_libraries(poko_mute_math PRIVATE poko_fp_strict_flags)
 
 # MUT-51: deterministic stdlib math, seeded RNG and tick-only time API.
 add_library(poko_mute_stdlib_math STATIC mute/src/stdlib/stdlib_math.cpp)
@@ -153,11 +156,7 @@ target_include_directories(poko_mute_stdlib_math PUBLIC mute/include)
 target_link_libraries(poko_mute_stdlib_math PUBLIC poko_mute_math)
 target_compile_features(poko_mute_stdlib_math PUBLIC cxx_std_20)
 set_target_properties(poko_mute_stdlib_math PROPERTIES CXX_EXTENSIONS OFF)
-if(MSVC)
-  target_compile_options(poko_mute_stdlib_math PRIVATE /fp:strict)
-else()
-  target_compile_options(poko_mute_stdlib_math PRIVATE -fno-fast-math -ffp-contract=off)
-endif()
+target_link_libraries(poko_mute_stdlib_math PRIVATE poko_fp_strict_flags)
 
 # MUT-52: deterministic string and bounded ordered collection operations.
 add_library(poko_mute_stdlib_collections STATIC

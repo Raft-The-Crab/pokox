@@ -104,6 +104,9 @@ enum class TimeHostcall : std::uint32_t {
 
 // Integer-only hostcall definitions. All require the Time capability and are
 // serializable; wall-clock reads are deliberately absent.
+// The returned defs hold a reference to `clock`; the caller must keep the
+// SimClock alive for as long as the defs (or any evaluator bound to them)
+// are used.
 [[nodiscard]] std::vector<HostcallDef> time_hostcall_defs(SimClock& clock);
 
 }  // namespace poko::mute

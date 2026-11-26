@@ -83,6 +83,9 @@ int main() {
   auto replay = XorShift128Plus::from_state(initial[0], initial[1]);
   for (std::uint64_t value : expected) CHECK(replay.next_u64() == value);
   CHECK(replay.state() == rng.state());
+  // from_state(0,0) must not create the stuck all-zero state.
+  auto zero = XorShift128Plus::from_state(0, 0);
+  CHECK(zero.next_u64() != 0);
 
   SimClock clock{20};
   CHECK(clock.tick() == 0 && clock.sim_now() == 0);

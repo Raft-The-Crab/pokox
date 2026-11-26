@@ -101,9 +101,9 @@ int main() {
   CHECK(sqrt(Fixed::from_raw(16384)).raw() == 32768);  // sqrt(0.25) = 0.5
   CHECK(sqrt(Fixed::from_int(1)).raw() == 65536);
   CHECK(sqrt(fx(kI32Max)).raw() == 11863283);
-  // Reference sweep: every raw input in [0, 400000) plus deterministic
+  // Reference sweep: every raw input in [0, 2^21) plus deterministic
   // pseudo-random inputs across the full positive int32 domain.
-  for (std::int64_t raw = 0; raw < 400000; ++raw) {
+  for (std::int64_t raw = 0; raw < (1 << 21); ++raw) {
     const std::uint64_t n = static_cast<std::uint64_t>(raw) << 16;
     const std::int32_t got = sqrt(fx(static_cast<std::int32_t>(raw))).raw();
     const std::uint64_t want = isqrt_ref(n);
@@ -117,7 +117,7 @@ int main() {
   }
   {
     std::uint64_t state = 0x9e3779b97f4a7c15ull;
-    for (int i = 0; i < 200000; ++i) {
+    for (int i = 0; i < 300000; ++i) {
       state = state * 6364136223846793005ull + 1442695040888963407ull;
       const std::int32_t raw =
           static_cast<std::int32_t>(state >> 33) & 0x7fffffff;

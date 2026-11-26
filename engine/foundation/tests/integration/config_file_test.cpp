@@ -86,6 +86,12 @@ void test_decoder() {
     CHECK(r.error == Error::none && r.value.type == Type::nint && r.value.i == -1000);
   }
   {
+    // arg >= 2^63 encodes a value below INT64_MIN: must be rejected.
+    std::string cbor; head(cbor, 1, 0x8000000000000000ULL);
+    auto r = poko::cbor::decode(cbor);
+    CHECK(r.error == Error::malformed);
+  }
+  {
     std::string cbor; put_t(cbor, "h\xC3\xA9llo");  // "héllo" UTF-8
     auto r = poko::cbor::decode(cbor);
     CHECK(r.error == Error::none && r.value.type == Type::text &&

@@ -117,6 +117,8 @@ Result decode_item(Cursor& c, Value& out, unsigned depth) noexcept {
       out.type = Type::uint; out.u = arg; return {};
     case 1:
       out.type = Type::nint; out.u = arg;
+      if (arg >= 0x8000000000000000ull)  // -1 - arg exceeds int64 range
+        return fail(Error::malformed, c.pos - 1);
       out.i = static_cast<std::int64_t>(std::uint64_t{0} - arg - 1);
       return {};
     case 2:

@@ -158,6 +158,7 @@ XorShift128Plus XorShift128Plus::from_state(std::uint64_t s0, std::uint64_t s1) 
   XorShift128Plus rng{0};
   rng.s0_ = s0;
   rng.s1_ = s1;
+  if ((rng.s0_ | rng.s1_) == 0) rng.s0_ = 1;  // all-zero state is stuck
   return rng;
 }
 

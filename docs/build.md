@@ -2,7 +2,7 @@
 
 ## INF-02 — implementation in place; Windows acceptance pending
 
-The minimal CMake executable, vcpkg dependencies and pinned DiligentCore source integration are in place. **Do not mark INF-02 complete yet:** the plan requires builds on both MSYS2/MinGW and MSVC, and neither has been run in this Linux environment. INF-03 flag contracts are implemented and tested on Linux; Windows checks remain pending. An INF-04 CI workflow is present but has not been run on GitHub. The INF-05 golden harness and INF-06 build versioning pass local tests. A standalone SDL window demo is implemented; no product-ready application is implemented. Historical notes from the supplied archive are preserved in [build-historical.md](build-historical.md).
+The minimal CMake executable, vcpkg dependencies and pinned DiligentCore source integration are in place. **Do not mark INF-02 complete yet:** the plan requires builds on both MSYS2/MinGW and MSVC, and neither has been run in this Linux environment. INF-03 flag contracts are implemented and tested on Linux; Windows checks remain pending. The INF-04 CI workflow has run on GitHub (around 40 runs; the last fully green run was 2026-11-24, after which Actions billing blocked new jobs). The INF-05 golden harness and INF-06 build versioning pass local tests. Standalone SDL window and Vulkan clear-color demos are implemented; no product-ready application is implemented. Historical notes from the supplied archive are preserved in [build-historical.md](build-historical.md).
 
 ### Verified on 2026-11-20
 

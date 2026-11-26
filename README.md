@@ -4,15 +4,15 @@ This is the PokoX working copy. Everything needed to plan and to prepare charact
 
 ## Current scaffold status
 
-- The seven main directories have README stubs (INF-01 scaffold acceptance); this archive is not an initialized Git repository.
+- The seven main directories have README stubs (INF-01 scaffold acceptance).
 - INF-02 is in progress: the minimal build and all five dependency link checks pass on Linux. Windows MSYS2 and MSVC acceptance checks remain outstanding; see [build status](docs/build.md).
 - INF-03 flag contracts and tests have been added. Windows and D3D12-enabled verification remain outstanding; the approved ordering exception is recorded in the [work queue](docs/plan/02-work-queue.md).
-- INF-04 CI configuration is included in `.github/workflows/ci.yml`; it must run green on both Windows toolchains before the task is complete.
+- INF-04 CI configuration is in `.github/workflows/ci.yml` and runs on GitHub (around 40 runs to date, last fully green run 2026-11-24); Actions billing must stay settled for jobs to start. See [build status](docs/build.md).
 - INF-05 adds a shared [golden-file harness](tools/testutils/harness/README.md), with tests and fixtures organized under `tools/testutils/`.
 - INF-06 adds [Git-tag build version metadata](tools/version/README.md); untagged source archives report `unversioned`.
 - ENG-01 adds the platform interface. ENG-02 adds an optional SDL3 window backend and demo; dummy-driver, virtual X11 and real Windows MinGW checks pass. Windows MSVC/Android platform validation and infrastructure gates remain open. See [platform module](engine/platform/README.md).
 - ENG-01/ENG-02 lifecycle tests have been strengthened, including dependency-free fault injection against the actual backend source. Production behavior is unchanged; MSVC/Android acceptance remains open. See [hardening evidence](docs/eng01-eng02-hardening-evidence.txt) and [Windows laptop evidence](docs/eng03-windows-laptop-evidence.txt).
-- ENG-03 is in progress: explicit Vulkan-window intent, initial size queries, borrowed SDL-window access and an opt-in Diligent/Vulkan clear-color source candidate are implemented. The demo ran 120 clear/present frames on a real Windows AMD Radeon GPU via MSYS2 MinGW (0 captured errors, validation requested); pixel output, MSVC and Android validation remain open. See [ENG-03 progress](docs/eng-progress.md).
+- ENG-03 completed its window/platform work (Vulkan-window intent, size queries, borrowed SDL-window access, Diligent/Vulkan clear-color demo; 120 clear/present frames on a real Windows AMD GPU via MSYS2 MinGW). Engine work has continued through ENG-60–65: a deterministic fixed-point sim physics path (broadphase, GJK/EPA narrowphase, sequential-impulse solver), a character controller over it, and a visual f32 solver + soft-body path. The Mute compiler/VM (MUT-01–55) includes SSA lowering, an emitter, verifier, optimizer and stdlib. See [ENG progress](docs/eng-progress.md) and [Mute](mute/README.md).
 - [Actual directory structure](docs/structure.md) records the current layout; [the original planned inventory](docs/structure-plan.md) is retained for reference. Update the structure and relevant status documents whenever implementation or layout changes.
 
 ## Where things are
@@ -55,7 +55,7 @@ See `docs/character-visual-review.md` and `docs/plan/29-boyr6-character-adaptati
 
 ## Important caveat
 
-The adapted models are **prepared source assets**, not engine-runtime assets. PokoX will load PokoMesh + KTX2 chunks from a signed `.pkx`; the glTF→PokoMesh importer (task AST-04) and the engine itself are not implemented yet. See `docs/plan/29` and `docs/plan/15-assets.md`.
+The adapted models are **prepared source assets**, not engine-runtime assets. PokoX will load PokoMesh + KTX2 chunks from a signed `.pkx`; the glTF→PokoMesh importer (task AST-04) is not implemented yet. See `docs/plan/29` and `docs/plan/15-assets.md`.
 
 ## Live Blender
 
