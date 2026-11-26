@@ -11,3 +11,6 @@
 # Python test caches
 __pycache__/
 *.py[cod]
+
+# Local list of test environment variable names
+.env.example
