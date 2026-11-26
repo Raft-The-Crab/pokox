@@ -41,9 +41,39 @@ ConvexShape translated(const ConvexShape& s, FixedVec3 offset) {
   return ConvexShape{std::move(v), s.radius()};
 }
 
+// Bounding-sphere data, computed once per colliders span: the prune in
+// the helpers below is conservative (the sphere covers every vertex plus
+// the sweep radius), so results are bit-identical with and without it.
+struct Bound {
+  FixedVec3 center;
+  Fixed radius;
+};
+
+Bound shape_bound(const ConvexShape& s) {
+  Bound b{FixedVec3::zero(), s.radius()};
+  for (const auto& p : s.vertices()) b.center = b.center + p;
+  const auto n = s.vertices().size();
+  if (n == 0) return b;
+  const auto inv = math::divide(Fixed::one(), Fixed::from_int(static_cast<std::int32_t>(n)));
+  if (inv) b.center = FixedVec3{b.center.x * *inv, b.center.y * *inv, b.center.z * *inv};
+  for (const auto& p : s.vertices()) {
+    const FixedVec3 d = p - b.center;
+    const Fixed ls = math::lengthSquared(d);
+    if (ls > b.radius * b.radius) b.radius = math::sqrt(ls);
+  }
+  return b;
+}
+
+bool spheres_disjoint(const Bound& a, const Bound& b) {
+  const Fixed r = a.radius + b.radius;
+  return math::lengthSquared(a.center - b.center) > r * r;
+}
+
 bool touches(const ConvexShape& shape, std::span<const ConvexShape> colliders,
              Fixed min_depth = Fixed::zero()) {
+  const Bound sb = shape_bound(shape);
   for (const auto& c : colliders) {
+    if (spheres_disjoint(sb, shape_bound(c))) continue;
     const ContactManifold m = collide(shape, c);
     if (m.touching && m.depth >= min_depth) return true;
   }
@@ -62,7 +92,9 @@ ConvexShape CharacterController::capsule_at(FixedVec3 position,
 std::optional<ContactManifold> CharacterController::deepest_contact(
     const ConvexShape& shape, std::span<const ConvexShape> colliders) const {
   std::optional<ContactManifold> best;
+  const Bound sb = shape_bound(shape);
   for (const auto& c : colliders) {
+    if (spheres_disjoint(sb, shape_bound(c))) continue;
     const ContactManifold m = collide(shape, c);
     if (m.touching && (!best || m.depth > best->depth)) best = m;
   }
@@ -153,7 +185,9 @@ void CharacterController::update(SequentialImpulseSolver& solver, Fixed dt,
   const Fixed kBlockDepth = Fixed::from_raw(kBlockDepthRaw);
   auto axis_blocked = [&](FixedVec3 delta) -> bool {
     const ConvexShape dst = translated(capsule, delta);
+    const Bound sb = shape_bound(dst);
     for (const auto& c : colliders) {
+      if (spheres_disjoint(sb, shape_bound(c))) continue;
       const ContactManifold m = collide(dst, c);
       if (m.touching && m.depth >= kBlockDepth && m.normal.y < params_.slope_cos)
         return true;
