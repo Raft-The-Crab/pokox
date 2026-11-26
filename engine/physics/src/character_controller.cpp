@@ -332,7 +332,7 @@ void CharacterController::update(SequentialImpulseSolver& solver, Fixed dt,
   constexpr std::int32_t kTerminalRaw = -655360;   // -10.0 u/s
   constexpr std::int32_t kStickRaw = -32768;       // -0.5 u/s
   Fixed vy = vel.y - params_.gravity * dt;
-  if (vy < Fixed::from_raw(kTerminalRaw)) vy = Fixed::from_raw(kTerminalRaw));
+  if (vy < Fixed::from_raw(kTerminalRaw)) vy = Fixed::from_raw(kTerminalRaw);
   if (jump && grounded_ && params_.jump_speed > Fixed::zero()) {
     vy = params_.jump_speed;
   } else if (grounded_ && vy < Fixed::from_raw(kStickRaw)) {
