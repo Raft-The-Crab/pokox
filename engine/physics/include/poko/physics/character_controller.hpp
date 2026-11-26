@@ -73,7 +73,7 @@ struct TouchCacheEntry {
 };
 struct TouchCache {
   std::unordered_map<std::size_t, std::vector<TouchCacheEntry>> buckets;
-  std::size_size_t entries = 0;
+  std::size_t entries = 0;
 };
 
 class CharacterController {
