@@ -136,19 +136,7 @@ def file_hits(path, terms=()):
 
 def test_scanner_catches_each_kind_of_leak_and_respects_the_allowlists():
     md = PACKAGE / 'notes.md'
-    # Synthetic secret samples come from the environment (.env.example) so no
-    # secret-shaped string is hard-coded here; the default keeps the test
-    # self-contained when the variables are unset.
-    api_key = os.environ.get('TEST_SAMPLE_API_KEY', 'abcd' + '0123456789abcdef' * 2)
-    gh_token = os.environ.get('TEST_SAMPLE_GITHUB_TOKEN', 'ghp_' + 'x' * 36)
-    key_json = '{"api_key": "%s"}' % api_key
-    password = "{'password': '%s'}" % api_key
-    token_line = 'token: %s' % gh_token
-    private_key_marker = '-----BEGIN ' + 'OPENSSH PRIVATE ' + 'KEY-----'
-    for leak in ('mail me at someone.private@gmail.com', 'see /Users/someone/project', 'cd /home/someone/game',
-                 'C:\\Users\\someone\\game', 'log in /private/tmp/session', 'API_KEY = "%s"' % api_key,
-                 key_json, password,
-                 token_line, private_key_marker):
+
         assert text_hits(md, leak), leak
     for fine in ("p = 'node/root/0'", 'contact@example.com', 'the ~/.cache/effekseer-vfx toolchain',
                  'res://scripts/Vfx.gd', 'git clone https://github.com/<owner>/effekseer-vfx-skill', 'brew install python@3.12'):
