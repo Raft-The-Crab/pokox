@@ -9,6 +9,7 @@
 #include <cstdint>
 #include <new>
 #include <vector>
+#include "swapchain_frame_loop.hpp"
 namespace poko::rhi {
 struct VulkanClearAndroidRenderer::Impl {
   VkInstance instance = VK_NULL_HANDLE;
@@ -33,6 +34,8 @@ struct VulkanClearAndroidRenderer::Impl {
   void* window = nullptr;
   uint32_t width = 0, height = 0;
   bool initialized = false;
+  // A submit that signals `fence` is in flight (see swapchain_frame_loop.hpp).
+  bool fence_pending = false;
 };
 namespace {
 using Impl = VulkanClearAndroidRenderer::Impl;
@@ -223,85 +226,107 @@ RenderError VulkanClearAndroidRenderer::initialize(void* window, uint32_t w, uin
 RenderError VulkanClearAndroidRenderer::clear_and_present(const std::array<float,4>& color) noexcept {
   if (!impl_ || !impl_->initialized) return RenderError::not_initialized;
   auto* p = impl_;
-  vkWaitForFences(p->device, 1, &p->fence, VK_TRUE, UINT64_MAX);
-  vkResetFences(p->device, 1, &p->fence); // fence must be unsignaled before re-submit
-  uint32_t index = 0;
-  const auto acquired = vkAcquireNextImageKHR(p->device, p->swapchain, UINT64_MAX,
-                                              p->image_available, VK_NULL_HANDLE, &index);
-  if (acquired == VK_ERROR_OUT_OF_DATE_KHR) {
-    __android_log_write(ANDROID_LOG_WARN, "poko_vulkan", "acquire OUT_OF_DATE; recreating swapchain");
-    destroy_swapchain_resources(*p);
-    if (!make_swapchain(*p)) {
-      __android_log_write(ANDROID_LOG_ERROR, "poko_vulkan", "swapchain recreate failed");
-      return RenderError::backend_failure;
+  using detail::SwapchainStatus;
+  const auto log_result = [](const char* what, VkResult r) {
+    char dbg[96];
+    std::snprintf(dbg, sizeof dbg, "vk %s VkResult=%d", what, static_cast<int>(r));
+    __android_log_write(ANDROID_LOG_ERROR, "poko_vulkan", dbg);
+  };
+  const auto status_of = [](VkResult r) {
+    if (r == VK_SUCCESS) return SwapchainStatus::ok;
+    if (r == VK_SUBOPTIMAL_KHR) return SwapchainStatus::suboptimal;
+    if (r == VK_ERROR_OUT_OF_DATE_KHR) return SwapchainStatus::out_of_date;
+    return SwapchainStatus::error;
+  };
+  struct Ops {
+    Impl* p;
+    const std::array<float,4>& color;
+    decltype(log_result)& log;
+    decltype(status_of)& status;
+    bool fence_pending() const { return p->fence_pending; }
+    bool wait_fence() {
+      const auto r = vkWaitForFences(p->device, 1, &p->fence, VK_TRUE, UINT64_MAX);
+      if (r != VK_SUCCESS) { log("wait fence", r); return false; }
+      p->fence_pending = false;
+      return true;
     }
-    return clear_and_present(color);
-  }
-  if (acquired != VK_SUCCESS) {
-    char dbg[96];
-    std::snprintf(dbg, sizeof dbg, "vk acquire VkResult=%d", static_cast<int>(acquired));
-    __android_log_write(ANDROID_LOG_ERROR, "poko_vulkan", dbg);
-    return RenderError::backend_failure;
-  }
-  VkClearValue clear{};
-  clear.color.float32[0] = color[0]; clear.color.float32[1] = color[1];
-  clear.color.float32[2] = color[2]; clear.color.float32[3] = color[3];
-  VkRenderPassBeginInfo rpbi{VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO};
-  rpbi.renderPass = p->render_pass;
-  rpbi.framebuffer = p->framebuffers[index];
-  rpbi.renderArea.extent = p->extent;
-  rpbi.clearValueCount = 1;
-  rpbi.pClearValues = &clear;
-  vkResetCommandBuffer(p->command_buffer, 0);
-  VkCommandBufferBeginInfo cbbi{VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO};
-  vkBeginCommandBuffer(p->command_buffer, &cbbi);
-  vkCmdBeginRenderPass(p->command_buffer, &rpbi, VK_SUBPASS_CONTENTS_INLINE);
-  vkCmdEndRenderPass(p->command_buffer);
-  vkEndCommandBuffer(p->command_buffer);
-  VkPipelineStageFlags wait_stage = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
-  VkSubmitInfo si{VK_STRUCTURE_TYPE_SUBMIT_INFO};
-  si.waitSemaphoreCount = 1;
-  si.pWaitSemaphores = &p->image_available;
-  si.pWaitDstStageMask = &wait_stage;
-  si.commandBufferCount = 1;
-  si.pCommandBuffers = &p->command_buffer;
-  si.signalSemaphoreCount = 1;
-  si.pSignalSemaphores = &p->render_finished;
-  const auto submitted = vkQueueSubmit(p->queue, 1, &si, p->fence);
-  if (submitted != VK_SUCCESS) {
-    char dbg[96];
-    std::snprintf(dbg, sizeof dbg, "vk queue submit VkResult=%d", static_cast<int>(submitted));
-    __android_log_write(ANDROID_LOG_ERROR, "poko_vulkan", dbg);
-    return RenderError::backend_failure;
-  }
-  VkPresentInfoKHR pi{VK_STRUCTURE_TYPE_PRESENT_INFO_KHR};
-  pi.waitSemaphoreCount = 1;
-  pi.pWaitSemaphores = &p->render_finished;
-  pi.swapchainCount = 1;
-  pi.pSwapchains = &p->swapchain;
-  pi.pImageIndices = &index;
-  const auto pres = vkQueuePresentKHR(p->queue, &pi);
-  if (pres != VK_SUCCESS && pres != VK_SUBOPTIMAL_KHR) {
-    char dbg[96];
-    std::snprintf(dbg, sizeof dbg, "vk present VkResult=%d", static_cast<int>(pres));
-    __android_log_write(ANDROID_LOG_ERROR, "poko_vulkan", dbg);
-  }
-  if (pres == VK_ERROR_OUT_OF_DATE_KHR) {
-    __android_log_write(ANDROID_LOG_WARN, "poko_vulkan", "present OUT_OF_DATE; recreating swapchain");
-    // Surface changed (rotation/resize/composition): rebuild and retry once.
-    destroy_swapchain_resources(*p);
-    if (!make_swapchain(*p)) {
-      __android_log_write(ANDROID_LOG_ERROR, "poko_vulkan", "swapchain recreate failed");
-      return RenderError::backend_failure;
+    SwapchainStatus acquire(uint32_t& index) {
+      const auto r = vkAcquireNextImageKHR(p->device, p->swapchain, UINT64_MAX,
+                                           p->image_available, VK_NULL_HANDLE, &index);
+      const auto st = status(r);
+      if (st == SwapchainStatus::out_of_date)
+        __android_log_write(ANDROID_LOG_WARN, "poko_vulkan", "acquire OUT_OF_DATE; recreating swapchain");
+      else if (st == SwapchainStatus::error)
+        log("acquire", r);
+      return st;
     }
-    return clear_and_present(color);
+    bool recreate() {
+      // Surface changed (rotation/resize/composition). The previous frame
+      // may still reference the old framebuffers: idle before destroying.
+      vkDeviceWaitIdle(p->device);
+      destroy_swapchain_resources(*p);
+      if (make_swapchain(*p)) return true;
+      __android_log_write(ANDROID_LOG_ERROR, "poko_vulkan", "swapchain recreate failed");
+      return false;
+    }
+    void record(uint32_t index) {
+      VkClearValue clear{};
+      clear.color.float32[0] = color[0]; clear.color.float32[1] = color[1];
+      clear.color.float32[2] = color[2]; clear.color.float32[3] = color[3];
+      VkRenderPassBeginInfo rpbi{VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO};
+      rpbi.renderPass = p->render_pass;
+      rpbi.framebuffer = p->framebuffers[index];
+      rpbi.renderArea.extent = p->extent;
+      rpbi.clearValueCount = 1;
+      rpbi.pClearValues = &clear;
+      vkResetCommandBuffer(p->command_buffer, 0);
+      VkCommandBufferBeginInfo cbbi{VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO};
+      vkBeginCommandBuffer(p->command_buffer, &cbbi);
+      vkCmdBeginRenderPass(p->command_buffer, &rpbi, VK_SUBPASS_CONTENTS_INLINE);
+      vkCmdEndRenderPass(p->command_buffer);
+      vkEndCommandBuffer(p->command_buffer);
+    }
+    void reset_fence() { vkResetFences(p->device, 1, &p->fence); }
+    bool submit() {
+      VkPipelineStageFlags wait_stage = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
+      VkSubmitInfo si{VK_STRUCTURE_TYPE_SUBMIT_INFO};
+      si.waitSemaphoreCount = 1;
+      si.pWaitSemaphores = &p->image_available;
+      si.pWaitDstStageMask = &wait_stage;
+      si.commandBufferCount = 1;
+      si.pCommandBuffers = &p->command_buffer;
+      si.signalSemaphoreCount = 1;
+      si.pSignalSemaphores = &p->render_finished;
+      const auto r = vkQueueSubmit(p->queue, 1, &si, p->fence);
+      if (r != VK_SUCCESS) { log("queue submit", r); return false; }
+      p->fence_pending = true;
+      return true;
+    }
+    SwapchainStatus present(uint32_t index) {
+      VkPresentInfoKHR pi{VK_STRUCTURE_TYPE_PRESENT_INFO_KHR};
+      pi.waitSemaphoreCount = 1;
+      pi.pWaitSemaphores = &p->render_finished;
+      pi.swapchainCount = 1;
+      pi.pSwapchains = &p->swapchain;
+      pi.pImageIndices = &index;
+      const auto r = vkQueuePresentKHR(p->queue, &pi);
+      const auto st = status(r);
+      if (st == SwapchainStatus::out_of_date)
+        __android_log_write(ANDROID_LOG_WARN, "poko_vulkan", "present OUT_OF_DATE; recreating swapchain");
+      else if (st == SwapchainStatus::suboptimal)
+        __android_log_write(ANDROID_LOG_WARN, "poko_vulkan", "present SUBOPTIMAL");
+      else if (st == SwapchainStatus::error)
+        log("present", r);
+      return st;
+    }
+  } ops{p, color, log_result, status_of};
+  switch (detail::run_swapchain_frame(ops)) {
+    case detail::FrameOutcome::presented: return RenderError::none;
+    // Still OUT_OF_DATE after the bounded recreates (e.g. mid-rotation):
+    // nothing was presented this call; the caller simply tries again.
+    case detail::FrameOutcome::retries_exhausted: return RenderError::resize_attempted;
+    default: return RenderError::backend_failure;
   }
-  if (pres == VK_SUBOPTIMAL_KHR) {
-    __android_log_write(ANDROID_LOG_WARN, "poko_vulkan", "present SUBOPTIMAL");
-    return RenderError::none; // presented; recreate lazily next frame
-  }
-  if (pres != VK_SUCCESS) return RenderError::backend_failure;
-  return RenderError::none;
 }
 void VulkanClearAndroidRenderer::shutdown() noexcept {
   if (!impl_) return;

@@ -558,6 +558,13 @@ if(BUILD_TESTING)
   set_target_properties(pokox_vulkan_diagnostics_filter PROPERTIES CXX_EXTENSIONS OFF)
   add_test(NAME pokox_vulkan_diagnostics_filter COMMAND pokox_vulkan_diagnostics_filter)
 
+  # Android Vulkan acquire/submit/present sequencing against a fence double.
+  add_executable(pokox_swapchain_frame_loop_test engine/rhi/tests/unit/swapchain_frame_loop_test.cpp)
+  target_compile_features(pokox_swapchain_frame_loop_test PRIVATE cxx_std_20)
+  set_target_properties(pokox_swapchain_frame_loop_test PROPERTIES CXX_EXTENSIONS OFF)
+  add_test(NAME pokox_swapchain_frame_loop_test COMMAND pokox_swapchain_frame_loop_test)
+  set_tests_properties(pokox_swapchain_frame_loop_test PROPERTIES TIMEOUT 15)
+
   # Production triangle/depth pass against isolated SDK doubles; not GPU acceptance.
   add_executable(pokox_mesh_pass_faults
     engine/rhi/src/device/vulkan_mesh_pass.cpp
