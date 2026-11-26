@@ -31,7 +31,7 @@ FixedVec3 planar(FixedVec3 v) {
 }
 
 Fixed length_of(FixedVec3 v) {
-  return math::sqrt(math::lengthSquared(v));
+  return math::length(v);
 }
 
 ConvexShape translated(const ConvexShape& s, FixedVec3 offset) {

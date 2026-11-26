@@ -90,6 +90,75 @@ int main() {
     CHECK(m.touching);  // penetration ~0.1
     CHECK(m.count >= 1);
   }
+  // Off-origin regression (review 2026-11-26 H2): the narrowphase used to
+  // pick its fixed-point rescale from ABSOLUTE coordinates, so the 0.1-unit
+  // near-touch window and depth precision degraded with distance from the
+  // world origin (spheres 5 apart "touching" at x=100, a 0.01 floor
+  // penetration reading as 0 at x=100). Results must not depend on where
+  // the pair sits in the world.
+  {
+    const double offsets[] = {0.0, 10.0, -10.0, 100.0, 1000.0, 10000.0, -20000.0};
+    for (const double ox : offsets) {
+      const double oz = ox / 2;
+      // spheres r=1: gap 0.5 and gap 5 -> separated; overlap 0.2 -> depth 0.2
+      CHECK(!collide(sphere(v3(ox, 0, oz), 1.0), sphere(v3(ox + 2.5, 0, oz), 1.0)).touching);
+      CHECK(!collide(sphere(v3(ox, 0, oz), 1.0), sphere(v3(ox + 7, 0, oz), 1.0)).touching);
+      {
+        auto m = collide(sphere(v3(ox, 0, oz), 1.0), sphere(v3(ox + 1.8, 0, oz), 1.0));
+        CHECK(m.touching);
+        CHECK(std::abs(tod(m.depth) - 0.2) < 0.001);
+      }
+      // unit box over a 20x1x20 floor slab (top at y=0) centred under it
+      const auto floor_small = aabb(v3(ox - 10, -1, oz - 10), v3(ox + 10, 0, oz + 10));
+      CHECK(!collide(aabb(v3(ox - 0.5, 0.3, oz - 0.5), v3(ox + 0.5, 1.3, oz + 0.5)),
+                     floor_small).touching);
+      {
+        auto m = collide(aabb(v3(ox - 0.5, -0.01, oz - 0.5), v3(ox + 0.5, 0.99, oz + 0.5)),
+                         floor_small);
+        CHECK(m.touching);
+        CHECK(tod(m.depth) > 0.005 && tod(m.depth) < 0.015);
+        CHECK(m.normal.y > Fixed::from_raw(64880));  // ~0.99 up
+      }
+      // large 200x1x200 static floor: precision is bounded by the shape
+      // size (fixed shift), never by the world position.
+      const auto floor_big = aabb(v3(ox - 100, -1, oz - 100), v3(ox + 100, 0, oz + 100));
+      CHECK(!collide(aabb(v3(ox - 0.5, 0.3, oz - 0.5), v3(ox + 0.5, 1.3, oz + 0.5)),
+                     floor_big).touching);
+      {
+        auto m = collide(aabb(v3(ox - 0.5, -0.05, oz - 0.5), v3(ox + 0.5, 0.95, oz + 0.5)),
+                         floor_big);
+        CHECK(m.touching);
+        CHECK(tod(m.depth) > 0.03 && tod(m.depth) < 0.07);
+      }
+      // sphere resting 0.01 into the small floor
+      {
+        auto m = collide(sphere(v3(ox, 0.99, oz), 1.0), floor_small);
+        CHECK(m.touching);
+        CHECK(tod(m.depth) > 0.005 && tod(m.depth) < 0.015);
+      }
+    }
+  }
+  {  // exact translation invariance: same pair shifted by whole raw units
+    const auto a0 = aabb(v3(-0.5, -0.03, -0.5), v3(0.5, 0.97, 0.5));
+    const auto b0 = aabb(v3(-10, -1, -10), v3(10, 0, 10));
+    const auto m0 = collide(a0, b0);
+    CHECK(m0.touching);
+    const double offsets[] = {7.25, 100.0, 1234.5, 10000.0, -30000.0};
+    for (const double ox : offsets) {
+      const FixedVec3 t = v3(ox, ox / 4, -ox / 2);
+      auto shifted = [&](const ConvexShape& s) {
+        std::vector<FixedVec3> v;
+        for (const auto& p : s.vertices()) v.push_back(p + t);
+        return ConvexShape{std::move(v), s.radius()};
+      };
+      const auto m = collide(shifted(a0), shifted(b0));
+      CHECK(m.touching == m0.touching && m.depth == m0.depth &&
+            m.normal == m0.normal && m.count == m0.count);
+      for (int i = 0; i < m.count && i < m0.count; ++i)
+        CHECK(m.points[i].point_a == m0.points[i].point_a + t &&
+              m.points[i].point_b == m0.points[i].point_b + t);
+    }
+  }
   if (failures != 0) {
     std::fprintf(stderr, "%d check(s) failed\n", failures);
     return 1;
