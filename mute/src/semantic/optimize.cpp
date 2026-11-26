@@ -1,4 +1,5 @@
 #include "poko/mute/optimize.hpp"
+#include <algorithm>
 #include <set>
 
 namespace poko::mute {
