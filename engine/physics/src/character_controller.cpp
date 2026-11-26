@@ -69,8 +69,11 @@ bool spheres_disjoint(const Bound& a, const Bound& b) {
   return math::lengthSquared(a.center - b.center) > r * r;
 }
 
-bool touches(const ConvexShape& shape, std::span<const ConvexShape> colliders,
-             Fixed min_depth = Fixed::zero()) {
+// True when `shape` overlaps (or comes within min_depth of) any collider.
+// Deterministic: fixed-point collide, colliders scanned in index order.
+bool touches_uncached(const ConvexShape& shape,
+                      std::span<const ConvexShape> colliders,
+                      Fixed min_depth = Fixed::zero()) {
   const Bound sb = shape_bound(shape);
   for (const auto& c : colliders) {
     if (spheres_disjoint(sb, shape_bound(c))) continue;
@@ -78,6 +81,63 @@ bool touches(const ConvexShape& shape, std::span<const ConvexShape> colliders,
     if (m.touching && m.depth >= min_depth) return true;
   }
   return false;
+}
+// --- Cast-path touch memo -------------------------------------------
+// touches() is pure: collide() is deterministic fixed-point over the
+// exact shape values, so identical pose queries always produce identical
+// answers. Stationary and blocked ticks re-query byte-identical poses,
+// and each miss burns full GJK+EPA on near-contact colliders — the
+// dominant cast-path cost. Memoize the boolean on exact raw values; a
+// hash bucket is scanned with full key comparison, so equal hashes on
+// different poses cannot cross-hit.
+
+constexpr std::size_t kTouchCacheMaxEntries = 8192;
+
+void append_shape_raws(std::vector<std::int32_t>& raws,
+                       const ConvexShape& s) {
+  raws.push_back(s.radius().raw());
+  raws.push_back(static_cast<std::int32_t>(s.vertices().size()));
+  for (const auto& v : s.vertices()) {
+    raws.push_back(v.x.raw());
+    raws.push_back(v.y.raw());
+    raws.push_back(v.z.raw());
+  }
+}
+
+TouchCacheKey touch_key(const ConvexShape& shape,
+                        std::span<const ConvexShape> colliders,
+                        Fixed min_depth) {
+  std::size_t vert_total = 0;
+  for (const auto& c : colliders) vert_total += c.vertices().size();
+  std::vector<std::int32_t> raws;
+  raws.reserve(3 + 3 * shape.vertices().size() +
+               3 * vert_total);
+  raws.push_back(min_depth.raw());
+  append_shape_raws(raws, shape);
+  for (const auto& c : colliders) append_shape_raws(raws, c);
+  std::uint64_t h = 1469598103934665603ULL;  // FNV-1a 64 offset basis
+  for (const std::int32_t v : raws) {
+    h ^= static_cast<std::uint32_t>(v);
+    h *= 1099511628211ULL;  // FNV-1a 64 prime
+  }
+  return TouchCacheKey{static_cast<std::size_t>(h), std::move(raws)};
+}
+
+bool touches(const ConvexShape& shape, std::span<const ConvexShape> colliders,
+             Fixed min_depth, TouchCache& cache) {
+  const TouchCacheKey key = touch_key(shape, colliders, min_depth);
+  if (const auto it = cache.buckets.find(key.hash); it != cache.buckets.end()) {
+    for (const auto& e : it->second)
+      if (e.key.raws == key.raws) return e.touching;
+  }
+  const bool touching = touches_uncached(shape, colliders, min_depth);
+  if (cache.entries >= kTouchCacheMaxEntries) {
+    cache.buckets.clear();
+    cache.entries = 0;
+  }
+  cache.buckets[key.hash].push_back(TouchCacheEntry{key, touching});
+  ++cache.entries;
+  return touching;
 }
 }  // namespace
 
@@ -107,8 +167,9 @@ std::optional<Fixed> CharacterController::cast_fraction(
   const Fixed len = length_of(delta);
   if (len.is_zero()) {
     // Degenerate sweep: report contact at t=0 only.
-    return touches(shape, colliders) ? std::optional<Fixed>{Fixed::zero()}
-                                     : std::nullopt;
+    return touches(shape, colliders, Fixed::zero(), touch_cache_)
+               ? std::optional<Fixed>{Fixed::zero()}
+               : std::nullopt;
   }
   // Substep count: ceil(len / kCastSubstep), clamped to [1, 64].
   const auto per = math::divide(len, Fixed::from_raw(kCastSubstepRaw));
@@ -122,14 +183,14 @@ std::optional<Fixed> CharacterController::cast_fraction(
   for (int i = 1; i <= n; ++i) {
     const Fixed t = inv_n * Fixed::from_int(i);
     if (touches(translated(shape, delta * t), colliders,
-                Fixed::from_raw(kCastDepthRaw))) {
+                Fixed::from_raw(kCastDepthRaw), touch_cache_)) {
       // Bisect (lo, t]: invariant — lo free (or start), t touching.
       Fixed a = have_lo ? lo : Fixed::zero();
       Fixed b = t;
       for (int it = 0; it < kCastBisectIters; ++it) {
         const Fixed mid = (a + b) * Fixed::from_raw(32768);  // *0.5
         if (touches(translated(shape, delta * mid), colliders,
-                    Fixed::from_raw(kCastDepthRaw)))
+                    Fixed::from_raw(kCastDepthRaw), touch_cache_))
           b = mid;
         else
           a = mid;
@@ -223,7 +284,7 @@ void CharacterController::update(SequentialImpulseSolver& solver, Fixed dt,
     if (x_blocked || z_blocked) {
       const FixedVec3 lift{Fixed::zero(), params_.step_height, Fixed::zero()};
       const ConvexShape raised = capsule_at(pos + lift, params_);
-      if (!touches(raised, colliders, kBlockDepth)) {
+      if (!touches(raised, colliders, kBlockDepth, touch_cache_)) {
         const FixedVec3 dest_delta =
             FixedVec3{wish.x * params_.move_speed * dt, Fixed::zero(),
                       wish.z * params_.move_speed * dt};
@@ -271,7 +332,7 @@ void CharacterController::update(SequentialImpulseSolver& solver, Fixed dt,
   constexpr std::int32_t kTerminalRaw = -655360;   // -10.0 u/s
   constexpr std::int32_t kStickRaw = -32768;       // -0.5 u/s
   Fixed vy = vel.y - params_.gravity * dt;
-  if (vy < Fixed::from_raw(kTerminalRaw)) vy = Fixed::from_raw(kTerminalRaw);
+  if (vy < Fixed::from_raw(kTerminalRaw)) vy = Fixed::from_raw(kTerminalRaw));
   if (jump && grounded_ && params_.jump_speed > Fixed::zero()) {
     vy = params_.jump_speed;
   } else if (grounded_ && vy < Fixed::from_raw(kStickRaw)) {
