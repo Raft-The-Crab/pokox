@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <cmath>
+#include <cstdint>
 #include <limits>
 #include <utility>
 
@@ -24,7 +25,32 @@ double det_floor(double x) noexcept { return std::floor(x); }
 double det_round(double x) noexcept { return std::round(x); }
 double det_clamp(double x, double lo, double hi) noexcept { return std::clamp(x, lo, hi); }
 double det_lerp(double a, double b, double t) noexcept { return a + (b - a) * t; }
-double det_pow(double base, double exponent) noexcept { return std::pow(base, exponent); }
+// Deterministic power for INTEGER exponents only: binary exponentiation
+// with a fixed operation order, so the result depends only on IEEE-754
+// multiply/divide (correctly rounded everywhere, FP contraction is off for
+// this target) — never on the host libm's pow, which differs between glibc,
+// the MSVC UCRT and bionic. Non-integer or NaN exponents return NaN: there
+// is no pinned real-exponent kernel yet. |exponent| >= 2^63 is clamped to
+// 2^63 (even), which already saturates every |base| != 1 to 0 or inf.
+// Not correctly rounded: exact whenever every intermediate is exact,
+// otherwise relative error grows roughly with |exponent| * 2^-53 (e.g.
+// ~6e-12 for 1.0000001^1000003) — but bit-identical on every target.
+double det_pow(double base, double exponent) noexcept {
+  if (std::isnan(exponent) || std::floor(exponent) != exponent)
+    return std::numeric_limits<double>::quiet_NaN();
+  constexpr double kTwo63 = 9223372036854775808.0;
+  const bool negative = exponent < 0.0;
+  const double mag = negative ? -exponent : exponent;
+  std::uint64_t n = mag >= kTwo63 ? (std::uint64_t{1} << 63) : static_cast<std::uint64_t>(mag);
+  double result = 1.0;
+  double square = base;
+  while (n != 0) {
+    if (n & 1u) result *= square;
+    n >>= 1;
+    if (n != 0) square *= square;
+  }
+  return negative ? 1.0 / result : result;
+}
 
 Vec2 vec2_add(Vec2 a, Vec2 b) noexcept { return {a.x + b.x, a.y + b.y}; }
 Vec2 vec2_sub(Vec2 a, Vec2 b) noexcept { return {a.x - b.x, a.y - b.y}; }

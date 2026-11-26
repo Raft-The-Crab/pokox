@@ -12,6 +12,10 @@ Include `poko/mute/stdlib_math.hpp`.
 
 - Scalars: `det_sqrt`, `det_floor`, `det_round`, `det_clamp`, `det_lerp`,
   `det_pow`, plus pinned `deterministic_sin`/`deterministic_cos`.
+  `det_pow` accepts integer exponents only (binary exponentiation over IEEE
+  multiplies, no libm); a non-integer or NaN exponent returns NaN. It is
+  bit-identical across targets but not correctly rounded for large
+  exponents.
 - Vectors: `Vec2`, `Vec3`, `Vec4` with add/sub/scale/cross/dot/length/lerp/
   normalize. Zero-length normalization returns `std::nullopt`.
 - Matrices and quaternions: row-major `Mat4` identity/multiply/transform,

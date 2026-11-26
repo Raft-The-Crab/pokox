@@ -5,6 +5,8 @@
 #include <cmath>
 #include <cstdint>
 #include <cstdio>
+#include <cstring>
+#include <limits>
 #include <span>
 #include <string_view>
 #include <vector>
@@ -26,6 +28,23 @@ int main() {
   CHECK(near(det_clamp(7.0, 0.0, 5.0), 5.0));
   CHECK(near(det_lerp(2.0, 6.0, 0.25), 3.0));
   CHECK(near(det_pow(2.0, 10.0), 1024.0));
+  // Review 2026-11-26 M3: det_pow is binary exponentiation over IEEE
+  // multiplies, never libm pow. Integer exponents only; others are NaN.
+  CHECK(det_pow(3.0, 0.0) == 1.0);
+  CHECK(det_pow(-2.0, 3.0) == -8.0);
+  CHECK(det_pow(2.0, -2.0) == 0.25);
+  CHECK(det_pow(10.0, 22.0) == 1e22);  // exact: 10^22 is representable
+  CHECK(det_pow(1.5, 2000.0) == std::numeric_limits<double>::infinity());
+  CHECK(det_pow(0.5, 1e300) == 0.0);
+  CHECK(det_pow(-1.0, 1e300) == 1.0);
+  CHECK(std::isnan(det_pow(2.0, 0.5)));
+  CHECK(std::isnan(det_pow(2.0, std::numeric_limits<double>::quiet_NaN())));
+  {  // pinned bit patterns: identical on every host (no libm involved)
+    const double v = det_pow(1.0000001, 1000003.0);
+    std::uint64_t bits = 0;
+    std::memcpy(&bits, &v, sizeof bits);
+    CHECK(bits == 0x3ff1aec80ae24feaULL);
+  }
   CHECK(std::isnan(det_sqrt(-1.0)));
 
   const auto v2 = vec2_normalize({3.0, 4.0});
