@@ -27,10 +27,9 @@ Fixed fx(double x) {
 double tod(Fixed f) { return static_cast<double>(f.raw()) / 65536.0; }
 
 SimBody body(std::uint32_t i, FixedVec3 p, FixedVec3 v, double mass) {
-  return SimBody{i, p, v, fx(mass),
-                 fx(mass > 0 ? 1.0 / mass : 0.0)};
+  return SimBody{i, p, v, fx(mass > 0 ? 1.0 / mass : 0.0)};
 }
-// Static floor is inv_mass 0 regardless of the mass field.
+// Static floor: inv_mass 0 (infinite mass).
 SimBody statics(std::uint32_t i, FixedVec3 p) {
   SimBody b = body(i, p, FixedVec3::zero(), 1.0);
   b.inv_mass = Fixed::zero();
@@ -165,6 +164,39 @@ int main() {
     s.add_contact(contact(1, 0, 5, up, 0.1));   // missing bodies skipped
     s.solve(dt);                               // must not crash
     s.integrate(dt);
+  }
+  {  // review L1: self-contacts and duplicate keys are rejected, not merged
+    SequentialImpulseSolver s;
+    s.upsert_body(statics(0, v3(0, 0, 0)));
+    s.upsert_body(body(1, v3(0, 1, 0), FixedVec3::zero(), 1.0));
+    s.upsert_body(body(2, v3(2, 1, 0), FixedVec3::zero(), 1.0));
+    s.begin_step();
+    CHECK(!s.add_contact(contact(5, 1, 1, up, 0.1)));       // self contact
+    CHECK(s.add_contact(contact(6, 1, 0, up, 0.1)));
+    CHECK(!s.add_contact(contact(6, 2, 0, up, 0.1)));       // same key again
+    CHECK(s.add_contact(contact(7, 2, 0, up, 0.1)));
+    CHECK(s.contact_count() == 2);
+    s.begin_step();                                          // keys reset per step
+    CHECK(s.add_contact(contact(6, 1, 0, up, 0.1)));
+  }
+  {  // review L2: mass is derived from inv_mass, never a second source
+    SimBody b;
+    b.set_mass(fx(4.0));
+    CHECK(b.inv_mass == fx(0.25));
+    CHECK(b.mass() == fx(4.0));
+    b.set_mass(Fixed::zero());
+    CHECK(b.inv_mass.is_zero() && b.mass().is_zero());
+    b.inv_mass = fx(0.5);
+    CHECK(b.mass() == fx(2.0));
+  }
+  {  // review M2: integrating past the world edge clamps, never wraps
+    SequentialImpulseSolver s;
+    s.upsert_body(body(1, v3(32767, -32767, 0), v3(600, -600, 0), 1.0));
+    s.integrate(dt);  // +-10 units this tick
+    const SimBody* b = s.find_body(1);
+    CHECK(b && b->position.x.raw() == 2147483647);   // was -32759 (wrapped)
+    CHECK(b && b->position.y.raw() == -2147483647 - 1);
+    CHECK(b && b->position.z.is_zero());
   }
   if (failures != 0) {
     std::fprintf(stderr, "%d check(s) failed\n", failures);

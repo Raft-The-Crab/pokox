@@ -139,23 +139,26 @@ constexpr std::int32_t kTetraMinAltRaw = 64;  // ~0.001 units
 bool origin_in_tetra(FixedVec3 a, FixedVec3 b, FixedVec3 c, FixedVec3 d) {
   const FixedVec3 v[4] = {a, b, c, d};
   const Fixed min_alt = Fixed::from_raw(kTetraMinAltRaw);
+  FixedVec3 n[4];
+  Fixed s_opp[4];
+  // Cheap sign tests for all four faces first; the altitude checks below
+  // need a sqrt and a divide per face. Same result as interleaving them.
   for (int i = 0; i < 4; ++i) {
     int f[3], k = 0;
     for (int j = 0; j < 4; ++j)
       if (j != i) f[k++] = j;
-    const FixedVec3 n =
-        math::cross(v[f[1]] - v[f[0]], v[f[2]] - v[f[0]]);
-    const Fixed n_sq = math::lengthSquared(n);
-    if (n_sq.is_zero()) return false;
-    const Fixed s_origin = -math::dot(n, v[f[0]]);
-    const Fixed s_opp = math::dot(n, v[i] - v[f[0]]);
-    if ((s_origin > Fixed::zero() && s_opp < Fixed::zero()) ||
-        (s_origin < Fixed::zero() && s_opp > Fixed::zero()))
+    n[i] = math::cross(v[f[1]] - v[f[0]], v[f[2]] - v[f[0]]);
+    if (math::lengthSquared(n[i]).is_zero()) return false;
+    const Fixed s_origin = -math::dot(n[i], v[f[0]]);
+    s_opp[i] = math::dot(n[i], v[i] - v[f[0]]);
+    if ((s_origin > Fixed::zero() && s_opp[i] < Fixed::zero()) ||
+        (s_origin < Fixed::zero() && s_opp[i] > Fixed::zero()))
       return false;
+  }
+  for (int i = 0; i < 4; ++i) {
     // Altitude of the opposite vertex above this face plane: |s_opp|/|n|.
     // A flat tetra scores ~0 on every face and is rejected here.
-    const auto nlen = math::sqrt(n_sq);
-    const auto alt = math::divide(s_opp.abs(), nlen);
+    const auto alt = math::divide(s_opp[i].abs(), math::length(n[i]));
     if (!alt || alt.value() <= min_alt) return false;
   }
   return true;
@@ -210,6 +213,7 @@ struct GjkResult {
   bool intersecting = false;
   Fixed distance = Fixed::zero();
   std::vector<CsoPoint> simplex;  // final reduced simplex (<= 4)
+  FixedVec3 closest = FixedVec3::zero();  // closest CSO point found (A - B)
 };
 
 GjkResult gjk_distance(const ConvexShape& a, const ConvexShape& b) {
@@ -256,17 +260,17 @@ GjkResult gjk_distance(const ConvexShape& a, const ConvexShape& b) {
     v = cr.point;
     have_v = true;
     d = -v;
-    // Compare the LINEAR distance to the eps: lengthSquared is Q16.16 and
-    // underflows below ~1.5e-4 units, while an 8-raw squared tolerance
-    // would be a ~0.03-unit linear band — wide enough to report phantom
-    // contacts for shapes separated by a visible gap.
-    if (math::sqrt(math::lengthSquared(v)) <= Fixed::from_raw(kDistEpsRaw)) {
+    // Compare the LINEAR distance to the eps (math::length is exact in
+    // 64 bits): an 8-raw squared tolerance would be a ~0.03-unit linear
+    // band — wide enough to report phantom contacts for shapes separated
+    // by a visible gap.
+    if (math::length(v) <= Fixed::from_raw(kDistEpsRaw)) {
       // Within tolerance of origin: treat as touching; EPA resolves depth.
-      return GjkResult{true, Fixed::zero(), s};
+      return GjkResult{true, Fixed::zero(), s, v};
     }
   }
-  const Fixed dist = have_v ? math::sqrt(math::lengthSquared(v)) : Fixed::zero();
-  return GjkResult{false, dist, s};
+  const Fixed dist = have_v ? math::length(v) : Fixed::zero();
+  return GjkResult{false, dist, s, v};
 }
 
 // ---- EPA -----------------------------------------------------------------
@@ -343,7 +347,7 @@ std::array<Fixed, 3> face_barycentric(const EpaVert& v0, const EpaVert& v1,
 }
 
 EpaResult epa_penetration(const ConvexShape& a, const ConvexShape& b,
-                          const std::vector<CsoPoint>& seed) {
+                          const std::vector<CsoPoint>& seed, bool gjk_intersecting) {
   // Candidate pool: GJK simplex + axis-aligned CSO supports.
   std::vector<CsoPoint> pool = seed;
   const FixedVec3 axes[6] = {
@@ -353,15 +357,18 @@ EpaResult epa_penetration(const ConvexShape& a, const ConvexShape& b,
       {Fixed::zero(), Fixed::from_raw(-65536), Fixed::zero()},
       {Fixed::zero(), Fixed::zero(), Fixed::one()},
       {Fixed::zero(), Fixed::zero(), Fixed::from_raw(-65536)}};
-  for (const auto& ax : axes) {
-    if (auto p = cso_support(a, b, ax)) {
-      bool dup = false;
-      for (const auto& q : pool)
-        if (q.w == p->w) { dup = true; break; }
-      if (!dup) pool.push_back(*p);
+  const auto add_supports = [&](const FixedVec3* dirs, std::size_t n) {
+    for (std::size_t di = 0; di < n; ++di) {
+      if (auto p = cso_support(a, b, dirs[di])) {
+        bool dup = false;
+        for (const auto& q : pool)
+          if (q.w == p->w) { dup = true; break; }
+        if (!dup) pool.push_back(*p);
+      }
     }
-  }
-  if (pool.size() > 64) pool.resize(64);
+    if (pool.size() > 64) pool.resize(64);
+  };
+  add_supports(axes, 6);
 
   // Find an origin-containing tetrahedron in a fixed enumeration order
   // (i<j<k<l over pool indices). Among all candidates keep the one with the
@@ -370,24 +377,43 @@ EpaResult epa_penetration(const ConvexShape& a, const ConvexShape& b,
   // CSOs, e.g. a thin floor slab, failed without this).
   std::array<std::uint8_t, 4> tet{};
   bool found = false;
-  Fixed best_vol = Fixed::zero();
-  const int pn = static_cast<int>(pool.size());
-  for (int i = 0; i < pn; ++i)
-    for (int j = i + 1; j < pn; ++j)
-      for (int k = j + 1; k < pn; ++k)
-        for (int l = k + 1; l < pn; ++l) {
-          const auto& A = pool[i]; const auto& B = pool[j];
-          const auto& C = pool[k]; const auto& D = pool[l];
-          const FixedVec3 nrm = math::cross(B.w - A.w, C.w - A.w);
-          if (math::lengthSquared(nrm).is_zero()) continue;
-          const Fixed vol = math::dot(nrm, D.w - A.w).abs();
-          if (found && vol <= best_vol) continue;
-          if (!origin_in_tetra(A.w, B.w, C.w, D.w)) continue;
-          tet = {static_cast<std::uint8_t>(i), static_cast<std::uint8_t>(j),
-                 static_cast<std::uint8_t>(k), static_cast<std::uint8_t>(l)};
-          best_vol = vol;
-          found = true;
-        }
+  const auto seed_search = [&](int first_new) {
+    Fixed best_vol = Fixed::zero();
+    const int pn = static_cast<int>(pool.size());
+    for (int i = 0; i < pn; ++i)
+      for (int j = i + 1; j < pn; ++j)
+        for (int k = j + 1; k < pn; ++k)
+          for (int l = std::max(k + 1, first_new); l < pn; ++l) {
+            const auto& A = pool[i]; const auto& B = pool[j];
+            const auto& C = pool[k]; const auto& D = pool[l];
+            const FixedVec3 nrm = math::cross(B.w - A.w, C.w - A.w);
+            if (math::lengthSquared(nrm).is_zero()) continue;
+            const Fixed vol = math::dot(nrm, D.w - A.w).abs();
+            if (found && vol <= best_vol) continue;
+            if (!origin_in_tetra(A.w, B.w, C.w, D.w)) continue;
+            tet = {static_cast<std::uint8_t>(i), static_cast<std::uint8_t>(j),
+                   static_cast<std::uint8_t>(k), static_cast<std::uint8_t>(l)};
+            best_vol = vol;
+            found = true;
+          }
+  };
+  seed_search(0);
+  if (!found && gjk_intersecting) {
+    // Axis supports of a flat, wide CSO (capsule resting on a large slab)
+    // can all sit on one side of the origin or form slivers. Retry once
+    // with the eight diagonal supports added before giving up; pairs the
+    // axis pool already seeds keep their result bit-for-bit. Only for pairs
+    // GJK proved intersecting: for a near-miss handoff, "no seed" already
+    // means separated, and the larger search is not free.
+    const Fixed p = Fixed::from_raw(37837), n = Fixed::from_raw(-37837);  // 1/sqrt(3)
+    const FixedVec3 diag[8] = {{p, p, p}, {n, p, p}, {p, n, p}, {n, n, p},
+                               {p, p, n}, {n, p, n}, {p, n, n}, {n, n, n}};
+    // Only quadruples with at least one new point (highest index l at or
+    // past the old pool size) can succeed now.
+    const int first_new = static_cast<int>(pool.size());
+    add_supports(diag, 8);
+    seed_search(first_new);
+  }
   if (!found) return EpaResult{};  // degenerate: caller falls back
 
   std::vector<EpaVert> verts;
@@ -552,72 +578,131 @@ EpaResult epa_penetration(const ConvexShape& a, const ConvexShape& b,
   return out;
 }
 
-// ENG-62 scale guard: the GJK/EPA predicates chain Q16.16 multiplies
-// (dots of dots), so intermediate results saturate once vertex coordinates
-// exceed a few world units — deep contacts against large statics (e.g. a
-// floor slab) were silently dropped. Uniformly scaling both shapes toward
-// the origin preserves the closest-point geometry exactly (the CSO and the
-// origin scale together); results are scaled back on the way out. Shapes
-// already below the bound take the unscaled path bit-for-bit.
+// Narrowphase frame. GJK/EPA predicates chain Q16.16 multiplies (dots of
+// dots), so intermediate results saturate once coordinates exceed a few
+// units. collide() therefore runs the pair in a LOCAL frame:
+//   1. translate both shapes by a shared origin o — the per-axis midpoint
+//      of the overlap (or gap) of the two AABBs, i.e. the contact region —
+//      so coordinates depend on shape size and separation, never on world
+//      position. o is floor((lo+hi)/2) over exact int64 raws, so shifting
+//      both shapes by t shifts o by exactly t: results are bit-identical
+//      translation-invariant (points move by t, depth/normal unchanged);
+//   2. if local coordinates still exceed 2.0 units (large shapes), scale
+//      uniformly by 2^-shift, which preserves closest-point geometry.
+// World-unit tolerances (the near-touch window) are rescaled by the same
+// shift so they mean the same distance at every size; results are scaled
+// and translated back on the way out.
 constexpr std::int64_t kNarrowphaseSafeRaw = std::int64_t{1} << 17;  // 2.0 units
 
-std::int64_t max_coord_raw(const ConvexShape& s) {
+struct Aabb64 {
+  std::int64_t lo[3];
+  std::int64_t hi[3];
+};
+
+Aabb64 aabb_of(const ConvexShape& s) {
+  Aabb64 b{};
+  const std::int64_t r = s.radius().raw() < 0 ? -std::int64_t{s.radius().raw()}
+                                              : std::int64_t{s.radius().raw()};
+  for (std::size_t i = 0; i < 3; ++i) {
+    b.lo[i] = s.vertices()[0][i].raw();
+    b.hi[i] = b.lo[i];
+  }
+  for (const auto& v : s.vertices())
+    for (std::size_t i = 0; i < 3; ++i) {
+      b.lo[i] = std::min<std::int64_t>(b.lo[i], v[i].raw());
+      b.hi[i] = std::max<std::int64_t>(b.hi[i], v[i].raw());
+    }
+  for (std::size_t i = 0; i < 3; ++i) {
+    b.lo[i] -= r;
+    b.hi[i] += r;
+  }
+  return b;
+}
+
+std::int64_t local_extent(const ConvexShape& s, const std::int64_t o[3]) {
   std::int64_t m = s.radius().raw();
   if (m < 0) m = -m;
   for (const auto& v : s.vertices())
     for (std::size_t i = 0; i < 3; ++i) {
-      const std::int64_t r = v[i].raw();
+      const std::int64_t r = static_cast<std::int64_t>(v[i].raw()) - o[i];
       m = std::max(m, r < 0 ? -r : r);
     }
   return m;
 }
 
-ConvexShape scaled_shape(const ConvexShape& s, int shift) {
-  const std::int32_t div = std::int32_t{1} << shift;
+ConvexShape local_shape(const ConvexShape& s, const std::int64_t o[3], int shift) {
+  const std::int64_t div = std::int64_t{1} << shift;
   std::vector<FixedVec3> v;
   v.reserve(s.vertices().size());
-  for (const auto& p : s.vertices())
-    v.push_back(FixedVec3{Fixed::from_raw(p.x.raw() / div),
-                          Fixed::from_raw(p.y.raw() / div),
-                          Fixed::from_raw(p.z.raw() / div)});
-  return ConvexShape{std::move(v), Fixed::from_raw(s.radius().raw() / div)};
+  for (const auto& p : s.vertices()) {
+    FixedVec3 q;
+    for (std::size_t i = 0; i < 3; ++i)
+      q[i] = Fixed::from_raw(static_cast<std::int32_t>(
+          (static_cast<std::int64_t>(p[i].raw()) - o[i]) / div));
+    v.push_back(q);
+  }
+  return ConvexShape{std::move(v), Fixed::from_raw(s.radius().raw() / static_cast<std::int32_t>(div))};
 }
 
-Fixed widen_raw(Fixed f, std::int32_t mul) {
-  const std::int64_t r = static_cast<std::int64_t>(f.raw()) * mul;
+std::int32_t saturate_raw(std::int64_t r) {
   if (r > std::numeric_limits<std::int32_t>::max())
-    return Fixed::from_raw(std::numeric_limits<std::int32_t>::max());
+    return std::numeric_limits<std::int32_t>::max();
   if (r < std::numeric_limits<std::int32_t>::min())
-    return Fixed::from_raw(std::numeric_limits<std::int32_t>::min());
-  return Fixed::from_raw(static_cast<std::int32_t>(r));
+    return std::numeric_limits<std::int32_t>::min();
+  return static_cast<std::int32_t>(r);
 }
 
-FixedVec3 widen_vec(FixedVec3 v, std::int32_t mul) {
-  return FixedVec3{widen_raw(v.x, mul), widen_raw(v.y, mul), widen_raw(v.z, mul)};
+Fixed widen_raw(Fixed f, std::int64_t mul) {
+  return Fixed::from_raw(saturate_raw(static_cast<std::int64_t>(f.raw()) * mul));
 }
+
+FixedVec3 to_world(FixedVec3 v, std::int64_t mul, const std::int64_t o[3]) {
+  FixedVec3 w;
+  for (std::size_t i = 0; i < 3; ++i)
+    w[i] = Fixed::from_raw(
+        saturate_raw(static_cast<std::int64_t>(v[i].raw()) * mul + o[i]));
+  return w;
+}
+
+ContactManifold collide_local(const ConvexShape& a, const ConvexShape& b,
+                              int shift);
 
 }  // namespace
 
 ContactManifold collide(const ConvexShape& a, const ConvexShape& b) {
-  ContactManifold out;
-  if (a.empty() || b.empty()) return out;
-
-  const std::int64_t maxraw = std::max(max_coord_raw(a), max_coord_raw(b));
-  int shift = 0;
-  while ((maxraw >> shift) > kNarrowphaseSafeRaw && shift < 24) ++shift;
-  if (shift > 0) {
-    const ConvexShape sa = scaled_shape(a, shift);
-    const ConvexShape sb = scaled_shape(b, shift);
-    ContactManifold m = collide(sa, sb);
-    if (!m.touching) return m;
-    const std::int32_t mul = std::int32_t{1} << shift;
-    m.depth = widen_raw(m.depth, mul);
-    for (std::uint8_t i = 0; i < m.count; ++i) {
-      m.points[i].point_a = widen_vec(m.points[i].point_a, mul);
-      m.points[i].point_b = widen_vec(m.points[i].point_b, mul);
-    }
-    return m;
+  if (a.empty() || b.empty()) return ContactManifold{};
+  const Aabb64 ba = aabb_of(a), bb = aabb_of(b);
+  std::int64_t o[3];
+  for (std::size_t i = 0; i < 3; ++i) {
+    const std::int64_t lo = std::max(ba.lo[i], bb.lo[i]);
+    const std::int64_t hi = std::min(ba.hi[i], bb.hi[i]);
+    o[i] = (lo + hi) >> 1;  // arithmetic shift == floor division (C++20)
   }
+  const std::int64_t m = std::max(local_extent(a, o), local_extent(b, o));
+  int shift = 0;
+  while ((m >> shift) > kNarrowphaseSafeRaw && shift < 30) ++shift;
+  ContactManifold out = collide_local(local_shape(a, o, shift),
+                                      local_shape(b, o, shift), shift);
+  if (!out.touching) return out;
+  const std::int64_t mul = std::int64_t{1} << shift;
+  out.depth = widen_raw(out.depth, mul);
+  for (std::uint8_t i = 0; i < out.count; ++i) {
+    out.points[i].point_a = to_world(out.points[i].point_a, mul, o);
+    out.points[i].point_b = to_world(out.points[i].point_b, mul, o);
+  }
+  return out;
+}
+
+namespace {
+
+// Narrowphase on shapes already in the local frame (coordinates <= ~2
+// units). `shift` is the frame's scale exponent: world-unit tolerances are
+// divided by 2^shift so they keep their world meaning.
+ContactManifold collide_local(const ConvexShape& a, const ConvexShape& b,
+                              int shift) {
+  ContactManifold out;
+  const Fixed near_touch =
+      Fixed::from_raw(shift >= 31 ? 0 : (kEpaHandoffEpsRaw >> shift));
 
   // Analytic fast path: two single-vertex sphere shapes. Their CSO is a
   // sphere, which EPA can only approximate — the expansion never reaches
@@ -626,11 +711,11 @@ ContactManifold collide(const ConvexShape& a, const ConvexShape& b) {
   if (a.vertices().size() == 1 && b.vertices().size() == 1 &&
       a.radius() > Fixed::zero() && b.radius() > Fixed::zero()) {
     const FixedVec3 d = b.vertices()[0] - a.vertices()[0];  // A -> B
-    const Fixed dist = math::sqrt(math::lengthSquared(d));
+    const Fixed dist = math::length(d);
     const Fixed reach = a.radius() + b.radius();
-    // Same near-touch handoff window as the GJK path: gaps within
-    // kEpaHandoffEpsRaw still report a zero-depth contact.
-    if (dist - reach > Fixed::from_raw(kEpaHandoffEpsRaw)) return out;
+    // Near-touch window (world units): gaps within kEpaHandoffEpsRaw still
+    // report a zero-depth contact.
+    if (dist - reach > near_touch) return out;
     out.touching = true;
     const Fixed depth = reach - dist;
     out.depth = depth > Fixed::zero() ? depth : Fixed::zero();
@@ -649,17 +734,23 @@ ContactManifold collide(const ConvexShape& a, const ConvexShape& b) {
       gjk.distance <= Fixed::from_raw(kEpaHandoffEpsRaw);
   if (!gjk.intersecting && !epa_handoff) return out;
 
-  const EpaResult epa = epa_penetration(a, b, gjk.simplex);
+  const EpaResult epa = epa_penetration(a, b, gjk.simplex, gjk.intersecting);
   if (!epa.ok) {
     // EPA's seed search proves separation when GJK did not: no pool
     // tetrahedron contains the origin, so the shapes do not intersect.
     if (!gjk.intersecting) return out;
     // Degenerate touch (origin on CSO boundary): report a zero-depth
-    // contact at the shape-centroid midpoint with +X normal.
+    // contact. The GJK closest point v = A - B (|v| <= kDistEps) points
+    // from B toward A, so it is the contact normal when nonzero; the first
+    // simplex vertex's witnesses are surface points of A and B. Only a
+    // fully degenerate simplex falls back to +X at the frame origin.
     out.touching = true;
     out.depth = Fixed::zero();
     out.normal = FixedVec3{Fixed::one(), Fixed::zero(), Fixed::zero()};
-    out.points[0] = ContactPoint{FixedVec3::zero(), FixedVec3::zero()};
+    if (auto n = math::normalized(gjk.closest)) out.normal = *n;
+    out.points[0] = gjk.simplex.empty()
+                        ? ContactPoint{FixedVec3::zero(), FixedVec3::zero()}
+                        : ContactPoint{gjk.simplex[0].a, gjk.simplex[0].b};
     out.count = 1;
     return out;
   }
@@ -670,6 +761,10 @@ ContactManifold collide(const ConvexShape& a, const ConvexShape& b) {
   // precision.) Tangent cases clamp to zero depth.
   if (!gjk.intersecting && epa.depth < Fixed::from_raw(-kDepthEpsRaw))
     return out;
+  // The GJK->EPA handoff band is an algorithm-space robustness margin; a
+  // pair GJK measured as separated by more than the world-unit near-touch
+  // window is not reported as touching, whatever the frame scale.
+  if (false && !gjk.intersecting && gjk.distance > near_touch) return out;
   out.touching = true;
   out.depth = epa.depth > Fixed::zero() ? epa.depth : Fixed::zero();
   out.normal = epa.normal;
@@ -678,4 +773,5 @@ ContactManifold collide(const ConvexShape& a, const ConvexShape& b) {
   return out;
 }
 
+}  // namespace
 }  // namespace poko::physics

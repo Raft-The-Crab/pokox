@@ -8,6 +8,7 @@
 #include <android/native_window.h>
 #include <android_native_app_glue.h>
 #include <array>
+#include <atomic>
 #include <cmath>
 #include <cstdio>
 #include <cstdlib>
@@ -63,10 +64,21 @@ void run_frames(AppState& s) {
     // On timeout the worker and its Vulkan objects are intentionally leaked —
     // this is a probe, not production lifecycle code.
     auto* vk = new VulkanClearAndroidRenderer();
-    struct VkOutcome { RenderError init = RenderError::backend_failure; int presented = 0; bool done = false; };
+    // The worker may outlive this frame (detached on timeout), so it shares
+    // nothing by reference: it gets value copies of the window and size, its
+    // own reference on the window (released when it finishes), and reports
+    // through an atomic `done` flag (release/acquire orders init/presented).
+    struct VkOutcome {
+      RenderError init = RenderError::backend_failure;
+      int presented = 0;
+      std::atomic<bool> done{false};
+    };
     auto* outcome = new VkOutcome();
-    std::thread worker([&, vk, outcome] {
-      outcome->init = vk->initialize(s.window, s.width, s.height);
+    ANativeWindow* const window = s.window;
+    const std::uint32_t width = s.width, height = s.height;
+    ANativeWindow_acquire(window);
+    std::thread worker([vk, outcome, window, width, height] {
+      outcome->init = vk->initialize(window, width, height);
       if (outcome->init == RenderError::none) {
         for (int i = 0; i < kFrames; ++i) {
           if (vk->clear_and_present(kClear) != RenderError::none) break;
@@ -74,19 +86,21 @@ void run_frames(AppState& s) {
         }
         vk->shutdown();
       }
-      outcome->done = true;
+      ANativeWindow_release(window);
+      outcome->done.store(true, std::memory_order_release);
     });
     const auto deadline = std::chrono::steady_clock::now() + std::chrono::seconds(15);
     // Pump the event loop while waiting — blocking here without dispatching
     // events is itself an ANR on Android.
-    while (!outcome->done && std::chrono::steady_clock::now() < deadline) {
+    while (!outcome->done.load(std::memory_order_acquire) &&
+           std::chrono::steady_clock::now() < deadline) {
       int events = 0;
       android_poll_source* source = nullptr;
       if (ALooper_pollOnce(0, nullptr, &events, (void**)&source) >= 0 && source)
         source->process(s.app, source);
       if (s.done) break;
     }
-    if (!outcome->done) {
+    if (!outcome->done.load(std::memory_order_acquire)) {
       write_result(s, "vulkan attempt timed out; falling back to OpenGL ES");
       worker.detach();
     } else {

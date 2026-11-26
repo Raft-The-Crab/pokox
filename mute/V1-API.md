@@ -12,6 +12,10 @@ Include `poko/mute/stdlib_math.hpp`.
 
 - Scalars: `det_sqrt`, `det_floor`, `det_round`, `det_clamp`, `det_lerp`,
   `det_pow`, plus pinned `deterministic_sin`/`deterministic_cos`.
+  `det_pow` accepts integer exponents only (binary exponentiation over IEEE
+  multiplies, no libm); a non-integer or NaN exponent returns NaN. It is
+  bit-identical across targets but not correctly rounded for large
+  exponents.
 - Vectors: `Vec2`, `Vec3`, `Vec4` with add/sub/scale/cross/dot/length/lerp/
   normalize. Zero-length normalization returns `std::nullopt`.
 - Matrices and quaternions: row-major `Mat4` identity/multiply/transform,
@@ -47,8 +51,12 @@ Include `poko/mute/stdlib_crypto.hpp`.
 - `sign_detached`/`verify_detached` are an HMAC-SHA256 detached tag scheme over
   host-owned bytes with constant-time comparison. Asymmetric publisher
   signatures remain a backend concern and are not part of this sandbox API.
-- `crypto_hostcall_defs()` registers ids 101–104 requiring `Crypto`.
-  Byte buffers are host-owned because v1 registers are i32.
+- `crypto_hostcall_defs()` registers ids 101–104 requiring `Crypto`, so
+  capability checks and bind-time denial work. Byte buffers are host-owned
+  because v1 registers are i32, so the VM-facing handlers are **not
+  implemented yet**: calling one returns `HostcallErrorCode::not_implemented`
+  and the VM traps with `hostcall_failed`. Host C++ code calls the functions
+  above directly.
 
 ## MUT-54 — lifecycle and game events
 

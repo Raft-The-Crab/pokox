@@ -5,6 +5,7 @@
 #include <cstdio>
 #include <string>
 #include <string_view>
+#include <variant>
 
 using namespace poko::mute;
 namespace {
@@ -56,6 +57,16 @@ int main() {
   const auto denied = unauthorized_hostcalls(table, 0);
   CHECK(denied.size() == 4);
   CHECK(unauthorized_hostcalls(table, capability_crypto).empty());
+  // Review 2026-11-26 M4: the VM-facing handlers used to return a silent 0
+  // (a script's `verify` read as a result). Until registers can carry
+  // byte buffers they must fail explicitly -> VM trap hostcall_failed.
+  for (const auto& def : defs) {
+    const std::int32_t args[2] = {1, 2};
+    const auto result = def.handler(HostcallArgs(args, def.params.size()));
+    const auto* err = std::get_if<HostcallError>(&result);
+    CHECK(err != nullptr);
+    CHECK(err && err->code == HostcallErrorCode::not_implemented);
+  }
 
   if (failures) { std::fprintf(stderr, "%d MUT-53 check(s) failed\n", failures); return 1; }
   std::puts("PASS: sha256/hmac vectors, detached verify, crypto capability denial");

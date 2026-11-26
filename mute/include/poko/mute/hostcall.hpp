@@ -54,7 +54,10 @@ inline constexpr CapabilityEntry capability_entries[] = {
   return {};
 }
 
-enum class HostcallErrorCode : std::uint8_t { failed };
+// not_implemented: the id is registered (so capability checks and denial
+// work) but has no VM-callable implementation yet; the VM traps with
+// hostcall_failed exactly as for `failed`.
+enum class HostcallErrorCode : std::uint8_t { failed, not_implemented };
 struct HostcallError { HostcallErrorCode code{}; };
 using HostcallArgs = std::span<const std::int32_t>;
 using HostcallResult = std::variant<std::int32_t, HostcallError>;

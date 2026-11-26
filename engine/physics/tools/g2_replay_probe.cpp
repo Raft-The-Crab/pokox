@@ -79,7 +79,6 @@ SimBody sim_body(const Body& b) {
   s.index = b.index;
   s.position = b.position;
   s.velocity = b.velocity;
-  s.mass = b.is_static ? Fixed::zero() : math::divide(Fixed::one(), b.inv_mass).value_or(Fixed::one());
   s.inv_mass = b.inv_mass;
   return s;
 }

@@ -2,6 +2,7 @@
 
 #include <cstdint>
 #include <map>
+#include <set>
 #include <span>
 #include <vector>
 
@@ -67,7 +68,9 @@ class VisualSolver {
   void clear() noexcept;
 
   void begin_step();
-  void add_contact(const VisualContact& c);
+  // Same rules as SequentialImpulseSolver::add_contact: self-contacts and
+  // keys already added this step are dropped and return false.
+  bool add_contact(const VisualContact& c);
   void solve(float dt_seconds,
              std::uint32_t iterations = kDefaultIterations);
   void integrate(float dt_seconds) noexcept;
@@ -86,6 +89,7 @@ class VisualSolver {
   std::vector<VisualBody> bodies_;                    // sorted by index
   std::vector<VisualContact> contacts_;               // canonical order
   std::map<std::uint64_t, ImpulseCache> warm_;        // persists across steps
+  std::set<std::uint64_t> step_keys_;                 // keys added this step
 };
 
 // Analytic f32 narrowphase for the supported shape set. All functions

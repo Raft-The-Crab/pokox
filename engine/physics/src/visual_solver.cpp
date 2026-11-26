@@ -163,10 +163,14 @@ const VisualBody* VisualSolver::find_body(std::uint32_t index) const noexcept {
 
 void VisualSolver::begin_step() {
   contacts_.clear();
+  step_keys_.clear();
 }
 
-void VisualSolver::add_contact(const VisualContact& c) {
+bool VisualSolver::add_contact(const VisualContact& c) {
+  if (c.body_a == c.body_b) return false;
+  if (!step_keys_.insert(c.key).second) return false;
   contacts_.push_back(c);
+  return true;
 }
 
 void VisualSolver::solve(float dt_seconds, std::uint32_t iterations) {

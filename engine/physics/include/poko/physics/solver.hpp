@@ -2,6 +2,7 @@
 
 #include <cstdint>
 #include <map>
+#include <set>
 #include <span>
 #include <vector>
 
@@ -35,13 +36,27 @@ struct SimBody {
   std::uint32_t index = 0;
   math::FixedVec3 position = math::FixedVec3::zero();
   math::FixedVec3 velocity = math::FixedVec3::zero();
-  math::Fixed mass = math::Fixed::one();
+  // inv_mass is the only stored mass quantity (review L2: separate `mass`
+  // and `inv_mass` fields drifted apart silently). 0 = infinite mass.
   math::Fixed inv_mass = math::Fixed::one();  // caller sets 0 for static
   // ENG-64: kinematic bodies have inv_mass = 0 (infinite mass — solver
   // impulses never change their velocity) but DO integrate under their
   // velocity, unlike static bodies. Used by the character controller,
   // which drives movement as a velocity target through the solver.
   bool kinematic = false;
+
+  // Derived mass; zero means infinite (static or kinematic).
+  math::Fixed mass() const noexcept {
+    return inv_mass.is_zero()
+               ? math::Fixed::zero()
+               : math::divide(math::Fixed::one(), inv_mass).value_or(math::Fixed::zero());
+  }
+  // Sets inv_mass = 1/m; m <= 0 makes the body infinitely massive.
+  void set_mass(math::Fixed m) noexcept {
+    inv_mass = m > math::Fixed::zero()
+                   ? math::divide(math::Fixed::one(), m).value_or(math::Fixed::zero())
+                   : math::Fixed::zero();
+  }
 };
 
 // One contact point constraint derived from a narrowphase manifold.
@@ -73,14 +88,19 @@ class SequentialImpulseSolver {
   void clear() noexcept;
 
   // Queue this tick's contacts (from narrowphase manifolds). Contact
-  // indices must reference bodies already upserted.
+  // indices must reference bodies already upserted. Returns false and
+  // drops the contact when body_a == body_b or when `key` was already
+  // added this step (it would silently share one warm-start cache entry).
   void begin_step();
-  void add_contact(const ContactConstraint& c);
+  bool add_contact(const ContactConstraint& c);
   // Run the sequential impulse solve. Contacts and bodies are read
   // post-solve; positions are NOT integrated here — call integrate().
   void solve(math::Fixed dt_seconds,
              std::uint32_t iterations = kDefaultIterations);
   // position += velocity * dt for every non-static body. Deterministic.
+  // The add saturates per axis at the Q16.16 range (+-32768 units): a body
+  // pushed past the world edge clamps there instead of wrapping to the
+  // opposite side (Fixed +/- itself wraps, per spec 24).
   void integrate(math::Fixed dt_seconds) noexcept;
 
   const SimBody* find_body(std::uint32_t index) const noexcept;
@@ -99,6 +119,7 @@ class SequentialImpulseSolver {
   std::vector<SimBody> bodies_;                    // sorted by index
   std::vector<ContactConstraint> contacts_;        // sorted canonically
   std::map<std::uint64_t, ImpulseCache> warm_;     // persists across steps
+  std::set<std::uint64_t> step_keys_;              // keys added this step
 };
 
 }  // namespace poko::physics

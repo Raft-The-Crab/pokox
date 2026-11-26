@@ -152,7 +152,12 @@ std::vector<HostcallDef> crypto_hostcall_defs() {
     def.result = HostType::integer;
     def.capabilities = capability_crypto;
     def.serializable = true;
-    def.handler = [](HostcallArgs) { return HostcallResult{std::int32_t{0}}; };
+    // v1 registers are i32 and byte buffers are host-owned, so there is no
+    // way to pass data in or a digest/verdict out yet. Fail explicitly: a
+    // silent 0 from `verify` could be read as a result.
+    def.handler = [](HostcallArgs) {
+      return HostcallResult{HostcallError{HostcallErrorCode::not_implemented}};
+    };
     defs.push_back(std::move(def));
   }
   return defs;

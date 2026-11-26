@@ -3,6 +3,8 @@
 #include "poko/physics/solver.hpp"
 
 #include <algorithm>
+#include <cstdint>
+#include <limits>
 #include <map>
 #include <vector>
 
@@ -72,10 +74,14 @@ const SimBody* SequentialImpulseSolver::find_body(std::uint32_t index) const noe
 
 void SequentialImpulseSolver::begin_step() {
   contacts_.clear();
+  step_keys_.clear();
 }
 
-void SequentialImpulseSolver::add_contact(const ContactConstraint& c) {
+bool SequentialImpulseSolver::add_contact(const ContactConstraint& c) {
+  if (c.body_a == c.body_b) return false;
+  if (!step_keys_.insert(c.key).second) return false;
   contacts_.push_back(c);
+  return true;
 }
 
 void SequentialImpulseSolver::solve(math::Fixed dt, std::uint32_t iterations) {
@@ -232,7 +238,12 @@ void SequentialImpulseSolver::solve(math::Fixed dt, std::uint32_t iterations) {
 void SequentialImpulseSolver::integrate(math::Fixed dt) noexcept {
   for (auto& b : bodies_) {
     if (b.inv_mass.is_zero() && !b.kinematic) continue;  // static
-    b.position = b.position + b.velocity * dt;
+    const FixedVec3 step = b.velocity * dt;
+    for (std::size_t i = 0; i < 3; ++i) {
+      const std::int64_t sum = static_cast<std::int64_t>(b.position[i].raw()) + step[i].raw();
+      b.position[i] = Fixed::from_raw(static_cast<std::int32_t>(std::clamp<std::int64_t>(
+          sum, std::numeric_limits<std::int32_t>::min(), std::numeric_limits<std::int32_t>::max())));
+    }
   }
 }
 
