@@ -173,6 +173,14 @@ target_link_libraries(poko_mute_stdlib_crypto PUBLIC poko_mute_program)
 target_compile_features(poko_mute_stdlib_crypto PUBLIC cxx_std_20)
 set_target_properties(poko_mute_stdlib_crypto PROPERTIES CXX_EXTENSIONS OFF)
 
+# MUT-42: physics queries and body operations as hostcalls over the MUT-35
+# boundary; links the engine physics module host-side.
+add_library(poko_mute_stdlib_physics STATIC mute/src/stdlib/stdlib_physics.cpp)
+target_include_directories(poko_mute_stdlib_physics PUBLIC mute/include)
+target_link_libraries(poko_mute_stdlib_physics PUBLIC poko_mute_program poko_physics)
+target_compile_features(poko_mute_stdlib_physics PUBLIC cxx_std_20)
+set_target_properties(poko_mute_stdlib_physics PROPERTIES CXX_EXTENSIONS OFF)
+
 # MUT-54: tick-tagged lifecycle and game event dispatch.
 add_library(poko_mute_events STATIC mute/src/stdlib/events.cpp)
 target_include_directories(poko_mute_events PUBLIC mute/include)
@@ -647,6 +655,9 @@ if(BUILD_TESTING)
   add_executable(poko_mute_stdlib_crypto_test mute/tests/unit/stdlib_crypto_test.cpp)
   target_link_libraries(poko_mute_stdlib_crypto_test PRIVATE poko_mute_stdlib_crypto)
   add_test(NAME mute_stdlib_crypto_unit COMMAND poko_mute_stdlib_crypto_test)
+  add_executable(poko_mute_stdlib_physics_test mute/tests/unit/stdlib_physics_test.cpp)
+  target_link_libraries(poko_mute_stdlib_physics_test PRIVATE poko_mute_stdlib_physics)
+  add_test(NAME mute_stdlib_physics_unit COMMAND poko_mute_stdlib_physics_test)
   add_executable(poko_mute_events_test mute/tests/unit/events_test.cpp)
   target_link_libraries(poko_mute_events_test PRIVATE poko_mute_events)
   add_test(NAME mute_events_unit COMMAND poko_mute_events_test)

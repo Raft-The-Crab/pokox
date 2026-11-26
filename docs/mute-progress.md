@@ -1598,3 +1598,46 @@ build's pre-existing `/EHsc` warnings remain; no sanitizer errors.
 - No registry/fetch/publishing, on-disk settings adapter or script-facing
   action hostcall.
 - No gate accepted by this slice. G2 remains deferred to ENG-60→63.
+
+# MUT-42 — physics queries and body operations (2026-11-26)
+
+## What landed
+
+`poko/mute/stdlib_physics.hpp/.cpp` (CMake target `poko_mute_stdlib_physics`,
+links `poko_mute_program` + host-side `poko_physics`). Five hostcalls over the
+MUT-35 boundary, ids 121–125, all Q16.16 raw i32 registers so no rounding
+enters at the edge:
+
+- `raycast` (121): deterministic sphere-probe march (16 uniform substeps)
+  against the host collider list in index order, then an 8-step fixed bisection
+  refine. Returns hit distance raw or `kRaycastMiss` (`INT32_MIN`); a
+  zero-length direction is a miss, never a trap.
+- `overlap` (122): count of colliders whose `collide()` manifold against a
+  probe sphere reports touching.
+- `body_query` (123): read-only position/velocity component by body index and
+  field 0..5; unknown field or unknown body fails the call.
+- `character_move` (124): the only approved write path. Drives
+  `CharacterController::update` (velocity target + capped depenetration only)
+  and returns the grounded flag. The controller owns the character body index.
+- `body_set_position` (125): always fails with `HostcallError{failed}` →
+  `hostcall_failed` trap. Positions and solver-owned state are ServerOwned:
+  client scripts observe them, they do not set them. Test verifies the body's
+  position bytes are untouched after a denied call.
+
+Engine objects (solver, controller, colliders, dt, params) live host-side in
+`PhysicsHostContext`; guests receive no handles, so v1 registers cannot carry
+object references and the ServerOwned boundary stays total.
+
+## Verification
+
+- `mute_stdlib_physics_unit`: raycast hit/miss/zero-dir, overlap hit/miss,
+  body_query fields + error cases, denied position write (body untouched),
+  character_move writes velocity not position, capability grant checks. All
+  pass.
+- Full Debug `ctest`: 110/110, exit 0 (2026-11-26, build-gcc).
+
+## Not in this slice
+
+- Script-facing wrapper beyond raw hostcall dispatch (no typed Mute API yet).
+- Compound-shape queries, region queries, ray-vs-character sweeps.
+- Windows/MSVC, Android and gate acceptance runs.
