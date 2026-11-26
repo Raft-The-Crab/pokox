@@ -44,7 +44,8 @@ class Scheduler {
     std::size_t max_tasks{1024};
     std::size_t max_steps{1'000'000};
   };
-  explicit Scheduler(Limits limits = {}) : limits_(limits) {}
+  Scheduler() : Scheduler(Limits{}) {}
+  explicit Scheduler(Limits limits) : limits_(limits) {}
 
   // FIFO spawn. Returns no_task when the task table is full.
   [[nodiscard]] TaskId spawn(TaskStep step);

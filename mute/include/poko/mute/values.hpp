@@ -49,7 +49,8 @@ class AggregateStore {
     std::size_t heap_objects{65'536};
     std::size_t heap_bytes{67'108'864}; // 64 MiB
   };
-  explicit AggregateStore(Limits limits = {}) : limits_(limits) {}
+  AggregateStore() : AggregateStore(Limits{}) {}
+  explicit AggregateStore(Limits limits) : limits_(limits) {}
 
   // Creation. Strings copy bytes into the arena; arrays fill with `fill`.
   [[nodiscard]] std::variant<Value,ValueError> make_string(std::string_view text);
