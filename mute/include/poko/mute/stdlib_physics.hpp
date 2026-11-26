@@ -5,7 +5,7 @@
 #include "poko/foundation/fixed.hpp"
 #include "poko/foundation/fixed_vec.hpp"
 #include "poko/physics/character_controller.hpp"
-#include "poko/physics/convex_shape.hpp"
+#include "poko/physics/convex_shape.gpp"
 #include "poko/physics/narrowphase.hpp"
 #include "poko/physics/solver.hpp"
 
