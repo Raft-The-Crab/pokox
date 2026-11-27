@@ -33,12 +33,21 @@ int main() {
   // on an unbound port and the round-trip loses bytes (the flake).
   bool server_ready = false;
   for (int i = 0; i < 50 && !server_ready; ++i) {
+#ifdef _WIN32
+    FILE* probe = _popen("netstat -an -p UDP | findstr :39001", "r");
+    if (probe) {
+      char line[256];
+      if (std::fgets(line, sizeof(line), probe) != nullptr) server_ready = true;
+      _pclose(probe);
+    }
+#else
     FILE* probe = popen("ss -u -l 2>/dev/null | grep -c 39001", "r");
     if (probe) {
       int bound = 0;
       if (std::fscanf(probe, "%d", &bound) == 1 && bound > 0) server_ready = true;
       pclose(probe);
     }
+#endif
     if (!server_ready) std::this_thread::sleep_for(std::chrono::milliseconds(10));
   }
   check(server_ready, "echo server socket is bound before the client sends");

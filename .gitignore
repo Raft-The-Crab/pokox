@@ -17,3 +17,9 @@ __pycache__/
 
 # Rust shell bridge (SHL-01) build output
 client/windows/bridge/poko-shell/target/
+
+# Android Gradle / NDK build outputs
+client/android/.gradle/
+client/android/build/
+client/android/app/build/
+client/android/app/src/main/jniLibs/

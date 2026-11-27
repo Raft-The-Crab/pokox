@@ -14,7 +14,7 @@ int main() {
     static_assert(POKO_SHELL_ERROR_PANIC == -3, "spec 12 error code");
     static_assert(POKO_SHELL_ERROR_ABI_MISMATCH == -4, "spec 12 error code");
     static_assert(POKO_SHELL_ERROR_REENTRANT == -5, "spec 12 error code");
-    static_assert(POKO_SHELL_ABI_VERSION == 4, "SHL-05/06 ABI version");
+    static_assert(POKO_SHELL_ABI_VERSION == 6, "SHL-14 ABI version");
 
     if (poko_shell_abi_version() != POKO_SHELL_ABI_VERSION) {
         std::puts("FAIL: poko_shell_abi_version disagrees with the header");

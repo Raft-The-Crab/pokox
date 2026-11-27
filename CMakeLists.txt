@@ -814,7 +814,8 @@ if(BUILD_TESTING)
   add_test(NAME version_integration
     COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tools/version/tests/integration/test_version.py"
       "--cmake=${CMAKE_COMMAND}" "--git=${GIT_EXECUTABLE}"
-      "--generator=${CMAKE_GENERATOR}" "--platform=${CMAKE_GENERATOR_PLATFORM}")
+      "--generator=${CMAKE_GENERATOR}" "--platform=${CMAKE_GENERATOR_PLATFORM}"
+      "--cxx-compiler=${CMAKE_CXX_COMPILER}" "--make-program=${CMAKE_MAKE_PROGRAM}")
   add_test(NAME d1_word_reservations
     COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/backend/storage/d1/tests/integration/test_word_reservations.py")
   add_test(NAME character_uv_overlap
@@ -1270,6 +1271,9 @@ set_tests_properties(pokox_identity_velocity_test PROPERTIES TIMEOUT 15)
 # NET-01: UDP socket echo (two endpoints, exact-byte round-trip).
 add_executable(pokox_net_udp_echo_test server/net/tests/unit/udp_echo_test.cpp)
 target_include_directories(pokox_net_udp_echo_test PRIVATE server/net/include)
+if(WIN32)
+  target_link_libraries(pokox_net_udp_echo_test PRIVATE ws2_32)
+endif()
 target_compile_features(pokox_net_udp_echo_test PRIVATE cxx_std_20)
 set_target_properties(pokox_net_udp_echo_test PROPERTIES CXX_EXTENSIONS OFF)
 add_test(NAME pokox_net_udp_echo_test COMMAND pokox_net_udp_echo_test)
@@ -1294,6 +1298,9 @@ add_test(NAME pokox_net_delta_test COMMAND pokox_net_delta_test)
 set_tests_properties(pokox_net_delta_test PROPERTIES TIMEOUT 15)
 add_executable(pokox_net_cube_sync_test server/net/tests/unit/cube_sync_test.cpp)
 target_include_directories(pokox_net_cube_sync_test PRIVATE server/net/include)
+if(WIN32)
+  target_link_libraries(pokox_net_cube_sync_test PRIVATE ws2_32)
+endif()
 target_compile_features(pokox_net_cube_sync_test PRIVATE cxx_std_20)
 set_target_properties(pokox_net_cube_sync_test PROPERTIES CXX_EXTENSIONS OFF)
 add_test(NAME pokox_net_cube_sync_test COMMAND pokox_net_cube_sync_test)
@@ -1307,6 +1314,9 @@ set_tests_properties(pokox_net_xor_fec_test PROPERTIES TIMEOUT 15)
 
 add_executable(pokox_net_ws_transport_test server/net/tests/unit/ws_transport_test.cpp)
 target_include_directories(pokox_net_ws_transport_test PRIVATE server/net/include)
+if(WIN32)
+  target_link_libraries(pokox_net_ws_transport_test PRIVATE ws2_32)
+endif()
 target_compile_features(pokox_net_ws_transport_test PRIVATE cxx_std_20)
 set_target_properties(pokox_net_ws_transport_test PROPERTIES CXX_EXTENSIONS OFF)
 add_test(NAME pokox_net_ws_transport_test COMMAND pokox_net_ws_transport_test)
@@ -1475,23 +1485,68 @@ set_tests_properties(pokox_matchmaker_party_book_test PROPERTIES TIMEOUT 15)
 option(POKO_WITH_SHELL_BRIDGE "Build the Rust shell bridge staticlib (SHL-01)" OFF)
 if(POKO_WITH_SHELL_BRIDGE)
   find_program(POKO_CARGO_EXECUTABLE NAMES cargo REQUIRED)
-  find_program(POKO_CBINDGEN_EXECUTABLE NAMES cbindgen REQUIRED)
+  find_program(POKO_CBINDGEN_EXECUTABLE NAMES cbindgen)
   set(POKO_SHELL_CRATE_DIR ${CMAKE_SOURCE_DIR}/client/windows/bridge/poko-shell)
   set(POKO_SHELL_C_ABI_DIR ${CMAKE_SOURCE_DIR}/client/windows/bridge/c_abi)
 
-  add_custom_command(
-    OUTPUT ${POKO_SHELL_C_ABI_DIR}/poko_shell.h
-           ${CMAKE_CURRENT_BINARY_DIR}/libpoko_shell.a
-    COMMAND ${POKO_CBINDGEN_EXECUTABLE} --quiet --output ${POKO_SHELL_C_ABI_DIR}/poko_shell.h ${POKO_SHELL_CRATE_DIR}
-    COMMAND ${POKO_CARGO_EXECUTABLE} build --release --manifest-path ${POKO_SHELL_CRATE_DIR}/Cargo.toml
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different
-            ${POKO_SHELL_CRATE_DIR}/target/release/libpoko_shell.a
-            ${CMAKE_CURRENT_BINARY_DIR}/libpoko_shell.a
-    DEPENDS ${POKO_SHELL_CRATE_DIR}/Cargo.toml
-            ${POKO_SHELL_CRATE_DIR}/cbindgen.toml
-            ${POKO_SHELL_CRATE_DIR}/src/lib.rs
-    COMMENT "Building poko_shell staticlib (cargo) and C header (cbindgen)")
-  add_custom_target(poko_shell_bridge DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/libpoko_shell.a)
+  if(MSVC)
+    set(POKO_SHELL_RUST_TARGET "x86_64-pc-windows-msvc")
+    set(POKO_SHELL_STATICLIB_NAME "poko_shell.lib")
+    set(POKO_SHELL_CARGO_TOOLCHAIN "")
+    find_program(POKO_RUSTUP_EXECUTABLE NAMES rustup)
+    if(POKO_RUSTUP_EXECUTABLE)
+      execute_process(
+        COMMAND ${POKO_RUSTUP_EXECUTABLE} toolchain list
+        OUTPUT_VARIABLE POKO_RUSTUP_TOOLCHAINS
+        ERROR_QUIET
+        OUTPUT_STRIP_TRAILING_WHITESPACE)
+      if(POKO_RUSTUP_TOOLCHAINS MATCHES "stable-x86_64-pc-windows-msvc")
+        set(POKO_SHELL_CARGO_TOOLCHAIN "+stable-x86_64-pc-windows-msvc")
+      endif()
+    endif()
+    set(POKO_SHELL_CARGO_TARGET_ARGS --target ${POKO_SHELL_RUST_TARGET})
+    set(POKO_SHELL_CARGO_OUT
+      ${POKO_SHELL_CRATE_DIR}/target/${POKO_SHELL_RUST_TARGET}/release/${POKO_SHELL_STATICLIB_NAME})
+  else()
+    set(POKO_SHELL_STATICLIB_NAME "libpoko_shell.a")
+    set(POKO_SHELL_CARGO_TOOLCHAIN "")
+    set(POKO_SHELL_CARGO_TARGET_ARGS "")
+    set(POKO_SHELL_CARGO_OUT
+      ${POKO_SHELL_CRATE_DIR}/target/release/${POKO_SHELL_STATICLIB_NAME})
+  endif()
+
+  set(POKO_SHELL_STATICLIB ${CMAKE_CURRENT_BINARY_DIR}/${POKO_SHELL_STATICLIB_NAME})
+  set(POKO_SHELL_LINK_LIBS ${POKO_SHELL_STATICLIB})
+  if(WIN32)
+    list(APPEND POKO_SHELL_LINK_LIBS ws2_32 userenv bcrypt ntdll advapi32)
+  endif()
+
+  if(POKO_CBINDGEN_EXECUTABLE)
+    add_custom_command(
+      OUTPUT ${POKO_SHELL_C_ABI_DIR}/poko_shell.h
+             ${POKO_SHELL_STATICLIB}
+      COMMAND ${POKO_CBINDGEN_EXECUTABLE} --quiet --output ${POKO_SHELL_C_ABI_DIR}/poko_shell.h ${POKO_SHELL_CRATE_DIR}
+      COMMAND ${POKO_CARGO_EXECUTABLE} ${POKO_SHELL_CARGO_TOOLCHAIN} build --release ${POKO_SHELL_CARGO_TARGET_ARGS} --manifest-path ${POKO_SHELL_CRATE_DIR}/Cargo.toml
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different
+              ${POKO_SHELL_CARGO_OUT}
+              ${POKO_SHELL_STATICLIB}
+      DEPENDS ${POKO_SHELL_CRATE_DIR}/Cargo.toml
+              ${POKO_SHELL_CRATE_DIR}/cbindgen.toml
+              ${POKO_SHELL_CRATE_DIR}/src/lib.rs
+      COMMENT "Building poko_shell staticlib (cargo) and C header (cbindgen)")
+  else()
+    message(STATUS "POKO_WITH_SHELL_BRIDGE: cbindgen not found; using checked-in ${POKO_SHELL_C_ABI_DIR}/poko_shell.h")
+    add_custom_command(
+      OUTPUT ${POKO_SHELL_STATICLIB}
+      COMMAND ${POKO_CARGO_EXECUTABLE} ${POKO_SHELL_CARGO_TOOLCHAIN} build --release ${POKO_SHELL_CARGO_TARGET_ARGS} --manifest-path ${POKO_SHELL_CRATE_DIR}/Cargo.toml
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different
+              ${POKO_SHELL_CARGO_OUT}
+              ${POKO_SHELL_STATICLIB}
+      DEPENDS ${POKO_SHELL_CRATE_DIR}/Cargo.toml
+              ${POKO_SHELL_CRATE_DIR}/src/lib.rs
+      COMMENT "Building poko_shell staticlib (cargo)")
+  endif()
+  add_custom_target(poko_shell_bridge DEPENDS ${POKO_SHELL_STATICLIB})
 
   add_executable(pokox_shell_c_abi_link_test
     client/windows/bridge/tests/unit/c_abi_link_test.cpp)
@@ -1499,7 +1554,7 @@ if(POKO_WITH_SHELL_BRIDGE)
   target_include_directories(pokox_shell_c_abi_link_test
     PRIVATE ${POKO_SHELL_C_ABI_DIR})
   target_link_libraries(pokox_shell_c_abi_link_test
-    PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/libpoko_shell.a)
+    PRIVATE ${POKO_SHELL_LINK_LIBS})
   target_compile_features(pokox_shell_c_abi_link_test PRIVATE cxx_std_20)
   set_target_properties(pokox_shell_c_abi_link_test PROPERTIES CXX_EXTENSIONS OFF)
   add_test(NAME pokox_shell_c_abi_link_test COMMAND pokox_shell_c_abi_link_test)
@@ -1511,7 +1566,7 @@ if(POKO_WITH_SHELL_BRIDGE)
   target_include_directories(pokox_shell_create_test
     PRIVATE ${POKO_SHELL_C_ABI_DIR})
   target_link_libraries(pokox_shell_create_test
-    PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/libpoko_shell.a)
+    PRIVATE ${POKO_SHELL_LINK_LIBS})
   target_compile_features(pokox_shell_create_test PRIVATE cxx_std_20)
   set_target_properties(pokox_shell_create_test PROPERTIES CXX_EXTENSIONS OFF)
   add_test(NAME pokox_shell_create_test COMMAND pokox_shell_create_test)
@@ -1523,7 +1578,7 @@ if(POKO_WITH_SHELL_BRIDGE)
   target_include_directories(pokox_shell_events_test
     PRIVATE ${POKO_SHELL_C_ABI_DIR})
   target_link_libraries(pokox_shell_events_test
-    PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/libpoko_shell.a)
+    PRIVATE ${POKO_SHELL_LINK_LIBS})
   target_compile_features(pokox_shell_events_test PRIVATE cxx_std_20)
   set_target_properties(pokox_shell_events_test PROPERTIES CXX_EXTENSIONS OFF)
   add_test(NAME pokox_shell_events_test COMMAND pokox_shell_events_test)
@@ -1535,7 +1590,7 @@ if(POKO_WITH_SHELL_BRIDGE)
   target_include_directories(pokox_shell_frame_test
     PRIVATE ${POKO_SHELL_C_ABI_DIR})
   target_link_libraries(pokox_shell_frame_test
-    PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/libpoko_shell.a)
+    PRIVATE ${POKO_SHELL_LINK_LIBS})
   target_compile_features(pokox_shell_frame_test PRIVATE cxx_std_20)
   set_target_properties(pokox_shell_frame_test PROPERTIES CXX_EXTENSIONS OFF)
   add_test(NAME pokox_shell_frame_test COMMAND pokox_shell_frame_test)
@@ -1547,7 +1602,7 @@ if(POKO_WITH_SHELL_BRIDGE)
   target_include_directories(pokox_shell_mesh_test
     PRIVATE ${POKO_SHELL_C_ABI_DIR})
   target_link_libraries(pokox_shell_mesh_test
-    PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/libpoko_shell.a)
+    PRIVATE ${POKO_SHELL_LINK_LIBS})
   target_compile_features(pokox_shell_mesh_test PRIVATE cxx_std_20)
   set_target_properties(pokox_shell_mesh_test PROPERTIES CXX_EXTENSIONS OFF)
   add_test(NAME pokox_shell_mesh_test COMMAND pokox_shell_mesh_test)
@@ -1559,8 +1614,140 @@ if(POKO_WITH_SHELL_BRIDGE)
   target_include_directories(pokox_shell_raii_test
     PRIVATE ${POKO_SHELL_C_ABI_DIR} client/windows/bridge/include)
   target_link_libraries(pokox_shell_raii_test
-    PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/libpoko_shell.a)
+    PRIVATE ${POKO_SHELL_LINK_LIBS})
+  if(WIN32)
+    target_link_libraries(pokox_shell_raii_test PRIVATE psapi)
+  endif()
   target_compile_features(pokox_shell_raii_test PRIVATE cxx_std_20)
   set_target_properties(pokox_shell_raii_test PROPERTIES CXX_EXTENSIONS OFF)
   add_test(NAME pokox_shell_raii_test COMMAND pokox_shell_raii_test)
+
+  # SHL-08 — panic boundary on all exports (forced panic returns -3).
+  add_executable(pokox_shell_panic_test
+    client/windows/bridge/tests/unit/shell_panic_test.cpp)
+  add_dependencies(pokox_shell_panic_test poko_shell_bridge)
+  target_include_directories(pokox_shell_panic_test
+    PRIVATE ${POKO_SHELL_C_ABI_DIR})
+  target_link_libraries(pokox_shell_panic_test
+    PRIVATE ${POKO_SHELL_LINK_LIBS})
+  target_compile_features(pokox_shell_panic_test PRIVATE cxx_std_20)
+  set_target_properties(pokox_shell_panic_test PROPERTIES CXX_EXTENSIONS OFF)
+  add_test(NAME pokox_shell_panic_test COMMAND pokox_shell_panic_test)
+
+  # SHL-09 — SDL3 event bridge in engine (mouse/keyboard drive egui).
+  add_executable(pokox_shell_sdl_bridge_test
+    engine/platform/src/window/sdl_platform.cpp
+    client/windows/bridge/tests/unit/shell_sdl_bridge_test.cpp)
+  add_dependencies(pokox_shell_sdl_bridge_test poko_shell_bridge)
+  target_include_directories(pokox_shell_sdl_bridge_test
+    PRIVATE ${POKO_SHELL_C_ABI_DIR}
+            client/windows/bridge/include
+            engine/platform/tests/fakes)
+  target_link_libraries(pokox_shell_sdl_bridge_test
+    PRIVATE poko_platform ${POKO_SHELL_LINK_LIBS})
+  target_compile_features(pokox_shell_sdl_bridge_test PRIVATE cxx_std_20)
+  set_target_properties(pokox_shell_sdl_bridge_test PROPERTIES CXX_EXTENSIONS OFF)
+  add_test(NAME pokox_shell_sdl_bridge_test COMMAND pokox_shell_sdl_bridge_test)
+
+  # SHL-10 — text input and IME (CJK typed into field).
+  add_executable(pokox_shell_text_ime_test
+    engine/platform/src/window/sdl_platform.cpp
+    client/windows/bridge/tests/unit/shell_text_ime_test.cpp)
+  add_dependencies(pokox_shell_text_ime_test poko_shell_bridge)
+  target_include_directories(pokox_shell_text_ime_test
+    PRIVATE ${POKO_SHELL_C_ABI_DIR}
+            client/windows/bridge/include
+            engine/platform/tests/fakes)
+  target_link_libraries(pokox_shell_text_ime_test
+    PRIVATE poko_platform ${POKO_SHELL_LINK_LIBS})
+  target_compile_features(pokox_shell_text_ime_test PRIVATE cxx_std_20)
+  set_target_properties(pokox_shell_text_ime_test PROPERTIES CXX_EXTENSIONS OFF)
+  add_test(NAME pokox_shell_text_ime_test COMMAND pokox_shell_text_ime_test)
+
+  # SHL-13 — reentrancy guard (nested call returns -5).
+  add_executable(pokox_shell_reentrancy_test
+    client/windows/bridge/tests/unit/shell_reentrancy_test.cpp)
+  add_dependencies(pokox_shell_reentrancy_test poko_shell_bridge)
+  target_include_directories(pokox_shell_reentrancy_test
+    PRIVATE ${POKO_SHELL_C_ABI_DIR})
+  target_link_libraries(pokox_shell_reentrancy_test
+    PRIVATE ${POKO_SHELL_LINK_LIBS})
+  target_compile_features(pokox_shell_reentrancy_test PRIVATE cxx_std_20)
+  set_target_properties(pokox_shell_reentrancy_test PROPERTIES CXX_EXTENSIONS OFF)
+  add_test(NAME pokox_shell_reentrancy_test COMMAND pokox_shell_reentrancy_test)
+
+  # SHL-11 — Vulkan UI pass (shell over game viewport).
+  add_executable(pokox_shell_vulkan_ui_pass_test
+    engine/rhi/tests/unit/shell_vulkan_ui_pass_test.cpp
+    engine/rhi/src/device/vulkan_shell_ui_pass.cpp
+    engine/rhi/src/debug/vulkan_diagnostics.cpp
+    engine/rhi/src/debug/vulkan_diagnostics_filter.cpp)
+  add_dependencies(pokox_shell_vulkan_ui_pass_test poko_shell_bridge)
+  target_include_directories(pokox_shell_vulkan_ui_pass_test
+    PRIVATE ${POKO_SHELL_C_ABI_DIR}
+            client/windows/bridge/include
+            engine/rhi/tests/fakes/imgui
+            engine/rhi/tests/fakes
+            engine/rhi/include)
+  target_link_libraries(pokox_shell_vulkan_ui_pass_test
+    PRIVATE ${POKO_SHELL_LINK_LIBS})
+  target_compile_features(pokox_shell_vulkan_ui_pass_test PRIVATE cxx_std_20)
+  set_target_properties(pokox_shell_vulkan_ui_pass_test PROPERTIES CXX_EXTENSIONS OFF)
+  add_test(NAME pokox_shell_vulkan_ui_pass_test COMMAND pokox_shell_vulkan_ui_pass_test)
+
+  # SHL-12 — theme tokens and bevel widgets (Classic and Flat goldens).
+  add_executable(pokox_shell_theme_test
+    client/windows/bridge/tests/unit/shell_theme_test.cpp)
+  add_dependencies(pokox_shell_theme_test poko_shell_bridge)
+  target_include_directories(pokox_shell_theme_test
+    PRIVATE ${POKO_SHELL_C_ABI_DIR} client/windows/bridge/include)
+  target_link_libraries(pokox_shell_theme_test
+    PRIVATE ${POKO_SHELL_LINK_LIBS})
+  target_compile_features(pokox_shell_theme_test PRIVATE cxx_std_20)
+  set_target_properties(pokox_shell_theme_test PROPERTIES CXX_EXTENSIONS OFF)
+  add_test(NAME pokox_shell_theme_test COMMAND pokox_shell_theme_test)
+
+  # SHL-14 — DPI resize path (atlas regenerates).
+  add_executable(pokox_shell_dpi_resize_test
+    client/windows/bridge/tests/unit/shell_dpi_resize_test.cpp)
+  add_dependencies(pokox_shell_dpi_resize_test poko_shell_bridge)
+  target_include_directories(pokox_shell_dpi_resize_test
+    PRIVATE ${POKO_SHELL_C_ABI_DIR} client/windows/bridge/include)
+  target_link_libraries(pokox_shell_dpi_resize_test
+    PRIVATE ${POKO_SHELL_LINK_LIBS})
+  target_compile_features(pokox_shell_dpi_resize_test PRIVATE cxx_std_20)
+  set_target_properties(pokox_shell_dpi_resize_test PROPERTIES CXX_EXTENSIONS OFF)
+  add_test(NAME pokox_shell_dpi_resize_test COMMAND pokox_shell_dpi_resize_test)
+endif()
+
+if(BUILD_TESTING)
+  # SHL-15 — Android Kotlin Activity and JNI handle.
+  add_executable(pokox_android_jni_handle_test
+    client/android/jni/src/poko_jni_bridge.cpp
+    client/android/jni/tests/jni_handle_test.cpp)
+  target_include_directories(pokox_android_jni_handle_test
+    PRIVATE client/android/jni/include)
+  target_compile_features(pokox_android_jni_handle_test PRIVATE cxx_std_20)
+  set_target_properties(pokox_android_jni_handle_test PROPERTIES CXX_EXTENSIONS OFF)
+  add_test(NAME pokox_android_jni_handle_test COMMAND pokox_android_jni_handle_test)
+
+  # SHL-16 — Android Compose chrome over SDL/GLES surface.
+  add_executable(pokox_android_compose_surface_test
+    client/android/jni/src/poko_jni_bridge.cpp
+    client/android/jni/tests/compose_surface_test.cpp)
+  target_include_directories(pokox_android_compose_surface_test
+    PRIVATE client/android/jni/include)
+  target_compile_features(pokox_android_compose_surface_test PRIVATE cxx_std_20)
+  set_target_properties(pokox_android_compose_surface_test PROPERTIES CXX_EXTENSIONS OFF)
+  add_test(NAME pokox_android_compose_surface_test COMMAND pokox_android_compose_surface_test)
+
+  # SHL-17 — Android lifecycle callbacks (pause/resume/kill).
+  add_executable(pokox_android_lifecycle_test
+    client/android/jni/src/poko_jni_bridge.cpp
+    client/android/jni/tests/lifecycle_test.cpp)
+  target_include_directories(pokox_android_lifecycle_test
+    PRIVATE client/android/jni/include)
+  target_compile_features(pokox_android_lifecycle_test PRIVATE cxx_std_20)
+  set_target_properties(pokox_android_lifecycle_test PROPERTIES CXX_EXTENSIONS OFF)
+  add_test(NAME pokox_android_lifecycle_test COMMAND pokox_android_lifecycle_test)
 endif()

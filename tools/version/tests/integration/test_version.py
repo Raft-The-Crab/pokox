@@ -24,6 +24,8 @@ def parse_options() -> argparse.Namespace:
     parser.add_argument("--git", required=True)
     parser.add_argument("--generator", required=True)
     parser.add_argument("--platform", default="")
+    parser.add_argument("--cxx-compiler", default="")
+    parser.add_argument("--make-program", default="")
     return parser.parse_args()
 
 
@@ -42,8 +44,51 @@ def copy_sources(root: Path) -> None:
         shutil.copytree(source, root / relative, ignore=COPY_IGNORE, dirs_exist_ok=True)
 
 
+def build_env() -> dict[str, str]:
+    env = os.environ.copy()
+    if os.name == "nt" and OPTIONS.cxx_compiler:
+        compiler = Path(OPTIONS.cxx_compiler)
+        if compiler.name.lower() == "cl.exe" and compiler.is_file():
+            bin_dir = str(compiler.parent)
+            if bin_dir.lower() not in env.get("PATH", "").lower():
+                env["PATH"] = bin_dir + os.pathsep + env.get("PATH", "")
+            # Populate PATH (Windows SDK bin for rc.exe), INCLUDE, LIB when ctest runs outside msvcenv.bat.
+            sdk_root = Path(r"C:\Program Files (x86)\Windows Kits\10")
+            sdk_inc = sdk_root / "Include"
+            sdk_lib = sdk_root / "Lib"
+            sdk_ver = ""
+            if sdk_inc.is_dir():
+                versions = sorted((p.name for p in sdk_inc.iterdir() if p.is_dir()), reverse=True)
+                if versions:
+                    sdk_ver = versions[0]
+            if sdk_ver:
+                sdk_bin = str(sdk_root / "bin" / sdk_ver / "x64")
+                if sdk_bin.lower() not in env.get("PATH", "").lower():
+                    env["PATH"] = sdk_bin + os.pathsep + env.get("PATH", "")
+            if not env.get("INCLUDE") or not env.get("LIB"):
+                msvc_root = compiler.parents[3]
+                if not env.get("INCLUDE"):
+                    includes = [str(msvc_root / "include")]
+                    if sdk_ver:
+                        includes += [
+                            str(sdk_inc / sdk_ver / sub)
+                            for sub in ("ucrt", "um", "shared", "winrt")
+                        ]
+                    env["INCLUDE"] = os.pathsep.join(includes)
+                if not env.get("LIB"):
+                    libs = [str(msvc_root / "lib" / "x64")]
+                    if sdk_ver:
+                        libs += [
+                            str(sdk_lib / sdk_ver / sub / "x64")
+                            for sub in ("ucrt", "um")
+                        ]
+                    env["LIB"] = os.pathsep.join(libs)
+    return env
+
+
 def command(args, **kwargs):
     kwargs.setdefault("timeout", 900)
+    kwargs.setdefault("env", build_env())
     result = subprocess.run(args, text=True, stdout=subprocess.PIPE,
                             stderr=subprocess.STDOUT, encoding="utf-8", errors="replace", **kwargs)
     if result.returncode:
@@ -59,9 +104,14 @@ class VersionIntegrationTests(unittest.TestCase):
             copy_sources(root)
             configure = [OPTIONS.cmake, "-S", str(root), "-B", str(build),
                          "-G", OPTIONS.generator, "-DBUILD_TESTING=OFF",
-                         "-DPOKO_WITH_DEPENDENCIES=OFF", "-DCMAKE_BUILD_TYPE=Debug"]
+                         "-DPOKO_WITH_DEPENDENCIES=OFF", "-DCMAKE_BUILD_TYPE=Debug",
+                         "-DCMAKE_CXX_STANDARD=20"]
             if OPTIONS.platform:
                 configure += ["-A", OPTIONS.platform]
+            if OPTIONS.cxx_compiler:
+                configure += [f"-DCMAKE_CXX_COMPILER={OPTIONS.cxx_compiler}"]
+            if OPTIONS.make_program:
+                configure += [f"-DCMAKE_MAKE_PROGRAM={OPTIONS.make_program}"]
             command(configure)
             def build_and_version():
                 command([OPTIONS.cmake, "--build", str(build), "--config", "Debug", "--target", "pokox"])

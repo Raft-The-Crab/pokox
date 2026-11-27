@@ -5,16 +5,24 @@
 #ifndef POKO_NET_UDP_ECHO_HPP
 #define POKO_NET_UDP_ECHO_HPP
 
+#ifdef _WIN32
+#ifndef WIN32_LEAN_AND_MEAN
+#define WIN32_LEAN_AND_MEAN
+#endif
+#include <winsock2.h>
+#include <ws2tcpip.h>
+#else
 #include <arpa/inet.h>
 #include <cerrno>
-#include <cstdint>
-#include <cstring>
 #include <netinet/in.h>
-#include <stdexcept>
-#include <string>
 #include <sys/socket.h>
 #include <sys/time.h>
 #include <unistd.h>
+#endif
+#include <cstdint>
+#include <cstring>
+#include <stdexcept>
+#include <string>
 #include <vector>
 
 namespace poko::net {
@@ -35,6 +43,28 @@ struct RecvResult {
   std::uint16_t sender_port = 0;
 };
 
+#ifdef _WIN32
+inline void ensure_wsa_started() {
+  struct WsaInit {
+    WsaInit() {
+      WSADATA wsa{};
+      if (::WSAStartup(MAKEWORD(2, 2), &wsa) != 0)
+        throw std::runtime_error("WSAStartup failed");
+    }
+    ~WsaInit() { ::WSACleanup(); }
+  };
+  static WsaInit init;
+}
+
+inline std::string last_socket_error_string() {
+  return "wsa error " + std::to_string(::WSAGetLastError());
+}
+#else
+inline std::string last_socket_error_string() {
+  return std::strerror(errno);
+}
+#endif
+
 class UdpSocket {
 public:
   UdpSocket() = default;
@@ -44,8 +74,14 @@ public:
 
   void open() {
     close();
+#ifdef _WIN32
+    ensure_wsa_started();
+    fd_ = ::socket(AF_INET, SOCK_DGRAM, 0);
+    if (fd_ == INVALID_SOCKET) throw std::runtime_error("udp socket creation failed");
+#else
     fd_ = ::socket(AF_INET, SOCK_DGRAM, 0);
     if (fd_ < 0) throw std::runtime_error("udp socket creation failed");
+#endif
   }
 
   void bind(std::uint16_t port) {
@@ -55,15 +91,26 @@ public:
     addr.sin_addr.s_addr = INADDR_ANY;
     addr.sin_port = htons(port);
     if (::bind(fd_, reinterpret_cast<sockaddr*>(&addr), sizeof(addr)) != 0)
-      throw std::runtime_error(std::string("udp bind failed: ") + strerror(errno));
+      throw std::runtime_error("udp bind failed: " + last_socket_error_string());
   }
 
   void close() {
+#ifdef _WIN32
+    if (fd_ != INVALID_SOCKET) ::closesocket(fd_);
+    fd_ = INVALID_SOCKET;
+#else
     if (fd_ >= 0) ::close(fd_);
     fd_ = -1;
+#endif
   }
 
-  bool is_open() const { return fd_ >= 0; }
+  bool is_open() const {
+#ifdef _WIN32
+    return fd_ != INVALID_SOCKET;
+#else
+    return fd_ >= 0;
+#endif
+  }
 
   void send_to(const std::string& host, std::uint16_t port, const std::vector<std::uint8_t>& payload) {
     if (!is_open()) throw std::runtime_error("socket not open");
@@ -73,9 +120,15 @@ public:
     dest.sin_port = htons(port);
     if (::inet_pton(AF_INET, host.c_str(), &dest.sin_addr) != 1)
       throw std::runtime_error("invalid ipv4 address: " + host);
+#ifdef _WIN32
+    int sent = ::sendto(fd_, reinterpret_cast<const char*>(payload.data()),
+                        static_cast<int>(payload.size()), 0,
+                        reinterpret_cast<sockaddr*>(&dest), sizeof(dest));
+#else
     ssize_t sent = ::sendto(fd_, payload.data(), payload.size(), 0,
                             reinterpret_cast<sockaddr*>(&dest), sizeof(dest));
-    if (sent < 0) throw std::runtime_error(std::string("sendto failed: ") + strerror(errno));
+#endif
+    if (sent < 0) throw std::runtime_error("sendto failed: " + last_socket_error_string());
   }
 
   // Waits up to timeout_ms for one datagram; would_block on timeout.
@@ -89,7 +142,11 @@ public:
     FD_ZERO(&read_fds);
     FD_SET(fd_, &read_fds);
     timeval timeout{timeout_ms / 1000, (timeout_ms % 1000) * 1000};
+#ifdef _WIN32
+    int ready = ::select(0, &read_fds, nullptr, nullptr, &timeout);
+#else
     int ready = ::select(fd_ + 1, &read_fds, nullptr, nullptr, &timeout);
+#endif
     if (ready == 0) {
       result.error = SocketError::would_block;
       return result;
@@ -101,8 +158,14 @@ public:
     sockaddr_in peer{};
     socklen_t peer_len = sizeof(peer);
     std::vector<std::uint8_t> buffer(kMaxDatagramBytes + 1);
+#ifdef _WIN32
+    int received = ::recvfrom(fd_, reinterpret_cast<char*>(buffer.data()),
+                              static_cast<int>(buffer.size()), 0,
+                              reinterpret_cast<sockaddr*>(&peer), &peer_len);
+#else
     ssize_t received = ::recvfrom(fd_, buffer.data(), buffer.size(), 0,
                                   reinterpret_cast<sockaddr*>(&peer), &peer_len);
+#endif
     if (received < 0) {
       result.error = SocketError::network_down;
       return result;
@@ -117,7 +180,11 @@ public:
   }
 
 private:
+#ifdef _WIN32
+  SOCKET fd_ = INVALID_SOCKET;
+#else
   int fd_ = -1;
+#endif
 };
 
 // Echo server body: replying each datagram to its sender's address until

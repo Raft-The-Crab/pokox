@@ -17,8 +17,14 @@
  * needs both) and the `poko_shell_frame` export with `PokoFrameInfo`.
  * Version 4: SHL-05/06 added the `poko_shell_mesh` and
  * `poko_shell_texture_delta` exports with their result structs.
+ * Version 5: SHL-12 added `POKO_THEME_*` and `poko_shell_set_theme`.
+ * Version 6: SHL-14 added `poko_shell_set_dpi_scale`.
  */
-#define POKO_SHELL_ABI_VERSION 4
+#define POKO_SHELL_ABI_VERSION 6
+
+#define POKO_THEME_CLASSIC 0
+
+#define POKO_THEME_FLAT 1
 
 #define POKO_SHELL_OK 0
 
@@ -260,6 +266,17 @@ int32_t poko_shell_texture_delta(struct PokoShell *shell,
                                  uint8_t *out_pixels,
                                  uint32_t pixel_cap,
                                  uint32_t *out_pixel_written);
+
+/**
+ * SHL-12: select the shell theme (`POKO_THEME_CLASSIC` or `POKO_THEME_FLAT`).
+ */
+int32_t poko_shell_set_theme(struct PokoShell *shell, uint32_t theme);
+
+/**
+ * SHL-14: update the shell's DPI scale (`pixels_per_point`). Changing the
+ * scale causes the next `poko_shell_frame` to regenerate the font atlas.
+ */
+int32_t poko_shell_set_dpi_scale(struct PokoShell *shell, float dpi_scale);
 
 /**
  * SHL-01: the one probe that lets C++ confirm the header it compiled

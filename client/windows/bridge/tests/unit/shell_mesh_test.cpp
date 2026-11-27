@@ -104,6 +104,25 @@ int main() {
     check(v_needed >= 3 && i_needed >= 3,
           "FAIL: a laid-out label must have at least one triangle");
 
+    // Half-null calls (one output buffer null, the other non-null) must fail
+    // with -2 rather than silently succeeding as sizing calls, and preserve shapes.
+    std::vector<float> half_v(v_needed * 6);
+    std::vector<uint32_t> half_i(i_needed);
+    uint32_t hv = 0;
+    uint32_t hi = 0;
+    check(poko_shell_mesh(shell, nullptr, 0, &hv, half_i.data(),
+                          static_cast<uint32_t>(half_i.size()),
+                          &hi) == POKO_SHELL_ERROR_SHELL,
+          "FAIL: half-null mesh (null vertices) must return -2");
+    check(hv == v_needed && hi == i_needed,
+          "FAIL: counts must still be written on half-null (null vertices)");
+    check(poko_shell_mesh(shell, half_v.data(),
+                          static_cast<uint32_t>(half_v.size()), &hv, nullptr, 0,
+                          &hi) == POKO_SHELL_ERROR_SHELL,
+          "FAIL: half-null mesh (null indices) must return -2");
+    check(hv == v_needed && hi == i_needed,
+          "FAIL: counts must still be written on half-null (null indices)");
+
     // Caps too small is -2 with the counts still written, and a refused
     // drain must not consume the frame's shapes.
     uint32_t v_small = 0;

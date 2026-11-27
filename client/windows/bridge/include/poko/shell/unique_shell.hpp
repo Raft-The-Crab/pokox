@@ -5,7 +5,9 @@
 // memory; the exported release path does it, through this guard.
 #pragma once
 
+extern "C" {
 #include "poko_shell.h"
+}
 
 #include <cstdint>
 #include <utility>
