@@ -12,7 +12,7 @@ import unittest
 OPTIONS = None
 PROJECT = Path(__file__).resolve().parents[4]
 SOURCE_FILES = ("CMakeLists.txt",)
-SOURCE_TREES = ("engine", "mute", "server/identity", "server/net", "tools/version/cmake")
+SOURCE_TREES = ("engine", "mute", "server/identity", "server/net", "server/authority", "tools/version/cmake")
 COPY_IGNORE = shutil.ignore_patterns(
     ".git", "__pycache__", "*.py[cod]", "build-*", "artifacts", "graphify-out",
     ".workbuddy-ai", ".serena", "*.exe", "*.lib", "*.obj", "*.pdb", "*.apk")

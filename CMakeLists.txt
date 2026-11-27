@@ -1325,3 +1325,50 @@ target_compile_features(pokox_net_crypto_aead_test PRIVATE cxx_std_20)
 set_target_properties(pokox_net_crypto_aead_test PROPERTIES CXX_EXTENSIONS OFF)
 add_test(NAME pokox_net_crypto_aead_test COMMAND pokox_net_crypto_aead_test)
 set_tests_properties(pokox_net_crypto_aead_test PROPERTIES TIMEOUT 15)
+
+# BAK-02: in-memory authority for one session (proposals, policy enforcement,
+# committed snapshot broadcast, projected state hash via MUT-11 xxhash64).
+add_executable(pokox_authority_session_test
+  server/authority/tests/unit/session_test.cpp
+  mute/src/state/state.cpp)
+target_include_directories(pokox_authority_session_test
+  PRIVATE server/authority/include mute/include)
+target_compile_features(pokox_authority_session_test PRIVATE cxx_std_20)
+set_target_properties(pokox_authority_session_test PROPERTIES CXX_EXTENSIONS OFF)
+add_test(NAME pokox_authority_session_test COMMAND pokox_authority_session_test)
+set_tests_properties(pokox_authority_session_test PROPERTIES TIMEOUT 15)
+
+# BAK-03: Firebase token verification at the Worker plus the 30-minute
+# session ticket with 5-minute HMAC key rotation (spec 17).
+add_executable(pokox_identity_worker_auth_test
+  server/identity/tests/unit/worker_auth_test.cpp)
+target_include_directories(pokox_identity_worker_auth_test
+  PRIVATE server/identity/include server/net/include)
+target_compile_features(pokox_identity_worker_auth_test PRIVATE cxx_std_20)
+set_target_properties(pokox_identity_worker_auth_test PROPERTIES CXX_EXTENSIONS OFF)
+add_test(NAME pokox_identity_worker_auth_test COMMAND pokox_identity_worker_auth_test)
+set_tests_properties(pokox_identity_worker_auth_test PROPERTIES TIMEOUT 15)
+
+# BAK-04: device revocation enforced at ticket issuance and validation,
+# within the spec-17 5-minute propagation bound (fail closed otherwise).
+add_executable(pokox_identity_revocation_gate_test
+  server/identity/tests/unit/revocation_gate_test.cpp)
+target_include_directories(pokox_identity_revocation_gate_test
+  PRIVATE server/identity/include server/net/include)
+target_compile_features(pokox_identity_revocation_gate_test PRIVATE cxx_std_20)
+set_target_properties(pokox_identity_revocation_gate_test PROPERTIES CXX_EXTENSIONS OFF)
+add_test(NAME pokox_identity_revocation_gate_test COMMAND pokox_identity_revocation_gate_test)
+set_tests_properties(pokox_identity_revocation_gate_test PROPERTIES TIMEOUT 15)
+
+# BAK-05: .pkB schema arrival for the authority — declared-width field
+# table, protected-domain enforcement, spec-05 projected hash packing
+# (declared bits, no padding, tick+nonce+ack, .pkB seed).
+add_executable(pokox_authority_pkb_schema_test
+  server/authority/tests/unit/pkb_schema_test.cpp
+  mute/src/state/state.cpp)
+target_include_directories(pokox_authority_pkb_schema_test
+  PRIVATE server/authority/include server/net/include mute/include)
+target_compile_features(pokox_authority_pkb_schema_test PRIVATE cxx_std_20)
+set_target_properties(pokox_authority_pkb_schema_test PROPERTIES CXX_EXTENSIONS OFF)
+add_test(NAME pokox_authority_pkb_schema_test COMMAND pokox_authority_pkb_schema_test)
+set_tests_properties(pokox_authority_pkb_schema_test PROPERTIES TIMEOUT 15)

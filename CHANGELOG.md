@@ -53,6 +53,23 @@ the first release tag exists.
   users, games, assets, the Pokoins ledger with a double-credit guard,
   derived balances, shares, cases and audit log, with an idempotent
   `migrate.sh` runner verified against real Postgres 18.6.
+- .pkB schema arrival (BAK-05): the authority's field table, policies,
+  initial values, hash seed and projected-hash packing come from a .pkB
+  schema — declared bit widths with no padding, out-of-width proposals
+  refused rather than clamped, protected domains forced to ServerOwned.
+- Device revocation enforcement (BAK-04): ticket issuance and validation
+  fail closed for revoked devices within the 5-minute propagation bound,
+  with stale ledger views refusing rather than passing, and replayed
+  bindings unable to resurrect a revoked device.
+- Worker auth (BAK-03): Firebase ID-token claim verification with every
+  rejection path testable in-repo, and 30-minute Worker session tickets
+  (HMAC-SHA256, 5-minute key rotation, six live key slots) so a game slot
+  never sees a Firebase token.
+- In-memory session authority (BAK-02): per-.pkB-policy proposal handling
+  (ServerOwned discarded, Validated first-wins, Trusted unchecked but
+  excluded from hashing, Derived authority-only) and a single committed
+  snapshot with an xxHash64 projected state hash served identically to
+  every client, so two clients always agree.
 
 ### Fixed
 
