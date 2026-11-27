@@ -2939,3 +2939,7 @@ The `engine/render/tests/fixtures` and `fixtures/golden` directories exist in th
 
 - `mute/src/` was flat; implementations now live in per-module subfolders: `lexer/` (lexer.cpp, unicode_xid.hpp), `parser/`, `evaluator/`, `math/` (deterministic_math.cpp), `program/` (program.cpp, program_vm.inc, program_codec.inc), `bytecode/`, `vm/` (register_vm.cpp), `state/` (state.cpp, state_snapshot.cpp), `pkb/` (pkb_draft.cpp) and `console/` (console.cpp).
 - `CMakeLists.txt` source lists, the `poko_mute_lexer_test` private include dir (`mute/src/lexer`) and the `pokox_imgui_sources` console path were updated; `tools/version/tests/integration/test_version.py` copies the new paths. Public headers remain flat under `mute/include/poko/mute/`. Dated sections above retain their original paths as history.
+
+## Identity module (2026-11-27)
+
+- New `server/identity/` area: headers under `include/poko/identity/` (`account_record.hpp`, `sign_in.hpp`, `device_binding.hpp`, `step_up.hpp`), unit tests under `tests/unit/` (`sign_in_test.cpp`, `device_binding_test.cpp`, `step_up_test.cpp`). Implements IDN-01–03 (spec 17): Firebase-claim sign-in to an idempotent PokoX account record, device TOFU binding with five-device cap and revocation, and OTP step-up gating Device-trust actions. Registered in the root `CMakeLists.txt` as `pokox_identity_*_test` targets; `server/identity` was added to the copy allowlist in `tools/version/tests/integration/test_version.py`.

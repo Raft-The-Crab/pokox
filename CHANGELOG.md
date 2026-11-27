@@ -36,6 +36,10 @@ the first release tag exists.
 - Planning specs under `docs/plan/` (31 documents).
 - Character asset work: BlockyR6 and BoyR6 adapted `.blend`/`.glb` sources,
   animation v2 sets, and preservation-first prototypes under `assets/`.
+- Identity module under `server/identity`: sign-in from a verified Firebase
+  identity to an idempotent PokoX account record (IDN-01), device keypair
+  TOFU binding with five-device cap and revocation (IDN-02), and OTP
+  step-up gating Device-trust actions (IDN-03), with unit tests.
 
 ### Fixed
 
