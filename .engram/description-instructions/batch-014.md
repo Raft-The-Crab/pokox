@@ -1,4 +1,4 @@
-# Node Description Batch 15 of 207
+# Node Description Batch 15 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -12,11 +12,33 @@ describing what it is or does. Use only the provided context.
 For a code symbol (kind=code-symbol — a function, class, or constant),
 describe what the function/symbol does based on its name, source location
 and neighbors — e.g. "Resolves the configured ontology profile from graphify.yaml.".
+For an entity node (any other kind — e.g. a person, place, event, object),
+describe what the entity is and its role, grounded in its type, its
+relations (neighbors) and the provided citations/evidence — e.g.
+"Lady Carfax, a wealthy heiress who disappears en route to Lausanne.".
+Ground entity descriptions in the citations/evidence when present; do not
+speculate beyond the context, so a node with no supporting context may be
+left out of the reply.
 Write every description in English (en). Do not switch languages.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "canyonbazaar_canyon_map_cx": "cx()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_map.py:L30 | neighbors=[canyon_map.py, dcx(), nature(), path_x(), set_pieces(), sight_x()]
+- "canyonbazaar_canyon_props_brass_lantern": "brass_lantern()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_props.py:L84 | neighbors=[canyon_props.py, carved_stair(), lantern_post(), market_gate(), parapet_niche(), quest_board()]
+- "cavemap_cave_map_ceil_y": "ceil_y()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_map.py:L236 | neighbors=[cave_map.py, H(), dripstone(), landmarks(), place_soft(), inner shell height above (x, z) by rayc…]
+- "cavemap_cave_map_place_soft": "place_soft()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_map.py:L240 | neighbors=[cave_map.py, build(), ceil_y(), clip_fail(), in_hole(), place()]
+- "cavemap_cave_props_add_crystal": "add_crystal()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L158 | neighbors=[cave_props.py, crystal(), FS(), V(), crystal_shards(), crystal_spray()]
+- "cavemap_cave_props_mushroom": "mushroom()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L359 | neighbors=[cave_props.py, glowshroom_cluster(), glowshroom_giant(), cap_shape(), dot(), FS()]
+- "cavemap_cave_props_rock_layered": "rock_layered()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L164 | neighbors=[cave_props.py, one carved, layered rock: strata_mass b…, add_crystal(), moss_cap(), rim_shade(), RS()]
+- "commit:repo:github.com/Raft-The-Crab/pokox@06cfbe9e4fbffb81cc55daa10e2292b2984c85bb": "06cfbe9 Narrowphase: local pair frame + exact 64-bit FixedVec3 math" | kind=Commit | source=git | neighbors=[main, 5eb3f50 Mute det_pow: integer-exponent …, fixed_vec.hpp, character_controller.cpp, narrowphase.cpp, fixed_vec_test.cpp]
+- "commit:repo:github.com/Raft-The-Crab/pokox@335e0dc6982122cdac6a1533e9a23586dbdd7e7e": "335e0dc Add MUT-26 IR-to-bytecode emitter" | kind=Commit | source=git | neighbors=[13dbd75 Refresh graph after MUT-25 SSA …, main, 45151c3 Refresh graph after MUT-26 emit…, test_version.py, emit.hpp, ssa.hpp]
+- "commit:repo:github.com/Raft-The-Crab/pokox@5edd00c010ccde8d1111054e65d1f8e09dea4e1c": "5edd00c Fix MUT-21/22 audit defects in package resolver and values runtime" | kind=Commit | source=git | neighbors=[main, 56f5271 Refresh graph after MUT-21/22 a…, package.hpp, values.hpp, package.cpp, values_test.cpp]
+- "commit:repo:github.com/Raft-The-Crab/pokox@7eabc2dee71058f696096d33083f9a8fe7617a5b": "7eabc2d Merge pull request #8 from Raft-The-Crab/mini-code/b4d7e813-e93" | kind=Commit | source=git | neighbors=[72b9ac7 Merge branch 'main' into mini-c…, 78dbd1e Merge pull request #7 from Raft…, lifecycle.test.js, main, 981b52c Crated IDN-01 to IDN-04, stdlib_physics.hpp]
+- "creaturelab_lab_map_hardscape": "hardscape()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_map.py:L184 | neighbors=[lab_map.py, build(), inset_top(), path_z_y(), polar_tiles(), sh_val()]
+- "creaturelab_lab_props_emblem_badge": "emblem_badge()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L124 | neighbors=[lab_props.py, emblem(), .add(), entrance_canopy(), heal_machine(), lab_archway()]
+- "creaturelab_lab_props_heal_corner": "heal_corner()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1575 | neighbors=[lab_props.py, ball(), merge_prop(), plush(), rbox(), .add()]
+- "creaturelab_lab_props_heal_counter": "heal_counter()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L213 | neighbors=[lab_props.py, ball(), emblem(), lerp(), pot_plant(), rbox()]
 - "creaturelab_lab_props_heal_machine": "heal_machine()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L152 | neighbors=[lab_props.py, ball(), cradle(), emblem_badge(), rbox(), .add()]
 - "creaturelab_lab_props_med_shelf": "med_shelf()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L297 | neighbors=[lab_props.py, bottle(), leaf_poly(), rbox(), shelf_frame(), .add()]
 - "creaturelab_lab_props_merge_prop": "merge_prop()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L85 | neighbors=[lab_props.py, evo_chamber(), heal_corner(), lab_wing(), copy a built Prop's geometry into P (mo…, rotunda()]
@@ -25,9 +47,7 @@ one-sentence description — no prose, no markdown fences.
 - "creaturelab_lab_props_shelf_frame": "shelf_frame()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L284 | neighbors=[lab_props.py, capsule_shelf(), med_shelf(), potion_shelf(), open shelving: side panels, back panel,…, rbox()]
 - "creaturelab_lab_props_skel": "Skel" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1939 | neighbors=[lab_props.py, fiddle_fig(), olive_tree(), park_tree(), .add(), .grow()]
 - "creaturelab_lab_props_trade_desk": "trade_desk()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L481 | neighbors=[lab_props.py, trade / battle registration desk: white…, ball(), capsule(), rbox(), .add()]
-- "device_opengles_native_activity": "opengles_native_activity.cpp" | kind=code-symbol | source=engine/rhi/src/device/opengles_native_activity.cpp:L1 | neighbors=[952997e Audit MUT-01-55 and harden veri…, 9b77990 Android GLES probe: no data rac…, 9eeb3ff Merge pull request #2 from Raft…, c7a411f Fix MUT-01-20 audit defects in …, android_main(), on_app_cmd()]
 - "device_vulkan_clear_android_initialize": "initialize()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_clear_android.cpp:L213 | neighbors=[vulkan_clear_android.cpp, make_device_objects(), make_instance(), make_surface(), make_swapchain(), pick_device()]
-- "device_vulkan_triangle_pass": "vulkan_triangle_pass.cpp" | kind=code-symbol | source=engine/rhi/src/device/vulkan_triangle_pass.cpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, draw(), draw_and_present(), Impl(), set_texture(), set_texture_mips()]
 - "dunedesert_dune_map_nature": "nature()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L473 | neighbors=[dune_map.py, build(), free(), on_path(), place(), reserve()]
 - "dunedesert_gen_trees_with_palms_canvas_capsule_path": ".capsule_path()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L131 | neighbors=[Canvas, .grid(), .over(), frond_atlas(), leaf_atlas(), needle_atlas()]
 - "effekseer_ai_session_effectsession_node": "._node()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L323 | neighbors=[EffectSession, .add_node(), .move_node(), .property_list(), ._property_parent(), .property_set()]
@@ -44,19 +64,6 @@ one-sentence description — no prose, no markdown fences.
 - "fishcenter_fish_map_static": "static()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L129 | neighbors=[fish_map.py, ground(), hardscape(), horizon(), islet_grass(), add_owner()]
 - "fishcenter_fish_map_stations": "stations()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L563 | neighbors=[fish_map.py, build(), anchor(), lp(), lp_y(), place()]
 - "fishcenter_fish_props_hammock_palms": "hammock_palms()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L709 | neighbors=[fish_props.py, lash(), lerp(), loft(), _merge_prop(), palm()]
-- "fishcenter_fish_props_hut_body": "hut_body()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L771 | neighbors=[fish_props.py, boat_house(), lash(), plank_floor(), pole(), woven_wall()]
-- "fishcenter_fish_props_motor_boat": "motor_boat()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L1166 | neighbors=[fish_props.py, barrel(), boat_hull(), lerp(), paint_hull(), rod()]
-- "fishcenter_fish_props_palm": "palm()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L323 | neighbors=[fish_props.py, hammock_palms(), ball(), lerp(), smooth(), palm_planter()]
-- "fishcenter_fish_props_quest_board": "quest_board()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L1012 | neighbors=[fish_props.py, ball(), crate(), lash(), pole(), rope()]
-- "framegraph_frame_graph": "frame_graph.cpp" | kind=code-symbol | source=engine/render/src/framegraph/frame_graph.cpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, add_pass(), build_plan(), clear(), compile(), execute()]
-- "godot_ablation_report": "ablation_report.py" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/godot/ablation_report.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, analyse(), image_change(), luminance(), main()]
-- "hermes_test_bootstrap_bootstrap": "_bootstrap()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/hermes/test_bootstrap.py:L24 | neighbors=[test_bootstrap.py, _load(), .test_contains_using_superpowers_body(), .test_frontmatter_stripped(), .test_marker_and_wrapper(), .test_skill_view_guidance_present()]
-- "hermes_test_plugin": "test_plugin.py" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/hermes/test_plugin.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, _fire_pre_llm(), _load_plugin(), TestBootstrapInjection, TestLayoutResolution]
-- "input_action_map_bindings_conflict": "bindings_conflict()" | kind=code-symbol | source=mute/src/input/action_map.cpp:L75 | neighbors=[action_map.cpp, add_binding(), is_axis_device(), sign_of(), validate_binding(), conflicts()]
-- "integration_config_file_test_head": "head()" | kind=code-symbol | source=engine/foundation/tests/integration/config_file_test.cpp:L20 | neighbors=[config_file_test.cpp, put_arr(), put_b(), put_map(), put_n(), put_t()]
-- "integration_config_file_test_test_config": "test_config()" | kind=code-symbol | source=engine/foundation/tests/integration/config_file_test.cpp:L170 | neighbors=[config_file_test.cpp, main(), put_bool(), put_kv(), put_map(), put_t()]
-- "integration_cube_golden": "cube_golden.py" | kind=code-symbol | source=engine/render/tests/integration/cube_golden.py:L1 | neighbors=[952997e Audit MUT-01-55 and harden veri…, c7a411f Fix MUT-01-20 audit defects in …, canonical_png(), main(), png_chunk(), run()]
-- "integration_test_mute_console_x11": "test_mute_console_x11.py" | kind=code-symbol | source=engine/render/tests/integration/test_mute_console_x11.py:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, 668ca72 Wait for X11 console input read…, 6d9948d Re-resolve X11 demo window duri…, c7a411f Fix MUT-01-20 audit defects in …, cb2a354 Re-assert window focus in X11 c…, d6139c3 Fix X11 test click helper argum…]
 
 ## Instructions
 

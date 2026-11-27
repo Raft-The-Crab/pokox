@@ -3692,8 +3692,8 @@
     "hash": "1b9886e445a3c1a41e392922a0a56fd2"
   },
   "tools/version/tests/integration/test_version.py": {
-    "mtime": 1795759171191.3552,
-    "hash": "2d2d2d00627d9fda0c714e241d18a3b5"
+    "mtime": 1795764088772.1824,
+    "hash": "fc8ff9f5e34bece1a07586fc1a50ef1a"
   },
   ".agents/skills/ForgeSkills-main/.github/workflows/ci.yml": {
     "mtime": 1795745416311.818,
@@ -6964,16 +6964,16 @@
     "hash": "bf6edea13b63c36e1e6e39dd1cd186bb"
   },
   "CHANGELOG.md": {
-    "mtime": 1795762920165.312,
-    "hash": "e02574513b0a52628a34a99f7f036691"
+    "mtime": 1795764125668.3987,
+    "hash": "05ac43f43082a74ced768209a530cc07"
   },
   "CLAUDE.md": {
     "mtime": 1795745417058.6829,
     "hash": "dfe5fa7939121e96d61b54077cc9ab84"
   },
   "CMakeLists.txt": {
-    "mtime": 1795762857056.9397,
-    "hash": "2842ab8d2d49e72a0f34123d4eabe903"
+    "mtime": 1795766340973.4866,
+    "hash": "b8eee7a2c4fc5efd339bc247a900f4bd"
   },
   "CODE_OF_CONDUCT.md": {
     "mtime": 1795745417058.6829,
@@ -6984,8 +6984,8 @@
     "hash": "0d06508f4c0bc18a9fe0dea342672c41"
   },
   "README.md": {
-    "mtime": 1795762934025.3916,
-    "hash": "2643c642852711693d4dd261e78f4078"
+    "mtime": 1795764131575.3064,
+    "hash": "50072c9511f9669c9425ff9175c993f1"
   },
   "SECURITY.md": {
     "mtime": 1795745417058.6829,
@@ -7020,8 +7020,8 @@
     "hash": "6ef1170cbd30ff7fa59ad16db4b7c2f8"
   },
   "docs/build.md": {
-    "mtime": 1795762944473.4517,
-    "hash": "79451aeec4c80b095679d1b299675eb5"
+    "mtime": 1795764131575.6611,
+    "hash": "937920839de88d4bebde1833ec760ad2"
   },
   "docs/character-visual-review.md": {
     "mtime": 1795745417181.0532,
@@ -7212,8 +7212,8 @@
     "hash": "bf0e934c0fa4e9509b28fbd4e656c130"
   },
   "docs/plan/02-work-queue.md": {
-    "mtime": 1795762905155.3057,
-    "hash": "7a26d542f4c0ac32d80534b76438ccd5"
+    "mtime": 1795766688254.7312,
+    "hash": "ce0fef07d699ee4a350cf2483f2e650e"
   },
   "docs/plan/03-architecture.md": {
     "mtime": 1795745417187.773,
@@ -7348,8 +7348,8 @@
     "hash": "dae0a88ffdbc4832d0c5570da3c05dc5"
   },
   "docs/structure.md": {
-    "mtime": 1795762938245.416,
-    "hash": "bc7209051ce87920e0f81312639fb35e"
+    "mtime": 1795764131576.433,
+    "hash": "afb733a4632c5454547a7065f5515456"
   },
   "docs/two-target-gate-evidence-2026-11-25.md": {
     "mtime": 1795745417189.0532,
@@ -7436,8 +7436,8 @@
     "hash": "0c7b44b226a51c5212919465b580f2de"
   },
   "server/README.md": {
-    "mtime": 1795762949029.478,
-    "hash": "b888ecb77be163dbd5c122b74182ca8b"
+    "mtime": 1795766688252.1187,
+    "hash": "e7f0eed648f2cdee51a2f1d128128f50"
   },
   "studio/README.md": {
     "mtime": 1795745417501.4365,
@@ -26090,5 +26090,865 @@
   "docs/R6-v2-side-by-side.mp4": {
     "mtime": 1795745417181.0532,
     "hash": "8973188893162ca06fa3eba979d4a4bb"
+  },
+  "server/authority/include/poko/authority/projection_gate.hpp": {
+    "mtime": 1795762839428.8345,
+    "hash": "37ed2875659576620f12ed7167442d76"
+  },
+  "server/authority/include/poko/authority/replay_ring.hpp": {
+    "mtime": 1795763668337.7136,
+    "hash": "533cf2c11750df9270c165a38e291875"
+  },
+  "server/authority/include/poko/authority/rule_evaluator.hpp": {
+    "mtime": 1795762591831.3574,
+    "hash": "1556cf12b0db0c42c572bfe8039374d4"
+  },
+  "server/authority/tests/unit/projection_gate_test.cpp": {
+    "mtime": 1795762853048.916,
+    "hash": "6438d153da46c11ed79e5f58e4345e38"
+  },
+  "server/authority/tests/unit/replay_ring_test.cpp": {
+    "mtime": 1795763652081.6182,
+    "hash": "ccb21cfd3e747330e6d7d45eab0f3d27"
+  },
+  "server/authority/tests/unit/rule_evaluator_test.cpp": {
+    "mtime": 1795762635483.6152,
+    "hash": "c29e2522859e6250f5734f38e50db992"
+  },
+  ".engram/GRAPH_REPORT.md": {
+    "mtime": 1795766030003.6187,
+    "hash": "ccb079944199c56c8d3e8b2ea5598a64"
+  },
+  ".engram/description-instructions/batch-000.md": {
+    "mtime": 1795766029715.617,
+    "hash": "0127360f82b2df28ab5ee6a711930c89"
+  },
+  ".engram/description-instructions/batch-001.md": {
+    "mtime": 1795766029715.617,
+    "hash": "d1da96ecf12f0124a3add767c092e56e"
+  },
+  ".engram/description-instructions/batch-002.md": {
+    "mtime": 1795766029715.617,
+    "hash": "05c1df6b3e48cf9817fe12844f8fbb1f"
+  },
+  ".engram/description-instructions/batch-003.md": {
+    "mtime": 1795766029715.617,
+    "hash": "2c7ec603a7c857ee8358dc68b5059e92"
+  },
+  ".engram/description-instructions/batch-004.md": {
+    "mtime": 1795766029715.617,
+    "hash": "bd334f3d8819c5d4d6d2ab3aa1e6be5d"
+  },
+  ".engram/description-instructions/batch-005.md": {
+    "mtime": 1795766029715.617,
+    "hash": "5423c8c891ca2e8c5a57c241e3ef8cb9"
+  },
+  ".engram/description-instructions/batch-006.md": {
+    "mtime": 1795766029715.617,
+    "hash": "33bacc816de09f17cca8f01e329f96c4"
+  },
+  ".engram/description-instructions/batch-007.md": {
+    "mtime": 1795766029715.617,
+    "hash": "9cd12bcfea45586cfd0ed8e61d209acf"
+  },
+  ".engram/description-instructions/batch-008.md": {
+    "mtime": 1795766029715.617,
+    "hash": "9b10b973f7e6dd9cef55404b0ea523c5"
+  },
+  ".engram/description-instructions/batch-009.md": {
+    "mtime": 1795766029715.617,
+    "hash": "7a71a7d700a9fa20019734843c553088"
+  },
+  ".engram/description-instructions/batch-010.md": {
+    "mtime": 1795766029719.617,
+    "hash": "aad7539d13795111b99fa3a011eb3af2"
+  },
+  ".engram/description-instructions/batch-011.md": {
+    "mtime": 1795766029719.617,
+    "hash": "84b979e4d5c266f0f0cb73e9209df449"
+  },
+  ".engram/description-instructions/batch-012.md": {
+    "mtime": 1795766029719.617,
+    "hash": "c562f1cb78f9c1d0a0f67d702b95c557"
+  },
+  ".engram/description-instructions/batch-013.md": {
+    "mtime": 1795766029719.617,
+    "hash": "39175073a0c37a1d133049bdb477f687"
+  },
+  ".engram/description-instructions/batch-014.md": {
+    "mtime": 1795766029719.617,
+    "hash": "f8e9721c9632a6bd716e17ab56375d26"
+  },
+  ".engram/description-instructions/batch-015.md": {
+    "mtime": 1795766029719.617,
+    "hash": "3f62f057af9302108db596f81d3dbfc0"
+  },
+  ".engram/description-instructions/batch-016.md": {
+    "mtime": 1795766029719.617,
+    "hash": "b84ed0b6fc86c972328695ecbeed7b9d"
+  },
+  ".engram/description-instructions/batch-017.md": {
+    "mtime": 1795766029719.617,
+    "hash": "7243502ac0ebc63ace463a2b204bf394"
+  },
+  ".engram/description-instructions/batch-018.md": {
+    "mtime": 1795766029719.617,
+    "hash": "987050d1a9303238d5542bcb4dfb8f47"
+  },
+  ".engram/description-instructions/batch-019.md": {
+    "mtime": 1795766029719.617,
+    "hash": "66daae67a2bc5bb66fb63751927e9d32"
+  },
+  ".engram/description-instructions/batch-020.md": {
+    "mtime": 1795766029719.617,
+    "hash": "690e82d106ccce37d3e771733d0103eb"
+  },
+  ".engram/description-instructions/batch-021.md": {
+    "mtime": 1795766029719.617,
+    "hash": "a9f381b9d37699ff8ddad74a5ed84b1b"
+  },
+  ".engram/description-instructions/batch-022.md": {
+    "mtime": 1795766029719.617,
+    "hash": "7a8396c1b1bc5226f5f11785102a5d37"
+  },
+  ".engram/description-instructions/batch-023.md": {
+    "mtime": 1795766029723.617,
+    "hash": "a636960218a643d5bbe483d625a10862"
+  },
+  ".engram/description-instructions/batch-024.md": {
+    "mtime": 1795766029723.617,
+    "hash": "1b44b57227ed012ec14e190e63d6ea8e"
+  },
+  ".engram/description-instructions/batch-025.md": {
+    "mtime": 1795766029723.617,
+    "hash": "265970e2137bc6652d24d36d14874c6b"
+  },
+  ".engram/description-instructions/batch-026.md": {
+    "mtime": 1795766029723.617,
+    "hash": "5bf40c130d74e72e2881306b4466c4dc"
+  },
+  ".engram/description-instructions/batch-027.md": {
+    "mtime": 1795766029723.617,
+    "hash": "5017ced92d541ca789e93b59f1c562d8"
+  },
+  ".engram/description-instructions/batch-028.md": {
+    "mtime": 1795766029723.617,
+    "hash": "47196ee55488597b751f3dc80f09b1b3"
+  },
+  ".engram/description-instructions/batch-029.md": {
+    "mtime": 1795766029723.617,
+    "hash": "69058f8aa2308caf747ae0636ecd8ca1"
+  },
+  ".engram/description-instructions/batch-030.md": {
+    "mtime": 1795766029723.617,
+    "hash": "0dfecf72fd2833ee46ba0b072a4824db"
+  },
+  ".engram/description-instructions/batch-031.md": {
+    "mtime": 1795766029723.617,
+    "hash": "de74c56b2091244902f0742b9bf0d711"
+  },
+  ".engram/description-instructions/batch-032.md": {
+    "mtime": 1795766029723.617,
+    "hash": "d3f9dc6c275113ec3f7cc52ae2c7a81d"
+  },
+  ".engram/description-instructions/batch-033.md": {
+    "mtime": 1795766029723.617,
+    "hash": "a8a63b218ef78406154a6a91f2d461f7"
+  },
+  ".engram/description-instructions/batch-034.md": {
+    "mtime": 1795766029723.617,
+    "hash": "b48a9b94b5b764f79e98ffd535688002"
+  },
+  ".engram/description-instructions/batch-035.md": {
+    "mtime": 1795766029723.617,
+    "hash": "586c44fd6d0af7cbd28188d7c987a997"
+  },
+  ".engram/description-instructions/batch-036.md": {
+    "mtime": 1795766029723.617,
+    "hash": "9ba4c8d81e40eba7bffba62f19d77448"
+  },
+  ".engram/description-instructions/batch-037.md": {
+    "mtime": 1795766029723.617,
+    "hash": "a24b7ab5bf3a25acfb69fe486e3f5b13"
+  },
+  ".engram/description-instructions/batch-038.md": {
+    "mtime": 1795766029727.617,
+    "hash": "5b50b0721909a0c50a3387ba59eadd7c"
+  },
+  ".engram/description-instructions/batch-039.md": {
+    "mtime": 1795766029727.617,
+    "hash": "758312c4fa2c83874304b324318dda78"
+  },
+  ".engram/description-instructions/batch-040.md": {
+    "mtime": 1795766029727.617,
+    "hash": "d155ea6de875b4696f98d4fac1f65e4d"
+  },
+  ".engram/description-instructions/batch-041.md": {
+    "mtime": 1795766029727.617,
+    "hash": "6f245cfccfa83146d6dd9bf60cc74bb5"
+  },
+  ".engram/description-instructions/batch-042.md": {
+    "mtime": 1795766029727.617,
+    "hash": "e3fb16be78a5bcdd8bfee33afea9e0ee"
+  },
+  ".engram/description-instructions/batch-043.md": {
+    "mtime": 1795766029727.617,
+    "hash": "cbf8f6ba55841ec655cd19f0e09cb556"
+  },
+  ".engram/description-instructions/batch-044.md": {
+    "mtime": 1795766029727.617,
+    "hash": "cb2ebb5ad3fa1d4053ea8f2c1dfcc911"
+  },
+  ".engram/description-instructions/batch-045.md": {
+    "mtime": 1795766029727.617,
+    "hash": "295d3c47e2faa4246febfbc322e1f3e0"
+  },
+  ".engram/description-instructions/batch-046.md": {
+    "mtime": 1795766029727.617,
+    "hash": "46153412189acbc0a652992d6de786b3"
+  },
+  ".engram/description-instructions/batch-047.md": {
+    "mtime": 1795766029727.617,
+    "hash": "95414117157e2d263e52d95dfba429fa"
+  },
+  ".engram/description-instructions/batch-048.md": {
+    "mtime": 1795766029727.617,
+    "hash": "d37b23d334d260630b6c0a53ba651218"
+  },
+  ".engram/description-instructions/batch-049.md": {
+    "mtime": 1795766029727.617,
+    "hash": "a39a8e653036800b369cb8ab72c7e628"
+  },
+  ".engram/description-instructions/batch-050.md": {
+    "mtime": 1795766029727.617,
+    "hash": "44e975e7a5a93c52edbf05be0268c548"
+  },
+  ".engram/description-instructions/batch-051.md": {
+    "mtime": 1795766029727.617,
+    "hash": "930d33ea0e98182bfc82b650e7fce517"
+  },
+  ".engram/description-instructions/batch-052.md": {
+    "mtime": 1795766029727.617,
+    "hash": "e6bfa3e49f1df49443a810c226f062a0"
+  },
+  ".engram/description-instructions/batch-053.md": {
+    "mtime": 1795766029731.6172,
+    "hash": "229e402a993b9d8b87b234b73d884180"
+  },
+  ".engram/description-instructions/batch-054.md": {
+    "mtime": 1795766029731.6172,
+    "hash": "ace6d3ff900839e83c7901259ae7dceb"
+  },
+  ".engram/description-instructions/batch-055.md": {
+    "mtime": 1795766029731.6172,
+    "hash": "f180fe6cd4d023ce4046adfb89765e69"
+  },
+  ".engram/description-instructions/batch-056.md": {
+    "mtime": 1795766029731.6172,
+    "hash": "564506e9f60d86527bca01e1cd86bd55"
+  },
+  ".engram/description-instructions/batch-057.md": {
+    "mtime": 1795766029731.6172,
+    "hash": "ab68c07d4a91abd3b875cd14bdddbddf"
+  },
+  ".engram/description-instructions/batch-058.md": {
+    "mtime": 1795766029731.6172,
+    "hash": "f7b1e2742a9a12291f40be765ce2181d"
+  },
+  ".engram/description-instructions/batch-059.md": {
+    "mtime": 1795766029731.6172,
+    "hash": "2aca18e45d31bd4a34902dabc31be9a7"
+  },
+  ".engram/description-instructions/batch-060.md": {
+    "mtime": 1795766029731.6172,
+    "hash": "4e1e57ac1211466c23aa85124de5ee8d"
+  },
+  ".engram/description-instructions/batch-061.md": {
+    "mtime": 1795766029731.6172,
+    "hash": "616ec18a68ec3d3e6b3740bdca4ac528"
+  },
+  ".engram/description-instructions/batch-062.md": {
+    "mtime": 1795766029731.6172,
+    "hash": "24149e59e8bd9aca750f28753376bb90"
+  },
+  ".engram/description-instructions/batch-063.md": {
+    "mtime": 1795766029731.6172,
+    "hash": "fd925a1736399e543ba4fddda4bf18b8"
+  },
+  ".engram/description-instructions/batch-064.md": {
+    "mtime": 1795766029731.6172,
+    "hash": "04a0bc23700e7da8c76fb48c2ee0ef34"
+  },
+  ".engram/description-instructions/batch-065.md": {
+    "mtime": 1795766029731.6172,
+    "hash": "e4c43ced85feebfceee009b532adf373"
+  },
+  ".engram/description-instructions/batch-066.md": {
+    "mtime": 1795766029731.6172,
+    "hash": "6e468f0b8d7af53d7fd5404325ae944e"
+  },
+  ".engram/description-instructions/batch-067.md": {
+    "mtime": 1795766029731.6172,
+    "hash": "5c962f833a3dc5bbc0d821c79033795e"
+  },
+  ".engram/description-instructions/batch-068.md": {
+    "mtime": 1795766029731.6172,
+    "hash": "1ffc09b9ab88927f68593892902fed1a"
+  },
+  ".engram/description-instructions/batch-069.md": {
+    "mtime": 1795766029731.6172,
+    "hash": "7c5a160f7769fc6d0c73770ea41f7b2c"
+  },
+  ".engram/description-instructions/batch-070.md": {
+    "mtime": 1795766029731.6172,
+    "hash": "031b844d4fb83ec6faaf5d7345199841"
+  },
+  ".engram/description-instructions/batch-071.md": {
+    "mtime": 1795766029731.6172,
+    "hash": "a783b008797ef05c94d326fa9d92421e"
+  },
+  ".engram/description-instructions/batch-072.md": {
+    "mtime": 1795766029731.6172,
+    "hash": "3d2bc91c45278d8c650d54ce66adf5fe"
+  },
+  ".engram/description-instructions/batch-073.md": {
+    "mtime": 1795766029735.6172,
+    "hash": "8ee9ffb7f0dfa45c5955fa2e49ea5a80"
+  },
+  ".engram/description-instructions/batch-074.md": {
+    "mtime": 1795766029735.6172,
+    "hash": "318047bb7928843abb7cc585f144f94f"
+  },
+  ".engram/description-instructions/batch-075.md": {
+    "mtime": 1795766029735.6172,
+    "hash": "6fb3a0fb403ab97ad72218571d2534bb"
+  },
+  ".engram/description-instructions/batch-076.md": {
+    "mtime": 1795766029735.6172,
+    "hash": "107b200d2b7025d2056986c1a9d93a40"
+  },
+  ".engram/description-instructions/batch-077.md": {
+    "mtime": 1795766029735.6172,
+    "hash": "4f1d15590aef20fe553818645c942eea"
+  },
+  ".engram/description-instructions/batch-078.md": {
+    "mtime": 1795766029735.6172,
+    "hash": "f19f4928368785f9be86ed0673aa128f"
+  },
+  ".engram/description-instructions/batch-079.md": {
+    "mtime": 1795766029735.6172,
+    "hash": "47d1ee1d71bb76a7961d5bb5ffb35534"
+  },
+  ".engram/description-instructions/batch-080.md": {
+    "mtime": 1795766029735.6172,
+    "hash": "66ef876e52ebc0a044c8da3b4a03ef53"
+  },
+  ".engram/description-instructions/batch-081.md": {
+    "mtime": 1795766029735.6172,
+    "hash": "a093535b308230e9322ee97bcdebcfac"
+  },
+  ".engram/description-instructions/batch-082.md": {
+    "mtime": 1795766029735.6172,
+    "hash": "c3bc59ba6283e3a1e5b71f85fe06d9a9"
+  },
+  ".engram/description-instructions/batch-083.md": {
+    "mtime": 1795766029735.6172,
+    "hash": "4addd1a218d938eedb1633f5b90b2355"
+  },
+  ".engram/description-instructions/batch-084.md": {
+    "mtime": 1795766029735.6172,
+    "hash": "a9da7052d4df11b54f833e316f0c002a"
+  },
+  ".engram/description-instructions/batch-085.md": {
+    "mtime": 1795766029735.6172,
+    "hash": "71aea913c99740802f5302cb2a697756"
+  },
+  ".engram/description-instructions/batch-086.md": {
+    "mtime": 1795766029735.6172,
+    "hash": "565658445205851bcbad529c22cab037"
+  },
+  ".engram/description-instructions/batch-087.md": {
+    "mtime": 1795766029735.6172,
+    "hash": "b93f7201c72574f1c46fad1db494c5b0"
+  },
+  ".engram/description-instructions/batch-088.md": {
+    "mtime": 1795766029735.6172,
+    "hash": "5248a87f4ef77642f5840b68edb5b37b"
+  },
+  ".engram/description-instructions/batch-089.md": {
+    "mtime": 1795766029735.6172,
+    "hash": "58f430a88b9434a87a897259f61614cc"
+  },
+  ".engram/description-instructions/batch-090.md": {
+    "mtime": 1795766029735.6172,
+    "hash": "3d0ee8177fac70b7404bb5c9066fc539"
+  },
+  ".engram/description-instructions/batch-091.md": {
+    "mtime": 1795766029735.6172,
+    "hash": "087fa79e231f73880843d2818c4f6f45"
+  },
+  ".engram/description-instructions/batch-092.md": {
+    "mtime": 1795766029735.6172,
+    "hash": "e5785c62b437e106d5558a9e17cde238"
+  },
+  ".engram/description-instructions/batch-093.md": {
+    "mtime": 1795766029735.6172,
+    "hash": "054fb0c5c6f9e9d84d782d2e8256e1d0"
+  },
+  ".engram/description-instructions/batch-094.md": {
+    "mtime": 1795766029739.6172,
+    "hash": "eb933df54d6c815bb6161b1aab238576"
+  },
+  ".engram/description-instructions/batch-095.md": {
+    "mtime": 1795766029739.6172,
+    "hash": "1326b9b9b0429b3368710a6f2c4cb3ad"
+  },
+  ".engram/description-instructions/batch-096.md": {
+    "mtime": 1795766029739.6172,
+    "hash": "a594f3704a3730f35892546758a896d3"
+  },
+  ".engram/description-instructions/batch-097.md": {
+    "mtime": 1795766029739.6172,
+    "hash": "aff32aefc6538c42604b810cab604e1f"
+  },
+  ".engram/description-instructions/batch-098.md": {
+    "mtime": 1795766029739.6172,
+    "hash": "07aaf09118c1f787cb0104f595c3c393"
+  },
+  ".engram/description-instructions/batch-099.md": {
+    "mtime": 1795766029739.6172,
+    "hash": "33be9f71ae8e64d73367165efbb2feb6"
+  },
+  ".engram/description-instructions/batch-100.md": {
+    "mtime": 1795766029739.6172,
+    "hash": "c5e33e4e724cecfa978d0c1e641366f6"
+  },
+  ".engram/description-instructions/batch-101.md": {
+    "mtime": 1795766029739.6172,
+    "hash": "e41a16b16bb032f8e684e77dd4d3136f"
+  },
+  ".engram/description-instructions/batch-102.md": {
+    "mtime": 1795766029739.6172,
+    "hash": "75120716575d8d8ee0dcd874fd7c4fa3"
+  },
+  ".engram/description-instructions/batch-103.md": {
+    "mtime": 1795766029739.6172,
+    "hash": "dfb6122016e42d21eef2dadafc477119"
+  },
+  ".engram/description-instructions/batch-104.md": {
+    "mtime": 1795766029739.6172,
+    "hash": "74284dc3198b713e156d961709c33699"
+  },
+  ".engram/description-instructions/batch-105.md": {
+    "mtime": 1795766029739.6172,
+    "hash": "fcfbd630e4152fee93aa1f8f2291b905"
+  },
+  ".engram/description-instructions/batch-106.md": {
+    "mtime": 1795766029739.6172,
+    "hash": "5976b2b72ac9ca10bfc711d8775fff3e"
+  },
+  ".engram/description-instructions/batch-107.md": {
+    "mtime": 1795766029739.6172,
+    "hash": "8a818dda60d9b24f7493f8fff80d8a26"
+  },
+  ".engram/description-instructions/batch-108.md": {
+    "mtime": 1795766029739.6172,
+    "hash": "b8bf3085d18ffc90199b1207c693dacf"
+  },
+  ".engram/description-instructions/batch-109.md": {
+    "mtime": 1795766029739.6172,
+    "hash": "664d1d66f1ad4ff86f8acf24b5e83667"
+  },
+  ".engram/description-instructions/batch-110.md": {
+    "mtime": 1795766029739.6172,
+    "hash": "45e5f50eb6b5533dff04b736b490f9ed"
+  },
+  ".engram/description-instructions/batch-111.md": {
+    "mtime": 1795766029739.6172,
+    "hash": "938c8d167530842cab1a7f87c82569f7"
+  },
+  ".engram/description-instructions/batch-112.md": {
+    "mtime": 1795766029739.6172,
+    "hash": "b227ac91795629dd8eda484c8e6525a8"
+  },
+  ".engram/description-instructions/batch-113.md": {
+    "mtime": 1795766029739.6172,
+    "hash": "3e40be87b08d87a48cd369960a3f889f"
+  },
+  ".engram/description-instructions/batch-114.md": {
+    "mtime": 1795766029739.6172,
+    "hash": "e305ddc58c8d833a10bd84a937ad60ee"
+  },
+  ".engram/description-instructions/batch-115.md": {
+    "mtime": 1795766029743.6172,
+    "hash": "a328d8ea16b7379096debc53a7d6a020"
+  },
+  ".engram/description-instructions/batch-116.md": {
+    "mtime": 1795766029743.6172,
+    "hash": "cf64873059c4a6177377273e8bf74936"
+  },
+  ".engram/description-instructions/batch-117.md": {
+    "mtime": 1795766029743.6172,
+    "hash": "78d34520a318b7d8a71147dd072202b2"
+  },
+  ".engram/description-instructions/batch-118.md": {
+    "mtime": 1795766029743.6172,
+    "hash": "0bcf18016380c7edc2451f2bc923b145"
+  },
+  ".engram/description-instructions/batch-119.md": {
+    "mtime": 1795766029743.6172,
+    "hash": "8791c55cf205d11601b56c151dd43afd"
+  },
+  ".engram/description-instructions/batch-120.md": {
+    "mtime": 1795766029743.6172,
+    "hash": "6e5ffbeb644d49fc46d523288d45ac4f"
+  },
+  ".engram/description-instructions/batch-121.md": {
+    "mtime": 1795766029743.6172,
+    "hash": "4e5ece5ed748496cf93bd46fc8eb830b"
+  },
+  ".engram/description-instructions/batch-122.md": {
+    "mtime": 1795766029743.6172,
+    "hash": "de7f24e1cf7edca5d1591f693e626799"
+  },
+  ".engram/description-instructions/batch-123.md": {
+    "mtime": 1795766029743.6172,
+    "hash": "26bdd3eb1f3466f1e7cb70e97328eb52"
+  },
+  ".engram/description-instructions/batch-124.md": {
+    "mtime": 1795766029743.6172,
+    "hash": "5641442a6e4cef0789cc81d6c9b7f989"
+  },
+  ".engram/description-instructions/batch-125.md": {
+    "mtime": 1795766029743.6172,
+    "hash": "f2689b3a79aae0d6a3a2e4620618ae21"
+  },
+  ".engram/description-instructions/batch-126.md": {
+    "mtime": 1795766029743.6172,
+    "hash": "a4a73ebc20e63ee57e179df9167ab56a"
+  },
+  ".engram/description-instructions/batch-127.md": {
+    "mtime": 1795766029743.6172,
+    "hash": "ea797e55becf5b430f603b7cbf6736a0"
+  },
+  ".engram/description-instructions/batch-128.md": {
+    "mtime": 1795766029743.6172,
+    "hash": "226da5ced9262fdfed872a866904ed14"
+  },
+  ".engram/description-instructions/batch-129.md": {
+    "mtime": 1795766029743.6172,
+    "hash": "6f5fecba80ab476560c8454a65a45dd4"
+  },
+  ".engram/description-instructions/batch-130.md": {
+    "mtime": 1795766029743.6172,
+    "hash": "22893907ea0bc69a1be923d98fd57123"
+  },
+  ".engram/description-instructions/batch-131.md": {
+    "mtime": 1795766029743.6172,
+    "hash": "02b131c7810d3f36ac1ac1f4b71be05a"
+  },
+  ".engram/description-instructions/batch-132.md": {
+    "mtime": 1795766029743.6172,
+    "hash": "787368484b89c5b4b07f9435bafcf397"
+  },
+  ".engram/description-instructions/batch-133.md": {
+    "mtime": 1795766029743.6172,
+    "hash": "d43e1e4cbf782811fa647b3fa5dee6b9"
+  },
+  ".engram/description-instructions/batch-134.md": {
+    "mtime": 1795766029743.6172,
+    "hash": "ed04e5e9528888bb02f6bd95303e8e4d"
+  },
+  ".engram/description-instructions/batch-135.md": {
+    "mtime": 1795766029743.6172,
+    "hash": "4e875541a113f51f3a92479e341722f9"
+  },
+  ".engram/description-instructions/batch-136.md": {
+    "mtime": 1795766029743.6172,
+    "hash": "4697249fe8717020a818e2de4908b30d"
+  },
+  ".engram/description-instructions/batch-137.md": {
+    "mtime": 1795766029743.6172,
+    "hash": "c384d7f34c7ff29dd271ac71ab1d6e49"
+  },
+  ".engram/description-instructions/batch-138.md": {
+    "mtime": 1795766029747.6172,
+    "hash": "ef6ef5c3ab0890023e89ac7c13a80146"
+  },
+  ".engram/description-instructions/batch-139.md": {
+    "mtime": 1795766029747.6172,
+    "hash": "b71392bd405f7f5c3c8ddd360b441b66"
+  },
+  ".engram/description-instructions/batch-140.md": {
+    "mtime": 1795766029747.6172,
+    "hash": "e84f5a34194b4f4b0720229e30c98658"
+  },
+  ".engram/description-instructions/batch-141.md": {
+    "mtime": 1795766029747.6172,
+    "hash": "b39f1aeace50189b522ec41def8fc844"
+  },
+  ".engram/description-instructions/batch-142.md": {
+    "mtime": 1795766029747.6172,
+    "hash": "6a4706ac4787263a6c38f3f845a2c099"
+  },
+  ".engram/description-instructions/batch-143.md": {
+    "mtime": 1795766029747.6172,
+    "hash": "9d38d7755981433f0e9b7c1f0a12447c"
+  },
+  ".engram/description-instructions/batch-144.md": {
+    "mtime": 1795766029747.6172,
+    "hash": "1a1c55fb8eafb3a6ad4aadf5ad054210"
+  },
+  ".engram/description-instructions/batch-145.md": {
+    "mtime": 1795766029747.6172,
+    "hash": "a6104b2ca05609bde6ec917ab6ffd505"
+  },
+  ".engram/description-instructions/batch-146.md": {
+    "mtime": 1795766029747.6172,
+    "hash": "2d8e38881f6f13bc6c8319a7254aad03"
+  },
+  ".engram/description-instructions/batch-147.md": {
+    "mtime": 1795766029747.6172,
+    "hash": "d7760862f5d87f0f9fad9de7922e510d"
+  },
+  ".engram/description-instructions/batch-148.md": {
+    "mtime": 1795766029747.6172,
+    "hash": "1e7157af19bd470435b67d8f6d652a93"
+  },
+  ".engram/description-instructions/batch-149.md": {
+    "mtime": 1795766029747.6172,
+    "hash": "5118bfa26e1c5df09d82d791f2c1c57a"
+  },
+  ".engram/description-instructions/batch-150.md": {
+    "mtime": 1795766029747.6172,
+    "hash": "2db0846673fa395bf97b1f81bf07e759"
+  },
+  ".engram/description-instructions/batch-151.md": {
+    "mtime": 1795766029747.6172,
+    "hash": "b20b879b50fbc049f49299c30ad00b11"
+  },
+  ".engram/description-instructions/batch-152.md": {
+    "mtime": 1795766029747.6172,
+    "hash": "7e49c43326ab0d538ed03481dad4f8c4"
+  },
+  ".engram/description-instructions/batch-153.md": {
+    "mtime": 1795766029747.6172,
+    "hash": "d3dc8319e82769b80fe281018cd60c64"
+  },
+  ".engram/description-instructions/batch-154.md": {
+    "mtime": 1795766029747.6172,
+    "hash": "fea08336e77bae53b65d3076ef48a9b2"
+  },
+  ".engram/description-instructions/batch-155.md": {
+    "mtime": 1795766029747.6172,
+    "hash": "7a26182961c695d47a6d24780d5c0a71"
+  },
+  ".engram/description-instructions/batch-156.md": {
+    "mtime": 1795766029747.6172,
+    "hash": "760ddb53d0b2ddca7d30f6b49e6f984f"
+  },
+  ".engram/description-instructions/batch-157.md": {
+    "mtime": 1795766029747.6172,
+    "hash": "70739aee35f2614685fb47a4dd4025bf"
+  },
+  ".engram/description-instructions/batch-158.md": {
+    "mtime": 1795766029747.6172,
+    "hash": "59639fe72b7ab6201884c0f5288cce41"
+  },
+  ".engram/description-instructions/batch-159.md": {
+    "mtime": 1795766029747.6172,
+    "hash": "518160aa7ca617dfb382cda3185053ca"
+  },
+  ".engram/description-instructions/batch-160.md": {
+    "mtime": 1795766029747.6172,
+    "hash": "ccd065da5b2763e0953fd6f9fe0a4d0d"
+  },
+  ".engram/description-instructions/batch-161.md": {
+    "mtime": 1795766029747.6172,
+    "hash": "beb3b682c3b5eb9901e5bcc7534c9a45"
+  },
+  ".engram/description-instructions/batch-162.md": {
+    "mtime": 1795766029747.6172,
+    "hash": "5233b636ea26ecc5ed91608cc4d774d0"
+  },
+  ".engram/description-instructions/batch-163.md": {
+    "mtime": 1795766029751.6172,
+    "hash": "54246b463604201ca303433adce8a0a3"
+  },
+  ".engram/description-instructions/batch-164.md": {
+    "mtime": 1795766029751.6172,
+    "hash": "52a72de11300b4dd4ee82da44dc81e8c"
+  },
+  ".engram/description-instructions/batch-165.md": {
+    "mtime": 1795766029751.6172,
+    "hash": "89c6664b3f3e2380d4bf07ffd53c5f9e"
+  },
+  ".engram/description-instructions/batch-166.md": {
+    "mtime": 1795766029751.6172,
+    "hash": "de1a8d1b1fcb291a3c40a759c7b97ae8"
+  },
+  ".engram/description-instructions/batch-167.md": {
+    "mtime": 1795766029751.6172,
+    "hash": "9551f250ed8d22fe0f375c5f9e4d4783"
+  },
+  ".engram/description-instructions/batch-168.md": {
+    "mtime": 1795766029751.6172,
+    "hash": "77f0a9c7657681843fe478b0e0a4e872"
+  },
+  ".engram/description-instructions/batch-169.md": {
+    "mtime": 1795766029751.6172,
+    "hash": "7be13182186c9194f402bad0dc474301"
+  },
+  ".engram/description-instructions/batch-170.md": {
+    "mtime": 1795766029751.6172,
+    "hash": "6066f0b75b5289f845e975a41c83b747"
+  },
+  ".engram/description-instructions/batch-171.md": {
+    "mtime": 1795766029751.6172,
+    "hash": "25ae71e0b40ef87711f2dd08ba32ccdf"
+  },
+  ".engram/description-instructions/batch-172.md": {
+    "mtime": 1795766029751.6172,
+    "hash": "33ca7f512f4684d54a6998c8f31274cd"
+  },
+  ".engram/description-instructions/batch-173.md": {
+    "mtime": 1795766029751.6172,
+    "hash": "13e44cda493c207a8fe52b7df582fd37"
+  },
+  ".engram/description-instructions/batch-174.md": {
+    "mtime": 1795766029751.6172,
+    "hash": "454e4f04aee936d13d8cd1b246f022a0"
+  },
+  ".engram/description-instructions/batch-175.md": {
+    "mtime": 1795766029751.6172,
+    "hash": "0ae4c770ee14352ce24fd79381f7cdb0"
+  },
+  ".engram/description-instructions/batch-176.md": {
+    "mtime": 1795766029751.6172,
+    "hash": "1e1d9adb772af5b88cc7922db3138972"
+  },
+  ".engram/description-instructions/batch-177.md": {
+    "mtime": 1795766029751.6172,
+    "hash": "40a7a5cfa0b66e5496c9b11436199d79"
+  },
+  ".engram/description-instructions/batch-178.md": {
+    "mtime": 1795766029751.6172,
+    "hash": "28dd371a9246c8afb5f7e0530ba9a845"
+  },
+  ".engram/description-instructions/batch-179.md": {
+    "mtime": 1795766029751.6172,
+    "hash": "546c053074aaf760a800ded8d03cfc8b"
+  },
+  ".engram/description-instructions/batch-180.md": {
+    "mtime": 1795766029751.6172,
+    "hash": "f857111c92edefadde93d9b70e6ebfea"
+  },
+  ".engram/description-instructions/batch-181.md": {
+    "mtime": 1795766029751.6172,
+    "hash": "7cefee37a3e3745e619aede2d86faa8a"
+  },
+  ".engram/description-instructions/batch-182.md": {
+    "mtime": 1795766029751.6172,
+    "hash": "09f160f13a077cbb4b26298dbd03ab94"
+  },
+  ".engram/description-instructions/batch-183.md": {
+    "mtime": 1795766029751.6172,
+    "hash": "04019a72d72da69ff5763b18311ac951"
+  },
+  ".engram/description-instructions/batch-184.md": {
+    "mtime": 1795766029751.6172,
+    "hash": "80cd785abf325560902fa1ce34ed4e4d"
+  },
+  ".engram/description-instructions/batch-185.md": {
+    "mtime": 1795766029751.6172,
+    "hash": "c77273611d4623c6be8cbdf156cdf751"
+  },
+  ".engram/description-instructions/batch-186.md": {
+    "mtime": 1795766029755.6172,
+    "hash": "8db31d3dba2bf1a0af0527a4029135dd"
+  },
+  ".engram/description-instructions/batch-187.md": {
+    "mtime": 1795766029755.6172,
+    "hash": "4a8ed4f7f800ef9a148f3746c72c84c9"
+  },
+  ".engram/description-instructions/batch-188.md": {
+    "mtime": 1795766029755.6172,
+    "hash": "a0feab759a4e71e73d779eda0dbb03df"
+  },
+  ".engram/description-instructions/batch-189.md": {
+    "mtime": 1795766029755.6172,
+    "hash": "5da4d0052f1b0529e3c551769abad197"
+  },
+  ".engram/description-instructions/batch-190.md": {
+    "mtime": 1795766029755.6172,
+    "hash": "5ba61473e507fdea027ca899f4ecd6f0"
+  },
+  ".engram/description-instructions/batch-191.md": {
+    "mtime": 1795766029755.6172,
+    "hash": "5c0845da3b819c1d178537edcd4877a4"
+  },
+  ".engram/description-instructions/batch-192.md": {
+    "mtime": 1795766029755.6172,
+    "hash": "1fbe0f703155bf76932acd1d40a4a96c"
+  },
+  ".engram/description-instructions/batch-193.md": {
+    "mtime": 1795766029755.6172,
+    "hash": "536fedcd0b9bab7598fd689a360ce4bb"
+  },
+  ".engram/description-instructions/batch-194.md": {
+    "mtime": 1795766029755.6172,
+    "hash": "699ce73463386953ee7208dccfec06d5"
+  },
+  ".engram/description-instructions/batch-195.md": {
+    "mtime": 1795766029755.6172,
+    "hash": "47d458638dac4f00753d5db50ae7f420"
+  },
+  ".engram/description-instructions/batch-196.md": {
+    "mtime": 1795766029755.6172,
+    "hash": "af9f2ee07893bb1a903ae8ac3daca42c"
+  },
+  ".engram/description-instructions/batch-197.md": {
+    "mtime": 1795766029755.6172,
+    "hash": "bc087201463f87eb048cdfd53f0d3486"
+  },
+  ".engram/description-instructions/batch-198.md": {
+    "mtime": 1795766029755.6172,
+    "hash": "936423783f4a6b4f0bebf93405f7b457"
+  },
+  ".engram/description-instructions/batch-199.md": {
+    "mtime": 1795766029755.6172,
+    "hash": "062fb19802dcd96a55289b0405ec1a72"
+  },
+  ".engram/description-instructions/batch-200.md": {
+    "mtime": 1795766029755.6172,
+    "hash": "1684b7fce31dae6e4538a0a0c71ddc11"
+  },
+  ".engram/description-instructions/batch-201.md": {
+    "mtime": 1795766029755.6172,
+    "hash": "64796966501eb252666218604540441b"
+  },
+  ".engram/description-instructions/batch-202.md": {
+    "mtime": 1795766029755.6172,
+    "hash": "601d4c660ca4d95e29d3fa656e74e1e9"
+  },
+  ".engram/description-instructions/batch-203.md": {
+    "mtime": 1795766029755.6172,
+    "hash": "fc26f8ba3eb5e8373b5090d7564e5235"
+  },
+  ".engram/description-instructions/batch-204.md": {
+    "mtime": 1795766029755.6172,
+    "hash": "ce8b2e0ae310ac0918f2b5033b676cf5"
+  },
+  ".engram/description-instructions/batch-205.md": {
+    "mtime": 1795766029755.6172,
+    "hash": "e93f026a73df058511007af2f803e1ca"
+  },
+  ".engram/description-instructions/batch-206.md": {
+    "mtime": 1795766029755.6172,
+    "hash": "99220d18923e5e5f910c49291c8d63c8"
+  },
+  ".engram/label-instructions/communities.md": {
+    "mtime": 1795765996823.4204,
+    "hash": "bb754156a005d5319250a0724db9019a"
   }
 }

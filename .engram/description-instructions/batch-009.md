@@ -1,4 +1,4 @@
-# Node Description Batch 10 of 207
+# Node Description Batch 10 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -24,13 +24,16 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "src_config": "config.cpp" | kind=code-symbol | source=engine/foundation/src/config.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, collect_unknown(), fail(), find_key(), load_file(), parse_level()]
+- "src_soft_body": "soft_body.cpp" | kind=code-symbol | source=engine/physics/src/soft_body.cpp:L1 | neighbors=[69287a0 Land ENG-60-65 deterministic si…, add_node(), add_spring(), apply_acceleration(), clamp01(), collide_plane_y()]
+- "stdlib_stdlib_string": "stdlib_string.cpp" | kind=code-symbol | source=mute/src/stdlib/stdlib_string.cpp:L1 | neighbors=[952997e Audit MUT-01-55 and harden veri…, byte_length(), codepoint_count(), compare_bytes(), concat(), decode()]
+- "sugarworks_sugar_props_torus": "torus()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L44 | neighbors=[sugar_props.py, buy_button(), cash_pad(), choc_fountain(), coin_chute(), collector()]
 - "tests_conftest": "conftest.py" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/conftest.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, bad_script(), _can_symlink(), cli_env(), empty_script()]
 - "tests_test_safety_game": "game()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_safety.py:L13 | neighbors=[test_safety.py, test_a_broken_source_only_blocks_itself…, test_a_build_mirrors_only_its_own_resou…, test_a_build_never_replaces_a_resource_…, test_a_full_build_of_an_empty_library_r…, test_a_full_build_prunes_only_effects_i…]
 - "tools_g2_replay_probe": "g2_replay_probe.cpp" | kind=code-symbol | source=engine/physics/tools/g2_replay_probe.cpp:L1 | neighbors=[69287a0 Land ENG-60-65 deterministic si…, 87beff4 Sim solver: reject self/duplica…, 9eeb3ff Merge pull request #2 from Raft…, bounds_of(), combine_friction(), combine_restitution()]
 - "towncity_town_map_place": "place()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L76 | neighbors=[town_map.py, alley(), dressing(), landmarks(), kit(), sub()]
 - "unit_device_router_test": "device_router_test.cpp" | kind=code-symbol | source=mute/tests/unit/device_router_test.cpp:L1 | neighbors=[952997e Audit MUT-01-55 and harden veri…, apply_events(), connect(), disconnect(), event(), main()]
 - "unit_emit_test_cases": "cases()" | kind=code-symbol | source=mute/tests/unit/emit_test.cpp:L90 | neighbors=[emit_test.cpp, arith_module(), calls_module(), check(), hostcall_module(), i32()]
-- "unit_evaluator_test": "evaluator_test.cpp" | kind=code-symbol | source=mute/tests/unit/evaluator_test.cpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, bindings(), cases(), check(), deep(), error_case()]
 - "unit_input_snapshot_test_main": "main()" | kind=code-symbol | source=mute/tests/unit/input_snapshot_test.cpp:L63 | neighbors=[input_snapshot_test.cpp, button(), gamepad_axis(), gamepad_button(), key(), motion()]
 - "unit_stress_test": "stress_test.cpp" | kind=code-symbol | source=mute/tests/unit/stress_test.cpp:L1 | neighbors=[2d01203 Final MUT-01..30 audit: stress …, bytecode_limits(), check(), i32t(), lexer_limits(), main()]
 - "unit_test_math_determinism_tracetests": "TraceTests" | kind=code-symbol | source=mute/tests/unit/test_math_determinism.py:L12 | neighbors=[test_math_determinism.py, .check_invalid(), .setUp(), .test_corpus_corruption_rejected(), .test_duplicate_json_keys_rejected(), .test_match_is_only_agreement()]
@@ -44,6 +47,7 @@ one-sentence description — no prose, no markdown fences.
 - "vfxkit_video_flipbook": "flipbook()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/video.py:L167 | neighbors=[video.py, _decode(), _key(), _parse_frames(), _portable(), _prompt_text()]
 - "vfxkit_video_grade": "grade()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/video.py:L284 | neighbors=[video.py, _eval(), _portable(), _ramp(), record(), _report_dir()]
 - "voidrealm_void_map_stations": "stations()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_map.py:L254 | neighbors=[void_map.py, build(), anchor(), ang(), face(), H()]
+- "authority_replay_ring": "replay_ring.hpp" | kind=code-symbol | source=server/authority/include/poko/authority/replay_ring.hpp:L1 | neighbors=[cbor_bool(), cbor_head(), cbor_text(), cbor_uint(), decode_replay(), emit_litlen()]
 - "blender_render_compare_views": "render_compare_views.py" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/blender/render_compare_views.py:L1 | neighbors=[_area(), _ensure_world(), render_turnaround(), _scene_bounds(), setup_camera(), setup_lighting()]
 - "blender_validate_scene": "validate_scene.py" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/blender/validate_scene.py:L1 | neighbors=[find_isolated(), find_strays(), landmarks(), print_report(), scene_bounds(), tri_count()]
 - "brainstorm_server_helper_test": "helper.test.js" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/helper.test.js:L1 | neighbors=[assert, fs, HELPER, makeEnv(), moduleShim, path]
@@ -57,13 +61,9 @@ one-sentence description — no prose, no markdown fences.
 - "commit:repo:github.com/Raft-The-Crab/pokox@4cead55894b2108428ac5afe169253bd4ffc026b": "4cead55 Add MUT-27 bytecode verification and MUT-28 constant folding" | kind=Commit | source=git | neighbors=[main, bytecode.cpp, e499073 Add MUT-29 dead-code eliminatio…, fold.hpp, fold.cpp, lower.cpp]
 - "creaturelab_lab_props_fiddle_fig": "fiddle_fig()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1990 | neighbors=[lab_props.py, leaf_card(), leaf_sh(), pot(), Skel, .add()]
 - "creaturelab_lab_props_park_tree": "park_tree()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L2068 | neighbors=[lab_props.py, blossom_park(), leaf_mass(), lerp(), Skel, .add()]
-- "device_vulkan_clear_renderer": "vulkan_clear_renderer.cpp" | kind=code-symbol | source=engine/rhi/src/device/vulkan_clear_renderer.cpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, clear_and_present(), draw_and_present(), Impl(), initialize(), native_window()]
+- "device_opengl_clear_renderer": "opengl_clear_renderer.cpp" | kind=code-symbol | source=engine/rhi/src/device/opengl_clear_renderer.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, clear_and_present(), default_framebuffer_is_srgb(), Impl(), initialize(), native_window()]
+- "device_vulkan_mesh_pass": "vulkan_mesh_pass.cpp" | kind=code-symbol | source=engine/rhi/src/device/vulkan_mesh_pass.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, draw(), draw_and_present(), Impl(), set_light_direction(), set_mesh()]
 - "dunedesert_dune_props_sunken_temple": "sunken_temple()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L1040 | neighbors=[dune_props.py, HERO / DUNGEON PORTAL: a columned templ…, block_wall(), column(), frustum(), merge_into()]
-- "dunedesert_gen_trees_with_palms_tree": "Tree" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L350 | neighbors=[gen_trees_with_palms.py, make_tree(), .build(), .build_conifer(), .children_of(), .env()]
-- "evaluator_evaluator_unary": "unary()" | kind=code-symbol | source=mute/src/evaluator/evaluator.cpp:L170 | neighbors=[evaluator.cpp, evaluate_arithmetic(), fail(), is_float(), is_unsigned(), magnitude()]
-- "examples_axolotl": "axolotl.py" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/axolotl.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, build(), gill_base(), gills(), happy()]
-- "fishcenter_fish_map_place": "place()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L100 | neighbors=[fish_map.py, edges(), nature(), add_owner(), fit(), kit()]
-- "fishcenter_fish_props_bait_shop": "bait_shop()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L837 | neighbors=[fish_props.py, bait_bucket(), ball(), barrel(), lerp(), loft()]
 
 ## Instructions
 

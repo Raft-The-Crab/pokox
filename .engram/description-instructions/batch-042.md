@@ -1,4 +1,4 @@
-# Node Description Batch 43 of 207
+# Node Description Batch 43 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -17,6 +17,21 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "vfxkit_evidence_write_capture": "write_capture()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/evidence.py:L175 | neighbors=[evidence.py, dependencies(), now(), read_build(), store()]
+- "vfxkit_filelock": "filelock.py" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/filelock.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, acquire(), release(), Exclusive, blocking, cross-process file…]
+- "vfxkit_handoff": "handoff.py" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/handoff.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, handoff(), reviewer_skill(), Everything an independent reviewer need…]
+- "vfxkit_library_load": "load()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/library.py:L41 | neighbors=[library.py, get(), library(), _forget_helpers(), partial()]
+- "vfxkit_library_partial": "partial()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/library.py:L66 | neighbors=[library.py, describe(), load(), sources(), Recipes for `ids` must load; the rest a…]
+- "vfxkit_lint_features": "features()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/lint.py:L92 | neighbors=[lint.py, compare_elements(), look(), moves(), stem()]
+- "vfxkit_lint_lint_library": "lint_library()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/lint.py:L212 | neighbors=[lint.py, compare_elements(), documented_textures(), lint(), Lint `recipes`; element differences are…]
+- "vfxkit_ownership_owned": "owned()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/ownership.py:L23 | neighbors=[ownership.py, digest(), valid_id(), Built by this skill, so a full build ma…, unmanaged()]
+- "vfxkit_primitives_hard_edge": "hard_edge()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/primitives.py:L522 | neighbors=[primitives.py, Read a greyscale mask as a crisp toon s…, spike_crown(), spiral_ribbons(), stylized_pair()]
+- "vfxkit_primitives_life_max": "life_max()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/primitives.py:L301 | neighbors=[primitives.py, budget(), lifetime(), mesh(), spike_crown()]
+- "vfxkit_primitives_radial_sparks": "radial_sparks()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/primitives.py:L43 | neighbors=[primitives.py, beam(), sprite(), Motion-aligned streaks thrown from a sp…, spark_burst()]
+- "vfxkit_primitives_smoke": "smoke()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/primitives.py:L138 | neighbors=[primitives.py, beam(), Alpha-blended puffs that grow and slow …, fade(), sprite()]
+- "vfxkit_primitives_spike_crown": "spike_crown()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/primitives.py:L561 | neighbors=[primitives.py, Jagged dark spikes erupting round a bea…, hard_edge(), life_max(), mesh()]
+- "vfxkit_reference_read": "read()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/reference.py:L19 | neighbors=[reference.py, compare(), frames(), import_clip(), checked_id()]
+- "vfxkit_scale_time": "_time()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/scale.py:L72 | neighbors=[scale.py, _layers(), _frames(), _life(), _map()]
 - "vfxkit_sequence_paintover": "paintover()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/sequence.py:L403 | neighbors=[sequence.py, _frame_number(), latest(), read(), Pick a captured key frame and write the…]
 - "vfxkit_sequence_path": "path()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/sequence.py:L39 | neighbors=[sequence.py, capture(), issues(), sequence_id(), read()]
 - "vfxkit_sequence_strip": "strip()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/sequence.py:L160 | neighbors=[sequence.py, capture(), Time-labelled tiles of the whole sequen…, _frame_number(), submit()]
@@ -31,7 +46,6 @@ one-sentence description — no prose, no markdown fences.
 - "vm_debugger_pc": "pc()" | kind=code-symbol | source=mute/src/vm/debugger.cpp:L54 | neighbors=[debugger.cpp, finish(), run(), stack(), step()]
 - "vm_debugger_run": "run()" | kind=code-symbol | source=mute/src/vm/debugger.cpp:L41 | neighbors=[debugger.cpp, finish(), has_breakpoint(), pc(), step()]
 - "vm_hostcall": "hostcall.cpp" | kind=code-symbol | source=mute/src/vm/hostcall.cpp:L1 | neighbors=[952997e Audit MUT-01-55 and harden veri…, add(), find(), host_type(), unauthorized_hostcalls()]
-- "vm_register_vm": "register_vm.cpp" | kind=code-symbol | source=mute/src/vm/register_vm.cpp:L1 | neighbors=[85b7130 Close MUT-26 limits: AST-to-SSA…, 952997e Audit MUT-01-55 and harden veri…, c7a411f Fix MUT-01-20 audit defects in …, run_register_module(), run_register_vm()]
 - "vm_values_make_array": "make_array()" | kind=code-symbol | source=mute/src/vm/values.cpp:L69 | neighbors=[values.cpp, copy_impl(), alloc(), handle_for(), object()]
 - "voidrealm_void_map_build_paths": "build_paths()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_map.py:L196 | neighbors=[void_map.py, build(), H(), reserve(), static()]
 - "voidrealm_void_map_free": "free()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_map.py:L112 | neighbors=[void_map.py, dressing(), look(), ring_scatter(), validate()]
@@ -43,20 +57,6 @@ one-sentence description — no prose, no markdown fences.
 - "voidrealm_void_props_rubble": "rubble()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L280 | neighbors=[void_props.py, chamfer_box(), FS(), shaft(), shard_rock()]
 - "warehouse_kitlib_sub_add": ".add()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/kitlib.py:L48 | neighbors=[B(), CY(), Sub, .emit(), T()]
 - "warehouse_wh_map_mesh_obj": "mesh_obj()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_map.py:L73 | neighbors=[wh_map.py, floors(), sub(), roof(), walls()]
-- "warehouse_wh_map_place": "place()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_map.py:L54 | neighbors=[wh_map.py, build(), kit(), sub(), rack_row()]
-- "warehouse_wh_map_roof": "roof()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_map.py:L117 | neighbors=[wh_map.py, deck slabs on the truss top chords with…, bx(), deck_y(), mesh_obj()]
-- "warehouse_wh_props_rack_bay": "rack_bay()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_props.py:L165 | neighbors=[wh_props.py, beam_pair(), pallet_load(), upright_frame(), one 9-stud bay of selective pallet rack…]
-- "warehouse_wh_veh": "wh_veh.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_veh.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, forklift(), pallet_jack(), wheel()]
-- "whispering_grove_forest_map_keepout": "keepout()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_map.py:L84 | neighbors=[forest_map.py, build(), path_info(), stream_d(), scatter()]
-- "whispering_grove_forest_map_stream_d": "stream_d()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_map.py:L61 | neighbors=[forest_map.py, build(), H(), keepout(), segd()]
-- "whispering_grove_forest_map_sub": "sub()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_map.py:L17 | neighbors=[forest_map.py, ground(), horizon(), place(), plaza()]
-- "whispering_grove_forest_props_bridge": "bridge()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L450 | neighbors=[forest_props.py, at(), Prop, .add(), S()]
-- "whispering_grove_forest_props_crate": "crate()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L345 | neighbors=[forest_props.py, at(), Prop, .add(), S()]
-- "whispering_grove_forest_props_fence": "fence()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L336 | neighbors=[forest_props.py, at(), Prop, .add(), S()]
-- "whispering_grove_forest_props_frond": "frond()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L205 | neighbors=[forest_props.py, fern(), .add(), S(), one modelled fern frond: a serrated, th…]
-- "whispering_grove_forest_props_grass_tuft": "grass_tuft()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L310 | neighbors=[forest_props.py, at(), Prop, .add(), S()]
-- "whispering_grove_forest_props_mossy_rock": "mossy_rock()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L254 | neighbors=[forest_props.py, at(), Prop, .add(), S()]
-- "whispering_grove_forest_props_reeds": "reeds()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L564 | neighbors=[forest_props.py, at(), Prop, .add(), S()]
 
 ## Instructions
 

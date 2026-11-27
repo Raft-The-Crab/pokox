@@ -1,4 +1,4 @@
-# Node Description Batch 71 of 207
+# Node Description Batch 71 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -9,60 +9,54 @@ your JSON answer to the answer file.
 You are documenting nodes in a knowledge graph.
 For each entry below, write ONE concise factual plain-language sentence
 describing what it is or does. Use only the provided context.
-For an entity node (any other kind — e.g. a person, place, event, object),
-describe what the entity is and its role, grounded in its type, its
-relations (neighbors) and the provided citations/evidence — e.g.
-"Lady Carfax, a wealthy heiress who disappears en route to Lausanne.".
-Ground entity descriptions in the citations/evidence when present; do not
-speculate beyond the context, so a node with no supporting context may be
-left out of the reply.
-LANGUAGE: each entry has a `lang=` marker giving the language of its source.
-Write that entry's description in EXACTLY that language. Do not translate to
-a single common language — match each node's source language individually.
+For a code symbol (kind=code-symbol — a function, class, or constant),
+describe what the function/symbol does based on its name, source location
+and neighbors — e.g. "Resolves the configured ontology profile from graphify.yaml.".
+Write every description in English (en). Do not switch languages.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "medievalbattle_battle_props_rationale_1349": "straw dummy on a post and crossbar, twine bands, sack head, a team shield on its" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L1349 | neighbors=[training_dummy(), Palette, Sh] | lang=pt
-- "medievalbattle_battle_props_rationale_1362": "siege ladder leaning back by lean degrees (top toward +Z): two rails, lashed run" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L1362 | neighbors=[ladder(), Palette, Sh] | lang=en
-- "medievalbattle_battle_props_rationale_1373": "small battlefield litter: a dropped team shield, a dented helm, a snapped spear," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L1373 | neighbors=[battle_debris(), Palette, Sh] | lang=pt
-- "medievalbattle_battle_props_rationale_1389": "a field stone: a box with jittered corners and a few extra points, hulled (tight" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L1389 | neighbors=[rough_stone(), Palette, Sh] | lang=pt
-- "medievalbattle_battle_props_rationale_1399": "low field wall of tightly stacked rough stones (3 courses, battered), upright co" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L1399 | neighbors=[drystone_wall(), Palette, Sh] | lang=en
-- "medievalbattle_battle_props_rationale_1424": "a heap of fallen ashlar blocks and broken stone" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L1424 | neighbors=[rubble(), Palette, Sh] | lang=en
-- "medievalbattle_battle_props_rationale_1453": "one fir whorl: a star skirt (2n rim points: drooping bough tips + raised notches" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L1453 | neighbors=[bough_skirt(), Palette, Sh] | lang=pt
-- "medievalbattle_battle_props_rationale_147": "per-block tone from the block centre hash, mortar darker, a little grime low dow" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L147 | neighbors=[ash_sh(), Palette, Sh] | lang=en
-- "medievalbattle_battle_props_rationale_1474": "fir in four forms (tall spire / full / squat broad / young): tapering trunk with" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L1474 | neighbors=[pine(), Palette, Sh] | lang=en
-- "medievalbattle_battle_props_rationale_1499": "field oak: flared, slightly twisted trunk forking into 4-5 boughs (each with a s" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L1499 | neighbors=[broadleaf(), Palette, Sh] | lang=en
-- "medievalbattle_battle_props_rationale_1530": "charred, leafless tree: forked trunk, snapped top, crooked branches and twigs" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L1530 | neighbors=[dead_tree(), Palette, Sh] | lang=en
-- "medievalbattle_battle_props_rationale_1564": "shallow scorched impact scar (modelled, smooth 32-sided), char centre, scattered" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L1564 | neighbors=[scorch(), Palette, Sh] | lang=en
-- "medievalbattle_battle_props_rationale_1586": "courtyard well: ring of ashlar blocks with a coping ring, oak posts, a little sl" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L1586 | neighbors=[well(), Palette, Sh] | lang=en
-- "medievalbattle_battle_props_rationale_163": "a wall of real stone blocks from (x, z) a to b: top(t) = top height at distance" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L163 | neighbors=[course_wall(), Palette, Sh] | lang=en
-- "medievalbattle_battle_props_rationale_200": "crenellation along X centred at x = 0, merlons with cut arrow slits (every other" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L200 | neighbors=[merlon_row(), Palette, Sh] | lang=en
-- "medievalbattle_battle_props_rationale_211": "stepped corbel blocks along X under a projecting parapet, projecting from z0 by" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L211 | neighbors=[corbels(), Palette, Sh] | lang=en
-- "medievalbattle_battle_props_rationale_219": "dressed frame round a CUT arrow slit (front = -Z before yaw): jambs, lintel, sil" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L219 | neighbors=[slit_frame(), Palette, Sh] | lang=pt
-- "medievalbattle_battle_props_rationale_227": "add an arrow-slit cutter box (front = -Z before yaw, from 0.3 out to depth in) i" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L227 | neighbors=[slit_cutter(), Palette, Sh] | lang=en
-- "medievalbattle_battle_props_rationale_236": "move a temp Prop built in canonical orientation (front face at -Z) into P, turne" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L236 | neighbors=[merge(), Palette, Sh] | lang=en
-- "medievalbattle_battle_props_rationale_242": "painted heater shield facing -Z before yaw: oak backing rim, painted field, chev" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L242 | neighbors=[heater_shield(), Palette, Sh] | lang=en
-- "medievalbattle_battle_props_rationale_267": "wall segment along X (outside = -Z): battered plinth, ashlar both faces, corbell" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L267 | neighbors=[curtain_wall(), Palette, Sh] | lang=en
-- "medievalbattle_battle_props_rationale_293": "round tower: battered base, ashlar drum with CUT arrow slits, corbel ring, crene" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L293 | neighbors=[tower_body(), Palette, Sh] | lang=en
-- "medievalbattle_battle_props_rationale_353": "closed solid of an outline (XY) from z0 to z1; y0 extends the feet down" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L353 | neighbors=[outline_prism(), Palette, Sh] | lang=en
-- "medievalbattle_battle_props_rationale_367": "wedge stones round an arch (face plane at z, half proud), bigger keystone, jamb" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L367 | neighbors=[voussoirs(), Palette, Sh] | lang=en
-- "medievalbattle_battle_props_rationale_386": "corbelled crenellated parapet on a front face at z = -d (canonical), wall-walk a" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L386 | neighbors=[parapet_front(), Palette, Sh] | lang=pt
-- "medievalbattle_battle_props_rationale_399": "the keep gate (outside = -Z): ashlar block with a CUT arched passage, voussoirs," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L399 | neighbors=[gatehouse(), Palette, Sh] | lang=en
-- "medievalbattle_battle_props_rationale_44": "roll (Z) first, then pitch (X), then yaw (Y, +yaw turns the -Z front toward -X)," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L44 | neighbors=[T(), Palette, Sh] | lang=en
-- "medievalbattle_battle_props_rationale_442": "one face of the donjon in canonical orientation (face plane z = -hw): ashlar wit" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L442 | neighbors=[donjon_face(), Palette, Sh] | lang=en
-- "medievalbattle_battle_props_rationale_470": "the great keep tower (front = -Z faces the courtyard): battered plinth, ashlar," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L470 | neighbors=[donjon(), Palette, Sh] | lang=en
-- "medievalbattle_battle_props_rationale_509": "the donjon's crown (separate kit piece, same origin): corbelled parapets with sh" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L509 | neighbors=[donjon_top(), Palette, Sh] | lang=en
-- "medievalbattle_battle_props_rationale_53": "bm built along +X from 0..L (Y up): rotate X onto b - a (Y stays as up as possib" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L53 | neighbors=[frame_to(), Palette, Sh] | lang=en
-- "medievalbattle_battle_props_rationale_534": "stone stair climbing along +X from the courtyard to the wall-walk (the wall is a" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L534 | neighbors=[wall_stair(), Palette, Sh] | lang=en
-- "medievalbattle_battle_props_rationale_550": "4-span stone bridge along X (abutments at +-40, ramps to +-54) over a river bed" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L550 | neighbors=[sundered_bridge(), Palette, Sh] | lang=en
-- "medievalbattle_battle_props_rationale_645": "square gate tower on the central pier (14 x 16, origin = deck level): CUT arched" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L645 | neighbors=[bridge_tower(), Palette, Sh] | lang=en
-- "medievalbattle_battle_props_rationale_718": "stepped buttress in canonical orientation (wall face at z = 0, buttress out to -" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L718 | neighbors=[buttress(), Palette, Sh] | lang=en
-- "medievalbattle_battle_props_rationale_72": "revolve [(r, y), ...] (bottom -> top) around Y; r == 0 collapses to a point" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L72 | neighbors=[lathe(), Palette, Sh] | lang=es
-- "medievalbattle_battle_props_rationale_739": "charred roof truss across the nave: tie beam, principal rafters, king post, stru" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L739 | neighbors=[truss(), Palette, Sh] | lang=en
-- "medievalbattle_battle_props_rationale_752": "roofless gothic chapel (door at -Z): real block walls with cut lancets, a gable" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L752 | neighbors=[ruined_chapel(), Palette, Sh] | lang=en
-- "medievalbattle_battle_props_rationale_829": "timber trestle footbridge along X, deck 1.2 above its ends' ground, bents into t" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L829 | neighbors=[footbridge(), Palette, Sh] | lang=en
-- "medievalbattle_battle_props_rationale_860": "3 tilted headstones on mounds, a makeshift oak cross with a dented helm, a sword" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L860 | neighbors=[gravestones(), Palette, Sh] | lang=pt
+- "hermes_test_plugin_testlayoutresolution_test_flat_layout_resolves_nested_skills": ".test_flat_layout_resolves_nested_skills()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/hermes/test_plugin.py:L148 | neighbors=[TestLayoutResolution, ._load_from(), ._stage()]
+- "identity_sign_in_accountstore": "AccountStore" | kind=code-symbol | source=server/identity/include/poko/identity/sign_in.hpp:L20 | neighbors=[sign_in.hpp, .AccountStore(), InMemoryAccountStore]
+- "identity_velocity": "velocity.hpp" | kind=code-symbol | source=server/identity/include/poko/identity/velocity.hpp:L1 | neighbors=[1dac49d Created NET-01 to NET-09, Start…, haversine_km(), LoginVelocityService]
+- "imgui_refcntautoptr": "RefCntAutoPtr.hpp" | kind=code-symbol | source=engine/rhi/tests/fakes/imgui/RefCntAutoPtr.hpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, RefCntAutoPtr, c7a411f Fix MUT-01-20 audit defects in …]
+- "input_action_map_define_action": "define_action()" | kind=code-symbol | source=mute/src/input/action_map.cpp:L89 | neighbors=[action_map.cpp, decode(), find()]
+- "input_action_map_get16": "get16()" | kind=code-symbol | source=mute/src/input/action_map.cpp:L28 | neighbors=[action_map.cpp, decode(), read_bytes()]
+- "input_action_map_get32": "get32()" | kind=code-symbol | source=mute/src/input/action_map.cpp:L32 | neighbors=[action_map.cpp, decode(), read_bytes()]
+- "input_action_map_get8": "get8()" | kind=code-symbol | source=mute/src/input/action_map.cpp:L25 | neighbors=[action_map.cpp, decode(), read_bytes()]
+- "input_action_map_hash": "hash()" | kind=code-symbol | source=mute/src/input/action_map.cpp:L294 | neighbors=[action_map.cpp, put32(), put8()]
+- "input_action_map_put16": "put16()" | kind=code-symbol | source=mute/src/input/action_map.cpp:L13 | neighbors=[action_map.cpp, encode(), put8()]
+- "input_action_map_sign_of": "sign_of()" | kind=code-symbol | source=mute/src/input/action_map.cpp:L41 | neighbors=[action_map.cpp, bindings_conflict(), read_binding()]
+- "input_device_router_connect": "connect()" | kind=code-symbol | source=mute/src/input/device_router.cpp:L14 | neighbors=[device_router.cpp, find_native(), slot_in_use()]
+- "input_input_snapshot_append": "append()" | kind=code-symbol | source=mute/src/input/input_snapshot.cpp:L265 | neighbors=[input_snapshot.cpp, valid_event(), decode()]
+- "input_input_snapshot_apply": "apply()" | kind=code-symbol | source=mute/src/input/input_snapshot.cpp:L139 | neighbors=[input_snapshot.cpp, gamepad_connected(), touch_display_connected()]
+- "input_input_snapshot_at": "at()" | kind=code-symbol | source=mute/src/input/input_snapshot.cpp:L273 | neighbors=[input_snapshot.cpp, next(), snapshot_hash()]
+- "input_input_snapshot_get16": "get16()" | kind=code-symbol | source=mute/src/input/input_snapshot.cpp:L40 | neighbors=[input_snapshot.cpp, decode(), read_bytes()]
+- "input_input_snapshot_get32": "get32()" | kind=code-symbol | source=mute/src/input/input_snapshot.cpp:L44 | neighbors=[input_snapshot.cpp, decode(), read_bytes()]
+- "input_input_snapshot_get64": "get64()" | kind=code-symbol | source=mute/src/input/input_snapshot.cpp:L50 | neighbors=[input_snapshot.cpp, decode(), read_bytes()]
+- "input_input_snapshot_get8": "get8()" | kind=code-symbol | source=mute/src/input/input_snapshot.cpp:L37 | neighbors=[input_snapshot.cpp, decode(), read_bytes()]
+- "integration_config_file_test_put_arr": "put_arr()" | kind=code-symbol | source=engine/foundation/tests/integration/config_file_test.cpp:L40 | neighbors=[config_file_test.cpp, head(), test_decoder()]
+- "integration_config_file_test_put_b": "put_b()" | kind=code-symbol | source=engine/foundation/tests/integration/config_file_test.cpp:L37 | neighbors=[config_file_test.cpp, head(), test_decoder()]
+- "integration_config_file_test_put_n": "put_n()" | kind=code-symbol | source=engine/foundation/tests/integration/config_file_test.cpp:L35 | neighbors=[config_file_test.cpp, head(), test_decoder()]
+- "integration_config_file_test_write_file": "write_file()" | kind=code-symbol | source=engine/foundation/tests/integration/config_file_test.cpp:L56 | neighbors=[config_file_test.cpp, test_config(), test_resolve()]
+- "integration_config_logging_guard_real_test": "config_logging_guard_real_test.cpp" | kind=code-symbol | source=engine/foundation/tests/integration/config_logging_guard_real_test.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, main(), c7a411f Fix MUT-01-20 audit defects in …]
+- "integration_logging_file_test_main": "main()" | kind=code-symbol | source=engine/foundation/tests/integration/logging_file_test.cpp:L23 | neighbors=[logging_file_test.cpp, count_stamps(), read_file()]
+- "integration_public_header_compat": "public_header_compat.cpp" | kind=code-symbol | source=engine/rhi/tests/integration/public_header_compat.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, main(), c7a411f Fix MUT-01-20 audit defects in …]
+- "integration_sdl_platform_test": "sdl_platform_test.cpp" | kind=code-symbol | source=engine/platform/tests/integration/sdl_platform_test.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, main(), c7a411f Fix MUT-01-20 audit defects in …]
+- "integration_test_cube_fixed_view_x11": "test_cube_fixed_view_x11.py" | kind=code-symbol | source=engine/render/tests/integration/test_cube_fixed_view_x11.py:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, main(), c7a411f Fix MUT-01-20 audit defects in …]
+- "integration_test_cube_golden_unit_decode": "decode()" | kind=code-symbol | source=engine/render/tests/integration/test_cube_golden_unit.py:L14 | neighbors=[test_cube_golden_unit.py, .test_reference_is_full_cube_with_three…, .test_roundtrip_and_multiple_deflate_bl…]
+- "integration_test_directional_light_x11": "test_directional_light_x11.py" | kind=code-symbol | source=engine/render/tests/integration/test_directional_light_x11.py:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, main(), c7a411f Fix MUT-01-20 audit defects in …]
+- "integration_test_imgui_inputs": "test_imgui_inputs.py" | kind=code-symbol | source=engine/render/tests/integration/test_imgui_inputs.py:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, Check the real ImGui demo rejects bad S…, c7a411f Fix MUT-01-20 audit defects in …]
+- "integration_test_triangle_inputs": "test_triangle_inputs.py" | kind=code-symbol | source=engine/render/tests/integration/test_triangle_inputs.py:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, Check the real demo rejects bad SPIR-V …, c7a411f Fix MUT-01-20 audit defects in …]
+- "integration_test_version_versionintegrationtests_test_real_binary_tracks_git_state": ".test_real_binary_tracks_git_state()" | kind=code-symbol | source=tools/version/tests/integration/test_version.py:L55 | neighbors=[VersionIntegrationTests, command(), copy_sources()]
+- "lexer_unicode_xid": "unicode_xid.hpp" | kind=code-symbol | source=mute/src/lexer/unicode_xid.hpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, contains(), c7a411f Fix MUT-01-20 audit defects in …]
+- "medievalbattle_battle_map_base": "base()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L77 | neighbors=[battle_map.py, keep_w(), H()]
+- "medievalbattle_battle_map_free": "free()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L158 | neighbors=[battle_map.py, cull_hidden(), look()]
+- "medievalbattle_battle_map_grid_mesh": "grid_mesh()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L186 | neighbors=[battle_map.py, sub(), ground()]
+- "medievalbattle_battle_map_kit": "kit()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L119 | neighbors=[battle_map.py, cull_hidden(), place()]
+- "medievalbattle_battle_map_seg_d": "seg_d()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L50 | neighbors=[battle_map.py, road_d(), trench_drop()]
+- "medievalbattle_battle_props_bough_skirt": "bough_skirt()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L1452 | neighbors=[battle_props.py, pine(), one fir whorl: a star skirt (2n rim poi…]
 
 ## Instructions
 

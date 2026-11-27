@@ -1,4 +1,4 @@
-# Node Description Batch 185 of 207
+# Node Description Batch 185 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -26,46 +26,46 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "skyrise_sky_models2_rationale_133": "hexagonal basalt columns of stepped heights, lighter bevelled tops, glowing lava" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models2.py:L133 | neighbors=[basalt_rocks()] | lang=en
-- "skyrise_sky_models2_rationale_152": "egg hatch altar: 3-tier dais with gold inlay + front steps, golden claw cradle o" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models2.py:L152 | neighbors=[egg_shrine()] | lang=en
-- "skyrise_sky_models2_rationale_16": "n separate bevelled planks side by side along x, alternating shade (reads as woo" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models2.py:L16 | neighbors=[planks()] | lang=en
-- "skyrise_sky_models2_rationale_190": "sell booth: glowing sell circle in front, planked counter with gold trim, a gian" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models2.py:L190 | neighbors=[sell_pad()] | lang=en
-- "skyrise_sky_models2_rationale_217": "upgrade shop: planked counter with gold trim, back wall with shelves of glowing" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models2.py:L217 | neighbors=[upgrade_stand()] | lang=en
-- "skyrise_sky_models2_rationale_23": "a heap built only from coins (rings of tilted coins, smaller toward the top), tw" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models2.py:L23 | neighbors=[coin_pile()] | lang=en
-- "skyrise_sky_models2_rationale_254": "stone frame with side columns and a gem crown crest; screen with gold/silver/bro" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models2.py:L254 | neighbors=[leaderboard()] | lang=en
-- "skyrise_sky_models2_rationale_281": "stepped round platform with inlaid glowing rune circles, two curved stone horns" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models2.py:L281 | neighbors=[teleport_pad()] | lang=en
-- "skyrise_sky_models2_rationale_40": "planked chest, curved lid held open, iron bands following the curve, corner caps" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models2.py:L40 | neighbors=[chest()] | lang=en
-- "skyrise_sky_models2_rationale_73": "6-9 hexagonal crystals with pointed tips radiating from a rock bed, a tall glowi" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models2.py:L73 | neighbors=[crystal_node()] | lang=en
-- "skyrise_sky_models2_rationale_9": "coin with a raised rim (lathe), lying flat" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models2.py:L9 | neighbors=[coin()] | lang=en
-- "skyrise_sky_models2_rationale_98": "12-point star section swept along a straight segment a->b, domed cap" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models2.py:L98 | neighbors=[_ribbed()] | lang=pt
-- "skyrise_sky_models3_rationale_29": "molten pool: ring of basalt boulders, glowing surface with dark crust plates flo" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models3.py:L29 | neighbors=[lava_pool()] | lang=en
-- "skyrise_sky_models3_rationale_44": "burnt tree: thick twisting trunk with 4 forked branches, glowing ember cracks, a" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models3.py:L44 | neighbors=[charred_tree()] | lang=en
-- "skyrise_sky_models3_rationale_63": "lumpy faceted bush: 4-6 clumps, lighter on top, with a few berries or flowers" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models3.py:L63 | neighbors=[bush()] | lang=en
-- "skyrise_sky_models3_rationale_77": "iron street lantern: stepped stone base, fluted post with collars, curled bracke" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models3.py:L77 | neighbors=[lamp_post()] | lang=en
-- "skyrise_sky_models3_rationale_9": "sandstone butte: 3 eroded faceted tiers (lumpy hull rings, each narrower), darke" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models3.py:L9 | neighbors=[mesa_rock()] | lang=en
-- "skyrise_sky_models3_rationale_93": "zone signpost: planked arrow board with a gold border, the zone gem, a post with" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models3.py:L93 | neighbors=[signpost()] | lang=en
-- "skyrise_sky_models4_ash_pile": "ash_pile()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models4.py:L96 | neighbors=[sky_models4.py] | lang=en
-- "skyrise_sky_models4_ember_rocks": "ember_rocks()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models4.py:L104 | neighbors=[sky_models4.py] | lang=en
-- "skyrise_sky_models4_ice_shards": "ice_shards()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models4.py:L87 | neighbors=[sky_models4.py] | lang=en
-- "skyrise_sky_models4_pebbles": "pebbles()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models4.py:L32 | neighbors=[sky_models4.py] | lang=en
-- "skyrise_sky_models4_rationale_10": "one grass blade: thin tapered wedge (4 verts, 4 tris) leaning outward, tip bent" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models4.py:L10 | neighbors=[blade()] | lang=en
-- "skyrise_sky_models4_rationale_114": "bridge from z=0 to z=-L rising by `rise`.     wood: irregular planks with nail h" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models4.py:L114 | neighbors=[bridge()] | lang=en
-- "skyrise_sky_models4_rationale_182": "low tiered fountain: octagonal stone basin with a lip, water surface, gold trim," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models4.py:L182 | neighbors=[plaza_fountain()] | lang=en
-- "skyrise_sky_models4_rationale_24": "modelled blade cluster, dark at the root, light at the tips" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models4.py:L24 | neighbors=[grass_tuft()] | lang=en
-- "skyrise_sky_models4_rationale_41": "small flower clump: stems + 5-petal star heads + gold centres, one or two colour" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models4.py:L41 | neighbors=[wildflowers()] | lang=en
-- "skyrise_sky_models4_rationale_52": "two or three toadstools: lathe stems, red caps with white spots" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models4.py:L52 | neighbors=[mushrooms()] | lang=en
-- "skyrise_sky_models4_rationale_69": "twiggy desert shrub: forked twigs from a root knot" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models4.py:L69 | neighbors=[dry_shrub()] | lang=en
-- "skyrise_sky_models4_snow_mound": "snow_mound()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models4.py:L80 | neighbors=[sky_models4.py] | lang=en
-- "skyrise_sky_props_basalt_rocks": "basalt_rocks()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L419 | neighbors=[sky_props.py] | lang=en
-- "skyrise_sky_props_charred_tree": "charred_tree()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L439 | neighbors=[sky_props.py] | lang=en
-- "skyrise_sky_props_lava_pool": "lava_pool()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L428 | neighbors=[sky_props.py] | lang=en
-- "skyrise_sky_props_leaderboard": "leaderboard()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L294 | neighbors=[sky_props.py] | lang=en
-- "skyrise_sky_props_mesa_rock": "mesa_rock()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L392 | neighbors=[sky_props.py] | lang=en
-- "skyrise_sky_props_path_stone": "path_stone()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L152 | neighbors=[sky_props.py] | lang=en
-- "skyrise_sky_props_rationale_250": "sell station: glowing pad with a giant coin on a stand behind it (front -Z)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L250 | neighbors=[sell_pad()] | lang=en
-- "skyrise_sky_props_rationale_509": "glowing zig-zag crack in the ground (flat, walk-over)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L509 | neighbors=[lava_crack()] | lang=en
-- "skyrise_sky_props_signpost": "signpost()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L457 | neighbors=[sky_props.py] | lang=en
-- "src_asset_store_acquire": "acquire()" | kind=code-symbol | source=engine/resource/src/asset_store.cpp:L199 | neighbors=[asset_store.cpp] | lang=en
+- "semantic_determinism_builtin": "builtin()" | kind=code-symbol | source=mute/src/semantic/determinism.cpp:L18 | neighbors=[determinism.cpp] | lang=en
+- "semantic_determinism_is_capability": "is_capability()" | kind=code-symbol | source=mute/src/semantic/determinism.cpp:L9 | neighbors=[determinism.cpp] | lang=en
+- "semantic_determinism_last_segment": "last_segment()" | kind=code-symbol | source=mute/src/semantic/determinism.cpp:L22 | neighbors=[determinism.cpp] | lang=en
+- "semantic_determinism_program_capability_mask": "program_capability_mask()" | kind=code-symbol | source=mute/src/semantic/determinism.cpp:L118 | neighbors=[determinism.cpp] | lang=en
+- "semantic_emit_source_pcs": "source_pcs()" | kind=code-symbol | source=mute/src/semantic/emit.cpp:L274 | neighbors=[emit.cpp] | lang=en
+- "semantic_emit_source_position": "source_position()" | kind=code-symbol | source=mute/src/semantic/emit.cpp:L263 | neighbors=[emit.cpp] | lang=en
+- "semantic_lower_bin_detail": "bin_detail()" | kind=code-symbol | source=mute/src/semantic/lower.cpp:L63 | neighbors=[lower.cpp] | lang=en
+- "semantic_lower_boolt": "boolt()" | kind=code-symbol | source=mute/src/semantic/lower.cpp:L10 | neighbors=[lower.cpp] | lang=en
+- "semantic_lower_cmp_detail": "cmp_detail()" | kind=code-symbol | source=mute/src/semantic/lower.cpp:L71 | neighbors=[lower.cpp] | lang=en
+- "semantic_lower_i32t": "i32t()" | kind=code-symbol | source=mute/src/semantic/lower.cpp:L9 | neighbors=[lower.cpp] | lang=en
+- "semantic_lower_is_arith": "is_arith()" | kind=code-symbol | source=mute/src/semantic/lower.cpp:L82 | neighbors=[lower.cpp] | lang=en
+- "semantic_lower_is_cmp": "is_cmp()" | kind=code-symbol | source=mute/src/semantic/lower.cpp:L79 | neighbors=[lower.cpp] | lang=en
+- "semantic_lower_lowerer_lowerer": ".Lowerer()" | kind=code-symbol | source=mute/src/semantic/lower.cpp:L91 | neighbors=[Lowerer] | lang=en
+- "semantic_lower_pv": "pv()" | kind=code-symbol | source=mute/src/semantic/lower.cpp:L13 | neighbors=[lower.cpp] | lang=en
+- "semantic_lower_v": "v()" | kind=code-symbol | source=mute/src/semantic/lower.cpp:L12 | neighbors=[lower.cpp] | lang=en
+- "semantic_optimize_simplify_control_flow": "simplify_control_flow()" | kind=code-symbol | source=mute/src/semantic/optimize.cpp:L42 | neighbors=[optimize.cpp] | lang=en
+- "semantic_semantic_analyze": "analyze()" | kind=code-symbol | source=mute/src/semantic/semantic.cpp:L419 | neighbors=[semantic.cpp] | lang=en
+- "semantic_semantic_analyzer_analyzer": ".Analyzer()" | kind=code-symbol | source=mute/src/semantic/semantic.cpp:L409 | neighbors=[Analyzer] | lang=en
+- "semantic_semantic_generic_arity": "generic_arity()" | kind=code-symbol | source=mute/src/semantic/semantic.cpp:L63 | neighbors=[semantic.cpp] | lang=en
+- "semantic_semantic_generic_tag": "generic_tag()" | kind=code-symbol | source=mute/src/semantic/semantic.cpp:L68 | neighbors=[semantic.cpp] | lang=en
+- "semantic_semantic_is_assign_op": "is_assign_op()" | kind=code-symbol | source=mute/src/semantic/semantic.cpp:L60 | neighbors=[semantic.cpp] | lang=en
+- "semantic_semantic_scalar": "scalar()" | kind=code-symbol | source=mute/src/semantic/semantic.cpp:L49 | neighbors=[semantic.cpp] | lang=en
+- "semantic_semantic_type_name": "type_name()" | kind=code-symbol | source=mute/src/semantic/semantic.cpp:L35 | neighbors=[semantic.cpp] | lang=en
+- "semantic_ssa_dump_ir": "dump_ir()" | kind=code-symbol | source=mute/src/semantic/ssa.cpp:L196 | neighbors=[ssa.cpp] | lang=en
+- "semantic_ssa_name": "name()" | kind=code-symbol | source=mute/src/semantic/ssa.cpp:L211 | neighbors=[ssa.cpp] | lang=en
+- "sh": "Sh" | kind=code-symbol | neighbors=[ShAng] | lang=en
+- "shared_bpyx_default": "_default()" | kind=code-symbol | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L24 | neighbors=[_bpyx.py] | lang=en
+- "shared_bpyx_rationale_1": "_bpyx - tiny shared helpers for blender-agent-skills scripts (Blender 5.2 LTS+," | kind=entity | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L1 | neighbors=[_bpyx.py] | lang=en
+- "shared_bpyx_rationale_100": "First node of `type_` (e.g. 'BSDF_PRINCIPLED'). Names are localized - never look" | kind=entity | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L100 | neighbors=[node()] | lang=en
+- "shared_bpyx_rationale_105": "Valid identifiers of an enum property (works on types or instances)." | kind=entity | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L105 | neighbors=[enum_ids()] | lang=en
+- "shared_bpyx_rationale_110": "Assign an enum; on failure raise listing valid values (dynamic enums under-repor" | kind=entity | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L110 | neighbors=[set_enum()] | lang=en
+- "shared_bpyx_rationale_118": "Triangle count (evaluated = with modifiers)." | kind=entity | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L118 | neighbors=[mesh_tris()] | lang=en
+- "shared_bpyx_rationale_133": "Round a float or a vector for compact JSON." | kind=entity | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L133 | neighbors=[r()] | lang=pt
+- "shared_bpyx_rationale_20": "Arguments after '--' (Blender ignores them)." | kind=entity | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L20 | neighbors=[argv()] | lang=en
+- "shared_bpyx_rationale_36": "Print compact JSON on one marked line (parsed by run_in_blender.py)." | kind=entity | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L36 | neighbors=[emit()] | lang=en
+- "shared_bpyx_rationale_42": "ArgumentParser whose help is the script docstring's first line." | kind=entity | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L42 | neighbors=[parser()] | lang=en
+- "shared_bpyx_rationale_47": "CLI entry: parse args after '--', run, emit JSON. Exit 1 on failure." | kind=entity | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L47 | neighbors=[cli()] | lang=en
+- "shared_bpyx_rationale_63": "--objects / --save flags shared by most scripts." | kind=entity | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L63 | neighbors=[add_common()] | lang=en
+- "shared_bpyx_rationale_72": "Resolve names -> objects. No names: selected of `types`, else all visible of `ty" | kind=entity | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L72 | neighbors=[objects()] | lang=en
+- "shared_bpyx_rationale_84": "Leave edit/sculpt/pose modes; most data API work needs OBJECT mode." | kind=entity | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L84 | neighbors=[object_mode()] | lang=en
 
 ## Instructions
 

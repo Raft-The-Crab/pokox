@@ -1,4 +1,4 @@
-# Node Description Batch 16 of 207
+# Node Description Batch 16 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -17,6 +17,17 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "fishcenter_fish_props_hut_body": "hut_body()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L771 | neighbors=[fish_props.py, boat_house(), lash(), plank_floor(), pole(), woven_wall()]
+- "fishcenter_fish_props_motor_boat": "motor_boat()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L1166 | neighbors=[fish_props.py, barrel(), boat_hull(), lerp(), paint_hull(), rod()]
+- "fishcenter_fish_props_palm": "palm()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L323 | neighbors=[fish_props.py, hammock_palms(), ball(), lerp(), smooth(), palm_planter()]
+- "fishcenter_fish_props_quest_board": "quest_board()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L1012 | neighbors=[fish_props.py, ball(), crate(), lash(), pole(), rope()]
+- "godot_ablation_report": "ablation_report.py" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/godot/ablation_report.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, analyse(), image_change(), luminance(), main()]
+- "hermes_test_bootstrap_bootstrap": "_bootstrap()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/hermes/test_bootstrap.py:L24 | neighbors=[test_bootstrap.py, _load(), .test_contains_using_superpowers_body(), .test_frontmatter_stripped(), .test_marker_and_wrapper(), .test_skill_view_guidance_present()]
+- "hermes_test_plugin": "test_plugin.py" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/hermes/test_plugin.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, _fire_pre_llm(), _load_plugin(), TestBootstrapInjection, TestLayoutResolution]
+- "input_action_map_bindings_conflict": "bindings_conflict()" | kind=code-symbol | source=mute/src/input/action_map.cpp:L75 | neighbors=[action_map.cpp, add_binding(), is_axis_device(), sign_of(), validate_binding(), conflicts()]
+- "integration_config_file_test_head": "head()" | kind=code-symbol | source=engine/foundation/tests/integration/config_file_test.cpp:L20 | neighbors=[config_file_test.cpp, put_arr(), put_b(), put_map(), put_n(), put_t()]
+- "integration_config_file_test_test_config": "test_config()" | kind=code-symbol | source=engine/foundation/tests/integration/config_file_test.cpp:L170 | neighbors=[config_file_test.cpp, main(), put_bool(), put_kv(), put_map(), put_t()]
+- "integration_test_mute_console_x11": "test_mute_console_x11.py" | kind=code-symbol | source=engine/render/tests/integration/test_mute_console_x11.py:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, 668ca72 Wait for X11 console input read…, 6d9948d Re-resolve X11 demo window duri…, cb2a354 Re-assert window focus in X11 c…, d6139c3 Fix X11 test click helper argum…, e624dc7 Click console input before each…]
 - "medievalbattle_battle_map_field": "field()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L382 | neighbors=[battle_map.py, build(), face(), Hm(), place(), reserve()]
 - "medievalbattle_battle_map_keep": "keep()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L296 | neighbors=[battle_map.py, build(), courtyard(), Hm(), place(), reserve()]
 - "medievalbattle_battle_props_ashlar": "ashlar()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L103 | neighbors=[battle_props.py, curtain_wall(), donjon_face(), gatehouse(), parapet_front(), running-bond ashlar panel in the XY pla…]
@@ -38,7 +49,6 @@ one-sentence description — no prose, no markdown fences.
 - "onsenvillage_onsen_props_paper_lantern": "paper_lantern()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L244 | neighbors=[onsen_props.py, bath_pavilion(), house(), noodle_stall(), pagoda(), paper_lantern_post()]
 - "onsenvillage_onsen_props_storey_walls": "storey_walls()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L223 | neighbors=[onsen_props.py, house(), pagoda(), four plaster walls of one storey with c…, doorway(), frame_storey()]
 - "package_package": "package.cpp" | kind=code-symbol | source=mute/src/package/package.cpp:L1 | neighbors=[5edd00c Fix MUT-21/22 audit defects in …, c7e951a Add MUT-21 package, import and …, dump_lockfile(), inner_position(), name(), parse_import_spec()]
-- "parser_declaration": "declaration.cpp" | kind=code-symbol | source=mute/src/parser/declaration.cpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, decl_fail(), decl_quoted(), DeclarationParser, Depth(), dump_declaration_ast()]
 - "petsim_pet_map_path_d": "path_d()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L219 | neighbors=[pet_map.py, breakables(), candy(), crystal(), hub(), meadow()]
 - "petsim_pet_props_egg": "egg()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L154 | neighbors=[pet_props.py, egg_prof(), ell(), lift(), soft(), star_poly()]
 - "petsim_pet_props_pill": "pill()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L100 | neighbors=[pet_props.py, giant_donut(), pet_shop(), puffpaw(), capsule from a to b (rounded ends), star_lamp()]
@@ -47,16 +57,6 @@ one-sentence description — no prose, no markdown fences.
 - "plusspeed_plus_props_v3_cyl_v": "cyl_v()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v3.py:L26 | neighbors=[plus_props_v3.py, barrel(), hatchery(), lamp_pillar(), potion(), rebirth_altar()]
 - "plusspeed_plus_props_v3_hatchery": "hatchery()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v3.py:L159 | neighbors=[plus_props_v3.py, bulbs_frame(), chamfer_block(), cyl_v(), framed_panel(), octo()]
 - "scripts_bake_action": "bake_action.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-animation/scripts/bake_action.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, _assign(), list_actions(), _mute(), _root_motion()]
-- "scripts_batch_process": "batch_process.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-pipeline-automation/scripts/batch_process.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, gather(), inventory(), load(), _module()]
-- "scripts_build_pbr_material": "build_pbr_material.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-pbr-materials/scripts/build_pbr_material.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, classify(), _find_textures(), _gltf_output_group(), run()]
-- "scripts_garment_run": "run()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-clothing/scripts/garment.py:L201 | neighbors=[garment.py, _drape(), _hide_body(), penetration(), _region(), _shell()]
-- "scripts_generate_report_main": "main()" | kind=code-symbol | source=.agents/skills/skills-main/play/play-policy-insights/scripts/generate_report.py:L668 | neighbors=[generate_report.py, aggregate_findings(), load_json(), render_finding_card(), render_table(), run_scraper()]
-- "scripts_kit_check": "kit_check.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-environment-kits/scripts/kit_check.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, _fix(), _on_grid(), _pivot_target(), run()]
-- "scripts_lightning": "lightning.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/lightning.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, _bolt_points(), _clear(), _curve(), _envelope()]
-- "scripts_loop_check": "loop_check.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-animation/scripts/loop_check.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, _check(), _diff(), _poses(), run()]
-- "scripts_precipitation_build_tree": "build_tree()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/precipitation.py:L102 | neighbors=[precipitation.py, _iface(), _T, .math(), .n(), .out()]
-- "scripts_retarget": "retarget.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-animation/scripts/retarget.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, auto_map(), _parts(), _rot(), run()]
-- "scripts_roblox_materials": "roblox_materials.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/roblox_materials.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, column_of(), mat_for(), preview(), resolve()]
 
 ## Instructions
 

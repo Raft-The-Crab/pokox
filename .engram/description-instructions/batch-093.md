@@ -1,4 +1,4 @@
-# Node Description Batch 94 of 207
+# Node Description Batch 94 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -12,60 +12,51 @@ describing what it is or does. Use only the provided context.
 For a code symbol (kind=code-symbol — a function, class, or constant),
 describe what the function/symbol does based on its name, source location
 and neighbors — e.g. "Resolves the configured ontology profile from graphify.yaml.".
-For an entity node (any other kind — e.g. a person, place, event, object),
-describe what the entity is and its role, grounded in its type, its
-relations (neighbors) and the provided citations/evidence — e.g.
-"Lady Carfax, a wealthy heiress who disappears en route to Lausanne.".
-Ground entity descriptions in the citations/evidence when present; do not
-speculate beyond the context, so a node with no supporting context may be
-left out of the reply.
-LANGUAGE: each entry has a `lang=` marker giving the language of its source.
-Write that entry's description in EXACTLY that language. Do not translate to
-a single common language — match each node's source language individually.
+Write every description in English (en). Do not switch languages.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "brick_props_brick_rationale_155": "strength-sim weight station: rubber mat, flat bench, rack uprights with J-hooks," | kind=entity | source=.agents/skills/Voxel Pack/stud/examples/brick/props_brick.py:L155 | neighbors=[gym(), Grid] | lang=en
-- "brick_props_brick_rationale_184": "sleek long sword after a user reference (R=12, ~29 studs): long thin blade with" | kind=entity | source=.agents/skills/Voxel Pack/stud/examples/brick/props_brick.py:L184 | neighbors=[crimson_blade(), Grid] | lang=en
-- "brick_props_brick_rationale_231": "crystal sword after a user reference (R=16, ~22 studs): broad faceted lilac-whit" | kind=entity | source=.agents/skills/Voxel Pack/stud/examples/brick/props_brick.py:L231 | neighbors=[void_crystal_blade(), Grid] | lang=pt
-- "brick_props_brick_rationale_29": "tapered trunk: radius r0 at the base -> r1 at the top, root flare at the bottom," | kind=entity | source=.agents/skills/Voxel Pack/stud/examples/brick/props_brick.py:L29 | neighbors=[trunk(), Grid] | lang=en
-- "brick_props_brick_rationale_313": "side-profile polygon (x, y fine coords) extruded through |Z| < z: the way to dra" | kind=entity | source=.agents/skills/Voxel Pack/stud/examples/brick/props_brick.py:L313 | neighbors=[poly(), Grid] | lang=en
-- "brick_props_brick_rationale_327": "thick polyline (bow limbs, strings, thorns) through |Z| < z." | kind=entity | source=.agents/skills/Voxel Pack/stud/examples/brick/props_brick.py:L327 | neighbors=[stroke(), Grid] | lang=en
-- "brick_props_brick_rationale_342": "dark thorn bow (R=8): limbs curling back with silver inlay, thorn spikes off the" | kind=entity | source=.agents/skills/Voxel Pack/stud/examples/brick/props_brick.py:L342 | neighbors=[thorn_bow(), Grid] | lang=en
-- "brick_props_brick_rationale_370": "silver + gold sniper rifle, muzzle up: barrel, black muzzle brake with a glow sl" | kind=entity | source=.agents/skills/Voxel Pack/stud/examples/brick/props_brick.py:L370 | neighbors=[sniper(), Grid] | lang=en
-- "brick_props_brick_rationale_393": "white + silver sci-fi pistol, muzzle up: stepped slide with a dark slot of glowi" | kind=entity | source=.agents/skills/Voxel Pack/stud/examples/brick/props_brick.py:L393 | neighbors=[scifi_pistol(), Grid] | lang=en
-- "brick_props_brick_rationale_409": "dark assault rifle, muzzle up: body with rail teeth, orange stripes, blue checke" | kind=entity | source=.agents/skills/Voxel Pack/stud/examples/brick/props_brick.py:L409 | neighbors=[assault_rifle(), Grid] | lang=en
-- "brick_props_brick_rationale_435": "weapon traced 1:1 from a user reference (refs/<name>.npz made by scripts/trace_r" | kind=entity | source=.agents/skills/Voxel Pack/stud/examples/brick/props_brick.py:L435 | neighbors=[traced(), Grid] | lang=en
-- "brick_props_brick_rationale_47": "mossy ground disc with stepped edge + a few grass tufts so the prop sits on the" | kind=entity | source=.agents/skills/Voxel Pack/stud/examples/brick/props_brick.py:L47 | neighbors=[grass_base(), Grid] | lang=en
-- "brick_props_brick_rocks": "rocks()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/props_brick.py:L88 | neighbors=[props_brick.py, grass_base()] | lang=en
-- "brick_props_brick_traced": "traced()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/props_brick.py:L434 | neighbors=[props_brick.py, weapon traced 1:1 from a user reference…] | lang=en
-- "brick_props_brick_void_crystal_blade": "void_crystal_blade()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/props_brick.py:L230 | neighbors=[props_brick.py, crystal sword after a user reference (R…] | lang=en
-- "brick_props_brick_well": "well()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/props_brick.py:L97 | neighbors=[props_brick.py, grass_base()] | lang=en
-- "brick_scarecrow_king_brick_axd": "axd()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scarecrow_king_brick.py:L229 | neighbors=[scarecrow_king_brick.py, chaind()] | lang=en
-- "brick_scarecrow_king_brick_b": "B()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scarecrow_king_brick.py:L483 | neighbors=[scarecrow_king_brick.py, render_all()] | lang=en
-- "brick_scarecrow_king_brick_bx": "bx()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scarecrow_king_brick.py:L53 | neighbors=[scarecrow_king_brick.py, patch()] | lang=en
-- "brick_scarecrow_king_brick_capd": "capd()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scarecrow_king_brick.py:L55 | neighbors=[scarecrow_king_brick.py, chaind()] | lang=en
-- "brick_scarecrow_king_brick_exposed": "exposed()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scarecrow_king_brick.py:L429 | neighbors=[scarecrow_king_brick.py, build()] | lang=en
-- "brick_scarecrow_king_brick_fan": "fan()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scarecrow_king_brick.py:L189 | neighbors=[scarecrow_king_brick.py, tuft()] | lang=en
-- "brick_scarecrow_king_brick_frame": "frame()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scarecrow_king_brick.py:L22 | neighbors=[scarecrow_king_brick.py, switch the coordinate arrays every shap…] | lang=en
-- "brick_scarecrow_king_brick_h3": "h3()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scarecrow_king_brick.py:L65 | neighbors=[scarecrow_king_brick.py, wood()] | lang=en
-- "brick_scarecrow_king_brick_lin": "lin()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scarecrow_king_brick.py:L428 | neighbors=[scarecrow_king_brick.py, build()] | lang=en
-- "brick_scarecrow_king_brick_newid": "newid()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scarecrow_king_brick.py:L72 | neighbors=[scarecrow_king_brick.py, patch()] | lang=en
-- "brick_scarecrow_king_brick_render_all": "render_all()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scarecrow_king_brick.py:L484 | neighbors=[scarecrow_king_brick.py, B()] | lang=en
-- "brick_scorpion_king_brick_b": "B()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scorpion_king_brick.py:L270 | neighbors=[scorpion_king_brick.py, render_all()] | lang=en
-- "brick_scorpion_king_brick_ball": "ball()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scorpion_king_brick.py:L323 | neighbors=[scorpion_king_brick.py, sd_ell()] | lang=en
-- "brick_scorpion_king_brick_chain": "chain()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scorpion_king_brick.py:L44 | neighbors=[scorpion_king_brick.py, cap()] | lang=en
-- "brick_scorpion_king_brick_exposed": "exposed()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scorpion_king_brick.py:L216 | neighbors=[scorpion_king_brick.py, build()] | lang=en
-- "brick_scorpion_king_brick_lin": "lin()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scorpion_king_brick.py:L215 | neighbors=[scorpion_king_brick.py, build()] | lang=en
-- "brick_scorpion_king_brick_newid": "newid()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scorpion_king_brick.py:L52 | neighbors=[scorpion_king_brick.py, seg()] | lang=en
-- "brick_scorpion_king_brick_render_all": "render_all()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scorpion_king_brick.py:L271 | neighbors=[scorpion_king_brick.py, B()] | lang=en
-- "brick_shop_brick": "shop_brick.py" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/shop_brick.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …] | lang=en
-- "brick_storm_griffin_brick_arm": "arm()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/storm_griffin_brick.py:L321 | neighbors=[storm_griffin_brick.py, unit()] | lang=en
-- "brick_storm_griffin_brick_b": "B()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/storm_griffin_brick.py:L451 | neighbors=[storm_griffin_brick.py, render_all()] | lang=en
-- "brick_storm_griffin_brick_chain": "chain()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/storm_griffin_brick.py:L61 | neighbors=[storm_griffin_brick.py, chain_t()] | lang=en
-- "brick_storm_griffin_brick_chain_t": "chain_t()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/storm_griffin_brick.py:L50 | neighbors=[storm_griffin_brick.py, chain()] | lang=en
-- "brick_storm_griffin_brick_exposed": "exposed()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/storm_griffin_brick.py:L394 | neighbors=[storm_griffin_brick.py, build()] | lang=en
+- "brainstorm_server_server_test_assert": "assert" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/server.test.js:L16 | neighbors=[server.test.js, serverStartedMessage()]
+- "brainstorm_server_server_test_cleanup": "cleanup()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/server.test.js:L27 | neighbors=[server.test.js, runTests()]
+- "brainstorm_server_server_test_ensuresymlinkworks": "ensureSymlinkWorks()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/server.test.js:L116 | neighbors=[server.test.js, skip()]
+- "brainstorm_server_server_test_startserver": "startServer()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/server.test.js:L65 | neighbors=[server.test.js, runTests()]
+- "brainstorm_server_server_test_waitfor": "waitFor()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/server.test.js:L42 | neighbors=[server.test.js, sleep()]
+- "brainstorm_server_server_test_waitforserver": "waitForServer()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/server.test.js:L71 | neighbors=[server.test.js, runTests()]
+- "brick_abyssal_angler_brick_b": "B()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/abyssal_angler_brick.py:L347 | neighbors=[abyssal_angler_brick.py, render_all()]
+- "brick_abyssal_angler_brick_cap": "cap()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/abyssal_angler_brick.py:L43 | neighbors=[abyssal_angler_brick.py, chain()]
+- "brick_abyssal_angler_brick_cell": "cell()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/abyssal_angler_brick.py:L62 | neighbors=[abyssal_angler_brick.py, ix()]
+- "brick_abyssal_angler_brick_chain": "chain()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/abyssal_angler_brick.py:L48 | neighbors=[abyssal_angler_brick.py, cap()]
+- "brick_abyssal_angler_brick_exposed": "exposed()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/abyssal_angler_brick.py:L289 | neighbors=[abyssal_angler_brick.py, build()]
+- "brick_abyssal_angler_brick_front_z": "front_z()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/abyssal_angler_brick.py:L53 | neighbors=[abyssal_angler_brick.py, ix()]
+- "brick_abyssal_angler_brick_lin": "lin()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/abyssal_angler_brick.py:L288 | neighbors=[abyssal_angler_brick.py, build()]
+- "brick_abyssal_angler_brick_lip_cell": "lip_cell()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/abyssal_angler_brick.py:L119 | neighbors=[abyssal_angler_brick.py, ix()]
+- "brick_abyssal_angler_brick_put": "put()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/abyssal_angler_brick.py:L32 | neighbors=[abyssal_angler_brick.py, tooth()]
+- "brick_abyssal_angler_brick_render_all": "render_all()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/abyssal_angler_brick.py:L348 | neighbors=[abyssal_angler_brick.py, B()]
+- "brick_abyssal_angler_brick_side_x": "side_x()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/abyssal_angler_brick.py:L56 | neighbors=[abyssal_angler_brick.py, ix()]
+- "brick_abyssal_angler_brick_tooth": "tooth()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/abyssal_angler_brick.py:L110 | neighbors=[abyssal_angler_brick.py, put()]
+- "brick_abyssal_angler_brick_top_y": "top_y()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/abyssal_angler_brick.py:L59 | neighbors=[abyssal_angler_brick.py, ix()]
+- "brick_arcane_train_brick_disc_x": "disc_x()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/arcane_train_brick.py:L41 | neighbors=[arcane_train_brick.py, wheel()]
+- "brick_arcane_train_brick_exposed": "exposed()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/arcane_train_brick.py:L165 | neighbors=[arcane_train_brick.py, build()]
+- "brick_arcane_train_brick_lin": "lin()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/arcane_train_brick.py:L164 | neighbors=[arcane_train_brick.py, build()]
+- "brick_arcane_train_brick_newid": "newid()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/arcane_train_brick.py:L30 | neighbors=[arcane_train_brick.py, put()]
+- "brick_arcane_train_brick_put": "put()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/arcane_train_brick.py:L32 | neighbors=[arcane_train_brick.py, newid()]
+- "brick_arcane_train_brick_wheel": "wheel()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/arcane_train_brick.py:L263 | neighbors=[arcane_train_brick.py, disc_x()]
+- "brick_bone_hydra_brick_b": "B()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/bone_hydra_brick.py:L467 | neighbors=[bone_hydra_brick.py, render_all()]
+- "brick_bone_hydra_brick_chain": "chain()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/bone_hydra_brick.py:L57 | neighbors=[bone_hydra_brick.py, cap()]
+- "brick_bone_hydra_brick_chest_z": "chest_z()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/bone_hydra_brick.py:L129 | neighbors=[bone_hydra_brick.py, on_chest()]
+- "brick_bone_hydra_brick_crack": "crack()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/bone_hydra_brick.py:L378 | neighbors=[bone_hydra_brick.py, full()]
+- "brick_bone_hydra_brick_dil": "dil()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/bone_hydra_brick.py:L67 | neighbors=[bone_hydra_brick.py, head()]
+- "brick_bone_hydra_brick_exposed": "exposed()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/bone_hydra_brick.py:L414 | neighbors=[bone_hydra_brick.py, build()]
+- "brick_bone_hydra_brick_j2l": "J2L()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/bone_hydra_brick.py:L529 | neighbors=[bone_hydra_brick.py, head()]
+- "brick_bone_hydra_brick_keep_main": "keep_main()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/bone_hydra_brick.py:L345 | neighbors=[bone_hydra_brick.py, full()]
+- "brick_bone_hydra_brick_lin": "lin()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/bone_hydra_brick.py:L413 | neighbors=[bone_hydra_brick.py, build()]
+- "brick_bone_hydra_brick_on_chest": "on_chest()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/bone_hydra_brick.py:L138 | neighbors=[bone_hydra_brick.py, chest_z()]
+- "brick_bone_hydra_brick_tail_at": "tail_at()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/bone_hydra_brick.py:L208 | neighbors=[bone_hydra_brick.py, nrm()]
+- "brick_bone_hydra_brick_unrec": "unrec()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/bone_hydra_brick.py:L31 | neighbors=[bone_hydra_brick.py, head()]
+- "brick_ember_dragon_brick_b": "B()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/ember_dragon_brick.py:L388 | neighbors=[ember_dragon_brick.py, render_all()]
+- "brick_ember_dragon_brick_chain": "chain()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/ember_dragon_brick.py:L57 | neighbors=[ember_dragon_brick.py, sd_chain()]
+- "brick_ember_dragon_brick_exposed": "exposed()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/ember_dragon_brick.py:L330 | neighbors=[ember_dragon_brick.py, build()]
 
 ## Instructions
 

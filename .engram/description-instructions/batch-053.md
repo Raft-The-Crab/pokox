@@ -1,4 +1,4 @@
-# Node Description Batch 54 of 207
+# Node Description Batch 54 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -17,6 +17,27 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "scripts_analyze_describe_rule": "describe_rule()" | kind=code-symbol | source=.agents/skills/skills-main/performance/r8-analyzer/scripts/analyze.py:L38 | neighbors=[analyze.py, analyze(), rule_origin(), Returns a rule's source text, origin, a…]
+- "scripts_annotate_plan": "annotate_plan.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/annotate_plan.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, font(), main()]
+- "scripts_bake_maps_curvature_from_normal": "_curvature_from_normal()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-texture-baking/scripts/bake_maps.py:L122 | neighbors=[bake_maps.py, _blur(), Divergence of the tangent normal field:…, run()]
+- "scripts_bind_mesh_heat_scale": "_heat_scale()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-character-rigging/scripts/bind_mesh.py:L71 | neighbors=[bind_mesh.py, _height(), Factor that brings the rig to ~1.8 m fo…, run()]
+- "scripts_bind_mesh_proxy_weights": "_proxy_weights()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-character-rigging/scripts/bind_mesh.py:L38 | neighbors=[bind_mesh.py, _ctx(), _parent(), run()]
+- "scripts_bld_grid_fbox": ".fbox()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/scripts/bld.py:L34 | neighbors=[Grid, _c(), ._sl(), .window()]
+- "scripts_bld_grid_fshape": ".fshape()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/scripts/bld.py:L40 | neighbors=[Grid, .blob(), .trace(), organic shape in fine bricks: fn(x, y, …]
+- "scripts_bld_grid_window": ".window()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/scripts/bld.py:L89 | neighbors=[Grid, .fbox(), .fcut(), front-facing window in fine bricks; zf …]
+- "scripts_blocks_blockprop_put": ".put()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/blocks.py:L29 | neighbors=[BlockProp, Block, rotm(), nest another BlockProp (e.g. a lamp on …]
+- "scripts_blocks_transformed": "transformed()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/blocks.py:L37 | neighbors=[blocks.py, world-space copies of a prop's blocks (…, Block, rotm()]
+- "scripts_blocks_write_rbxmx": "write_rbxmx()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/blocks.py:L156 | neighbors=[blocks.py, groups: {folder name: [Block, ...]} in …, _f(), rgb_of()]
+- "scripts_bpyx_cli": "cli()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/_bpyx.py:L46 | neighbors=[_bpyx.py, argv(), emit(), CLI entry: parse args after '--', run, …]
+- "scripts_brick_rig_assign": "assign()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/scripts/brick_rig.py:L29 | neighbors=[brick_rig.py, export(), limb(), int label per voxel (index into RIG, -1…]
+- "scripts_brick_rig_quads": "_quads()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/scripts/brick_rig.py:L74 | neighbors=[brick_rig.py, export(), _greedy2d(), greedy quads of the exposed faces of ce…]
+- "scripts_brick_sheet": "brick_sheet.py" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/scripts/brick_sheet.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, key(), Contact sheet of the brick pipeline's *…]
+- "scripts_build_pbr_material_run": "run()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-pbr-materials/scripts/build_pbr_material.py:L102 | neighbors=[build_pbr_material.py, _find_textures(), _gltf_output_group(), _srgb_to_lin()]
+- "scripts_decal_run": "run()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-texturing/scripts/decal.py:L72 | neighbors=[decal.py, _gaps(), _grid(), _material()]
+- "scripts_generate_report_clean_severity": "clean_severity()" | kind=code-symbol | source=.agents/skills/skills-main/play/play-policy-insights/scripts/generate_report.py:L154 | neighbors=[generate_report.py, aggregate_findings(), Robustly cleans severity strings by rem…, render_finding_card()]
+- "scripts_generate_report_load_json": "load_json()" | kind=code-symbol | source=.agents/skills/skills-main/play/play-policy-insights/scripts/generate_report.py:L238 | neighbors=[generate_report.py, aggregate_findings(), main(), Loads JSON from a file if it exists.]
+- "scripts_generate_report_strip_emojis": "strip_emojis()" | kind=code-symbol | source=.agents/skills/skills-main/play/play-policy-insights/scripts/generate_report.py:L56 | neighbors=[generate_report.py, main(), Removes emoji characters from a string., render_finding_card()]
+- "scripts_gn_builder_build": "build()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-geometry-nodes/scripts/gn_builder.py:L80 | neighbors=[gn_builder.py, _layout(), _sock(), run()]
 - "scripts_groom_build_cards": "build_cards()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-hair-grooming/scripts/groom.py:L162 | neighbors=[groom.py, _evaluated(), _spaced(), run()]
 - "scripts_kit_check_fix": "_fix()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-environment-kits/scripts/kit_check.py:L53 | neighbors=[kit_check.py, _pivot_target(), Apply rotation+scale, then move the ori…, run()]
 - "scripts_orchestrator_extract_dotnet_android_details": "extract_dotnet_android_details()" | kind=code-symbol | source=.agents/skills/skills-main/play/play-policy-insights/scripts/orchestrator.py:L653 | neighbors=[orchestrator.py, determine_primary_identity(), _msbuild_property(), Finds the .NET MAUI / .NET for Android …]
@@ -36,27 +57,6 @@ one-sentence description — no prose, no markdown fences.
 - "scripts_pro_lib_voronoi_cells": "voronoi_cells()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L296 | neighbors=[pro_lib.py, jittered-grid Voronoi cells clipped to …, clip_half(), clip_rect()]
 - "scripts_prop_studio": "prop_studio.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/prop_studio.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, arg(), setup()]
 - "scripts_qa_check_material_issues": "_material_issues()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-asset-qa/scripts/qa_check.py:L54 | neighbors=[qa_check.py, _feeds(), [(severity_is_error, message)] for slot…, run()]
-- "scripts_retarget_auto_map": "auto_map()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-animation/scripts/retarget.py:L71 | neighbors=[retarget.py, _parts(), _split(), run()]
-- "scripts_retarget_run": "run()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-animation/scripts/retarget.py:L90 | neighbors=[retarget.py, auto_map(), _parts(), _rot()]
-- "scripts_retarget_split": "_split()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-animation/scripts/retarget.py:L41 | neighbors=[retarget.py, auto_map(), _parts(), mixamorig:LeftUpLeg' -> ('upleg', 'L');…]
-- "scripts_roblox_export_r_pos": "r_pos()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/roblox_export.py:L116 | neighbors=[roblox_export.py, at(), big_part(), look()]
-- "scripts_roblox_materials_resolve": "resolve()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/roblox_materials.py:L67 | neighbors=[roblox_materials.py, preview(), material for palette ramp `col` on obje…, mat_for()]
-- "scripts_scanner_collect_target_files": "collect_target_files()" | kind=code-symbol | source=.agents/skills/skills-main/play/play-policy-insights/scripts/scanner.py:L60 | neighbors=[scanner.py, get_scanner_config(), get_supported_extensions(), Performs a single master walk to catego…]
-- "scripts_scanner_perform_scan": "perform_scan()" | kind=code-symbol | source=.agents/skills/skills-main/play/play-policy-insights/scripts/scanner.py:L228 | neighbors=[scanner.py, get_scanner_config(), _identify_semantic_files(), Orchestrates the parallel scanning of i…]
-- "scripts_scatter_run": "run()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-environment-kits/scripts/scatter.py:L146 | neighbors=[scatter.py, build_tree(), _instances(), _layer_coll()]
-- "scripts_scene_mood_fog": "_fog()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-time-of-day/scripts/scene_mood.py:L260 | neighbors=[scene_mood.py, _math(), Box volume around scene + camera. Densi…, run()]
-- "scripts_shapekeys_run": "run()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-facial-shapekeys/scripts/shapekeys.py:L58 | neighbors=[shapekeys.py, _co(), _get(), _keys()]
-- "scripts_smart_material_apply_mat": "_apply_mat()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-texturing/scripts/smart_material.py:L222 | neighbors=[smart_material.py, _image_node(), _src(), run()]
-- "scripts_studlib_limb": "limb()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/scripts/studlib.py:L147 | neighbors=[studlib.py, box(), frame(), Box from point a to point c (w x d cros…]
-- "scripts_studlib_wedge": "wedge()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/scripts/studlib.py:L99 | neighbors=[studlib.py, ramp(), Ramp (Roblox WedgePart): full height at…, _emit()]
-- "scripts_surface_weather_g_link": ".link()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/surface_weather.py:L35 | neighbors=[build_group(), _G, .set(), _snow_tree()]
-- "scripts_surface_weather_g_math": ".math()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/surface_weather.py:L50 | neighbors=[build_group(), _G, .n(), _snow_tree()]
-- "scripts_surface_weather_vertex_mask": "_vertex_mask()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/surface_weather.py:L298 | neighbors=[surface_weather.py, Color attribute ENV_Weather (R puddle, …, run(), .noise()]
-- "scripts_template_engine_parserframe": "_ParserFrame" | kind=code-symbol | source=.agents/skills/skills-main/play/play-policy-insights/scripts/template_engine.py:L153 | neighbors=[template_engine.py, compile_template(), .__init__(), Helper class representing an active sta…]
-- "scripts_texel_density_measure": "_measure()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-retopology-uv/scripts/texel_density.py:L52 | neighbors=[texel_density.py, _islands(), _uv_area(), run()]
-- "scripts_toon_setup_g_math": ".math()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-stylized-npr/scripts/toon_setup.py:L54 | neighbors=[build_group(), _G, .n(), .step()]
-- "scripts_toon_setup_g_step": ".step()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-stylized-npr/scripts/toon_setup.py:L66 | neighbors=[build_group(), _G, .math(), .n()]
-- "scripts_toon_setup_lin": "_lin()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-stylized-npr/scripts/toon_setup.py:L31 | neighbors=[toon_setup.py, _line_art(), _outline_material(), run()]
 
 ## Instructions
 

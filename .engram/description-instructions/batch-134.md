@@ -1,4 +1,4 @@
-# Node Description Batch 135 of 207
+# Node Description Batch 135 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -12,51 +12,60 @@ describing what it is or does. Use only the provided context.
 For a code symbol (kind=code-symbol — a function, class, or constant),
 describe what the function/symbol does based on its name, source location
 and neighbors — e.g. "Resolves the configured ontology profile from graphify.yaml.".
-Write every description in English (en). Do not switch languages.
+For an entity node (any other kind — e.g. a person, place, event, object),
+describe what the entity is and its role, grounded in its type, its
+relations (neighbors) and the provided citations/evidence — e.g.
+"Lady Carfax, a wealthy heiress who disappears en route to Lausanne.".
+Ground entity descriptions in the citations/evidence when present; do not
+speculate beyond the context, so a node with no supporting context may be
+left out of the reply.
+LANGUAGE: each entry has a `lang=` marker giving the language of its source.
+Write that entry's description in EXACTLY that language. Do not translate to
+a single common language — match each node's source language individually.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "tests_test_package_test_doctor_runs_through_the_wrapper_on_a_bare_system_python": "test_doctor_runs_through_the_wrapper_on_a_bare_system_python()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_package.py:L30 | neighbors=[test_package.py, system_python()]
-- "tests_test_package_test_effect_verify_reports_missing_evidence_and_fails": "test_effect_verify_reports_missing_evidence_and_fails()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_package.py:L159 | neighbors=[test_package.py, vfx()]
-- "tests_test_package_test_examples_add_does_not_overwrite_without_force": "test_examples_add_does_not_overwrite_without_force()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_package.py:L122 | neighbors=[test_package.py, vfx()]
-- "tests_test_package_test_examples_list_and_show_without_a_workspace": "test_examples_list_and_show_without_a_workspace()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_package.py:L141 | neighbors=[test_package.py, vfx()]
-- "tests_test_package_test_rubric_and_layer_schema_commands": "test_rubric_and_layer_schema_commands()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_package.py:L152 | neighbors=[test_package.py, vfx()]
-- "tests_test_privacy_attribution_allowed": "attribution_allowed()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_privacy.py:L55 | neighbors=[test_privacy.py, text_hits()]
-- "tests_test_privacy_files": "files()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_privacy.py:L42 | neighbors=[test_privacy.py, test_no_file_in_the_package_leaks_perso…]
-- "tests_test_privacy_publisher_allowed": "publisher_allowed()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_privacy.py:L48 | neighbors=[test_privacy.py, text_hits()]
-- "tests_test_privacy_test_maintainer_private_terms_when_configured": "test_maintainer_private_terms_when_configured()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_privacy.py:L163 | neighbors=[test_privacy.py, private_terms()]
-- "tests_test_qa_test_clean_cube_passes": "test_clean_cube_passes()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_qa.py:L13 | neighbors=[test_qa.py, _qa()]
-- "tests_test_qa_test_detects_floating_parts_and_objects": "test_detects_floating_parts_and_objects()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_qa.py:L41 | neighbors=[test_qa.py, _qa()]
-- "tests_test_qa_test_detects_inverted_and_inconsistent_normals_and_back_to_back": "test_detects_inverted_and_inconsistent_normals_and_back_to_back()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_qa.py:L63 | neighbors=[test_qa.py, _qa()]
-- "tests_test_qa_test_detects_zfighting_between_objects_and_within_mesh": "test_detects_zfighting_between_objects_and_within_mesh()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_qa.py:L22 | neighbors=[test_qa.py, _qa()]
-- "tests_test_qa_test_enclosed_part_is_not_floating": "test_enclosed_part_is_not_floating()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_qa.py:L56 | neighbors=[test_qa.py, _qa()]
-- "tests_test_qa_test_mirrored_object_is_not_inside_out_and_empty_mesh_is_flagged": "test_mirrored_object_is_not_inside_out_and_empty_mesh_is_flagged()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_qa.py:L172 | neighbors=[test_qa.py, _qa()]
-- "tests_test_qa_test_roblox_profile_flags_open_mesh_and_ngons": "test_roblox_profile_flags_open_mesh_and_ngons()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_qa.py:L112 | neighbors=[test_qa.py, _qa()]
-- "tests_test_qa_test_slightly_offset_coplanar_is_zfighting_but_far_is_not": "test_slightly_offset_coplanar_is_zfighting_but_far_is_not()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_qa.py:L31 | neighbors=[test_qa.py, _qa()]
-- "tests_test_qa_test_small_part_far_from_origin_is_not_inside_out": "test_small_part_far_from_origin_is_not_inside_out()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_qa.py:L86 | neighbors=[test_qa.py, _qa()]
-- "tests_test_qa_test_stacked_uvs_are_overlap_and_stay_cheap": "test_stacked_uvs_are_overlap_and_stay_cheap()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_qa.py:L94 | neighbors=[test_qa.py, _qa()]
-- "tests_test_qa_test_touching_parts_are_not_floating": "test_touching_parts_are_not_floating()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_qa.py:L48 | neighbors=[test_qa.py, _qa()]
-- "tests_test_rendering_camera": "_camera()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_rendering.py:L8 | neighbors=[test_rendering.py, test_render_stills_cycles_eevee_workben…]
-- "tests_test_rendering_test_render_stills_cycles_eevee_workbench": "test_render_stills_cycles_eevee_workbench()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_rendering.py:L16 | neighbors=[test_rendering.py, _camera()]
-- "tests_test_rigging_test_bind_tiny_and_huge_rigs_get_real_weights": "test_bind_tiny_and_huge_rigs_get_real_weights()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_rigging.py:L73 | neighbors=[test_rigging.py, Bone heat fails at mm/km world sizes (a…]
-- "tests_test_rigging_test_rig_check_dense_mesh": "test_rig_check_dense_mesh()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_rigging.py:L54 | neighbors=[test_rigging.py, Issue #11: >= 4000 verts makes the symm…]
-- "tests_test_rigging_test_rigify_pipeline_bind_check_stress": "test_rigify_pipeline_bind_check_stress()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_rigging.py:L20 | neighbors=[test_rigging.py, _humanoid_mesh()]
-- "tests_test_run_wrapper_test_bad_script_traceback": "test_bad_script_traceback()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_run_wrapper.py:L46 | neighbors=[test_run_wrapper.py, run()]
-- "tests_test_run_wrapper_test_bed_empty_string_is_usage_error": "test_bed_empty_string_is_usage_error()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_run_wrapper.py:L114 | neighbors=[test_run_wrapper.py, run()]
-- "tests_test_run_wrapper_test_bed_fits": "test_bed_fits()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_run_wrapper.py:L82 | neighbors=[test_run_wrapper.py, run()]
-- "tests_test_run_wrapper_test_bed_too_small_fails": "test_bed_too_small_fails()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_run_wrapper.py:L89 | neighbors=[test_run_wrapper.py, run()]
-- "tests_test_run_wrapper_test_bed_unknown_printer_is_usage_error": "test_bed_unknown_printer_is_usage_error()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_run_wrapper.py:L105 | neighbors=[test_run_wrapper.py, run()]
-- "tests_test_run_wrapper_test_bed_without_stl_fails": "test_bed_without_stl_fails()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_run_wrapper.py:L99 | neighbors=[test_run_wrapper.py, run()]
-- "tests_test_run_wrapper_test_happy_path": "test_happy_path()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_run_wrapper.py:L23 | neighbors=[test_run_wrapper.py, run()]
-- "tests_test_run_wrapper_test_preview_renders_png": "test_preview_renders_png()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_run_wrapper.py:L74 | neighbors=[test_run_wrapper.py, run()]
-- "tests_test_run_wrapper_test_step_discovered": "test_step_discovered()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_run_wrapper.py:L64 | neighbors=[test_run_wrapper.py, run()]
-- "tests_test_run_wrapper_test_strict_empty_fails": "test_strict_empty_fails()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_run_wrapper.py:L39 | neighbors=[test_run_wrapper.py, run()]
-- "tests_test_run_wrapper_test_strict_watertight": "test_strict_watertight()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_run_wrapper.py:L32 | neighbors=[test_run_wrapper.py, run()]
-- "tests_test_safety_test_a_broken_source_only_blocks_itself": "test_a_broken_source_only_blocks_itself()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_safety.py:L50 | neighbors=[test_safety.py, game()]
-- "tests_test_safety_test_a_build_mirrors_only_its_own_resources": "test_a_build_mirrors_only_its_own_resources()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_safety.py:L339 | neighbors=[test_safety.py, game()]
-- "tests_test_safety_test_a_build_never_replaces_a_resource_another_built_effect_uses": "test_a_build_never_replaces_a_resource_another_built_effect_uses()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_safety.py:L220 | neighbors=[test_safety.py, game()]
-- "tests_test_safety_test_a_full_build_of_an_empty_library_refuses_before_touching_anything": "test_a_full_build_of_an_empty_library_refuses_before_touching_anything()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_safety.py:L42 | neighbors=[test_safety.py, game()]
+- "sugarworks_sugar_props_rationale_132": "belt segment along X: legs, dark belt with ribs, steel side rails, lemon chevron" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L132 | neighbors=[Palette, conveyor()] | lang=en
+- "sugarworks_sugar_props_rationale_152": "scanner arch over the belt: two steel pillars, grape crown, glowing ring + scan" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L152 | neighbors=[Palette, upgrader()] | lang=en
+- "sugarworks_sugar_props_rationale_164": "chocolate melting vat: drum with cream drip rim, glowing mouth facing -X, lollip" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L164 | neighbors=[Palette, collector()] | lang=en
+- "sugarworks_sugar_props_rationale_211": "empty build slot: four lemon corner brackets + a dashed outline, flush on the sl" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L211 | neighbors=[Palette, slot_marker()] | lang=en
+- "sugarworks_sugar_props_rationale_252": "candy-cane street lamp: striped post, hook over -Z, hanging lantern" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L252 | neighbors=[Palette, candy_lamp()] | lang=en
+- "sugarworks_sugar_props_rationale_266": "chocolate-bar bench: segmented seat + back, steel legs; sit side = -Z" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L266 | neighbors=[Palette, choc_bench()] | lang=en
+- "sugarworks_sugar_props_rationale_294": "HERO: the Candy Exchange - drum hall with pilasters and an arched entrance (-Z)," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L294 | neighbors=[Palette, exchange()] | lang=en
+- "sugarworks_sugar_props_rationale_356": "pipe from the collector's side (origin) down to the cash pad 18 studs along -Z," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L356 | neighbors=[Palette, coin_chute()] | lang=en
+- "sugarworks_sugar_props_rationale_366": "flat lemon/choc hazard stripe band along X, flush on the slab" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L366 | neighbors=[Palette, hazard()] | lang=en
+- "sugarworks_sugar_props_rationale_373": "painted mint walkway along Z, cream edge dashes (lifted .02 off the slab: no cop" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L373 | neighbors=[Palette, walkway()] | lang=en
+- "sugarworks_sugar_props_rationale_381": "pallet with tied sugar sacks" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L381 | neighbors=[Palette, candy_sacks()] | lang=en
+- "sugarworks_sugar_props_rationale_391": "three-tier chocolate fountain: pink bowls, chocolate pouring between them, pool" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L391 | neighbors=[Palette, choc_fountain()] | lang=en
+- "sugarworks_sugar_props_rationale_419": "flat peppermint swirl stepping disc" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L419 | neighbors=[Palette, peppermint()] | lang=en
+- "sugarworks_sugar_props_rationale_49": "candy-cane tube: alternating colour segments along a polyline" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L49 | neighbors=[Palette, stripes()] | lang=pt
+- "sugarworks_sugar_props_rationale_62": "the plot slab: tiled concrete, pink border, chamfered edge; top at y 1.2" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L62 | neighbors=[Palette, plot_base()] | lang=en
+- "sugarworks_sugar_props_rationale_72": "low cream wall + pink cap + team-colour glow strip between two posts (posts = fe" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L72 | neighbors=[Palette, fence()] | lang=en
+- "sugarworks_sugar_props_rationale_82": "one fence post: cream pillar + pink gumdrop cap" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L82 | neighbors=[Palette, fence_post()] | lang=en
+- "sugarworks_sugar_props_rationale_89": "owner gate: two striped pillars with gumdrop tops, sign board, glowing claim pad" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L89 | neighbors=[Palette, gate()] | lang=en
+- "sugarworks_sugar_props_slot_marker": "slot_marker()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L210 | neighbors=[sugar_props.py, empty build slot: four lemon corner bra…] | lang=en
+- "sugarworks_sugar_props_spawn_pad": "spawn_pad()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L283 | neighbors=[sugar_props.py, torus()] | lang=en
+- "sugarworks_sugar_props_walkway": "walkway()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L372 | neighbors=[sugar_props.py, painted mint walkway along Z, cream edg…] | lang=en
+- "sugarworks_sugar_props_wrapper_bin": "wrapper_bin()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L427 | neighbors=[sugar_props.py, dome()] | lang=en
+- "superpowers_main_index": "index.js" | kind=code-symbol | source=.agents/skills/superpowers-main/index.js:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …] | lang=en
+- "surfaceholder": "SurfaceHolder" | kind=code-symbol | neighbors=[PokoActivity.java, PokoActivity] | lang=en
+- "surfaceview": "SurfaceView" | kind=code-symbol | neighbors=[PokoActivity.java, PokoActivity] | lang=en
+- "targets_run_dual_target_tests_android_tools": "android_tools()" | kind=code-symbol | source=tools/targets/run_dual_target_tests.py:L156 | neighbors=[run_dual_target_tests.py, android_leg()] | lang=en
+- "targets_run_dual_target_tests_main": "main()" | kind=code-symbol | source=tools/targets/run_dual_target_tests.py:L365 | neighbors=[run_dual_target_tests.py, now()] | lang=en
+- "targets_run_dual_target_tests_msvc_tools": "msvc_tools()" | kind=code-symbol | source=tools/targets/run_dual_target_tests.py:L126 | neighbors=[run_dual_target_tests.py, windows_leg()] | lang=en
+- "targets_run_dual_target_tests_write_log": "write_log()" | kind=code-symbol | source=tools/targets/run_dual_target_tests.py:L91 | neighbors=[run_dual_target_tests.py, run_command()] | lang=en
+- "tests_conftest_bad_script": "bad_script()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/conftest.py:L54 | neighbors=[conftest.py, CadQuery script that raises (fillet rad…] | lang=en
+- "tests_conftest_cli_env": "cli_env()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/conftest.py:L68 | neighbors=[conftest.py, Environment for running `python -m vfxk…] | lang=en
+- "tests_conftest_empty_script": "empty_script()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/conftest.py:L65 | neighbors=[conftest.py, Script that exits 0 without writing any…] | lang=en
+- "tests_conftest_good_script": "good_script()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/conftest.py:L27 | neighbors=[conftest.py, CadQuery script that writes a watertigh…] | lang=en
+- "tests_conftest_project": "project()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/conftest.py:L78 | neighbors=[conftest.py, The shared temporary game project whose…] | lang=en
+- "tests_conftest_step_script": "step_script()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/conftest.py:L40 | neighbors=[conftest.py, CadQuery script that writes both an STL…] | lang=en
+- "tests_conftest_tmp_stl": "tmp_stl()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/conftest.py:L12 | neighbors=[conftest.py, Generate a watertight 10mm cube STL on …] | lang=en
+- "tests_dependency_smoke": "dependency_smoke.cpp" | kind=code-symbol | source=engine/foundation/tests/dependency_smoke.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …] | lang=en
+- "tests_fixtures_unwrap": "unwrap()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/fixtures.py:L56 | neighbors=[fixtures.py, Smart-project UVs so bake/texel tests h…] | lang=en
+- "tests_run_all_fresh": "fresh()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/run_all.py:L32 | neighbors=[run_all.py, main()] | lang=en
+- "tests_run_all_main": "main()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/run_all.py:L49 | neighbors=[run_all.py, fresh()] | lang=en
 
 ## Instructions
 

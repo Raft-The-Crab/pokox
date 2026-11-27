@@ -1,4 +1,4 @@
-# Node Description Batch 184 of 207
+# Node Description Batch 184 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -26,46 +26,46 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "semantic_lower_is_cmp": "is_cmp()" | kind=code-symbol | source=mute/src/semantic/lower.cpp:L79 | neighbors=[lower.cpp] | lang=en
-- "semantic_lower_lowerer_lowerer": ".Lowerer()" | kind=code-symbol | source=mute/src/semantic/lower.cpp:L91 | neighbors=[Lowerer] | lang=en
-- "semantic_lower_pv": "pv()" | kind=code-symbol | source=mute/src/semantic/lower.cpp:L13 | neighbors=[lower.cpp] | lang=en
-- "semantic_lower_v": "v()" | kind=code-symbol | source=mute/src/semantic/lower.cpp:L12 | neighbors=[lower.cpp] | lang=en
-- "semantic_optimize_simplify_control_flow": "simplify_control_flow()" | kind=code-symbol | source=mute/src/semantic/optimize.cpp:L42 | neighbors=[optimize.cpp] | lang=en
-- "semantic_semantic_analyze": "analyze()" | kind=code-symbol | source=mute/src/semantic/semantic.cpp:L419 | neighbors=[semantic.cpp] | lang=en
-- "semantic_semantic_analyzer_analyzer": ".Analyzer()" | kind=code-symbol | source=mute/src/semantic/semantic.cpp:L409 | neighbors=[Analyzer] | lang=en
-- "semantic_semantic_generic_arity": "generic_arity()" | kind=code-symbol | source=mute/src/semantic/semantic.cpp:L63 | neighbors=[semantic.cpp] | lang=en
-- "semantic_semantic_generic_tag": "generic_tag()" | kind=code-symbol | source=mute/src/semantic/semantic.cpp:L68 | neighbors=[semantic.cpp] | lang=en
-- "semantic_semantic_is_assign_op": "is_assign_op()" | kind=code-symbol | source=mute/src/semantic/semantic.cpp:L60 | neighbors=[semantic.cpp] | lang=en
-- "semantic_semantic_scalar": "scalar()" | kind=code-symbol | source=mute/src/semantic/semantic.cpp:L49 | neighbors=[semantic.cpp] | lang=en
-- "semantic_semantic_type_name": "type_name()" | kind=code-symbol | source=mute/src/semantic/semantic.cpp:L35 | neighbors=[semantic.cpp] | lang=en
-- "semantic_ssa_dump_ir": "dump_ir()" | kind=code-symbol | source=mute/src/semantic/ssa.cpp:L196 | neighbors=[ssa.cpp] | lang=en
-- "semantic_ssa_name": "name()" | kind=code-symbol | source=mute/src/semantic/ssa.cpp:L211 | neighbors=[ssa.cpp] | lang=en
-- "sh": "Sh" | kind=code-symbol | neighbors=[ShAng] | lang=en
-- "shared_bpyx_default": "_default()" | kind=code-symbol | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L24 | neighbors=[_bpyx.py] | lang=en
-- "shared_bpyx_rationale_1": "_bpyx - tiny shared helpers for blender-agent-skills scripts (Blender 5.2 LTS+," | kind=entity | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L1 | neighbors=[_bpyx.py] | lang=en
-- "shared_bpyx_rationale_100": "First node of `type_` (e.g. 'BSDF_PRINCIPLED'). Names are localized - never look" | kind=entity | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L100 | neighbors=[node()] | lang=en
-- "shared_bpyx_rationale_105": "Valid identifiers of an enum property (works on types or instances)." | kind=entity | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L105 | neighbors=[enum_ids()] | lang=en
-- "shared_bpyx_rationale_110": "Assign an enum; on failure raise listing valid values (dynamic enums under-repor" | kind=entity | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L110 | neighbors=[set_enum()] | lang=en
-- "shared_bpyx_rationale_118": "Triangle count (evaluated = with modifiers)." | kind=entity | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L118 | neighbors=[mesh_tris()] | lang=en
-- "shared_bpyx_rationale_133": "Round a float or a vector for compact JSON." | kind=entity | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L133 | neighbors=[r()] | lang=pt
-- "shared_bpyx_rationale_20": "Arguments after '--' (Blender ignores them)." | kind=entity | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L20 | neighbors=[argv()] | lang=en
-- "shared_bpyx_rationale_36": "Print compact JSON on one marked line (parsed by run_in_blender.py)." | kind=entity | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L36 | neighbors=[emit()] | lang=en
-- "shared_bpyx_rationale_42": "ArgumentParser whose help is the script docstring's first line." | kind=entity | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L42 | neighbors=[parser()] | lang=en
-- "shared_bpyx_rationale_47": "CLI entry: parse args after '--', run, emit JSON. Exit 1 on failure." | kind=entity | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L47 | neighbors=[cli()] | lang=en
-- "shared_bpyx_rationale_63": "--objects / --save flags shared by most scripts." | kind=entity | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L63 | neighbors=[add_common()] | lang=en
-- "shared_bpyx_rationale_72": "Resolve names -> objects. No names: selected of `types`, else all visible of `ty" | kind=entity | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L72 | neighbors=[objects()] | lang=en
-- "shared_bpyx_rationale_84": "Leave edit/sculpt/pose modes; most data API work needs OBJECT mode." | kind=entity | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L84 | neighbors=[object_mode()] | lang=en
-- "shared_bpyx_rationale_91": "Select exactly `objs` and make `active` (default first) active." | kind=entity | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L91 | neighbors=[select_only()] | lang=en
-- "skyrise_sky_kit_sheet_shot": "shot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_kit_sheet.py:L45 | neighbors=[sky_kit_sheet.py] | lang=en
-- "skyrise_sky_map_material_skin": "material_skin()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_map.py:L431 | neighbors=[sky_map.py] | lang=en
-- "skyrise_sky_map_rationale_115": "widest horizontal reach of a kit prop (all parts)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_map.py:L115 | neighbors=[ext()] | lang=en
-- "skyrise_sky_map_shot": "shot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_map.py:L415 | neighbors=[sky_map.py] | lang=en
-- "skyrise_sky_models_rationale_10": "icosphere with noise displacement: chunky stylised foliage / cloud / rock lump" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models.py:L10 | neighbors=[lumpy()] | lang=en
-- "skyrise_sky_models_rationale_110": "underside: 16 rings to a rough tip, noise-displaced (no big flat triangles), ter" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models.py:L110 | neighbors=[island_under()] | lang=en
-- "skyrise_sky_models_rationale_203": "carved stone gate: stepped plinths, octagonal banded shafts with capitals, a vou" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models.py:L203 | neighbors=[zone_gate()] | lang=en
-- "skyrise_sky_models_rationale_23": "trunk that forks into 2-3 limbs, root flares into the ground, chunky lumpy canop" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models.py:L23 | neighbors=[puffy_tree()] | lang=en
-- "skyrise_sky_models_rationale_76": "pine: 4 star tiers with drooping snow caps, trunk, root collar" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models.py:L76 | neighbors=[snow_tree()] | lang=en
-- "skyrise_sky_models2_rationale_113": "ribbed saguaro: star-section body, two elbowed arms, flowers, pebbles" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models2.py:L113 | neighbors=[cactus()] | lang=en
+- "scripts_studlib_rationale_89": "add a custom solid (local unit coords) transformed by Mw; same colour / glow / s" | kind=entity | source=.agents/skills/Voxel Pack/stud/scripts/studlib.py:L89 | neighbors=[_emit()] | lang=en
+- "scripts_studlib_render_all": "render_all()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/scripts/studlib.py:L233 | neighbors=[studlib.py] | lang=en
+- "scripts_surface_weather_g_init": ".__init__()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/surface_weather.py:L32 | neighbors=[_G] | lang=en
+- "scripts_surface_weather_rationale_1": "Reversible weather layer on existing materials: wetness (porous darkening + wate" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/surface_weather.py:L1 | neighbors=[surface_weather.py] | lang=en
+- "scripts_surface_weather_rationale_299": "Color attribute ENV_Weather (R puddle, G snow, B wall/streak) for engine shaders" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/surface_weather.py:L299 | neighbors=[_vertex_mask()] | lang=en
+- "scripts_template_engine_ifnode_init": ".__init__()" | kind=code-symbol | source=.agents/skills/skills-main/play/play-policy-insights/scripts/template_engine.py:L75 | neighbors=[IfNode] | lang=en
+- "scripts_template_engine_node_render": ".render()" | kind=code-symbol | source=.agents/skills/skills-main/play/play-policy-insights/scripts/template_engine.py:L42 | neighbors=[Node] | lang=en
+- "scripts_template_engine_parserframe_init": ".__init__()" | kind=code-symbol | source=.agents/skills/skills-main/play/play-policy-insights/scripts/template_engine.py:L156 | neighbors=[_ParserFrame] | lang=en
+- "scripts_template_engine_rationale_115": "Represents standard iteration logic {{#EACH}} over lists/dicts." | kind=entity | source=.agents/skills/skills-main/play/play-policy-insights/scripts/template_engine.py:L115 | neighbors=[EachNode] | lang=en
+- "scripts_template_engine_rationale_122": "Helper to render nested children under a specific loop context." | kind=entity | source=.agents/skills/skills-main/play/play-policy-insights/scripts/template_engine.py:L122 | neighbors=[._render_children()] | lang=en
+- "scripts_template_engine_rationale_154": "Helper class representing an active stack frame in the compiler." | kind=entity | source=.agents/skills/skills-main/play/play-policy-insights/scripts/template_engine.py:L154 | neighbors=[_ParserFrame] | lang=en
+- "scripts_template_engine_rationale_163": "Parses template_str forward-only, building the AST Node tree." | kind=entity | source=.agents/skills/skills-main/play/play-policy-insights/scripts/template_engine.py:L163 | neighbors=[compile_template()] | lang=en
+- "scripts_template_engine_rationale_233": "Renders a markdown template with high performance and zero dependencies." | kind=entity | source=.agents/skills/skills-main/play/play-policy-insights/scripts/template_engine.py:L233 | neighbors=[render_template()] | lang=en
+- "scripts_template_engine_rationale_28": "Resolves nested dot-notation keys from context (e.g., app.info.package)." | kind=entity | source=.agents/skills/skills-main/play/play-policy-insights/scripts/template_engine.py:L28 | neighbors=[get_nested_val()] | lang=en
+- "scripts_template_engine_rationale_40": "Base class for all Abstract Syntax Tree (AST) node elements." | kind=entity | source=.agents/skills/skills-main/play/play-policy-insights/scripts/template_engine.py:L40 | neighbors=[Node] | lang=en
+- "scripts_template_engine_rationale_47": "Represents raw static text blocks." | kind=entity | source=.agents/skills/skills-main/play/play-policy-insights/scripts/template_engine.py:L47 | neighbors=[TextNode] | lang=en
+- "scripts_template_engine_rationale_57": "Represents dynamic variable interpolation with literal fallbacks." | kind=entity | source=.agents/skills/skills-main/play/play-policy-insights/scripts/template_engine.py:L57 | neighbors=[VarNode] | lang=en
+- "scripts_template_engine_rationale_73": "Represents conditional block logic (IF, IF_ALL, IF_ANY)." | kind=entity | source=.agents/skills/skills-main/play/play-policy-insights/scripts/template_engine.py:L73 | neighbors=[IfNode] | lang=en
+- "scripts_template_engine_rationale_95": "Helper to strip leading/trailing whitespace from first/last TextNodes." | kind=entity | source=.agents/skills/skills-main/play/play-policy-insights/scripts/template_engine.py:L95 | neighbors=[strip_nodes()] | lang=en
+- "scripts_template_engine_textnode_init": ".__init__()" | kind=code-symbol | source=.agents/skills/skills-main/play/play-policy-insights/scripts/template_engine.py:L49 | neighbors=[TextNode] | lang=en
+- "scripts_template_engine_textnode_render": ".render()" | kind=code-symbol | source=.agents/skills/skills-main/play/play-policy-insights/scripts/template_engine.py:L52 | neighbors=[TextNode] | lang=en
+- "scripts_template_engine_varnode_init": ".__init__()" | kind=code-symbol | source=.agents/skills/skills-main/play/play-policy-insights/scripts/template_engine.py:L59 | neighbors=[VarNode] | lang=en
+- "scripts_terrain_rationale_1": "Game-ready terrain: noise (fbm, ridged mountains, rolling hills) or a heightmap" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-environment-kits/scripts/terrain.py:L1 | neighbors=[terrain.py] | lang=pt
+- "scripts_terrain_rationale_59": "Thermal erosion: material above the talus angle slides to lower neighbours (4-ne" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-environment-kits/scripts/terrain.py:L59 | neighbors=[_erode()] | lang=en
+- "scripts_texel_density_rationale_1": "Measure (and optionally set) texel density in px/m for objects' active UV map." | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-retopology-uv/scripts/texel_density.py:L1 | neighbors=[texel_density.py] | lang=en
+- "scripts_texel_density_rationale_22": "UV islands as lists of faces (connected through shared UV coords)." | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-retopology-uv/scripts/texel_density.py:L22 | neighbors=[_islands()] | lang=en
+- "scripts_toon_setup_g_init": ".__init__()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-stylized-npr/scripts/toon_setup.py:L36 | neighbors=[_G] | lang=en
+- "scripts_toon_setup_rationale_1": "Reversible toon/cel look: banded shading, shadow tint, rim, hard specular, inver" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-stylized-npr/scripts/toon_setup.py:L1 | neighbors=[toon_setup.py] | lang=en
+- "scripts_toon_setup_rationale_169": "Light Direction = the sun's local +Z in world space (the sun shines along -Z)." | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-stylized-npr/scripts/toon_setup.py:L169 | neighbors=[_drive_light()] | lang=en
+- "scripts_toon_setup_rationale_228": "NPR_OutlineNormal corner color: position-averaged normal in tangent space, packe" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-stylized-npr/scripts/toon_setup.py:L228 | neighbors=[smooth_outline_normals()] | lang=en
+- "scripts_trace_ref_quant": "quant()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/scripts/trace_ref.py:L36 | neighbors=[trace_ref.py] | lang=en
+- "scripts_track_camera_rationale_1": "Automatic camera solve from footage: detect features at the start and end of the" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-video-editing/scripts/track_camera.py:L1 | neighbors=[track_camera.py] | lang=en
+- "scripts_turntable_rationale_1": "Look-dev scene in one call: framed camera, light rig (studio 3-point / HDRI / bo" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-lighting-lookdev/scripts/turntable.py:L1 | neighbors=[turntable.py] | lang=en
+- "scripts_uv_pack_rationale_1": "Unwrap + pack UVs with production defaults; optional seams-from-sharp and lightm" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-retopology-uv/scripts/uv_pack.py:L1 | neighbors=[uv_pack.py] | lang=en
+- "scripts_uv_pack_rationale_39": "Fraction of faces whose UV area is ~0 (failed unwrap)." | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-retopology-uv/scripts/uv_pack.py:L39 | neighbors=[_collapsed_ratio()] | lang=en
+- "scripts_verify_desktop_rationale_1": "Collect real desktop build/run evidence. Never automatically accept ENG-03." | kind=entity | source=engine/rhi/scripts/verify_desktop.py:L1 | neighbors=[verify_desktop.py] | lang=en
+- "scripts_vse_edit_rationale_1": "Assemble a video edit in the Video Sequencer headless: movies (with their audio)" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-video-editing/scripts/vse_edit.py:L1 | neighbors=[vse_edit.py] | lang=en
+- "scripts_vse_edit_rationale_32": "Sorted frame files for a folder or a # pattern, else None." | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-video-editing/scripts/vse_edit.py:L32 | neighbors=[_frames()] | lang=pt
+- "semantic_determinism_analyze_determinism": "analyze_determinism()" | kind=code-symbol | source=mute/src/semantic/determinism.cpp:L116 | neighbors=[determinism.cpp] | lang=en
+- "semantic_determinism_analyzer_analyzer": ".Analyzer()" | kind=code-symbol | source=mute/src/semantic/determinism.cpp:L29 | neighbors=[Analyzer] | lang=en
 
 ## Instructions
 

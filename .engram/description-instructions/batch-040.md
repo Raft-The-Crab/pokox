@@ -1,4 +1,4 @@
-# Node Description Batch 41 of 207
+# Node Description Batch 41 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -17,6 +17,20 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "tests_test_materials": "test_materials.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_materials.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, _img(), test_presets_and_srgb_color_override(), test_texture_set_autowire_orm_dx_normal…]
+- "tests_test_privacy_file_hits": "file_hits()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_privacy.py:L122 | neighbors=[test_privacy.py, jpeg_metadata(), png_metadata(), text_hits(), test_no_file_in_the_package_leaks_perso…]
+- "tests_test_privacy_text_hits": "text_hits()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_privacy.py:L69 | neighbors=[test_privacy.py, file_hits(), test_scanner_catches_each_kind_of_leak_…, attribution_allowed(), publisher_allowed()]
+- "tests_test_rendering": "test_rendering.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_rendering.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, _camera(), test_lookdev_turntable_and_studio(), test_render_stills_cycles_eevee_workben…]
+- "tests_test_scale_beam_recipe_with": "recipe_with()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_scale_beam.py:L12 | neighbors=[test_scale_beam.py, test_beam_recipe_lints_with_hold_and_ne…, test_lint_counts_repeatedly_emitted_pai…, test_lint_scales_its_craft_limits_with_…, test_scale_character_is_a_no_op_and_rec…]
+- "tests_test_video_fake_unity": "fake_unity()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_video.py:L86 | neighbors=[test_video.py, test_unity_commands_need_no_workspace(), test_unity_export_writes_the_grid_sidec…, test_unity_force_keeps_meta_guids(), test_unity_install_copies_the_package_a…]
+- "tools_validate_skills_check_skill": "check_skill()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tools/validate_skills.py:L51 | neighbors=[validate_skills.py, frontmatter(), known_py(), tokens(), main()]
+- "tools_validate_skills_validate": "validate()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/validate_skills.py:L171 | neighbors=[validate_skills.py, check_coverage(), collect_tech_ids(), find_skills(), parse_frontmatter()]
+- "towncity_city_paint_ramp": "ramp()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/city_paint.py:L38 | neighbors=[city_paint.py, paint_glass(), clip(), _hex(), tile()]
+- "towncity_town_landmarks_frustum": "frustum()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L9 | neighbors=[town_landmarks.py, box whose top is inset (mansard / hip r…, skyline(), town_hall(), train_station()]
+- "towncity_town_landmarks_town_hall": "town_hall()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L85 | neighbors=[town_landmarks.py, civic hall on a podium: brick wings wit…, column(), frustum(), pediment()]
+- "towncity_town_landmarks_train_station": "train_station()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L252 | neighbors=[town_landmarks.py, brick head house: central great arched …, arch_open(), clock_face(), frustum()]
+- "towncity_town_map_alley": "alley()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L452 | neighbors=[town_map.py, place(), reserve(), build(), back alley z ~141..184 between the shop…]
+- "towncity_town_map_face": "face()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L84 | neighbors=[town_map.py, dressing(), landmarks(), row(), square_dressing()]
 - "towncity_town_map_markings": "markings()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L128 | neighbors=[town_map.py, build(), flat(), static(), zebra()]
 - "towncity_town_map_square_dressing": "square_dressing()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L426 | neighbors=[town_map.py, build(), face(), place(), reserve()]
 - "towncity_town_map_u": "U()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L104 | neighbors=[town_map.py, flat(), ground(), median(), square()]
@@ -26,8 +40,8 @@ one-sentence description — no prose, no markdown fences.
 - "towncity_town_props_water_tank": "water_tank()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_props.py:L129 | neighbors=[town_props.py, building(), classic timber rooftop water tank on a …, add(), ball()]
 - "towncity_town_vehicles_body_shell": "body_shell()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_vehicles.py:L21 | neighbors=[town_vehicles.py, loft_closed(), bus(), car(), lofted body: ring per section s (0 fron…]
 - "towncity_town_vehicles_car_shell": "_car_shell()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_vehicles.py:L135 | neighbors=[town_vehicles.py, loft_closed(), _smoothstep(), carriage / cab section loft: rounded ro…, train_car()]
+- "unit_camera_test": "camera_test.cpp" | kind=code-symbol | source=engine/render/tests/unit/camera_test.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, main(), near(), transform(), c7a411f Fix MUT-01-20 audit defects in …]
 - "unit_capability_test_narrowed_module": "narrowed_module()" | kind=code-symbol | source=mute/tests/unit/capability_test.cpp:L38 | neighbors=[capability_test.cpp, main(), i32(), pv(), v()]
-- "unit_config_logging_guard_test": "config_logging_guard_test.cpp" | kind=code-symbol | source=engine/foundation/tests/unit/config_logging_guard_test.cpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, info(), init(), main(), shutdown()]
 - "unit_emit_test_arith_module": "arith_module()" | kind=code-symbol | source=mute/tests/unit/emit_test.cpp:L18 | neighbors=[emit_test.cpp, i32(), v(), cases(), position_cases()]
 - "unit_emit_test_calls_module": "calls_module()" | kind=code-symbol | source=mute/tests/unit/emit_test.cpp:L28 | neighbors=[emit_test.cpp, i32(), pv(), v(), cases()]
 - "unit_emit_test_hostcall_module": "hostcall_module()" | kind=code-symbol | source=mute/tests/unit/emit_test.cpp:L47 | neighbors=[emit_test.cpp, cases(), i32(), pv(), v()]
@@ -43,20 +57,6 @@ one-sentence description — no prose, no markdown fences.
 - "unit_lower_test_cases": "cases()" | kind=code-symbol | source=mute/tests/unit/lower_test.cpp:L69 | neighbors=[lower_test.cpp, check(), run_module(), run_source(), main()]
 - "unit_narrowphase_test_main": "main()" | kind=code-symbol | source=engine/physics/tests/unit/narrowphase_test.cpp:L38 | neighbors=[narrowphase_test.cpp, aabb(), sphere(), tod(), v3()]
 - "unit_optimize_test_module_of": "module_of()" | kind=code-symbol | source=mute/tests/unit/optimize_test.cpp:L24 | neighbors=[optimize_test.cpp, cases(), lower_src(), run_base(), run_opt()]
-- "unit_package_test": "package_test.cpp" | kind=code-symbol | source=mute/tests/unit/package_test.cpp:L1 | neighbors=[c7e951a Add MUT-21 package, import and …, cases(), expect_error(), expect_ok(), main()]
-- "unit_parser_test_cases": "cases()" | kind=code-symbol | source=mute/tests/unit/parser_test.cpp:L40 | neighbors=[parser_test.cpp, check(), parse_error(), tree(), main()]
-- "unit_parser_test_check": "check()" | kind=code-symbol | source=mute/tests/unit/parser_test.cpp:L12 | neighbors=[parser_test.cpp, cases(), randomized_input(), stress(), tree()]
-- "unit_sap_broadphase_test": "sap_broadphase_test.cpp" | kind=code-symbol | source=engine/physics/tests/unit/sap_broadphase_test.cpp:L1 | neighbors=[69287a0 Land ENG-60-65 deterministic si…, box(), lo(), main(), sorted_pairs()]
-- "unit_scheduler_test": "scheduler_test.cpp" | kind=code-symbol | source=mute/tests/unit/scheduler_test.cpp:L1 | neighbors=[435b4d3 Add MUT-23 cooperative async sc…, cases(), check(), fin(), main()]
-- "unit_semantic_test": "semantic_test.cpp" | kind=code-symbol | source=mute/tests/unit/semantic_test.cpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, cases(), error(), main(), ok()]
-- "unit_statement_test_cases": "cases()" | kind=code-symbol | source=mute/tests/unit/statement_test.cpp:L36 | neighbors=[statement_test.cpp, check(), dump(), error(), main()]
-- "unit_statement_test_check": "check()" | kind=code-symbol | source=mute/tests/unit/statement_test.cpp:L12 | neighbors=[statement_test.cpp, cases(), depth_guard(), dump(), randomized_input()]
-- "unit_stdlib_physics_test": "stdlib_physics_test.cpp" | kind=code-symbol | source=mute/tests/unit/stdlib_physics_test.cpp:L1 | neighbors=[2680d0e Pushed an update., 7eabc2d Merge pull request #8 from Raft…, box_at(), main(), test_physics_hostcalls()]
-- "unit_test_math_determinism_tracetests_write": ".write()" | kind=code-symbol | source=mute/tests/unit/test_math_determinism.py:L20 | neighbors=[TraceTests, .check_invalid(), .test_corpus_corruption_rejected(), .test_match_is_only_agreement(), .test_same_target_is_not_cross_platform…]
-- "unit_worker_auth_test_main": "main()" | kind=code-symbol | source=server/identity/tests/unit/worker_auth_test.cpp:L72 | neighbors=[worker_auth_test.cpp, check(), make_token(), sample_ticket(), test_key()]
-- "valleylake_valley_map_cliff_mesh": "cliff_mesh()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L569 | neighbors=[valley_map.py, ledge_n(), rim_point(), static(), cliffs()]
-- "valleylake_valley_map_clip_fail": "clip_fail()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L184 | neighbors=[valley_map.py, cliff_clear(), inside(), place_soft(), True if a placed soft prop clips into s…]
-- "valleylake_valley_map_face": "face()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L226 | neighbors=[valley_map.py, build(), cliffs(), shore(), stations_and_village()]
 
 ## Instructions
 

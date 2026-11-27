@@ -1,4 +1,4 @@
-# Node Description Batch 147 of 207
+# Node Description Batch 147 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -26,46 +26,46 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "vfxkit_video_prompt_text": "_prompt_text()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/video.py:L103 | neighbors=[video.py, flipbook()] | lang=en
-- "vfxkit_video_ramp": "_ramp()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/video.py:L268 | neighbors=[video.py, grade()] | lang=en
-- "vfxkit_video_smoothstep": "_smoothstep()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/video.py:L109 | neighbors=[video.py, grade()] | lang=en
-- "vfxkit_workflow_absolute": "absolute()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/workflow.py:L47 | neighbors=[workflow.py, unchanged()] | lang=en
-- "vfxkit_workflow_relative": "relative()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/workflow.py:L36 | neighbors=[workflow.py, snapshot()] | lang=en
-- "vm_debugger_has_breakpoint": "has_breakpoint()" | kind=code-symbol | source=mute/src/vm/debugger.cpp:L29 | neighbors=[debugger.cpp, run()] | lang=en
-- "vm_debugger_result": "result()" | kind=code-symbol | source=mute/src/vm/debugger.cpp:L58 | neighbors=[debugger.cpp, finish()] | lang=en
-- "vm_debugger_stack": "stack()" | kind=code-symbol | source=mute/src/vm/debugger.cpp:L59 | neighbors=[debugger.cpp, pc()] | lang=en
-- "vm_hostcall_host_type": "host_type()" | kind=code-symbol | source=mute/src/vm/hostcall.cpp:L5 | neighbors=[hostcall.cpp, add()] | lang=en
-- "vm_hostcall_unauthorized_hostcalls": "unauthorized_hostcalls()" | kind=code-symbol | source=mute/src/vm/hostcall.cpp:L33 | neighbors=[hostcall.cpp, find()] | lang=en
-- "vm_scheduler_cancel": "cancel()" | kind=code-symbol | source=mute/src/vm/scheduler.cpp:L15 | neighbors=[scheduler.cpp, find()] | lang=en
-- "vm_scheduler_run": "run()" | kind=code-symbol | source=mute/src/vm/scheduler.cpp:L32 | neighbors=[scheduler.cpp, find()] | lang=en
-- "vm_values_as_string": "as_string()" | kind=code-symbol | source=mute/src/vm/values.cpp:L128 | neighbors=[values.cpp, object()] | lang=en
-- "vm_values_copy": "copy()" | kind=code-symbol | source=mute/src/vm/values.cpp:L139 | neighbors=[values.cpp, copy_impl()] | lang=en
-- "vm_values_get_index": "get_index()" | kind=code-symbol | source=mute/src/vm/values.cpp:L81 | neighbors=[values.cpp, object()] | lang=en
-- "vm_values_length": "length()" | kind=code-symbol | source=mute/src/vm/values.cpp:L133 | neighbors=[values.cpp, object()] | lang=en
-- "vm_values_make_int": "make_int()" | kind=code-symbol | source=mute/src/vm/values.cpp:L5 | neighbors=[values.cpp, set_index()] | lang=en
-- "vm_vm_core_step": "step()" | kind=code-symbol | source=mute/src/vm/vm_core.cpp:L47 | neighbors=[vm_core.hpp, fail()] | lang=en
-- "vm_vm_core_vmcore": "VmCore" | kind=code-symbol | source=mute/src/vm/vm_core.hpp:L13 | neighbors=[vm_core.hpp, fail()] | lang=en
-- "voidrealm_grid": "grid.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/grid.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …] | lang=en
-- "voidrealm_post": "post.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/post.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …] | lang=en
-- "voidrealm_void_map_ang": "ang()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_map.py:L43 | neighbors=[void_map.py, stations()] | lang=en
-- "voidrealm_void_map_foot": "foot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_map.py:L70 | neighbors=[void_map.py, place()] | lang=en
-- "voidrealm_void_map_inner": "inner()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_map.py:L220 | neighbors=[void_map.py, bridges()] | lang=en
-- "voidrealm_void_map_look": "look()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_map.py:L451 | neighbors=[void_map.py, free()] | lang=en
-- "voidrealm_void_map_lowz": "LOWZ()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_map.py:L97 | neighbors=[void_map.py, place()] | lang=en
-- "voidrealm_void_map_rationale_100": "share of a placed kit prop's body (above its lowest 15%) inside the solid in bvh" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_map.py:L100 | neighbors=[MB, clip_frac()] | lang=en
-- "voidrealm_void_map_rationale_115": "copy a prop part (Roblox-space MB) to its world placement, for walkable pieces k" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_map.py:L115 | neighbors=[MB, placed_mb()] | lang=en
-- "voidrealm_void_map_rationale_428": "intentional floaters: chips drifting near the shards and between them, far silho" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_map.py:L428 | neighbors=[MB, void_debris()] | lang=en
-- "voidrealm_void_map_rationale_79": "ground on the LOWEST footprint point (all footprint samples must be on the islan" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_map.py:L79 | neighbors=[MB, place()] | lang=en
-- "voidrealm_void_map_rim_chunk": "rim_chunk()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_map.py:L414 | neighbors=[void_map.py, dressing()] | lang=en
-- "voidrealm_void_map_seg_d": "seg_d()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_map.py:L423 | neighbors=[void_map.py, void_debris()] | lang=en
-- "voidrealm_void_props_lerp": "lerp()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L42 | neighbors=[void_props.py, upgrade_altar()] | lang=en
-- "voidrealm_void_props_rationale_109": "obsidian seat + big painted crystals leaning out + small painted + neon crystals" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L109 | neighbors=[Palette, crystal_cluster()] | lang=en
-- "voidrealm_void_props_rationale_151": "the big crystal on the Starwatch shard: one huge cyan/violet column cluster on a" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L151 | neighbors=[Palette, heart_crystal()] | lang=en
-- "voidrealm_void_props_rationale_162": "broken-off island chip: a crust slab with a chipped lip, a two-tier faceted obsi" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L162 | neighbors=[Palette, float_shard()] | lang=pt
-- "voidrealm_void_props_rationale_187": "distant silhouette: a broken island chunk (wide flat top, keel tapering to one o" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L187 | neighbors=[Palette, far_rock()] | lang=pt
-- "voidrealm_void_props_rationale_199": "abstract rune inlay (never a letter): diamond / chevron / ring-dot, flat in XY f" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L199 | neighbors=[Palette, rune_glyph()] | lang=en
-- "voidrealm_void_props_rationale_210": "fluted void-stone column: stepped plinth, entasis shaft with 12 flutes, rune ban" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L210 | neighbors=[Palette, pillar()] | lang=en
-- "voidrealm_void_props_rationale_246": "ruined gateway arch: two square piers with trim bands + rune inlays, a voussoir" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L246 | neighbors=[Palette, void_arch()] | lang=en
+- "valleylake_valley_props_rationale_265": "tall stylised pine: straight trunk, 8 tiers of separate drooping branch sprays (" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L265 | neighbors=[Palette, pine()] | lang=en
+- "valleylake_valley_props_rationale_290": "the one cherry tree: dark crooked trunk with arching limbs, pink painted clumps," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L290 | neighbors=[Palette, blossom_tree()] | lang=en
+- "valleylake_valley_props_rationale_307": "HERO: the big leaning islet tree. Thick twisting trunk leaning out over the wate" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L307 | neighbors=[Palette, gnarled_tree()] | lang=en
+- "valleylake_valley_props_rationale_407": "straight gable roof (ridge along X): two lofted tile slabs with a slight concave" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L407 | neighbors=[Palette, gable_roof()] | lang=en
+- "valleylake_valley_props_rationale_458": "wall in XY facing -Z: dark timber posts + rails framing inset shoji panels (latt" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L458 | neighbors=[Palette, timber_wall()] | lang=en
+- "valleylake_valley_props_rationale_48": "per-loop shade: height gradient y0..y1 (a -> b) + vertex-normal lift + low-freq" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L48 | neighbors=[Palette, V()] | lang=es
+- "valleylake_valley_props_rationale_493": "rounded fieldstone footing course under a house (the shared base, echoes the roc" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L493 | neighbors=[Palette, footing()] | lang=en
+- "valleylake_valley_props_rationale_518": "village houses. long = single storey longhouse 24 x 11, gable to the sides, fron" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L518 | neighbors=[Palette, house()] | lang=en
+- "valleylake_valley_props_rationale_606": "open stall: 4 posts on stone pads, a small dark gable roof, counter with baskets" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L606 | neighbors=[Palette, market_stall()] | lang=en
+- "valleylake_valley_props_rationale_631": "small red paper lantern: lathed ribbed body (red) + caps + a glow core inside" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L631 | neighbors=[Palette, paper_lantern()] | lang=pt
+- "valleylake_valley_props_rationale_641": "tall timber pole with a cross arm + strut, rope cleats; lantern ropes hang from" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L641 | neighbors=[Palette, rope_pole()] | lang=en
+- "valleylake_valley_props_rationale_65": "pillowy rounded-box mass: a subdivided cube pushed onto a superellipsoid |x|^n+|" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L65 | neighbors=[Palette, rounded_mass()] | lang=pt
+- "valleylake_valley_props_rationale_652": "rope span along +X from x 0 (left arm tip) to L, catenary sag, with n small pape" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L652 | neighbors=[Palette, lantern_rope()] | lang=en
+- "valleylake_valley_props_rationale_663": "low wooden lantern post for the shore path: post, small roof cap, a hanging pape" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L663 | neighbors=[Palette, lantern_post()] | lang=en
+- "valleylake_valley_props_rationale_679": "L-shaped fishing dock: a 4-wide walkway (along -Z from the beach at z 0) with an" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L679 | neighbors=[Palette, dock()] | lang=en
+- "valleylake_valley_props_rationale_722": "small arched plank bridge over the stream (span along Z, origin = centre at bank" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L722 | neighbors=[Palette, footbridge()] | lang=en
+- "valleylake_valley_props_rationale_741": "retaining wall module (front = -Z): coursed rounded fieldstones (soft, echoes th" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L741 | neighbors=[Palette, stone_wall()] | lang=en
+- "valleylake_valley_props_rationale_766": "stone flight up the retaining wall (front = -Z, climbs toward +Z), rounded cheek" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L766 | neighbors=[Palette, stone_stair()] | lang=en
+- "valleylake_valley_props_rationale_780": "HERO: a broad curved sheet spilling off a mossy carved lip, bowing out and widen" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L780 | neighbors=[Palette, waterfall()] | lang=pt
+- "valleylake_valley_props_rationale_832": "station sign: blank board (GUI goes on it, nothing written) in a timber frame on" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L832 | neighbors=[Palette, sign_stand()] | lang=en
+- "valleylake_valley_props_rationale_845": "branching skeleton -> one smooth closed trunk mesh: Blender Skin modifier (smoot" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L845 | neighbors=[Palette, skin_mesh()] | lang=en
+- "valleylake_valley_props_rationale_863": "node list [(pos, radius)] + edges; helpers to grow curved, tapering limbs" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L863 | neighbors=[Palette, Skel] | lang=en
+- "valleylake_valley_props_rationale_870": "limb from node `parent` along d (curving by bend per step, wobbling), n segments" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L870 | neighbors=[Palette, .grow()] | lang=en
+- "valleylake_valley_props_rationale_879": "bark grooves (noise stretched along the height = long vertical furrows) + shadin" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L879 | neighbors=[Palette, bark()] | lang=en
+- "valleylake_valley_props_rationale_895": "one soft canopy mass: a displaced dark core blob + many small leaf cards at rand" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L895 | neighbors=[Palette, leaf_mass()] | lang=pt
+- "valleylake_valley_props_rationale_930": "buttress roots gripping the ground: start high on the flare, run out low along t" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L930 | neighbors=[Palette, roots()] | lang=en
+- "valleylake_valley_props_rationale_94": "thick moss shell over the up-facing part of `bm`: faces whose verts all face up" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L94 | neighbors=[Palette, moss_cap()] | lang=en
+- "valleylake_valley_props_rationale_940": "HERO: the islet tree, rebuilt as a real tree. Skinned skeleton: thick flared bas" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L940 | neighbors=[Palette, gnarled_tree()] | lang=en
+- "valleylake_valley_props_rationale_986": "stylised broadleaf (same method, lighter): skinned trunk with a root flare forki" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L986 | neighbors=[Palette, broadleaf()] | lang=en
+- "valleylake_valley_props_smooth": "smooth()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L44 | neighbors=[valley_props.py, waterfall()] | lang=en
+- "vfxkit_briefs_validate": "validate()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/briefs.py:L36 | neighbors=[briefs.py, timeline()] | lang=en
+- "vfxkit_cli_parser": "parser()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/cli.py:L23 | neighbors=[cli.py, main()] | lang=en
+- "vfxkit_doctor_version": "version()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/doctor.py:L12 | neighbors=[doctor.py, doctor()] | lang=en
+- "vfxkit_evidence_outputs": "outputs()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/evidence.py:L71 | neighbors=[evidence.py, write_build()] | lang=en
+- "vfxkit_evidence_portable": "portable()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/evidence.py:L46 | neighbors=[evidence.py, inputs()] | lang=en
+- "vfxkit_evidence_prepared": "prepared()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/evidence.py:L33 | neighbors=[evidence.py, inputs()] | lang=en
+- "vfxkit_evidence_stage_snapshot": "stage_snapshot()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/evidence.py:L131 | neighbors=[evidence.py, capture_issues()] | lang=en
+- "vfxkit_evidence_template_issues": "template_issues()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/evidence.py:L143 | neighbors=[evidence.py, capture_issues()] | lang=en
+- "vfxkit_examples_listing": "listing()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/examples.py:L48 | neighbors=[examples.py, catalog()] | lang=en
+- "vfxkit_examples_textures": "textures()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/examples.py:L41 | neighbors=[examples.py, add()] | lang=en
 
 ## Instructions
 

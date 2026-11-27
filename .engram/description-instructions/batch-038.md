@@ -1,4 +1,4 @@
-# Node Description Batch 39 of 207
+# Node Description Batch 39 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -17,6 +17,19 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "scripts_convert_pb_to_json": "convert_pb_to_json.py" | kind=code-symbol | source=.agents/skills/skills-main/performance/r8-analyzer/scripts/convert_pb_to_json.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, convert_pb_to_json(), main(), Converts R8 keep radius protobuf files …]
+- "scripts_env_report": "env_report.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-core/scripts/env_report.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, _gpu(), run(), Report Blender version, engines, GPU, a…]
+- "scripts_gn_builder_run": "run()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-geometry-nodes/scripts/gn_builder.py:L178 | neighbors=[gn_builder.py, apply(), build(), describe(), _parse_val()]
+- "scripts_groom_run": "run()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-hair-grooming/scripts/groom.py:L294 | neighbors=[groom.py, build_cards(), card_material(), groom(), render_atlas()]
+- "scripts_kit_check_run": "run()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-environment-kits/scripts/kit_check.py:L68 | neighbors=[kit_check.py, _fix(), _on_grid(), _pivot_target(), _texel_density()]
+- "scripts_lightning_run": "run()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/lightning.py:L85 | neighbors=[lightning.py, _bolt_points(), _clear(), _curve(), _envelope()]
+- "scripts_loop_check_check": "_check()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-animation/scripts/loop_check.py:L51 | neighbors=[loop_check.py, _diff(), _poses(), _w(), run()]
+- "scripts_make_lods": "make_lods.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-game-optimization/scripts/make_lods.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, cleanup(), run(), Generate an LOD chain (<name>_LOD1..N) …]
+- "scripts_mesh_stats": "mesh_stats.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-game-optimization/scripts/mesh_stats.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, run(), _vram(), Budget report: tris/verts per object, m…]
+- "scripts_orchestrator_load_gradle_properties": "load_gradle_properties()" | kind=code-symbol | source=.agents/skills/skills-main/play/play-policy-insights/scripts/orchestrator.py:L157 | neighbors=[orchestrator.py, _candidate_project_roots(), _strip_inline_comment(), main(), Loads properties from gradle.properties…]
+- "scripts_orchestrator_load_version_catalog": "load_version_catalog()" | kind=code-symbol | source=.agents/skills/skills-main/play/play-policy-insights/scripts/orchestrator.py:L180 | neighbors=[orchestrator.py, _candidate_project_roots(), _strip_inline_comment(), main(), Loads versions from gradle/libs.version…]
+- "scripts_orchestrator_strip_inline_comment": "_strip_inline_comment()" | kind=code-symbol | source=.agents/skills/skills-main/play/play-policy-insights/scripts/orchestrator.py:L129 | neighbors=[orchestrator.py, load_app_plugin_aliases(), load_gradle_properties(), load_version_catalog(), Strips inline comments starting with '#…]
+- "scripts_play_store_scraper_scrape_app_details": "scrape_app_details()" | kind=code-symbol | source=.agents/skills/skills-main/play/play-policy-insights/scripts/play_store_scraper.py:L384 | neighbors=[play_store_scraper.py, Scrapes app metadata and Data Safety in…, extract_data_safety(), extract_metadata(), fetch_html()]
 - "scripts_pro_lib_out_g": ".g()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L368 | neighbors=[Out, .add(), hexrgb(), MB, .gadd()]
 - "scripts_pro_lib_sh_call": ".__call__()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L72 | neighbors=[Sh, clamp(), lerp(), nz(), .u()]
 - "scripts_retarget_parts": "_parts()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-animation/scripts/retarget.py:L56 | neighbors=[retarget.py, auto_map(), _split(), {(part, side): bone}, plus the spine ch…, run()]
@@ -44,19 +57,6 @@ one-sentence description — no prose, no markdown fences.
 - "skyrise_sky_map_sub": "sub()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_map.py:L18 | neighbors=[sky_map.py, island_mesh(), path_track(), paving(), place()]
 - "skyrise_sky_models2_coin": "coin()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models2.py:L8 | neighbors=[sky_models2.py, chest(), coin_pile(), coin with a raised rim (lathe), lying f…, sell_pad()]
 - "skyrise_sky_props_egg_shrine": "egg_shrine()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L226 | neighbors=[sky_props.py, gem(), lathe(), torus(), egg hatch station: tiered round podium,…]
-- "src_character_controller_cast_fraction": "cast_fraction()" | kind=code-symbol | source=engine/physics/src/character_controller.cpp:L164 | neighbors=[character_controller.cpp, length_of(), touches(), translated(), update()]
-- "src_character_controller_touches": "touches()" | kind=code-symbol | source=engine/physics/src/character_controller.cpp:L126 | neighbors=[character_controller.cpp, cast_fraction(), touch_key(), touches_uncached(), update()]
-- "src_compose": "compose.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/references/images/src/compose.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, axes(), pair(), pill()]
-- "src_config_find_key": "find_key()" | kind=code-symbol | source=engine/foundation/src/config.cpp:L21 | neighbors=[config.cpp, load_file(), read_bool(), read_text(), read_u32()]
-- "src_narrowphase_gjk_distance": "gjk_distance()" | kind=code-symbol | source=engine/physics/src/narrowphase.cpp:L219 | neighbors=[narrowphase.cpp, collide_local(), centroid(), closest_on_hull(), cso_support()]
-- "src_sap_broadphase": "sap_broadphase.cpp" | kind=code-symbol | source=engine/physics/src/sap_broadphase.cpp:L1 | neighbors=[69287a0 Land ENG-60-65 deterministic si…, clear(), commit(), insert(), remove()]
-- "src_vfx_dark_vortex": "VFX_Dark_Vortex.py" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Dark_Vortex.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, recipe(), primitives.py, VFX_Dark_Vortex: Dark impact played whe…]
-- "src_vfx_fire_explosion": "VFX_Fire_Explosion.py" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Fire_Explosion.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, recipe(), primitives.py, VFX_Fire_Explosion: Fire impact played …]
-- "src_vfx_heal": "VFX_Heal.py" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Heal.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, recipe(), primitives.py, VFX_Heal: Heal on the caster: no impact…]
-- "src_vfx_hit_heavy": "VFX_Hit_Heavy.py" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Hit_Heavy.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, recipe(), primitives.py, VFX_Hit_Heavy: Heavy melee hit: the blo…]
-- "src_vfx_ice_spikes": "VFX_Ice_Spikes.py" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Ice_Spikes.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, recipe(), primitives.py, VFX_Ice_Spikes: Ground ice eruption pla…]
-- "src_vfx_kaiju_atomic_beam": "VFX_Kaiju_Atomic_Beam.py" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Kaiju_Atomic_Beam.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, recipe(), primitives.py, VFX_Kaiju_Atomic_Beam: a sustained atom…]
-- "src_vfx_kaiju_atomic_charge": "VFX_Kaiju_Atomic_Charge.py" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Kaiju_Atomic_Charge.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, recipe(), primitives.py, VFX_Kaiju_Atomic_Charge: dorsal plates …]
 
 ## Instructions
 

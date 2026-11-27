@@ -1,4 +1,4 @@
-# Node Description Batch 30 of 207
+# Node Description Batch 30 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -17,10 +17,28 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "scripts_scanner_get_scanner_config": "get_scanner_config()" | kind=code-symbol | source=.agents/skills/skills-main/play/play-policy-insights/scripts/scanner.py:L36 | neighbors=[scanner.py, collect_target_files(), get_supported_extensions(), _identify_semantic_files(), perform_scan(), Loads the scanner configuration from sc…]
+- "scripts_scanner_get_supported_extensions": "get_supported_extensions()" | kind=code-symbol | source=.agents/skills/skills-main/play/play-policy-insights/scripts/scanner.py:L55 | neighbors=[scanner.py, collect_target_files(), get_scanner_config(), _identify_semantic_files(), Returns a tuple of supported file exten…, _scan_single_file()]
+- "scripts_sculpt_ops": "sculpt_ops.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-sculpting/scripts/sculpt_ops.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, _apply(), _ctx(), run(), Headless-safe sculpt preparation and pr…]
+- "scripts_sim_setup_run": "run()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-simulation/scripts/sim_setup.py:L82 | neighbors=[sim_setup.py, _asset_group(), _ctx(), _num(), _set_inputs(), _volume()]
+- "scripts_smart_material_g_n": ".n()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-texturing/scripts/smart_material.py:L51 | neighbors=[build_group(), _G, .math(), .mix(), .mrange(), .noise()]
+- "scripts_smart_material_run": "run()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-texturing/scripts/smart_material.py:L275 | neighbors=[smart_material.py, _apply_mat(), build_group(), curvature_attribute(), _lin(), _remove_mat()]
+- "scripts_template_engine_ifnode": "IfNode" | kind=code-symbol | source=.agents/skills/skills-main/play/play-policy-insights/scripts/template_engine.py:L72 | neighbors=[template_engine.py, compile_template(), .__init__(), .render(), Node, Represents conditional block logic (IF,…]
+- "scripts_template_engine_textnode": "TextNode" | kind=code-symbol | source=.agents/skills/skills-main/play/play-policy-insights/scripts/template_engine.py:L46 | neighbors=[template_engine.py, compile_template(), Represents raw static text blocks., Node, .__init__(), .render()]
+- "scripts_template_engine_varnode": "VarNode" | kind=code-symbol | source=.agents/skills/skills-main/play/play-policy-insights/scripts/template_engine.py:L56 | neighbors=[template_engine.py, compile_template(), Represents dynamic variable interpolati…, Node, .__init__(), .render()]
+- "scripts_toon_setup_g_n": ".n()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-stylized-npr/scripts/toon_setup.py:L48 | neighbors=[build_group(), _G, .math(), .mix(), .step(), .vmath()]
+- "scripts_track_camera": "track_camera.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-video-editing/scripts/track_camera.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, _clip_area(), run(), _solve(), Automatic camera solve from footage: de…]
+- "scripts_turntable_run": "run()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-lighting-lookdev/scripts/turntable.py:L83 | neighbors=[turntable.py, _area(), _backdrop(), _bounds(), _clear(), _fcurves()]
+- "scripts_uv_pack": "uv_pack.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-retopology-uv/scripts/uv_pack.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, _collapsed_ratio(), run(), _seams_from_sharp(), Unwrap + pack UVs with production defau…]
+- "semantic_fold": "fold.cpp" | kind=code-symbol | source=mute/src/semantic/fold.cpp:L1 | neighbors=[4cead55 Add MUT-27 bytecode verificatio…, eval_binary(), eval_compare(), eval_unary(), fold_constants(), int_scalar()]
+- "skyrise_sky_map_free": "free()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_map.py:L111 | neighbors=[sky_map.py, look(), micro_detail(), rim_dress(), spawn_island(), zone_island()]
+- "skyrise_sky_map_h": "H()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_map.py:L44 | neighbors=[sky_map.py, bridge_ends(), island_at(), Hm(), island_mesh(), path_track()]
+- "skyrise_sky_map_island_mesh": "island_mesh()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_map.py:L128 | neighbors=[sky_map.py, build(), H(), place(), rim(), sub()]
+- "skyrise_sky_map_winding_path": "winding_path()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_map.py:L181 | neighbors=[sky_map.py, stepping-stone path from the entry brid…, island_at(), place(), reserve(), zone_island()]
+- "skyrise_sky_props_trophy": "trophy()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L466 | neighbors=[sky_props.py, HERO: giant golden trophy on a tiered m…, gem(), lathe(), sphere(), torus()]
 - "src_cbor_decode_item": "decode_item()" | kind=code-symbol | source=engine/foundation/src/cbor.cpp:L94 | neighbors=[cbor.cpp, decode(), fail(), half_to_double(), read_argument(), valid_utf8()]
 - "src_narrowphase_closest_on_hull": "closest_on_hull()" | kind=code-symbol | source=engine/physics/src/narrowphase.cpp:L168 | neighbors=[narrowphase.cpp, closest_segment(), closest_triangle(), dist_sq_of(), origin_in_tetra(), gjk_distance()]
 - "src_pokomesh_parse_pokomesh": "parse_pokomesh()" | kind=code-symbol | source=engine/resource/src/pokomesh.cpp:L44 | neighbors=[pokomesh.cpp, load_pokomesh(), fail(), finite_vec3(), read_f32(), read_u32()]
-- "state_state_snapshot": "state_snapshot.cpp" | kind=code-symbol | source=mute/src/state/state_snapshot.cpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, append_le(), load_state_snapshot(), read_le(), save_state_snapshot(), schema_for()]
 - "stdlib_stdlib_string_valid_utf8": "valid_utf8()" | kind=code-symbol | source=mute/src/stdlib/stdlib_string.cpp:L46 | neighbors=[stdlib_string.cpp, codepoint_count(), concat(), slice_codepoints(), to_lower_ascii(), decode()]
 - "sugarworks_sugar_props_stripes": "stripes()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L48 | neighbors=[sugar_props.py, candy_lamp(), collector(), exchange(), gate(), candy-cane tube: alternating colour seg…]
 - "targets_run_dual_target_tests_run_command": "run_command()" | kind=code-symbol | source=tools/targets/run_dual_target_tests.py:L96 | neighbors=[run_dual_target_tests.py, adb_shell(), android_compile(), android_leg(), write_log(), windows_leg()]
@@ -39,24 +57,6 @@ one-sentence description — no prose, no markdown fences.
 - "towncity_town_map_ground": "ground()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L107 | neighbors=[town_map.py, build(), blocks(), flat(), static(), U()]
 - "towncity_town_map_median": "median()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L164 | neighbors=[town_map.py, build(), flat(), static(), U(), boulevard median: raised planted strip …]
 - "towncity_town_map_square": "square()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L175 | neighbors=[town_map.py, build(), Town Square: plaza paving rings round t…, flat(), static(), U()]
-- "towncity_town_map_static": "static()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L91 | neighbors=[town_map.py, ground(), markings(), median(), square(), sub()]
-- "towncity_town_props_flower_box": "flower_box()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_props.py:L188 | neighbors=[town_props.py, add(), blob(), flower(), V3(), window_unit()]
-- "towncity_town_props_ring_frame": "ring_frame()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_props.py:L75 | neighbors=[town_props.py, building(), deco_window(), flat rectangular frame ring in the XY p…, V3(), window_unit()]
-- "towncity_town_vehicles_bus": "bus()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_vehicles.py:L101 | neighbors=[town_vehicles.py, body_shader(), body_shell(), _smoothstep(), wheels(), city bus: lofted box body, raked windsc…]
-- "unit_bench_test_bench": "bench()" | kind=code-symbol | source=mute/tests/unit/bench_test.cpp:L59 | neighbors=[bench_test.cpp, best_ns(), check(), compile(), run(), cases()]
-- "unit_determinism_test": "determinism_test.cpp" | kind=code-symbol | source=mute/tests/unit/determinism_test.cpp:L1 | neighbors=[037434c Add MUT-24 determinism and capa…, 952997e Audit MUT-01-55 and harden veri…, cases(), error(), main(), ok()]
-- "unit_device_router_test_event": "event()" | kind=code-symbol | source=mute/tests/unit/device_router_test.cpp:L18 | neighbors=[device_router_test.cpp, connect(), disconnect(), pad_axis(), pad_button(), touch_tap()]
-- "unit_diff_test_cases": "cases()" | kind=code-symbol | source=mute/tests/unit/diff_test.cpp:L85 | neighbors=[diff_test.cpp, check(), compile(), diff_case(), total_words(), main()]
-- "unit_diff_test_diff_case": "diff_case()" | kind=code-symbol | source=mute/tests/unit/diff_test.cpp:L66 | neighbors=[diff_test.cpp, cases(), check(), compile(), run(), same_result()]
-- "unit_emit_test_select_module": "select_module()" | kind=code-symbol | source=mute/tests/unit/emit_test.cpp:L70 | neighbors=[emit_test.cpp, cases(), position_cases(), i32(), pv(), v()]
-- "unit_fixed_vec_test_main": "main()" | kind=code-symbol | source=engine/foundation/tests/unit/fixed_vec_test.cpp:L51 | neighbors=[fixed_vec_test.cpp, len_d(), naive_dot(), naive_in_range(), raw3(), v3()]
-- "unit_imgui_pass_faults": "imgui_pass_faults.cpp" | kind=code-symbol | source=engine/rhi/tests/unit/imgui_pass_faults.cpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, FakeShader(), GetEngineFactoryVk(), main(), reset(), write_spirv()]
-- "unit_lexer_test": "lexer_test.cpp" | kind=code-symbol | source=mute/tests/unit/lexer_test.cpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, check(), error(), main(), test_cases(), unicode_conformance()]
-- "unit_pokomesh_test": "pokomesh_test.cpp" | kind=code-symbol | source=engine/resource/tests/unit/pokomesh_test.cpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, main(), make_pmes(), put32(), putf(), write()]
-- "unit_stdlib_crypto_test": "stdlib_crypto_test.cpp" | kind=code-symbol | source=mute/tests/unit/stdlib_crypto_test.cpp:L1 | neighbors=[60d8044 Mute crypto hostcalls: fail exp…, 952997e Audit MUT-01-55 and harden veri…, 9eeb3ff Merge pull request #2 from Raft…, bytes(), digest_is(), main()]
-- "unit_vulkan_mesh_pass_test": "vulkan_mesh_pass_test.cpp" | kind=code-symbol | source=engine/rhi/tests/unit/vulkan_mesh_pass_test.cpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, draw_and_present(), main(), messages(), VulkanClearRenderer(), VulkanDiagnostics()]
-- "valleylake_paint_paint_block": "paint_block()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/paint.py:L50 | neighbors=[paint.py, atlas(), cracks(), fnoise(), _hex(), stamps()]
-- "valleylake_valley_map_free": "free()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L227 | neighbors=[valley_map.py, build_solid(), cliffs(), look(), nature(), shore()]
 
 ## Instructions
 

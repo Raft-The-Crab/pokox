@@ -1,4 +1,4 @@
-# Node Description Batch 74 of 207
+# Node Description Batch 74 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -19,51 +19,53 @@ relations (neighbors) and the provided citations/evidence — e.g.
 Ground entity descriptions in the citations/evidence when present; do not
 speculate beyond the context, so a node with no supporting context may be
 left out of the reply.
-Write every description in English (en). Do not switch languages.
+LANGUAGE: each entry has a `lang=` marker giving the language of its source.
+Write that entry's description in EXACTLY that language. Do not translate to
+a single common language — match each node's source language individually.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "onsenvillage_onsen_map_inside_one": "_inside_one()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L146 | neighbors=[onsen_map.py, fit_bad(), _inb()]
-- "onsenvillage_onsen_map_sub": "sub()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L23 | neighbors=[onsen_map.py, place(), static()]
-- "onsenvillage_onsen_props_cedar": "cedar()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L834 | neighbors=[onsen_props.py, lerp(), mountain cedar for the backdrop: straig…]
-- "onsenvillage_onsen_props_cloud_tree": "cloud_tree()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L806 | neighbors=[onsen_props.py, lerp(), broadleaf in the garden style: flared f…]
-- "onsenvillage_onsen_props_crag": "crag()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L851 | neighbors=[onsen_props.py, lerp(), tall framing crag: 4-5 overlapping tape…]
-- "onsenvillage_onsen_props_doorway": "doorway()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L153 | neighbors=[onsen_props.py, cut doorway: heavy posts + lintel, a sl…, storey_walls()]
-- "onsenvillage_onsen_props_footbridge": "footbridge()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L570 | neighbors=[onsen_props.py, giboshi(), arched cedar footbridge: plank deck on …]
-- "onsenvillage_onsen_props_hand_cart": "hand_cart()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L727 | neighbors=[onsen_props.py, taru(), two-wheeled hand cart: plank bed with s…]
-- "onsenvillage_onsen_props_jp_pine": "jp_pine()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L779 | neighbors=[onsen_props.py, lerp(), Japanese black pine: thick leaning trun…]
-- "onsenvillage_onsen_props_railing": "railing()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L478 | neighbors=[onsen_props.py, rail_post(), SIGNATURE: cedar railing bay with gibos…]
-- "onsenvillage_onsen_props_railing_post": "railing_post()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L474 | neighbors=[onsen_props.py, rail_post(), the closing post at the end of a railin…]
-- "onsenvillage_onsen_props_toro": "toro()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L492 | neighbors=[onsen_props.py, stone lantern (kasuga-style): hex stepp…, flared_roof()]
-- "package_build_tool_build_project": "build_project()" | kind=code-symbol | source=mute/src/package/build_tool.cpp:L103 | neighbors=[build_tool.cpp, declared_identity(), name()]
-- "parser_parser_dump_ast": "dump_ast()" | kind=code-symbol | source=mute/src/parser/parser.cpp:L361 | neighbors=[parser.cpp, op_spelling(), quoted()]
-- "passes_cube_demo_main": "main()" | kind=code-symbol | source=engine/render/src/passes/cube_demo.cpp:L72 | neighbors=[cube_demo.cpp, cube_indices(), cube_vertices()]
-- "passes_imgui_demo_main": "main()" | kind=code-symbol | source=engine/render/src/passes/imgui_demo.cpp:L226 | neighbors=[imgui_demo.cpp, build_demo_window(), update_imgui_io()]
-- "passes_triangle_demo": "triangle_demo.cpp" | kind=code-symbol | source=engine/render/src/passes/triangle_demo.cpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, Exception, main()]
-- "petsim_hooks_lua": "hooks_lua.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/hooks_lua.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, lua_attrs()]
-- "petsim_pet_map_build_solid": "build_solid()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L153 | neighbors=[pet_map.py, build(), free()]
-- "petsim_pet_map_clip_fail": "clip_fail()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L167 | neighbors=[pet_map.py, inside(), place_soft()]
-- "petsim_pet_map_look": "look()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L613 | neighbors=[pet_map.py, free(), link()]
-- "petsim_pet_map_ribbon_mesh": "ribbon_mesh()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L229 | neighbors=[pet_map.py, path_meshes(), H()]
-- "petsim_pet_map_rim_points": "rim_points()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L322 | neighbors=[pet_map.py, isle_R(), scatter()]
-- "petsim_pet_props_cotton_tree": "cotton_tree()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L755 | neighbors=[pet_props.py, bubble_crown(), candy tree: candy-striped trunk (stripe…]
-- "petsim_pet_props_egg_prof": "egg_prof()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L139 | neighbors=[pet_props.py, egg(), egg_r()]
-- "petsim_pet_props_gumdrops": "gumdrops()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L933 | neighbors=[pet_props.py, soft(), 3-4 sugar-dusted gumdrops in candy colo…]
-- "petsim_pet_props_puff_bush": "puff_bush()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L793 | neighbors=[pet_props.py, ell(), soft()]
-- "petsim_pet_props_star_poly": "star_poly()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L116 | neighbors=[pet_props.py, egg(), star()]
-- "petsim_pet_props_stump": "stump()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L877 | neighbors=[pet_props.py, flat(), soft()]
-- "physics_soft_body": "soft_body.hpp" | kind=code-symbol | source=engine/physics/include/poko/physics/soft_body.hpp:L1 | neighbors=[69287a0 Land ENG-60-65 deterministic si…, ClothGrid, SoftBody]
-- "pkb_pkb_draft_head": "head()" | kind=code-symbol | source=mute/src/pkb/pkb_draft.cpp:L6 | neighbors=[pkb_draft.cpp, make_pkb_schema_draft(), text()]
-- "pkb_pkb_draft_make_pkb_schema_draft": "make_pkb_schema_draft()" | kind=code-symbol | source=mute/src/pkb/pkb_draft.cpp:L15 | neighbors=[pkb_draft.cpp, head(), text()]
-- "pkb_pkb_draft_text": "text()" | kind=code-symbol | source=mute/src/pkb/pkb_draft.cpp:L13 | neighbors=[pkb_draft.cpp, make_pkb_schema_draft(), head()]
-- "plugins_superpowers_extractandstripfrontmatter": "extractAndStripFrontmatter()" | kind=code-symbol | source=.agents/skills/superpowers-main/.opencode/plugins/superpowers.js:L34 | neighbors=[superpowers.js, getBootstrapContent(), setup()]
-- "plusspeed_plus_map_grp": "grp()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_map.py:L18 | neighbors=[plus_map.py, blk(), place()]
-- "plusspeed_plus_map_kerb_x": "kerb_x()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_map.py:L64 | neighbors=[plus_map.py, hub(), blk()]
-- "plusspeed_plus_map_rationale_100": "v4 stadium hub: striped infield inside an oval running track, stations face in f" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_map.py:L100 | neighbors=[hub(), Block, BlockProp]
-- "plusspeed_plus_map_rationale_40": "stepped canyon: tier n is a row of 24-wide blocks with a 2-stud cap, each tier t" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_map.py:L40 | neighbors=[walls(), Block, BlockProp]
-- "plusspeed_plus_map_rationale_58": "race kerb along Z: alternating colour/white blocks proud of the cap edge, wedge" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_map.py:L58 | neighbors=[kerb_z(), Block, BlockProp]
-- "plusspeed_plus_map_rationale_71": "running-track oval: red lane band, white inner/outer lines and 2 lane lines" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_map.py:L71 | neighbors=[oval_track(), Block, BlockProp]
+- "moonclean_moon_props_ice_crystal": "ice_crystal()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L516 | neighbors=[moon_props.py, rock(), ice cluster: 5-7 hex spikes leaning out…] | lang=en
+- "moonclean_moon_props_jump_pad": "jump_pad()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L474 | neighbors=[moon_props.py, torus(), low-gravity launcher: vented steel skir…] | lang=en
+- "moonclean_moon_props_meteor_chunk": "meteor_chunk()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L723 | neighbors=[moon_props.py, rock(), small glowing meteor fragment to collec…] | lang=en
+- "moonclean_moon_props_meteorite": "meteorite()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L501 | neighbors=[moon_props.py, rock(), split meteorite: two dark halves around…] | lang=en
+- "moonclean_moon_props_moon_rock": "moon_rock()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L488 | neighbors=[moon_props.py, rock(), faceted boulder sunk into a regolith sk…] | lang=en
+- "moonclean_moon_props_rationale_102": "round port window: steel frame ring + rivets + glowing pane set back; faces -Z b" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L102 | neighbors=[port(), Palette, Sh] | lang=en
+- "moonclean_moon_props_rationale_107": "signature: white octagonal post, steel collar, amber glow cap" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L107 | neighbors=[beacon_post(), Palette, Sh] | lang=en
+- "moonclean_moon_props_rationale_115": "post at x=0 + a sagging cable to the next post (x = L, not included): chain thes" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L115 | neighbors=[beacon_rail(), Palette, Sh] | lang=en
+- "moonclean_moon_props_rationale_125": "hex landing pad on 4 splayed lander legs; chevron rim; corner beacons. Adds into" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L125 | neighbors=[station_base(), Palette, Sh] | lang=en
+- "moonclean_moon_props_rationale_154": "SELL: a gold-foil intake hopper on the base, ribbed vacuum hose to a nozzle, glo" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L154 | neighbors=[dust_exchange(), Palette, Sh] | lang=en
+- "moonclean_moon_props_rationale_199": "vacuum backpack: twin tanks, frame, dust window, hose loop + nozzle (hangs on a" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L199 | neighbors=[vac_pack(), Palette, Sh] | lang=pt
+- "moonclean_moon_props_rationale_211": "SHOP: curved white locker wall with 3 vacuum packs on hooks, central holo pedest" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L211 | neighbors=[gear_locker(), Palette, Sh] | lang=en
+- "moonclean_moon_props_rationale_244": "REBIRTH: scorched capsule on its heat shield, port windows, RCS quads, glowing o" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L244 | neighbors=[reentry_pod(), Palette, Sh] | lang=pt
+- "moonclean_moon_props_rationale_270": "PETS: console with a screen, 3 cryo cages (ring + ribs) holding alien eggs with" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L270 | neighbors=[egg_incubator(), Palette, Sh] | lang=en
+- "moonclean_moon_props_rationale_299": "gold-foil descent stage on 4 legs with dish feet, faceted ascent cabin, triangul" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L299 | neighbors=[lunar_lander(), Palette, Sh] | lang=en
+- "moonclean_moon_props_rationale_355": "three-stage rocket on a launch mount: roll-pattern checker, orange bands, foil i" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L355 | neighbors=[moon_rocket(), Palette, Sh] | lang=pt
+- "moonclean_moon_props_rationale_414": "umbilical tower beside the rocket (rocket axis at x = -14): 4-leg truss, X braci" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L414 | neighbors=[launch_tower(), Palette, Sh] | lang=en
+- "moonclean_moon_props_rationale_447": "priced zone gate at the head of each crater ramp: two hex pylons with chevron st" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L447 | neighbors=[airlock_gate(), Palette, Sh] | lang=en
+- "moonclean_moon_props_rationale_475": "low-gravity launcher: vented steel skirt, white deck, 3 glow rings + up-chevron" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L475 | neighbors=[jump_pad(), Palette, Sh] | lang=en
+- "moonclean_moon_props_rationale_489": "faceted boulder sunk into a regolith skirt, with a small chipped pit; 2 satellit" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L489 | neighbors=[moon_rock(), Palette, Sh] | lang=pt
+- "moonclean_moon_props_rationale_49": "revolve [(r, y), ...] (bottom -> top) around Y; r == 0 collapses to a point" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L49 | neighbors=[lathe(), Palette, Sh] | lang=es
+- "moonclean_moon_props_rationale_502": "split meteorite: two dark halves around a glowing molten core, in a raised impac" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L502 | neighbors=[meteorite(), Palette, Sh] | lang=pt
+- "moonclean_moon_props_rationale_517": "ice cluster: 5-7 hex spikes leaning out from a frost-crusted rock, glowing cores" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L517 | neighbors=[ice_crystal(), Palette, Sh] | lang=en
+- "moonclean_moon_props_rationale_540": "abandoned lunar rover: tube chassis, 4 wire wheels with fenders, 2 seats, consol" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L540 | neighbors=[moon_rover(), Palette, Sh] | lang=en
+- "moonclean_moon_props_rationale_563": "crashed satellite half-buried: foil bus, one bent solar wing (cells + frame), ti" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L563 | neighbors=[satellite_wreck(), Palette, Sh] | lang=en
+- "moonclean_moon_props_rationale_580": "3 horizontal tanks on cradles (2 bottom, 1 on top), orange end caps, pipe manifo" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L580 | neighbors=[fuel_tanks(), Palette, Sh] | lang=en
+- "moonclean_moon_props_rationale_593": "hub floodlight mast: tripod foot, tapered pole, ring catwalk, 4-lamp head, red t" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L593 | neighbors=[floodlight(), Palette, Sh] | lang=en
+- "moonclean_moon_props_rationale_611": "hub antenna: big dish on a yoke, turret drum, foil base, feed horn on 3 struts" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L611 | neighbors=[comms_dish(), Palette, Sh] | lang=pt
+- "moonclean_moon_props_rationale_631": "stack of 3 white supply crates with orange corner caps and foil straps + a cylin" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L631 | neighbors=[supply_crates(), Palette, Sh] | lang=en
+- "moonclean_moon_props_rationale_644": "modelled impact crater for R = 1 (place with s = R): smooth 36-sided lathe, rais" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L644 | neighbors=[crater(), Palette, Sh] | lang=en
+- "moonclean_moon_props_rationale_672": "sweepable dust drift: low lumpy pancake, lighter than the ground, rippled rings" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L672 | neighbors=[dust_patch(), Palette, Sh] | lang=en
+- "moonclean_moon_props_rationale_706": "space junk to haul: bent hull panel, snapped pipe, gear, bolts, broken box - bui" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L706 | neighbors=[junk_heap(), Palette, Sh] | lang=en
+- "moonclean_moon_props_rationale_724": "small glowing meteor fragment to collect: dark shell with molten seams, scorch d" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L724 | neighbors=[meteor_chunk(), Palette, Sh] | lang=en
+- "moonclean_moon_props_rationale_733": "collectable ice: 3 short glowing shards on a frost puddle" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L733 | neighbors=[ice_shards(), Palette, Sh] | lang=pt
+- "moonclean_moon_props_rationale_743": "Earth for the sky: faceted sphere, oceans / continents / cloud + polar caps by n" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L743 | neighbors=[earth(), Palette, Sh] | lang=en
+- "moonclean_moon_props_rationale_80": "parabolic dish opening up (+Y), thickness t" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L80 | neighbors=[dish(), Palette, Sh] | lang=es
+- "moonclean_moon_props_rivets": "rivets()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L96 | neighbors=[moon_props.py, dust_exchange(), moon_rocket()] | lang=en
+- "moonclean_moon_props_supply_crates": "supply_crates()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L630 | neighbors=[moon_props.py, stack of 3 white supply crates with ora…, torus()] | lang=en
+- "musl_math_floor": "floor.cpp" | kind=code-symbol | source=mute/third_party/musl_math/floor.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, floor_value(), c7a411f Fix MUT-01-20 audit defects in …] | lang=en
+- "musl_math_rem_pio2": "__rem_pio2.cpp" | kind=code-symbol | source=mute/third_party/musl_math/__rem_pio2.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, rem_pio2(), c7a411f Fix MUT-01-20 audit defects in …] | lang=en
 
 ## Instructions
 

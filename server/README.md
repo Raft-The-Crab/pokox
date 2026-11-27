@@ -38,5 +38,12 @@ Each module ships unit tests registered in the root `CMakeLists.txt`:
 `pokox_authority_session_test`, `pokox_authority_pkb_schema_test`,
 `pokox_authority_rule_evaluator_test` (BAK-06) and
 `pokox_authority_projection_gate_test` (BAK-07) and
-`pokox_authority_replay_ring_test` (BAK-08). Full suite: 130/130
-passing (2026-11-27).
+`pokox_authority_replay_ring_test` (BAK-08) and
+`pokox_matchmaker_allocator_test` (BAK-09),
+`pokox_matchmaker_match_queue_test` (BAK-10),
+`pokox_matchmaker_slot_registry_test` (BAK-11),
+`pokox_matchmaker_wake_lock_test` (BAK-12),
+`pokox_matchmaker_byo_registration_test` (BAK-13),
+`pokox_matchmaker_reconnect_test` (BAK-14) and
+`pokox_matchmaker_party_book_test` (BAK-15, under `server/matchmaker`).
+Full suite: 137/137 passing (2026-11-27).

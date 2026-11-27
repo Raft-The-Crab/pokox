@@ -1,4 +1,4 @@
-# Node Description Batch 105 of 207
+# Node Description Batch 105 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -9,54 +9,60 @@ your JSON answer to the answer file.
 You are documenting nodes in a knowledge graph.
 For each entry below, write ONE concise factual plain-language sentence
 describing what it is or does. Use only the provided context.
-For a code symbol (kind=code-symbol — a function, class, or constant),
-describe what the function/symbol does based on its name, source location
-and neighbors — e.g. "Resolves the configured ontology profile from graphify.yaml.".
-Write every description in English (en). Do not switch languages.
+For an entity node (any other kind — e.g. a person, place, event, object),
+describe what the entity is and its role, grounded in its type, its
+relations (neighbors) and the provided citations/evidence — e.g.
+"Lady Carfax, a wealthy heiress who disappears en route to Lausanne.".
+Ground entity descriptions in the citations/evidence when present; do not
+speculate beyond the context, so a node with no supporting context may be
+left out of the reply.
+LANGUAGE: each entry has a `lang=` marker giving the language of its source.
+Write that entry's description in EXACTLY that language. Do not translate to
+a single common language — match each node's source language individually.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "debug_vulkan_diagnostics_start": "start()" | kind=code-symbol | source=engine/rhi/src/debug/vulkan_diagnostics.cpp:L78 | neighbors=[vulkan_diagnostics.cpp, start_with_factory()]
-- "debug_vulkan_diagnostics_stop": "stop()" | kind=code-symbol | source=engine/rhi/src/debug/vulkan_diagnostics.cpp:L127 | neighbors=[vulkan_diagnostics.cpp, since()]
-- "debug_vulkan_diagnostics_vulkandiagnostics": "VulkanDiagnostics()" | kind=code-symbol | source=engine/rhi/src/debug/vulkan_diagnostics.cpp:L76 | neighbors=[vulkan_diagnostics.cpp, .VulkanDiagnostics()]
-- "device_clear_backend_selection_clearbackend": "ClearBackend" | kind=code-symbol | source=engine/rhi/include/poko/rhi/device/clear_backend_selection.hpp:L10 | neighbors=[clear_backend_selection.cpp, .ClearBackend()]
-- "device_clear_backend_selection_start": "start()" | kind=code-symbol | source=engine/rhi/src/device/clear_backend_selection.cpp:L7 | neighbors=[clear_backend_selection.cpp, shutdown()]
-- "device_fallback_clear_demo": "fallback_clear_demo.cpp" | kind=code-symbol | source=engine/rhi/src/device/fallback_clear_demo.cpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, main()]
-- "device_opengl_clear_renderer_clear_and_present": "clear_and_present()" | kind=code-symbol | source=engine/rhi/src/device/opengl_clear_renderer.cpp:L170 | neighbors=[opengl_clear_renderer.cpp, native_window()]
-- "device_opengl_clear_renderer_default_framebuffer_is_srgb": "default_framebuffer_is_srgb()" | kind=code-symbol | source=engine/rhi/src/device/opengl_clear_renderer.cpp:L21 | neighbors=[opengl_clear_renderer.cpp, initialize()]
-- "device_opengl_clear_renderer_shutdown": "shutdown()" | kind=code-symbol | source=engine/rhi/src/device/opengl_clear_renderer.cpp:L200 | neighbors=[opengl_clear_renderer.cpp, OpenGLClearRenderer()]
-- "device_opengles_clear_demo_failingprimarybackend": "FailingPrimaryBackend" | kind=code-symbol | source=engine/rhi/src/device/opengles_clear_demo.cpp:L25 | neighbors=[opengles_clear_demo.cpp, rhi::ClearBackend]
-- "device_opengles_clear_demo_linear_to_srgb_byte": "linear_to_srgb_byte()" | kind=code-symbol | source=engine/rhi/src/device/opengles_clear_demo.cpp:L18 | neighbors=[opengles_clear_demo.cpp, report_pixel()]
-- "device_opengles_clear_demo_main": "main()" | kind=code-symbol | source=engine/rhi/src/device/opengles_clear_demo.cpp:L55 | neighbors=[opengles_clear_demo.cpp, report_pixel()]
-- "device_opengles_clear_renderer_initialize": "initialize()" | kind=code-symbol | source=engine/rhi/src/device/opengles_clear_renderer.cpp:L36 | neighbors=[opengles_clear_renderer.cpp, initialize_impl()]
-- "device_opengles_clear_renderer_initialize_window": "initialize_window()" | kind=code-symbol | source=engine/rhi/src/device/opengles_clear_renderer.cpp:L39 | neighbors=[opengles_clear_renderer.cpp, initialize_impl()]
-- "device_opengles_clear_renderer_shutdown_checked": "shutdown_checked()" | kind=code-symbol | source=engine/rhi/src/device/opengles_clear_renderer.cpp:L162 | neighbors=[opengles_clear_renderer.cpp, shutdown()]
-- "device_poko_jni_java_com_poko_glesclear_pokoactivity_nativeinit": "Java_com_poko_glesclear_PokoActivity_nativeInit()" | kind=code-symbol | source=engine/rhi/src/device/poko_jni.cpp:L108 | neighbors=[poko_jni.cpp, write_line()]
-- "device_read_spirv": "read_spirv.hpp" | kind=code-symbol | source=engine/rhi/src/device/read_spirv.hpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, read_spirv()]
-- "device_vulkan_clear_android_make_device_objects": "make_device_objects()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_clear_android.cpp:L97 | neighbors=[vulkan_clear_android.cpp, initialize()]
-- "device_vulkan_clear_android_make_instance": "make_instance()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_clear_android.cpp:L42 | neighbors=[vulkan_clear_android.cpp, initialize()]
-- "device_vulkan_clear_android_make_surface": "make_surface()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_clear_android.cpp:L53 | neighbors=[vulkan_clear_android.cpp, initialize()]
-- "device_vulkan_clear_android_make_swapchain": "make_swapchain()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_clear_android.cpp:L156 | neighbors=[vulkan_clear_android.cpp, initialize()]
-- "device_vulkan_clear_android_pick_device": "pick_device()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_clear_android.cpp:L58 | neighbors=[vulkan_clear_android.cpp, initialize()]
-- "device_vulkan_clear_android_pick_surface_format": "pick_surface_format()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_clear_android.cpp:L79 | neighbors=[vulkan_clear_android.cpp, initialize()]
-- "device_vulkan_clear_android_shutdown_checked": "shutdown_checked()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_clear_android.cpp:L352 | neighbors=[vulkan_clear_android.cpp, shutdown()]
-- "device_vulkan_clear_demo": "vulkan_clear_demo.cpp" | kind=code-symbol | source=engine/rhi/src/device/vulkan_clear_demo.cpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, main()]
-- "device_vulkan_clear_renderer_clear_and_present": "clear_and_present()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_clear_renderer.cpp:L123 | neighbors=[vulkan_clear_renderer.cpp, draw_and_present()]
-- "device_vulkan_clear_renderer_impl": "Impl()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_clear_renderer.cpp:L50 | neighbors=[vulkan_clear_renderer.cpp, shutdown()]
-- "device_vulkan_clear_renderer_shutdown_checked": "shutdown_checked()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_clear_renderer.cpp:L186 | neighbors=[vulkan_clear_renderer.cpp, shutdown()]
-- "device_vulkan_clear_renderer_vulkanclearrenderer": "VulkanClearRenderer()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_clear_renderer.cpp:L65 | neighbors=[vulkan_clear_renderer.cpp, .VulkanClearRenderer()]
-- "device_vulkan_imgui_pass_vulkanimguipass": "VulkanImGuiPass()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_imgui_pass.cpp:L338 | neighbors=[vulkan_imgui_pass.cpp, .VulkanImGuiPass()]
-- "device_vulkan_mesh_pass_draw": "draw()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_mesh_pass.cpp:L238 | neighbors=[vulkan_mesh_pass.cpp, draw_and_present()]
-- "device_vulkan_mesh_pass_draw_and_present": "draw_and_present()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_mesh_pass.cpp:L230 | neighbors=[vulkan_mesh_pass.cpp, draw()]
-- "device_vulkan_mesh_pass_vulkanmeshpass": "VulkanMeshPass()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_mesh_pass.cpp:L192 | neighbors=[vulkan_mesh_pass.cpp, .VulkanMeshPass()]
-- "device_vulkan_triangle_pass_draw": "draw()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_triangle_pass.cpp:L212 | neighbors=[vulkan_triangle_pass.cpp, draw_and_present()]
-- "device_vulkan_triangle_pass_draw_and_present": "draw_and_present()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_triangle_pass.cpp:L200 | neighbors=[vulkan_triangle_pass.cpp, draw()]
-- "device_vulkan_triangle_pass_set_texture": "set_texture()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_triangle_pass.cpp:L216 | neighbors=[vulkan_triangle_pass.cpp, set_texture_mips()]
-- "device_vulkan_triangle_pass_set_texture_mips": "set_texture_mips()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_triangle_pass.cpp:L221 | neighbors=[vulkan_triangle_pass.cpp, set_texture()]
-- "device_vulkan_triangle_pass_vulkantrianglepass": "VulkanTrianglePass()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_triangle_pass.cpp:L197 | neighbors=[vulkan_triangle_pass.cpp, .VulkanTrianglePass()]
-- "dunedesert_dune_map_inb": "_inb()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L222 | neighbors=[dune_map.py, _inside_one()]
-- "dunedesert_dune_map_inside": "inside()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L192 | neighbors=[dune_map.py, clip_fail()]
+- "creaturelab_lab_props_rationale_1069": "round white planter with a mint band + a raised cream lip, soil, a bush in the m" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1069 | neighbors=[round_planter(), Palette] | lang=en
+- "creaturelab_lab_props_rationale_1085": "long planter box (white with a teal kick + cream coping) with a row of clipped r" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1085 | neighbors=[long_planter(), Palette] | lang=en
+- "creaturelab_lab_props_rationale_1101": "plaza lamp: round foot, slim white post with a mint collar, curved arm, glass la" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1101 | neighbors=[lamp_post(), Palette] | lang=en
+- "creaturelab_lab_props_rationale_111": "the Bloom Paw: rounded paw pad (soft heart-ish blob) + three leaf toes fanned ab" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L111 | neighbors=[emblem(), Palette] | lang=en
+- "creaturelab_lab_props_rationale_1116": "park bench: white cast ends with round feet, birch slats (seat + back), mint arm" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1116 | neighbors=[ext_bench(), Palette] | lang=en
+- "creaturelab_lab_props_rationale_1130": "indoor potted tree: tall white pot with a coloured band and foot, slim trunk, tw" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1130 | neighbors=[potted_tree(), Palette] | lang=en
+- "creaturelab_lab_props_rationale_1152": "entry monolith on the path: rounded white slab on a teal plinth, the Bloom Paw b" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1152 | neighbors=[welcome_sign(), Palette] | lang=en
+- "creaturelab_lab_props_rationale_1166": "berry-juice vending machine: rounded white cabinet, coloured side panels, glass" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1166 | neighbors=[vending_machine(), Palette] | lang=en
+- "creaturelab_lab_props_rationale_1189": "plaza fountain: round two-step basin (white with a teal coping + mint water), a" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1189 | neighbors=[capsule_statue(), Palette] | lang=pt
+- "creaturelab_lab_props_rationale_1211": "low path bollard: rounded white post, glowing ring band, teal cap" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1211 | neighbors=[bollard_light(), Palette] | lang=en
+- "creaturelab_lab_props_rationale_1219": "clipped hedge segment: rounded box mass with lumps, on a dark soil strip" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1219 | neighbors=[hedge(), Palette] | lang=en
+- "creaturelab_lab_props_rationale_1228": "low flower clumps in a soft oval: rounded leafy mounds with 5-petal flowers on s" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1228 | neighbors=[flower_bed(), Palette] | lang=en
+- "creaturelab_lab_props_rationale_125": "round badge facing -Z: white disc (back face at pos), coloured rim ring, the Blo" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L125 | neighbors=[emblem_badge(), Palette] | lang=en
+- "creaturelab_lab_props_rationale_1255": "lab wall shelving: steel frame, binders in rows (coloured spines, no text), samp" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1255 | neighbors=[wall_shelf_lab(), Palette] | lang=en
+- "creaturelab_lab_props_rationale_1278": "underside of the rotunda roof at radius r (same profile as rotunda_roof's inner" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1278 | neighbors=[roof_in_y(), Palette] | lang=en
+- "creaturelab_lab_props_rationale_1287": "interior architecture of the hall (no collision, the walls behind collide): pila" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1287 | neighbors=[hall_trim(), Palette] | lang=en
+- "creaturelab_lab_props_rationale_1317": "coffered ceiling hung under the dome (no collision): 16 radial ribs from the ocu" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1317 | neighbors=[hall_ceiling(), Palette] | lang=en
+- "creaturelab_lab_props_rationale_134": "the capture ball wherever the kit places one (was the Gem Pod): LOD by size / ca" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L134 | neighbors=[capsule(), Palette] | lang=en
+- "creaturelab_lab_props_rationale_1348": "lab wing interior trim + ceiling beams (no collision): pilasters between the win" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1348 | neighbors=[wing_trim(), Palette] | lang=en
+- "creaturelab_lab_props_rationale_1374": "clustered round leaves: n small smooth ellipsoids scattered on a shell of radius" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1374 | neighbors=[leaf_cluster(), Palette] | lang=en
+- "creaturelab_lab_props_rationale_1386": "round planter pot: style 0 = tapered white with a colour band, 1 = cylinder with" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1386 | neighbors=[pot(), Palette] | lang=en
+- "creaturelab_lab_props_rationale_1398": "indoor fiddle-leaf / round-leaf fig: tapered pot, slim trunk splitting in two, t" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1398 | neighbors=[fig_tree(), Palette] | lang=en
+- "creaturelab_lab_props_rationale_1414": "monstera in a footed pot: 7 big split leaves (heart shape with side slits) on ar" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1414 | neighbors=[monstera(), Palette] | lang=en
+- "creaturelab_lab_props_rationale_1437": "tall snake plant: square pot, 11 upright sword leaves (flattened tapered blades," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1437 | neighbors=[snake_plant(), Palette] | lang=en
+- "creaturelab_lab_props_rationale_145": "capsule cradle slot: steel cup, glowing ring, capsule seated (used in the heal m" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L145 | neighbors=[cradle(), Palette] | lang=en
+- "creaturelab_lab_props_rationale_1451": "hanging planter (origin = ceiling point, hangs DOWN): three cords, a round bowl," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1451 | neighbors=[hanging_planter(), Palette] | lang=pt
+- "creaturelab_lab_props_rationale_1470": "outdoor rounded park tree in the same language: smooth tapered trunk with two bo" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1470 | neighbors=[round_tree(), Palette] | lang=en
+- "creaturelab_lab_props_rationale_1492": "small ornamental tree: smooth trunk, round canopy in soft pink (berry ramp light" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1492 | neighbors=[blossom_tree(), Palette] | lang=en
+- "creaturelab_lab_props_rationale_1502": "clipped hedge with a smooth rounded profile on a low white kerb, plus two topiar" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1502 | neighbors=[topiary_hedge(), Palette] | lang=pt
+- "creaturelab_lab_props_rationale_1511": "smooth round shrub: soft leaf mound with clustered leaves and small 5-petal flow" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1511 | neighbors=[round_bush(), Palette] | lang=en
+- "creaturelab_lab_props_rationale_1523": "low garden boundary wall: white rendered wall with a teal coping and a mint plin" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1523 | neighbors=[garden_wall(), Palette] | lang=en
+- "creaturelab_lab_props_rationale_153": "the Restoration Bay: plinth, white console with a tilted cradle deck of 6 capsul" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L153 | neighbors=[heal_machine(), Palette] | lang=en
+- "creaturelab_lab_props_rationale_1533": "floating lily pads (notched discs) with two pink flowers" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1533 | neighbors=[lily_pads(), Palette] | lang=en
+- "creaturelab_lab_props_rationale_1563": "creature plush toy (an original critter): round body, two leaf ears, stubby paws" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1563 | neighbors=[plush(), Palette] | lang=en
+- "creaturelab_lab_props_rationale_1576": "Heal story cluster: a big creature bed with a folded + a draped blanket, a plush" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1576 | neighbors=[heal_corner(), Palette] | lang=pt
+- "creaturelab_lab_props_rationale_1611": "Shop story: stacked supply cartons (cream with coral tape and a paw stamp), an o" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1611 | neighbors=[supply_boxes(), Palette] | lang=en
+- "creaturelab_lab_props_rationale_1631": "Shop story: A-frame sidewalk stand with a blank coral board (GUI spot) and a wir" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1631 | neighbors=[sale_stand(), Palette] | lang=en
+- "creaturelab_lab_props_rationale_1646": "Storage story: cable runs across the floor under rubber cable covers to three gl" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1646 | neighbors=[dock_cables(), Palette] | lang=en
+- "creaturelab_lab_props_rationale_1662": "queue rope line: n steel stanchions with weighted bases, sagging coloured ropes" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1662 | neighbors=[rope_line(), Palette] | lang=en
+- "creaturelab_lab_props_rationale_1674": "Trade story: wall trophy shelf (two birch boards on teal brackets) with gold cup" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1674 | neighbors=[trophy_shelf(), Palette] | lang=en
 
 ## Instructions
 

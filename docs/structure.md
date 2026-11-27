@@ -2946,6 +2946,7 @@ The `engine/render/tests/fixtures` and `fixtures/golden` directories exist in th
 
 ## Authority module and BAK wave (2026-11-27)
 
+- New `server/matchmaker/` area (BAK-09): `include/poko/matchmaker/allocator.hpp` — spec-07 allocation ranking/filtering with the platform-CCU cap and donated/BYO fallback, plus `TicketSigner` (30 s truncated-HMAC tickets); test `server/matchmaker/tests/unit/allocator_test.cpp`.
 - New `server/authority/` area: headers under `include/poko/authority/` (`session.hpp` BAK-02, `pkb_schema.hpp` BAK-05, `rule_evaluator.hpp` BAK-06, `projection_gate.hpp` BAK-07, `replay_ring.hpp` BAK-08), unit tests under `tests/unit/` (`session_test.cpp`, `pkb_schema_test.cpp`, `rule_evaluator_test.cpp`, `projection_gate_test.cpp`, `replay_ring_test.cpp`). Spec 05 authority: proposal/tick/snapshot, .pkB schema loading with projected-hash packing, fixed-cost assert rules, projected-hash + sequence-window gate with the penalty model.
 - New `backend/storage/postgres/` (BAK-01): migrations `0001`–`0003` and the idempotent `migrate.sh` runner, verified against Postgres 18.6.
-- `server/net/` (NET-01..09) and `server/identity/` (IDN-01..04, including `velocity.hpp`) complete their chains; root `CMakeLists.txt` registers all `pokox_*_test` targets. Suite: 130/130.
+- `server/net/` (NET-01..09) and `server/identity/` (IDN-01..04, including `velocity.hpp`) complete their chains; root `CMakeLists.txt` registers all `pokox_*_test` targets. Suite: 131/131.

@@ -1,4 +1,4 @@
-# Node Description Batch 136 of 207
+# Node Description Batch 136 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -12,51 +12,58 @@ describing what it is or does. Use only the provided context.
 For a code symbol (kind=code-symbol — a function, class, or constant),
 describe what the function/symbol does based on its name, source location
 and neighbors — e.g. "Resolves the configured ontology profile from graphify.yaml.".
+For an entity node (any other kind — e.g. a person, place, event, object),
+describe what the entity is and its role, grounded in its type, its
+relations (neighbors) and the provided citations/evidence — e.g.
+"Lady Carfax, a wealthy heiress who disappears en route to Lausanne.".
+Ground entity descriptions in the citations/evidence when present; do not
+speculate beyond the context, so a node with no supporting context may be
+left out of the reply.
 Write every description in English (en). Do not switch languages.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "tests_test_safety_test_a_full_build_prunes_only_effects_it_built": "test_a_full_build_prunes_only_effects_it_built()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_safety.py:L93 | neighbors=[test_safety.py, game()]
-- "tests_test_safety_test_conflicts_protect_hand_made_effects_without_a_recipe": "test_conflicts_protect_hand_made_effects_without_a_recipe()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_safety.py:L274 | neighbors=[test_safety.py, conflict_setup()]
-- "tests_test_safety_test_conflicts_protect_owned_effects_unless_they_are_rebuilt_or_removed": "test_conflicts_protect_owned_effects_unless_they_are_rebuilt_or_removed()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_safety.py:L265 | neighbors=[test_safety.py, conflict_setup()]
-- "tests_test_safety_test_doctor_uses_the_same_ownership_rules": "test_doctor_uses_the_same_ownership_rules()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_safety.py:L285 | neighbors=[test_safety.py, game()]
-- "tests_test_safety_test_helpers_never_shadow_built_in_modules": "test_helpers_never_shadow_built_in_modules()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_safety.py:L194 | neighbors=[test_safety.py, game()]
-- "tests_test_safety_test_init_fills_missing_math_textures_without_replacing_edited_ones": "test_init_fills_missing_math_textures_without_replacing_edited_ones()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_safety.py:L183 | neighbors=[test_safety.py, game()]
-- "tests_test_safety_test_init_never_writes_through_a_link_that_leads_outside": "test_init_never_writes_through_a_link_that_leads_outside()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_safety.py:L376 | neighbors=[test_safety.py, game()]
-- "tests_test_safety_test_project_files_never_shadow_modules": "test_project_files_never_shadow_modules()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_safety.py:L63 | neighbors=[test_safety.py, game()]
-- "tests_test_scale_beam_test_beam_recipe_lints_with_hold_and_needs_a_release": "test_beam_recipe_lints_with_hold_and_needs_a_release()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_scale_beam.py:L183 | neighbors=[test_scale_beam.py, recipe_with()]
-- "tests_test_scale_beam_test_lint_counts_repeatedly_emitted_painted_shapes_as_restruck": "test_lint_counts_repeatedly_emitted_painted_shapes_as_restruck()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_scale_beam.py:L220 | neighbors=[test_scale_beam.py, recipe_with()]
-- "tests_test_scale_beam_test_lint_scales_its_craft_limits_with_the_recipe": "test_lint_scales_its_craft_limits_with_the_recipe()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_scale_beam.py:L89 | neighbors=[test_scale_beam.py, recipe_with()]
-- "tests_test_scale_beam_test_scale_character_is_a_no_op_and_records_nothing": "test_scale_character_is_a_no_op_and_records_nothing()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_scale_beam.py:L83 | neighbors=[test_scale_beam.py, recipe_with()]
-- "tests_test_simulation_test_classic_cloth_drapes_on_collider": "test_classic_cloth_drapes_on_collider()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_simulation.py:L22 | neighbors=[test_simulation.py, _grid()]
-- "tests_test_simulation_test_gn_cloth_52_asset": "test_gn_cloth_52_asset()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_simulation.py:L31 | neighbors=[test_simulation.py, _grid()]
-- "tests_test_texturing_test_smart_material_bakes_to_texture": "test_smart_material_bakes_to_texture()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_texturing.py:L65 | neighbors=[test_texturing.py, _stepped_block()]
-- "tests_test_texturing_test_smart_material_curvature_and_roundtrip": "test_smart_material_curvature_and_roundtrip()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_texturing.py:L34 | neighbors=[test_texturing.py, _stepped_block()]
-- "tests_test_tools_test_ablation_verdicts": "test_ablation_verdicts()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tests/test_tools.py:L73 | neighbors=[test_tools.py, _write_ablation()]
-- "tests_test_tools_write_ablation": "_write_ablation()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tests/test_tools.py:L62 | neighbors=[test_tools.py, test_ablation_verdicts()]
-- "tests_test_video_clip": "clip()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_video.py:L21 | neighbors=[test_video.py, 48 frames at 24 fps: black, a warm disc…]
-- "tests_test_video_png": "_png()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_video.py:L17 | neighbors=[test_video.py, test_vse_edit_crossfade_title_audio_mp4…]
-- "tests_test_video_test_track_camera_solves_in_ui_session": "test_track_camera_solves_in_ui_session()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_video.py:L124 | neighbors=[test_video.py, _footage()]
-- "tests_test_video_test_unity_export_writes_the_grid_sidecar_and_stays_inside_the_project": "test_unity_export_writes_the_grid_sidecar_and_stays_inside_the_project()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_video.py:L112 | neighbors=[test_video.py, fake_unity()]
-- "tests_test_video_test_unity_force_keeps_meta_guids": "test_unity_force_keeps_meta_guids()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_video.py:L154 | neighbors=[test_video.py, fake_unity()]
-- "tests_test_video_test_unity_install_copies_the_package_and_draws_its_textures": "test_unity_install_copies_the_package_and_draws_its_textures()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_video.py:L92 | neighbors=[test_video.py, fake_unity()]
-- "tests_test_video_test_vse_edit_crossfade_title_audio_mp4": "test_vse_edit_crossfade_title_audio_mp4()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_video.py:L27 | neighbors=[test_video.py, _png()]
-- "tests_test_weather_instances": "_instances()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_weather.py:L6 | neighbors=[test_weather.py, test_precipitation_loops_and_stops_on_g…]
-- "tests_test_weather_test_precipitation_loops_and_stops_on_ground": "test_precipitation_loops_and_stops_on_ground()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_weather.py:L14 | neighbors=[test_weather.py, _instances()]
-- "tests_test_workflow_isolated": "isolated()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_workflow.py:L45 | neighbors=[test_workflow.py, Point the workspace-relative modules at…]
-- "tests_test_workflow_test_build_and_render_reject_changed_sources_assets_outputs_and_templates": "test_build_and_render_reject_changed_sources_assets_outputs_and_templates()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_workflow.py:L115 | neighbors=[test_workflow.py, captured()]
-- "tests_test_workflow_test_evidence_is_stored_in_the_workspace_work_folder": "test_evidence_is_stored_in_the_workspace_work_folder()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_workflow.py:L102 | neighbors=[test_workflow.py, captured()]
-- "tests_test_workflow_test_reference_compare_requires_exact_fresh_render_frames": "test_reference_compare_requires_exact_fresh_render_frames()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_workflow.py:L230 | neighbors=[test_workflow.py, captured()]
-- "tests_test_workflow_test_review_handoff_refuses_a_missing_or_stale_capture": "test_review_handoff_refuses_a_missing_or_stale_capture()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_workflow.py:L310 | neighbors=[test_workflow.py, captured()]
-- "texture_tex_to_maps_load_gray": "load_gray()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/texture/tex_to_maps.py:L30 | neighbors=[tex_to_maps.py, process()]
-- "texture_tex_to_maps_main": "main()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/texture/tex_to_maps.py:L145 | neighbors=[tex_to_maps.py, process()]
-- "texture_tex_to_maps_save_gray": "save_gray()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/texture/tex_to_maps.py:L98 | neighbors=[tex_to_maps.py, process()]
-- "texture_tex_to_maps_save_rgb": "save_rgb()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/texture/tex_to_maps.py:L102 | neighbors=[tex_to_maps.py, process()]
-- "texture_tile_seam_check_load_gray": "load_gray()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/texture/tile_seam_check.py:L35 | neighbors=[tile_seam_check.py, assess()]
-- "texture_tile_seam_check_print_report": "print_report()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/texture/tile_seam_check.py:L115 | neighbors=[tile_seam_check.py, main()]
-- "texture_uv_density_print_report": "print_report()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/texture/uv_density.py:L166 | neighbors=[uv_density.py, main()]
-- "texture_uv_density_tri_area_3d": "tri_area_3d()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/texture/uv_density.py:L69 | neighbors=[uv_density.py, group_stats()]
+- "tests_run_all_skill_module": "skill_module()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/run_all.py:L22 | neighbors=[run_all.py, Import skills/<skill>/scripts/<script>.…]
+- "tests_test_agent_loop_test_lint_accepts_a_cel_contact_and_a_restruck_painted_shape": "test_lint_accepts_a_cel_contact_and_a_restruck_painted_shape()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_agent_loop.py:L65 | neighbors=[test_agent_loop.py, recipe()]
+- "tests_test_agent_loop_test_lint_passes_the_library_and_reports_each_hard_rule": "test_lint_passes_the_library_and_reports_each_hard_rule()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_agent_loop.py:L49 | neighbors=[test_agent_loop.py, recipe()]
+- "tests_test_agent_loop_test_lint_warns_about_craft_problems": "test_lint_warns_about_craft_problems()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_agent_loop.py:L78 | neighbors=[test_agent_loop.py, recipe()]
+- "tests_test_agent_loop_test_review_metrics_accept_a_well_formed_effect": "test_review_metrics_accept_a_well_formed_effect()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_agent_loop.py:L112 | neighbors=[test_agent_loop.py, frames()]
+- "tests_test_agent_loop_test_review_metrics_do_not_flag_known_false_positives": "test_review_metrics_do_not_flag_known_false_positives()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_agent_loop.py:L159 | neighbors=[test_agent_loop.py, frames()]
+- "tests_test_agent_loop_test_review_metrics_flag_off_peak_flash_flat_colour_and_wrong_direction": "test_review_metrics_flag_off_peak_flash_flat_colour_and_wrong_direction()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_agent_loop.py:L129 | neighbors=[test_agent_loop.py, frames()]
+- "tests_test_agent_loop_test_short_effect_with_an_empty_second_half_is_a_dead_tail": "test_short_effect_with_an_empty_second_half_is_a_dead_tail()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_agent_loop.py:L148 | neighbors=[test_agent_loop.py, frames()]
+- "tests_test_animation_rig": "_rig()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_animation.py:L82 | neighbors=[test_animation.py, test_retarget_mixamo_to_rigify_names()]
+- "tests_test_animation_test_bake_to_copy_with_root_motion_and_export": "test_bake_to_copy_with_root_motion_and_export()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_animation.py:L25 | neighbors=[test_animation.py, _walk()]
+- "tests_test_animation_test_retarget_mixamo_to_rigify_names": "test_retarget_mixamo_to_rigify_names()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_animation.py:L105 | neighbors=[test_animation.py, _rig()]
+- "tests_test_atmosphere_mean_luma": "_mean_luma()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_atmosphere.py:L6 | neighbors=[test_atmosphere.py, _render()]
+- "tests_test_atmosphere_test_night_renders_darker_than_noon": "test_night_renders_darker_than_noon()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_atmosphere.py:L40 | neighbors=[test_atmosphere.py, _render()]
+- "tests_test_baking_test_high_to_low_bake_normal_ao_curv_orm_basecolor": "test_high_to_low_bake_normal_ao_curv_orm_basecolor()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_baking.py:L16 | neighbors=[test_baking.py, _pixels()]
+- "tests_test_baking_test_self_bake_procedural_roughness": "test_self_bake_procedural_roughness()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_baking.py:L41 | neighbors=[test_baking.py, _pixels()]
+- "tests_test_core_test_bpy_patterns_snippets_run": "test_bpy_patterns_snippets_run()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_core.py:L25 | neighbors=[test_core.py, _run_md_blocks()]
+- "tests_test_effekseer_ai_test_editor_bin_directory_requires_an_explicit_configuration": "test_editor_bin_directory_requires_an_explicit_configuration()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_effekseer_ai.py:L30 | neighbors=[test_effekseer_ai.py, A public release must never probe a con…]
+- "tests_test_environment_test_scatter_respects_slope_height_and_realize": "test_scatter_respects_slope_height_and_realize()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_environment.py:L54 | neighbors=[test_environment.py, _trees()]
+- "tests_test_environment_trees": "_trees()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_environment.py:L41 | neighbors=[test_environment.py, test_scatter_respects_slope_height_and_…]
+- "tests_test_examples_test_catalog_lists_every_shipped_example_as_pairs_singles_and_sets": "test_catalog_lists_every_shipped_example_as_pairs_singles_and_sets()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_examples.py:L16 | neighbors=[test_examples.py, example_ids()]
+- "tests_test_examples_test_lint_of_all_examples_has_no_errors": "test_lint_of_all_examples_has_no_errors()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_examples.py:L66 | neighbors=[test_examples.py, example_ids()]
+- "tests_test_export_reimport_dims": "_reimport_dims()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_export.py:L8 | neighbors=[test_export.py, test_all_presets_roundtrip_scale()]
+- "tests_test_export_test_all_presets_roundtrip_scale": "test_all_presets_roundtrip_scale()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_export.py:L22 | neighbors=[test_export.py, _reimport_dims()]
+- "tests_test_golden_goldenharnesstests_test_binary_match": ".test_binary_match()" | kind=code-symbol | source=tools/testutils/harness/tests/test_golden.py:L26 | neighbors=[GoldenHarnessTests, .pair()]
+- "tests_test_golden_goldenharnesstests_test_binary_mismatch_does_not_update_reference": ".test_binary_mismatch_does_not_update_reference()" | kind=code-symbol | source=tools/testutils/harness/tests/test_golden.py:L33 | neighbors=[GoldenHarnessTests, .pair()]
+- "tests_test_golden_goldenharnesstests_test_chunk_boundary": ".test_chunk_boundary()" | kind=code-symbol | source=tools/testutils/harness/tests/test_golden.py:L62 | neighbors=[GoldenHarnessTests, .pair()]
+- "tests_test_golden_goldenharnesstests_test_different_lengths_and_empty_files": ".test_different_lengths_and_empty_files()" | kind=code-symbol | source=tools/testutils/harness/tests/test_golden.py:L53 | neighbors=[GoldenHarnessTests, .pair()]
+- "tests_test_golden_goldenharnesstests_test_incomplete_arguments_are_errors": ".test_incomplete_arguments_are_errors()" | kind=code-symbol | source=tools/testutils/harness/tests/test_golden.py:L103 | neighbors=[GoldenHarnessTests, run()]
+- "tests_test_golden_goldenharnesstests_test_missing_file_is_error": ".test_missing_file_is_error()" | kind=code-symbol | source=tools/testutils/harness/tests/test_golden.py:L70 | neighbors=[GoldenHarnessTests, .pair()]
+- "tests_test_golden_goldenharnesstests_test_png_match": ".test_png_match()" | kind=code-symbol | source=tools/testutils/harness/tests/test_golden.py:L42 | neighbors=[GoldenHarnessTests, .pair()]
+- "tests_test_golden_goldenharnesstests_test_png_mismatch": ".test_png_mismatch()" | kind=code-symbol | source=tools/testutils/harness/tests/test_golden.py:L48 | neighbors=[GoldenHarnessTests, .pair()]
+- "tests_test_golden_goldenharnesstests_test_update_missing_actual_preserves_existing_reference": ".test_update_missing_actual_preserves_existing_reference()" | kind=code-symbol | source=tools/testutils/harness/tests/test_golden.py:L96 | neighbors=[GoldenHarnessTests, run()]
+- "tests_test_golden_goldenharnesstests_test_update_same_path_refused": ".test_update_same_path_refused()" | kind=code-symbol | source=tools/testutils/harness/tests/test_golden.py:L89 | neighbors=[GoldenHarnessTests, run()]
+- "tests_test_hair_test_groom_attached_masked_with_assets": "test_groom_attached_masked_with_assets()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_hair.py:L15 | neighbors=[test_hair.py, _head()]
+- "tests_test_hair_test_hair_cards_and_atlas": "test_hair_cards_and_atlas()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_hair.py:L29 | neighbors=[test_hair.py, _head()]
+- "tests_test_materials_img": "_img()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_materials.py:L6 | neighbors=[test_materials.py, test_texture_set_autowire_orm_dx_normal…]
+- "tests_test_materials_test_texture_set_autowire_orm_dx_normal": "test_texture_set_autowire_orm_dx_normal()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_materials.py:L16 | neighbors=[test_materials.py, _img()]
+- "tests_test_mating_rationale_8": "A 20 mm block sitting in a U socket whose opening is `gap` wide." | kind=entity | source=.agents/skills/cad-skill-main/tests/test_mating.py:L8 | neighbors=[MatingError, _socket()]
+- "tests_test_mating_test_collision_fails": "test_collision_fails()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_mating.py:L28 | neighbors=[test_mating.py, _socket()]
+- "tests_test_mating_test_good_fit_passes": "test_good_fit_passes()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_mating.py:L24 | neighbors=[test_mating.py, _socket()]
 
 ## Instructions
 

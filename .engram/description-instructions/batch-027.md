@@ -1,4 +1,4 @@
-# Node Description Batch 28 of 207
+# Node Description Batch 28 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -17,6 +17,24 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "medievalbattle_battle_props_barrel": "barrel()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L1267 | neighbors=[battle_props.py, lathe(), T(), torus(), supply_pile(), well()]
+- "medievalbattle_battle_props_brazier": "brazier()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L1236 | neighbors=[battle_props.py, flame(), lathe(), T(), torus(), iron brazier: three curled legs, rivete…]
+- "medievalbattle_battle_props_cheval": "cheval()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L909 | neighbors=[battle_props.py, frame_to(), log(), T(), torus(), cheval de frise: a squared log run thro…]
+- "medievalbattle_battle_props_corbels": "corbels()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L210 | neighbors=[battle_props.py, T(), curtain_wall(), parapet_front(), stepped corbel blocks along X under a p…, tower_face()]
+- "medievalbattle_battle_props_crate": "crate()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L1252 | neighbors=[battle_props.py, broken_cart(), merge(), T(), plank crate: core + slat boards + iron …, supply_pile()]
+- "medievalbattle_battle_props_ell_outline": "ell_outline()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L346 | neighbors=[battle_props.py, bridge_tower(), donjon(), gatehouse(), elliptical / segmental arch outline in …, sundered_bridge()]
+- "medievalbattle_battle_props_frame_to": "frame_to()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L52 | neighbors=[battle_props.py, bar(), cheval(), bm built along +X from 0..L (Y up): rot…, trebuchet(), weapon_rack()]
+- "medievalbattle_battle_props_gravestones": "gravestones()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L859 | neighbors=[battle_props.py, bar(), lathe(), T(), torus(), 3 tilted headstones on mounds, a makesh…]
+- "medievalbattle_battle_props_mantlet": "mantlet()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L1131 | neighbors=[battle_props.py, bar(), log(), T(), wheel(), wheeled oak pavise: planks with a cut s…]
+- "medievalbattle_battle_props_merlon_row": "merlon_row()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L199 | neighbors=[battle_props.py, curtain_wall(), T(), parapet_front(), crenellation along X centred at x = 0, …, tower_face()]
+- "medievalbattle_battle_props_outline_prism": "outline_prism()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L352 | neighbors=[battle_props.py, bridge_tower(), donjon(), gatehouse(), closed solid of an outline (XY) from z0…, sundered_bridge()]
+- "medievalbattle_battle_props_pine": "pine()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L1473 | neighbors=[battle_props.py, bough_skirt(), lerp(), log(), T(), fir in four forms (tall spire / full / …]
+- "medievalbattle_battle_props_slit_cutter": "slit_cutter()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L226 | neighbors=[battle_props.py, bridge_tower(), add an arrow-slit cutter box (front = -…, add_into(), T(), tower_body()]
+- "medievalbattle_battle_props_supply_pile": "supply_pile()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L1276 | neighbors=[battle_props.py, two crates, a barrel pair, tied sacks, barrel(), crate(), T(), torus()]
+- "moonclean_moon_map_ground": "ground()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_map.py:L250 | neighbors=[moon_map.py, build(), adiff(), H(), radial_samples(), sub()]
+- "moonclean_moon_map_hub": "hub()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_map.py:L342 | neighbors=[moon_map.py, build(), adiff(), face(), place(), reserve()]
+- "moonclean_moon_map_polar": "polar()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_map.py:L184 | neighbors=[moon_map.py, crater_ramp(), lip_rails(), rail_ring(), scatter(), zone()]
+- "moonclean_moon_map_rail_ring": "rail_ring()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_map.py:L314 | neighbors=[moon_map.py, lip_rails(), peak(), place(), polar(), the signature beacon rail along a lip: …]
 - "moonclean_moon_map_ramp_w": "ramp_w()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_map.py:L96 | neighbors=[moon_map.py, ground_shade(), H(), adiff(), ramp_half_len(), weight 0..1 of ramp k at (r, a) and the…]
 - "moonclean_moon_map_reserve": "reserve()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_map.py:L183 | neighbors=[moon_map.py, crater_ramp(), craters(), hub(), scatter(), zone()]
 - "moonclean_moon_map_zone_of": "zone_of()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_map.py:L126 | neighbors=[moon_map.py, _crater_ok(), craters(), ground_shade(), H(), zone()]
@@ -39,24 +57,6 @@ one-sentence description — no prose, no markdown fences.
 - "onsenvillage_onsen_props_flared_roof": "flared_roof()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L47 | neighbors=[onsen_props.py, hip_roof(), pagoda(), Asian glazed roof: a lofted surface fro…, skirt_roof(), toro()]
 - "onsenvillage_onsen_props_hip_roof": "hip_roof()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L104 | neighbors=[onsen_props.py, bath_pavilion(), flared_roof(), house(), noodle_stall(), rectangular hip roof over a hw x hd (ha…]
 - "opencode_test_hook_registration": "test-hook-registration.mjs" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-hook-registration.mjs:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, captureHooks(), event(), pluginURL, session()]
-- "petsim_pet_map_anchor": "anchor()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L202 | neighbors=[pet_map.py, breakables(), egg_stand(), hub(), link(), zone_bounds()]
-- "petsim_pet_map_edge_pt": "edge_pt()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L281 | neighbors=[pet_map.py, build(), isle_R(), fence_ring(), hub(), link()]
-- "petsim_pet_map_isle_at": "isle_at()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L43 | neighbors=[pet_map.py, breakables(), H(), isle_R(), polar(), place_soft()]
-- "petsim_pet_map_place_soft": "place_soft()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L178 | neighbors=[pet_map.py, build(), clip_fail(), isle_at(), place(), unplace()]
-- "petsim_pet_map_zone": "zone()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L453 | neighbors=[pet_map.py, candy(), crystal(), meadow(), egg_stand(), path()]
-- "petsim_pet_map_zone_bounds": "zone_bounds()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L375 | neighbors=[pet_map.py, candy(), crystal(), hub(), meadow(), anchor()]
-- "petsim_pet_props_egg_stand": "egg_stand()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L566 | neighbors=[pet_props.py, egg(), puff(), rcyl(), soft(), fluted cake pedestal with a glowing rin…]
-- "petsim_pet_props_fence": "fence()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L1005 | neighbors=[pet_props.py, ell(), rbox(), rcyl(), soft(), chunky rail fence segment from x = 0 to…]
-- "petsim_pet_props_lollipop": "lollipop()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L892 | neighbors=[pet_props.py, ell(), flat(), rcyl(), soft(), giant swirl lollipop: two interleaved c…]
-- "petsim_pet_props_paw": "paw()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L127 | neighbors=[pet_props.py, ell(), soft(), paw-print icon: palm pad + 4 toe beans,…, spawn_pad(), zone_gate()]
-- "petsim_pet_props_pet_shop": "pet_shop()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L357 | neighbors=[pet_props.py, ell(), pill(), rcyl(), soft(), open-front kiosk: round dais, curved ba…]
-- "petsim_pet_props_pet_statue": "pet_statue()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L323 | neighbors=[pet_props.py, ell(), puff(), puffpaw(), soft(), the Puffpaw statue + its quilted cushio…]
-- "petsim_pet_props_star": "star()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L119 | neighbors=[pet_props.py, rainbow_arch(), a chunky star standing upright facing -…, star_poly(), star_lamp(), upgrade_machine()]
-- "petsim_pet_props_trade_booth": "trade_booth()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L486 | neighbors=[pet_props.py, round trade table with a big scalloped …, ell(), rbox(), rcyl(), soft()]
-- "petsim_pet_props_vsh": "vsh()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L47 | neighbors=[pet_props.py, bridge(), coin_pile(), flat(), pet_fountain(), soft()]
-- "plusspeed_plus_map_dress_caps": "dress_caps()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_map.py:L88 | neighbors=[plus_map.py, place(), finish(), hub(), put theme props on cap tops (centre of …, zone()]
-- "plusspeed_plus_map_finish": "finish()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_map.py:L192 | neighbors=[plus_map.py, blk(), dress_caps(), floor(), place(), walls()]
-- "plusspeed_plus_map_zone": "zone()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_map.py:L160 | neighbors=[plus_map.py, blk(), dress_caps(), floor(), place(), walls()]
 
 ## Instructions
 

@@ -1,4 +1,4 @@
-# Node Description Batch 115 of 207
+# Node Description Batch 115 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -12,51 +12,58 @@ describing what it is or does. Use only the provided context.
 For a code symbol (kind=code-symbol — a function, class, or constant),
 describe what the function/symbol does based on its name, source location
 and neighbors — e.g. "Resolves the configured ontology profile from graphify.yaml.".
+For an entity node (any other kind — e.g. a person, place, event, object),
+describe what the entity is and its role, grounded in its type, its
+relations (neighbors) and the provided citations/evidence — e.g.
+"Lady Carfax, a wealthy heiress who disappears en route to Lausanne.".
+Ground entity descriptions in the citations/evidence when present; do not
+speculate beyond the context, so a node with no supporting context may be
+left out of the reply.
 Write every description in English (en). Do not switch languages.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "input_input_snapshot_valid_event": "valid_event()" | kind=code-symbol | source=mute/src/input/input_snapshot.cpp:L56 | neighbors=[input_snapshot.cpp, append()]
-- "integration_config_file_test_put_double": "put_double()" | kind=code-symbol | source=engine/foundation/tests/integration/config_file_test.cpp:L50 | neighbors=[config_file_test.cpp, test_decoder()]
-- "integration_config_file_test_put_float": "put_float()" | kind=code-symbol | source=engine/foundation/tests/integration/config_file_test.cpp:L45 | neighbors=[config_file_test.cpp, test_decoder()]
-- "integration_config_file_test_put_half": "put_half()" | kind=code-symbol | source=engine/foundation/tests/integration/config_file_test.cpp:L42 | neighbors=[config_file_test.cpp, test_decoder()]
-- "integration_config_file_test_put_null": "put_null()" | kind=code-symbol | source=engine/foundation/tests/integration/config_file_test.cpp:L39 | neighbors=[config_file_test.cpp, test_decoder()]
-- "integration_config_logging_guard_real_test": "config_logging_guard_real_test.cpp" | kind=code-symbol | source=engine/foundation/tests/integration/config_logging_guard_real_test.cpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, main()]
-- "integration_cube_golden_main": "main()" | kind=code-symbol | source=engine/render/tests/integration/cube_golden.py:L222 | neighbors=[cube_golden.py, run()]
-- "integration_cube_golden_png_chunk": "png_chunk()" | kind=code-symbol | source=engine/render/tests/integration/cube_golden.py:L26 | neighbors=[cube_golden.py, canonical_png()]
-- "integration_cube_golden_x11_capture": ".capture()" | kind=code-symbol | source=engine/render/tests/integration/cube_golden.py:L108 | neighbors=[run(), X11]
-- "integration_cube_golden_x11_close": ".close()" | kind=code-symbol | source=engine/render/tests/integration/cube_golden.py:L83 | neighbors=[run(), X11]
-- "integration_cube_golden_x11_find_window": ".find_window()" | kind=code-symbol | source=engine/render/tests/integration/cube_golden.py:L86 | neighbors=[run(), X11]
-- "integration_logging_file_test_count_stamps": "count_stamps()" | kind=code-symbol | source=engine/foundation/tests/integration/logging_file_test.cpp:L15 | neighbors=[logging_file_test.cpp, main()]
-- "integration_logging_file_test_read_file": "read_file()" | kind=code-symbol | source=engine/foundation/tests/integration/logging_file_test.cpp:L11 | neighbors=[logging_file_test.cpp, main()]
-- "integration_public_header_compat": "public_header_compat.cpp" | kind=code-symbol | source=engine/rhi/tests/integration/public_header_compat.cpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, main()]
-- "integration_sdl_platform_test": "sdl_platform_test.cpp" | kind=code-symbol | source=engine/platform/tests/integration/sdl_platform_test.cpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, main()]
-- "integration_test_cube_fixed_view_x11": "test_cube_fixed_view_x11.py" | kind=code-symbol | source=engine/render/tests/integration/test_cube_fixed_view_x11.py:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, main()]
-- "integration_test_cube_golden_unit_goldenencodertests_test_reference_is_full_cube_with_three_lit_faces": ".test_reference_is_full_cube_with_three_lit_faces()" | kind=code-symbol | source=engine/render/tests/integration/test_cube_golden_unit.py:L101 | neighbors=[GoldenEncoderTests, decode()]
-- "integration_test_cube_golden_unit_goldenencodertests_test_roundtrip_and_multiple_deflate_blocks": ".test_roundtrip_and_multiple_deflate_blocks()" | kind=code-symbol | source=engine/render/tests/integration/test_cube_golden_unit.py:L51 | neighbors=[GoldenEncoderTests, decode()]
-- "integration_test_cube_x11_smoke_find_window": "find_window()" | kind=code-symbol | source=engine/render/tests/integration/test_cube_x11_smoke.py:L17 | neighbors=[test_cube_x11_smoke.py, main()]
-- "integration_test_cube_x11_smoke_main": "main()" | kind=code-symbol | source=engine/render/tests/integration/test_cube_x11_smoke.py:L31 | neighbors=[test_cube_x11_smoke.py, find_window()]
-- "integration_test_directional_light_x11": "test_directional_light_x11.py" | kind=code-symbol | source=engine/render/tests/integration/test_directional_light_x11.py:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, main()]
-- "integration_test_imgui_inputs": "test_imgui_inputs.py" | kind=code-symbol | source=engine/render/tests/integration/test_imgui_inputs.py:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, Check the real ImGui demo rejects bad S…]
-- "integration_test_imgui_toggle_x11_find_window": "find_window()" | kind=code-symbol | source=engine/render/tests/integration/test_imgui_toggle_x11.py:L16 | neighbors=[test_imgui_toggle_x11.py, main()]
-- "integration_test_imgui_toggle_x11_main": "main()" | kind=code-symbol | source=engine/render/tests/integration/test_imgui_toggle_x11.py:L23 | neighbors=[test_imgui_toggle_x11.py, find_window()]
-- "integration_test_triangle_inputs": "test_triangle_inputs.py" | kind=code-symbol | source=engine/render/tests/integration/test_triangle_inputs.py:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, Check the real demo rejects bad SPIR-V …]
-- "integration_test_version_command": "command()" | kind=code-symbol | source=tools/version/tests/integration/test_version.py:L45 | neighbors=[test_version.py, .test_real_binary_tracks_git_state()]
-- "integration_test_version_copy_sources": "copy_sources()" | kind=code-symbol | source=tools/version/tests/integration/test_version.py:L30 | neighbors=[test_version.py, .test_real_binary_tracks_git_state()]
-- "integration_test_version_main": "main()" | kind=code-symbol | source=tools/version/tests/integration/test_version.py:L107 | neighbors=[test_version.py, parse_options()]
-- "integration_test_version_parse_options": "parse_options()" | kind=code-symbol | source=tools/version/tests/integration/test_version.py:L21 | neighbors=[test_version.py, main()]
-- "integration_test_version_versionintegrationtests": "VersionIntegrationTests" | kind=code-symbol | source=tools/version/tests/integration/test_version.py:L54 | neighbors=[test_version.py, .test_real_binary_tracks_git_state()]
-- "iplatform": "IPlatform" | kind=code-symbol | neighbors=[TestPlatform, ~SdlPlatform()]
-- "lexer_lexer_decode": "decode()" | kind=code-symbol | source=mute/src/lexer/lexer.cpp:L11 | neighbors=[lexer.cpp, lex()]
-- "lexer_lexer_digit": "digit()" | kind=code-symbol | source=mute/src/lexer/lexer.cpp:L43 | neighbors=[lexer.cpp, lex()]
-- "lexer_lexer_digit_for": "digit_for()" | kind=code-symbol | source=mute/src/lexer/lexer.cpp:L44 | neighbors=[lexer.cpp, lex()]
-- "lexer_lexer_is_continue": "is_continue()" | kind=code-symbol | source=mute/src/lexer/lexer.cpp:L51 | neighbors=[lexer.cpp, lex()]
-- "lexer_lexer_is_start": "is_start()" | kind=code-symbol | source=mute/src/lexer/lexer.cpp:L50 | neighbors=[lexer.cpp, lex()]
-- "lexer_lexer_keyword": "keyword()" | kind=code-symbol | source=mute/src/lexer/lexer.cpp:L52 | neighbors=[lexer.cpp, lex()]
-- "lexer_lexer_string_body": "string_body()" | kind=code-symbol | source=mute/src/lexer/lexer.cpp:L64 | neighbors=[lexer.cpp, lex()]
-- "lexer_lexer_suffix": "suffix()" | kind=code-symbol | source=mute/src/lexer/lexer.cpp:L56 | neighbors=[lexer.cpp, lex()]
-- "lexer_unicode_xid": "unicode_xid.hpp" | kind=code-symbol | source=mute/src/lexer/unicode_xid.hpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, contains()]
+- "fishcenter_fish_props_smooth": "smooth()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L43 | neighbors=[fish_props.py, palm()]
+- "fishcenter_hooks_lua": "hooks_lua.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/hooks_lua.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …]
+- "foundation_config": "config.hpp" | kind=code-symbol | source=engine/foundation/include/poko/foundation/config.hpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
+- "foundation_config_logging_logguard": "LogGuard" | kind=code-symbol | source=engine/foundation/include/poko/foundation/config_logging.hpp:L15 | neighbors=[config_logging.hpp, .LogGuard()]
+- "foundation_fixed_cos": "cos()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/fixed.hpp:L331 | neighbors=[fixed.hpp, sine_lookup()]
+- "foundation_fixed_fixed": "Fixed" | kind=code-symbol | source=engine/foundation/include/poko/foundation/fixed.hpp:L34 | neighbors=[fixed.hpp, .Fixed()]
+- "foundation_fixed_sin": "sin()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/fixed.hpp:L328 | neighbors=[fixed.hpp, sine_lookup()]
+- "foundation_fixed_vec_lengthsquared": "lengthSquared()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/fixed_vec.hpp:L143 | neighbors=[fixed_vec.hpp, dot()]
+- "foundation_logging": "logging.hpp" | kind=code-symbol | source=engine/foundation/include/poko/foundation/logging.hpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
+- "foundation_loop": "loop.hpp" | kind=code-symbol | source=engine/foundation/include/poko/foundation/loop.hpp:L1 | neighbors=[952997e Audit MUT-01-55 and harden veri…, FixedStepLoop]
+- "foundation_vec3f_lengthsquared": "lengthSquared()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/vec3f.hpp:L64 | neighbors=[vec3f.hpp, dot()]
+- "foundation_vec3f_normalized": "normalized()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/vec3f.hpp:L67 | neighbors=[vec3f.hpp, length()]
+- "framegraph_frame_graph_compile": "compile()" | kind=code-symbol | source=engine/render/src/framegraph/frame_graph.cpp:L87 | neighbors=[frame_graph.cpp, build_plan()]
+- "framegraph_frame_graph_execute": "execute()" | kind=code-symbol | source=engine/render/src/framegraph/frame_graph.cpp:L93 | neighbors=[frame_graph.cpp, build_plan()]
+- "framegraph_frame_graph_framegraph": "FrameGraph" | kind=code-symbol | source=engine/render/include/poko/render/framegraph/frame_graph.hpp:L46 | neighbors=[frame_graph.cpp, .FrameGraph()]
+- "frostpeak_frost_map_drift": "_drift()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_map.py:L297 | neighbors=[frost_map.py, build()]
+- "frostpeak_frost_map_horizon": "horizon()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_map.py:L326 | neighbors=[frost_map.py, sub()]
+- "frostpeak_frost_map_look": "look()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_map.py:L303 | neighbors=[frost_map.py, free()]
+- "frostpeak_frost_map_nearest_path_pt": "nearest_path_pt()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_map.py:L60 | neighbors=[frost_map.py, build()]
+- "frostpeak_frost_map_rationale_158": "height range of the terrain over a footprint of radius r: big = a slope that wou" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_map.py:L158 | neighbors=[spread(), MB]
+- "frostpeak_frost_map_segd": "segd()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_map.py:L44 | neighbors=[frost_map.py, path_info()]
+- "frostpeak_frost_props_cabin": "cabin()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_props.py:L46 | neighbors=[frost_props.py, log cabin: stacked logs with crossed co…]
+- "frostpeak_frost_props_fishing_hut": "fishing_hut()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_props.py:L216 | neighbors=[frost_props.py, ice-fishing shanty: board walls on skid…]
+- "frostpeak_frost_props_frost_spire": "frost_spire()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_props.py:L259 | neighbors=[frost_props.py, hero: stone terrace + a 60-stud ice cry…]
+- "frostpeak_frost_props_roll_well": "roll_well()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_props.py:L172 | neighbors=[frost_props.py, village-square roll well: stone ring, t…]
+- "frostpeak_frost_props_snow_pine": "snow_pine()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_props.py:L34 | neighbors=[frost_props.py, grove pine re-shaded: every up-facing t…]
+- "gles_clear_pokoactivity_pokoactivity_nativeinit": ".nativeInit()" | kind=code-symbol | source=engine/rhi/android/gles-clear/PokoActivity.java:L16 | neighbors=[PokoActivity, .onCreate()]
+- "gles_clear_pokoactivity_pokoactivity_oncreate": ".onCreate()" | kind=code-symbol | source=engine/rhi/android/gles-clear/PokoActivity.java:L20 | neighbors=[PokoActivity, .nativeInit()]
+- "gles_clear_pokoactivity_pokoactivity_ondestroy": ".onDestroy()" | kind=code-symbol | source=engine/rhi/android/gles-clear/PokoActivity.java:L46 | neighbors=[PokoActivity, .nativeSurfaceDestroyed()]
+- "gles_clear_pokoactivity_pokoactivity_surfacechanged": ".surfaceChanged()" | kind=code-symbol | source=engine/rhi/android/gles-clear/PokoActivity.java:L36 | neighbors=[PokoActivity, .nativeSetSurface()]
+- "gles_clear_pokoactivity_pokoactivity_surfacecreated": ".surfaceCreated()" | kind=code-symbol | source=engine/rhi/android/gles-clear/PokoActivity.java:L29 | neighbors=[PokoActivity, .nativeSetSurface()]
+- "gles_clear_pokoactivity_pokoactivity_surfacedestroyed": ".surfaceDestroyed()" | kind=code-symbol | source=engine/rhi/android/gles-clear/PokoActivity.java:L41 | neighbors=[PokoActivity, .nativeSurfaceDestroyed()]
+- "godot_ablation_report_luminance": "luminance()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/godot/ablation_report.py:L40 | neighbors=[ablation_report.py, image_change()]
+- "godot_ablation_report_main": "main()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/godot/ablation_report.py:L118 | neighbors=[ablation_report.py, analyse()]
+- "hermes_init": "__init__.py" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/hermes/__init__.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …]
+- "hermes_plugin_init_strip_frontmatter": "_strip_frontmatter()" | kind=code-symbol | source=.agents/skills/superpowers-main/.hermes-plugin/__init__.py:L35 | neighbors=[__init__.py, _build_bootstrap()]
+- "hermes_test_bootstrap_testbootstrapcontent_test_contains_using_superpowers_body": ".test_contains_using_superpowers_body()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/hermes/test_bootstrap.py:L64 | neighbors=[TestBootstrapContent, _bootstrap()]
+- "hermes_test_bootstrap_testbootstrapcontent_test_frontmatter_stripped": ".test_frontmatter_stripped()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/hermes/test_bootstrap.py:L71 | neighbors=[TestBootstrapContent, _bootstrap()]
+- "hermes_test_bootstrap_testbootstrapcontent_test_marker_and_wrapper": ".test_marker_and_wrapper()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/hermes/test_bootstrap.py:L58 | neighbors=[TestBootstrapContent, _bootstrap()]
+- "hermes_test_bootstrap_testbootstrapcontent_test_skill_view_guidance_present": ".test_skill_view_guidance_present()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/hermes/test_bootstrap.py:L88 | neighbors=[TestBootstrapContent, _bootstrap()]
 
 ## Instructions
 

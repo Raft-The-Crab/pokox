@@ -1,4 +1,4 @@
-# Node Description Batch 169 of 207
+# Node Description Batch 169 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -19,51 +19,53 @@ relations (neighbors) and the provided citations/evidence — e.g.
 Ground entity descriptions in the citations/evidence when present; do not
 speculate beyond the context, so a node with no supporting context may be
 left out of the reply.
-Write every description in English (en). Do not switch languages.
+LANGUAGE: each entry has a `lang=` marker giving the language of its source.
+Write that entry's description in EXACTLY that language. Do not translate to
+a single common language — match each node's source language individually.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "mesh_enginefactoryvk_unmapbuffer": "UnmapBuffer()" | kind=code-symbol | source=engine/rhi/tests/fakes/mesh/EngineFactoryVk.h:L69 | neighbors=[EngineFactoryVk.h]
-- "mesh_enginefactoryvk_updatetexture": "UpdateTexture()" | kind=code-symbol | source=engine/rhi/tests/fakes/mesh/EngineFactoryVk.h:L72 | neighbors=[EngineFactoryVk.h]
-- "mesh_inputlayout": "InputLayout.h" | kind=code-symbol | source=engine/rhi/tests/fakes/mesh/InputLayout.h:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …]
-- "mesh_refcntautoptr_refcntautoptr_refcntautoptr": ".RefCntAutoPtr()" | kind=code-symbol | source=engine/rhi/tests/fakes/mesh/RefCntAutoPtr.hpp:L7 | neighbors=[RefCntAutoPtr]
-- "migrations_0002_ledger_balances_balances": "balances" | kind=code-symbol | source=backend/storage/postgres/migrations/0002_ledger_balances.sql:L20 | neighbors=[0002_ledger_balances.sql]
-- "migrations_0002_ledger_balances_ledger_entries": "ledger_entries" | kind=code-symbol | source=backend/storage/postgres/migrations/0002_ledger_balances.sql:L4 | neighbors=[0002_ledger_balances.sql]
-- "migrations_0003_cases_audit_audit_log": "audit_log" | kind=code-symbol | source=backend/storage/postgres/migrations/0003_cases_audit.sql:L12 | neighbors=[0003_cases_audit.sql]
-- "migrations_0003_cases_audit_cases": "cases" | kind=code-symbol | source=backend/storage/postgres/migrations/0003_cases_audit.sql:L2 | neighbors=[0003_cases_audit.sql]
-- "moonclean_moon_map_look": "look()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_map.py:L486 | neighbors=[moon_map.py]
-- "moonclean_moon_map_material_skin": "material_skin()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_map.py:L516 | neighbors=[moon_map.py]
-- "moonclean_moon_map_shot": "shot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_map.py:L524 | neighbors=[moon_map.py]
-- "moonclean_moon_map_tang_yaw": "tang_yaw()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_map.py:L181 | neighbors=[moon_map.py]
-- "moonclean_moon_props_rationale_695": "sweepable heap: stacked mounds + a sparkle of dust-gem bits (glow)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L695 | neighbors=[dust_pile()]
-- "moonclean_moon_props_rationale_86": "two-colour checker by face angle around Y (rocket roll pattern / foil wraps)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L86 | neighbors=[ShAng]
-- "moonclean_moon_props_shang_call": ".__call__()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L89 | neighbors=[ShAng]
-- "moonclean_moon_props_shang_init": ".__init__()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L87 | neighbors=[ShAng]
-- "moonclean_moon_props_smooth": "smooth()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L43 | neighbors=[moon_props.py]
-- "musl_math_cos_cosine": "cosine()" | kind=code-symbol | source=mute/third_party/musl_math/cos.cpp:L47 | neighbors=[cos.cpp]
-- "musl_math_cos_kernel_cos": "kernel_cos()" | kind=code-symbol | source=mute/third_party/musl_math/__cos.cpp:L63 | neighbors=[cos.cpp]
-- "musl_math_floor_floor_value": "floor_value()" | kind=code-symbol | source=mute/third_party/musl_math/floor.cpp:L12 | neighbors=[floor.cpp]
-- "musl_math_math_internal": "math_internal.hpp" | kind=code-symbol | source=mute/third_party/musl_math/math_internal.hpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …]
-- "musl_math_rem_pio2_large_rem_pio2_large": "rem_pio2_large()" | kind=code-symbol | source=mute/third_party/musl_math/__rem_pio2_large.cpp:L275 | neighbors=[__rem_pio2_large.cpp]
-- "musl_math_rem_pio2_rem_pio2": "rem_pio2()" | kind=code-symbol | source=mute/third_party/musl_math/__rem_pio2.cpp:L51 | neighbors=[__rem_pio2.cpp]
-- "musl_math_scalbn_scalbn_value": "scalbn_value()" | kind=code-symbol | source=mute/third_party/musl_math/scalbn.cpp:L5 | neighbors=[scalbn.cpp]
-- "musl_math_sin_kernel_sin": "kernel_sin()" | kind=code-symbol | source=mute/third_party/musl_math/__sin.cpp:L54 | neighbors=[sin.cpp]
-- "musl_math_sin_sine": "sine()" | kind=code-symbol | source=mute/third_party/musl_math/sin.cpp:L47 | neighbors=[sin.cpp]
-- "mute_action_map_actionframe": "ActionFrame" | kind=code-symbol | source=mute/include/poko/mute/action_map.hpp:L125 | neighbors=[action_map.hpp]
-- "mute_action_map_actionmap": "ActionMap" | kind=code-symbol | source=mute/include/poko/mute/action_map.hpp:L77 | neighbors=[action_map.hpp]
-- "mute_action_map_actionsampler_actionsampler": ".ActionSampler()" | kind=code-symbol | source=mute/include/poko/mute/action_map.hpp:L146 | neighbors=[ActionSampler]
-- "mute_build_tool": "build_tool.hpp" | kind=code-symbol | source=mute/include/poko/mute/build_tool.hpp:L1 | neighbors=[952997e Audit MUT-01-55 and harden veri…]
-- "mute_console_consolelog_consolelog": ".ConsoleLog()" | kind=code-symbol | source=mute/include/poko/mute/console.hpp:L35 | neighbors=[ConsoleLog]
-- "mute_debugger_vmcore": "VmCore" | kind=code-symbol | source=mute/include/poko/mute/debugger.hpp:L34 | neighbors=[debugger.hpp]
-- "mute_debugger_vmdebugger_vmdebugger": ".VmDebugger()" | kind=code-symbol | source=mute/include/poko/mute/debugger.hpp:L46 | neighbors=[VmDebugger]
-- "mute_declaration_declarationast_declarationast": ".DeclarationAst()" | kind=code-symbol | source=mute/include/poko/mute/declaration.hpp:L46 | neighbors=[DeclarationAst]
-- "mute_declaration_declarationparser": "DeclarationParser" | kind=code-symbol | source=mute/include/poko/mute/declaration.hpp:L18 | neighbors=[declaration.hpp]
-- "mute_deterministic_math": "deterministic_math.hpp" | kind=code-symbol | source=mute/include/poko/mute/deterministic_math.hpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …]
-- "mute_device_router_devicerouter": "DeviceRouter" | kind=code-symbol | source=mute/include/poko/mute/device_router.hpp:L33 | neighbors=[device_router.hpp]
-- "mute_device_router_gamepad_device_code": "gamepad_device_code()" | kind=code-symbol | source=mute/include/poko/mute/device_router.hpp:L66 | neighbors=[device_router.hpp]
-- "mute_device_router_touch_device_code": "touch_device_code()" | kind=code-symbol | source=mute/include/poko/mute/device_router.hpp:L69 | neighbors=[device_router.hpp]
-- "mute_evaluator": "evaluator.hpp" | kind=code-symbol | source=mute/include/poko/mute/evaluator.hpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …]
+- "input_device_router_name": "name()" | kind=code-symbol | source=mute/src/input/device_router.cpp:L107 | neighbors=[device_router.cpp] | lang=en
+- "input_input_snapshot_button_down": "button_down()" | kind=code-symbol | source=mute/src/input/input_snapshot.cpp:L99 | neighbors=[input_snapshot.cpp] | lang=en
+- "input_input_snapshot_key_down": "key_down()" | kind=code-symbol | source=mute/src/input/input_snapshot.cpp:L95 | neighbors=[input_snapshot.cpp] | lang=en
+- "input_input_snapshot_name": "name()" | kind=code-symbol | source=mute/src/input/input_snapshot.cpp:L342 | neighbors=[input_snapshot.cpp] | lang=en
+- "integration_config_logging_guard_real_test_main": "main()" | kind=code-symbol | source=engine/foundation/tests/integration/config_logging_guard_real_test.cpp:L10 | neighbors=[config_logging_guard_real_test.cpp] | lang=en
+- "integration_cube_golden_rationale_31": "RGB8 PNG with filter 0 and explicit uncompressed DEFLATE blocks." | kind=entity | source=engine/render/tests/integration/cube_golden.py:L31 | neighbors=[canonical_png()] | lang=en
+- "integration_cube_golden_x11_init": ".__init__()" | kind=code-symbol | source=engine/render/tests/integration/cube_golden.py:L58 | neighbors=[X11] | lang=en
+- "integration_cube_golden_ximage": "XImage" | kind=code-symbol | source=engine/render/tests/integration/cube_golden.py:L48 | neighbors=[cube_golden.py] | lang=en
+- "integration_public_header_compat_main": "main()" | kind=code-symbol | source=engine/rhi/tests/integration/public_header_compat.cpp:L13 | neighbors=[public_header_compat.cpp] | lang=en
+- "integration_sdl_platform_test_main": "main()" | kind=code-symbol | source=engine/platform/tests/integration/sdl_platform_test.cpp:L14 | neighbors=[sdl_platform_test.cpp] | lang=en
+- "integration_test_cube_fixed_view_x11_main": "main()" | kind=code-symbol | source=engine/render/tests/integration/test_cube_fixed_view_x11.py:L13 | neighbors=[test_cube_fixed_view_x11.py] | lang=en
+- "integration_test_cube_golden_unit_goldenencodertests_test_actual_cannot_replace_reference_or_be_a_symlink": ".test_actual_cannot_replace_reference_or_be_a_symlink()" | kind=code-symbol | source=engine/render/tests/integration/test_cube_golden_unit.py:L62 | neighbors=[GoldenEncoderTests] | lang=en
+- "integration_test_cube_golden_unit_goldenencodertests_test_bad_inputs": ".test_bad_inputs()" | kind=code-symbol | source=engine/render/tests/integration/test_cube_golden_unit.py:L57 | neighbors=[GoldenEncoderTests] | lang=en
+- "integration_test_cube_golden_unit_goldenencodertests_test_capture_cannot_replace_shipped_reference": ".test_capture_cannot_replace_shipped_reference()" | kind=code-symbol | source=engine/render/tests/integration/test_cube_golden_unit.py:L91 | neighbors=[GoldenEncoderTests] | lang=en
+- "integration_test_directional_light_x11_main": "main()" | kind=code-symbol | source=engine/render/tests/integration/test_directional_light_x11.py:L17 | neighbors=[test_directional_light_x11.py] | lang=en
+- "integration_test_imgui_inputs_rationale_1": "Check the real ImGui demo rejects bad SPIR-V before initializing a window." | kind=entity | source=engine/render/tests/integration/test_imgui_inputs.py:L1 | neighbors=[test_imgui_inputs.py] | lang=en
+- "integration_test_mute_console_x11_main": "main()" | kind=code-symbol | source=engine/render/tests/integration/test_mute_console_x11.py:L20 | neighbors=[test_mute_console_x11.py] | lang=en
+- "integration_test_mute_state_console_x11_main": "main()" | kind=code-symbol | source=engine/render/tests/integration/test_mute_state_console_x11.py:L15 | neighbors=[test_mute_state_console_x11.py] | lang=en
+- "integration_test_shader_pipeline_check_spirv": "check_spirv()" | kind=code-symbol | source=engine/render/tests/integration/test_shader_pipeline.py:L24 | neighbors=[test_shader_pipeline.py] | lang=en
+- "integration_test_shader_pipeline_rationale_1": "Exercise the real host compiler and CMake shader rule in an isolated build." | kind=entity | source=engine/render/tests/integration/test_shader_pipeline.py:L1 | neighbors=[test_shader_pipeline.py] | lang=en
+- "integration_test_shader_pipeline_run": "run()" | kind=code-symbol | source=engine/render/tests/integration/test_shader_pipeline.py:L17 | neighbors=[test_shader_pipeline.py] | lang=en
+- "integration_test_shader_pipeline_update_shader": "update_shader()" | kind=code-symbol | source=engine/render/tests/integration/test_shader_pipeline.py:L70 | neighbors=[test_shader_pipeline.py] | lang=en
+- "integration_test_triangle_inputs_rationale_1": "Check the real demo rejects bad SPIR-V before initializing a window." | kind=entity | source=engine/render/tests/integration/test_triangle_inputs.py:L1 | neighbors=[test_triangle_inputs.py] | lang=en
+- "integration_test_triangle_x11_visual_find_window": "find_window()" | kind=code-symbol | source=engine/render/tests/integration/test_triangle_x11_visual.py:L39 | neighbors=[test_triangle_x11_visual.py] | lang=en
+- "integration_test_triangle_x11_visual_green": "green()" | kind=code-symbol | source=engine/render/tests/integration/test_triangle_x11_visual.py:L90 | neighbors=[test_triangle_x11_visual.py] | lang=en
+- "integration_test_triangle_x11_visual_pixel": "pixel()" | kind=code-symbol | source=engine/render/tests/integration/test_triangle_x11_visual.py:L80 | neighbors=[test_triangle_x11_visual.py] | lang=en
+- "integration_test_triangle_x11_visual_red": "red()" | kind=code-symbol | source=engine/render/tests/integration/test_triangle_x11_visual.py:L89 | neighbors=[test_triangle_x11_visual.py] | lang=en
+- "integration_test_uniform_x11_visual_find_window": "find_window()" | kind=code-symbol | source=engine/render/tests/integration/test_uniform_x11_visual.py:L40 | neighbors=[test_uniform_x11_visual.py] | lang=en
+- "integration_test_uniform_x11_visual_pixel": "pixel()" | kind=code-symbol | source=engine/render/tests/integration/test_uniform_x11_visual.py:L80 | neighbors=[test_uniform_x11_visual.py] | lang=en
+- "integration_test_word_reservations_rationale_1": "SQLite-level tests for the D1 word-reservation migration." | kind=entity | source=backend/storage/d1/tests/integration/test_word_reservations.py:L1 | neighbors=[test_word_reservations.py] | lang=en
+- "integration_test_word_reservations_reservationmigrationtests_setup": ".setUp()" | kind=code-symbol | source=backend/storage/d1/tests/integration/test_word_reservations.py:L11 | neighbors=[ReservationMigrationTests] | lang=en
+- "integration_test_word_reservations_reservationmigrationtests_test_direct_reapplication_fails_instead_of_masking_schema_conflict": ".test_direct_reapplication_fails_instead_of_masking_schema_conflict()" | kind=code-symbol | source=backend/storage/d1/tests/integration/test_word_reservations.py:L44 | neighbors=[ReservationMigrationTests] | lang=en
+- "integration_test_word_reservations_reservationmigrationtests_test_first_release_word_is_globally_reserved": ".test_first_release_word_is_globally_reserved()" | kind=code-symbol | source=backend/storage/d1/tests/integration/test_word_reservations.py:L17 | neighbors=[ReservationMigrationTests] | lang=en
+- "integration_test_word_reservations_reservationmigrationtests_test_game_reservations_have_independent_scope": ".test_game_reservations_have_independent_scope()" | kind=code-symbol | source=backend/storage/d1/tests/integration/test_word_reservations.py:L37 | neighbors=[ReservationMigrationTests] | lang=en
+- "integration_test_word_reservations_reservationmigrationtests_test_global_reservation_cannot_name_a_game": ".test_global_reservation_cannot_name_a_game()" | kind=code-symbol | source=backend/storage/d1/tests/integration/test_word_reservations.py:L30 | neighbors=[ReservationMigrationTests] | lang=en
+- "integration_test_word_reservations_reservationmigrationtests_test_global_reservation_is_unique_even_with_null_game_id": ".test_global_reservation_is_unique_even_with_null_game_id()" | kind=code-symbol | source=backend/storage/d1/tests/integration/test_word_reservations.py:L23 | neighbors=[ReservationMigrationTests] | lang=en
+- "integration_x11_demo_smoke_clientdata": "ClientData" | kind=code-symbol | source=engine/platform/tests/integration/x11_demo_smoke.py:L31 | neighbors=[x11_demo_smoke.py] | lang=en
+- "integration_x11_demo_smoke_clientmessage": "ClientMessage" | kind=code-symbol | source=engine/platform/tests/integration/x11_demo_smoke.py:L35 | neighbors=[x11_demo_smoke.py] | lang=en
+- "integration_x11_demo_smoke_rationale_1": "Optional Linux/X11 host smoke test; not a Windows or Android test.  Usage: DISPL" | kind=entity | source=engine/platform/tests/integration/x11_demo_smoke.py:L1 | neighbors=[x11_demo_smoke.py] | lang=pt
+- "integration_x11_demo_smoke_xevent": "XEvent" | kind=code-symbol | source=engine/platform/tests/integration/x11_demo_smoke.py:L40 | neighbors=[x11_demo_smoke.py] | lang=en
 
 ## Instructions
 

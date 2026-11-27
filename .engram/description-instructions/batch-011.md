@@ -1,4 +1,4 @@
-# Node Description Batch 12 of 207
+# Node Description Batch 12 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -24,6 +24,12 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "unit_optimize_test_cases": "cases()" | kind=code-symbol | source=mute/tests/unit/optimize_test.cpp:L60 | neighbors=[optimize_test.cpp, check(), count_instrs(), count_op(), module_of(), run_base()]
+- "unit_solver_test": "solver_test.cpp" | kind=code-symbol | source=engine/physics/tests/unit/solver_test.cpp:L1 | neighbors=[69287a0 Land ENG-60-65 deterministic si…, 87beff4 Sim solver: reject self/duplica…, 9eeb3ff Merge pull request #2 from Raft…, body(), contact(), fx()]
+- "valleylake_valley_props_leaf_cluster": "leaf_cluster()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L199 | neighbors=[valley_props.py, blossom_tree(), broadleaf(), bush(), canopy(), gnarled_tree()]
+- "valleylake_valley_props_market_stall": "market_stall()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L605 | neighbors=[valley_props.py, barrel(), basket(), crate(), flat(), gable_roof()]
+- "vfxkit_examples": "examples.py" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/examples.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, add(), catalog(), ids(), listing()]
+- "vfxkit_review_capture": "capture()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/review.py:L103 | neighbors=[review.py, compare_sheet(), diff(), dump_metrics(), frame_state(), metrics()]
 - "voidrealm_void_map_build": "build()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_map.py:L621 | neighbors=[void_map.py, anchor(), bridges(), build_paths(), dressing(), island()]
 - "voidrealm_void_props_rift_gate": "rift_gate()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L590 | neighbors=[void_props.py, HERO 2 - the Rift Gate: octagonal stepp…, annulus(), chamfer_box(), disc(), FS()]
 - "whispering_grove_forest_props_leafy": "leafy()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L58 | neighbors=[forest_props.py, birch(), bush(), elder_tree(), at(), blob()]
@@ -38,13 +44,14 @@ one-sentence description — no prose, no markdown fences.
 - "cavemap_cave_map_rails": "rails()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_map.py:L663 | neighbors=[cave_map.py, build(), anchor(), H(), place(), placed_mb()]
 - "cavemap_cave_map_shell": "shell()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_map.py:L278 | neighbors=[cave_map.py, build(), inner cave surface: union of the air el…, bvh_of(), H(), in_hole()]
 - "cavemap_cave_props_geode": "geode()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L277 | neighbors=[cave_props.py, add_crystal(), FS(), jitter(), rim_shade(), RS()]
+- "commit:repo:github.com/Raft-The-Crab/pokox@6e2fe3a353df4f43947f16d27ab99b1f80c103ee": "6e2fe3a Created BAK-7 and other BAK tasks" | kind=Commit | source=git | neighbors=[6568dc9 Update from ML AI Code, pkb_schema.hpp, projection_gate.hpp, replay_ring.hpp, rule_evaluator.hpp, main]
 - "commit:repo:github.com/Raft-The-Crab/pokox@87beff419123840b334804d9bd7582b2184e15ed": "87beff4 Sim solver: reject self/duplicate contacts, derive mass, clamp integrat…" | kind=Commit | source=git | neighbors=[main, 9eeb3ff Merge pull request #2 from Raft…, solver.hpp, visual_solver.hpp, solver.cpp, visual_solver.cpp]
 - "console_console_execute_console_impl": "execute_console_impl()" | kind=code-symbol | source=mute/src/console/console.cpp:L77 | neighbors=[console.cpp, execute_console(), decode_string(), diagnostic(), evaluate_console(), number()]
 - "creaturelab_lab_map_static": "static()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_map.py:L76 | neighbors=[lab_map.py, build(), ground(), hall_floor(), hardscape(), horizon()]
 - "creaturelab_lab_props_bottle": "bottle()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L264 | neighbors=[lab_props.py, ball(), rbox(), .add(), med_shelf(), potion_shelf()]
 - "creaturelab_lab_props_rotunda": "rotunda()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L807 | neighbors=[lab_props.py, HERO shell: the care hall. Ring wall (i…, adeg(), arc_wall(), lerp(), merge_prop()]
-- "device_opengl_clear_renderer": "opengl_clear_renderer.cpp" | kind=code-symbol | source=engine/rhi/src/device/opengl_clear_renderer.cpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, clear_and_present(), default_framebuffer_is_srgb(), Impl(), initialize(), native_window()]
-- "device_vulkan_mesh_pass": "vulkan_mesh_pass.cpp" | kind=code-symbol | source=engine/rhi/src/device/vulkan_mesh_pass.cpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, draw(), draw_and_present(), Impl(), set_light_direction(), set_mesh()]
+- "device_opengles_native_activity": "opengles_native_activity.cpp" | kind=code-symbol | source=engine/rhi/src/device/opengles_native_activity.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, 952997e Audit MUT-01-55 and harden veri…, 9b77990 Android GLES probe: no data rac…, 9eeb3ff Merge pull request #2 from Raft…, android_main(), on_app_cmd()]
+- "device_vulkan_triangle_pass": "vulkan_triangle_pass.cpp" | kind=code-symbol | source=engine/rhi/src/device/vulkan_triangle_pass.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, draw(), draw_and_present(), Impl(), set_texture(), set_texture_mips()]
 - "dunedesert_dune_map_h": "H()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L78 | neighbors=[dune_map.py, ground(), dunes(), pl_d(), ring(), T_local()]
 - "dunedesert_dune_props_shaft": "_shaft()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L356 | neighbors=[dune_props.py, obelisk(), obelisk_fallen(), obelisk_stump(), square tapered shaft (w0 at 0 .. w1 at …, disc()]
 - "eggplots_egg_props_coop": "coop()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L296 | neighbors=[egg_props.py, egg(), egg_finial(), egg_profile(), rbox(), sh()]
@@ -57,13 +64,6 @@ one-sentence description — no prose, no markdown fences.
 - "fishcenter_fish_map_lp": "lp()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L37 | neighbors=[fish_map.py, deck_rect(), edges(), hardscape(), outward(), tangent()]
 - "fishcenter_fish_map_nature": "nature()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L651 | neighbors=[fish_map.py, build(), free(), H(), outward(), place()]
 - "fishcenter_fish_props_fish_market": "fish_market()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L905 | neighbors=[fish_props.py, awning(), barrel(), crate(), fish(), plank_floor()]
-- "lexer_lexer_lex": "lex()" | kind=code-symbol | source=mute/src/lexer/lexer.cpp:L94 | neighbors=[lexer.cpp, decode(), digit(), digit_for(), is_continue(), is_start()]
-- "medievalbattle_battle_map_build": "build()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L471 | neighbors=[battle_map.py, centre(), field(), ground(), keep(), reserve()]
-- "medievalbattle_battle_map_place": "place()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L146 | neighbors=[battle_map.py, centre(), field(), keep(), foot(), Hm()]
-- "medievalbattle_battle_props_broken_cart": "broken_cart()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L1304 | neighbors=[battle_props.py, bar(), crate(), log(), merge(), rot_mb()]
-- "medievalbattle_battle_props_curtain_wall": "curtain_wall()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L266 | neighbors=[battle_props.py, ash_sh(), ashlar(), corbels(), heater_shield(), merlon_row()]
-- "medievalbattle_battle_props_donjon": "donjon()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L469 | neighbors=[battle_props.py, add_into(), course_wall(), donjon_face(), ell_outline(), merge()]
-- "medievalbattle_battle_props_siege_tower": "siege_tower()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L1039 | neighbors=[battle_props.py, tapered timber assault tower on six sol…, bar(), heater_shield(), lerp(), merge()]
 
 ## Instructions
 

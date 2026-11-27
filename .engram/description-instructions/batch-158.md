@@ -1,4 +1,4 @@
-# Node Description Batch 159 of 207
+# Node Description Batch 159 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -26,46 +26,46 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "candyland_candy_studio_wrapped": "_wrapped()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_studio.py:L6 | neighbors=[candy_studio.py] | lang=en
-- "candyland_hooks_lua_lua_attrs": "lua_attrs()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/hooks_lua.py:L5 | neighbors=[hooks_lua.py] | lang=en
-- "canyonbazaar_canyon_map_material_skin": "material_skin()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_map.py:L568 | neighbors=[canyon_map.py] | lang=en
-- "canyonbazaar_canyon_map_rationale_167": "local prop point -> world (Roblox), same yaw convention as place()" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_map.py:L167 | neighbors=[world()] | lang=en
-- "canyonbazaar_canyon_map_rationale_171": "yaw that turns a prop's -Z front to look along (dx, dz)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_map.py:L171 | neighbors=[yaw_face()] | lang=en
-- "canyonbazaar_canyon_map_rationale_39": "walkable ledge width (studs) per wall: wide under the relic kiosk (east, z -60)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_map.py:L39 | neighbors=[shelf1()] | lang=en
-- "canyonbazaar_canyon_map_rationale_90": "spawn -> temple door sightline x at z (kept clear of tall dressing)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_map.py:L90 | neighbors=[sight_x()] | lang=en
-- "canyonbazaar_canyon_map_shot": "shot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_map.py:L576 | neighbors=[canyon_map.py] | lang=en
-- "canyonbazaar_canyon_props_dry_grass": "dry_grass()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_props.py:L442 | neighbors=[canyon_props.py] | lang=en
-- "canyonbazaar_canyon_props_smooth": "smooth()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_props.py:L44 | neighbors=[canyon_props.py] | lang=en
-- "cavemap_cave_map_rationale_237": "inner shell height above (x, z) by raycast up from the floor (Roblox y)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_map.py:L237 | neighbors=[ceil_y()] | lang=en
-- "cavemap_cave_map_shot": "shot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_map.py:L792 | neighbors=[cave_map.py] | lang=en
-- "cavemap_cave_ores_rationale_102": "pick resting with its head on the ground and the haft leaning on the heap" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_ores.py:L102 | neighbors=[pickaxe()] | lang=en
-- "cavemap_cave_ores_rationale_112": "heap of broken ore: graded angular host lumps with metallic seams and set-in ore" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_ores.py:L112 | neighbors=[ore_pile()] | lang=en
-- "cavemap_cave_ores_rationale_136": "v2 load: lumps packed into the tub mouth (heaped in the middle), seams + set-in" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_ores.py:L136 | neighbors=[cart_load()] | lang=en
-- "cavemap_cave_ores_rationale_17": "angular broken-rock lump: a hull of few points (big flat fracture faces), slight" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_ores.py:L17 | neighbors=[_lump()] | lang=en
-- "cavemap_cave_ores_rationale_26": "the heap's hidden-gap filler: a lumpy dome of broken rock with ore-seam faces (b" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_ores.py:L26 | neighbors=[mound()] | lang=en
-- "cavemap_cave_ores_rationale_48": "one ore lump: host rock faces + metallic ore-seam faces (noise) + blocky ore cry" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_ores.py:L48 | neighbors=[ore_lump()] | lang=en
-- "cavemap_cave_ores_rationale_77": "crystal cluster: n banded crystals fanning from one root, tallest at the centre" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_ores.py:L77 | neighbors=[druse()] | lang=en
-- "cavemap_cave_ores_rationale_87": "square-mouth shovel: dished steel blade + socket, ash shaft, D grip; foot = blad" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_ores.py:L87 | neighbors=[shovel()] | lang=en
-- "cavemap_cave_paint_block": "block()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_paint.py:L14 | neighbors=[cave_paint.py] | lang=en
-- "cavemap_cave_props_flat": "flat()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L48 | neighbors=[cave_props.py] | lang=en
-- "cavemap_cave_props_rationale_79": "low-frequency noise displacement along vertex normals (organic surfaces)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L79 | neighbors=[jitter()] | lang=en
-- "cavemap_cave_props_rock_dim": "rock_dim()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L198 | neighbors=[cave_props.py] | lang=en
-- "cavemap_cave_props2_plank": "plank()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L7 | neighbors=[cave_props2.py] | lang=en
-- "cavemap_cave_props2_rationale_106": "ore heaped in the tub (cave_ores replaces this with the v2 load)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L106 | neighbors=[cart_load()] | lang=en
-- "cavemap_cave_props2_rationale_115": "square chamfered post on a cairn footing, crossarm with angle brace, hanging lan" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L115 | neighbors=[mine_lantern_post()] | lang=en
-- "cavemap_cave_props2_rationale_128": "3-storey mining scaffold against a wall (back = +Z): round posts, plank decks wi" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L128 | neighbors=[scaffold()] | lang=pt
-- "cavemap_cave_props2_rationale_13": "hanging oil lantern: ring hook, vented cap, 4 cage bars round a GLOWING glass, b" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L13 | neighbors=[oil_lantern()] | lang=pt
-- "cavemap_cave_props2_rationale_163": "chasm rope bridge (span along Z): end post pairs with rope wraps and stakes, irr" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L163 | neighbors=[rope_bridge()] | lang=en
-- "cavemap_cave_props2_rationale_188": "low boardwalk to the islet (span along Z): log piles with iron bands, stringers," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L188 | neighbors=[plank_bridge()] | lang=en
-- "cavemap_cave_props2_rationale_204": "stack of 3 braced crates (frame battens + diagonal brace on the faces) with a pi" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L204 | neighbors=[crates()] | lang=en
-- "cavemap_cave_props2_rationale_220": "three staved barrels (bulged lathe, iron hoops, lid), one lying on its side" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L220 | neighbors=[barrels()] | lang=en
-- "cavemap_cave_props2_rationale_231": "heap of broken ore with glowing crystal chunks and a shovel stuck in it" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L231 | neighbors=[ore_pile()] | lang=en
-- "cavemap_cave_props2_rationale_24": "tunnel timber set: two splayed round posts on footing stones, a cap log, knee br" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L24 | neighbors=[mine_frame()] | lang=pt
-- "cavemap_cave_props2_rationale_244": "timber rack with hung pickaxes and shovels, a coil of rope and a lantern" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L244 | neighbors=[tool_rack()] | lang=en
-- "cavemap_cave_props2_rationale_46": "6-stud track: two I-profile rails on 3 bevelled sleepers with spike heads, on a" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L46 | neighbors=[rail_seg()] | lang=en
-- "cavemap_cave_props2_rationale_60": "end-of-track stop: two posts with back struts, a cross beam with iron bumper pad" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L60 | neighbors=[rail_buffer()] | lang=en
-- "cavemap_cave_props2_rationale_80": "riveted tub on a timber chassis, 4 flanged wheels on axles, couplers, rolled rim" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L80 | neighbors=[mine_cart()] | lang=pt
-- "cavemap_cave_props3_rationale_133": "A-frame canvas tent: ridge log on X-poles, two canvas slopes sagging between the" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props3.py:L133 | neighbors=[camp_tent()] | lang=en
+- "brick_war_mech_brick_sph": "sph()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/war_mech_brick.py:L40 | neighbors=[war_mech_brick.py] | lang=en
+- "brick_war_rhino_brick_box": "box()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/war_rhino_brick.py:L39 | neighbors=[war_rhino_brick.py] | lang=en
+- "brick_war_rhino_brick_col4": "col4()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/war_rhino_brick.py:L50 | neighbors=[war_rhino_brick.py] | lang=en
+- "brick_war_rhino_brick_fold_z": "fold_z()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/war_rhino_brick.py:L71 | neighbors=[war_rhino_brick.py] | lang=en
+- "brick_war_rhino_brick_hx": "hx()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/war_rhino_brick.py:L24 | neighbors=[war_rhino_brick.py] | lang=en
+- "brick_war_rhino_brick_newid": "newid()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/war_rhino_brick.py:L55 | neighbors=[war_rhino_brick.py] | lang=en
+- "brick_war_rhino_brick_put": "put()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/war_rhino_brick.py:L29 | neighbors=[war_rhino_brick.py] | lang=en
+- "brick_war_rhino_brick_rationale_186": "exposed brick faces as flat quads; UVs = brick coords / 4 so the 4x4 stud tile p" | kind=entity | source=.agents/skills/Voxel Pack/stud/examples/brick/war_rhino_brick.py:L186 | neighbors=[build()] | lang=en
+- "brick_war_rhino_brick_sd_ell": "sd_ell()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/war_rhino_brick.py:L32 | neighbors=[war_rhino_brick.py] | lang=en
+- "brick_war_rhino_brick_smin": "smin()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/war_rhino_brick.py:L37 | neighbors=[war_rhino_brick.py] | lang=en
+- "cad_skill_main_gridfinity_gridfinitybin_init": ".__init__()" | kind=code-symbol | source=.agents/skills/cad-skill-main/gridfinity.py:L193 | neighbors=[GridfinityBin] | lang=en
+- "cad_skill_main_gridfinity_gridfinitybin_nominal_h": ".nominal_h()" | kind=code-symbol | source=.agents/skills/cad-skill-main/gridfinity.py:L221 | neighbors=[GridfinityBin] | lang=en
+- "cad_skill_main_gridfinity_gridfinitybin_outer_d": ".outer_d()" | kind=code-symbol | source=.agents/skills/cad-skill-main/gridfinity.py:L217 | neighbors=[GridfinityBin] | lang=en
+- "cad_skill_main_gridfinity_gridfinitybin_outer_w": ".outer_w()" | kind=code-symbol | source=.agents/skills/cad-skill-main/gridfinity.py:L213 | neighbors=[GridfinityBin] | lang=en
+- "cad_skill_main_gridfinity_gridfinitybin_total_h": ".total_h()" | kind=code-symbol | source=.agents/skills/cad-skill-main/gridfinity.py:L225 | neighbors=[GridfinityBin] | lang=en
+- "cad_skill_main_gridfinity_rationale_1": "Gridfinity bin generator for CadQuery.  Vendored module: copy this file next to" | kind=entity | source=.agents/skills/cad-skill-main/gridfinity.py:L1 | neighbors=[gridfinity.py] | lang=en
+- "cad_skill_main_gridfinity_rationale_107": "Normalize scalar / 2-tuple / 4-tuple corner radii.      Order: (+X+Y, -X+Y, -X-Y" | kind=entity | source=.agents/skills/cad-skill-main/gridfinity.py:L107 | neighbors=[_corner_radii()] | lang=es
+- "cad_skill_main_gridfinity_rationale_123": "Draw a closed rounded-rect wire with per-corner radii on `workplane`.      `radi" | kind=entity | source=.agents/skills/cad-skill-main/gridfinity.py:L123 | neighbors=[_rounded_rect()] | lang=en
+- "cad_skill_main_gridfinity_rationale_149": "Collect the solids of several workplanes/solids into one Compound.      Booleans" | kind=entity | source=.agents/skills/cad-skill-main/gridfinity.py:L149 | neighbors=[_compound()] | lang=en
+- "cad_skill_main_gridfinity_rationale_163": "Combine cutter workplanes into one safe boolean tool.      Disjoint cutters ride" | kind=entity | source=.agents/skills/cad-skill-main/gridfinity.py:L163 | neighbors=[_fused()] | lang=en
+- "cad_skill_main_gridfinity_rationale_187": "Builder for a spec-compatible Gridfinity bin.      Create the bin, add features," | kind=entity | source=.agents/skills/cad-skill-main/gridfinity.py:L187 | neighbors=[GridfinityBin] | lang=en
+- "cad_skill_main_gridfinity_rationale_230": "Z of the interior floor: base profile plus solid floor." | kind=entity | source=.agents/skills/cad-skill-main/gridfinity.py:L230 | neighbors=[.floor_z()] | lang=en
+- "cad_skill_main_gridfinity_rationale_235": "Deepest cavity possible from the top of the bin." | kind=entity | source=.agents/skills/cad-skill-main/gridfinity.py:L235 | neighbors=[.max_depth()] | lang=en
+- "cad_skill_main_gridfinity_rationale_243": "Rounded-rect cavity cut from the top rim down `depth` mm.          `corner_r`: s" | kind=entity | source=.agents/skills/cad-skill-main/gridfinity.py:L243 | neighbors=[.add_pocket()] | lang=en
+- "cad_skill_main_gridfinity_rationale_254": "Cavity with an arbitrary closed outline (list of (x, y) mm).          `clearance" | kind=entity | source=.agents/skills/cad-skill-main/gridfinity.py:L254 | neighbors=[.add_polygon_pocket()] | lang=en
+- "cad_skill_main_gridfinity_rationale_266": "Round cavity cut from the top rim down `depth` mm.          Useful for finger we" | kind=entity | source=.agents/skills/cad-skill-main/gridfinity.py:L266 | neighbors=[.add_cylinder_pocket()] | lang=en
+- "cad_skill_main_gridfinity_rationale_293": "Classic divided storage interior: cols x rows compartments.          Optional `s" | kind=entity | source=.agents/skills/cad-skill-main/gridfinity.py:L293 | neighbors=[.add_compartments()] | lang=en
+- "cad_skill_main_gridfinity_rationale_307": "U-shaped scallop cut into one side wall from the top rim.          `side` is one" | kind=entity | source=.agents/skills/cad-skill-main/gridfinity.py:L307 | neighbors=[.add_finger_notch()] | lang=en
+- "cad_skill_main_gridfinity_rationale_412": "Feature footprint must leave MIN_WALL of outer wall." | kind=entity | source=.agents/skills/cad-skill-main/gridfinity.py:L412 | neighbors=[._check_wall_clearance()] | lang=en
+- "cad_skill_main_gridfinity_rationale_439": "Validate and build; returns a cq.Workplane, bottom at Z=0." | kind=entity | source=.agents/skills/cad-skill-main/gridfinity.py:L439 | neighbors=[.build()] | lang=en
+- "cad_skill_main_gridfinity_rationale_475": "Per-cell base profile: taper, riser, taper (45 degrees).          The sketch fil" | kind=entity | source=.agents/skills/cad-skill-main/gridfinity.py:L475 | neighbors=[._base_cells()] | lang=en
+- "cad_skill_main_gridfinity_rationale_510": "Stacking lip: the mirrored base profile lofted around the rim." | kind=entity | source=.agents/skills/cad-skill-main/gridfinity.py:L510 | neighbors=[._lip_cut()] | lang=en
+- "cad_skill_main_gridfinity_rationale_538": "Vertical span of the bore's cylindrical part." | kind=entity | source=.agents/skills/cad-skill-main/gridfinity.py:L538 | neighbors=[._cylinder_drop()] | lang=en
+- "cad_skill_main_gridfinity_rationale_570": "Cutters (cavities) and additions (scoops, label shelves)." | kind=entity | source=.agents/skills/cad-skill-main/gridfinity.py:L570 | neighbors=[._compartment_solids()] | lang=en
+- "cad_skill_main_gridfinity_rationale_597": "Concave quarter-round ramp along a compartment's front floor edge." | kind=entity | source=.agents/skills/cad-skill-main/gridfinity.py:L597 | neighbors=[._scoop()] | lang=pt
+- "cad_skill_main_gridfinity_rationale_610": "45-degree triangular label shelf hanging from a back wall." | kind=entity | source=.agents/skills/cad-skill-main/gridfinity.py:L610 | neighbors=[._label_shelf()] | lang=en
+- "cad_skill_main_gridfinity_rationale_64": "Raised when a bin configuration cannot produce valid geometry." | kind=entity | source=.agents/skills/cad-skill-main/gridfinity.py:L64 | neighbors=[GridfinityError] | lang=pt
+- "cad_skill_main_gridfinity_rationale_645": "Magnet bores and/or screw holes, 4 per cell on a 26mm square." | kind=entity | source=.agents/skills/cad-skill-main/gridfinity.py:L645 | neighbors=[._base_hole_cutter()] | lang=en
+- "cad_skill_main_gridfinity_rationale_661": "One-paragraph description of the built dimensions." | kind=entity | source=.agents/skills/cad-skill-main/gridfinity.py:L661 | neighbors=[.summary()] | lang=en
+- "cad_skill_main_mating_rationale_1": "Fit checks for printed parts that go together (lids, joints, segments).  A previ" | kind=entity | source=.agents/skills/cad-skill-main/mating.py:L1 | neighbors=[mating.py] | lang=en
 
 ## Instructions
 

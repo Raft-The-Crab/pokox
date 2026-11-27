@@ -1,4 +1,4 @@
-# Node Description Batch 44 of 207
+# Node Description Batch 44 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -17,12 +17,27 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "warehouse_wh_map_place": "place()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_map.py:L54 | neighbors=[wh_map.py, build(), kit(), sub(), rack_row()]
+- "warehouse_wh_map_roof": "roof()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_map.py:L117 | neighbors=[wh_map.py, deck slabs on the truss top chords with…, bx(), deck_y(), mesh_obj()]
+- "warehouse_wh_props_rack_bay": "rack_bay()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_props.py:L165 | neighbors=[wh_props.py, beam_pair(), pallet_load(), upright_frame(), one 9-stud bay of selective pallet rack…]
+- "warehouse_wh_veh": "wh_veh.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_veh.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, forklift(), pallet_jack(), wheel()]
+- "whispering_grove_forest_map_keepout": "keepout()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_map.py:L84 | neighbors=[forest_map.py, build(), path_info(), stream_d(), scatter()]
+- "whispering_grove_forest_map_stream_d": "stream_d()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_map.py:L61 | neighbors=[forest_map.py, build(), H(), keepout(), segd()]
+- "whispering_grove_forest_map_sub": "sub()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_map.py:L17 | neighbors=[forest_map.py, ground(), horizon(), place(), plaza()]
+- "whispering_grove_forest_props_bridge": "bridge()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L450 | neighbors=[forest_props.py, at(), Prop, .add(), S()]
+- "whispering_grove_forest_props_crate": "crate()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L345 | neighbors=[forest_props.py, at(), Prop, .add(), S()]
+- "whispering_grove_forest_props_fence": "fence()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L336 | neighbors=[forest_props.py, at(), Prop, .add(), S()]
+- "whispering_grove_forest_props_frond": "frond()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L205 | neighbors=[forest_props.py, fern(), .add(), S(), one modelled fern frond: a serrated, th…]
+- "whispering_grove_forest_props_grass_tuft": "grass_tuft()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L310 | neighbors=[forest_props.py, at(), Prop, .add(), S()]
+- "whispering_grove_forest_props_mossy_rock": "mossy_rock()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L254 | neighbors=[forest_props.py, at(), Prop, .add(), S()]
+- "whispering_grove_forest_props_reeds": "reeds()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L564 | neighbors=[forest_props.py, at(), Prop, .add(), S()]
 - "whispering_grove_forest_props_signpost": "signpost()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L441 | neighbors=[forest_props.py, at(), Prop, .add(), S()]
 - "whispering_grove_forest_props_stepping_stones": "stepping_stones()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L592 | neighbors=[forest_props.py, at(), Prop, .add(), S()]
 - "whispering_grove_forest_props_tent": "tent()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L367 | neighbors=[forest_props.py, at(), Prop, .add(), S()]
 - "work_uv_overlap_intersection_area": "intersection_area()" | kind=code-symbol | source=assets/characters/work/uv_overlap.py:L22 | neighbors=[uv_overlap.py, find_cross_mesh_overlaps(), _cross(), _signed_area(), Return the UV area common to two triang…]
 - "addon_template_operators": "operators.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-addon-development/assets/addon_template/operators.py:L1 | neighbors=[MYTOOL_OT_offset_selected, MYTOOL_PG_settings, 2680d0e Pushed an update., e77fa31 Add new skills and asset packs …]
-- "authority_pkb_schema": "pkb_schema.hpp" | kind=code-symbol | source=server/authority/include/poko/authority/pkb_schema.hpp:L1 | neighbors=[is_protected_domain(), load_pkb_schema(), PkbAuthority, 6568dc9 Update from ML AI Code]
+- "animation_v2_check_model_structure": "check_model_structure.py" | kind=code-symbol | source=assets/characters/animation-v2/check_model_structure.py:L1 | neighbors=[capture(), floats(), 52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
+- "authority_replay_ring_cbor_head": "cbor_head()" | kind=code-symbol | source=server/authority/include/poko/authority/replay_ring.hpp:L82 | neighbors=[replay_ring.hpp, cbor_text(), cbor_uint(), encode_replay()]
 - "bin_trace_processor_get_perfetto_prebuilt": "get_perfetto_prebuilt()" | kind=code-symbol | source=.agents/skills/skills-main/profilers/android-profiler/references/perfetto/bin/trace_processor:L259 | neighbors=[trace_processor, download_or_get_cached(), Downloads the prebuilt, if necessary, a…, run_perfetto_prebuilt()]
 - "blender_character_blockout_box": "box()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/blender/character_blockout.py:L134 | neighbors=[character_blockout.py, get_collection(), link(), build()]
 - "blender_character_blockout_sphere": "sphere()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/blender/character_blockout.py:L159 | neighbors=[character_blockout.py, build(), get_collection(), link()]
@@ -42,21 +57,6 @@ one-sentence description — no prose, no markdown fences.
 - "brick_lich_king_brick_flames": "flames()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/lich_king_brick.py:L372 | neighbors=[lich_king_brick.py, cap(), chain(), glow()]
 - "brick_living_armor_brick_build": "build()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/living_armor_brick.py:L382 | neighbors=[living_armor_brick.py, exposed(), lin(), exposed brick faces as flat quads; UVs …]
 - "brick_living_armor_brick_flame": "flame()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/living_armor_brick.py:L258 | neighbors=[living_armor_brick.py, put(), ring(), tuft()]
-- "brick_mimic_chest_brick_build": "build()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/mimic_chest_brick.py:L351 | neighbors=[mimic_chest_brick.py, exposed(), lin(), exposed brick faces as flat quads; UVs …]
-- "brick_props_brick_scifi_pistol": "scifi_pistol()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/props_brick.py:L392 | neighbors=[props_brick.py, white + silver sci-fi pistol, muzzle up…, poly(), stroke()]
-- "brick_props_brick_stroke": "stroke()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/props_brick.py:L326 | neighbors=[props_brick.py, thick polyline (bow limbs, strings, tho…, scifi_pistol(), thorn_bow()]
-- "brick_props_brick_thorn_bow": "thorn_bow()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/props_brick.py:L341 | neighbors=[props_brick.py, dark thorn bow (R=8): limbs curling bac…, poly(), stroke()]
-- "brick_props_brick_trunk": "trunk()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/props_brick.py:L28 | neighbors=[props_brick.py, oak(), pine(), tapered trunk: radius r0 at the base ->…]
-- "brick_scarecrow_king_brick_build": "build()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scarecrow_king_brick.py:L435 | neighbors=[scarecrow_king_brick.py, exposed(), lin(), exposed brick faces as flat quads; UVs …]
-- "brick_scarecrow_king_brick_chaind": "chaind()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scarecrow_king_brick.py:L60 | neighbors=[scarecrow_king_brick.py, axd(), chain(), capd()]
-- "brick_scarecrow_king_brick_patch": "patch()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scarecrow_king_brick.py:L139 | neighbors=[scarecrow_king_brick.py, bx(), newid(), put()]
-- "brick_scarecrow_king_brick_put": "put()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scarecrow_king_brick.py:L43 | neighbors=[scarecrow_king_brick.py, patch(), strand(), wood()]
-- "brick_scarecrow_king_brick_strand": "strand()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scarecrow_king_brick.py:L182 | neighbors=[scarecrow_king_brick.py, chain(), put(), tuft()]
-- "brick_scorpion_king_brick_build": "build()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scorpion_king_brick.py:L222 | neighbors=[scorpion_king_brick.py, exposed(), lin(), exposed brick faces as flat quads; UVs …]
-- "brick_scorpion_king_brick_seg": "seg()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scorpion_king_brick.py:L108 | neighbors=[scorpion_king_brick.py, cap(), newid(), put()]
-- "brick_storm_griffin_brick_build": "build()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/storm_griffin_brick.py:L400 | neighbors=[storm_griffin_brick.py, exposed(), lin(), exposed brick faces as flat quads; UVs …]
-- "brick_swamp_croc_brick_build": "build()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/swamp_croc_brick.py:L245 | neighbors=[swamp_croc_brick.py, exposed(), lin(), exposed brick faces as flat quads; UVs …]
-- "brick_swamp_croc_brick_newid": "newid()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/swamp_croc_brick.py:L47 | neighbors=[swamp_croc_brick.py, leg(), pyramid(), strand()]
 
 ## Instructions
 

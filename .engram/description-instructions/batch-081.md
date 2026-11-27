@@ -1,4 +1,4 @@
-# Node Description Batch 82 of 207
+# Node Description Batch 82 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -12,58 +12,51 @@ describing what it is or does. Use only the provided context.
 For a code symbol (kind=code-symbol — a function, class, or constant),
 describe what the function/symbol does based on its name, source location
 and neighbors — e.g. "Resolves the configured ontology profile from graphify.yaml.".
-For an entity node (any other kind — e.g. a person, place, event, object),
-describe what the entity is and its role, grounded in its type, its
-relations (neighbors) and the provided citations/evidence — e.g.
-"Lady Carfax, a wealthy heiress who disappears en route to Lausanne.".
-Ground entity descriptions in the citations/evidence when present; do not
-speculate beyond the context, so a node with no supporting context may be
-left out of the reply.
 Write every description in English (en). Do not switch languages.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "tests_run_all_requires_gpu": "requires_gpu()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/run_all.py:L43 | neighbors=[run_all.py, Skip when BAS_SKIP_GPU=1 (CI runners wi…, Skip]
-- "tests_run_all_skip": "Skip" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/run_all.py:L39 | neighbors=[run_all.py, requires_gpu(), Exception]
-- "tests_test_addon": "test_addon.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_addon.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, test_template_validates_builds_and_regi…]
-- "tests_test_animation_walk": "_walk()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_animation.py:L8 | neighbors=[test_animation.py, Keyframe the hips ('spine', child of ro…, test_bake_to_copy_with_root_motion_and_…]
-- "tests_test_atmosphere_render": "_render()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_atmosphere.py:L13 | neighbors=[test_atmosphere.py, _mean_luma(), test_night_renders_darker_than_noon()]
-- "tests_test_baking_pixels": "_pixels()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_baking.py:L9 | neighbors=[test_baking.py, test_high_to_low_bake_normal_ao_curv_or…, test_self_bake_procedural_roughness()]
-- "tests_test_core_test_snippet_docs_across_skills": "test_snippet_docs_across_skills()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_core.py:L35 | neighbors=[test_core.py, Any reference doc tagged '(runs standal…, _run_md_blocks()]
-- "tests_test_examples_example_ids": "example_ids()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_examples.py:L12 | neighbors=[test_examples.py, test_catalog_lists_every_shipped_exampl…, test_lint_of_all_examples_has_no_errors…]
-- "tests_test_facial": "test_facial.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_facial.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, test_arkit_split_mirror_drivers_report()]
-- "tests_test_golden": "test_golden.py" | kind=code-symbol | source=tools/testutils/harness/tests/test_golden.py:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, GoldenHarnessTests, run()]
-- "tests_test_golden_goldenharnesstests_test_update_creates_and_replaces_only_when_explicit": ".test_update_creates_and_replaces_only_when_explicit()" | kind=code-symbol | source=tools/testutils/harness/tests/test_golden.py:L75 | neighbors=[GoldenHarnessTests, .pair(), run()]
-- "tests_test_gridfinity_rationale_124": "Rebuild the published D110 cradle; dimensions must match." | kind=entity | source=.agents/skills/cad-skill-main/tests/test_gridfinity.py:L124 | neighbors=[GridfinityBin, GridfinityError, test_d110_regression()]
-- "tests_test_gridfinity_rationale_25": "B-rep volume, no tessellation round-trip." | kind=entity | source=.agents/skills/cad-skill-main/tests/test_gridfinity.py:L25 | neighbors=[GridfinityBin, GridfinityError, _volume()]
-- "tests_test_gridfinity_rationale_41": "1x1, 2U, no lip: exact box height, flat top." | kind=entity | source=.agents/skills/cad-skill-main/tests/test_gridfinity.py:L41 | neighbors=[GridfinityBin, GridfinityError, test_minimal_bin_no_lip()]
-- "tests_test_gridfinity_rationale_49": "2x1, 3U with lip and base holes." | kind=entity | source=.agents/skills/cad-skill-main/tests/test_gridfinity.py:L49 | neighbors=[GridfinityBin, GridfinityError, test_bin_with_lip_magnets_screws()]
-- "tests_test_gridfinity_test_d110_regression": "test_d110_regression()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_gridfinity.py:L123 | neighbors=[test_gridfinity.py, Rebuild the published D110 cradle; dime…, _mesh()]
-- "tests_test_gridfinity_test_finger_notch_removes_material": "test_finger_notch_removes_material()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_gridfinity.py:L103 | neighbors=[test_gridfinity.py, _mesh(), _volume()]
-- "tests_test_gridfinity_test_polygon_pocket_with_clearance_and_cylinder_well": "test_polygon_pocket_with_clearance_and_cylinder_well()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_gridfinity.py:L74 | neighbors=[test_gridfinity.py, _assert_footprint(), _mesh()]
-- "tests_test_hair_head": "_head()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_hair.py:L7 | neighbors=[test_hair.py, test_groom_attached_masked_with_assets(), test_hair_cards_and_atlas()]
-- "tests_test_npr_clusters": "_clusters()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_npr.py:L24 | neighbors=[test_npr.py, _bands(), Distinct flat colors (8-bit rounding sp…]
-- "tests_test_npr_scene": "_scene()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_npr.py:L9 | neighbors=[test_npr.py, test_toon_hull_bands_lineart_roundtrip(), test_toon_scene_lighting_eevee()]
-- "tests_test_npr_test_toon_hull_bands_lineart_roundtrip": "test_toon_hull_bands_lineart_roundtrip()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_npr.py:L52 | neighbors=[test_npr.py, _bands(), _scene()]
-- "tests_test_npr_test_toon_scene_lighting_eevee": "test_toon_scene_lighting_eevee()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_npr.py:L83 | neighbors=[test_npr.py, _bands(), _scene()]
-- "tests_test_privacy_jpeg_metadata": "jpeg_metadata()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_privacy.py:L104 | neighbors=[test_privacy.py, file_hits(), Names of JPEG segments beyond pixel dat…]
-- "tests_test_privacy_private_terms": "private_terms()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_privacy.py:L61 | neighbors=[test_privacy.py, test_maintainer_private_terms_when_conf…, test_no_file_in_the_package_leaks_perso…]
-- "tests_test_privacy_test_scanner_catches_each_kind_of_leak_and_respects_the_allowlists": "test_scanner_catches_each_kind_of_leak_and_respects_the_allowlists()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_privacy.py:L137 | neighbors=[test_privacy.py, png_metadata(), text_hits()]
-- "tests_test_rigging_humanoid_mesh": "_humanoid_mesh()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_rigging.py:L8 | neighbors=[test_rigging.py, Crude closed humanoid (torso, head, arm…, test_rigify_pipeline_bind_check_stress()]
-- "tests_test_run_wrapper_test_json_shape_keys": "test_json_shape_keys()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_run_wrapper.py:L53 | neighbors=[test_run_wrapper.py, All documented keys must be present in …, run()]
-- "tests_test_run_wrapper_test_strict_and_bed_report_both_problems": "test_strict_and_bed_report_both_problems()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_run_wrapper.py:L122 | neighbors=[test_run_wrapper.py, A non-watertight part that is also too …, run()]
-- "tests_test_safety_conflict_setup": "conflict_setup()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_safety.py:L247 | neighbors=[test_safety.py, test_conflicts_protect_hand_made_effect…, test_conflicts_protect_owned_effects_un…]
-- "tests_test_sculpt": "test_sculpt.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_sculpt.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, test_sculpt_ops_chain()]
-- "tests_test_sequence_test_a_blockout_sequence_needs_blockout_effects": "test_a_blockout_sequence_needs_blockout_effects()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_sequence.py:L80 | neighbors=[test_sequence.py, vfx(), workspace()]
-- "tests_test_sequence_test_blockout_lint_holds_recipes_to_math_textures": "test_blockout_lint_holds_recipes_to_math_textures()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_sequence.py:L43 | neighbors=[test_sequence.py, vfx(), workspace()]
-- "tests_test_sequence_test_detail_needs_the_blockout_gate_and_steal_lists": "test_detail_needs_the_blockout_gate_and_steal_lists()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_sequence.py:L62 | neighbors=[test_sequence.py, vfx(), workspace()]
-- "tests_test_sequence_test_game_frames_become_evidence_and_a_blockout_ship_opens_the_gate": "test_game_frames_become_evidence_and_a_blockout_ship_opens_the_gate()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_sequence.py:L89 | neighbors=[test_sequence.py, vfx(), workspace()]
-- "tests_test_sequence_test_screen_feedback_is_validated": "test_screen_feedback_is_validated()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_sequence.py:L52 | neighbors=[test_sequence.py, vfx(), workspace()]
-- "tests_test_simulation_grid": "_grid()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_simulation.py:L7 | neighbors=[test_simulation.py, test_classic_cloth_drapes_on_collider(), test_gn_cloth_52_asset()]
-- "tests_test_video_footage": "_footage()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_video.py:L79 | neighbors=[test_video.py, 40 frames of a textured set seen by a d…, test_track_camera_solves_in_ui_session()]
-- "tests_test_video_test_unity_commands_need_no_workspace": "test_unity_commands_need_no_workspace()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_video.py:L130 | neighbors=[test_video.py, Runs without a vfx/ workspace and print…, fake_unity()]
-- "tests_test_workflow_test_completion_requires_brief_review_and_overview_instead_of_no_flags": "test_completion_requires_brief_review_and_overview_instead_of_no_flags()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_workflow.py:L154 | neighbors=[test_workflow.py, captured(), report()]
+- "src_character_controller_touch_key": "touch_key()" | kind=code-symbol | source=engine/physics/src/character_controller.cpp:L107 | neighbors=[character_controller.cpp, append_shape_raws(), touches()]
+- "src_character_controller_translated": "translated()" | kind=code-symbol | source=engine/physics/src/character_controller.cpp:L37 | neighbors=[character_controller.cpp, cast_fraction(), update()]
+- "src_config_read_bool": "read_bool()" | kind=code-symbol | source=engine/foundation/src/config.cpp:L44 | neighbors=[config.cpp, load_file(), find_key()]
+- "src_config_read_text": "read_text()" | kind=code-symbol | source=engine/foundation/src/config.cpp:L57 | neighbors=[config.cpp, load_file(), find_key()]
+- "src_config_read_u32": "read_u32()" | kind=code-symbol | source=engine/foundation/src/config.cpp:L32 | neighbors=[config.cpp, load_file(), find_key()]
+- "src_ktx2_load_ktx2": "load_ktx2()" | kind=code-symbol | source=engine/resource/src/ktx2.cpp:L43 | neighbors=[ktx2.cpp, fail(), in_bounds()]
+- "src_logging_to_spdlog": "to_spdlog()" | kind=code-symbol | source=engine/foundation/src/logging.cpp:L22 | neighbors=[logging.cpp, emit(), init()]
+- "src_loop_advance": "advance()" | kind=code-symbol | source=engine/foundation/src/loop.cpp:L30 | neighbors=[loop.cpp, to_ns(), valid_limits()]
+- "src_loop_to_ns": "to_ns()" | kind=code-symbol | source=engine/foundation/src/loop.cpp:L15 | neighbors=[loop.cpp, advance(), FixedStepLoop()]
+- "src_loop_valid_limits": "valid_limits()" | kind=code-symbol | source=engine/foundation/src/loop.cpp:L24 | neighbors=[loop.cpp, advance(), alpha()]
+- "src_main": "main.cpp" | kind=code-symbol | source=engine/foundation/src/main.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, main(), c7a411f Fix MUT-01-20 audit defects in …]
+- "src_narrowphase_closest_segment": "closest_segment()" | kind=code-symbol | source=engine/physics/src/narrowphase.cpp:L72 | neighbors=[narrowphase.cpp, closest_on_hull(), closest_triangle()]
+- "src_narrowphase_cso_support": "cso_support()" | kind=code-symbol | source=engine/physics/src/narrowphase.cpp:L51 | neighbors=[narrowphase.cpp, epa_penetration(), gjk_distance()]
+- "src_narrowphase_dist_sq_of": "dist_sq_of()" | kind=code-symbol | source=engine/physics/src/narrowphase.cpp:L69 | neighbors=[narrowphase.cpp, closest_on_hull(), closest_triangle()]
+- "src_narrowphase_face_normal": "face_normal()" | kind=code-symbol | source=engine/physics/src/narrowphase.cpp:L285 | neighbors=[narrowphase.cpp, epa_penetration(), orient_out()]
+- "src_narrowphase_orient_out": "orient_out()" | kind=code-symbol | source=engine/physics/src/narrowphase.cpp:L291 | neighbors=[narrowphase.cpp, epa_penetration(), face_normal()]
+- "src_narrowphase_origin_in_tetra": "origin_in_tetra()" | kind=code-symbol | source=engine/physics/src/narrowphase.cpp:L139 | neighbors=[narrowphase.cpp, closest_on_hull(), epa_penetration()]
+- "src_narrowphase_saturate_raw": "saturate_raw()" | kind=code-symbol | source=engine/physics/src/narrowphase.cpp:L647 | neighbors=[narrowphase.cpp, to_world(), widen_raw()]
+- "src_narrowphase_to_world": "to_world()" | kind=code-symbol | source=engine/physics/src/narrowphase.cpp:L659 | neighbors=[narrowphase.cpp, collide(), saturate_raw()]
+- "src_narrowphase_widen_raw": "widen_raw()" | kind=code-symbol | source=engine/physics/src/narrowphase.cpp:L655 | neighbors=[narrowphase.cpp, collide(), saturate_raw()]
+- "src_pokomesh_fail": "fail()" | kind=code-symbol | source=engine/resource/src/pokomesh.cpp:L21 | neighbors=[pokomesh.cpp, load_pokomesh(), parse_pokomesh()]
+- "src_pokomesh_load_pokomesh": "load_pokomesh()" | kind=code-symbol | source=engine/resource/src/pokomesh.cpp:L95 | neighbors=[pokomesh.cpp, fail(), parse_pokomesh()]
+- "src_sap_broadphase_commit": "commit()" | kind=code-symbol | source=engine/physics/src/sap_broadphase.cpp:L15 | neighbors=[sap_broadphase.cpp, clear(), insert()]
+- "src_soft_body_add_node": "add_node()" | kind=code-symbol | source=engine/physics/src/soft_body.cpp:L72 | neighbors=[soft_body.cpp, create(), create_lattice()]
+- "src_soft_body_clamp01": "clamp01()" | kind=code-symbol | source=engine/physics/src/soft_body.cpp:L13 | neighbors=[soft_body.cpp, add_spring(), step()]
+- "src_soft_body_create": "create()" | kind=code-symbol | source=engine/physics/src/soft_body.cpp:L161 | neighbors=[soft_body.cpp, add_node(), add_spring()]
+- "src_soft_body_create_lattice": "create_lattice()" | kind=code-symbol | source=engine/physics/src/soft_body.cpp:L18 | neighbors=[soft_body.cpp, add_node(), add_spring()]
+- "src_soft_body_step": "step()" | kind=code-symbol | source=engine/physics/src/soft_body.cpp:L100 | neighbors=[soft_body.cpp, apply_acceleration(), clamp01()]
+- "src_solver_clear": "clear()" | kind=code-symbol | source=engine/physics/src/solver.cpp:L63 | neighbors=[solver.cpp, begin_step(), solve()]
+- "src_solver_solve": "solve()" | kind=code-symbol | source=engine/physics/src/solver.cpp:L87 | neighbors=[solver.cpp, clear(), tangent_basis()]
+- "src_visual_solver_begin_step": "begin_step()" | kind=code-symbol | source=engine/physics/src/visual_solver.cpp:L164 | neighbors=[visual_solver.cpp, clear(), step()]
+- "src_visual_solver_clampf": "clampf()" | kind=code-symbol | source=engine/physics/src/visual_solver.cpp:L44 | neighbors=[visual_solver.cpp, collide_sphere_box(), solve()]
+- "src_visual_solver_clear": "clear()" | kind=code-symbol | source=engine/physics/src/visual_solver.cpp:L150 | neighbors=[visual_solver.cpp, begin_step(), solve()]
+- "src_visual_solver_collide_sphere_box": "collide_sphere_box()" | kind=code-symbol | source=engine/physics/src/visual_solver.cpp:L67 | neighbors=[visual_solver.cpp, clampf(), collide_visual()]
+- "src_visual_solver_find_body": "find_body()" | kind=code-symbol | source=engine/physics/src/visual_solver.cpp:L156 | neighbors=[visual_solver.cpp, add_body(), step()]
+- "src_visual_solver_upsert_body": "upsert_body()" | kind=code-symbol | source=engine/physics/src/visual_solver.cpp:L133 | neighbors=[visual_solver.cpp, add_body(), step()]
+- "state_state_snapshot_load_state_snapshot": "load_state_snapshot()" | kind=code-symbol | source=mute/src/state/state_snapshot.cpp:L46 | neighbors=[state_snapshot.cpp, read_le(), schema_for()]
+- "state_state_snapshot_save_state_snapshot": "save_state_snapshot()" | kind=code-symbol | source=mute/src/state/state_snapshot.cpp:L30 | neighbors=[state_snapshot.cpp, append_le(), schema_for()]
+- "state_state_snapshot_schema_for": "schema_for()" | kind=code-symbol | source=mute/src/state/state_snapshot.cpp:L21 | neighbors=[state_snapshot.cpp, load_state_snapshot(), save_state_snapshot()]
+- "stdlib_stdlib_crypto_compress": "compress()" | kind=code-symbol | source=mute/src/stdlib/stdlib_crypto.cpp:L22 | neighbors=[stdlib_crypto.cpp, rotr(), sha256()]
 
 ## Instructions
 

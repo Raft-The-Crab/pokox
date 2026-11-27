@@ -1,4 +1,4 @@
-# Node Description Batch 130 of 207
+# Node Description Batch 130 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -12,58 +12,51 @@ describing what it is or does. Use only the provided context.
 For a code symbol (kind=code-symbol — a function, class, or constant),
 describe what the function/symbol does based on its name, source location
 and neighbors — e.g. "Resolves the configured ontology profile from graphify.yaml.".
-For an entity node (any other kind — e.g. a person, place, event, object),
-describe what the entity is and its role, grounded in its type, its
-relations (neighbors) and the provided citations/evidence — e.g.
-"Lady Carfax, a wealthy heiress who disappears en route to Lausanne.".
-Ground entity descriptions in the citations/evidence when present; do not
-speculate beyond the context, so a node with no supporting context may be
-left out of the reply.
 Write every description in English (en). Do not switch languages.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "skyrise_sky_props_rationale_66": "faceted octahedron-ish gem standing on its tip" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L66 | neighbors=[Palette, gem()]
-- "skyrise_sky_props_rationale_71": "underside of a floating island: rings from the rim inward/down to a tip, strata" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L71 | neighbors=[Palette, island_under()]
-- "skyrise_sky_props_snow_tree": "snow_tree()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L410 | neighbors=[sky_props.py, lathe()]
-- "src_asset_store_assethandle": "AssetHandle()" | kind=code-symbol | source=engine/resource/src/asset_store.cpp:L254 | neighbors=[asset_store.cpp, release()]
-- "src_asset_store_is_loading": "is_loading()" | kind=code-symbol | source=engine/resource/src/asset_store.cpp:L195 | neighbors=[asset_store.cpp, load_state()]
-- "src_asset_store_load_state": "load_state()" | kind=code-symbol | source=engine/resource/src/asset_store.cpp:L170 | neighbors=[asset_store.cpp, is_loading()]
-- "src_asset_store_release": "release()" | kind=code-symbol | source=engine/resource/src/asset_store.cpp:L257 | neighbors=[asset_store.cpp, AssetHandle()]
-- "src_camera_look_at": "look_at()" | kind=code-symbol | source=engine/render/src/camera.cpp:L22 | neighbors=[camera.cpp, view_proj()]
-- "src_camera_multiply": "multiply()" | kind=code-symbol | source=engine/render/src/camera.cpp:L40 | neighbors=[camera.cpp, view_proj()]
-- "src_camera_perspective": "perspective()" | kind=code-symbol | source=engine/render/src/camera.cpp:L11 | neighbors=[camera.cpp, view_proj()]
-- "src_cbor_half_to_double": "half_to_double()" | kind=code-symbol | source=engine/foundation/src/cbor.cpp:L82 | neighbors=[cbor.cpp, decode_item()]
-- "src_cbor_read_argument": "read_argument()" | kind=code-symbol | source=engine/foundation/src/cbor.cpp:L73 | neighbors=[cbor.cpp, decode_item()]
-- "src_cbor_valid_utf8": "valid_utf8()" | kind=code-symbol | source=engine/foundation/src/cbor.cpp:L44 | neighbors=[cbor.cpp, decode_item()]
-- "src_character_controller_append_shape_raws": "append_shape_raws()" | kind=code-symbol | source=engine/physics/src/character_controller.cpp:L96 | neighbors=[character_controller.cpp, touch_key()]
-- "src_character_controller_planar": "planar()" | kind=code-symbol | source=engine/physics/src/character_controller.cpp:L29 | neighbors=[character_controller.cpp, update()]
-- "src_compose_pair": "pair()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/references/images/src/compose.py:L16 | neighbors=[compose.py, pill()]
-- "src_compose_pill": "pill()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/references/images/src/compose.py:L11 | neighbors=[compose.py, pair()]
-- "src_config_collect_unknown": "collect_unknown()" | kind=code-symbol | source=engine/foundation/src/config.cpp:L82 | neighbors=[config.cpp, load_file()]
-- "src_config_fail": "fail()" | kind=code-symbol | source=engine/foundation/src/config.cpp:L14 | neighbors=[config.cpp, load_file()]
-- "src_config_parse_level": "parse_level()" | kind=code-symbol | source=engine/foundation/src/config.cpp:L70 | neighbors=[config.cpp, load_file()]
-- "src_config_resolve": "resolve()" | kind=code-symbol | source=engine/foundation/src/config.cpp:L172 | neighbors=[config.cpp, load_file()]
-- "src_convex_shape": "convex_shape.cpp" | kind=code-symbol | source=engine/physics/src/convex_shape.cpp:L1 | neighbors=[69287a0 Land ENG-60-65 deterministic si…, support()]
-- "src_frame_stats_cpu_ms": "cpu_ms()" | kind=code-symbol | source=engine/foundation/src/frame_stats.cpp:L38 | neighbors=[frame_stats.cpp, window_mean()]
-- "src_frame_stats_fps": "fps()" | kind=code-symbol | source=engine/foundation/src/frame_stats.cpp:L31 | neighbors=[frame_stats.cpp, window_mean()]
-- "src_frame_stats_gpu_ms": "gpu_ms()" | kind=code-symbol | source=engine/foundation/src/frame_stats.cpp:L43 | neighbors=[frame_stats.cpp, window_mean()]
-- "src_gallery_flat": "flat()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/references/images/src/gallery.py:L37 | neighbors=[gallery.py, ground()]
-- "src_gallery_ground": "ground()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/references/images/src/gallery.py:L43 | neighbors=[gallery.py, flat()]
-- "src_haze": "haze.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/references/images/src/haze.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …]
-- "src_ktx2_fail": "fail()" | kind=code-symbol | source=engine/resource/src/ktx2.cpp:L32 | neighbors=[ktx2.cpp, load_ktx2()]
-- "src_ktx2_in_bounds": "in_bounds()" | kind=code-symbol | source=engine/resource/src/ktx2.cpp:L38 | neighbors=[ktx2.cpp, load_ktx2()]
-- "src_logging_critical": "critical()" | kind=code-symbol | source=engine/foundation/src/logging.cpp:L105 | neighbors=[logging.cpp, emit()]
-- "src_logging_debug": "debug()" | kind=code-symbol | source=engine/foundation/src/logging.cpp:L101 | neighbors=[logging.cpp, emit()]
-- "src_logging_error": "error()" | kind=code-symbol | source=engine/foundation/src/logging.cpp:L104 | neighbors=[logging.cpp, emit()]
-- "src_logging_info": "info()" | kind=code-symbol | source=engine/foundation/src/logging.cpp:L102 | neighbors=[logging.cpp, emit()]
-- "src_logging_init": "init()" | kind=code-symbol | source=engine/foundation/src/logging.cpp:L66 | neighbors=[logging.cpp, to_spdlog()]
-- "src_logging_trace": "trace()" | kind=code-symbol | source=engine/foundation/src/logging.cpp:L100 | neighbors=[logging.cpp, emit()]
-- "src_logging_warn": "warn()" | kind=code-symbol | source=engine/foundation/src/logging.cpp:L103 | neighbors=[logging.cpp, emit()]
-- "src_loop_alpha": "alpha()" | kind=code-symbol | source=engine/foundation/src/loop.cpp:L55 | neighbors=[loop.cpp, valid_limits()]
-- "src_loop_fixedsteploop": "FixedStepLoop()" | kind=code-symbol | source=engine/foundation/src/loop.cpp:L18 | neighbors=[loop.cpp, to_ns()]
-- "src_main": "main.cpp" | kind=code-symbol | source=engine/foundation/src/main.cpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, main()]
+- "scripts_turntable_fcurves": "_fcurves()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-lighting-lookdev/scripts/turntable.py:L162 | neighbors=[turntable.py, run()]
+- "scripts_uv_pack_seams_from_sharp": "_seams_from_sharp()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-retopology-uv/scripts/uv_pack.py:L23 | neighbors=[uv_pack.py, run()]
+- "scripts_verify_desktop_classify": "classify()" | kind=code-symbol | source=engine/rhi/scripts/verify_desktop.py:L28 | neighbors=[verify_desktop.py, main()]
+- "scripts_verify_desktop_parse_runtime": "parse_runtime()" | kind=code-symbol | source=engine/rhi/scripts/verify_desktop.py:L17 | neighbors=[verify_desktop.py, main()]
+- "scripts_verify_desktop_run_step": "run_step()" | kind=code-symbol | source=engine/rhi/scripts/verify_desktop.py:L32 | neighbors=[verify_desktop.py, main()]
+- "scripts_vse_edit_output": "_output()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-video-editing/scripts/vse_edit.py:L68 | neighbors=[vse_edit.py, run()]
+- "sdl3_sdl": "SDL.h" | kind=code-symbol | source=engine/platform/tests/fakes/SDL3/SDL.h:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
+- "sdl3_sdl_main": "SDL_main.h" | kind=code-symbol | source=engine/rhi/tests/fakes/SDL3/SDL_main.h:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
+- "semantic_determinism_analyzer": "Analyzer" | kind=code-symbol | source=mute/src/semantic/determinism.cpp:L27 | neighbors=[determinism.cpp, .Analyzer()]
+- "semantic_determinism_dump_determinism": "dump_determinism()" | kind=code-symbol | source=mute/src/semantic/determinism.cpp:L136 | neighbors=[determinism.cpp, name()]
+- "semantic_determinism_name": "name()" | kind=code-symbol | source=mute/src/semantic/determinism.cpp:L131 | neighbors=[determinism.cpp, dump_determinism()]
+- "semantic_emit_alu": "alu()" | kind=code-symbol | source=mute/src/semantic/emit.cpp:L9 | neighbors=[emit.cpp, emit_bytecode()]
+- "semantic_emit_is_terminator_pub": "is_terminator_pub()" | kind=code-symbol | source=mute/src/semantic/emit.cpp:L8 | neighbors=[emit.cpp, emit_bytecode()]
+- "semantic_fold_eval_binary": "eval_binary()" | kind=code-symbol | source=mute/src/semantic/fold.cpp:L18 | neighbors=[fold.cpp, fold_constants()]
+- "semantic_fold_eval_compare": "eval_compare()" | kind=code-symbol | source=mute/src/semantic/fold.cpp:L43 | neighbors=[fold.cpp, fold_constants()]
+- "semantic_fold_eval_unary": "eval_unary()" | kind=code-symbol | source=mute/src/semantic/fold.cpp:L36 | neighbors=[fold.cpp, fold_constants()]
+- "semantic_fold_int_scalar": "int_scalar()" | kind=code-symbol | source=mute/src/semantic/fold.cpp:L10 | neighbors=[fold.cpp, fold_constants()]
+- "semantic_lower_lower_function": "lower_function()" | kind=code-symbol | source=mute/src/semantic/lower.cpp:L518 | neighbors=[lower.cpp, lower_function_ex()]
+- "semantic_lower_lowerer": "Lowerer" | kind=code-symbol | source=mute/src/semantic/lower.cpp:L89 | neighbors=[lower.cpp, .Lowerer()]
+- "semantic_lower_requires_mask": "requires_mask()" | kind=code-symbol | source=mute/src/semantic/lower.cpp:L44 | neighbors=[lower.cpp, lower_module()]
+- "semantic_optimize_is_pure": "is_pure()" | kind=code-symbol | source=mute/src/semantic/optimize.cpp:L11 | neighbors=[optimize.cpp, eliminate_dead_code()]
+- "semantic_optimize_is_terminator": "is_terminator()" | kind=code-symbol | source=mute/src/semantic/optimize.cpp:L8 | neighbors=[optimize.cpp, eliminate_dead_code()]
+- "semantic_semantic_accepts": "accepts()" | kind=code-symbol | source=mute/src/semantic/semantic.cpp:L18 | neighbors=[semantic.cpp, same_type()]
+- "semantic_semantic_analyzer": "Analyzer" | kind=code-symbol | source=mute/src/semantic/semantic.cpp:L86 | neighbors=[semantic.cpp, .Analyzer()]
+- "semantic_semantic_dump_semantic": "dump_semantic()" | kind=code-symbol | source=mute/src/semantic/semantic.cpp:L428 | neighbors=[semantic.cpp, name()]
+- "semantic_semantic_is_float_scalar": "is_float_scalar()" | kind=code-symbol | source=mute/src/semantic/semantic.cpp:L54 | neighbors=[semantic.cpp, numeric()]
+- "semantic_semantic_is_integer_scalar": "is_integer_scalar()" | kind=code-symbol | source=mute/src/semantic/semantic.cpp:L50 | neighbors=[semantic.cpp, numeric()]
+- "semantic_semantic_name": "name()" | kind=code-symbol | source=mute/src/semantic/semantic.cpp:L420 | neighbors=[semantic.cpp, dump_semantic()]
+- "semantic_semantic_same_type": "same_type()" | kind=code-symbol | source=mute/src/semantic/semantic.cpp:L13 | neighbors=[semantic.cpp, accepts()]
+- "semantic_ssa_is_terminator": "is_terminator()" | kind=code-symbol | source=mute/src/semantic/ssa.cpp:L9 | neighbors=[ssa.cpp, verify()]
+- "semantic_ssa_verify": "verify()" | kind=code-symbol | source=mute/src/semantic/ssa.cpp:L12 | neighbors=[ssa.cpp, is_terminator()]
+- "shared_bpyx_add_common": "add_common()" | kind=code-symbol | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L62 | neighbors=[_bpyx.py, --objects / --save flags shared by most…]
+- "shared_bpyx_enum_ids": "enum_ids()" | kind=code-symbol | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L104 | neighbors=[_bpyx.py, Valid identifiers of an enum property (…]
+- "shared_bpyx_mesh_tris": "mesh_tris()" | kind=code-symbol | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L117 | neighbors=[_bpyx.py, Triangle count (evaluated = with modifi…]
+- "shared_bpyx_node": "node()" | kind=code-symbol | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L99 | neighbors=[_bpyx.py, First node of `type_` (e.g. 'BSDF_PRINC…]
+- "shared_bpyx_object_mode": "object_mode()" | kind=code-symbol | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L83 | neighbors=[_bpyx.py, Leave edit/sculpt/pose modes; most data…]
+- "shared_bpyx_objects": "objects()" | kind=code-symbol | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L71 | neighbors=[_bpyx.py, Resolve names -> objects. No names: sel…]
+- "shared_bpyx_parser": "parser()" | kind=code-symbol | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L41 | neighbors=[_bpyx.py, ArgumentParser whose help is the script…]
+- "shared_bpyx_r": "r()" | kind=code-symbol | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L132 | neighbors=[_bpyx.py, Round a float or a vector for compact J…]
+- "shared_bpyx_select_only": "select_only()" | kind=code-symbol | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L90 | neighbors=[_bpyx.py, Select exactly `objs` and make `active`…]
 
 ## Instructions
 

@@ -1,4 +1,4 @@
-# Node Description Batch 69 of 207
+# Node Description Batch 69 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -12,60 +12,51 @@ describing what it is or does. Use only the provided context.
 For a code symbol (kind=code-symbol — a function, class, or constant),
 describe what the function/symbol does based on its name, source location
 and neighbors — e.g. "Resolves the configured ontology profile from graphify.yaml.".
-For an entity node (any other kind — e.g. a person, place, event, object),
-describe what the entity is and its role, grounded in its type, its
-relations (neighbors) and the provided citations/evidence — e.g.
-"Lady Carfax, a wealthy heiress who disappears en route to Lausanne.".
-Ground entity descriptions in the citations/evidence when present; do not
-speculate beyond the context, so a node with no supporting context may be
-left out of the reply.
-LANGUAGE: each entry has a `lang=` marker giving the language of its source.
-Write that entry's description in EXACTLY that language. Do not translate to
-a single common language — match each node's source language individually.
+Write every description in English (en). Do not switch languages.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "frostpeak_frost_kit_sheet": "frost_kit_sheet.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_kit_sheet.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, shot()] | lang=en
-- "frostpeak_frost_map_face": "face()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_map.py:L152 | neighbors=[frost_map.py, build(), front_to()] | lang=en
-- "frostpeak_frost_map_foot": "foot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_map.py:L132 | neighbors=[frost_map.py, build(), place()] | lang=en
-- "frostpeak_frost_map_ground": "ground()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_map.py:L94 | neighbors=[frost_map.py, build(), sub()] | lang=en
-- "frostpeak_frost_map_kit": "kit()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_map.py:L129 | neighbors=[frost_map.py, build(), place()] | lang=en
-- "frostpeak_frost_map_square": "square()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_map.py:L118 | neighbors=[frost_map.py, build(), sub()] | lang=en
-- "frostpeak_frost_props_rationale_173": "village-square roll well: stone ring, timber A-frame + roof, rope + bucket, glow" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_props.py:L173 | neighbors=[roll_well(), Palette, Prop] | lang=en
-- "frostpeak_frost_props_rationale_217": "ice-fishing shanty: board walls on skids, door + window, stovepipe, ridge-capped" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_props.py:L217 | neighbors=[fishing_hut(), Palette, Prop] | lang=nl
-- "frostpeak_frost_props_rationale_260": "hero: stone terrace + a 60-stud ice crystal spire with orbiting shards and a run" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_props.py:L260 | neighbors=[frost_spire(), Palette, Prop] | lang=en
-- "frostpeak_frost_props_rationale_35": "grove pine re-shaded: every up-facing tier face carries snow" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_props.py:L35 | neighbors=[snow_pine(), Palette, Prop] | lang=en
-- "frostpeak_frost_props_rationale_47": "log cabin: stacked logs with crossed corners, the door gap is left IN the log co" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_props.py:L47 | neighbors=[cabin(), Palette, Prop] | lang=en
-- "gles_clear_pokoactivity_pokoactivity_nativesetsurface": ".nativeSetSurface()" | kind=code-symbol | source=engine/rhi/android/gles-clear/PokoActivity.java:L17 | neighbors=[PokoActivity, .surfaceChanged(), .surfaceCreated()] | lang=en
-- "gles_clear_pokoactivity_pokoactivity_nativesurfacedestroyed": ".nativeSurfaceDestroyed()" | kind=code-symbol | source=engine/rhi/android/gles-clear/PokoActivity.java:L18 | neighbors=[PokoActivity, .onDestroy(), .surfaceDestroyed()] | lang=en
-- "harness_golden_first_difference": "first_difference()" | kind=code-symbol | source=tools/testutils/harness/golden.py:L16 | neighbors=[golden.py, main(), Return the first differing offset and s…] | lang=en
-- "harness_golden_main": "main()" | kind=code-symbol | source=tools/testutils/harness/golden.py:L54 | neighbors=[golden.py, first_difference(), update_golden()] | lang=en
-- "harness_golden_update_golden": "update_golden()" | kind=code-symbol | source=tools/testutils/harness/golden.py:L35 | neighbors=[golden.py, main(), Replace the reference atomically, only …] | lang=en
-- "hermes_conftest": "conftest.py" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/hermes/conftest.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, mock_ctx()] | lang=en
-- "hermes_plugin_init_build_bootstrap": "_build_bootstrap()" | kind=code-symbol | source=.agents/skills/superpowers-main/.hermes-plugin/__init__.py:L59 | neighbors=[__init__.py, _strip_frontmatter(), register()] | lang=en
-- "hermes_plugin_init_frontmatter_value": "_frontmatter_value()" | kind=code-symbol | source=.agents/skills/superpowers-main/.hermes-plugin/__init__.py:L40 | neighbors=[__init__.py, Return a flat ``key: value`` scalar fro…, register()] | lang=en
-- "hermes_plugin_init_skills_dir": "_skills_dir()" | kind=code-symbol | source=.agents/skills/superpowers-main/.hermes-plugin/__init__.py:L8 | neighbors=[__init__.py, Locate the stock skills/ tree for eithe…, register()] | lang=en
-- "hermes_test_bootstrap_testbootstrapcontent_test_tool_mapping_sourced_from_reference_file": ".test_tool_mapping_sourced_from_reference_file()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/hermes/test_bootstrap.py:L75 | neighbors=[TestBootstrapContent, _bootstrap(), _load()] | lang=en
-- "hermes_test_plugin_testbootstrapinjection_test_first_turn_returns_bootstrap_context": ".test_first_turn_returns_bootstrap_context()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/hermes/test_plugin.py:L74 | neighbors=[TestBootstrapInjection, _fire_pre_llm(), _load_plugin()] | lang=en
-- "hermes_test_plugin_testbootstrapinjection_test_hook_tolerates_future_kwargs": ".test_hook_tolerates_future_kwargs()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/hermes/test_plugin.py:L108 | neighbors=[TestBootstrapInjection, _fire_pre_llm(), _load_plugin()] | lang=en
-- "hermes_test_plugin_testbootstrapinjection_test_later_turns_return_none": ".test_later_turns_return_none()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/hermes/test_plugin.py:L84 | neighbors=[TestBootstrapInjection, _fire_pre_llm(), _load_plugin()] | lang=en
-- "hermes_test_plugin_testbootstrapinjection_test_non_subagent_platforms_receive_bootstrap": ".test_non_subagent_platforms_receive_bootstrap()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/hermes/test_plugin.py:L98 | neighbors=[TestBootstrapInjection, _fire_pre_llm(), _load_plugin()] | lang=en
-- "hermes_test_plugin_testbootstrapinjection_test_subagent_platform_skips_bootstrap_on_first_turn": ".test_subagent_platform_skips_bootstrap_on_first_turn()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/hermes/test_plugin.py:L90 | neighbors=[TestBootstrapInjection, _fire_pre_llm(), _load_plugin()] | lang=en
-- "hermes_test_plugin_testlayoutresolution_test_clone_layout_resolves_sibling_skills": ".test_clone_layout_resolves_sibling_skills()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/hermes/test_plugin.py:L141 | neighbors=[TestLayoutResolution, ._load_from(), ._stage()] | lang=en
-- "hermes_test_plugin_testlayoutresolution_test_flat_layout_resolves_nested_skills": ".test_flat_layout_resolves_nested_skills()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/hermes/test_plugin.py:L148 | neighbors=[TestLayoutResolution, ._load_from(), ._stage()] | lang=en
-- "identity_sign_in_accountstore": "AccountStore" | kind=code-symbol | source=server/identity/include/poko/identity/sign_in.hpp:L20 | neighbors=[sign_in.hpp, .AccountStore(), InMemoryAccountStore] | lang=en
-- "identity_velocity": "velocity.hpp" | kind=code-symbol | source=server/identity/include/poko/identity/velocity.hpp:L1 | neighbors=[1dac49d Created NET-01 to NET-09, Start…, haversine_km(), LoginVelocityService] | lang=en
-- "input_action_map_define_action": "define_action()" | kind=code-symbol | source=mute/src/input/action_map.cpp:L89 | neighbors=[action_map.cpp, decode(), find()] | lang=en
-- "input_action_map_get16": "get16()" | kind=code-symbol | source=mute/src/input/action_map.cpp:L28 | neighbors=[action_map.cpp, decode(), read_bytes()] | lang=en
-- "input_action_map_get32": "get32()" | kind=code-symbol | source=mute/src/input/action_map.cpp:L32 | neighbors=[action_map.cpp, decode(), read_bytes()] | lang=en
-- "input_action_map_get8": "get8()" | kind=code-symbol | source=mute/src/input/action_map.cpp:L25 | neighbors=[action_map.cpp, decode(), read_bytes()] | lang=en
-- "input_action_map_hash": "hash()" | kind=code-symbol | source=mute/src/input/action_map.cpp:L294 | neighbors=[action_map.cpp, put32(), put8()] | lang=en
-- "input_action_map_put16": "put16()" | kind=code-symbol | source=mute/src/input/action_map.cpp:L13 | neighbors=[action_map.cpp, encode(), put8()] | lang=en
-- "input_action_map_sign_of": "sign_of()" | kind=code-symbol | source=mute/src/input/action_map.cpp:L41 | neighbors=[action_map.cpp, bindings_conflict(), read_binding()] | lang=en
-- "input_device_router_connect": "connect()" | kind=code-symbol | source=mute/src/input/device_router.cpp:L14 | neighbors=[device_router.cpp, find_native(), slot_in_use()] | lang=en
-- "input_input_snapshot_append": "append()" | kind=code-symbol | source=mute/src/input/input_snapshot.cpp:L265 | neighbors=[input_snapshot.cpp, valid_event(), decode()] | lang=en
-- "input_input_snapshot_apply": "apply()" | kind=code-symbol | source=mute/src/input/input_snapshot.cpp:L139 | neighbors=[input_snapshot.cpp, gamepad_connected(), touch_display_connected()] | lang=en
+- "eggplots_egg_props_pine": "pine()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L812 | neighbors=[egg_props.py, sh(), low-poly cone tree: three stacked facet…]
+- "eggplots_egg_props_tree": "tree()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L800 | neighbors=[egg_props.py, low-poly round tree: tapered faceted tr…, sh()]
+- "eggplots_hooks_lua": "hooks_lua.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/hooks_lua.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, lua_attrs()]
+- "evaluator_evaluator_float_binary": "float_binary()" | kind=code-symbol | source=mute/src/evaluator/evaluator.cpp:L223 | neighbors=[evaluator.cpp, evaluate_arithmetic(), fail()]
+- "evaluator_evaluator_integer_suffix": "integer_suffix()" | kind=code-symbol | source=mute/src/evaluator/evaluator.cpp:L59 | neighbors=[evaluator.cpp, evaluate_arithmetic(), literal_integer()]
+- "evaluator_evaluator_is_float": "is_float()" | kind=code-symbol | source=mute/src/evaluator/evaluator.cpp:L44 | neighbors=[evaluator.cpp, evaluate_arithmetic(), unary()]
+- "evaluator_evaluator_magnitude": "magnitude()" | kind=code-symbol | source=mute/src/evaluator/evaluator.cpp:L57 | neighbors=[evaluator.cpp, signed_binary(), unary()]
+- "evaluator_evaluator_negative": "negative()" | kind=code-symbol | source=mute/src/evaluator/evaluator.cpp:L58 | neighbors=[evaluator.cpp, signed_binary(), unary()]
+- "evaluator_evaluator_suffix_length": "suffix_length()" | kind=code-symbol | source=mute/src/evaluator/evaluator.cpp:L64 | neighbors=[evaluator.cpp, literal_integer(), width()]
+- "examples_axolotl_build": "build()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/axolotl.py:L43 | neighbors=[axolotl.py, gill_base(), _unit()]
+- "examples_cat_flap_cover": "cat_flap_cover.py" | kind=code-symbol | source=.agents/skills/cad-skill-main/examples/cat_flap_cover.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, Cover plate for the hole left by a remo…]
+- "examples_desk_cable_tray": "desk_cable_tray.py" | kind=code-symbol | source=.agents/skills/cad-skill-main/examples/desk_cable_tray.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, Under-desk cable tray, built from ident…]
+- "examples_gridfinity_d110_bin": "gridfinity_d110_bin.py" | kind=code-symbol | source=.agents/skills/cad-skill-main/examples/gridfinity_d110_bin.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, Gridfinity 3x2 cradle bin for the Orico…]
+- "extensions_superpowers_getbootstrapcontent": "getBootstrapContent()" | kind=code-symbol | source=.agents/skills/superpowers-main/.pi/extensions/superpowers.ts:L54 | neighbors=[superpowers.ts, piToolMapping(), stripFrontmatter()]
+- "fakes_enginefactoryvk": "EngineFactoryVk.h" | kind=code-symbol | source=engine/rhi/tests/fakes/EngineFactoryVk.h:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, Diligent(), c7a411f Fix MUT-01-20 audit defects in …]
+- "fakes_refcntautoptr": "RefCntAutoPtr.hpp" | kind=code-symbol | source=engine/rhi/tests/fakes/RefCntAutoPtr.hpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, RefCntAutoPtr, c7a411f Fix MUT-01-20 audit defects in …]
+- "fishcenter_fish_map_fit": "fit()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L188 | neighbors=[fish_map.py, fit_bad(), place()]
+- "fishcenter_fish_map_inside_one": "_inside_one()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L154 | neighbors=[fish_map.py, fit_bad(), _inb()]
+- "fishcenter_fish_map_lp_y": "lp_y()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L646 | neighbors=[fish_map.py, lp(), stations()]
+- "fishcenter_fish_map_rail_line": "rail_line()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L461 | neighbors=[fish_map.py, edges(), straight run a->b (x, z) with gaps [(s0…]
+- "fishcenter_fish_map_spoke": "spoke()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L295 | neighbors=[fish_map.py, hardscape(), deck_rect()]
+- "fishcenter_fish_map_sub": "sub()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L23 | neighbors=[fish_map.py, place(), static()]
+- "fishcenter_fish_map_water": "water()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L369 | neighbors=[fish_map.py, build(), static()]
+- "fishcenter_fish_props_bait_bucket": "bait_bucket()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L758 | neighbors=[fish_props.py, bait_shop(), metal bait bucket with handle, worms (r…]
+- "fishcenter_fish_props_barrels": "barrels()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L562 | neighbors=[fish_props.py, barrel(), rope()]
+- "fishcenter_fish_props_bench": "bench()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L634 | neighbors=[fish_props.py, ball(), driftwood bench: two slab seat planks o…]
+- "fishcenter_fish_props_brain_coral": "brain_coral()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L468 | neighbors=[fish_props.py, aquarium_dome(), brain coral: squashed dome with wavy me…]
+- "fishcenter_fish_props_cooler": "cooler()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L621 | neighbors=[fish_props.py, fish(), fish cooler: rounded box body, white li…]
+- "fishcenter_fish_props_coral_branch": "coral_branch()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L450 | neighbors=[fish_props.py, aquarium_dome(), staghorn coral: forking tapered branche…]
+- "fishcenter_fish_props_fern": "_fern()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L404 | neighbors=[fish_props.py, grass_tuft(), palm_planter()]
+- "fishcenter_fish_props_grass_tuft": "grass_tuft()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L440 | neighbors=[fish_props.py, _fern(), low tropical grass + fern tuft: arching…]
+- "fishcenter_fish_props_hook_icon": "hook_icon()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L801 | neighbors=[fish_props.py, big brass fish hook (shape icon, no tex…, rod_shop()]
+- "fishcenter_fish_props_local": "local()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L215 | neighbors=[fish_props.py, crate(), woven_wall()]
+- "fishcenter_fish_props_marker_buoy": "marker_buoy()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L744 | neighbors=[fish_props.py, ball(), fishing-spot marker: floating striped b…]
+- "fishcenter_fish_props_mat_cell": "mat_cell()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L192 | neighbors=[fish_props.py, woven palm-mat infill between posts: st…, woven_wall()]
+- "fishcenter_fish_props_rail_post": "rail_post()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L265 | neighbors=[fish_props.py, _post(), teak rail post with the signature cap: …]
+- "foundation_build_flags": "build_flags.hpp" | kind=code-symbol | source=engine/foundation/include/poko/foundation/build_flags.hpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, 69287a0 Land ENG-60-65 deterministic si…, c7a411f Fix MUT-01-20 audit defects in …]
+- "foundation_cbor": "cbor.hpp" | kind=code-symbol | source=engine/foundation/include/poko/foundation/cbor.hpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, Member(), c7a411f Fix MUT-01-20 audit defects in …]
+- "foundation_config_logging": "config_logging.hpp" | kind=code-symbol | source=engine/foundation/include/poko/foundation/config_logging.hpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, LogGuard, c7a411f Fix MUT-01-20 audit defects in …]
+- "foundation_fixed_sine_lookup": "sine_lookup()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/fixed.hpp:L306 | neighbors=[fixed.hpp, cos(), sin()]
 
 ## Instructions
 

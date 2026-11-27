@@ -1,4 +1,4 @@
-# Node Description Batch 145 of 207
+# Node Description Batch 145 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -12,60 +12,51 @@ describing what it is or does. Use only the provided context.
 For a code symbol (kind=code-symbol — a function, class, or constant),
 describe what the function/symbol does based on its name, source location
 and neighbors — e.g. "Resolves the configured ontology profile from graphify.yaml.".
-For an entity node (any other kind — e.g. a person, place, event, object),
-describe what the entity is and its role, grounded in its type, its
-relations (neighbors) and the provided citations/evidence — e.g.
-"Lady Carfax, a wealthy heiress who disappears en route to Lausanne.".
-Ground entity descriptions in the citations/evidence when present; do not
-speculate beyond the context, so a node with no supporting context may be
-left out of the reply.
-LANGUAGE: each entry has a `lang=` marker giving the language of its source.
-Write that entry's description in EXACTLY that language. Do not translate to
-a single common language — match each node's source language individually.
+Write every description in English (en). Do not switch languages.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "valleylake_valley_props_rationale_1040": "tip masses pulled toward one crown height, bridged to their nearest neighbour, p" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L1040 | neighbors=[Palette, merged_crown()] | lang=en
-- "valleylake_valley_props_rationale_1054": "stylised broadleaf: skinned trunk with a root flare forking into 3-4 limbs; one" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L1054 | neighbors=[Palette, broadleaf()] | lang=en
-- "valleylake_valley_props_rationale_124": "per-vertex convexity -> painted rim highlight (convex top edges lighter) / crevi" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L124 | neighbors=[Palette, rim_shade()] | lang=en
-- "valleylake_valley_props_rationale_149": "one carved rounded rock: superellipsoid mass with soft-flattened cut planes (a f" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L149 | neighbors=[Palette, boulder()] | lang=en
-- "valleylake_valley_props_rationale_200": "one painted leaf clump: a dark core lobe + n leaf cards (pointed diamonds, singl" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L200 | neighbors=[Palette, leaf_cluster()] | lang=pt
-- "valleylake_valley_props_rationale_238": "curved branch from a to b, arching up" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L238 | neighbors=[Palette, limb()] | lang=en
-- "valleylake_valley_props_rationale_244": "stylised broadleaf: thick tapered trunk forking into 3-4 arching limbs, each car" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L244 | neighbors=[Palette, broadleaf()] | lang=en
-- "valleylake_valley_props_rationale_265": "tall stylised pine: straight trunk, 8 tiers of separate drooping branch sprays (" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L265 | neighbors=[Palette, pine()] | lang=en
-- "valleylake_valley_props_rationale_290": "the one cherry tree: dark crooked trunk with arching limbs, pink painted clumps," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L290 | neighbors=[Palette, blossom_tree()] | lang=en
-- "valleylake_valley_props_rationale_307": "HERO: the big leaning islet tree. Thick twisting trunk leaning out over the wate" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L307 | neighbors=[Palette, gnarled_tree()] | lang=en
-- "valleylake_valley_props_rationale_407": "straight gable roof (ridge along X): two lofted tile slabs with a slight concave" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L407 | neighbors=[Palette, gable_roof()] | lang=en
-- "valleylake_valley_props_rationale_458": "wall in XY facing -Z: dark timber posts + rails framing inset shoji panels (latt" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L458 | neighbors=[Palette, timber_wall()] | lang=en
-- "valleylake_valley_props_rationale_48": "per-loop shade: height gradient y0..y1 (a -> b) + vertex-normal lift + low-freq" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L48 | neighbors=[Palette, V()] | lang=es
-- "valleylake_valley_props_rationale_493": "rounded fieldstone footing course under a house (the shared base, echoes the roc" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L493 | neighbors=[Palette, footing()] | lang=en
-- "valleylake_valley_props_rationale_518": "village houses. long = single storey longhouse 24 x 11, gable to the sides, fron" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L518 | neighbors=[Palette, house()] | lang=en
-- "valleylake_valley_props_rationale_606": "open stall: 4 posts on stone pads, a small dark gable roof, counter with baskets" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L606 | neighbors=[Palette, market_stall()] | lang=en
-- "valleylake_valley_props_rationale_631": "small red paper lantern: lathed ribbed body (red) + caps + a glow core inside" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L631 | neighbors=[Palette, paper_lantern()] | lang=pt
-- "valleylake_valley_props_rationale_641": "tall timber pole with a cross arm + strut, rope cleats; lantern ropes hang from" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L641 | neighbors=[Palette, rope_pole()] | lang=en
-- "valleylake_valley_props_rationale_65": "pillowy rounded-box mass: a subdivided cube pushed onto a superellipsoid |x|^n+|" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L65 | neighbors=[Palette, rounded_mass()] | lang=pt
-- "valleylake_valley_props_rationale_652": "rope span along +X from x 0 (left arm tip) to L, catenary sag, with n small pape" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L652 | neighbors=[Palette, lantern_rope()] | lang=en
-- "valleylake_valley_props_rationale_663": "low wooden lantern post for the shore path: post, small roof cap, a hanging pape" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L663 | neighbors=[Palette, lantern_post()] | lang=en
-- "valleylake_valley_props_rationale_679": "L-shaped fishing dock: a 4-wide walkway (along -Z from the beach at z 0) with an" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L679 | neighbors=[Palette, dock()] | lang=en
-- "valleylake_valley_props_rationale_722": "small arched plank bridge over the stream (span along Z, origin = centre at bank" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L722 | neighbors=[Palette, footbridge()] | lang=en
-- "valleylake_valley_props_rationale_741": "retaining wall module (front = -Z): coursed rounded fieldstones (soft, echoes th" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L741 | neighbors=[Palette, stone_wall()] | lang=en
-- "valleylake_valley_props_rationale_766": "stone flight up the retaining wall (front = -Z, climbs toward +Z), rounded cheek" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L766 | neighbors=[Palette, stone_stair()] | lang=en
-- "valleylake_valley_props_rationale_780": "HERO: a broad curved sheet spilling off a mossy carved lip, bowing out and widen" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L780 | neighbors=[Palette, waterfall()] | lang=pt
-- "valleylake_valley_props_rationale_832": "station sign: blank board (GUI goes on it, nothing written) in a timber frame on" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L832 | neighbors=[Palette, sign_stand()] | lang=en
-- "valleylake_valley_props_rationale_845": "branching skeleton -> one smooth closed trunk mesh: Blender Skin modifier (smoot" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L845 | neighbors=[Palette, skin_mesh()] | lang=en
-- "valleylake_valley_props_rationale_863": "node list [(pos, radius)] + edges; helpers to grow curved, tapering limbs" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L863 | neighbors=[Palette, Skel] | lang=en
-- "valleylake_valley_props_rationale_870": "limb from node `parent` along d (curving by bend per step, wobbling), n segments" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L870 | neighbors=[Palette, .grow()] | lang=en
-- "valleylake_valley_props_rationale_879": "bark grooves (noise stretched along the height = long vertical furrows) + shadin" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L879 | neighbors=[Palette, bark()] | lang=en
-- "valleylake_valley_props_rationale_895": "one soft canopy mass: a displaced dark core blob + many small leaf cards at rand" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L895 | neighbors=[Palette, leaf_mass()] | lang=pt
-- "valleylake_valley_props_rationale_930": "buttress roots gripping the ground: start high on the flare, run out low along t" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L930 | neighbors=[Palette, roots()] | lang=en
-- "valleylake_valley_props_rationale_94": "thick moss shell over the up-facing part of `bm`: faces whose verts all face up" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L94 | neighbors=[Palette, moss_cap()] | lang=en
-- "valleylake_valley_props_rationale_940": "HERO: the islet tree, rebuilt as a real tree. Skinned skeleton: thick flared bas" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L940 | neighbors=[Palette, gnarled_tree()] | lang=en
-- "valleylake_valley_props_rationale_986": "stylised broadleaf (same method, lighter): skinned trunk with a root flare forki" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L986 | neighbors=[Palette, broadleaf()] | lang=en
-- "valleylake_valley_props_smooth": "smooth()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L44 | neighbors=[valley_props.py, waterfall()] | lang=en
-- "vfxkit_briefs_validate": "validate()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/briefs.py:L36 | neighbors=[briefs.py, timeline()] | lang=en
-- "vfxkit_cli_parser": "parser()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/cli.py:L23 | neighbors=[cli.py, main()] | lang=en
-- "vfxkit_doctor_version": "version()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/doctor.py:L12 | neighbors=[doctor.py, doctor()] | lang=en
+- "unit_stdlib_crypto_test_main": "main()" | kind=code-symbol | source=mute/tests/unit/stdlib_crypto_test.cpp:L24 | neighbors=[stdlib_crypto_test.cpp, digest_is()]
+- "unit_stdlib_physics_test_box_at": "box_at()" | kind=code-symbol | source=mute/tests/unit/stdlib_physics_test.cpp:L23 | neighbors=[stdlib_physics_test.cpp, test_physics_hostcalls()]
+- "unit_stdlib_physics_test_test_physics_hostcalls": "test_physics_hostcalls()" | kind=code-symbol | source=mute/tests/unit/stdlib_physics_test.cpp:L28 | neighbors=[stdlib_physics_test.cpp, box_at()]
+- "unit_step_up_test": "step_up_test.cpp" | kind=code-symbol | source=server/identity/tests/unit/step_up_test.cpp:L1 | neighbors=[981b52c Crated IDN-01 to IDN-04, main()]
+- "unit_stress_test_i32t": "i32t()" | kind=code-symbol | source=mute/tests/unit/stress_test.cpp:L21 | neighbors=[stress_test.cpp, pipeline_limits()]
+- "unit_test_declaration_golden": "test_declaration_golden.py" | kind=code-symbol | source=mute/tests/unit/test_declaration_golden.py:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
+- "unit_test_evaluator_golden": "test_evaluator_golden.py" | kind=code-symbol | source=mute/tests/unit/test_evaluator_golden.py:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
+- "unit_test_g1_replay": "test_g1_replay.py" | kind=code-symbol | source=mute/tests/unit/test_g1_replay.py:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
+- "unit_test_golden": "test_golden.py" | kind=code-symbol | source=mute/tests/unit/test_golden.py:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
+- "unit_test_math_bits": "test_math_bits.py" | kind=code-symbol | source=mute/tests/unit/test_math_bits.py:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
+- "unit_test_math_determinism_tracetests_test_corpus_corruption_rejected": ".test_corpus_corruption_rejected()" | kind=code-symbol | source=mute/tests/unit/test_math_determinism.py:L43 | neighbors=[TraceTests, .write()]
+- "unit_test_math_determinism_tracetests_test_match_is_only_agreement": ".test_match_is_only_agreement()" | kind=code-symbol | source=mute/tests/unit/test_math_determinism.py:L28 | neighbors=[TraceTests, .write()]
+- "unit_test_math_determinism_tracetests_test_mismatch": ".test_mismatch()" | kind=code-symbol | source=mute/tests/unit/test_math_determinism.py:L31 | neighbors=[TraceTests, .check_invalid()]
+- "unit_test_math_determinism_tracetests_test_missing_extra_reordered_and_bad_bits": ".test_missing_extra_reordered_and_bad_bits()" | kind=code-symbol | source=mute/tests/unit/test_math_determinism.py:L34 | neighbors=[TraceTests, .check_invalid()]
+- "unit_test_math_determinism_tracetests_test_same_target_is_not_cross_platform": ".test_same_target_is_not_cross_platform()" | kind=code-symbol | source=mute/tests/unit/test_math_determinism.py:L46 | neighbors=[TraceTests, .write()]
+- "unit_test_parser_golden": "test_parser_golden.py" | kind=code-symbol | source=mute/tests/unit/test_parser_golden.py:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
+- "unit_test_semantic_golden": "test_semantic_golden.py" | kind=code-symbol | source=mute/tests/unit/test_semantic_golden.py:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
+- "unit_test_statement_golden": "test_statement_golden.py" | kind=code-symbol | source=mute/tests/unit/test_statement_golden.py:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
+- "unit_test_verify_desktop_evidencetests_test_failed_configure_preserved": ".test_failed_configure_preserved()" | kind=code-symbol | source=engine/rhi/tests/unit/test_verify_desktop.py:L61 | neighbors=[EvidenceTests, .simulate()]
+- "unit_test_verify_desktop_evidencetests_test_nonzero_runtime_cannot_pass": ".test_nonzero_runtime_cannot_pass()" | kind=code-symbol | source=engine/rhi/tests/unit/test_verify_desktop.py:L68 | neighbors=[EvidenceTests, .simulate()]
+- "unit_test_verify_desktop_evidencetests_test_simulated_success_keeps_gate_open": ".test_simulated_success_keeps_gate_open()" | kind=code-symbol | source=engine/rhi/tests/unit/test_verify_desktop.py:L54 | neighbors=[EvidenceTests, .simulate()]
+- "unit_udp_echo_test": "udp_echo_test.cpp" | kind=code-symbol | source=server/net/tests/unit/udp_echo_test.cpp:L1 | neighbors=[1dac49d Created NET-01 to NET-09, Start…, main()]
+- "unit_values_test_check": "check()" | kind=code-symbol | source=mute/tests/unit/values_test.cpp:L7 | neighbors=[values_test.cpp, cases()]
+- "unit_values_test_main": "main()" | kind=code-symbol | source=mute/tests/unit/values_test.cpp:L103 | neighbors=[values_test.cpp, cases()]
+- "unit_values_test_unwrap": "unwrap()" | kind=code-symbol | source=mute/tests/unit/values_test.cpp:L8 | neighbors=[values_test.cpp, cases()]
+- "unit_velocity_test": "velocity_test.cpp" | kind=code-symbol | source=server/identity/tests/unit/velocity_test.cpp:L1 | neighbors=[1dac49d Created NET-01 to NET-09, Start…, main()]
+- "unit_visual_solver_test_dyn_sphere": "dyn_sphere()" | kind=code-symbol | source=engine/physics/tests/unit/visual_solver_test.cpp:L25 | neighbors=[visual_solver_test.cpp, main()]
+- "unit_visual_solver_test_static_box": "static_box()" | kind=code-symbol | source=engine/physics/tests/unit/visual_solver_test.cpp:L37 | neighbors=[visual_solver_test.cpp, main()]
+- "unit_vulkan_diagnostics_filter_test": "vulkan_diagnostics_filter_test.cpp" | kind=code-symbol | source=engine/rhi/tests/unit/vulkan_diagnostics_filter_test.cpp:L1 | neighbors=[f4a6ac4 Allowlist known validation-laye…, main()]
+- "unit_vulkan_triangle_pass_test_draw_and_present": "draw_and_present()" | kind=code-symbol | source=engine/rhi/tests/unit/vulkan_triangle_pass_test.cpp:L18 | neighbors=[vulkan_triangle_pass_test.cpp, main()]
+- "unit_vulkan_triangle_pass_test_reset": "reset()" | kind=code-symbol | source=engine/rhi/tests/unit/vulkan_triangle_pass_test.cpp:L23 | neighbors=[vulkan_triangle_pass_test.cpp, main()]
+- "unit_worker_auth_test_check": "check()" | kind=code-symbol | source=server/identity/tests/unit/worker_auth_test.cpp:L17 | neighbors=[worker_auth_test.cpp, main()]
+- "unit_worker_auth_test_sample_ticket": "sample_ticket()" | kind=code-symbol | source=server/identity/tests/unit/worker_auth_test.cpp:L58 | neighbors=[worker_auth_test.cpp, main()]
+- "unit_worker_auth_test_sign_input": "sign_input()" | kind=code-symbol | source=server/identity/tests/unit/worker_auth_test.cpp:L33 | neighbors=[worker_auth_test.cpp, make_token()]
+- "unit_worker_auth_test_test_key": "test_key()" | kind=code-symbol | source=server/identity/tests/unit/worker_auth_test.cpp:L49 | neighbors=[worker_auth_test.cpp, main()]
+- "unit_ws_transport_test": "ws_transport_test.cpp" | kind=code-symbol | source=server/net/tests/unit/ws_transport_test.cpp:L1 | neighbors=[1dac49d Created NET-01 to NET-09, Start…, main()]
+- "unit_xor_fec_test": "xor_fec_test.cpp" | kind=code-symbol | source=server/net/tests/unit/xor_fec_test.cpp:L1 | neighbors=[1dac49d Created NET-01 to NET-09, Start…, main()]
+- "valleylake_compare": "compare.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/compare.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …]
+- "valleylake_grid": "grid.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/grid.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …]
+- "valleylake_hooks_lua": "hooks_lua.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/hooks_lua.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …]
 
 ## Instructions
 

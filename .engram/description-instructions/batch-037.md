@@ -1,4 +1,4 @@
-# Node Description Batch 38 of 207
+# Node Description Batch 38 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -17,11 +17,23 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "petsim_pet_map_face": "face()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L194 | neighbors=[pet_map.py, crystal(), egg_stand(), hub(), link()]
+- "petsim_pet_map_frame": "frame()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L537 | neighbors=[pet_map.py, build(), place(), seg_d(), clouds + rocks on the lagoon round the …]
+- "petsim_pet_map_isle_mesh": "isle_mesh()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L59 | neighbors=[pet_map.py, build(), isle_R(), top_y(), polar top (dome) + rounded icing should…]
+- "petsim_pet_map_path": "path()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L217 | neighbors=[pet_map.py, build(), hub(), catmull(), zone()]
+- "petsim_pet_map_plaza": "plaza()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L255 | neighbors=[pet_map.py, hub(), H(), static(), polar tile disc: rings of soft tiles al…]
+- "petsim_pet_map_top_y": "top_y()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L48 | neighbors=[pet_map.py, H(), isle_mesh(), isle_R(), polar()]
+- "petsim_pet_props_bench": "bench()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L1032 | neighbors=[pet_props.py, ell(), rbox(), soft(), chubby rounded bench: two soft seat sla…]
+- "petsim_pet_props_chest": "chest()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L682 | neighbors=[pet_props.py, ell(), rbox(), soft(), rounded treasure chest: plank body, dom…]
+- "petsim_pet_props_giant_donut": "giant_donut()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L943 | neighbors=[pet_props.py, flat(), pill(), soft(), pink-frosted donut lying tilted on the …]
+- "petsim_pet_props_gift_box": "gift_box()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L702 | neighbors=[pet_props.py, ell(), rbox(), soft(), chubby present: soft box, crossing ribb…]
+- "petsim_pet_props_mushroom": "mushroom()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L837 | neighbors=[pet_props.py, ell(), flat(), soft(), chubby toadstool: bulgy stem, domed cap…]
 - "petsim_pet_props_picnic_set": "picnic_set()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L854 | neighbors=[pet_props.py, ell(), puff(), soft(), checkered blanket (cells alternate red …]
 - "petsim_pet_props_rainbow_arch": "rainbow_arch()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L335 | neighbors=[pet_props.py, puff(), soft(), star(), 6 chunky pastel bands on a half circle,…]
 - "petsim_pet_props_spawn_pad": "spawn_pad()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L618 | neighbors=[pet_props.py, round spawn dais: two soft tiers, mint …, paw(), rcyl(), soft()]
 - "petsim_pet_props_trade_pad": "trade_pad()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L519 | neighbors=[pet_props.py, flat trade circle: cream disc with a pa…, arc_pts(), rcyl(), soft()]
 - "physics_visual_solver": "visual_solver.hpp" | kind=code-symbol | source=engine/physics/include/poko/physics/visual_solver.hpp:L1 | neighbors=[69287a0 Land ENG-60-65 deterministic si…, 87beff4 Sim solver: reject self/duplica…, 9eeb3ff Merge pull request #2 from Raft…, VisualSolver, VisualWorld]
+- "pkb_pkb_draft": "pkb_draft.cpp" | kind=code-symbol | source=mute/src/pkb/pkb_draft.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, head(), make_pkb_schema_draft(), text(), c7a411f Fix MUT-01-20 audit defects in …]
 - "plusspeed_plus_props_v3_lamp_pillar": "lamp_pillar()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v3.py:L90 | neighbors=[plus_props_v3.py, chamfer_block(), cyl_v(), octo(), street lantern pillar: chamfered steppe…]
 - "plusspeed_plus_props_v3_octo": "octo()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v3.py:L20 | neighbors=[plus_props_v3.py, hatchery(), lamp_pillar(), 8-sided column from two overlapping blo…, shop_stall()]
 - "plusspeed_plus_props_v3_rebirth_altar": "rebirth_altar()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v3.py:L196 | neighbors=[plus_props_v3.py, REBIRTH portal: 8-sided stepped dais wi…, chamfer_block(), cyl_v(), ring()]
@@ -35,6 +47,7 @@ one-sentence description — no prose, no markdown fences.
 - "refmatch_compare_palette_report": "palette_report()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/refmatch/compare.py:L313 | neighbors=[compare.py, evaluate(), _hex(), _kmeans(), _srgb_to_lab()]
 - "refmatch_compare_significant_components": "significant_components()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/refmatch/compare.py:L161 | neighbors=[compare.py, background_fit_mask(), flood_background_mask(), Keep every connected component above a …, subject_mask()]
 - "refmatch_palette_report_main": "main()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/refmatch/palette_report.py:L163 | neighbors=[palette_report.py, compare_to_render(), extract(), load_palette(), print_rows()]
+- "resource_asset_store": "asset_store.hpp" | kind=code-symbol | source=engine/resource/include/poko/resource/asset_store.hpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, AssetHandle, AssetStore, typed(), c7a411f Fix MUT-01-20 audit defects in …]
 - "scripts_apply_stack": "apply_stack.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-hardsurface-modeling/scripts/apply_stack.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, run(), _smooth_faces(), Build (and optionally apply) a producti…]
 - "scripts_bake_action_run": "run()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-animation/scripts/bake_action.py:L81 | neighbors=[bake_action.py, _assign(), list_actions(), _mute(), _root_motion()]
 - "scripts_batch_process_run": "run()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-pipeline-automation/scripts/batch_process.py:L97 | neighbors=[batch_process.py, gather(), inventory(), load(), _module()]
@@ -44,19 +57,6 @@ one-sentence description — no prose, no markdown fences.
 - "scripts_blocks_mesh_blocks": "mesh_blocks()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/blocks.py:L71 | neighbors=[blocks.py, neon_mat(), rgb_of(), shape_bm(), one solid mesh (palette + studs) + one …]
 - "scripts_blocks_rotm": "rotm()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/blocks.py:L20 | neighbors=[blocks.py, .b(), .put(), (pitch about X, yaw about Y, roll about…, transformed()]
 - "scripts_brick_rig_export": "export()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/scripts/brick_rig.py:L106 | neighbors=[brick_rig.py, assign(), _dilate6(), _quads(), verify()]
-- "scripts_convert_pb_to_json": "convert_pb_to_json.py" | kind=code-symbol | source=.agents/skills/skills-main/performance/r8-analyzer/scripts/convert_pb_to_json.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, convert_pb_to_json(), main(), Converts R8 keep radius protobuf files …]
-- "scripts_env_report": "env_report.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-core/scripts/env_report.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, _gpu(), run(), Report Blender version, engines, GPU, a…]
-- "scripts_gn_builder_run": "run()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-geometry-nodes/scripts/gn_builder.py:L178 | neighbors=[gn_builder.py, apply(), build(), describe(), _parse_val()]
-- "scripts_groom_run": "run()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-hair-grooming/scripts/groom.py:L294 | neighbors=[groom.py, build_cards(), card_material(), groom(), render_atlas()]
-- "scripts_kit_check_run": "run()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-environment-kits/scripts/kit_check.py:L68 | neighbors=[kit_check.py, _fix(), _on_grid(), _pivot_target(), _texel_density()]
-- "scripts_lightning_run": "run()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/lightning.py:L85 | neighbors=[lightning.py, _bolt_points(), _clear(), _curve(), _envelope()]
-- "scripts_loop_check_check": "_check()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-animation/scripts/loop_check.py:L51 | neighbors=[loop_check.py, _diff(), _poses(), _w(), run()]
-- "scripts_make_lods": "make_lods.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-game-optimization/scripts/make_lods.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, cleanup(), run(), Generate an LOD chain (<name>_LOD1..N) …]
-- "scripts_mesh_stats": "mesh_stats.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-game-optimization/scripts/mesh_stats.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, run(), _vram(), Budget report: tris/verts per object, m…]
-- "scripts_orchestrator_load_gradle_properties": "load_gradle_properties()" | kind=code-symbol | source=.agents/skills/skills-main/play/play-policy-insights/scripts/orchestrator.py:L157 | neighbors=[orchestrator.py, _candidate_project_roots(), _strip_inline_comment(), main(), Loads properties from gradle.properties…]
-- "scripts_orchestrator_load_version_catalog": "load_version_catalog()" | kind=code-symbol | source=.agents/skills/skills-main/play/play-policy-insights/scripts/orchestrator.py:L180 | neighbors=[orchestrator.py, _candidate_project_roots(), _strip_inline_comment(), main(), Loads versions from gradle/libs.version…]
-- "scripts_orchestrator_strip_inline_comment": "_strip_inline_comment()" | kind=code-symbol | source=.agents/skills/skills-main/play/play-policy-insights/scripts/orchestrator.py:L129 | neighbors=[orchestrator.py, load_app_plugin_aliases(), load_gradle_properties(), load_version_catalog(), Strips inline comments starting with '#…]
-- "scripts_play_store_scraper_scrape_app_details": "scrape_app_details()" | kind=code-symbol | source=.agents/skills/skills-main/play/play-policy-insights/scripts/play_store_scraper.py:L384 | neighbors=[play_store_scraper.py, Scrapes app metadata and Data Safety in…, extract_data_safety(), extract_metadata(), fetch_html()]
 
 ## Instructions
 

@@ -1,4 +1,4 @@
-# Node Description Batch 167 of 207
+# Node Description Batch 167 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -19,51 +19,53 @@ relations (neighbors) and the provided citations/evidence — e.g.
 Ground entity descriptions in the citations/evidence when present; do not
 speculate beyond the context, so a node with no supporting context may be
 left out of the reply.
-Write every description in English (en). Do not switch languages.
+LANGUAGE: each entry has a `lang=` marker giving the language of its source.
+Write that entry's description in EXACTLY that language. Do not translate to
+a single common language — match each node's source language individually.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "imgui_enginefactoryvk_ienginefactory": "IEngineFactory()" | kind=code-symbol | source=engine/rhi/tests/fakes/imgui/EngineFactoryVk.h:L124 | neighbors=[EngineFactoryVk.h]
-- "imgui_enginefactoryvk_rtvformats": "RTVFormats()" | kind=code-symbol | source=engine/rhi/tests/fakes/imgui/EngineFactoryVk.h:L58 | neighbors=[EngineFactoryVk.h]
-- "imgui_refcntautoptr_refcntautoptr_refcntautoptr": ".RefCntAutoPtr()" | kind=code-symbol | source=engine/rhi/tests/fakes/imgui/RefCntAutoPtr.hpp:L9 | neighbors=[RefCntAutoPtr]
-- "include_build_flags": "build_flags.hpp" | kind=code-symbol | source=engine/foundation/include/build_flags.hpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …]
-- "input_action_map_name": "name()" | kind=code-symbol | source=mute/src/input/action_map.cpp:L337 | neighbors=[action_map.cpp]
-- "input_device_router_clear": "clear()" | kind=code-symbol | source=mute/src/input/device_router.cpp:L103 | neighbors=[device_router.cpp]
-- "input_device_router_disconnect": "disconnect()" | kind=code-symbol | source=mute/src/input/device_router.cpp:L47 | neighbors=[device_router.cpp]
-- "input_device_router_find": "find()" | kind=code-symbol | source=mute/src/input/device_router.cpp:L62 | neighbors=[device_router.cpp]
-- "input_device_router_name": "name()" | kind=code-symbol | source=mute/src/input/device_router.cpp:L107 | neighbors=[device_router.cpp]
-- "input_input_snapshot_button_down": "button_down()" | kind=code-symbol | source=mute/src/input/input_snapshot.cpp:L99 | neighbors=[input_snapshot.cpp]
-- "input_input_snapshot_key_down": "key_down()" | kind=code-symbol | source=mute/src/input/input_snapshot.cpp:L95 | neighbors=[input_snapshot.cpp]
-- "input_input_snapshot_name": "name()" | kind=code-symbol | source=mute/src/input/input_snapshot.cpp:L342 | neighbors=[input_snapshot.cpp]
-- "integration_config_logging_guard_real_test_main": "main()" | kind=code-symbol | source=engine/foundation/tests/integration/config_logging_guard_real_test.cpp:L10 | neighbors=[config_logging_guard_real_test.cpp]
-- "integration_cube_golden_rationale_31": "RGB8 PNG with filter 0 and explicit uncompressed DEFLATE blocks." | kind=entity | source=engine/render/tests/integration/cube_golden.py:L31 | neighbors=[canonical_png()]
-- "integration_cube_golden_x11_init": ".__init__()" | kind=code-symbol | source=engine/render/tests/integration/cube_golden.py:L58 | neighbors=[X11]
-- "integration_cube_golden_ximage": "XImage" | kind=code-symbol | source=engine/render/tests/integration/cube_golden.py:L48 | neighbors=[cube_golden.py]
-- "integration_dependency_smoke": "dependency_smoke.cpp" | kind=code-symbol | source=engine/foundation/tests/integration/dependency_smoke.cpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …]
-- "integration_public_header_compat_main": "main()" | kind=code-symbol | source=engine/rhi/tests/integration/public_header_compat.cpp:L13 | neighbors=[public_header_compat.cpp]
-- "integration_sdl_platform_test_main": "main()" | kind=code-symbol | source=engine/platform/tests/integration/sdl_platform_test.cpp:L14 | neighbors=[sdl_platform_test.cpp]
-- "integration_test_cube_fixed_view_x11_main": "main()" | kind=code-symbol | source=engine/render/tests/integration/test_cube_fixed_view_x11.py:L13 | neighbors=[test_cube_fixed_view_x11.py]
-- "integration_test_cube_golden_unit_goldenencodertests_test_actual_cannot_replace_reference_or_be_a_symlink": ".test_actual_cannot_replace_reference_or_be_a_symlink()" | kind=code-symbol | source=engine/render/tests/integration/test_cube_golden_unit.py:L62 | neighbors=[GoldenEncoderTests]
-- "integration_test_cube_golden_unit_goldenencodertests_test_bad_inputs": ".test_bad_inputs()" | kind=code-symbol | source=engine/render/tests/integration/test_cube_golden_unit.py:L57 | neighbors=[GoldenEncoderTests]
-- "integration_test_cube_golden_unit_goldenencodertests_test_capture_cannot_replace_shipped_reference": ".test_capture_cannot_replace_shipped_reference()" | kind=code-symbol | source=engine/render/tests/integration/test_cube_golden_unit.py:L91 | neighbors=[GoldenEncoderTests]
-- "integration_test_cube_light_inputs": "test_cube_light_inputs.py" | kind=code-symbol | source=engine/render/tests/integration/test_cube_light_inputs.py:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …]
-- "integration_test_directional_light_x11_main": "main()" | kind=code-symbol | source=engine/render/tests/integration/test_directional_light_x11.py:L17 | neighbors=[test_directional_light_x11.py]
-- "integration_test_imgui_inputs_rationale_1": "Check the real ImGui demo rejects bad SPIR-V before initializing a window." | kind=entity | source=engine/render/tests/integration/test_imgui_inputs.py:L1 | neighbors=[test_imgui_inputs.py]
-- "integration_test_mute_console_x11_main": "main()" | kind=code-symbol | source=engine/render/tests/integration/test_mute_console_x11.py:L20 | neighbors=[test_mute_console_x11.py]
-- "integration_test_mute_state_console_x11_main": "main()" | kind=code-symbol | source=engine/render/tests/integration/test_mute_state_console_x11.py:L15 | neighbors=[test_mute_state_console_x11.py]
-- "integration_test_shader_pipeline_check_spirv": "check_spirv()" | kind=code-symbol | source=engine/render/tests/integration/test_shader_pipeline.py:L24 | neighbors=[test_shader_pipeline.py]
-- "integration_test_shader_pipeline_rationale_1": "Exercise the real host compiler and CMake shader rule in an isolated build." | kind=entity | source=engine/render/tests/integration/test_shader_pipeline.py:L1 | neighbors=[test_shader_pipeline.py]
-- "integration_test_shader_pipeline_run": "run()" | kind=code-symbol | source=engine/render/tests/integration/test_shader_pipeline.py:L17 | neighbors=[test_shader_pipeline.py]
-- "integration_test_shader_pipeline_update_shader": "update_shader()" | kind=code-symbol | source=engine/render/tests/integration/test_shader_pipeline.py:L70 | neighbors=[test_shader_pipeline.py]
-- "integration_test_triangle_inputs_rationale_1": "Check the real demo rejects bad SPIR-V before initializing a window." | kind=entity | source=engine/render/tests/integration/test_triangle_inputs.py:L1 | neighbors=[test_triangle_inputs.py]
-- "integration_test_triangle_x11_visual_find_window": "find_window()" | kind=code-symbol | source=engine/render/tests/integration/test_triangle_x11_visual.py:L39 | neighbors=[test_triangle_x11_visual.py]
-- "integration_test_triangle_x11_visual_green": "green()" | kind=code-symbol | source=engine/render/tests/integration/test_triangle_x11_visual.py:L90 | neighbors=[test_triangle_x11_visual.py]
-- "integration_test_triangle_x11_visual_pixel": "pixel()" | kind=code-symbol | source=engine/render/tests/integration/test_triangle_x11_visual.py:L80 | neighbors=[test_triangle_x11_visual.py]
-- "integration_test_triangle_x11_visual_red": "red()" | kind=code-symbol | source=engine/render/tests/integration/test_triangle_x11_visual.py:L89 | neighbors=[test_triangle_x11_visual.py]
-- "integration_test_uniform_x11_visual_find_window": "find_window()" | kind=code-symbol | source=engine/render/tests/integration/test_uniform_x11_visual.py:L40 | neighbors=[test_uniform_x11_visual.py]
-- "integration_test_uniform_x11_visual_pixel": "pixel()" | kind=code-symbol | source=engine/render/tests/integration/test_uniform_x11_visual.py:L80 | neighbors=[test_uniform_x11_visual.py]
-- "integration_test_word_reservations_rationale_1": "SQLite-level tests for the D1 word-reservation migration." | kind=entity | source=backend/storage/d1/tests/integration/test_word_reservations.py:L1 | neighbors=[test_word_reservations.py]
+- "extensions_superpowers_skillsdir": "skillsDir" | kind=code-symbol | source=.agents/skills/superpowers-main/.pi/extensions/superpowers.ts:L11 | neighbors=[superpowers.ts] | lang=en
+- "extensions_superpowers_superpowerspiextension": "superpowersPiExtension()" | kind=code-symbol | source=.agents/skills/superpowers-main/.pi/extensions/superpowers.ts:L16 | neighbors=[superpowers.ts] | lang=en
+- "fakes_enginefactoryopengl_diligent": "Diligent()" | kind=code-symbol | source=engine/rhi/tests/fakes/EngineFactoryOpenGL.h:L4 | neighbors=[EngineFactoryOpenGL.h] | lang=en
+- "fakes_enginefactoryopengl_ienginefactory": "IEngineFactory()" | kind=code-symbol | source=engine/rhi/tests/fakes/EngineFactoryOpenGL.h:L6 | neighbors=[EngineFactoryOpenGL.h] | lang=en
+- "fakes_enginefactoryvk_diligent": "Diligent()" | kind=code-symbol | source=engine/rhi/tests/fakes/EngineFactoryVk.h:L7 | neighbors=[EngineFactoryVk.h] | lang=en
+- "fakes_refcntautoptr_refcntautoptr_refcntautoptr": ".RefCntAutoPtr()" | kind=code-symbol | source=engine/rhi/tests/fakes/RefCntAutoPtr.hpp:L6 | neighbors=[RefCntAutoPtr] | lang=en
+- "fishcenter_fish_map_foot": "foot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L92 | neighbors=[fish_map.py] | lang=en
+- "fishcenter_fish_map_material_skin": "material_skin()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L745 | neighbors=[fish_map.py] | lang=en
+- "fishcenter_fish_map_rationale_55": "<= 1 inside an islet's ellipse (smallest over all islets)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L55 | neighbors=[islet_e()] | lang=en
+- "fishcenter_fish_map_shot": "shot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L760 | neighbors=[fish_map.py] | lang=en
+- "fishcenter_fish_props_rationale_515": "flat-bottomed cumulus for the horizon (SmoothPlastic white)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L515 | neighbors=[cloud()] | lang=en
+- "fishcenter_fish_props_rationale_710": "two palms with a striped hammock slung between them on ropes (a resting story)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L710 | neighbors=[hammock_palms()] | lang=pt
+- "foundation_cbor_member": "Member()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/cbor.hpp:L51 | neighbors=[cbor.hpp] | lang=en
+- "foundation_config_logging_logguard_logguard": ".LogGuard()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/config_logging.hpp:L17 | neighbors=[LogGuard] | lang=en
+- "foundation_duration_query_state_begin": "begin()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/duration_query_state.hpp:L9 | neighbors=[duration_query_state.hpp] | lang=en
+- "foundation_duration_query_state_durationquerystate": "DurationQueryState" | kind=code-symbol | source=engine/foundation/include/poko/foundation/duration_query_state.hpp:L6 | neighbors=[duration_query_state.hpp] | lang=en
+- "foundation_duration_query_state_end": "end()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/duration_query_state.hpp:L16 | neighbors=[duration_query_state.hpp] | lang=en
+- "foundation_duration_query_state_poll": "poll()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/duration_query_state.hpp:L23 | neighbors=[duration_query_state.hpp] | lang=en
+- "foundation_fixed_divide": "divide()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/fixed.hpp:L123 | neighbors=[fixed.hpp] | lang=en
+- "foundation_fixed_fixed_fixed": ".Fixed()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/fixed.hpp:L39 | neighbors=[Fixed] | lang=en
+- "foundation_fixed_sqrt": "sqrt()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/fixed.hpp:L143 | neighbors=[fixed.hpp] | lang=en
+- "foundation_fixed_vec_cross": "cross()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/fixed_vec.hpp:L137 | neighbors=[fixed_vec.hpp] | lang=en
+- "foundation_fixed_vec_fixedvec3": "FixedVec3()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/fixed_vec.hpp:L24 | neighbors=[fixed_vec.hpp] | lang=en
+- "foundation_fixed_vec_max": "max()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/fixed_vec.hpp:L81 | neighbors=[fixed_vec.hpp] | lang=en
+- "foundation_fixed_vec_min": "min()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/fixed_vec.hpp:L77 | neighbors=[fixed_vec.hpp] | lang=en
+- "foundation_frame_stats_framestats": "FrameStats" | kind=code-symbol | source=engine/foundation/include/poko/foundation/frame_stats.hpp:L13 | neighbors=[frame_stats.hpp] | lang=en
+- "foundation_loop_fixedsteploop": "FixedStepLoop" | kind=code-symbol | source=engine/foundation/include/poko/foundation/loop.hpp:L27 | neighbors=[loop.hpp] | lang=en
+- "foundation_vec3f_cross": "cross()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/vec3f.hpp:L59 | neighbors=[vec3f.hpp] | lang=en
+- "foundation_vec3f_vec3f": "Vec3f()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/vec3f.hpp:L17 | neighbors=[vec3f.hpp] | lang=en
+- "framegraph_frame_graph_add_pass": "add_pass()" | kind=code-symbol | source=engine/render/src/framegraph/frame_graph.cpp:L21 | neighbors=[frame_graph.cpp] | lang=en
+- "framegraph_frame_graph_clear": "clear()" | kind=code-symbol | source=engine/render/src/framegraph/frame_graph.cpp:L26 | neighbors=[frame_graph.cpp] | lang=en
+- "framegraph_frame_graph_framegraph_framegraph": ".FrameGraph()" | kind=code-symbol | source=engine/render/include/poko/render/framegraph/frame_graph.hpp:L48 | neighbors=[FrameGraph] | lang=en
+- "framegraph_frame_graph_import_resource": "import_resource()" | kind=code-symbol | source=engine/render/src/framegraph/frame_graph.cpp:L16 | neighbors=[frame_graph.cpp] | lang=en
+- "frostpeak_frost_kit_sheet_shot": "shot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_kit_sheet.py:L43 | neighbors=[frost_kit_sheet.py] | lang=en
+- "frostpeak_frost_map_canopy_shade": "canopy_shade()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_map.py:L176 | neighbors=[frost_map.py] | lang=en
+- "frostpeak_frost_map_chaikin": "chaikin()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_map.py:L24 | neighbors=[frost_map.py] | lang=en
+- "frostpeak_frost_map_horizon_d": "horizon_d()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_map.py:L162 | neighbors=[frost_map.py] | lang=en
+- "frostpeak_frost_map_rationale_154": "yaw that turns a building's +Z front (its door) toward (tx, tz)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_map.py:L154 | neighbors=[front_to()] | lang=en
+- "frostpeak_frost_map_shot": "shot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_map.py:L337 | neighbors=[frost_map.py] | lang=en
+- "frostpeak_frost_props_bench": "bench()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_props.py:L162 | neighbors=[frost_props.py] | lang=en
 
 ## Instructions
 

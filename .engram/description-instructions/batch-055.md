@@ -1,4 +1,4 @@
-# Node Description Batch 56 of 207
+# Node Description Batch 56 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -17,11 +17,32 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "src_character_controller_spheres_disjoint": "spheres_disjoint()" | kind=code-symbol | source=engine/physics/src/character_controller.cpp:L67 | neighbors=[character_controller.cpp, deepest_contact(), touches_uncached(), update()]
+- "src_character_controller_touches_uncached": "touches_uncached()" | kind=code-symbol | source=engine/physics/src/character_controller.cpp:L74 | neighbors=[character_controller.cpp, touches(), shape_bound(), spheres_disjoint()]
+- "src_frame_stats_window_mean": "window_mean()" | kind=code-symbol | source=engine/foundation/src/frame_stats.cpp:L8 | neighbors=[frame_stats.cpp, cpu_ms(), fps(), gpu_ms()]
+- "src_narrowphase_closest_triangle": "closest_triangle()" | kind=code-symbol | source=engine/physics/src/narrowphase.cpp:L86 | neighbors=[narrowphase.cpp, closest_on_hull(), closest_segment(), dist_sq_of()]
+- "src_narrowphase_collide_local": "collide_local()" | kind=code-symbol | source=engine/physics/src/narrowphase.cpp:L701 | neighbors=[narrowphase.cpp, collide(), epa_penetration(), gjk_distance()]
+- "src_soft_body_add_spring": "add_spring()" | kind=code-symbol | source=engine/physics/src/soft_body.cpp:L82 | neighbors=[soft_body.cpp, clamp01(), create(), create_lattice()]
+- "src_visual_solver_add_body": "add_body()" | kind=code-symbol | source=engine/physics/src/visual_solver.cpp:L346 | neighbors=[visual_solver.cpp, find_body(), upsert_body(), add_collider()]
+- "stdlib_stdlib_crypto_hmac_sha256": "hmac_sha256()" | kind=code-symbol | source=mute/src/stdlib/stdlib_crypto.cpp:L73 | neighbors=[stdlib_crypto.cpp, sha256(), sign_detached(), verify_detached()]
+- "stdlib_stdlib_crypto_sha256": "sha256()" | kind=code-symbol | source=mute/src/stdlib/stdlib_crypto.cpp:L56 | neighbors=[stdlib_crypto.cpp, hmac_sha256(), append_u32_be(), compress()]
+- "stdlib_stdlib_string_decode": "decode()" | kind=code-symbol | source=mute/src/stdlib/stdlib_string.cpp:L11 | neighbors=[stdlib_string.cpp, codepoint_count(), slice_codepoints(), valid_utf8()]
+- "sugarworks_sugar_map_build": "build()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_map.py:L157 | neighbors=[sugar_map.py, face(), place(), plot()]
+- "sugarworks_sugar_map_sub": "sub()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_map.py:L18 | neighbors=[sugar_map.py, ground(), horizon(), place()]
+- "sugarworks_sugar_props_candy_lamp": "candy_lamp()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L251 | neighbors=[sugar_props.py, stripes(), subdiv_line(), candy-cane street lamp: striped post, h…]
+- "sugarworks_sugar_props_choc_fountain": "choc_fountain()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L390 | neighbors=[sugar_props.py, sphere(), torus(), three-tier chocolate fountain: pink bow…]
+- "sugarworks_sugar_props_sphere": "sphere()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L41 | neighbors=[sugar_props.py, choc_fountain(), conveyor(), exchange()]
+- "targets_run_dual_target_tests_android_compile": "android_compile()" | kind=code-symbol | source=tools/targets/run_dual_target_tests.py:L234 | neighbors=[run_dual_target_tests.py, run_command(), sha256(), android_leg()]
+- "targets_run_dual_target_tests_now": "now()" | kind=code-symbol | source=tools/targets/run_dual_target_tests.py:L87 | neighbors=[run_dual_target_tests.py, android_leg(), main(), windows_leg()]
+- "targets_run_dual_target_tests_sha256": "sha256()" | kind=code-symbol | source=tools/targets/run_dual_target_tests.py:L122 | neighbors=[run_dual_target_tests.py, android_compile(), android_leg(), windows_leg()]
+- "tests_fixtures_cube": "cube()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/fixtures.py:L19 | neighbors=[fixtures.py, mesh_object(), detached_part(), street()]
+- "tests_fixtures_detached_part": "detached_part()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/fixtures.py:L46 | neighbors=[fixtures.py, cube(), mesh_object(), A body with a floating island and a sep…]
 - "tests_fixtures_street": "street()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/fixtures.py:L67 | neighbors=[fixtures.py, Ground slab (top at z=0), two buildings…, cube(), uv_sphere()]
 - "tests_fixtures_zfight_pair": "zfight_pair()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/fixtures.py:L33 | neighbors=[fixtures.py, Two coplanar overlapping planes in diff…, mesh_object(), plane()]
 - "tests_test_agent_loop_recipe": "recipe()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_agent_loop.py:L41 | neighbors=[test_agent_loop.py, test_lint_accepts_a_cel_contact_and_a_r…, test_lint_passes_the_library_and_report…, test_lint_warns_about_craft_problems()]
 - "tests_test_clothing": "test_clothing.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_clothing.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, test_garment_morphs_and_drape(), test_garment_weights_mask_and_pose()]
 - "tests_test_core_run_md_blocks": "_run_md_blocks()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_core.py:L11 | neighbors=[test_core.py, Execute every ```python block of a refe…, test_bpy_patterns_snippets_run(), test_snippet_docs_across_skills()]
+- "tests_test_golden": "test_golden.py" | kind=code-symbol | source=tools/testutils/harness/tests/test_golden.py:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, GoldenHarnessTests, run(), c7a411f Fix MUT-01-20 audit defects in …]
 - "tests_test_gridfinity_test_compartments_scoop_label": "test_compartments_scoop_label()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_gridfinity.py:L62 | neighbors=[test_gridfinity.py, _assert_footprint(), _mesh(), _volume()]
 - "tests_test_gridfinity_test_minimal_bin_no_lip": "test_minimal_bin_no_lip()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_gridfinity.py:L40 | neighbors=[test_gridfinity.py, 1x1, 2U, no lip: exact box height, flat…, _assert_footprint(), _mesh()]
 - "tests_test_npr_bands": "_bands()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_npr.py:L38 | neighbors=[test_npr.py, _clusters(), test_toon_hull_bands_lineart_roundtrip(), test_toon_scene_lighting_eevee()]
@@ -36,27 +57,6 @@ one-sentence description — no prose, no markdown fences.
 - "texture_tex_to_maps_derive_ao": "derive_ao()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/texture/tex_to_maps.py:L86 | neighbors=[tex_to_maps.py, blur(), process(), Cavity estimate: pixels darker than the…]
 - "texture_tex_to_maps_high_pass": "high_pass()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/texture/tex_to_maps.py:L57 | neighbors=[tex_to_maps.py, blur(), process(), Luminance minus its local mean: the det…]
 - "texture_tile_seam_check_assess": "assess()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/texture/tile_seam_check.py:L73 | neighbors=[tile_seam_check.py, boundary_metrics(), load_gray(), main()]
-- "texture_tile_seam_check_main": "main()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/texture/tile_seam_check.py:L133 | neighbors=[tile_seam_check.py, assess(), print_report(), write_tile_sheet()]
-- "texture_uv_density_group_stats": "group_stats()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/texture/uv_density.py:L82 | neighbors=[uv_density.py, tri_area_3d(), tri_area_uv(), report()]
-- "texture_uv_density_report": "report()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/texture/uv_density.py:L108 | neighbors=[uv_density.py, main(), group_stats(), parse_obj()]
-- "tools_readme_hero_frame": "frame()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/readme_hero.py:L91 | neighbors=[readme_hero.py, font(), mask(), main()]
-- "tools_sync_shared": "sync_shared.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/tools/sync_shared.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, main(), targets()]
-- "tools_trigger_check": "trigger_check.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/tools/trigger_check.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, main(), toks()]
-- "towncity_city_paint_block": "block()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/city_paint.py:L101 | neighbors=[city_paint.py, atlas(), paint_glass(), tile()]
-- "towncity_city_paint_edge": "edge()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/city_paint.py:L34 | neighbors=[city_paint.py, clip(), 1 inside a joint of half-width w (d = d…, tile()]
-- "towncity_city_paint_paint_glass": "paint_glass()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/city_paint.py:L93 | neighbors=[city_paint.py, block(), clip(), ramp()]
-- "towncity_city_paint_remap": "remap()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/city_paint.py:L149 | neighbors=[city_paint.py, area(), axes_of(), clip()]
-- "towncity_town_landmarks_arch_open": "arch_open()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L58 | neighbors=[town_landmarks.py, clock_tower(), an arched opening framed with voussoirs…, train_station()]
-- "towncity_town_landmarks_bank": "bank()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L481 | neighbors=[town_landmarks.py, column(), pediment(), bank: temple front on a stepped podium,…]
-- "towncity_town_landmarks_clock_face": "clock_face()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L45 | neighbors=[town_landmarks.py, clock_tower(), clock: cream dial, gold bezel, 12 tick …, train_station()]
-- "towncity_town_landmarks_column": "column()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L19 | neighbors=[town_landmarks.py, bank(), classical column: square plinth, torus …, town_hall()]
-- "towncity_town_landmarks_pediment": "pediment()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L27 | neighbors=[town_landmarks.py, bank(), triangular pediment: raking cornices + …, town_hall()]
-- "towncity_town_map_anchor_local": "anchor_local()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L99 | neighbors=[town_map.py, anchor(), rot(), sign_anchor()]
-- "towncity_town_map_railway": "railway()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L195 | neighbors=[town_map.py, build(), place(), rail corridor: two tracks along Z behin…]
-- "towncity_town_map_rot": "rot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L85 | neighbors=[town_map.py, anchor_local(), landmarks(), local (x, y, z) of a prop turned by yaw…]
-- "towncity_town_map_zebra": "zebra()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L119 | neighbors=[town_map.py, markings(), crosswalk stripes across a road: stripe…, flat()]
-- "towncity_town_props_ac_unit": "ac_unit()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_props.py:L119 | neighbors=[town_props.py, add(), building(), rooftop / wall AC: cream casing on feet…]
-- "towncity_town_props_antenna": "antenna()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_props.py:L146 | neighbors=[town_props.py, add(), ball(), building()]
 
 ## Instructions
 

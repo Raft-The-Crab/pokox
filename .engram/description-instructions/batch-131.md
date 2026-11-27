@@ -1,4 +1,4 @@
-# Node Description Batch 132 of 207
+# Node Description Batch 132 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -19,51 +19,53 @@ relations (neighbors) and the provided citations/evidence — e.g.
 Ground entity descriptions in the citations/evidence when present; do not
 speculate beyond the context, so a node with no supporting context may be
 left out of the reply.
-Write every description in English (en). Do not switch languages.
+LANGUAGE: each entry has a `lang=` marker giving the language of its source.
+Write that entry's description in EXACTLY that language. Do not translate to
+a single common language — match each node's source language individually.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "stdlib_stdlib_math_splitmix64": "splitmix64()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L14 | neighbors=[stdlib_math.cpp, XorShift128Plus()]
-- "stdlib_stdlib_math_vec2_dot": "vec2_dot()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L59 | neighbors=[stdlib_math.cpp, vec2_length_squared()]
-- "stdlib_stdlib_math_vec2_lerp": "vec2_lerp()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L58 | neighbors=[stdlib_math.cpp, det_lerp()]
-- "stdlib_stdlib_math_vec3_add": "vec3_add()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L68 | neighbors=[stdlib_math.cpp, quat_rotate()]
-- "stdlib_stdlib_math_vec3_cross": "vec3_cross()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L71 | neighbors=[stdlib_math.cpp, quat_rotate()]
-- "stdlib_stdlib_math_vec3_dot": "vec3_dot()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L77 | neighbors=[stdlib_math.cpp, vec3_length_squared()]
-- "stdlib_stdlib_math_vec3_lerp": "vec3_lerp()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L74 | neighbors=[stdlib_math.cpp, det_lerp()]
-- "stdlib_stdlib_math_vec3_scale": "vec3_scale()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L70 | neighbors=[stdlib_math.cpp, quat_rotate()]
-- "stdlib_stdlib_math_vec4_dot": "vec4_dot()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L88 | neighbors=[stdlib_math.cpp, vec4_normalize()]
-- "stdlib_stdlib_math_xorshift128plus": "XorShift128Plus()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L137 | neighbors=[stdlib_math.cpp, splitmix64()]
-- "stdlib_stdlib_physics_fixed_from_raw": "fixed_from_raw()" | kind=code-symbol | source=mute/src/stdlib/stdlib_physics.cpp:L12 | neighbors=[stdlib_physics.cpp, physics_hostcall_defs()]
-- "stdlib_stdlib_physics_touching_at": "touching_at()" | kind=code-symbol | source=mute/src/stdlib/stdlib_physics.cpp:L24 | neighbors=[stdlib_physics.cpp, physics_raycast()]
-- "stdlib_stdlib_string_concat": "concat()" | kind=code-symbol | source=mute/src/stdlib/stdlib_string.cpp:L82 | neighbors=[stdlib_string.cpp, valid_utf8()]
-- "stdlib_stdlib_string_to_lower_ascii": "to_lower_ascii()" | kind=code-symbol | source=mute/src/stdlib/stdlib_string.cpp:L105 | neighbors=[stdlib_string.cpp, valid_utf8()]
-- "sugarworks_sugar_map_free": "free()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_map.py:L53 | neighbors=[sugar_map.py, look()]
-- "sugarworks_sugar_map_ground": "ground()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_map.py:L100 | neighbors=[sugar_map.py, sub()]
-- "sugarworks_sugar_map_horizon": "horizon()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_map.py:L237 | neighbors=[sugar_map.py, sub()]
-- "sugarworks_sugar_map_kit": "kit()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_map.py:L37 | neighbors=[sugar_map.py, place()]
-- "sugarworks_sugar_map_look": "look()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_map.py:L212 | neighbors=[sugar_map.py, free()]
-- "sugarworks_sugar_map_on_hard": "on_hard()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_map.py:L54 | neighbors=[sugar_map.py, road / sidewalks / plots / plaza / apro…]
-- "sugarworks_sugar_map_rationale_50": "plot-local (lx, lz) -> world; local -Z = the plot's road side" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_map.py:L50 | neighbors=[MB, local()]
-- "sugarworks_sugar_map_rationale_55": "road / sidewalks / plots / plaza / apron: no scatter there" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_map.py:L55 | neighbors=[MB, on_hard()]
-- "sugarworks_sugar_props_candy_sacks": "candy_sacks()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L380 | neighbors=[sugar_props.py, pallet with tied sugar sacks]
-- "sugarworks_sugar_props_cash_pad": "cash_pad()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L183 | neighbors=[sugar_props.py, torus()]
-- "sugarworks_sugar_props_choc_bench": "choc_bench()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L265 | neighbors=[sugar_props.py, chocolate-bar bench: segmented seat + b…]
-- "sugarworks_sugar_props_dropper": "dropper()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L106 | neighbors=[sugar_props.py, starter dropper: steel legs, lemon hopp…]
-- "sugarworks_sugar_props_fence": "fence()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L71 | neighbors=[sugar_props.py, low cream wall + pink cap + team-colour…]
-- "sugarworks_sugar_props_fence_post": "fence_post()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L81 | neighbors=[sugar_props.py, one fence post: cream pillar + pink gum…]
-- "sugarworks_sugar_props_gumdrop_bush": "gumdrop_bush()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L241 | neighbors=[sugar_props.py, dome()]
-- "sugarworks_sugar_props_hazard": "hazard()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L365 | neighbors=[sugar_props.py, flat lemon/choc hazard stripe band alon…]
-- "sugarworks_sugar_props_peppermint": "peppermint()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L418 | neighbors=[sugar_props.py, flat peppermint swirl stepping disc]
-- "sugarworks_sugar_props_plot_base": "plot_base()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L61 | neighbors=[sugar_props.py, the plot slab: tiled concrete, pink bor…]
-- "sugarworks_sugar_props_rationale_107": "starter dropper: steel legs, lemon hopper with a funnel, candy jar on top, warni" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L107 | neighbors=[Palette, dropper()]
-- "sugarworks_sugar_props_rationale_132": "belt segment along X: legs, dark belt with ribs, steel side rails, lemon chevron" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L132 | neighbors=[Palette, conveyor()]
-- "sugarworks_sugar_props_rationale_152": "scanner arch over the belt: two steel pillars, grape crown, glowing ring + scan" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L152 | neighbors=[Palette, upgrader()]
-- "sugarworks_sugar_props_rationale_164": "chocolate melting vat: drum with cream drip rim, glowing mouth facing -X, lollip" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L164 | neighbors=[Palette, collector()]
-- "sugarworks_sugar_props_rationale_211": "empty build slot: four lemon corner brackets + a dashed outline, flush on the sl" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L211 | neighbors=[Palette, slot_marker()]
-- "sugarworks_sugar_props_rationale_252": "candy-cane street lamp: striped post, hook over -Z, hanging lantern" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L252 | neighbors=[Palette, candy_lamp()]
-- "sugarworks_sugar_props_rationale_266": "chocolate-bar bench: segmented seat + back, steel legs; sit side = -Z" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L266 | neighbors=[Palette, choc_bench()]
-- "sugarworks_sugar_props_rationale_294": "HERO: the Candy Exchange - drum hall with pilasters and an arched entrance (-Z)," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L294 | neighbors=[Palette, exchange()]
+- "skyrise_sky_props_rationale_159": "bridge from z=0 to z=-L, rising by `rise`: planks (wood) or slabs (stone) with p" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L159 | neighbors=[Palette, bridge()] | lang=en
+- "skyrise_sky_props_rationale_199": "zone gate: two banded stone pillars, arched crest with the zone gem, glowing bar" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L199 | neighbors=[Palette, zone_gate()] | lang=en
+- "skyrise_sky_props_rationale_227": "egg hatch station: tiered round podium, giant spotted egg on a cushion, four cry" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L227 | neighbors=[Palette, egg_shrine()] | lang=pt
+- "skyrise_sky_props_rationale_266": "upgrade booth: counter, striped awning, posts, big glowing up-arrow sign (front" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L266 | neighbors=[Palette, upgrade_stand()] | lang=en
+- "skyrise_sky_props_rationale_316": "simulator puffy tree: curved trunk + 3-6 smooth round canopy balls" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L316 | neighbors=[Palette, puffy_tree()] | lang=en
+- "skyrise_sky_props_rationale_356": "treasure chest, lid open (back +Z hinge), coins + a gem inside" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L356 | neighbors=[Palette, chest()] | lang=pt
+- "skyrise_sky_props_rationale_40": "revolve [(r, y), ...] (bottom -> top) around Y; caps where r == 0 collapse to a" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L40 | neighbors=[Palette, lathe()] | lang=es
+- "skyrise_sky_props_rationale_467": "HERO: giant golden trophy on a tiered marble pedestal; cup with handles, crown +" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L467 | neighbors=[Palette, trophy()] | lang=en
+- "skyrise_sky_props_rationale_66": "faceted octahedron-ish gem standing on its tip" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L66 | neighbors=[Palette, gem()] | lang=en
+- "skyrise_sky_props_rationale_71": "underside of a floating island: rings from the rim inward/down to a tip, strata" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L71 | neighbors=[Palette, island_under()] | lang=en
+- "skyrise_sky_props_snow_tree": "snow_tree()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L410 | neighbors=[sky_props.py, lathe()] | lang=en
+- "src_asset_store_assethandle": "AssetHandle()" | kind=code-symbol | source=engine/resource/src/asset_store.cpp:L254 | neighbors=[asset_store.cpp, release()] | lang=en
+- "src_asset_store_is_loading": "is_loading()" | kind=code-symbol | source=engine/resource/src/asset_store.cpp:L195 | neighbors=[asset_store.cpp, load_state()] | lang=en
+- "src_asset_store_load_state": "load_state()" | kind=code-symbol | source=engine/resource/src/asset_store.cpp:L170 | neighbors=[asset_store.cpp, is_loading()] | lang=en
+- "src_asset_store_release": "release()" | kind=code-symbol | source=engine/resource/src/asset_store.cpp:L257 | neighbors=[asset_store.cpp, AssetHandle()] | lang=en
+- "src_camera_look_at": "look_at()" | kind=code-symbol | source=engine/render/src/camera.cpp:L22 | neighbors=[camera.cpp, view_proj()] | lang=en
+- "src_camera_multiply": "multiply()" | kind=code-symbol | source=engine/render/src/camera.cpp:L40 | neighbors=[camera.cpp, view_proj()] | lang=en
+- "src_camera_perspective": "perspective()" | kind=code-symbol | source=engine/render/src/camera.cpp:L11 | neighbors=[camera.cpp, view_proj()] | lang=en
+- "src_cbor_half_to_double": "half_to_double()" | kind=code-symbol | source=engine/foundation/src/cbor.cpp:L82 | neighbors=[cbor.cpp, decode_item()] | lang=en
+- "src_cbor_read_argument": "read_argument()" | kind=code-symbol | source=engine/foundation/src/cbor.cpp:L73 | neighbors=[cbor.cpp, decode_item()] | lang=en
+- "src_cbor_valid_utf8": "valid_utf8()" | kind=code-symbol | source=engine/foundation/src/cbor.cpp:L44 | neighbors=[cbor.cpp, decode_item()] | lang=en
+- "src_character_controller_append_shape_raws": "append_shape_raws()" | kind=code-symbol | source=engine/physics/src/character_controller.cpp:L96 | neighbors=[character_controller.cpp, touch_key()] | lang=en
+- "src_character_controller_planar": "planar()" | kind=code-symbol | source=engine/physics/src/character_controller.cpp:L29 | neighbors=[character_controller.cpp, update()] | lang=en
+- "src_compose_pair": "pair()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/references/images/src/compose.py:L16 | neighbors=[compose.py, pill()] | lang=en
+- "src_compose_pill": "pill()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/references/images/src/compose.py:L11 | neighbors=[compose.py, pair()] | lang=en
+- "src_config_collect_unknown": "collect_unknown()" | kind=code-symbol | source=engine/foundation/src/config.cpp:L82 | neighbors=[config.cpp, load_file()] | lang=en
+- "src_config_fail": "fail()" | kind=code-symbol | source=engine/foundation/src/config.cpp:L14 | neighbors=[config.cpp, load_file()] | lang=en
+- "src_config_parse_level": "parse_level()" | kind=code-symbol | source=engine/foundation/src/config.cpp:L70 | neighbors=[config.cpp, load_file()] | lang=en
+- "src_config_resolve": "resolve()" | kind=code-symbol | source=engine/foundation/src/config.cpp:L172 | neighbors=[config.cpp, load_file()] | lang=en
+- "src_convex_shape": "convex_shape.cpp" | kind=code-symbol | source=engine/physics/src/convex_shape.cpp:L1 | neighbors=[69287a0 Land ENG-60-65 deterministic si…, support()] | lang=en
+- "src_frame_stats_cpu_ms": "cpu_ms()" | kind=code-symbol | source=engine/foundation/src/frame_stats.cpp:L38 | neighbors=[frame_stats.cpp, window_mean()] | lang=en
+- "src_frame_stats_fps": "fps()" | kind=code-symbol | source=engine/foundation/src/frame_stats.cpp:L31 | neighbors=[frame_stats.cpp, window_mean()] | lang=en
+- "src_frame_stats_gpu_ms": "gpu_ms()" | kind=code-symbol | source=engine/foundation/src/frame_stats.cpp:L43 | neighbors=[frame_stats.cpp, window_mean()] | lang=en
+- "src_gallery_flat": "flat()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/references/images/src/gallery.py:L37 | neighbors=[gallery.py, ground()] | lang=en
+- "src_gallery_ground": "ground()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/references/images/src/gallery.py:L43 | neighbors=[gallery.py, flat()] | lang=en
+- "src_haze": "haze.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/references/images/src/haze.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …] | lang=en
+- "src_ktx2_fail": "fail()" | kind=code-symbol | source=engine/resource/src/ktx2.cpp:L32 | neighbors=[ktx2.cpp, load_ktx2()] | lang=en
+- "src_ktx2_in_bounds": "in_bounds()" | kind=code-symbol | source=engine/resource/src/ktx2.cpp:L38 | neighbors=[ktx2.cpp, load_ktx2()] | lang=en
+- "src_logging_critical": "critical()" | kind=code-symbol | source=engine/foundation/src/logging.cpp:L105 | neighbors=[logging.cpp, emit()] | lang=en
+- "src_logging_debug": "debug()" | kind=code-symbol | source=engine/foundation/src/logging.cpp:L101 | neighbors=[logging.cpp, emit()] | lang=en
 
 ## Instructions
 

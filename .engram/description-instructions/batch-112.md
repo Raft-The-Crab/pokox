@@ -1,4 +1,4 @@
-# Node Description Batch 113 of 207
+# Node Description Batch 113 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -19,51 +19,53 @@ relations (neighbors) and the provided citations/evidence — e.g.
 Ground entity descriptions in the citations/evidence when present; do not
 speculate beyond the context, so a node with no supporting context may be
 left out of the reply.
-Write every description in English (en). Do not switch languages.
+LANGUAGE: each entry has a `lang=` marker giving the language of its source.
+Write that entry's description in EXACTLY that language. Do not translate to
+a single common language — match each node's source language individually.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "framegraph_frame_graph_compile": "compile()" | kind=code-symbol | source=engine/render/src/framegraph/frame_graph.cpp:L87 | neighbors=[frame_graph.cpp, build_plan()]
-- "framegraph_frame_graph_execute": "execute()" | kind=code-symbol | source=engine/render/src/framegraph/frame_graph.cpp:L93 | neighbors=[frame_graph.cpp, build_plan()]
-- "framegraph_frame_graph_framegraph": "FrameGraph" | kind=code-symbol | source=engine/render/include/poko/render/framegraph/frame_graph.hpp:L46 | neighbors=[frame_graph.cpp, .FrameGraph()]
-- "frostpeak_frost_map_drift": "_drift()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_map.py:L297 | neighbors=[frost_map.py, build()]
-- "frostpeak_frost_map_horizon": "horizon()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_map.py:L326 | neighbors=[frost_map.py, sub()]
-- "frostpeak_frost_map_look": "look()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_map.py:L303 | neighbors=[frost_map.py, free()]
-- "frostpeak_frost_map_nearest_path_pt": "nearest_path_pt()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_map.py:L60 | neighbors=[frost_map.py, build()]
-- "frostpeak_frost_map_rationale_158": "height range of the terrain over a footprint of radius r: big = a slope that wou" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_map.py:L158 | neighbors=[spread(), MB]
-- "frostpeak_frost_map_segd": "segd()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_map.py:L44 | neighbors=[frost_map.py, path_info()]
-- "frostpeak_frost_props_cabin": "cabin()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_props.py:L46 | neighbors=[frost_props.py, log cabin: stacked logs with crossed co…]
-- "frostpeak_frost_props_fishing_hut": "fishing_hut()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_props.py:L216 | neighbors=[frost_props.py, ice-fishing shanty: board walls on skid…]
-- "frostpeak_frost_props_frost_spire": "frost_spire()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_props.py:L259 | neighbors=[frost_props.py, hero: stone terrace + a 60-stud ice cry…]
-- "frostpeak_frost_props_roll_well": "roll_well()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_props.py:L172 | neighbors=[frost_props.py, village-square roll well: stone ring, t…]
-- "frostpeak_frost_props_snow_pine": "snow_pine()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_props.py:L34 | neighbors=[frost_props.py, grove pine re-shaded: every up-facing t…]
-- "fuzz_fuzz_bytecode": "fuzz_bytecode.cpp" | kind=code-symbol | source=fuzz/fuzz_bytecode.cpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, LLVMFuzzerTestOneInput()]
-- "fuzz_fuzz_cbor": "fuzz_cbor.cpp" | kind=code-symbol | source=fuzz/fuzz_cbor.cpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, LLVMFuzzerTestOneInput()]
-- "fuzz_fuzz_lexer": "fuzz_lexer.cpp" | kind=code-symbol | source=fuzz/fuzz_lexer.cpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, LLVMFuzzerTestOneInput()]
-- "fuzz_fuzz_pokomesh": "fuzz_pokomesh.cpp" | kind=code-symbol | source=fuzz/fuzz_pokomesh.cpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, LLVMFuzzerTestOneInput()]
-- "gles_clear_pokoactivity_pokoactivity_nativeinit": ".nativeInit()" | kind=code-symbol | source=engine/rhi/android/gles-clear/PokoActivity.java:L16 | neighbors=[PokoActivity, .onCreate()]
-- "gles_clear_pokoactivity_pokoactivity_oncreate": ".onCreate()" | kind=code-symbol | source=engine/rhi/android/gles-clear/PokoActivity.java:L20 | neighbors=[PokoActivity, .nativeInit()]
-- "gles_clear_pokoactivity_pokoactivity_ondestroy": ".onDestroy()" | kind=code-symbol | source=engine/rhi/android/gles-clear/PokoActivity.java:L46 | neighbors=[PokoActivity, .nativeSurfaceDestroyed()]
-- "gles_clear_pokoactivity_pokoactivity_surfacechanged": ".surfaceChanged()" | kind=code-symbol | source=engine/rhi/android/gles-clear/PokoActivity.java:L36 | neighbors=[PokoActivity, .nativeSetSurface()]
-- "gles_clear_pokoactivity_pokoactivity_surfacecreated": ".surfaceCreated()" | kind=code-symbol | source=engine/rhi/android/gles-clear/PokoActivity.java:L29 | neighbors=[PokoActivity, .nativeSetSurface()]
-- "gles_clear_pokoactivity_pokoactivity_surfacedestroyed": ".surfaceDestroyed()" | kind=code-symbol | source=engine/rhi/android/gles-clear/PokoActivity.java:L41 | neighbors=[PokoActivity, .nativeSurfaceDestroyed()]
-- "godot_ablation_report_luminance": "luminance()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/godot/ablation_report.py:L40 | neighbors=[ablation_report.py, image_change()]
-- "godot_ablation_report_main": "main()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/godot/ablation_report.py:L118 | neighbors=[ablation_report.py, analyse()]
-- "hermes_init": "__init__.py" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/hermes/__init__.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …]
-- "hermes_plugin_init_strip_frontmatter": "_strip_frontmatter()" | kind=code-symbol | source=.agents/skills/superpowers-main/.hermes-plugin/__init__.py:L35 | neighbors=[__init__.py, _build_bootstrap()]
-- "hermes_test_bootstrap_testbootstrapcontent_test_contains_using_superpowers_body": ".test_contains_using_superpowers_body()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/hermes/test_bootstrap.py:L64 | neighbors=[TestBootstrapContent, _bootstrap()]
-- "hermes_test_bootstrap_testbootstrapcontent_test_frontmatter_stripped": ".test_frontmatter_stripped()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/hermes/test_bootstrap.py:L71 | neighbors=[TestBootstrapContent, _bootstrap()]
-- "hermes_test_bootstrap_testbootstrapcontent_test_marker_and_wrapper": ".test_marker_and_wrapper()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/hermes/test_bootstrap.py:L58 | neighbors=[TestBootstrapContent, _bootstrap()]
-- "hermes_test_bootstrap_testbootstrapcontent_test_skill_view_guidance_present": ".test_skill_view_guidance_present()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/hermes/test_bootstrap.py:L88 | neighbors=[TestBootstrapContent, _bootstrap()]
-- "hermes_test_bootstrap_testbootstrapcontent_test_under_hermes_context_spill_limit": ".test_under_hermes_context_spill_limit()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/hermes/test_bootstrap.py:L92 | neighbors=[TestBootstrapContent, _bootstrap()]
-- "hermes_test_bootstrap_testskillsdirresolution": "TestSkillsDirResolution" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/hermes/test_bootstrap.py:L46 | neighbors=[test_bootstrap.py, .test_repo_layout_resolves()]
-- "hermes_test_bootstrap_testskillsdirresolution_test_repo_layout_resolves": ".test_repo_layout_resolves()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/hermes/test_bootstrap.py:L47 | neighbors=[TestSkillsDirResolution, _load()]
-- "hermes_test_bootstrap_teststripfrontmatter_test_no_frontmatter_returns_trimmed_content": ".test_no_frontmatter_returns_trimmed_content()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/hermes/test_bootstrap.py:L35 | neighbors=[TestStripFrontmatter, _load()]
-- "hermes_test_bootstrap_teststripfrontmatter_test_strips_surrounding_whitespace_from_body": ".test_strips_surrounding_whitespace_from_body()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/hermes/test_bootstrap.py:L40 | neighbors=[TestStripFrontmatter, _load()]
-- "hermes_test_bootstrap_teststripfrontmatter_test_strips_yaml_block": ".test_strips_yaml_block()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/hermes/test_bootstrap.py:L30 | neighbors=[TestStripFrontmatter, _load()]
-- "hermes_test_plugin_testlayoutresolution_test_missing_skills_raises_loudly": ".test_missing_skills_raises_loudly()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/hermes/test_plugin.py:L155 | neighbors=[TestLayoutResolution, ._load_from()]
-- "hermes_test_plugin_testpluginregistration_test_register_attaches_only_pre_llm_call_hook": ".test_register_attaches_only_pre_llm_call_hook()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/hermes/test_plugin.py:L42 | neighbors=[TestPluginRegistration, _load_plugin()]
+- "fishcenter_fish_map_rationale_101": "auto-grounded props (y None) are fitted against everything built so far (see fit" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L101 | neighbors=[place(), MB] | lang=en
+- "fishcenter_fish_map_rationale_203": "plank / slab from a top quad [(x, z) x4] at height y, thickness th" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L203 | neighbors=[prism(), MB] | lang=en
+- "fishcenter_fish_map_rationale_229": "plank deck in a pad-local frame: planks along local x (across the walk), gaps, t" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L229 | neighbors=[deck_rect(), MB] | lang=en
+- "fishcenter_fish_map_rationale_251": "the ring boardwalk: radial planks (across the walk), stringers along both edges" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L251 | neighbors=[ring_deck(), MB] | lang=en
+- "fishcenter_fish_map_rationale_270": "central coral-stone platform: polar flagstones (inset), coping course, ashlar fo" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L270 | neighbors=[platform(), MB] | lang=en
+- "fishcenter_fish_map_rationale_300": "compass-rose inlay in the spawn plaza deck: 8-point star of teal / yellow planks" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L300 | neighbors=[compass(), MB] | lang=en
+- "fishcenter_fish_map_rationale_340": "seabed + islets in one grid: fine inside the reef, coarse to the horizon; colour" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L340 | neighbors=[ground(), MB] | lang=en
+- "fishcenter_fish_map_rationale_377": "organic grass mounds sitting IN each islet top: irregular rounded outline, rim t" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L377 | neighbors=[islet_grass(), MB] | lang=en
+- "fishcenter_fish_map_rationale_38": "pad-local (lx tangential, lz radial outward from the pad centre rc) -> world (x," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L38 | neighbors=[lp(), MB] | lang=en
+- "fishcenter_fish_map_rationale_410": "tropical volcanic islands in 3 overlapping depth layers. Each = a wide sand / ro" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L410 | neighbors=[horizon(), MB] | lang=en
+- "fishcenter_fish_map_rationale_462": "straight run a->b (x, z) with gaps [(s0, s1)] in studs along it: bays ~6 long, a" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L462 | neighbors=[rail_line(), MB] | lang=en
+- "fishcenter_fish_map_rationale_475": "arc run from angle a0 to a1 (degrees, increasing): chord bays + an end post" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L475 | neighbors=[rail_arc(), MB] | lang=en
+- "fishcenter_fish_map_rationale_484": "place every collected run: each bay carries the post at its start, a post closes" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L484 | neighbors=[rails_flush(), MB] | lang=en
+- "fishcenter_fish_map_rationale_504": "full circle at radius r minus angular gaps [(centre, half width deg)]" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L504 | neighbors=[arc_with_gaps(), MB] | lang=en
+- "fishcenter_fish_map_rationale_67": "seabed / islets; out at the world edge it rises to +1 so the sea plane's border" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L67 | neighbors=[H(), MB] | lang=en
+- "fishcenter_fish_map_rationale_71": "the natural depth profile (deep blue past the reef): only the seabed COLOUR stil" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L71 | neighbors=[H_raw(), MB] | lang=en
+- "fishcenter_fish_map_top": "_top()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L163 | neighbors=[fish_map.py, fit_bad()] | lang=en
+- "fishcenter_fish_props_buoy_stack": "buoy_stack()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L609 | neighbors=[fish_props.py, trap floats and a coiled rope: stacked …] | lang=en
+- "fishcenter_fish_props_cloud": "cloud()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L514 | neighbors=[fish_props.py, flat-bottomed cumulus for the horizon (…] | lang=en
+- "fishcenter_fish_props_crate_stack": "crate_stack()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L545 | neighbors=[fish_props.py, crate()] | lang=en
+- "fishcenter_fish_props_lifebuoy_stand": "lifebuoy_stand()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L311 | neighbors=[fish_props.py, ball()] | lang=en
+- "fishcenter_fish_props_rationale_1013": "QUEST BOARD: two bamboo posts with lashings, framed cork panel with blank pinned" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L1013 | neighbors=[quest_board(), Palette] | lang=en
+- "fishcenter_fish_props_rationale_1054": "AQUARIUM INDEX wall: plank backboard on teak posts, 3 x 4 oval plaques each with" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L1054 | neighbors=[fish_index_wall(), Palette] | lang=en
+- "fishcenter_fish_props_rationale_1082": "WELCOME ARCH on the spawn axis: two lashed triple-bamboo pillars on coral plinth" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L1082 | neighbors=[welcome_arch(), Palette] | lang=en
+- "fishcenter_fish_props_rationale_1112": "hollow lofted boat hull: U sections closed by the sheer line (solid), sharp bow" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L1112 | neighbors=[boat_hull(), Palette] | lang=en
+- "fishcenter_fish_props_rationale_1137": "hull shading: bottom colour below the waterline, a stripe band under the sheer l" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L1137 | neighbors=[paint_hull(), Palette] | lang=en
+- "fishcenter_fish_props_rationale_1149": "rowboat (white, teal stripe, red bottom): hollow hull, gunwale rail, 2 thwarts," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L1149 | neighbors=[skiff(), Palette] | lang=en
+- "fishcenter_fish_props_rationale_1167": "small fishing boat (sun yellow, white stripe, teal bottom): hull, canvas sun roo" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L1167 | neighbors=[motor_boat(), Palette] | lang=en
+- "fishcenter_fish_props_rationale_118": "closed rectangle loop with nx points on the X sides and nz_ on the Z sides, side" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L118 | neighbors=[ring_rect(), Palette] | lang=en
+- "fishcenter_fish_props_rationale_1201": "glass dome aquarium: coral-stone ashlar drum with a teal cap course, glass hemis" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L1201 | neighbors=[aquarium_dome(), Palette] | lang=en
+- "fishcenter_fish_props_rationale_1283": "the lighthouse rising out of the dome: coral plinth, tapered tower in red / whit" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L1283 | neighbors=[lighthouse(), Palette] | lang=en
+- "fishcenter_fish_props_rationale_131": "one layer of thatch: outer surface from ringA (eave, fringed) up to ringB, a thi" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L131 | neighbors=[thatch_band(), Palette] | lang=en
+- "fishcenter_fish_props_rationale_160": "hip roof of `layers` overlapping fringed thatch bands; ridge bundle along X with" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L160 | neighbors=[thatch_hip(), Palette] | lang=en
+- "fishcenter_fish_props_rationale_193": "woven palm-mat infill between posts: strips 0.55 tall, alternating tone and dept" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L193 | neighbors=[mat_cell(), Palette] | lang=en
+- "fishcenter_fish_props_rationale_201": "wall panel L long, H high (local x -L/2..L/2), holes [(x0, x1, y0, y1)] left ope" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L201 | neighbors=[woven_wall(), Palette] | lang=es
+- "fishcenter_fish_props_rationale_220": "deck platform: planks along `along` with gaps, a dark skirt beam round it" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L220 | neighbors=[plank_floor(), Palette] | lang=en
+- "fishcenter_fish_props_rationale_237": "striped canvas awning off a wall at z (front = -Z): slopes out `depth`, down `dr" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L237 | neighbors=[awning(), Palette] | lang=pt
+- "fishcenter_fish_props_rationale_256": "BLANK carved sign board for a GUI label (no text): teak frame, light plank face," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L256 | neighbors=[sign_board(), Palette] | lang=en
+- "fishcenter_fish_props_rationale_266": "teak rail post with the signature cap: a teal glass float in a rope net on a col" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L266 | neighbors=[rail_post(), Palette] | lang=en
+- "fishcenter_fish_props_rationale_280": "SIGNATURE edge module: post at -L/2, two rope swags to +L/2 (next bay's post), s" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L280 | neighbors=[rail_bay(), Palette] | lang=en
 
 ## Instructions
 

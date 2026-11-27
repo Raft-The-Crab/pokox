@@ -1,4 +1,4 @@
-# Node Description Batch 52 of 207
+# Node Description Batch 52 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -17,6 +17,27 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "mute_bytecode": "bytecode.hpp" | kind=code-symbol | source=mute/include/poko/mute/bytecode.hpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, 85b7130 Close MUT-26 limits: AST-to-SSA…, 952997e Audit MUT-01-55 and harden veri…, c7a411f Fix MUT-01-20 audit defects in …]
+- "mute_declaration": "declaration.hpp" | kind=code-symbol | source=mute/include/poko/mute/declaration.hpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, DeclarationAst, DeclarationParser, c7a411f Fix MUT-01-20 audit defects in …]
+- "mute_device_router": "device_router.hpp" | kind=code-symbol | source=mute/include/poko/mute/device_router.hpp:L1 | neighbors=[952997e Audit MUT-01-55 and harden veri…, DeviceRouter, gamepad_device_code(), touch_device_code()]
+- "mute_scheduler": "scheduler.hpp" | kind=code-symbol | source=mute/include/poko/mute/scheduler.hpp:L1 | neighbors=[0621f1d Merge pull request #1 from Raft…, 34ca6de Fix GCC/Clang build: add <algor…, 435b4d3 Add MUT-23 cooperative async sc…, Scheduler]
+- "mute_statement": "statement.hpp" | kind=code-symbol | source=mute/include/poko/mute/statement.hpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, StatementAst, StatementParser, c7a411f Fix MUT-01-20 audit defects in …]
+- "mute_stdlib_math": "stdlib_math.hpp" | kind=code-symbol | source=mute/include/poko/mute/stdlib_math.hpp:L1 | neighbors=[1c81e45 Update from ML AI Code, 952997e Audit MUT-01-55 and harden veri…, SimClock, XorShift128Plus]
+- "mute_stdlib_physics": "stdlib_physics.hpp" | kind=code-symbol | source=mute/include/poko/mute/stdlib_physics.hpp:L1 | neighbors=[0d85dce Merge pull request #6 from Raft…, 1aefb72 MUT-42: physics hostcall bounda…, 2680d0e Pushed an update., 7eabc2d Merge pull request #8 from Raft…]
+- "net_crypto_aead_store64_le": "store64_le()" | kind=code-symbol | source=server/net/include/poko/net/crypto_aead.hpp:L44 | neighbors=[crypto_aead.hpp, aead_open(), aead_seal(), store32_le()]
+- "net_cube_sync": "cube_sync.hpp" | kind=code-symbol | source=server/net/include/poko/net/cube_sync.hpp:L1 | neighbors=[1dac49d Created NET-01 to NET-09, Start…, cube_schema(), CubePeer, exchange_over_udp()]
+- "net_ws_transport_ws_roundtrip": "ws_roundtrip()" | kind=code-symbol | source=server/net/include/poko/net/ws_transport.hpp:L109 | neighbors=[ws_transport.hpp, ws_decode(), ws_encode_client(), ws_encode_server()]
+- "oaktrees_gen_trees_bark_birch": "bark_birch()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L86 | neighbors=[gen_trees.py, fft_noise(), normal_from_height(), ramp()]
+- "oaktrees_gen_trees_bark_oak": "bark_oak()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L71 | neighbors=[gen_trees.py, fft_noise(), normal_from_height(), ramp()]
+- "oaktrees_gen_trees_canvas_leaf": ".leaf()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L153 | neighbors=[Canvas, .grid(), .over(), leaf_atlas()]
+- "oaktrees_gen_trees_contact_sheet": "contact_sheet()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L926 | neighbors=[gen_trees.py, load_px(), resize(), main()]
+- "oaktrees_gen_trees_img": "_img()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L976 | neighbors=[gen_trees.py, get_materials(), save_png(), paint + save the texture, or (maps) loa…]
+- "oaktrees_gen_trees_tree_env": ".env()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L357 | neighbors=[card_quads(), <1 inside the lumpy crown envelope., Tree, .children_of()]
+- "onsenvillage_onsen_map_add_owner": "add_owner()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L137 | neighbors=[onsen_map.py, free(), place(), static()]
+- "onsenvillage_onsen_map_bank_path": "bank_path()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L326 | neighbors=[onsen_map.py, H(), static(), flagstone path on the front bank from t…]
+- "onsenvillage_onsen_map_fit_bad": "fit_bad()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L162 | neighbors=[onsen_map.py, fit(), _inside_one(), _top()]
+- "onsenvillage_onsen_map_horizon": "horizon()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L245 | neighbors=[onsen_map.py, build(), static(), distant peaks far behind the saddle (pa…]
+- "onsenvillage_onsen_map_mirror": "mirror()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L116 | neighbors=[onsen_map.py, place(), the village is mirrored about x = 0: we…, village()]
 - "onsenvillage_onsen_map_mountains": "mountains()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L45 | neighbors=[onsen_map.py, ground(), H(), nature()]
 - "onsenvillage_onsen_map_rail_run": "rail_run()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L346 | neighbors=[onsen_map.py, place(), SIGNATURE: railing bays along a terrace…, village()]
 - "onsenvillage_onsen_map_steam": "steam()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L491 | neighbors=[onsen_map.py, build(), preview-only steam volumes over the hot…, free()]
@@ -36,27 +57,6 @@ one-sentence description — no prose, no markdown fences.
 - "onsenvillage_onsen_props_window": "window()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L137 | neighbors=[onsen_props.py, cut window: timber frame round the hole…, shopfront(), storey_walls()]
 - "package_build_tool_declared_identity": "declared_identity()" | kind=code-symbol | source=mute/src/package/build_tool.cpp:L97 | neighbors=[build_tool.cpp, build_project(), after_token(), next_quoted()]
 - "package_build_tool_parse_manifest": "parse_manifest()" | kind=code-symbol | source=mute/src/package/build_tool.cpp:L53 | neighbors=[build_tool.cpp, quoted(), string_array(), trim()]
-- "package_build_tool_quoted": "quoted()" | kind=code-symbol | source=mute/src/package/build_tool.cpp:L16 | neighbors=[build_tool.cpp, parse_manifest(), trim(), string_array()]
-- "package_build_tool_string_array": "string_array()" | kind=code-symbol | source=mute/src/package/build_tool.cpp:L22 | neighbors=[build_tool.cpp, parse_manifest(), quoted(), trim()]
-- "package_build_tool_trim": "trim()" | kind=code-symbol | source=mute/src/package/build_tool.cpp:L11 | neighbors=[build_tool.cpp, parse_manifest(), quoted(), string_array()]
-- "package_package_resolve_packages": "resolve_packages()" | kind=code-symbol | source=mute/src/package/package.cpp:L51 | neighbors=[package.cpp, inner_position(), parse_import_spec(), unquote()]
-- "petsim_pet_map_local": "local()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L195 | neighbors=[pet_map.py, egg_stand(), hub(), link()]
-- "petsim_pet_map_path_meshes": "path_meshes()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L246 | neighbors=[pet_map.py, build(), ribbon_mesh(), static()]
-- "petsim_pet_map_polar": "polar()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L40 | neighbors=[pet_map.py, breakables(), isle_at(), top_y()]
-- "petsim_pet_map_sea": "sea()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L561 | neighbors=[pet_map.py, build(), isle_R(), static()]
-- "petsim_pet_map_sub": "sub()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L22 | neighbors=[pet_map.py, place(), static(), link()]
-- "petsim_pet_props_cloud": "cloud()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L1043 | neighbors=[pet_props.py, puff(), soft(), frame cloud floating on the lagoon: 4-6…]
-- "petsim_pet_props_coin_pile": "coin_pile()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L668 | neighbors=[pet_props.py, flat(), vsh(), low gold mound with a short coin stack …]
-- "petsim_pet_props_crystal_clump": "crystal_clump()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L713 | neighbors=[pet_props.py, puff(), soft(), lilac rock base with 4-5 glowing hex cr…]
-- "petsim_pet_props_crystal_spire": "crystal_spire()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L969 | neighbors=[pet_props.py, puff(), soft(), big crystal cluster: soft rock base, 3-…]
-- "petsim_pet_props_crystal_tree": "crystal_tree()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L777 | neighbors=[pet_props.py, bubble_crown(), soft(), dream tree: pale twisty trunk, lilac pu…]
-- "petsim_pet_props_flower_patch": "flower_patch()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L809 | neighbors=[pet_props.py, ell(), flat(), 5-7 chibi daisies: thin stem, leaf, sca…]
-- "petsim_pet_props_glow_shroom": "glow_shroom()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L993 | neighbors=[pet_props.py, ell(), soft(), trio of round-capped glow mushrooms (cy…]
-- "petsim_pet_props_grass_tuft": "grass_tuft()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L827 | neighbors=[pet_props.py, ell(), soft(), chunky clover tuft: 3 rounded leaf blob…]
-- "petsim_pet_props_lamp_post": "lamp_post()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L1021 | neighbors=[pet_props.py, ell(), soft(), chibi lamp: bulgy base, slim post with …]
-- "petsim_pet_props_puff_tree": "puff_tree()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L742 | neighbors=[pet_props.py, bubble_crown(), soft(), lollipop / puffball tree: curved tapere…]
-- "petsim_pet_props_sea_rock": "sea_rock()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L1054 | neighbors=[pet_props.py, rounded lagoon rock with a little grass…, puff(), soft()]
-- "petsim_pet_props_soft_rock": "soft_rock()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L885 | neighbors=[pet_props.py, smooth pebble boulder (squashed soft lu…, puff(), soft()]
 
 ## Instructions
 

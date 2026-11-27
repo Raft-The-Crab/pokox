@@ -1,4 +1,4 @@
-# Node Description Batch 124 of 207
+# Node Description Batch 124 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -26,46 +26,46 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "scripts_bld_grid_cut": ".cut()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/scripts/bld.py:L31 | neighbors=[Grid, ._sl()] | lang=en
-- "scripts_bld_grid_export": ".export()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/scripts/bld.py:L100 | neighbors=[Grid, _c()] | lang=en
-- "scripts_bld_hx": "hx()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/scripts/bld.py:L11 | neighbors=[bld.py, _c()] | lang=en
-- "scripts_blocks_f": "_f()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/blocks.py:L154 | neighbors=[blocks.py, write_rbxmx()] | lang=en
-- "scripts_blocks_neon_mat": "neon_mat()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/blocks.py:L102 | neighbors=[blocks.py, mesh_blocks()] | lang=en
-- "scripts_blocks_rationale_112": "palette material + procedural studs (one round stud per `studs` studs, on every" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/blocks.py:L112 | neighbors=[stud_material(), MB] | lang=it
-- "scripts_blocks_rationale_157": "groups: {folder name: [Block, ...]} in world space. Writes a Model with one Fold" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/blocks.py:L157 | neighbors=[write_rbxmx(), MB] | lang=en
-- "scripts_blocks_rationale_21": "(pitch about X, yaw about Y, roll about Z) degrees, same order as pro_lib.xf" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/blocks.py:L21 | neighbors=[rotm(), MB] | lang=en
-- "scripts_blocks_rationale_72": "one solid mesh (palette + studs) + one mesh per neon colour + one for transparen" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/blocks.py:L72 | neighbors=[mesh_blocks(), MB] | lang=en
-- "scripts_blocks_shape_bm": "shape_bm()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/blocks.py:L53 | neighbors=[blocks.py, mesh_blocks()] | lang=en
-- "scripts_blocks_stud_material": "stud_material()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/blocks.py:L111 | neighbors=[blocks.py, palette material + procedural studs (on…] | lang=en
-- "scripts_bpyx_add_common": "add_common()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/_bpyx.py:L62 | neighbors=[_bpyx.py, --objects / --save flags shared by most…] | lang=en
-- "scripts_bpyx_enum_ids": "enum_ids()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/_bpyx.py:L104 | neighbors=[_bpyx.py, Valid identifiers of an enum property (…] | lang=en
-- "scripts_bpyx_mesh_tris": "mesh_tris()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/_bpyx.py:L117 | neighbors=[_bpyx.py, Triangle count (evaluated = with modifi…] | lang=en
-- "scripts_bpyx_node": "node()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/_bpyx.py:L99 | neighbors=[_bpyx.py, First node of `type_` (e.g. 'BSDF_PRINC…] | lang=en
-- "scripts_bpyx_object_mode": "object_mode()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/_bpyx.py:L83 | neighbors=[_bpyx.py, Leave edit/sculpt/pose modes; most data…] | lang=en
-- "scripts_bpyx_objects": "objects()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/_bpyx.py:L71 | neighbors=[_bpyx.py, Resolve names -> objects. No names: sel…] | lang=en
-- "scripts_bpyx_parser": "parser()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/_bpyx.py:L41 | neighbors=[_bpyx.py, ArgumentParser whose help is the script…] | lang=en
-- "scripts_bpyx_r": "r()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/_bpyx.py:L132 | neighbors=[_bpyx.py, Round a float or a vector for compact J…] | lang=en
-- "scripts_bpyx_select_only": "select_only()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/_bpyx.py:L90 | neighbors=[_bpyx.py, Select exactly `objs` and make `active`…] | lang=en
-- "scripts_bpyx_set_enum": "set_enum()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/_bpyx.py:L109 | neighbors=[_bpyx.py, Assign an enum; on failure raise listin…] | lang=en
-- "scripts_brick_rig_dilate6": "_dilate6()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/scripts/brick_rig.py:L51 | neighbors=[brick_rig.py, export()] | lang=en
-- "scripts_build_pbr_material_gltf_output_group": "_gltf_output_group()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-pbr-materials/scripts/build_pbr_material.py:L91 | neighbors=[build_pbr_material.py, run()] | lang=en
-- "scripts_build_pbr_material_srgb_to_lin": "_srgb_to_lin()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-pbr-materials/scripts/build_pbr_material.py:L57 | neighbors=[build_pbr_material.py, run()] | lang=en
-- "scripts_compare_bbox": "bbox()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/scripts/compare.py:L20 | neighbors=[compare.py, main()] | lang=en
-- "scripts_compare_concept_mask": "concept_mask()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/scripts/compare.py:L12 | neighbors=[compare.py, main()] | lang=en
-- "scripts_contact_sheet": "contact_sheet.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/contact_sheet.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …] | lang=en
-- "scripts_decal_grid": "_grid()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-texturing/scripts/decal.py:L63 | neighbors=[decal.py, run()] | lang=en
-- "scripts_decal_material": "_material()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-texturing/scripts/decal.py:L24 | neighbors=[decal.py, run()] | lang=en
-- "scripts_env_report_gpu": "_gpu()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-core/scripts/env_report.py:L17 | neighbors=[env_report.py, run()] | lang=en
-- "scripts_env_report_run": "run()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-core/scripts/env_report.py:L27 | neighbors=[env_report.py, _gpu()] | lang=en
-- "scripts_export_asset_coerce": "_coerce()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-export-pipelines/scripts/export_asset.py:L101 | neighbors=[export_asset.py, run()] | lang=en
-- "scripts_export_asset_export": "_export()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-export-pipelines/scripts/export_asset.py:L93 | neighbors=[export_asset.py, run()] | lang=en
-- "scripts_export_asset_gather": "_gather()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-export-pipelines/scripts/export_asset.py:L79 | neighbors=[export_asset.py, run()] | lang=en
-- "scripts_garment_region": "_region()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-clothing/scripts/garment.py:L29 | neighbors=[garment.py, run()] | lang=en
-- "scripts_garment_transfer_weights": "_transfer_weights()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-clothing/scripts/garment.py:L65 | neighbors=[garment.py, run()] | lang=en
-- "scripts_gn_builder_apply": "apply()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-geometry-nodes/scripts/gn_builder.py:L152 | neighbors=[gn_builder.py, run()] | lang=en
-- "scripts_gn_builder_parse_val": "_parse_val()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-geometry-nodes/scripts/gn_builder.py:L167 | neighbors=[gn_builder.py, run()] | lang=en
-- "scripts_gn_builder_sock": "_sock()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-geometry-nodes/scripts/gn_builder.py:L67 | neighbors=[gn_builder.py, build()] | lang=en
-- "scripts_groom_assets": "_assets()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-hair-grooming/scripts/groom.py:L35 | neighbors=[groom.py, groom()] | lang=en
+- "petsim_pet_props_rationale_934": "3-4 sugar-dusted gumdrops in candy colours" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L934 | neighbors=[gumdrops(), Palette] | lang=en
+- "petsim_pet_props_rationale_944": "pink-frosted donut lying tilted on the grass with sprinkles" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L944 | neighbors=[giant_donut(), Palette] | lang=en
+- "petsim_pet_props_rationale_970": "big crystal cluster: soft rock base, 3-5 tall glowing points" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L970 | neighbors=[crystal_spire(), Palette] | lang=en
+- "petsim_pet_props_rationale_983": "lilac curled post (a hook at the top) holding a glowing star lantern" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L983 | neighbors=[star_lamp(), Palette] | lang=pt
+- "petsim_sheet": "sheet.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/sheet.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …] | lang=en
+- "physics_character_controller_charactercontroller": "CharacterController" | kind=code-symbol | source=engine/physics/include/poko/physics/character_controller.hpp:L79 | neighbors=[character_controller.hpp, .CharacterController()] | lang=en
+- "physics_convex_shape": "convex_shape.hpp" | kind=code-symbol | source=engine/physics/include/poko/physics/convex_shape.hpp:L1 | neighbors=[69287a0 Land ENG-60-65 deterministic si…, ConvexShape] | lang=en
+- "physics_convex_shape_convexshape": "ConvexShape" | kind=code-symbol | source=engine/physics/include/poko/physics/convex_shape.hpp:L30 | neighbors=[convex_shape.hpp, .ConvexShape()] | lang=en
+- "physics_sap_broadphase": "sap_broadphase.hpp" | kind=code-symbol | source=engine/physics/include/poko/physics/sap_broadphase.hpp:L1 | neighbors=[69287a0 Land ENG-60-65 deterministic si…, SapBroadphase] | lang=en
+- "platform_i_platform": "i_platform.hpp" | kind=code-symbol | source=engine/platform/include/poko/platform/i_platform.hpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …] | lang=en
+- "platform_sdl_platform": "sdl_platform.hpp" | kind=code-symbol | source=engine/platform/include/poko/platform/sdl_platform.hpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …] | lang=en
+- "plugins_superpowers_cachechildsession": "_cacheChildSession()" | kind=code-symbol | source=.agents/skills/superpowers-main/.opencode/plugins/superpowers.js:L171 | neighbors=[superpowers.js, isChildSession()] | lang=en
+- "plugins_superpowers_getbootstrapcontent": "getBootstrapContent()" | kind=code-symbol | source=.agents/skills/superpowers-main/.opencode/plugins/superpowers.js:L122 | neighbors=[superpowers.js, extractAndStripFrontmatter()] | lang=en
+- "plugins_superpowers_ischildsession": "isChildSession()" | kind=code-symbol | source=.agents/skills/superpowers-main/.opencode/plugins/superpowers.js:L182 | neighbors=[superpowers.js, _cacheChildSession()] | lang=en
+- "plugins_superpowers_setup": "setup()" | kind=code-symbol | source=.agents/skills/superpowers-main/.opencode/plugins/superpowers.js:L295 | neighbors=[superpowers.js, extractAndStripFrontmatter()] | lang=en
+- "plusspeed_plus_props_big_arch": "big_arch()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props.py:L325 | neighbors=[plus_props.py, START / FINISH arch: two chunky towers,…] | lang=en
+- "plusspeed_plus_props_fix_rationale_98": "finish hero: 1-2-3 podium + a giant cylinder-built trophy (base, stem, flared cu" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_fix.py:L98 | neighbors=[trophy(), BlockProp] | lang=pt
+- "plusspeed_plus_props_fix_trophy": "trophy()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_fix.py:L97 | neighbors=[plus_props_fix.py, finish hero: 1-2-3 podium + a giant cyl…] | lang=en
+- "plusspeed_plus_props_trophy": "trophy()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props.py:L342 | neighbors=[plus_props.py, finish hero: 1-2-3 podium with a giant …] | lang=en
+- "plusspeed_plus_props_v3_gift": "gift()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v3.py:L77 | neighbors=[plus_props_v3.py, shop_stall()] | lang=en
+- "plusspeed_plus_props_v3_rationale_10": "block whose top edges are chamfered with 4 wedges (reads bevelled, not a raw cub" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v3.py:L10 | neighbors=[chamfer_block(), BlockProp] | lang=en
+- "plusspeed_plus_props_v3_rationale_112": "SPEED SHOP: platform with a ramp, panelled counter, back wall with shelves of sp" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v3.py:L112 | neighbors=[shop_stall(), BlockProp] | lang=en
+- "plusspeed_plus_props_v3_rationale_160": "EGG HATCHERY: tiered round base with rims, glass dome over a big spotted egg on" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v3.py:L160 | neighbors=[hatchery(), BlockProp] | lang=en
+- "plusspeed_plus_props_v3_rationale_197": "REBIRTH portal: 8-sided stepped dais with rune ring, a standing ring portal (tan" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v3.py:L197 | neighbors=[rebirth_altar(), BlockProp] | lang=en
+- "plusspeed_plus_props_v3_rationale_21": "8-sided column from two overlapping blocks" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v3.py:L21 | neighbors=[octo(), BlockProp] | lang=en
+- "plusspeed_plus_props_v3_rationale_220": "wins pad: stepped round base with a gold rim, glowing ring and centre emblem, a" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v3.py:L220 | neighbors=[wins_pad(), BlockProp] | lang=en
+- "plusspeed_plus_props_v3_rationale_30": "n blocks laid tangent around a circle (plane 'xy' = vertical ring facing Z, 'xz'" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v3.py:L30 | neighbors=[ring(), BlockProp] | lang=pt
+- "plusspeed_plus_props_v3_rationale_38": "gable roof along X: two wedges back to back + ridge trim" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v3.py:L38 | neighbors=[gable(), BlockProp] | lang=en
+- "plusspeed_plus_props_v3_rationale_45": "marquee light bulbs around a sign" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v3.py:L45 | neighbors=[bulbs_frame(), BlockProp] | lang=pt
+- "plusspeed_plus_props_v3_rationale_91": "street lantern pillar: chamfered stepped plinth, 8-sided banded column, capital," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v3.py:L91 | neighbors=[lamp_pillar(), BlockProp] | lang=en
+- "plusspeed_plus_props_v3_speed_shoe": "speed_shoe()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v3.py:L59 | neighbors=[plus_props_v3.py, shop_stall()] | lang=en
+- "plusspeed_plus_props_v3_treadmill": "treadmill()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v3.py:L239 | neighbors=[plus_props_v3.py, chamfer_block()] | lang=en
+- "plusspeed_plus_props_v4_kerb_lip": "kerb_lip()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v4.py:L47 | neighbors=[plus_props_v4.py, alternating colour / white kerb blocks …] | lang=en
+- "plusspeed_plus_props_v4_podium_board": "podium_board()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v4.py:L225 | neighbors=[plus_props_v4.py, plinth()] | lang=en
+- "plusspeed_plus_props_v4_rationale_18": "rows[0] is the top row. Art is centred on X at pos, bottom at pos.y, front face" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v4.py:L18 | neighbors=[pixel_art(), BlockProp] | lang=en
+- "plusspeed_plus_props_v4_rationale_39": "fn(x, y) -> char, x/y in -1..1 (y up); returns rows top->bottom" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v4.py:L39 | neighbors=[raster(), BlockProp] | lang=es
+- "plusspeed_plus_props_v4_rationale_48": "alternating colour / white kerb blocks with a wedge bevel on the outer edge; gro" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v4.py:L48 | neighbors=[kerb_lip(), BlockProp] | lang=en
+- "preserved_verify_preservation_capture": "capture()" | kind=code-symbol | source=assets/characters/preserved/verify_preservation.py:L12 | neighbors=[verify_preservation.py, floats()] | lang=en
+- "preserved_verify_preservation_floats": "floats()" | kind=code-symbol | source=assets/characters/preserved/verify_preservation.py:L8 | neighbors=[verify_preservation.py, capture()] | lang=en
+- "program_program_compile_program_bytecode": "compile_program_bytecode()" | kind=code-symbol | source=mute/src/program/program.cpp:L342 | neighbors=[program.cpp, prepare_globals()] | lang=en
 
 ## Instructions
 

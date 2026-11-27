@@ -1,4 +1,4 @@
-# Node Description Batch 18 of 207
+# Node Description Batch 18 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -17,6 +17,19 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "unit_action_map_test_game_map": "game_map()" | kind=code-symbol | source=mute/tests/unit/action_map_test.cpp:L51 | neighbors=[action_map_test.cpp, axis(), kb(), mouse(), pad(), tap()]
+- "unit_debugger_test": "debugger_test.cpp" | kind=code-symbol | source=mute/tests/unit/debugger_test.cpp:L1 | neighbors=[952997e Audit MUT-01-55 and harden veri…, arith(), cases(), check(), divzero(), imm()]
+- "unit_emit_test_position_cases": "position_cases()" | kind=code-symbol | source=mute/tests/unit/emit_test.cpp:L209 | neighbors=[emit_test.cpp, main(), arith_module(), check(), compile_source(), i32()]
+- "unit_emit_test_v": "v()" | kind=code-symbol | source=mute/tests/unit/emit_test.cpp:L15 | neighbors=[emit_test.cpp, arith_module(), calls_module(), cases(), hostcall_module(), position_cases()]
+- "unit_fixed_vec_test": "fixed_vec_test.cpp" | kind=code-symbol | source=engine/foundation/tests/unit/fixed_vec_test.cpp:L1 | neighbors=[06cfbe9 Narrowphase: local pair frame +…, 9eeb3ff Merge pull request #2 from Raft…, len_d(), main(), naive_dot(), naive_in_range()]
+- "unit_fold_test": "fold_test.cpp" | kind=code-symbol | source=mute/tests/unit/fold_test.cpp:L1 | neighbors=[4cead55 Add MUT-27 bytecode verificatio…, cases(), check(), count_op(), i32t(), main()]
+- "unit_lexer_contract_test": "lexer_contract_test.cpp" | kind=code-symbol | source=mute/tests/unit/lexer_contract_test.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, check(), deterministic_streams(), diagnostic(), examples(), main()]
+- "unit_ssa_test": "ssa_test.cpp" | kind=code-symbol | source=mute/tests/unit/ssa_test.cpp:L1 | neighbors=[fd66d0d Add MUT-25 typed SSA IR and ver…, cases(), check(), has(), i32(), main()]
+- "unit_stress_test_check": "check()" | kind=code-symbol | source=mute/tests/unit/stress_test.cpp:L20 | neighbors=[stress_test.cpp, bytecode_limits(), lexer_limits(), package_limits(), pipeline_limits(), program_limits()]
+- "unit_stress_test_main": "main()" | kind=code-symbol | source=mute/tests/unit/stress_test.cpp:L123 | neighbors=[stress_test.cpp, bytecode_limits(), lexer_limits(), package_limits(), pipeline_limits(), program_limits()]
+- "unit_vulkan_triangle_pass_test": "vulkan_triangle_pass_test.cpp" | kind=code-symbol | source=engine/rhi/tests/unit/vulkan_triangle_pass_test.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, draw_and_present(), main(), messages(), reset(), VulkanClearRenderer()]
+- "unit_worker_auth_test": "worker_auth_test.cpp" | kind=code-symbol | source=server/identity/tests/unit/worker_auth_test.cpp:L1 | neighbors=[6568dc9 Update from ML AI Code, check(), fake_rsa_verify(), main(), make_token(), sample_ticket()]
+- "valleylake_valley_map_reserve": "reserve()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L228 | neighbors=[valley_map.py, build(), cliffs(), nature(), rope_lines(), shore()]
 - "valleylake_valley_props_blossom_tree": "blossom_tree()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L289 | neighbors=[valley_props.py, clump(), flat(), leaf_cluster(), limb(), .add()]
 - "valleylake_valley_props_boulder": "boulder()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L148 | neighbors=[valley_props.py, moss_cap(), rim_shade(), rounded_mass(), RS(), .add()]
 - "valleylake_valley_props_dock": "dock()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L678 | neighbors=[valley_props.py, barrel(), crate(), flat(), paper_lantern(), .add()]
@@ -38,25 +51,12 @@ one-sentence description — no prose, no markdown fences.
 - "whispering_grove_forest_props_campfire": "campfire()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L392 | neighbors=[forest_props.py, at(), blob(), flame_tongue(), Prop, .add()]
 - "whispering_grove_forest_props_log": "log()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L264 | neighbors=[forest_props.py, at(), blob(), mushroom(), Prop, .add()]
 - "whispering_grove_forest_props_mushroom": "mushroom()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L229 | neighbors=[forest_props.py, log(), at(), Prop, .add(), .gadd()]
-- "window_sdl_platform": "sdl_platform.cpp" | kind=code-symbol | source=engine/platform/src/window/sdl_platform.cpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, create_window(), destroy_window(), get_window_size(), initialize(), poll_event()]
 - "work_test_uv_overlap_overlaptests": "OverlapTests" | kind=code-symbol | source=assets/characters/work/test_uv_overlap.py:L5 | neighbors=[test_uv_overlap.py, .test_bounding_boxes_overlap_but_triang…, .test_edge_and_point_contact_are_not_ov…, .test_identical_cross_mesh_triangles_ar…, .test_invalid_values_rejected(), .test_outside_atlas_and_degenerate()]
-- "animation_v2_build_refined": "build_refined.py" | kind=code-symbol | source=assets/characters/animation-v2/build_refined.py:L1 | neighbors=[ease(), foot(), interp(), loc(), rot(), Generate separate R6 clips from untouch…]
+- "animation_build_animations": "build_animations.py" | kind=code-symbol | source=assets/characters/animation/build_animations.py:L1 | neighbors=[foot(), interp(), loc(), rot(), smooth(), 52dbcb9 Surface graphics warnings in X1…]
 - "brainstorm_server_branding_test_test": "test()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/branding.test.js:L110 | neighbors=[branding.test.js, assertBrandedWithLogo(), assertFramedLogoSupportsDarkTheme(), assertFramedScreenUsesBrandHeader(), assertHeaderAvoidsNarrowOverlap(), assertLogoKeepsTransparentBackground()]
 - "brick_bone_hydra_brick_head": "head()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/bone_hydra_brick.py:L263 | neighbors=[bone_hydra_brick.py, dil(), J2L(), newid(), put(), sl_of()]
 - "brick_lich_king_brick_shift": "shift()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/lich_king_brick.py:L55 | neighbors=[lich_king_brick.py, back_layer(), cube_dil(), dil(), ero(), front_face()]
 - "brick_props_brick_grass_base": "grass_base()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/props_brick.py:L46 | neighbors=[props_brick.py, bush(), oak(), pine(), mossy ground disc with stepped edge + a…, rocks()]
-- "bytecode_bytecode_disassemble_bytecode": "disassemble_bytecode()" | kind=code-symbol | source=mute/src/bytecode/bytecode.cpp:L191 | neighbors=[bytecode.cpp, assemble_bytecode(), branch(), branch_offset(), long_offset(), mnemonic()]
-- "cad_skill_main_gridfinity_gridfinitybin_compartment_solids": "._compartment_solids()" | kind=code-symbol | source=.agents/skills/cad-skill-main/gridfinity.py:L569 | neighbors=[GridfinityBin, .build(), ._compartment_size(), ._label_shelf(), ._scoop(), _rounded_rect()]
-- "cad_skill_main_gridfinity_gridfinitybin_validate": "._validate()" | kind=code-symbol | source=.agents/skills/cad-skill-main/gridfinity.py:L321 | neighbors=[GridfinityBin, .build(), ._check_depth(), ._check_wall_clearance(), ._compartment_size(), ._cylinder_drop()]
-- "cad_skill_main_mesh_io": "mesh_io.py" | kind=code-symbol | source=.agents/skills/cad-skill-main/mesh_io.py:L1 | neighbors=[bed_fit(), estimate_mass(), load_mesh(), parse_bed(), Pure trimesh STL loading with validatio…, 2680d0e Pushed an update.]
-- "cad_skill_main_preview_render_multi_view": "render_multi_view()" | kind=code-symbol | source=.agents/skills/cad-skill-main/preview.py:L361 | neighbors=[preview.py, main(), Render 6-view technical preview in a 3x…, _build_scene(), _get_font(), _info_lines()]
-- "cad_skill_main_run_cadquery_model": "run_cadquery_model.py" | kind=code-symbol | source=.agents/skills/cad-skill-main/run_cadquery_model.py:L1 | neighbors=[_append_stderr(), main(), _new_files_by_ext(), _process_stls(), _sibling(), 2680d0e Pushed an update.]
-- "candyland_candy_props_drawbridge": "drawbridge()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L729 | neighbors=[candy_props.py, ball(), lathe(), MS(), round_prof(), striped_tube()]
-- "candyland_candy_props_drip": "drip()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L181 | neighbors=[candy_props.py, donut_arch(), lathe(), drip_ring(), giant_cone(), icing_cap()]
-- "candyland_candy_props_giant_cone": "giant_cone()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L1146 | neighbors=[candy_props.py, drip(), lathe(), soft(), waffle_lathe(), waffle_shade()]
-- "candyland_candy_props_icing_cap": "icing_cap()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L752 | neighbors=[candy_props.py, choco_falls(), gumdrop_mountain(), bell_r(), drip(), lathe()]
-- "candyland_candy_props_piping": "piping()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L211 | neighbors=[candy_props.py, candy_castle(), cone_tower(), icing piping along a polyline: beaded (…, sign_plate(), spawn_cookie()]
-- "candyland_candy_props_sugar": "sugar()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L50 | neighbors=[candy_props.py, bakery_oven(), choco_falls(), gumdrop_bush(), gumdrop_mountain(), sugar-coated: height gradient plus fine…]
 
 ## Instructions
 

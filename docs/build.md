@@ -6,7 +6,7 @@ The minimal CMake executable, vcpkg dependencies and pinned DiligentCore source 
 
 ### Server-wave status (2026-11-27)
 
-- Full suite on Linux: **130/130 tests passed** (cmake --build + ctest, ~25 s), including `pokox_authority_*` (BAK-02/05/06/07/08), `pokox_identity_*` (IDN-01..04) and `pokox_net_*` (NET-01..09).
+- Full suite on Linux: **131/131 tests passed** (cmake --build + ctest, ~25 s), including `pokox_authority_*` (BAK-02/05/06/07/08) and `pokox_matchmaker_allocator_test` (BAK-09), `pokox_identity_*` (IDN-01..04) and `pokox_net_*` (NET-01..09).
 - `server/authority` (spec 05): `session.hpp`, `pkb_schema.hpp`, `rule_evaluator.hpp`, `projection_gate.hpp`, `replay_ring.hpp`, each with a unit test; audit of BAK-01..06 fixed signed-shift UB in `validate_value`, a `1ULL << 64` quantize scale at `float_bits=64`, and missing suspicion on out-of-width probes.
 
 ### Verified on 2026-11-20

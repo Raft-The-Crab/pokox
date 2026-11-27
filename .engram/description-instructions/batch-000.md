@@ -1,4 +1,4 @@
-# Node Description Batch 1 of 207
+# Node Description Batch 1 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -27,6 +27,7 @@ one-sentence description — no prose, no markdown fences.
 - "scripts_pro_lib_palette": "Palette" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L36 | neighbors=[cotton-candy tree: twisting pretzel tru…, 3-5 sugar-coated gumdrops of different …, frame mountain: a huge sugar-coated gum…, a bean: tube along a gentle arc with ro…, rock' scatter: a heap of 6-9 glossy jel…, patch of fondant flowers: lime stems, 6…]
 - "commit:repo:github.com/Raft-The-Crab/pokox@2680d0e706ba1c80ef1e51f22aab399f4abb6d95": "2680d0e Pushed an update." | kind=Commit | source=git | neighbors=[__init__.py, operators.py, ui.py, trace_processor, character_blockout.py, explorer_build.py]
 - "commit:repo:github.com/Raft-The-Crab/pokox@e77fa31f6e8f186ec776a897d3f5fdbc2435dc64": "e77fa31 Add new skills and asset packs to .agents/skills" | kind=Commit | source=git | neighbors=[81d94fb Merge pull request #5 from Raft…, __init__.py, operators.py, ui.py, trace_processor, character_blockout.py]
+- "commit:repo:github.com/Raft-The-Crab/pokox@52dbcb928ed5f7ea8b81a6f983c23971a2826f91": "52dbcb9 Surface graphics warnings in X11 test failure output" | kind=Commit | source=git | neighbors=[build_animations.py, check_subframes.py, build_refined.py, check_gait.py, check_model_structure.py, validate_refined.py]
 - "commit:repo:github.com/Raft-The-Crab/pokox@c7a411f85ed05ea2f272624b312ea07488b41542": "c7a411f Fix MUT-01-20 audit defects in Mute parsers" | kind=Commit | source=git | neighbors=[build_animations.py, check_subframes.py, build_refined.py, check_gait.py, check_model_structure.py, validate_refined.py]
 - "scripts_pro_lib_mb": "MB" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L92 | neighbors=[trails, plazas, river, castle hill, fal…, one board tile: the polyline section s0…, board-game tile runs (TILE long, 0.7 ga…, chocolate river surface (glossy, streak…, icing poured over the frosting hilltops…, deferred foliage: place, test against a…]
 - "creaturelab_lab_props": "lab_props.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, adeg(), arc_wall(), art_frame(), ball()]
@@ -63,7 +64,6 @@ one-sentence description — no prose, no markdown fences.
 - "whispering_grove_forest_props_prop": "Prop" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L34 | neighbors=[village-square roll well: stone ring, t…, ice-fishing shanty: board walls on skid…, hero: stone terrace + a 60-stud ice cry…, grove pine re-shaded: every up-facing t…, log cabin: stacked logs with crossed co…, forest_props.py]
 - "brick_bone_hydra_brick": "bone_hydra_brick.py" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/bone_hydra_brick.py:L1 | neighbors=[B(), bez(), box(), build(), cap(), catmull()]
 - "cad_skill_main_gridfinity_gridfinitybin": "GridfinityBin" | kind=code-symbol | source=.agents/skills/cad-skill-main/gridfinity.py:L186 | neighbors=[gridfinity.py, .add_compartments(), .add_cylinder_pocket(), .add_finger_notch(), .add_pocket(), .add_polygon_pocket()]
-- "medievalbattle_battle_map": "battle_map.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, base(), build(), centre(), channels()]
 
 ## Instructions
 

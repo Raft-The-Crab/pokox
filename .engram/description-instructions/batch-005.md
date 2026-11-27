@@ -1,4 +1,4 @@
-# Node Description Batch 6 of 207
+# Node Description Batch 6 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -17,6 +17,8 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "candyland_candy_props_ms": "MS()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L38 | neighbors=[candy_props.py, bakery_oven(), candy_cane(), candy_castle(), candy_lamp(), cotton_candy_tree()]
+- "cavemap_cave_map_free": "free()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_map.py:L189 | neighbors=[cave_map.py, bvh_of(), clusters(), crystals(), dripstone(), fungi()]
 - "cavemap_cave_map_landmarks": "landmarks()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_map.py:L601 | neighbors=[cave_map.py, build(), anchor(), ceil_y(), face(), free()]
 - "cavemap_cave_map_wd": "wd()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_map.py:L142 | neighbors=[cave_map.py, clusters(), crystals(), dripstone(), floor(), fungi()]
 - "dunedesert_dune_props_v": "V()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L49 | neighbors=[dune_props.py, camel(), colossus_head(), dune_grass(), outcrop(), soft per-loop shade: height ramp + vert…]
@@ -41,7 +43,6 @@ one-sentence description — no prose, no markdown fences.
 - "tools_validate_skills": "validate_skills.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/tools/validate_skills.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, check_coverage(), check_skill(), collect_tech_ids(), find_skills()]
 - "towncity_town_vehicles": "town_vehicles.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_vehicles.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, body_shader(), body_shell(), bus(), car()]
 - "unit_action_map_test_main": "main()" | kind=code-symbol | source=mute/tests/unit/action_map_test.cpp:L69 | neighbors=[action_map_test.cpp, apply_events(), axis(), game_map(), kb(), key()]
-- "unit_opengl_clear_faults": "opengl_clear_faults.cpp" | kind=code-symbol | source=engine/rhi/tests/unit/opengl_clear_faults.cpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, bind(), get_attachment(), get_error(), get_int(), GetEngineFactoryOpenGL()]
 - "valleylake_valley_map_cliffs": "cliffs()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L612 | neighbors=[valley_map.py, build(), cliff_clear(), cliff_mesh(), face(), free()]
 - "vfxkit_textures": "textures.py" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/textures.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, flame_band(), helix(), inspect(), inspect_all()]
 - "warehouse_wh_equip": "wh_equip.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_equip.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, bollard(), charger_unit(), conveyor(), fire_point()]
@@ -56,7 +57,6 @@ one-sentence description — no prose, no markdown fences.
 - "creaturelab_lab_props_catch_ball": "catch_ball()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1844 | neighbors=[lab_props.py, ball_lineup(), capsule(), ball(), _ball_sh(), leaf_poly()]
 - "creaturelab_lab_props_upright": "upright()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L95 | neighbors=[lab_props.py, art_frame(), emblem(), ext_bench(), heal_machine(), lab_archway()]
 - "dunedesert_gen_trees_with_palms_canvas": "Canvas" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L114 | neighbors=[gen_trees_with_palms.py, .capsule_path(), .finish(), .grid(), .__init__(), .leaf()]
-- "effekseer_ai_authoring": "authoring.py" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/authoring.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, _code(), compile_effect(), cutoff_easing(), layer_schema()]
 
 ## Instructions
 

@@ -1,4 +1,4 @@
-# Node Description Batch 42 of 207
+# Node Description Batch 42 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -17,6 +17,21 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "unit_package_test": "package_test.cpp" | kind=code-symbol | source=mute/tests/unit/package_test.cpp:L1 | neighbors=[c7e951a Add MUT-21 package, import and …, cases(), expect_error(), expect_ok(), main()]
+- "unit_parser_test_cases": "cases()" | kind=code-symbol | source=mute/tests/unit/parser_test.cpp:L40 | neighbors=[parser_test.cpp, check(), parse_error(), tree(), main()]
+- "unit_parser_test_check": "check()" | kind=code-symbol | source=mute/tests/unit/parser_test.cpp:L12 | neighbors=[parser_test.cpp, cases(), randomized_input(), stress(), tree()]
+- "unit_replay_ring_test": "replay_ring_test.cpp" | kind=code-symbol | source=server/authority/tests/unit/replay_ring_test.cpp:L1 | neighbors=[6e2fe3a Created BAK-7 and other BAK tas…, check(), main(), same_event(), same_tick()]
+- "unit_run_seed_checks": "run_seed_checks.py" | kind=code-symbol | source=engine/rhi/tests/unit/run_seed_checks.py:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, 952997e Audit MUT-01-55 and harden veri…, run(), Portable GCC/Clang-compatible seed chec…, c7a411f Fix MUT-01-20 audit defects in …]
+- "unit_sap_broadphase_test": "sap_broadphase_test.cpp" | kind=code-symbol | source=engine/physics/tests/unit/sap_broadphase_test.cpp:L1 | neighbors=[69287a0 Land ENG-60-65 deterministic si…, box(), lo(), main(), sorted_pairs()]
+- "unit_scheduler_test": "scheduler_test.cpp" | kind=code-symbol | source=mute/tests/unit/scheduler_test.cpp:L1 | neighbors=[435b4d3 Add MUT-23 cooperative async sc…, cases(), check(), fin(), main()]
+- "unit_statement_test_cases": "cases()" | kind=code-symbol | source=mute/tests/unit/statement_test.cpp:L36 | neighbors=[statement_test.cpp, check(), dump(), error(), main()]
+- "unit_statement_test_check": "check()" | kind=code-symbol | source=mute/tests/unit/statement_test.cpp:L12 | neighbors=[statement_test.cpp, cases(), depth_guard(), dump(), randomized_input()]
+- "unit_stdlib_physics_test": "stdlib_physics_test.cpp" | kind=code-symbol | source=mute/tests/unit/stdlib_physics_test.cpp:L1 | neighbors=[2680d0e Pushed an update., 7eabc2d Merge pull request #8 from Raft…, box_at(), main(), test_physics_hostcalls()]
+- "unit_test_math_determinism_tracetests_write": ".write()" | kind=code-symbol | source=mute/tests/unit/test_math_determinism.py:L20 | neighbors=[TraceTests, .check_invalid(), .test_corpus_corruption_rejected(), .test_match_is_only_agreement(), .test_same_target_is_not_cross_platform…]
+- "unit_worker_auth_test_main": "main()" | kind=code-symbol | source=server/identity/tests/unit/worker_auth_test.cpp:L72 | neighbors=[worker_auth_test.cpp, check(), make_token(), sample_ticket(), test_key()]
+- "valleylake_valley_map_cliff_mesh": "cliff_mesh()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L569 | neighbors=[valley_map.py, ledge_n(), rim_point(), static(), cliffs()]
+- "valleylake_valley_map_clip_fail": "clip_fail()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L184 | neighbors=[valley_map.py, cliff_clear(), inside(), place_soft(), True if a placed soft prop clips into s…]
+- "valleylake_valley_map_face": "face()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L226 | neighbors=[valley_map.py, build(), cliffs(), shore(), stations_and_village()]
 - "valleylake_valley_map_foot_need": "foot_need()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L463 | neighbors=[valley_map.py, build_profile(), polar(), rim_r(), minimum foot offset per sample so every…]
 - "valleylake_valley_map_paths": "paths()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L284 | neighbors=[valley_map.py, build(), H(), static(), dirt paths = draped ribbons 0.12 over t…]
 - "valleylake_valley_map_polar": "polar()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L431 | neighbors=[valley_map.py, foot_need(), ground(), rim_r(), prof()]
@@ -42,21 +57,6 @@ one-sentence description — no prose, no markdown fences.
 - "vfxkit_evidence_read_build": "read_build()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/evidence.py:L107 | neighbors=[evidence.py, build_issues(), capture_issues(), store(), write_capture()]
 - "vfxkit_evidence_submit": "submit()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/evidence.py:L215 | neighbors=[evidence.py, capture_issues(), now(), read_capture(), store()]
 - "vfxkit_evidence_write_build": "write_build()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/evidence.py:L77 | neighbors=[evidence.py, inputs(), now(), outputs(), store()]
-- "vfxkit_evidence_write_capture": "write_capture()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/evidence.py:L175 | neighbors=[evidence.py, dependencies(), now(), read_build(), store()]
-- "vfxkit_filelock": "filelock.py" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/filelock.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, acquire(), release(), Exclusive, blocking, cross-process file…]
-- "vfxkit_handoff": "handoff.py" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/handoff.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, handoff(), reviewer_skill(), Everything an independent reviewer need…]
-- "vfxkit_library_load": "load()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/library.py:L41 | neighbors=[library.py, get(), library(), _forget_helpers(), partial()]
-- "vfxkit_library_partial": "partial()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/library.py:L66 | neighbors=[library.py, describe(), load(), sources(), Recipes for `ids` must load; the rest a…]
-- "vfxkit_lint_features": "features()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/lint.py:L92 | neighbors=[lint.py, compare_elements(), look(), moves(), stem()]
-- "vfxkit_lint_lint_library": "lint_library()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/lint.py:L212 | neighbors=[lint.py, compare_elements(), documented_textures(), lint(), Lint `recipes`; element differences are…]
-- "vfxkit_ownership_owned": "owned()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/ownership.py:L23 | neighbors=[ownership.py, digest(), valid_id(), Built by this skill, so a full build ma…, unmanaged()]
-- "vfxkit_primitives_hard_edge": "hard_edge()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/primitives.py:L522 | neighbors=[primitives.py, Read a greyscale mask as a crisp toon s…, spike_crown(), spiral_ribbons(), stylized_pair()]
-- "vfxkit_primitives_life_max": "life_max()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/primitives.py:L301 | neighbors=[primitives.py, budget(), lifetime(), mesh(), spike_crown()]
-- "vfxkit_primitives_radial_sparks": "radial_sparks()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/primitives.py:L43 | neighbors=[primitives.py, beam(), sprite(), Motion-aligned streaks thrown from a sp…, spark_burst()]
-- "vfxkit_primitives_smoke": "smoke()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/primitives.py:L138 | neighbors=[primitives.py, beam(), Alpha-blended puffs that grow and slow …, fade(), sprite()]
-- "vfxkit_primitives_spike_crown": "spike_crown()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/primitives.py:L561 | neighbors=[primitives.py, Jagged dark spikes erupting round a bea…, hard_edge(), life_max(), mesh()]
-- "vfxkit_reference_read": "read()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/reference.py:L19 | neighbors=[reference.py, compare(), frames(), import_clip(), checked_id()]
-- "vfxkit_scale_time": "_time()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/scale.py:L72 | neighbors=[scale.py, _layers(), _frames(), _life(), _map()]
 
 ## Instructions
 

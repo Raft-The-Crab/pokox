@@ -1,4 +1,4 @@
-# Node Description Batch 20 of 207
+# Node Description Batch 20 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -17,6 +17,21 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "creaturelab_lab_props_leaf_ball": "leaf_ball()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1030 | neighbors=[lab_props.py, bush(), .add(), long_planter(), potted_tree(), chunky stylised leaf mass: a blob + a f…]
+- "creaturelab_lab_props_leaf_cluster": "leaf_cluster()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1373 | neighbors=[lab_props.py, fig_tree(), hanging_planter(), ball(), .add(), clustered round leaves: n small smooth …]
+- "creaturelab_lab_props_leaf_mass": "leaf_mass()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L2041 | neighbors=[lab_props.py, clump(), leaf_sh(), .add(), olive_tree(), park_tree()]
+- "creaturelab_lab_props_leaf_poly": "leaf_poly()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L100 | neighbors=[lab_props.py, catch_ball(), emblem(), evo_chamber(), med_shelf(), plush()]
+- "creaturelab_lab_props_plush": "plush()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1562 | neighbors=[lab_props.py, heal_corner(), ball(), leaf_poly(), .add(), upright()]
+- "creaturelab_lab_props_pot_plant": "pot_plant()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L253 | neighbors=[lab_props.py, heal_counter(), lerp(), .add(), small round pot + leafy sprouts (used o…, rest_nook()]
+- "creaturelab_lab_props_round_bush": "round_bush()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1510 | neighbors=[lab_props.py, smooth round shrub: soft leaf mound wit…, ball(), leaf_cluster(), .add(), round_planter()]
+- "creaturelab_lab_props_supply_boxes": "supply_boxes()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1610 | neighbors=[lab_props.py, Shop story: stacked supply cartons (cre…, capsule(), emblem(), rbox(), .add()]
+- "creaturelab_lab_props_wall_shelf_lab": "wall_shelf_lab()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1254 | neighbors=[lab_props.py, lab wall shelving: steel frame, binders…, bottle(), pot_plant(), rbox(), shelf_frame()]
+- "creaturelab_lab_props_welcome_sign": "welcome_sign()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1151 | neighbors=[lab_props.py, entry monolith on the path: rounded whi…, emblem_badge(), merge_prop(), rbox(), round_bush()]
+- "device_clear_backend_selection": "clear_backend_selection.cpp" | kind=code-symbol | source=engine/rhi/src/device/clear_backend_selection.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, clear_and_present(), ClearBackend, ClearBackendSelection(), shutdown(), start()]
+- "device_fallback_clear_backends": "fallback_clear_backends.cpp" | kind=code-symbol | source=engine/rhi/src/device/fallback_clear_backends.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, clear_and_present(), initialize(), OpenGLClearBackend, shutdown(), VulkanClearBackend]
+- "device_poko_jni": "poko_jni.cpp" | kind=code-symbol | source=engine/rhi/src/device/poko_jni.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, Java_com_poko_glesclear_PokoActivity_na…, Java_com_poko_glesclear_PokoActivity_na…, Java_com_poko_glesclear_PokoActivity_na…, run_probe(), write_line()]
+- "dunedesert_dune_map_fragments": "fragments()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L519 | neighbors=[dune_map.py, build(), free(), on_path(), place(), reserve()]
+- "dunedesert_dune_map_free": "free()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L166 | neighbors=[dune_map.py, add_owner(), build_solid(), fragments(), look(), nature()]
 - "dunedesert_dune_map_reserve": "reserve()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L167 | neighbors=[dune_map.py, build(), dig_spots(), fragments(), nature(), set_pieces()]
 - "dunedesert_dune_map_set_pieces": "set_pieces()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L357 | neighbors=[dune_map.py, build(), anchor(), face(), place(), reserve()]
 - "dunedesert_dune_map_waystones": "waystones()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L448 | neighbors=[dune_map.py, build(), path markers every ~30 studs along each…, face(), free(), place()]
@@ -42,21 +57,6 @@ one-sentence description — no prose, no markdown fences.
 - "eggplots_egg_props_post": "post()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L152 | neighbors=[egg_props.py, egg_drain(), fence_post(), owner_sign(), rbox(), sh()]
 - "eggplots_egg_props_upright": "upright()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L59 | neighbors=[egg_props.py, barn(), coop(), fence_run(), owner_sign(), 2D poly [(x, up)] standing upright faci…]
 - "evaluator_evaluator_width": "width()" | kind=code-symbol | source=mute/src/evaluator/evaluator.cpp:L45 | neighbors=[evaluator.cpp, evaluate_arithmetic(), materialize(), signed_binary(), suffix_length(), unary()]
-- "examples_arctic_fox": "arctic_fox.py" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/arctic_fox.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, build(), idle(), pounce(), wag()]
-- "examples_bunny": "bunny.py" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/bunny.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, big_jump(), build(), ear_wiggle(), hop()]
-- "examples_duck": "duck.py" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/duck.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, build(), flap(), idle(), quack()]
-- "examples_owl": "owl.py" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/owl.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, build(), flap(), head_turn(), idle()]
-- "examples_penguin": "penguin.py" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/penguin.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, build(), flap(), idle(), slide()]
-- "examples_red_panda": "red_panda.py" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/red_panda.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, build(), idle(), pounce(), wag()]
-- "fishcenter_fish_props_aquarium_dome": "aquarium_dome()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L1200 | neighbors=[fish_props.py, brain_coral(), coral_branch(), fish(), _merge_prop(), sign_board()]
-- "fishcenter_fish_props_barrel": "barrel()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L552 | neighbors=[fish_props.py, bait_shop(), lerp(), barrels(), fish_market(), motor_boat()]
-- "fishcenter_fish_props_crate": "crate()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L525 | neighbors=[fish_props.py, fish(), local(), crate_stack(), fish_market(), quest_board()]
-- "fishcenter_fish_props_welcome_arch": "welcome_arch()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L1081 | neighbors=[fish_props.py, WELCOME ARCH on the spawn axis: two las…, ball(), fish(), lash(), pole()]
-- "foundation_fixed": "fixed.hpp" | kind=code-symbol | source=engine/foundation/include/poko/foundation/fixed.hpp:L1 | neighbors=[69287a0 Land ENG-60-65 deterministic si…, cos(), divide(), Fixed, sin(), sine_lookup()]
-- "foundation_vec3f": "vec3f.hpp" | kind=code-symbol | source=engine/foundation/include/poko/foundation/vec3f.hpp:L1 | neighbors=[69287a0 Land ENG-60-65 deterministic si…, cross(), dot(), length(), lengthSquared(), normalized()]
-- "hermes_plugin_init": "__init__.py" | kind=code-symbol | source=.agents/skills/superpowers-main/.hermes-plugin/__init__.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, _build_bootstrap(), _frontmatter_value(), register(), _skills_dir()]
-- "hermes_test_bootstrap": "test_bootstrap.py" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/hermes/test_bootstrap.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, _bootstrap(), _load(), TestBootstrapContent, TestSkillsDirResolution]
-- "hermes_test_bootstrap_load": "_load()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/hermes/test_bootstrap.py:L18 | neighbors=[test_bootstrap.py, _bootstrap(), .test_tool_mapping_sourced_from_referen…, .test_repo_layout_resolves(), .test_no_frontmatter_returns_trimmed_co…, .test_strips_surrounding_whitespace_fro…]
 
 ## Instructions
 

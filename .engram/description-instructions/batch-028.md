@@ -1,4 +1,4 @@
-# Node Description Batch 29 of 207
+# Node Description Batch 29 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -17,6 +17,25 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "passes_cube_demo": "cube_demo.cpp" | kind=code-symbol | source=engine/render/src/passes/cube_demo.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, Exception, cube_indices(), cube_vertices(), main(), c7a411f Fix MUT-01-20 audit defects in …]
+- "petsim_pet_map_anchor": "anchor()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L202 | neighbors=[pet_map.py, breakables(), egg_stand(), hub(), link(), zone_bounds()]
+- "petsim_pet_map_edge_pt": "edge_pt()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L281 | neighbors=[pet_map.py, build(), isle_R(), fence_ring(), hub(), link()]
+- "petsim_pet_map_isle_at": "isle_at()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L43 | neighbors=[pet_map.py, breakables(), H(), isle_R(), polar(), place_soft()]
+- "petsim_pet_map_place_soft": "place_soft()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L178 | neighbors=[pet_map.py, build(), clip_fail(), isle_at(), place(), unplace()]
+- "petsim_pet_map_zone": "zone()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L453 | neighbors=[pet_map.py, candy(), crystal(), meadow(), egg_stand(), path()]
+- "petsim_pet_map_zone_bounds": "zone_bounds()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L375 | neighbors=[pet_map.py, candy(), crystal(), hub(), meadow(), anchor()]
+- "petsim_pet_props_egg_stand": "egg_stand()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L566 | neighbors=[pet_props.py, egg(), puff(), rcyl(), soft(), fluted cake pedestal with a glowing rin…]
+- "petsim_pet_props_fence": "fence()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L1005 | neighbors=[pet_props.py, ell(), rbox(), rcyl(), soft(), chunky rail fence segment from x = 0 to…]
+- "petsim_pet_props_lollipop": "lollipop()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L892 | neighbors=[pet_props.py, ell(), flat(), rcyl(), soft(), giant swirl lollipop: two interleaved c…]
+- "petsim_pet_props_paw": "paw()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L127 | neighbors=[pet_props.py, ell(), soft(), paw-print icon: palm pad + 4 toe beans,…, spawn_pad(), zone_gate()]
+- "petsim_pet_props_pet_shop": "pet_shop()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L357 | neighbors=[pet_props.py, ell(), pill(), rcyl(), soft(), open-front kiosk: round dais, curved ba…]
+- "petsim_pet_props_pet_statue": "pet_statue()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L323 | neighbors=[pet_props.py, ell(), puff(), puffpaw(), soft(), the Puffpaw statue + its quilted cushio…]
+- "petsim_pet_props_star": "star()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L119 | neighbors=[pet_props.py, rainbow_arch(), a chunky star standing upright facing -…, star_poly(), star_lamp(), upgrade_machine()]
+- "petsim_pet_props_trade_booth": "trade_booth()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L486 | neighbors=[pet_props.py, round trade table with a big scalloped …, ell(), rbox(), rcyl(), soft()]
+- "petsim_pet_props_vsh": "vsh()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L47 | neighbors=[pet_props.py, bridge(), coin_pile(), flat(), pet_fountain(), soft()]
+- "plusspeed_plus_map_dress_caps": "dress_caps()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_map.py:L88 | neighbors=[plus_map.py, place(), finish(), hub(), put theme props on cap tops (centre of …, zone()]
+- "plusspeed_plus_map_finish": "finish()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_map.py:L192 | neighbors=[plus_map.py, blk(), dress_caps(), floor(), place(), walls()]
+- "plusspeed_plus_map_zone": "zone()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_map.py:L160 | neighbors=[plus_map.py, blk(), dress_caps(), floor(), place(), walls()]
 - "plusspeed_plus_props_v4_plinth": "plinth()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v4.py:L59 | neighbors=[plus_props_v4.py, egg_hatchery(), pixel_art(), podium_board(), rebirth_portal(), sneaker_shop()]
 - "plusspeed_plus_props_v4_raster": "raster()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v4.py:L38 | neighbors=[plus_props_v4.py, egg_rows(), medal_rows(), portal_rows(), fn(x, y) -> char, x/y in -1..1 (y up); …, stopwatch_rows()]
 - "program_program_fail": "fail()" | kind=code-symbol | source=mute/src/program/program.cpp:L20 | neighbors=[program.cpp, Depth(), prepare_globals(), run_program_reference(), run_stateful_program(), run_stateful_program_bytecode()]
@@ -38,25 +57,6 @@ one-sentence description — no prose, no markdown fences.
 - "scripts_post": "post.py" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/scripts/post.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, ffmpeg(), main(), outline(), Post-process renders from studlib.py: b…]
 - "scripts_render_batch": "render_batch.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-rendering/scripts/render_batch.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, _frames(), _gpu(), run(), Render stills/animations with quality p…]
 - "scripts_rigify_build_run": "run()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-character-rigging/scripts/rigify_build.py:L148 | neighbors=[rigify_build.py, _ensure_rigify(), _fit(), game_skeleton(), _generate(), _remove_face()]
-- "scripts_scanner_get_scanner_config": "get_scanner_config()" | kind=code-symbol | source=.agents/skills/skills-main/play/play-policy-insights/scripts/scanner.py:L36 | neighbors=[scanner.py, collect_target_files(), get_supported_extensions(), _identify_semantic_files(), perform_scan(), Loads the scanner configuration from sc…]
-- "scripts_scanner_get_supported_extensions": "get_supported_extensions()" | kind=code-symbol | source=.agents/skills/skills-main/play/play-policy-insights/scripts/scanner.py:L55 | neighbors=[scanner.py, collect_target_files(), get_scanner_config(), _identify_semantic_files(), Returns a tuple of supported file exten…, _scan_single_file()]
-- "scripts_sculpt_ops": "sculpt_ops.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-sculpting/scripts/sculpt_ops.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, _apply(), _ctx(), run(), Headless-safe sculpt preparation and pr…]
-- "scripts_sim_setup_run": "run()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-simulation/scripts/sim_setup.py:L82 | neighbors=[sim_setup.py, _asset_group(), _ctx(), _num(), _set_inputs(), _volume()]
-- "scripts_smart_material_g_n": ".n()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-texturing/scripts/smart_material.py:L51 | neighbors=[build_group(), _G, .math(), .mix(), .mrange(), .noise()]
-- "scripts_smart_material_run": "run()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-texturing/scripts/smart_material.py:L275 | neighbors=[smart_material.py, _apply_mat(), build_group(), curvature_attribute(), _lin(), _remove_mat()]
-- "scripts_template_engine_ifnode": "IfNode" | kind=code-symbol | source=.agents/skills/skills-main/play/play-policy-insights/scripts/template_engine.py:L72 | neighbors=[template_engine.py, compile_template(), .__init__(), .render(), Node, Represents conditional block logic (IF,…]
-- "scripts_template_engine_textnode": "TextNode" | kind=code-symbol | source=.agents/skills/skills-main/play/play-policy-insights/scripts/template_engine.py:L46 | neighbors=[template_engine.py, compile_template(), Represents raw static text blocks., Node, .__init__(), .render()]
-- "scripts_template_engine_varnode": "VarNode" | kind=code-symbol | source=.agents/skills/skills-main/play/play-policy-insights/scripts/template_engine.py:L56 | neighbors=[template_engine.py, compile_template(), Represents dynamic variable interpolati…, Node, .__init__(), .render()]
-- "scripts_toon_setup_g_n": ".n()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-stylized-npr/scripts/toon_setup.py:L48 | neighbors=[build_group(), _G, .math(), .mix(), .step(), .vmath()]
-- "scripts_track_camera": "track_camera.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-video-editing/scripts/track_camera.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, _clip_area(), run(), _solve(), Automatic camera solve from footage: de…]
-- "scripts_turntable_run": "run()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-lighting-lookdev/scripts/turntable.py:L83 | neighbors=[turntable.py, _area(), _backdrop(), _bounds(), _clear(), _fcurves()]
-- "scripts_uv_pack": "uv_pack.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-retopology-uv/scripts/uv_pack.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, _collapsed_ratio(), run(), _seams_from_sharp(), Unwrap + pack UVs with production defau…]
-- "semantic_fold": "fold.cpp" | kind=code-symbol | source=mute/src/semantic/fold.cpp:L1 | neighbors=[4cead55 Add MUT-27 bytecode verificatio…, eval_binary(), eval_compare(), eval_unary(), fold_constants(), int_scalar()]
-- "skyrise_sky_map_free": "free()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_map.py:L111 | neighbors=[sky_map.py, look(), micro_detail(), rim_dress(), spawn_island(), zone_island()]
-- "skyrise_sky_map_h": "H()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_map.py:L44 | neighbors=[sky_map.py, bridge_ends(), island_at(), Hm(), island_mesh(), path_track()]
-- "skyrise_sky_map_island_mesh": "island_mesh()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_map.py:L128 | neighbors=[sky_map.py, build(), H(), place(), rim(), sub()]
-- "skyrise_sky_map_winding_path": "winding_path()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_map.py:L181 | neighbors=[sky_map.py, stepping-stone path from the entry brid…, island_at(), place(), reserve(), zone_island()]
-- "skyrise_sky_props_trophy": "trophy()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L466 | neighbors=[sky_props.py, HERO: giant golden trophy on a tiered m…, gem(), lathe(), sphere(), torus()]
 
 ## Instructions
 

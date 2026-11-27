@@ -1,4 +1,4 @@
-# Node Description Batch 172 of 207
+# Node Description Batch 172 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -12,51 +12,58 @@ describing what it is or does. Use only the provided context.
 For a code symbol (kind=code-symbol — a function, class, or constant),
 describe what the function/symbol does based on its name, source location
 and neighbors — e.g. "Resolves the configured ontology profile from graphify.yaml.".
+For an entity node (any other kind — e.g. a person, place, event, object),
+describe what the entity is and its role, grounded in its type, its
+relations (neighbors) and the provided citations/evidence — e.g.
+"Lady Carfax, a wealthy heiress who disappears en route to Lausanne.".
+Ground entity descriptions in the citations/evidence when present; do not
+speculate beyond the context, so a node with no supporting context may be
+left out of the reply.
 Write every description in English (en). Do not switch languages.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "opencode_test_bootstrap_caching_assertmappingconstants": "assertMappingConstants()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-bootstrap-caching.mjs:L172 | neighbors=[test-bootstrap-caching.mjs]
-- "opencode_test_bootstrap_caching_assertmissingbootstrap": "assertMissingBootstrap()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-bootstrap-caching.mjs:L152 | neighbors=[test-bootstrap-caching.mjs]
-- "opencode_test_bootstrap_caching_assertpresentbootstrap": "assertPresentBootstrap()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-bootstrap-caching.mjs:L120 | neighbors=[test-bootstrap-caching.mjs]
-- "opencode_test_bootstrap_caching_assertteachesbareskillids": "assertTeachesBareSkillIds()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-bootstrap-caching.mjs:L214 | neighbors=[test-bootstrap-caching.mjs]
-- "opencode_test_bootstrap_caching_assertv2bootstrap": "assertV2Bootstrap()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-bootstrap-caching.mjs:L265 | neighbors=[test-bootstrap-caching.mjs]
-- "opencode_test_bootstrap_caching_bootstraptext": "bootstrapText()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-bootstrap-caching.mjs:L114 | neighbors=[test-bootstrap-caching.mjs]
-- "opencode_test_bootstrap_caching_countbootstrapparts": "countBootstrapParts()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-bootstrap-caching.mjs:L108 | neighbors=[test-bootstrap-caching.mjs]
-- "opencode_test_bootstrap_caching_firstoutput": "firstOutput" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-bootstrap-caching.mjs:L39 | neighbors=[test-bootstrap-caching.mjs]
-- "opencode_test_bootstrap_caching_isbootstrapskillpath": "isBootstrapSkillPath()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-bootstrap-caching.mjs:L95 | neighbors=[test-bootstrap-caching.mjs]
-- "opencode_test_bootstrap_caching_makeoutput": "makeOutput()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-bootstrap-caching.mjs:L99 | neighbors=[test-bootstrap-caching.mjs]
-- "opencode_test_bootstrap_caching_mappingfailures": "mappingFailures" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-bootstrap-caching.mjs:L37 | neighbors=[test-bootstrap-caching.mjs]
-- "opencode_test_bootstrap_caching_result": "result" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-bootstrap-caching.mjs:L52 | neighbors=[test-bootstrap-caching.mjs]
-- "opencode_test_bootstrap_caching_runv2contexthook": "runV2ContextHook()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-bootstrap-caching.mjs:L230 | neighbors=[test-bootstrap-caching.mjs]
-- "opencode_test_bootstrap_caching_secondoutput": "secondOutput" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-bootstrap-caching.mjs:L43 | neighbors=[test-bootstrap-caching.mjs]
-- "opencode_test_hook_registration_capturehooks": "captureHooks()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-hook-registration.mjs:L18 | neighbors=[test-hook-registration.mjs]
-- "opencode_test_hook_registration_event": "event()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-hook-registration.mjs:L31 | neighbors=[test-hook-registration.mjs]
-- "opencode_test_hook_registration_pluginurl": "pluginURL" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-hook-registration.mjs:L14 | neighbors=[test-hook-registration.mjs]
-- "opencode_test_hook_registration_session": "session()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-hook-registration.mjs:L38 | neighbors=[test-hook-registration.mjs]
-- "opencode_test_session_bootstrap_bootstrapcount": "bootstrapCount()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-session-bootstrap.mjs:L25 | neighbors=[test-session-bootstrap.mjs]
-- "opencode_test_session_bootstrap_checkpoint": "checkpoint" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-session-bootstrap.mjs:L167 | neighbors=[test-session-bootstrap.mjs]
-- "opencode_test_session_bootstrap_childevent": "childEvent" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-session-bootstrap.mjs:L183 | neighbors=[test-session-bootstrap.mjs]
-- "opencode_test_session_bootstrap_compactedevent": "compactedEvent()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-session-bootstrap.mjs:L154 | neighbors=[test-session-bootstrap.mjs]
-- "opencode_test_session_bootstrap_empty": "empty" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-session-bootstrap.mjs:L230 | neighbors=[test-session-bootstrap.mjs]
-- "opencode_test_session_bootstrap_freshrootevent": "freshRootEvent" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-session-bootstrap.mjs:L177 | neighbors=[test-session-bootstrap.mjs]
-- "opencode_test_session_bootstrap_makeevent": "makeEvent()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-session-bootstrap.mjs:L15 | neighbors=[test-session-bootstrap.mjs]
-- "opencode_test_session_bootstrap_makeharness": "makeHarness()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-session-bootstrap.mjs:L31 | neighbors=[test-session-bootstrap.mjs]
-- "opencode_test_session_bootstrap_newpromptaftercheckpoint": "newPromptAfterCheckpoint" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-session-bootstrap.mjs:L203 | neighbors=[test-session-bootstrap.mjs]
-- "opencode_test_session_bootstrap_originalchild": "originalChild" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-session-bootstrap.mjs:L184 | neighbors=[test-session-bootstrap.mjs]
-- "opencode_test_session_bootstrap_originalretaineduserchild": "originalRetainedUserChild" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-session-bootstrap.mjs:L226 | neighbors=[test-session-bootstrap.mjs]
-- "opencode_test_session_bootstrap_pluginurl": "pluginURL" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-session-bootstrap.mjs:L7 | neighbors=[test-session-bootstrap.mjs]
-- "opencode_test_session_bootstrap_recoveredchild": "recoveredChild" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-session-bootstrap.mjs:L197 | neighbors=[test-session-bootstrap.mjs]
-- "opencode_test_session_bootstrap_reply": "reply()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-session-bootstrap.mjs:L11 | neighbors=[test-session-bootstrap.mjs]
-- "opencode_test_session_bootstrap_retainedcheckpoint": "retainedCheckpoint" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-session-bootstrap.mjs:L212 | neighbors=[test-session-bootstrap.mjs]
-- "opencode_test_session_bootstrap_retaineduser": "retainedUser" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-session-bootstrap.mjs:L210 | neighbors=[test-session-bootstrap.mjs]
-- "opencode_test_session_bootstrap_retaineduserchild": "retainedUserChild" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-session-bootstrap.mjs:L224 | neighbors=[test-session-bootstrap.mjs]
-- "opencode_test_session_bootstrap_rootevent": "rootEvent" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-session-bootstrap.mjs:L166 | neighbors=[test-session-bootstrap.mjs]
-- "opencode_test_session_bootstrap_unknownchild": "unknownChild" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-session-bootstrap.mjs:L194 | neighbors=[test-session-bootstrap.mjs]
-- "opencode_test_skill_registration_added": "added" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-skill-registration.mjs:L29 | neighbors=[test-skill-registration.mjs]
-- "opencode_test_skill_registration_failures": "failures" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-skill-registration.mjs:L26 | neighbors=[test-skill-registration.mjs]
-- "opencode_test_skill_registration_fixtureroot": "fixtureRoot" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-skill-registration.mjs:L144 | neighbors=[test-skill-registration.mjs]
+- "mute_scheduler_scheduler_scheduler": ".Scheduler()" | kind=code-symbol | source=mute/include/poko/mute/scheduler.hpp:L47 | neighbors=[Scheduler]
+- "mute_statement_statementast_statementast": ".StatementAst()" | kind=code-symbol | source=mute/include/poko/mute/statement.hpp:L36 | neighbors=[StatementAst]
+- "mute_statement_statementparser": "StatementParser" | kind=code-symbol | source=mute/include/poko/mute/statement.hpp:L21 | neighbors=[statement.hpp]
+- "mute_stdlib_collections_bytearray": "ByteArray" | kind=code-symbol | source=mute/include/poko/mute/stdlib_collections.hpp:L21 | neighbors=[stdlib_collections.hpp]
+- "mute_stdlib_collections_orderedstringmap": "OrderedStringMap" | kind=code-symbol | source=mute/include/poko/mute/stdlib_collections.hpp:L37 | neighbors=[stdlib_collections.hpp]
+- "mute_stdlib_crypto": "stdlib_crypto.hpp" | kind=code-symbol | source=mute/include/poko/mute/stdlib_crypto.hpp:L1 | neighbors=[952997e Audit MUT-01-55 and harden veri…]
+- "mute_stdlib_math_simclock": "SimClock" | kind=code-symbol | source=mute/include/poko/mute/stdlib_math.hpp:L84 | neighbors=[stdlib_math.hpp]
+- "mute_stdlib_math_xorshift128plus": "XorShift128Plus" | kind=code-symbol | source=mute/include/poko/mute/stdlib_math.hpp:L69 | neighbors=[stdlib_math.hpp]
+- "mute_stdlib_string": "stdlib_string.hpp" | kind=code-symbol | source=mute/include/poko/mute/stdlib_string.hpp:L1 | neighbors=[952997e Audit MUT-01-55 and harden veri…]
+- "mute_values_aggregatestore_aggregatestore": ".AggregateStore()" | kind=code-symbol | source=mute/include/poko/mute/values.hpp:L52 | neighbors=[AggregateStore]
+- "net_bit_buffer_bitbuffer_bitbuffer": ".BitBuffer()" | kind=code-symbol | source=server/net/include/poko/net/bit_buffer.hpp:L20 | neighbors=[BitBuffer]
+- "net_bit_buffer_get_array": "get_array()" | kind=code-symbol | source=server/net/include/poko/net/bit_buffer.hpp:L120 | neighbors=[bit_buffer.hpp]
+- "net_bit_buffer_get_delta": "get_delta()" | kind=code-symbol | source=server/net/include/poko/net/bit_buffer.hpp:L128 | neighbors=[bit_buffer.hpp]
+- "net_bit_buffer_put_array": "put_array()" | kind=code-symbol | source=server/net/include/poko/net/bit_buffer.hpp:L69 | neighbors=[bit_buffer.hpp]
+- "net_bit_buffer_put_delta": "put_delta()" | kind=code-symbol | source=server/net/include/poko/net/bit_buffer.hpp:L79 | neighbors=[bit_buffer.hpp]
+- "net_cube_sync_cube_schema": "cube_schema()" | kind=code-symbol | source=server/net/include/poko/net/cube_sync.hpp:L26 | neighbors=[cube_sync.hpp]
+- "net_cube_sync_cubepeer_cubepeer": ".CubePeer()" | kind=code-symbol | source=server/net/include/poko/net/cube_sync.hpp:L64 | neighbors=[CubePeer]
+- "net_cube_sync_exchange_over_udp": "exchange_over_udp()" | kind=code-symbol | source=server/net/include/poko/net/cube_sync.hpp:L111 | neighbors=[cube_sync.hpp]
+- "net_delta_decode_delta": "decode_delta()" | kind=code-symbol | source=server/net/include/poko/net/delta.hpp:L84 | neighbors=[delta.hpp]
+- "net_delta_deltaschema": "DeltaSchema" | kind=code-symbol | source=server/net/include/poko/net/delta.hpp:L36 | neighbors=[delta.hpp]
+- "net_delta_encode_delta": "encode_delta()" | kind=code-symbol | source=server/net/include/poko/net/delta.hpp:L61 | neighbors=[delta.hpp]
+- "net_delta_resendwindow": "ResendWindow" | kind=code-symbol | source=server/net/include/poko/net/delta.hpp:L108 | neighbors=[delta.hpp]
+- "net_frame_sha256_sha256": ".Sha256()" | kind=code-symbol | source=server/net/include/poko/net/frame.hpp:L29 | neighbors=[Sha256]
+- "net_jitter_buffer_jitterbuffer_jitterbuffer": ".JitterBuffer()" | kind=code-symbol | source=server/net/include/poko/net/jitter_buffer.hpp:L37 | neighbors=[JitterBuffer]
+- "net_udp_echo_echo_server_loop": "echo_server_loop()" | kind=code-symbol | source=server/net/include/poko/net/udp_echo.hpp:L127 | neighbors=[udp_echo.hpp]
+- "net_udp_echo_udpsocket_udpsocket": ".UdpSocket()" | kind=code-symbol | source=server/net/include/poko/net/udp_echo.hpp:L40 | neighbors=[UdpSocket]
+- "net_xor_fec_rotated_group": "rotated_group()" | kind=code-symbol | source=server/net/include/poko/net/xor_fec.hpp:L82 | neighbors=[xor_fec.hpp]
+- "oaktrees_gen_trees_arg": "arg()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L17 | neighbors=[gen_trees.py]
+- "oaktrees_gen_trees_basis_card": "basis_card()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L541 | neighbors=[gen_trees.py]
+- "oaktrees_gen_trees_branch_init": ".__init__()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L332 | neighbors=[Branch]
+- "oaktrees_gen_trees_canvas_init": ".__init__()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L116 | neighbors=[Canvas]
+- "oaktrees_gen_trees_grade": "_grade()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L970 | neighbors=[gen_trees.py]
+- "oaktrees_gen_trees_lv": "LV()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L735 | neighbors=[gen_trees.py]
+- "oaktrees_gen_trees_rationale_1": "Realistic alpha-card trees for Roblox (Trunk / Branches / Leaves MeshParts + Sur" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L1 | neighbors=[gen_trees.py]
+- "oaktrees_gen_trees_rationale_101": "fir / spruce: scaly grey-brown plates with reddish fresh bark in the cracks, fai" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L101 | neighbors=[bark_fir()]
+- "oaktrees_gen_trees_rationale_1023": "build one species into coll: [<prefix><name>_Trunk, _Branches, _Leaves] (shared" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L1023 | neighbors=[make_tree()]
+- "oaktrees_gen_trees_rationale_115": "RGBA + height painter; shapes composited 'over' with soft edges." | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L115 | neighbors=[Canvas]
+- "oaktrees_gen_trees_rationale_132": "Tapered stroke along pts (px), clipped to the cell rect clip=(x0,x1,y0,y1)." | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L132 | neighbors=[.capsule_path()]
+- "oaktrees_gen_trees_rationale_211": "4 x 4 fir sprays: a central twig with paired laterals (frond widest near the bas" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L211 | neighbors=[needle_atlas()]
+- "oaktrees_gen_trees_rationale_34": "Periodic (tileable) gaussian-filtered noise, fx / fy = feature frequency in cycl" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L34 | neighbors=[fft_noise()]
 
 ## Instructions
 

@@ -1,4 +1,4 @@
-# Node Description Batch 9 of 207
+# Node Description Batch 9 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -12,14 +12,27 @@ describing what it is or does. Use only the provided context.
 For a code symbol (kind=code-symbol — a function, class, or constant),
 describe what the function/symbol does based on its name, source location
 and neighbors — e.g. "Resolves the configured ontology profile from graphify.yaml.".
+For an entity node (any other kind — e.g. a person, place, event, object),
+describe what the entity is and its role, grounded in its type, its
+relations (neighbors) and the provided citations/evidence — e.g.
+"Lady Carfax, a wealthy heiress who disappears en route to Lausanne.".
+Ground entity descriptions in the citations/evidence when present; do not
+speculate beyond the context, so a node with no supporting context may be
+left out of the reply.
 Write every description in English (en). Do not switch languages.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "canyonbazaar_canyon_map_h": "H()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_map.py:L78 | neighbors=[canyon_map.py, ground(), mouth(), on_paving(), tdist(), wall()]
+- "cavemap_cave_map_fungi": "fungi()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_map.py:L566 | neighbors=[cave_map.py, build(), free(), in_hole(), lake_d(), light()]
+- "cavemap_cave_props_strata_mass": "strata_mass()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L85 | neighbors=[cave_props.py, crystal_spray(), geode(), glow_vine(), lake_glow(), mound()]
+- "cavemap_cave_props2_logp": "logp()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L8 | neighbors=[cave_props2.py, crates(), mine_cart(), mine_frame(), mine_lantern_post(), ore_pile()]
+- "commit:repo:github.com/Raft-The-Crab/pokox@981b52c0fa225f4845fc34ad2471fc9bce3ddb28": "981b52c Crated IDN-01 to IDN-04" | kind=Commit | source=git | neighbors=[7eabc2d Merge pull request #8 from Raft…, main, 1dac49d Created NET-01 to NET-09, Start…, account_record.hpp, device_binding.hpp, sign_in.hpp]
+- "creaturelab_lab_map_build": "build()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_map.py:L570 | neighbors=[lab_map.py, exterior(), garden_paths(), ground(), hall_floor(), hardscape()]
+- "creaturelab_lab_map_exterior": "exterior()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_map.py:L477 | neighbors=[lab_map.py, build(), anchor(), face_in(), free(), path_free()]
 - "creaturelab_lab_props_ring_seg": "ring_seg()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L68 | neighbors=[lab_props.py, arc_wall(), catch_ball(), entrance_canopy(), hall_trim(), lab_wing()]
-- "debug_vulkan_diagnostics": "vulkan_diagnostics.cpp" | kind=code-symbol | source=engine/rhi/src/debug/vulkan_diagnostics.cpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, f4a6ac4 Allowlist known validation-laye…, capture(), Impl(), messages(), since()]
-- "device_opengles_clear_renderer": "opengles_clear_renderer.cpp" | kind=code-symbol | source=engine/rhi/src/device/opengles_clear_renderer.cpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, clear_and_present(), clear_and_verify(), framebuffer_is_srgb(), initialize(), initialize_impl()]
+- "device_vulkan_clear_renderer": "vulkan_clear_renderer.cpp" | kind=code-symbol | source=engine/rhi/src/device/vulkan_clear_renderer.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, clear_and_present(), draw_and_present(), Impl(), initialize(), native_window()]
 - "dunedesert_dune_map_build": "build()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L538 | neighbors=[dune_map.py, dig_spots(), fragments(), ground(), horizon(), nature()]
 - "dunedesert_dune_props_frustum": "frustum()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L82 | neighbors=[dune_props.py, obelisk(), obelisk_fallen(), pylon_gate(), quest_stele(), battered block: base w0 x d0 at y0 -> t…]
 - "dunedesert_dune_props_trader_tent": "trader_tent()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L576 | neighbors=[dune_props.py, SHOP: caravan trader's tent: 6 poles, a…, crate(), jar(), lerp(), peg_rope()]
@@ -29,7 +42,6 @@ one-sentence description — no prose, no markdown fences.
 - "fishcenter_fish_map_pos": "pos()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L34 | neighbors=[fish_map.py, build(), compass(), horizon(), islet_e(), islet_grass()]
 - "fishcenter_fish_props_rope": "rope()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L65 | neighbors=[fish_props.py, bait_shop(), barrels(), drying_rack(), fish_market(), hammock_palms()]
 - "frostpeak_frost_props": "frost_props.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_props.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, bench(), cabin(), fishing_hut(), frost_spire()]
-- "lexer_lexer": "lexer.cpp" | kind=code-symbol | source=mute/src/lexer/lexer.cpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, decode(), digit(), digit_for(), is_continue(), is_start()]
 - "medievalbattle_battle_map_h": "H()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L89 | neighbors=[battle_map.py, base(), channels(), isle_y(), keep_w(), road_d()]
 - "medievalbattle_battle_props_merge": "merge()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L235 | neighbors=[battle_props.py, bridge_tower(), broken_cart(), buttress(), crate(), donjon()]
 - "medievalbattle_battle_props_tower_body": "tower_body()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L292 | neighbors=[battle_props.py, gatehouse(), round tower: battered base, ashlar drum…, round_tower(), ash_sh(), ashlar_ring()]
@@ -40,7 +52,6 @@ one-sentence description — no prose, no markdown fences.
 - "oaktrees_gen_trees_canvas": "Canvas" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L114 | neighbors=[gen_trees.py, .capsule_path(), .finish(), .grid(), .__init__(), .leaf()]
 - "onsenvillage_onsen_map_place": "place()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L90 | neighbors=[onsen_map.py, mirror(), nature(), add_owner(), fit(), kit()]
 - "opencode_test_skill_registration": "test-skill-registration.mjs" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-skill-registration.mjs:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, added, failures, fixtureRoot, frontmatterFixtures]
-- "passes_imgui_demo": "imgui_demo.cpp" | kind=code-symbol | source=engine/render/src/passes/imgui_demo.cpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, Exception, build_demo_window(), composite(), ensure_gpu_timer(), feed_imgui_event()]
 - "petsim_pet_map_candy": "candy()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L496 | neighbors=[pet_map.py, build(), breakables(), fence_ring(), free(), path_d()]
 - "petsim_pet_map_h": "H()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L51 | neighbors=[pet_map.py, breakables(), egg_stand(), fence_ring(), isle_at(), top_y()]
 - "petsim_pet_map_meadow": "meadow()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L474 | neighbors=[pet_map.py, build(), breakables(), fence_ring(), free(), path_d()]
@@ -53,10 +64,6 @@ one-sentence description — no prose, no markdown fences.
 - "scripts_surface_weather_g": "_G" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/surface_weather.py:L31 | neighbors=[surface_weather.py, build_group(), .__init__(), .link(), .math(), .mix()]
 - "skyrise_sky_map_build": "build()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_map.py:L199 | neighbors=[sky_map.py, face(), island_mesh(), micro_detail(), path_track(), place()]
 - "skyrise_sky_props_lathe": "lathe()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L39 | neighbors=[sky_props.py, cactus(), crystal_node(), egg_shrine(), gem(), ice_spike()]
-- "src_logging": "logging.cpp" | kind=code-symbol | source=engine/foundation/src/logging.cpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, critical(), debug(), emit(), error(), info()]
-- "src_soft_body": "soft_body.cpp" | kind=code-symbol | source=engine/physics/src/soft_body.cpp:L1 | neighbors=[69287a0 Land ENG-60-65 deterministic si…, add_node(), add_spring(), apply_acceleration(), clamp01(), collide_plane_y()]
-- "stdlib_stdlib_string": "stdlib_string.cpp" | kind=code-symbol | source=mute/src/stdlib/stdlib_string.cpp:L1 | neighbors=[952997e Audit MUT-01-55 and harden veri…, byte_length(), codepoint_count(), compare_bytes(), concat(), decode()]
-- "sugarworks_sugar_props_torus": "torus()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L44 | neighbors=[sugar_props.py, buy_button(), cash_pad(), choc_fountain(), coin_chute(), collector()]
 
 ## Instructions
 

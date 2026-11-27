@@ -1,4 +1,4 @@
-# Node Description Batch 7 of 207
+# Node Description Batch 7 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -24,6 +24,7 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "effekseer_ai_authoring": "authoring.py" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/authoring.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, _code(), compile_effect(), cutoff_easing(), layer_schema()]
 - "gles_clear_pokoactivity_pokoactivity": "PokoActivity" | kind=code-symbol | source=engine/rhi/android/gles-clear/PokoActivity.java:L11 | neighbors=[PokoActivity.java, Activity, Callback, .nativeInit(), .nativeSetSurface(), .nativeSurfaceDestroyed()]
 - "hermes_test_plugin_load_plugin": "_load_plugin()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/hermes/test_plugin.py:L20 | neighbors=[test_plugin.py, Re-import plugin module fresh., .test_first_turn_returns_bootstrap_cont…, .test_hook_tolerates_future_kwargs(), .test_later_turns_return_none(), .test_non_subagent_platforms_receive_bo…]
 - "input_action_map_find": "find()" | kind=code-symbol | source=mute/src/input/action_map.cpp:L83 | neighbors=[action_map.cpp, add_binding(), bindings(), clear_bindings(), contains(), define_action()]
@@ -43,6 +44,7 @@ one-sentence description — no prose, no markdown fences.
 - "tests_test_sequence": "test_sequence.py" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_sequence.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, test_a_blockout_sequence_needs_blockout…, test_blockout_lint_holds_recipes_to_mat…, test_detail_needs_the_blockout_gate_and…, test_game_frames_become_evidence_and_a_…]
 - "texture_tex_to_maps": "tex_to_maps.py" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/texture/tex_to_maps.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, blur(), derive_ao(), derive_normal(), derive_roughness()]
 - "unit_optimize_test": "optimize_test.cpp" | kind=code-symbol | source=mute/tests/unit/optimize_test.cpp:L1 | neighbors=[e499073 Add MUT-29 dead-code eliminatio…, cases(), check(), count_instrs(), count_op(), i32t()]
+- "unit_sdl_platform_faults": "sdl_platform_faults.cpp" | kind=code-symbol | source=engine/platform/tests/unit/sdl_platform_faults.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, Exception, main(), push(), SDL_CreateWindow(), SDL_DestroyWindow()]
 - "vfxkit_workflow": "workflow.py" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/workflow.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, absolute(), digest(), effect_id(), file_hash()]
 - "whispering_grove_forest_props_elder_tree": "elder_tree()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L512 | neighbors=[forest_props.py, arch_cap(), arch_frame(), arch_prism(), arch_tunnel(), at()]
 - "blender_character_blockout": "character_blockout.py" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/blender/character_blockout.py:L1 | neighbors=[box(), build(), capsule(), get_collection(), link(), purge_scene()]
@@ -54,16 +56,14 @@ one-sentence description — no prose, no markdown fences.
 - "cavemap_cave_map_rocks": "rocks()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_map.py:L404 | neighbors=[cave_map.py, build(), layered rock masses along every wall fo…, free(), in_hole(), lake_d()]
 - "cavemap_cave_props_v": "V()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L34 | neighbors=[cave_props.py, add_crystal(), flowstone_curtain(), geode(), glow_vine(), mound()]
 - "cavemap_cave_props2_w": "W()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L10 | neighbors=[cave_props2.py, crates(), mine_cart(), mine_frame(), mine_lantern_post(), ore_pile()]
+- "commit:repo:github.com/Raft-The-Crab/pokox@6568dc953fff853264807a3c4242300ec826ce6e": "6568dc9 Update from ML AI Code" | kind=Commit | source=git | neighbors=[pkb_schema.hpp, session.hpp, main, 6e2fe3a Created BAK-7 and other BAK tas…, revocation_gate.hpp, worker_auth.hpp]
 - "commit:repo:github.com/Raft-The-Crab/pokox@85b7130e02b055babd8c6b7c59480aab90c62e41": "85b7130 Close MUT-26 limits: AST-to-SSA lowering and load_imm literals" | kind=Commit | source=git | neighbors=[45151c3 Refresh graph after MUT-26 emit…, main, bytecode.cpp, d14bc19 Refresh graph after MUT-26 lowe…, test_version.py, bytecode.hpp]
 - "creaturelab_lab_props_emblem": "emblem()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L110 | neighbors=[lab_props.py, leaf_poly(), .add(), upright(), emblem_badge(), floor_mat()]
+- "debug_vulkan_diagnostics": "vulkan_diagnostics.cpp" | kind=code-symbol | source=engine/rhi/src/debug/vulkan_diagnostics.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, f4a6ac4 Allowlist known validation-laye…, capture(), Impl(), messages(), since()]
+- "device_opengles_clear_renderer": "opengles_clear_renderer.cpp" | kind=code-symbol | source=engine/rhi/src/device/opengles_clear_renderer.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, clear_and_present(), clear_and_verify(), framebuffer_is_srgb(), initialize(), initialize_impl()]
 - "dunedesert_dune_map_place": "place()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L133 | neighbors=[dune_map.py, dig_spots(), fragments(), nature(), add_owner(), fit()]
 - "dunedesert_dune_props_lerp": "lerp()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L46 | neighbors=[dune_props.py, dry_shrub(), grid_quad(), obelisk_fallen(), outcrop(), pylon_gate()]
 - "extensions_superpowers": "superpowers.ts" | kind=code-symbol | source=.agents/skills/superpowers-main/.pi/extensions/superpowers.ts:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, bootstrapSkillPath, extensionDir, firstNonCompactionSummaryIndex(), getBootstrapContent()]
-- "fishcenter_fish_props_pole": "pole()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L53 | neighbors=[fish_props.py, bait_shop(), drying_rack(), hut_body(), lerp(), quest_board()]
-- "medievalbattle_battle_props_gatehouse": "gatehouse()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L398 | neighbors=[battle_props.py, ash_sh(), ashlar(), ell_outline(), heater_shield(), in_arch()]
-- "medievalbattle_battle_props_heater_shield": "heater_shield()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L241 | neighbors=[battle_props.py, battle_debris(), curtain_wall(), gatehouse(), lathe(), T()]
-- "net_crypto_aead": "crypto_aead.hpp" | kind=code-symbol | source=server/net/include/poko/net/crypto_aead.hpp:L1 | neighbors=[1dac49d Created NET-01 to NET-09, Start…, aead_open(), aead_seal(), chacha20_block(), chacha20_xor(), consttime_equal()]
-- "petsim_pet_map_crystal": "crystal()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L516 | neighbors=[pet_map.py, build(), breakables(), face(), fence_ring(), free()]
 
 ## Instructions
 

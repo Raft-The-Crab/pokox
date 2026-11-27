@@ -1405,3 +1405,66 @@ target_compile_features(pokox_authority_replay_ring_test PRIVATE cxx_std_20)
 set_target_properties(pokox_authority_replay_ring_test PROPERTIES CXX_EXTENSIONS OFF)
 add_test(NAME pokox_authority_replay_ring_test COMMAND pokox_authority_replay_ring_test)
 set_tests_properties(pokox_authority_replay_ring_test PROPERTIES TIMEOUT 15)
+
+add_executable(pokox_matchmaker_allocator_test
+  server/matchmaker/tests/unit/allocator_test.cpp)
+target_include_directories(pokox_matchmaker_allocator_test
+  PRIVATE server/matchmaker/include server/net/include)
+target_compile_features(pokox_matchmaker_allocator_test PRIVATE cxx_std_20)
+set_target_properties(pokox_matchmaker_allocator_test PROPERTIES CXX_EXTENSIONS OFF)
+add_test(NAME pokox_matchmaker_allocator_test COMMAND pokox_matchmaker_allocator_test)
+set_tests_properties(pokox_matchmaker_allocator_test PROPERTIES TIMEOUT 15)
+
+add_executable(pokox_matchmaker_match_queue_test
+  server/matchmaker/tests/unit/match_queue_test.cpp)
+target_include_directories(pokox_matchmaker_match_queue_test
+  PRIVATE server/matchmaker/include server/net/include)
+target_compile_features(pokox_matchmaker_match_queue_test PRIVATE cxx_std_20)
+set_target_properties(pokox_matchmaker_match_queue_test PROPERTIES CXX_EXTENSIONS OFF)
+add_test(NAME pokox_matchmaker_match_queue_test COMMAND pokox_matchmaker_match_queue_test)
+set_tests_properties(pokox_matchmaker_match_queue_test PROPERTIES TIMEOUT 15)
+
+add_executable(pokox_matchmaker_slot_registry_test
+  server/matchmaker/tests/unit/slot_registry_test.cpp)
+target_include_directories(pokox_matchmaker_slot_registry_test
+  PRIVATE server/matchmaker/include server/net/include)
+target_compile_features(pokox_matchmaker_slot_registry_test PRIVATE cxx_std_20)
+set_target_properties(pokox_matchmaker_slot_registry_test PROPERTIES CXX_EXTENSIONS OFF)
+add_test(NAME pokox_matchmaker_slot_registry_test COMMAND pokox_matchmaker_slot_registry_test)
+set_tests_properties(pokox_matchmaker_slot_registry_test PROPERTIES TIMEOUT 15)
+
+add_executable(pokox_matchmaker_wake_lock_test
+  server/matchmaker/tests/unit/wake_lock_test.cpp)
+target_include_directories(pokox_matchmaker_wake_lock_test
+  PRIVATE server/matchmaker/include server/net/include)
+target_compile_features(pokox_matchmaker_wake_lock_test PRIVATE cxx_std_20)
+set_target_properties(pokox_matchmaker_wake_lock_test PROPERTIES CXX_EXTENSIONS OFF)
+add_test(NAME pokox_matchmaker_wake_lock_test COMMAND pokox_matchmaker_wake_lock_test)
+set_tests_properties(pokox_matchmaker_wake_lock_test PROPERTIES TIMEOUT 15)
+
+add_executable(pokox_matchmaker_byo_registration_test
+  server/matchmaker/tests/unit/byo_registration_test.cpp)
+target_include_directories(pokox_matchmaker_byo_registration_test
+  PRIVATE server/matchmaker/include server/net/include)
+target_compile_features(pokox_matchmaker_byo_registration_test PRIVATE cxx_std_20)
+set_target_properties(pokox_matchmaker_byo_registration_test PROPERTIES CXX_EXTENSIONS OFF)
+add_test(NAME pokox_matchmaker_byo_registration_test COMMAND pokox_matchmaker_byo_registration_test)
+set_tests_properties(pokox_matchmaker_byo_registration_test PROPERTIES TIMEOUT 15)
+
+add_executable(pokox_matchmaker_reconnect_test
+  server/matchmaker/tests/unit/reconnect_test.cpp)
+target_include_directories(pokox_matchmaker_reconnect_test
+  PRIVATE server/matchmaker/include server/net/include)
+target_compile_features(pokox_matchmaker_reconnect_test PRIVATE cxx_std_20)
+set_target_properties(pokox_matchmaker_reconnect_test PROPERTIES CXX_EXTENSIONS OFF)
+add_test(NAME pokox_matchmaker_reconnect_test COMMAND pokox_matchmaker_reconnect_test)
+set_tests_properties(pokox_matchmaker_reconnect_test PROPERTIES TIMEOUT 15)
+
+add_executable(pokox_matchmaker_party_book_test
+  server/matchmaker/tests/unit/party_book_test.cpp)
+target_include_directories(pokox_matchmaker_party_book_test
+  PRIVATE server/matchmaker/include server/net/include)
+target_compile_features(pokox_matchmaker_party_book_test PRIVATE cxx_std_20)
+set_target_properties(pokox_matchmaker_party_book_test PROPERTIES CXX_EXTENSIONS OFF)
+add_test(NAME pokox_matchmaker_party_book_test COMMAND pokox_matchmaker_party_book_test)
+set_tests_properties(pokox_matchmaker_party_book_test PROPERTIES TIMEOUT 15)

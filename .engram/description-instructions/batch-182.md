@@ -1,4 +1,4 @@
-# Node Description Batch 183 of 207
+# Node Description Batch 183 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -26,46 +26,46 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "scripts_template_engine_rationale_28": "Resolves nested dot-notation keys from context (e.g., app.info.package)." | kind=entity | source=.agents/skills/skills-main/play/play-policy-insights/scripts/template_engine.py:L28 | neighbors=[get_nested_val()] | lang=en
-- "scripts_template_engine_rationale_40": "Base class for all Abstract Syntax Tree (AST) node elements." | kind=entity | source=.agents/skills/skills-main/play/play-policy-insights/scripts/template_engine.py:L40 | neighbors=[Node] | lang=en
-- "scripts_template_engine_rationale_47": "Represents raw static text blocks." | kind=entity | source=.agents/skills/skills-main/play/play-policy-insights/scripts/template_engine.py:L47 | neighbors=[TextNode] | lang=en
-- "scripts_template_engine_rationale_57": "Represents dynamic variable interpolation with literal fallbacks." | kind=entity | source=.agents/skills/skills-main/play/play-policy-insights/scripts/template_engine.py:L57 | neighbors=[VarNode] | lang=en
-- "scripts_template_engine_rationale_73": "Represents conditional block logic (IF, IF_ALL, IF_ANY)." | kind=entity | source=.agents/skills/skills-main/play/play-policy-insights/scripts/template_engine.py:L73 | neighbors=[IfNode] | lang=en
-- "scripts_template_engine_rationale_95": "Helper to strip leading/trailing whitespace from first/last TextNodes." | kind=entity | source=.agents/skills/skills-main/play/play-policy-insights/scripts/template_engine.py:L95 | neighbors=[strip_nodes()] | lang=en
-- "scripts_template_engine_textnode_init": ".__init__()" | kind=code-symbol | source=.agents/skills/skills-main/play/play-policy-insights/scripts/template_engine.py:L49 | neighbors=[TextNode] | lang=en
-- "scripts_template_engine_textnode_render": ".render()" | kind=code-symbol | source=.agents/skills/skills-main/play/play-policy-insights/scripts/template_engine.py:L52 | neighbors=[TextNode] | lang=en
-- "scripts_template_engine_varnode_init": ".__init__()" | kind=code-symbol | source=.agents/skills/skills-main/play/play-policy-insights/scripts/template_engine.py:L59 | neighbors=[VarNode] | lang=en
-- "scripts_terrain_rationale_1": "Game-ready terrain: noise (fbm, ridged mountains, rolling hills) or a heightmap" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-environment-kits/scripts/terrain.py:L1 | neighbors=[terrain.py] | lang=pt
-- "scripts_terrain_rationale_59": "Thermal erosion: material above the talus angle slides to lower neighbours (4-ne" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-environment-kits/scripts/terrain.py:L59 | neighbors=[_erode()] | lang=en
-- "scripts_texel_density_rationale_1": "Measure (and optionally set) texel density in px/m for objects' active UV map." | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-retopology-uv/scripts/texel_density.py:L1 | neighbors=[texel_density.py] | lang=en
-- "scripts_texel_density_rationale_22": "UV islands as lists of faces (connected through shared UV coords)." | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-retopology-uv/scripts/texel_density.py:L22 | neighbors=[_islands()] | lang=en
-- "scripts_toon_setup_g_init": ".__init__()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-stylized-npr/scripts/toon_setup.py:L36 | neighbors=[_G] | lang=en
-- "scripts_toon_setup_rationale_1": "Reversible toon/cel look: banded shading, shadow tint, rim, hard specular, inver" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-stylized-npr/scripts/toon_setup.py:L1 | neighbors=[toon_setup.py] | lang=en
-- "scripts_toon_setup_rationale_169": "Light Direction = the sun's local +Z in world space (the sun shines along -Z)." | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-stylized-npr/scripts/toon_setup.py:L169 | neighbors=[_drive_light()] | lang=en
-- "scripts_toon_setup_rationale_228": "NPR_OutlineNormal corner color: position-averaged normal in tangent space, packe" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-stylized-npr/scripts/toon_setup.py:L228 | neighbors=[smooth_outline_normals()] | lang=en
-- "scripts_trace_ref_quant": "quant()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/scripts/trace_ref.py:L36 | neighbors=[trace_ref.py] | lang=en
-- "scripts_track_camera_rationale_1": "Automatic camera solve from footage: detect features at the start and end of the" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-video-editing/scripts/track_camera.py:L1 | neighbors=[track_camera.py] | lang=en
-- "scripts_turntable_rationale_1": "Look-dev scene in one call: framed camera, light rig (studio 3-point / HDRI / bo" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-lighting-lookdev/scripts/turntable.py:L1 | neighbors=[turntable.py] | lang=en
-- "scripts_uv_pack_rationale_1": "Unwrap + pack UVs with production defaults; optional seams-from-sharp and lightm" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-retopology-uv/scripts/uv_pack.py:L1 | neighbors=[uv_pack.py] | lang=en
-- "scripts_uv_pack_rationale_39": "Fraction of faces whose UV area is ~0 (failed unwrap)." | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-retopology-uv/scripts/uv_pack.py:L39 | neighbors=[_collapsed_ratio()] | lang=en
-- "scripts_verify_desktop_rationale_1": "Collect real desktop build/run evidence. Never automatically accept ENG-03." | kind=entity | source=engine/rhi/scripts/verify_desktop.py:L1 | neighbors=[verify_desktop.py] | lang=en
-- "scripts_vse_edit_rationale_1": "Assemble a video edit in the Video Sequencer headless: movies (with their audio)" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-video-editing/scripts/vse_edit.py:L1 | neighbors=[vse_edit.py] | lang=en
-- "scripts_vse_edit_rationale_32": "Sorted frame files for a folder or a # pattern, else None." | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-video-editing/scripts/vse_edit.py:L32 | neighbors=[_frames()] | lang=pt
-- "sdl3_sdl": "SDL.h" | kind=code-symbol | source=engine/platform/tests/fakes/SDL3/SDL.h:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …] | lang=en
-- "sdl3_sdl_main": "SDL_main.h" | kind=code-symbol | source=engine/rhi/tests/fakes/SDL3/SDL_main.h:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …] | lang=en
-- "semantic_determinism_analyze_determinism": "analyze_determinism()" | kind=code-symbol | source=mute/src/semantic/determinism.cpp:L116 | neighbors=[determinism.cpp] | lang=en
-- "semantic_determinism_analyzer_analyzer": ".Analyzer()" | kind=code-symbol | source=mute/src/semantic/determinism.cpp:L29 | neighbors=[Analyzer] | lang=en
-- "semantic_determinism_builtin": "builtin()" | kind=code-symbol | source=mute/src/semantic/determinism.cpp:L18 | neighbors=[determinism.cpp] | lang=en
-- "semantic_determinism_is_capability": "is_capability()" | kind=code-symbol | source=mute/src/semantic/determinism.cpp:L9 | neighbors=[determinism.cpp] | lang=en
-- "semantic_determinism_last_segment": "last_segment()" | kind=code-symbol | source=mute/src/semantic/determinism.cpp:L22 | neighbors=[determinism.cpp] | lang=en
-- "semantic_determinism_program_capability_mask": "program_capability_mask()" | kind=code-symbol | source=mute/src/semantic/determinism.cpp:L118 | neighbors=[determinism.cpp] | lang=en
-- "semantic_emit_source_pcs": "source_pcs()" | kind=code-symbol | source=mute/src/semantic/emit.cpp:L274 | neighbors=[emit.cpp] | lang=en
-- "semantic_emit_source_position": "source_position()" | kind=code-symbol | source=mute/src/semantic/emit.cpp:L263 | neighbors=[emit.cpp] | lang=en
-- "semantic_lower_bin_detail": "bin_detail()" | kind=code-symbol | source=mute/src/semantic/lower.cpp:L63 | neighbors=[lower.cpp] | lang=en
-- "semantic_lower_boolt": "boolt()" | kind=code-symbol | source=mute/src/semantic/lower.cpp:L10 | neighbors=[lower.cpp] | lang=en
-- "semantic_lower_cmp_detail": "cmp_detail()" | kind=code-symbol | source=mute/src/semantic/lower.cpp:L71 | neighbors=[lower.cpp] | lang=en
-- "semantic_lower_i32t": "i32t()" | kind=code-symbol | source=mute/src/semantic/lower.cpp:L9 | neighbors=[lower.cpp] | lang=en
-- "semantic_lower_is_arith": "is_arith()" | kind=code-symbol | source=mute/src/semantic/lower.cpp:L82 | neighbors=[lower.cpp] | lang=en
+- "scripts_roblox_export_tris_of": "tris_of()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/roblox_export.py:L141 | neighbors=[roblox_export.py] | lang=en
+- "scripts_roblox_materials_rationale_68": "material for palette ramp `col` on object/mesh `name`: per-prop overrides ({pref" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/roblox_materials.py:L68 | neighbors=[resolve()] | lang=en
+- "scripts_roblox_materials_rationale_77": "give every palette mesh one Blender material slot per Roblox material (by palett" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/roblox_materials.py:L77 | neighbors=[preview()] | lang=en
+- "scripts_roblox_materials_rationale_92": "material_map.json for the exporter: palette column index -> Roblox material, + p" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/roblox_materials.py:L92 | neighbors=[write_map()] | lang=en
+- "scripts_run_in_blender_ver": "_ver()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-core/scripts/run_in_blender.py:L24 | neighbors=[run_in_blender.py] | lang=en
+- "scripts_scanner_rationale_159": "Maps files to semantic categories based on filename patterns." | kind=entity | source=.agents/skills/skills-main/play/play-policy-insights/scripts/scanner.py:L159 | neighbors=[_identify_semantic_files()] | lang=en
+- "scripts_scanner_rationale_179": "Internal worker to scan a single file for all signal categories." | kind=entity | source=.agents/skills/skills-main/play/play-policy-insights/scripts/scanner.py:L179 | neighbors=[_scan_single_file()] | lang=en
+- "scripts_scanner_rationale_229": "Orchestrates the parallel scanning of identified files." | kind=entity | source=.agents/skills/skills-main/play/play-policy-insights/scripts/scanner.py:L229 | neighbors=[perform_scan()] | lang=en
+- "scripts_scanner_rationale_37": "Loads the scanner configuration from scanner_config.json with caching." | kind=entity | source=.agents/skills/skills-main/play/play-policy-insights/scripts/scanner.py:L37 | neighbors=[get_scanner_config()] | lang=en
+- "scripts_scanner_rationale_56": "Returns a tuple of supported file extensions from config." | kind=entity | source=.agents/skills/skills-main/play/play-policy-insights/scripts/scanner.py:L56 | neighbors=[get_supported_extensions()] | lang=en
+- "scripts_scanner_rationale_61": "Performs a single master walk to categorize files." | kind=entity | source=.agents/skills/skills-main/play/play-policy-insights/scripts/scanner.py:L61 | neighbors=[collect_target_files()] | lang=en
+- "scripts_scatter_rationale_1": "Biome scatter with Geometry Nodes: Poisson-disk instances of a collection on a s" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-environment-kits/scripts/scatter.py:L1 | neighbors=[scatter.py] | lang=en
+- "scripts_scatter_rationale_30": "Enabled socket by name: Random Value keeps one hidden Min/Max/Value per data typ" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-environment-kits/scripts/scatter.py:L30 | neighbors=[_on()] | lang=en
+- "scripts_scene_audit_rationale_1": "Audit scene hygiene: units, transforms, naming, collections, materials, images," | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-scene-setup/scripts/scene_audit.py:L1 | neighbors=[scene_audit.py] | lang=en
+- "scripts_scene_mood_rationale_1": "Time-of-day / mood environment in one call: physically measured sky + matching s" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-time-of-day/scripts/scene_mood.py:L1 | neighbors=[scene_mood.py] | lang=en
+- "scripts_scene_mood_rationale_175": "Build ENV_World. Returns horizontal ambient irradiance (luminance, scene units)." | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-time-of-day/scripts/scene_mood.py:L175 | neighbors=[_world()] | lang=en
+- "scripts_scene_mood_rationale_247": "Fraction of key/sky light reaching subject height through the fog (for exposure" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-time-of-day/scripts/scene_mood.py:L247 | neighbors=[_transmittance()] | lang=en
+- "scripts_scene_mood_rationale_261": "Box volume around scene + camera. Density = extinction from visibility (Koschmie" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-time-of-day/scripts/scene_mood.py:L261 | neighbors=[_fog()] | lang=en
+- "scripts_scene_mood_rationale_89": "Direction TO the light. heading 0 = +Y, 90 = +X (matches ShaderNodeTexSky.sun_ro" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-time-of-day/scripts/scene_mood.py:L89 | neighbors=[_sun_dir()] | lang=en
+- "scripts_sculpt_ops_rationale_1": "Headless-safe sculpt preparation and procedural \"sculpt\" ops (no Sculpt Mode - i" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-sculpting/scripts/sculpt_ops.py:L1 | neighbors=[sculpt_ops.py] | lang=en
+- "scripts_shapekeys_rationale_1": "Shape-key toolkit for faces: create ARKit-52 / viseme sets, split symmetric keys" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-facial-shapekeys/scripts/shapekeys.py:L1 | neighbors=[shapekeys.py] | lang=en
+- "scripts_sim_setup_rationale_1": "Set up and bake simulations: rigid bodies, classic cloth (presets), 5.2 node-bas" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-simulation/scripts/sim_setup.py:L1 | neighbors=[sim_setup.py] | lang=en
+- "scripts_smart_material_g_init": ".__init__()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-texturing/scripts/smart_material.py:L39 | neighbors=[_G] | lang=en
+- "scripts_smart_material_rationale_1": "Reversible \"smart material\" layers on existing Principled materials: edge wear (" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-texturing/scripts/smart_material.py:L1 | neighbors=[smart_material.py] | lang=en
+- "scripts_smart_material_rationale_159": "TX_Curvature point attribute: 0.5 flat, -> 1 convex, -> 0 concave.      Mean ele" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-texturing/scripts/smart_material.py:L159 | neighbors=[curvature_attribute()] | lang=en
+- "scripts_smart_material_rationale_34": "sRGB 0-1 -> linear (Blender color sockets are linear)." | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-texturing/scripts/smart_material.py:L34 | neighbors=[_lin()] | lang=en
+- "scripts_stress_poses_rationale_1": "Create a QA_Stress action with extreme poses to review deformation (elbows, knee" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-character-rigging/scripts/stress_poses.py:L1 | neighbors=[stress_poses.py] | lang=en
+- "scripts_stress_poses_rationale_57": "Rotate a pose bone about a WORLD axis through its head (rig-agnostic: ignores bo" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-character-rigging/scripts/stress_poses.py:L57 | neighbors=[_rotate()] | lang=pt
+- "scripts_studlib_export": "export()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/scripts/studlib.py:L306 | neighbors=[studlib.py] | lang=en
+- "scripts_studlib_m": "_m()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/scripts/studlib.py:L182 | neighbors=[studlib.py] | lang=en
+- "scripts_studlib_rationale_1": "Stud-voxel creature runner (headless Blender).  blender -b --factory-startup --p" | kind=entity | source=.agents/skills/Voxel Pack/stud/scripts/studlib.py:L1 | neighbors=[studlib.py] | lang=en
+- "scripts_studlib_rationale_100": "Ramp (Roblox WedgePart): full height at local +y (back), sloping down to the bot" | kind=entity | source=.agents/skills/Voxel Pack/stud/scripts/studlib.py:L100 | neighbors=[wedge()] | lang=en
+- "scripts_studlib_rationale_110": "Cylinder from point a to point b, radius r (Roblox Part.Shape Cylinder, axis = l" | kind=entity | source=.agents/skills/Voxel Pack/stud/scripts/studlib.py:L110 | neighbors=[cyl()] | lang=en
+- "scripts_studlib_rationale_123": "Wedge by ranges; the slope rises toward `up` (back = +y, front = -y, left = +x," | kind=entity | source=.agents/skills/Voxel Pack/stud/scripts/studlib.py:L123 | neighbors=[ramp()] | lang=en
+- "scripts_studlib_rationale_130": "Box by ranges: easy to make neighbours touch without overlapping. Args are (y, x" | kind=entity | source=.agents/skills/Voxel Pack/stud/scripts/studlib.py:L130 | neighbors=[span()] | lang=en
+- "scripts_studlib_rationale_135": "Mirrored pair. Use '%' in the bone name for sided bones: sym(..., 'wing.%')." | kind=entity | source=.agents/skills/Voxel Pack/stud/scripts/studlib.py:L135 | neighbors=[sym()] | lang=en
+- "scripts_studlib_rationale_140": "for sx, s in K.sides(): ... -> (1,'L'), (-1,'R')" | kind=entity | source=.agents/skills/Voxel Pack/stud/scripts/studlib.py:L140 | neighbors=[sides()] | lang=en
+- "scripts_studlib_rationale_148": "Box from point a to point c (w x d cross-section). For tails, necks, tentacle se" | kind=entity | source=.agents/skills/Voxel Pack/stud/scripts/studlib.py:L148 | neighbors=[limb()] | lang=en
+- "scripts_studlib_rationale_153": "Tapering spike/horn: 3 boxes 1 / .66 / .36 wide; tip key on the last one. Base w" | kind=entity | source=.agents/skills/Voxel Pack/stud/scripts/studlib.py:L153 | neighbors=[spike()] | lang=en
+- "scripts_studlib_rationale_159": "Stepped dome/egg: rows = [(half_width_frac, height)] from bottom; each row narro" | kind=entity | source=.agents/skills/Voxel Pack/stud/scripts/studlib.py:L159 | neighbors=[stack()] | lang=en
 
 ## Instructions
 

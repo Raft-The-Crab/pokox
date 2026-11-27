@@ -1,4 +1,4 @@
-# Node Description Batch 165 of 207
+# Node Description Batch 165 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -26,46 +26,46 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "extensions_superpowers_extensiondir": "extensionDir" | kind=code-symbol | source=.agents/skills/superpowers-main/.pi/extensions/superpowers.ts:L9 | neighbors=[superpowers.ts] | lang=en
-- "extensions_superpowers_firstnoncompactionsummaryindex": "firstNonCompactionSummaryIndex()" | kind=code-symbol | source=.agents/skills/superpowers-main/.pi/extensions/superpowers.ts:L110 | neighbors=[superpowers.ts] | lang=en
-- "extensions_superpowers_messagecontainsbootstrap": "messageContainsBootstrap()" | kind=code-symbol | source=.agents/skills/superpowers-main/.pi/extensions/superpowers.ts:L95 | neighbors=[superpowers.ts] | lang=en
-- "extensions_superpowers_packageroot": "packageRoot" | kind=code-symbol | source=.agents/skills/superpowers-main/.pi/extensions/superpowers.ts:L10 | neighbors=[superpowers.ts] | lang=en
-- "extensions_superpowers_skillsdir": "skillsDir" | kind=code-symbol | source=.agents/skills/superpowers-main/.pi/extensions/superpowers.ts:L11 | neighbors=[superpowers.ts] | lang=en
-- "extensions_superpowers_superpowerspiextension": "superpowersPiExtension()" | kind=code-symbol | source=.agents/skills/superpowers-main/.pi/extensions/superpowers.ts:L16 | neighbors=[superpowers.ts] | lang=en
-- "fakes_basicplatformdebug": "BasicPlatformDebug.hpp" | kind=code-symbol | source=engine/rhi/tests/fakes/BasicPlatformDebug.hpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …] | lang=en
-- "fakes_enginefactoryopengl_diligent": "Diligent()" | kind=code-symbol | source=engine/rhi/tests/fakes/EngineFactoryOpenGL.h:L4 | neighbors=[EngineFactoryOpenGL.h] | lang=en
-- "fakes_enginefactoryopengl_ienginefactory": "IEngineFactory()" | kind=code-symbol | source=engine/rhi/tests/fakes/EngineFactoryOpenGL.h:L6 | neighbors=[EngineFactoryOpenGL.h] | lang=en
-- "fakes_enginefactoryvk_diligent": "Diligent()" | kind=code-symbol | source=engine/rhi/tests/fakes/EngineFactoryVk.h:L7 | neighbors=[EngineFactoryVk.h] | lang=en
-- "fakes_refcntautoptr_refcntautoptr_refcntautoptr": ".RefCntAutoPtr()" | kind=code-symbol | source=engine/rhi/tests/fakes/RefCntAutoPtr.hpp:L6 | neighbors=[RefCntAutoPtr] | lang=en
-- "fishcenter_fish_map_foot": "foot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L92 | neighbors=[fish_map.py] | lang=en
-- "fishcenter_fish_map_material_skin": "material_skin()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L745 | neighbors=[fish_map.py] | lang=en
-- "fishcenter_fish_map_rationale_55": "<= 1 inside an islet's ellipse (smallest over all islets)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L55 | neighbors=[islet_e()] | lang=en
-- "fishcenter_fish_map_shot": "shot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L760 | neighbors=[fish_map.py] | lang=en
-- "fishcenter_fish_props_rationale_515": "flat-bottomed cumulus for the horizon (SmoothPlastic white)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L515 | neighbors=[cloud()] | lang=en
-- "fishcenter_fish_props_rationale_710": "two palms with a striped hammock slung between them on ropes (a resting story)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L710 | neighbors=[hammock_palms()] | lang=pt
-- "foundation_cbor_member": "Member()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/cbor.hpp:L51 | neighbors=[cbor.hpp] | lang=en
-- "foundation_config": "config.hpp" | kind=code-symbol | source=engine/foundation/include/poko/foundation/config.hpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …] | lang=en
-- "foundation_config_logging_logguard_logguard": ".LogGuard()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/config_logging.hpp:L17 | neighbors=[LogGuard] | lang=en
-- "foundation_duration_query_state_begin": "begin()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/duration_query_state.hpp:L9 | neighbors=[duration_query_state.hpp] | lang=en
-- "foundation_duration_query_state_durationquerystate": "DurationQueryState" | kind=code-symbol | source=engine/foundation/include/poko/foundation/duration_query_state.hpp:L6 | neighbors=[duration_query_state.hpp] | lang=en
-- "foundation_duration_query_state_end": "end()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/duration_query_state.hpp:L16 | neighbors=[duration_query_state.hpp] | lang=en
-- "foundation_duration_query_state_poll": "poll()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/duration_query_state.hpp:L23 | neighbors=[duration_query_state.hpp] | lang=en
-- "foundation_fixed_divide": "divide()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/fixed.hpp:L123 | neighbors=[fixed.hpp] | lang=en
-- "foundation_fixed_fixed_fixed": ".Fixed()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/fixed.hpp:L39 | neighbors=[Fixed] | lang=en
-- "foundation_fixed_sqrt": "sqrt()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/fixed.hpp:L143 | neighbors=[fixed.hpp] | lang=en
-- "foundation_fixed_vec_cross": "cross()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/fixed_vec.hpp:L137 | neighbors=[fixed_vec.hpp] | lang=en
-- "foundation_fixed_vec_fixedvec3": "FixedVec3()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/fixed_vec.hpp:L24 | neighbors=[fixed_vec.hpp] | lang=en
-- "foundation_fixed_vec_max": "max()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/fixed_vec.hpp:L81 | neighbors=[fixed_vec.hpp] | lang=en
-- "foundation_fixed_vec_min": "min()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/fixed_vec.hpp:L77 | neighbors=[fixed_vec.hpp] | lang=en
-- "foundation_frame_stats_framestats": "FrameStats" | kind=code-symbol | source=engine/foundation/include/poko/foundation/frame_stats.hpp:L13 | neighbors=[frame_stats.hpp] | lang=en
-- "foundation_logging": "logging.hpp" | kind=code-symbol | source=engine/foundation/include/poko/foundation/logging.hpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …] | lang=en
-- "foundation_loop_fixedsteploop": "FixedStepLoop" | kind=code-symbol | source=engine/foundation/include/poko/foundation/loop.hpp:L27 | neighbors=[loop.hpp] | lang=en
-- "foundation_vec3f_cross": "cross()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/vec3f.hpp:L59 | neighbors=[vec3f.hpp] | lang=en
-- "foundation_vec3f_vec3f": "Vec3f()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/vec3f.hpp:L17 | neighbors=[vec3f.hpp] | lang=en
-- "framegraph_frame_graph_add_pass": "add_pass()" | kind=code-symbol | source=engine/render/src/framegraph/frame_graph.cpp:L21 | neighbors=[frame_graph.cpp] | lang=en
-- "framegraph_frame_graph_clear": "clear()" | kind=code-symbol | source=engine/render/src/framegraph/frame_graph.cpp:L26 | neighbors=[frame_graph.cpp] | lang=en
-- "framegraph_frame_graph_framegraph_framegraph": ".FrameGraph()" | kind=code-symbol | source=engine/render/include/poko/render/framegraph/frame_graph.hpp:L48 | neighbors=[FrameGraph] | lang=en
-- "framegraph_frame_graph_import_resource": "import_resource()" | kind=code-symbol | source=engine/render/src/framegraph/frame_graph.cpp:L16 | neighbors=[frame_graph.cpp] | lang=en
+- "effekseer_ai_resources_rationale_1": "Preserve original generated masks and produce straight-alpha power-of-two sprite" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/resources.py:L1 | neighbors=[resources.py] | lang=en
+- "effekseer_ai_runtime_rationale_1": "Load the official Effekseer Core assembly through Python.NET." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/runtime.py:L1 | neighbors=[runtime.py] | lang=en
+- "effekseer_ai_runtime_rationale_15": "Return the configured directory containing ``EffekseerCore.dll``.      A release" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/runtime.py:L15 | neighbors=[editor_bin_directory()] | lang=en
+- "effekseer_ai_runtime_rationale_36": "Return the bundled .NET runtime configuration file." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/runtime.py:L36 | neighbors=[runtime_config_path()] | lang=en
+- "effekseer_ai_runtime_rationale_44": "Load and return the official static ``Effekseer.Core`` type." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/runtime.py:L44 | neighbors=[load_core()] | lang=en
+- "effekseer_ai_runtime_rationale_67": "Export the current Core document as an Effekseer runtime ``.efk`` file." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/runtime.py:L67 | neighbors=[export_binary()] | lang=en
+- "effekseer_ai_session_effectsession_new": ".new()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L25 | neighbors=[EffectSession] | lang=en
+- "effekseer_ai_session_effectsession_open": ".open()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L30 | neighbors=[EffectSession] | lang=en
+- "effekseer_ai_session_effectsession_save": ".save()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L38 | neighbors=[EffectSession] | lang=en
+- "effekseer_ai_session_effectsession_summary": ".summary()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L49 | neighbors=[EffectSession] | lang=en
+- "effekseer_ai_session_rationale_1": "The minimal effect-document lifecycle backed by Effekseer Core." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L1 | neighbors=[session.py] | lang=en
+- "effekseer_ai_session_rationale_108": "Read a public Core member without invoking arbitrary methods." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L108 | neighbors=[.property_get()] | lang=pt
+- "effekseer_ai_session_rationale_113": "Write an editable Core value or a public writable property." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L113 | neighbors=[.property_set()] | lang=en
+- "effekseer_ai_session_rationale_133": "Discover editable leaf paths without walking parent/tree references." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L133 | neighbors=[.property_list()] | lang=en
+- "effekseer_ai_session_rationale_16": "A handle to the single Core document hosted by this Python process." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L16 | neighbors=[EffectSession] | lang=en
+- "effekseer_ai_session_rationale_182": "Discover parameters grouped as they are in the editor's setting panels." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L182 | neighbors=[.settings_list()] | lang=en
+- "effekseer_ai_session_rationale_197": "Set a batch of panel-relative editable fields." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L197 | neighbors=[.settings_set()] | lang=en
+- "effekseer_ai_session_rationale_208": "Read a scalar curve as JSON-friendly keyframe data." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L208 | neighbors=[.curve_keys()] | lang=pt
+- "effekseer_ai_session_rationale_221": "Replace scalar FCurve keys using Core's add/remove commands." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L221 | neighbors=[.curve_set_keys()] | lang=en
+- "effekseer_ai_session_rationale_264": "Copy an image beside the effect and optionally bind its Core path." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L264 | neighbors=[.import_image()] | lang=en
+- "effekseer_ai_session_rationale_277": "Copy a model into ``resources/`` and bind it through Core's path API." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L277 | neighbors=[.import_model()] | lang=en
+- "effekseer_ai_session_rationale_287": "Export the current document as a runtime `.efk` file." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L287 | neighbors=[.export()] | lang=en
+- "effekseer_ai_session_rationale_309": "Copy an approved asset to this effect's resource directory." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L309 | neighbors=[._copy_resource()] | lang=en
+- "effekseer_ai_session_rationale_353": "Write scalar values through nested Core editable-value wrappers." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L353 | neighbors=[._assign_value()] | lang=en
+- "effekseer_ai_session_rationale_57": "Add a Core node and return its AI-facing path." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L57 | neighbors=[.add_node()] | lang=en
+- "effekseer_ai_session_rationale_67": "List every non-root node currently known to the session." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L67 | neighbors=[.node_list()] | lang=en
+- "effekseer_ai_session_rationale_79": "Rename a node through its Core string value." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L79 | neighbors=[.rename_node()] | lang=pt
+- "effekseer_ai_session_rationale_85": "Remove a node and its descendants from the current document." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L85 | neighbors=[.remove_node()] | lang=en
+- "effekseer_ai_session_rationale_94": "Move a node and return its new structural path." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L94 | neighbors=[.move_node()] | lang=en
+- "effekseer_ai_settings_rationale_1": "Names of node setting panels exposed by the Effekseer editor." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/settings.py:L1 | neighbors=[settings.py] | lang=en
+- "eggplots_egg_map_material_skin": "material_skin()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_map.py:L411 | neighbors=[egg_map.py] | lang=en
+- "eggplots_egg_map_shot": "shot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_map.py:L416 | neighbors=[egg_map.py] | lang=en
+- "eggplots_egg_props_boulder": "boulder()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L847 | neighbors=[egg_props.py] | lang=en
+- "eggplots_egg_props_cloud": "cloud()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L921 | neighbors=[egg_props.py] | lang=en
+- "eggplots_egg_props_rationale_463": "end cap block for the belt (roller drum + boards)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L463 | neighbors=[conveyor_end()] | lang=en
+- "eggplots_egg_props_rationale_56": "bevelled box (low poly: 1 segment = a chamfer)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L56 | neighbors=[rbox()] | lang=pt
+- "eggplots_egg_props_rationale_96": "the identity Egg: faceted lathe egg; optional painted zigzag band (band colour)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L96 | neighbors=[egg()] | lang=en
+- "eggplots_egg_props_smooth": "smooth()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L50 | neighbors=[egg_props.py] | lang=en
+- "eggplots_hooks_lua_lua_attrs": "lua_attrs()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/hooks_lua.py:L4 | neighbors=[hooks_lua.py] | lang=en
+- "evaluator_evaluator_floatenvironment_floatenvironment": ".FloatEnvironment()" | kind=code-symbol | source=mute/src/evaluator/evaluator.cpp:L99 | neighbors=[FloatEnvironment] | lang=en
 
 ## Instructions
 

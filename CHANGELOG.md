@@ -53,6 +53,10 @@ the first release tag exists.
   users, games, assets, the Pokoins ledger with a double-credit guard,
   derived balances, shares, cases and audit log, with an idempotent
   `migrate.sh` runner verified against real Postgres 18.6.
+- Matchmaker allocation and tickets (BAK-09): the spec-07 pipeline — spec
+  score ranking with affinity, five filter classes, the 20-CCU platform
+  cap with donated/BYO fallback and Cold-slot wake — plus 30-second
+  truncated-HMAC tickets (no player identity, fail-closed checks).
 - Replay ring recorder (BAK-08): a bounded 64-tick ring of per-tick state
   hashes, rejected flags, field values and moderation event markers,
   encoded as deterministic CBOR in a zlib stream with in-tree fixed-

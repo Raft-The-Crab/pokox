@@ -1,4 +1,4 @@
-# Node Description Batch 50 of 207
+# Node Description Batch 50 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -17,12 +17,27 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "fishcenter_fish_props_lighthouse": "lighthouse()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L1282 | neighbors=[fish_props.py, ball(), lerp(), the lighthouse rising out of the dome: …]
+- "fishcenter_fish_props_net_pile": "net_pile()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L570 | neighbors=[fish_props.py, ball(), lerp(), heap of teal fishing net: lumpy mound w…]
+- "fishcenter_fish_props_paint_hull": "paint_hull()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L1136 | neighbors=[fish_props.py, motor_boat(), hull shading: bottom colour below the w…, skiff()]
+- "fishcenter_fish_props_plank_floor": "plank_floor()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L219 | neighbors=[fish_props.py, fish_market(), hut_body(), deck platform: planks along `along` wit…]
+- "fishcenter_fish_props_post": "_post()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L271 | neighbors=[fish_props.py, ball(), rail_bay(), rail_post()]
+- "fishcenter_fish_props_rail_bay": "rail_bay()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L279 | neighbors=[fish_props.py, _post(), rope(), SIGNATURE edge module: post at -L/2, tw…]
+- "fishcenter_fish_props_shutter": "shutter()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L793 | neighbors=[fish_props.py, boat_house(), propped top-hinged window shutter (wove…, rod_shop()]
+- "fishcenter_fish_props_tiki_torch": "tiki_torch()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L295 | neighbors=[fish_props.py, bamboo torch: pole with nodes, lashings…, lash(), pole()]
+- "fishcenter_fish_props_tropical_shrub": "tropical_shrub()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L411 | neighbors=[fish_props.py, elephant-ear clump: paddle leaves on ar…, ball(), lerp()]
+- "fishcenter_fish_props_umbrella": "umbrella()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L698 | neighbors=[fish_props.py, palapa sun shade: teak pole on a stone …, pole(), thatch_cone()]
+- "foundation_fixed_vec_length": "length()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/fixed_vec.hpp:L148 | neighbors=[fixed_vec.hpp, isqrt_u64(), raw_length_sq(), saturate_raw64()]
+- "frostpeak_frost_map_free": "free()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_map.py:L156 | neighbors=[frost_map.py, build(), look(), scatter()]
+- "frostpeak_frost_map_front_to": "front_to()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_map.py:L153 | neighbors=[frost_map.py, build(), face(), yaw that turns a building's +Z front (i…]
+- "frostpeak_frost_map_h": "H()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_map.py:L68 | neighbors=[frost_map.py, path_info(), place(), spread()]
+- "frostpeak_frost_map_keepout": "keepout()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_map.py:L84 | neighbors=[frost_map.py, build(), path_info(), scatter()]
+- "frostpeak_frost_map_path_info": "path_info()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_map.py:L53 | neighbors=[frost_map.py, H(), keepout(), segd()]
 - "frostpeak_frost_map_scatter": "scatter()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_map.py:L168 | neighbors=[frost_map.py, build(), free(), keepout()]
 - "frostpeak_frost_map_spread": "spread()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_map.py:L157 | neighbors=[frost_map.py, build(), height range of the terrain over a foot…, H()]
 - "godot_ablation_report_analyse": "analyse()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/godot/ablation_report.py:L64 | neighbors=[ablation_report.py, image_change(), view_baseline(), main()]
 - "godot_ablation_report_image_change": "image_change()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/godot/ablation_report.py:L45 | neighbors=[ablation_report.py, analyse(), luminance(), view_baseline()]
 - "godot_ablation_report_view_baseline": "view_baseline()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/godot/ablation_report.py:L53 | neighbors=[ablation_report.py, analyse(), Full-scene GPU ms and noise floors for …, image_change()]
-- "harness_golden": "golden.py" | kind=code-symbol | source=tools/testutils/harness/golden.py:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, first_difference(), main(), update_golden()]
 - "hermes_plugin_init_register": "register()" | kind=code-symbol | source=.agents/skills/superpowers-main/.hermes-plugin/__init__.py:L93 | neighbors=[__init__.py, _build_bootstrap(), _frontmatter_value(), _skills_dir()]
 - "hermes_test_bootstrap_teststripfrontmatter": "TestStripFrontmatter" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/hermes/test_bootstrap.py:L29 | neighbors=[test_bootstrap.py, .test_no_frontmatter_returns_trimmed_co…, .test_strips_surrounding_whitespace_fro…, .test_strips_yaml_block()]
 - "hermes_test_plugin_testlayoutresolution_load_from": "._load_from()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/hermes/test_plugin.py:L132 | neighbors=[TestLayoutResolution, .test_clone_layout_resolves_sibling_ski…, .test_flat_layout_resolves_nested_skill…, .test_missing_skills_raises_loudly()]
@@ -39,24 +54,9 @@ one-sentence description — no prose, no markdown fences.
 - "integration_config_file_test_main": "main()" | kind=code-symbol | source=engine/foundation/tests/integration/config_file_test.cpp:L291 | neighbors=[config_file_test.cpp, test_config(), test_decoder(), test_resolve()]
 - "integration_config_file_test_put_bool": "put_bool()" | kind=code-symbol | source=engine/foundation/tests/integration/config_file_test.cpp:L38 | neighbors=[config_file_test.cpp, test_config(), test_decoder(), test_resolve()]
 - "integration_cube_golden_canonical_png": "canonical_png()" | kind=code-symbol | source=engine/render/tests/integration/cube_golden.py:L30 | neighbors=[cube_golden.py, png_chunk(), RGB8 PNG with filter 0 and explicit unc…, run()]
-- "integration_logging_file_test": "logging_file_test.cpp" | kind=code-symbol | source=engine/foundation/tests/integration/logging_file_test.cpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, count_stamps(), main(), read_file()]
-- "integration_test_cube_golden_unit": "test_cube_golden_unit.py" | kind=code-symbol | source=engine/render/tests/integration/test_cube_golden_unit.py:L1 | neighbors=[952997e Audit MUT-01-55 and harden veri…, c7a411f Fix MUT-01-20 audit defects in …, decode(), GoldenEncoderTests]
-- "math_deterministic_math_calculate": "calculate()" | kind=code-symbol | source=mute/src/math/deterministic_math.cpp:L18 | neighbors=[deterministic_math.cpp, supported(), deterministic_cos(), deterministic_sin()]
-- "medievalbattle_battle_map_channels": "channels()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L38 | neighbors=[battle_map.py, fordw(), H(), [(centre x, half width, bed y)] of the …]
-- "medievalbattle_battle_map_cull_hidden": "cull_hidden()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L108 | neighbors=[battle_map.py, free(), kit(), drop faces buried inside the prop's own…]
-- "medievalbattle_battle_map_ground": "ground()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L198 | neighbors=[battle_map.py, build(), grid_mesh(), sub()]
-- "medievalbattle_battle_map_keep_w": "keep_w()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L74 | neighbors=[battle_map.py, base(), ground_shade(), H()]
-- "medievalbattle_battle_map_trench_drop": "trench_drop()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L54 | neighbors=[battle_map.py, ground_shade(), H(), seg_d()]
-- "medievalbattle_battle_map_water": "water()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L261 | neighbors=[battle_map.py, build(), 4-stud water grid kept only where water…, sub()]
-- "medievalbattle_battle_map_yw": "Yw()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L35 | neighbors=[battle_map.py, centre(), field(), keep()]
-- "medievalbattle_battle_props_add_into": "add_into()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L230 | neighbors=[battle_props.py, bridge_tower(), donjon(), slit_cutter()]
-- "medievalbattle_battle_props_ammo_pile": "ammo_pile()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L1025 | neighbors=[battle_props.py, shot_stone(), T(), trebuchet shot: round stones stacked on…]
-- "medievalbattle_battle_props_ashlar_ring": "ashlar_ring()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L121 | neighbors=[battle_props.py, donjon_top(), ashlar on a cylinder of radius R (flat …, tower_body()]
-- "medievalbattle_battle_props_broadleaf": "broadleaf()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L1498 | neighbors=[battle_props.py, log(), T(), field oak: flared, slightly twisted tru…]
-- "medievalbattle_battle_props_drystone_wall": "drystone_wall()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L1398 | neighbors=[battle_props.py, rough_stone(), T(), low field wall of tightly stacked rough…]
-- "medievalbattle_battle_props_flame": "flame()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L1204 | neighbors=[battle_props.py, brazier(), campfire(), T()]
-- "medievalbattle_battle_props_in_arch": "in_arch()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L361 | neighbors=[battle_props.py, gatehouse(), sundered_bridge(), tower_face()]
-- "medievalbattle_battle_props_rot_mb": "rot_mb()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L964 | neighbors=[battle_props.py, broken_cart(), ladder(), pew()]
+- "integration_test_cube_x11_smoke": "test_cube_x11_smoke.py" | kind=code-symbol | source=engine/render/tests/integration/test_cube_x11_smoke.py:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, find_window(), main(), c7a411f Fix MUT-01-20 audit defects in …]
+- "integration_test_imgui_toggle_x11": "test_imgui_toggle_x11.py" | kind=code-symbol | source=engine/render/tests/integration/test_imgui_toggle_x11.py:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, find_window(), main(), c7a411f Fix MUT-01-20 audit defects in …]
+- "integration_test_uniform_x11_visual": "test_uniform_x11_visual.py" | kind=code-symbol | source=engine/render/tests/integration/test_uniform_x11_visual.py:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, find_window(), pixel(), c7a411f Fix MUT-01-20 audit defects in …]
 
 ## Instructions
 

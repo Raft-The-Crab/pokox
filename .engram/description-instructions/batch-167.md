@@ -1,4 +1,4 @@
-# Node Description Batch 168 of 207
+# Node Description Batch 168 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -26,46 +26,46 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "integration_test_word_reservations_reservationmigrationtests_setup": ".setUp()" | kind=code-symbol | source=backend/storage/d1/tests/integration/test_word_reservations.py:L11 | neighbors=[ReservationMigrationTests] | lang=en
-- "integration_test_word_reservations_reservationmigrationtests_test_direct_reapplication_fails_instead_of_masking_schema_conflict": ".test_direct_reapplication_fails_instead_of_masking_schema_conflict()" | kind=code-symbol | source=backend/storage/d1/tests/integration/test_word_reservations.py:L44 | neighbors=[ReservationMigrationTests] | lang=en
-- "integration_test_word_reservations_reservationmigrationtests_test_first_release_word_is_globally_reserved": ".test_first_release_word_is_globally_reserved()" | kind=code-symbol | source=backend/storage/d1/tests/integration/test_word_reservations.py:L17 | neighbors=[ReservationMigrationTests] | lang=en
-- "integration_test_word_reservations_reservationmigrationtests_test_game_reservations_have_independent_scope": ".test_game_reservations_have_independent_scope()" | kind=code-symbol | source=backend/storage/d1/tests/integration/test_word_reservations.py:L37 | neighbors=[ReservationMigrationTests] | lang=en
-- "integration_test_word_reservations_reservationmigrationtests_test_global_reservation_cannot_name_a_game": ".test_global_reservation_cannot_name_a_game()" | kind=code-symbol | source=backend/storage/d1/tests/integration/test_word_reservations.py:L30 | neighbors=[ReservationMigrationTests] | lang=en
-- "integration_test_word_reservations_reservationmigrationtests_test_global_reservation_is_unique_even_with_null_game_id": ".test_global_reservation_is_unique_even_with_null_game_id()" | kind=code-symbol | source=backend/storage/d1/tests/integration/test_word_reservations.py:L23 | neighbors=[ReservationMigrationTests] | lang=en
-- "integration_x11_demo_smoke_clientdata": "ClientData" | kind=code-symbol | source=engine/platform/tests/integration/x11_demo_smoke.py:L31 | neighbors=[x11_demo_smoke.py] | lang=en
-- "integration_x11_demo_smoke_clientmessage": "ClientMessage" | kind=code-symbol | source=engine/platform/tests/integration/x11_demo_smoke.py:L35 | neighbors=[x11_demo_smoke.py] | lang=en
-- "integration_x11_demo_smoke_rationale_1": "Optional Linux/X11 host smoke test; not a Windows or Android test.  Usage: DISPL" | kind=entity | source=engine/platform/tests/integration/x11_demo_smoke.py:L1 | neighbors=[x11_demo_smoke.py] | lang=pt
-- "integration_x11_demo_smoke_xevent": "XEvent" | kind=code-symbol | source=engine/platform/tests/integration/x11_demo_smoke.py:L40 | neighbors=[x11_demo_smoke.py] | lang=en
-- "lexer_lexer_name": "name()" | kind=code-symbol | source=mute/src/lexer/lexer.cpp:L157 | neighbors=[lexer.cpp] | lang=en
-- "lexer_unicode_xid_contains": "contains()" | kind=code-symbol | source=mute/src/lexer/unicode_xid.hpp:L1455 | neighbors=[unicode_xid.hpp] | lang=en
-- "medievalbattle_battle_map_material_skin": "material_skin()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L521 | neighbors=[battle_map.py] | lang=en
-- "medievalbattle_battle_map_rationale_285": "flagstone courtyard inside a keep (static hardscape)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L285 | neighbors=[courtyard()] | lang=pt
-- "medievalbattle_battle_map_shot": "shot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L529 | neighbors=[battle_map.py] | lang=en
-- "medievalbattle_battle_props_rationale_158": "one real block (ruins, rubble, steps, quoins)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L158 | neighbors=[stone()] | lang=en
-- "medievalbattle_battle_props_rationale_347": "elliptical / segmental arch outline in XY, open at the bottom (feet at y = 0)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L347 | neighbors=[ell_outline()] | lang=en
-- "medievalbattle_battle_props_rationale_626": "one face of the bridge tower in canonical orientation (face plane z = -d)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L626 | neighbors=[tower_face()] | lang=en
-- "medievalbattle_battle_props_rationale_63": "square timber from a to b (w across, t thick)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L63 | neighbors=[bar()] | lang=en
-- "mesh_buffer": "Buffer.h" | kind=code-symbol | source=engine/rhi/tests/fakes/mesh/Buffer.h:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …] | lang=en
-- "mesh_enginefactoryvk_cleardepthstencil": "ClearDepthStencil()" | kind=code-symbol | source=engine/rhi/tests/fakes/mesh/EngineFactoryVk.h:L76 | neighbors=[EngineFactoryVk.h] | lang=en
-- "mesh_enginefactoryvk_clearrendertarget": "ClearRenderTarget()" | kind=code-symbol | source=engine/rhi/tests/fakes/mesh/EngineFactoryVk.h:L75 | neighbors=[EngineFactoryVk.h] | lang=en
-- "mesh_enginefactoryvk_commitshaderresources": "CommitShaderResources()" | kind=code-symbol | source=engine/rhi/tests/fakes/mesh/EngineFactoryVk.h:L73 | neighbors=[EngineFactoryVk.h] | lang=en
-- "mesh_enginefactoryvk_creategraphicspipelinestate": "CreateGraphicsPipelineState()" | kind=code-symbol | source=engine/rhi/tests/fakes/mesh/EngineFactoryVk.h:L60 | neighbors=[EngineFactoryVk.h] | lang=en
-- "mesh_enginefactoryvk_createsampler": "CreateSampler()" | kind=code-symbol | source=engine/rhi/tests/fakes/mesh/EngineFactoryVk.h:L59 | neighbors=[EngineFactoryVk.h] | lang=en
-- "mesh_enginefactoryvk_createshader": "CreateShader()" | kind=code-symbol | source=engine/rhi/tests/fakes/mesh/EngineFactoryVk.h:L55 | neighbors=[EngineFactoryVk.h] | lang=en
-- "mesh_enginefactoryvk_createshaderresourcebinding": "CreateShaderResourceBinding()" | kind=code-symbol | source=engine/rhi/tests/fakes/mesh/EngineFactoryVk.h:L40 | neighbors=[EngineFactoryVk.h] | lang=en
-- "mesh_enginefactoryvk_createtexture": "CreateTexture()" | kind=code-symbol | source=engine/rhi/tests/fakes/mesh/EngineFactoryVk.h:L58 | neighbors=[EngineFactoryVk.h] | lang=en
-- "mesh_enginefactoryvk_diligent": "Diligent()" | kind=code-symbol | source=engine/rhi/tests/fakes/mesh/EngineFactoryVk.h:L6 | neighbors=[EngineFactoryVk.h] | lang=en
-- "mesh_enginefactoryvk_draw": "Draw()" | kind=code-symbol | source=engine/rhi/tests/fakes/mesh/EngineFactoryVk.h:L81 | neighbors=[EngineFactoryVk.h] | lang=en
-- "mesh_enginefactoryvk_drawindexed": "DrawIndexed()" | kind=code-symbol | source=engine/rhi/tests/fakes/mesh/EngineFactoryVk.h:L80 | neighbors=[EngineFactoryVk.h] | lang=en
-- "mesh_enginefactoryvk_getdepthbufferdsv": "GetDepthBufferDSV()" | kind=code-symbol | source=engine/rhi/tests/fakes/mesh/EngineFactoryVk.h:L66 | neighbors=[EngineFactoryVk.h] | lang=en
-- "mesh_enginefactoryvk_mesh_fake": "mesh_fake()" | kind=code-symbol | source=engine/rhi/tests/fakes/mesh/EngineFactoryVk.h:L5 | neighbors=[EngineFactoryVk.h] | lang=en
-- "mesh_enginefactoryvk_release": "Release()" | kind=code-symbol | source=engine/rhi/tests/fakes/mesh/EngineFactoryVk.h:L34 | neighbors=[EngineFactoryVk.h] | lang=en
-- "mesh_enginefactoryvk_set": "Set()" | kind=code-symbol | source=engine/rhi/tests/fakes/mesh/EngineFactoryVk.h:L29 | neighbors=[EngineFactoryVk.h] | lang=en
-- "mesh_enginefactoryvk_setindexbuffer": "SetIndexBuffer()" | kind=code-symbol | source=engine/rhi/tests/fakes/mesh/EngineFactoryVk.h:L79 | neighbors=[EngineFactoryVk.h] | lang=en
-- "mesh_enginefactoryvk_setpipelinestate": "SetPipelineState()" | kind=code-symbol | source=engine/rhi/tests/fakes/mesh/EngineFactoryVk.h:L77 | neighbors=[EngineFactoryVk.h] | lang=en
-- "mesh_enginefactoryvk_setrendertargets": "SetRenderTargets()" | kind=code-symbol | source=engine/rhi/tests/fakes/mesh/EngineFactoryVk.h:L74 | neighbors=[EngineFactoryVk.h] | lang=en
-- "mesh_enginefactoryvk_setsampler": "SetSampler()" | kind=code-symbol | source=engine/rhi/tests/fakes/mesh/EngineFactoryVk.h:L32 | neighbors=[EngineFactoryVk.h] | lang=en
-- "mesh_enginefactoryvk_setvertexbuffers": "SetVertexBuffers()" | kind=code-symbol | source=engine/rhi/tests/fakes/mesh/EngineFactoryVk.h:L78 | neighbors=[EngineFactoryVk.h] | lang=en
+- "frostpeak_frost_props_market_stall": "market_stall()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_props.py:L195 | neighbors=[frost_props.py] | lang=en
+- "frostpeak_frost_props_sled": "sled()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_props.py:L153 | neighbors=[frost_props.py] | lang=en
+- "frostpeak_frost_props_snowman": "snowman()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_props.py:L138 | neighbors=[frost_props.py] | lang=en
+- "fuzz_fuzz_bytecode_llvmfuzzertestoneinput": "LLVMFuzzerTestOneInput()" | kind=code-symbol | source=fuzz/fuzz_bytecode.cpp:L4 | neighbors=[fuzz_bytecode.cpp] | lang=en
+- "fuzz_fuzz_cbor_llvmfuzzertestoneinput": "LLVMFuzzerTestOneInput()" | kind=code-symbol | source=fuzz/fuzz_cbor.cpp:L4 | neighbors=[fuzz_cbor.cpp] | lang=en
+- "fuzz_fuzz_lexer_llvmfuzzertestoneinput": "LLVMFuzzerTestOneInput()" | kind=code-symbol | source=fuzz/fuzz_lexer.cpp:L4 | neighbors=[fuzz_lexer.cpp] | lang=en
+- "fuzz_fuzz_pokomesh_llvmfuzzertestoneinput": "LLVMFuzzerTestOneInput()" | kind=code-symbol | source=fuzz/fuzz_pokomesh.cpp:L4 | neighbors=[fuzz_pokomesh.cpp] | lang=en
+- "godot_ablation_report_rationale_1": "Rank Godot graphics settings by frame-time cost against how much they change the" | kind=entity | source=.agents/skills/ForgeSkills-main/tools/godot/ablation_report.py:L1 | neighbors=[ablation_report.py] | lang=en
+- "godot_ablation_report_rationale_54": "Full-scene GPU ms and noise floors for one view." | kind=entity | source=.agents/skills/ForgeSkills-main/tools/godot/ablation_report.py:L54 | neighbors=[view_baseline()] | lang=en
+- "harness_golden_rationale_17": "Return the first differing offset and sizes, or None if files match." | kind=entity | source=tools/testutils/harness/golden.py:L17 | neighbors=[first_difference()] | lang=en
+- "harness_golden_rationale_36": "Replace the reference atomically, only on an explicit update request." | kind=entity | source=tools/testutils/harness/golden.py:L36 | neighbors=[update_golden()] | lang=en
+- "hermes_conftest_mock_ctx": "mock_ctx()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/hermes/conftest.py:L8 | neighbors=[conftest.py] | lang=en
+- "hermes_plugin_init_rationale_41": "Return a flat ``key: value`` scalar from a SKILL.md frontmatter block.      Herm" | kind=entity | source=.agents/skills/superpowers-main/.hermes-plugin/__init__.py:L41 | neighbors=[_frontmatter_value()] | lang=pt
+- "hermes_plugin_init_rationale_9": "Locate the stock skills/ tree for either supported install layout.      - git-cl" | kind=entity | source=.agents/skills/superpowers-main/.hermes-plugin/__init__.py:L9 | neighbors=[_skills_dir()] | lang=en
+- "hermes_test_plugin_rationale_119": "Copy the plugin module + a minimal skills tree in the given layout." | kind=entity | source=.agents/skills/superpowers-main/tests/hermes/test_plugin.py:L119 | neighbors=[._stage()] | lang=en
+- "hermes_test_plugin_rationale_165": "Hermes builds its skill catalogue from register_skill(description=...),     whic" | kind=entity | source=.agents/skills/superpowers-main/tests/hermes/test_plugin.py:L165 | neighbors=[TestSkillDescriptions] | lang=en
+- "hermes_test_plugin_rationale_21": "Re-import plugin module fresh." | kind=entity | source=.agents/skills/superpowers-main/tests/hermes/test_plugin.py:L21 | neighbors=[_load_plugin()] | lang=en
+- "identity_account_record": "account_record.hpp" | kind=code-symbol | source=server/identity/include/poko/identity/account_record.hpp:L1 | neighbors=[981b52c Crated IDN-01 to IDN-04] | lang=en
+- "identity_device_binding_devicebindingservice_devicebindingservice": ".DeviceBindingService()" | kind=code-symbol | source=server/identity/include/poko/identity/device_binding.hpp:L42 | neighbors=[DeviceBindingService] | lang=en
+- "identity_revocation_gate_ticketissuancegate_ticketissuancegate": ".TicketIssuanceGate()" | kind=code-symbol | source=server/identity/include/poko/identity/revocation_gate.hpp:L51 | neighbors=[TicketIssuanceGate] | lang=en
+- "identity_sign_in_accountstore_accountstore": ".AccountStore()" | kind=code-symbol | source=server/identity/include/poko/identity/sign_in.hpp:L22 | neighbors=[AccountStore] | lang=en
+- "identity_sign_in_format_user_id": "format_user_id()" | kind=code-symbol | source=server/identity/include/poko/identity/sign_in.hpp:L64 | neighbors=[sign_in.hpp] | lang=en
+- "identity_sign_in_signinservice_signinservice": ".SignInService()" | kind=code-symbol | source=server/identity/include/poko/identity/sign_in.hpp:L71 | neighbors=[SignInService] | lang=en
+- "identity_step_up_stepupservice_stepupservice": ".StepUpService()" | kind=code-symbol | source=server/identity/include/poko/identity/step_up.hpp:L23 | neighbors=[StepUpService] | lang=en
+- "identity_velocity_haversine_km": "haversine_km()" | kind=code-symbol | source=server/identity/include/poko/identity/velocity.hpp:L34 | neighbors=[velocity.hpp] | lang=en
+- "identity_velocity_loginvelocityservice_loginvelocityservice": ".LoginVelocityService()" | kind=code-symbol | source=server/identity/include/poko/identity/velocity.hpp:L65 | neighbors=[LoginVelocityService] | lang=en
+- "identity_worker_auth_base64url_decode": "base64url_decode()" | kind=code-symbol | source=server/identity/include/poko/identity/worker_auth.hpp:L42 | neighbors=[worker_auth.hpp] | lang=en
+- "identity_worker_auth_base64url_encode": "base64url_encode()" | kind=code-symbol | source=server/identity/include/poko/identity/worker_auth.hpp:L65 | neighbors=[worker_auth.hpp] | lang=en
+- "identity_worker_auth_firebasetokenverifier_firebasetokenverifier": ".FirebaseTokenVerifier()" | kind=code-symbol | source=server/identity/include/poko/identity/worker_auth.hpp:L114 | neighbors=[FirebaseTokenVerifier] | lang=en
+- "identity_worker_auth_sessiontickets_sessiontickets": ".SessionTickets()" | kind=code-symbol | source=server/identity/include/poko/identity/worker_auth.hpp:L243 | neighbors=[SessionTickets] | lang=en
+- "imgui_enginefactoryvk_diligent": "Diligent()" | kind=code-symbol | source=engine/rhi/tests/fakes/imgui/EngineFactoryVk.h:L10 | neighbors=[EngineFactoryVk.h] | lang=en
+- "imgui_enginefactoryvk_graphicspipeline": "GraphicsPipeline()" | kind=code-symbol | source=engine/rhi/tests/fakes/imgui/EngineFactoryVk.h:L60 | neighbors=[EngineFactoryVk.h] | lang=en
+- "imgui_enginefactoryvk_ideviceobject": "IDeviceObject()" | kind=code-symbol | source=engine/rhi/tests/fakes/imgui/EngineFactoryVk.h:L82 | neighbors=[EngineFactoryVk.h] | lang=en
+- "imgui_enginefactoryvk_ienginefactory": "IEngineFactory()" | kind=code-symbol | source=engine/rhi/tests/fakes/imgui/EngineFactoryVk.h:L124 | neighbors=[EngineFactoryVk.h] | lang=en
+- "imgui_enginefactoryvk_rtvformats": "RTVFormats()" | kind=code-symbol | source=engine/rhi/tests/fakes/imgui/EngineFactoryVk.h:L58 | neighbors=[EngineFactoryVk.h] | lang=en
+- "imgui_refcntautoptr_refcntautoptr_refcntautoptr": ".RefCntAutoPtr()" | kind=code-symbol | source=engine/rhi/tests/fakes/imgui/RefCntAutoPtr.hpp:L9 | neighbors=[RefCntAutoPtr] | lang=en
+- "input_action_map_name": "name()" | kind=code-symbol | source=mute/src/input/action_map.cpp:L337 | neighbors=[action_map.cpp] | lang=en
+- "input_device_router_clear": "clear()" | kind=code-symbol | source=mute/src/input/device_router.cpp:L103 | neighbors=[device_router.cpp] | lang=en
+- "input_device_router_disconnect": "disconnect()" | kind=code-symbol | source=mute/src/input/device_router.cpp:L47 | neighbors=[device_router.cpp] | lang=en
+- "input_device_router_find": "find()" | kind=code-symbol | source=mute/src/input/device_router.cpp:L62 | neighbors=[device_router.cpp] | lang=en
 
 ## Instructions
 

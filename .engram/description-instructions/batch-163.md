@@ -1,4 +1,4 @@
-# Node Description Batch 164 of 207
+# Node Description Batch 164 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -19,51 +19,53 @@ relations (neighbors) and the provided citations/evidence — e.g.
 Ground entity descriptions in the citations/evidence when present; do not
 speculate beyond the context, so a node with no supporting context may be
 left out of the reply.
-Write every description in English (en). Do not switch languages.
+LANGUAGE: each entry has a `lang=` marker giving the language of its source.
+Write that entry's description in EXACTLY that language. Do not translate to
+a single common language — match each node's source language individually.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "eggplots_egg_props_rationale_96": "the identity Egg: faceted lathe egg; optional painted zigzag band (band colour)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L96 | neighbors=[egg()]
-- "eggplots_egg_props_smooth": "smooth()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L50 | neighbors=[egg_props.py]
-- "eggplots_hooks_lua_lua_attrs": "lua_attrs()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/hooks_lua.py:L4 | neighbors=[hooks_lua.py]
-- "evaluator_evaluator_floatenvironment_floatenvironment": ".FloatEnvironment()" | kind=code-symbol | source=mute/src/evaluator/evaluator.cpp:L99 | neighbors=[FloatEnvironment]
-- "evaluator_evaluator_name": "name()" | kind=code-symbol | source=mute/src/evaluator/evaluator.cpp:L336 | neighbors=[evaluator.cpp]
-- "evaluator_evaluator_supported_float": "supported_float()" | kind=code-symbol | source=mute/src/evaluator/evaluator.cpp:L141 | neighbors=[evaluator.cpp]
-- "examples_arctic_fox_build": "build()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/arctic_fox.py:L26 | neighbors=[arctic_fox.py]
-- "examples_arctic_fox_idle": "idle()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/arctic_fox.py:L86 | neighbors=[arctic_fox.py]
-- "examples_arctic_fox_pounce": "pounce()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/arctic_fox.py:L104 | neighbors=[arctic_fox.py]
-- "examples_arctic_fox_wag": "wag()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/arctic_fox.py:L117 | neighbors=[arctic_fox.py]
-- "examples_arctic_fox_walk": "walk()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/arctic_fox.py:L94 | neighbors=[arctic_fox.py]
-- "examples_bunny_big_jump": "big_jump()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/bunny.py:L119 | neighbors=[bunny.py]
-- "examples_bunny_build": "build()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/bunny.py:L26 | neighbors=[bunny.py]
-- "examples_bunny_ear_wiggle": "ear_wiggle()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/bunny.py:L132 | neighbors=[bunny.py]
-- "examples_bunny_hop": "hop()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/bunny.py:L108 | neighbors=[bunny.py]
-- "examples_bunny_idle": "idle()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/bunny.py:L99 | neighbors=[bunny.py]
-- "examples_cat_flap_cover_rationale_1": "Cover plate for the hole left by a removed Cat Mate 4-way cat flap.  Sticks on w" | kind=entity | source=.agents/skills/cad-skill-main/examples/cat_flap_cover.py:L1 | neighbors=[cat_flap_cover.py]
-- "examples_desk_cable_tray_rationale_1": "Under-desk cable tray, built from identical segments.  A 400 mm tray does not fi" | kind=entity | source=.agents/skills/cad-skill-main/examples/desk_cable_tray.py:L1 | neighbors=[desk_cable_tray.py]
-- "examples_duck_build": "build()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/duck.py:L25 | neighbors=[duck.py]
-- "examples_duck_flap": "flap()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/duck.py:L102 | neighbors=[duck.py]
-- "examples_duck_idle": "idle()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/duck.py:L80 | neighbors=[duck.py]
-- "examples_duck_quack": "quack()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/duck.py:L94 | neighbors=[duck.py]
-- "examples_duck_walk": "walk()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/duck.py:L86 | neighbors=[duck.py]
-- "examples_mx_master3_bin_3x3_rot": "_rot()" | kind=code-symbol | source=.agents/skills/cad-skill-main/examples/mx_master3_bin_3x3.py:L77 | neighbors=[mx_master3_bin_3x3.py]
-- "examples_owl_build": "build()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/owl.py:L25 | neighbors=[owl.py]
-- "examples_owl_flap": "flap()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/owl.py:L118 | neighbors=[owl.py]
-- "examples_owl_head_turn": "head_turn()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/owl.py:L124 | neighbors=[owl.py]
-- "examples_owl_idle": "idle()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/owl.py:L103 | neighbors=[owl.py]
-- "examples_owl_walk": "walk()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/owl.py:L110 | neighbors=[owl.py]
-- "examples_penguin_build": "build()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/penguin.py:L26 | neighbors=[penguin.py]
-- "examples_penguin_flap": "flap()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/penguin.py:L128 | neighbors=[penguin.py]
-- "examples_penguin_idle": "idle()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/penguin.py:L99 | neighbors=[penguin.py]
-- "examples_penguin_slide": "slide()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/penguin.py:L115 | neighbors=[penguin.py]
-- "examples_penguin_walk": "walk()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/penguin.py:L106 | neighbors=[penguin.py]
-- "examples_red_panda_build": "build()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/red_panda.py:L28 | neighbors=[red_panda.py]
-- "examples_red_panda_idle": "idle()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/red_panda.py:L107 | neighbors=[red_panda.py]
-- "examples_red_panda_pounce": "pounce()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/red_panda.py:L125 | neighbors=[red_panda.py]
-- "examples_red_panda_wag": "wag()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/red_panda.py:L138 | neighbors=[red_panda.py]
-- "examples_red_panda_walk": "walk()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/red_panda.py:L115 | neighbors=[red_panda.py]
-- "extensions_superpowers_bootstrapskillpath": "bootstrapSkillPath" | kind=code-symbol | source=.agents/skills/superpowers-main/.pi/extensions/superpowers.ts:L12 | neighbors=[superpowers.ts]
+- "dunedesert_dune_map_shot": "shot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L588 | neighbors=[dune_map.py] | lang=en
+- "dunedesert_dune_paint_remap": "remap()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_paint.py:L68 | neighbors=[dune_paint.py] | lang=en
+- "dunedesert_dune_props_rationale_792": "flat disc split into rings / sectors of ~cell (atlas-friendly)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L792 | neighbors=[grid_disc()] | lang=en
+- "dunedesert_dune_props_rationale_83": "battered block: base w0 x d0 at y0 -> top w1 x d1 at y1 (x / z full sizes)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L83 | neighbors=[frustum()] | lang=es
+- "dunedesert_dune_props_rationale_88": "a disc on the plane facing -Z (thickness d toward -Z)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L88 | neighbors=[disc()] | lang=en
+- "dunedesert_gen_trees_with_palms_arg": "arg()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L17 | neighbors=[gen_trees_with_palms.py] | lang=en
+- "dunedesert_gen_trees_with_palms_basis_card": "basis_card()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L541 | neighbors=[gen_trees_with_palms.py] | lang=en
+- "dunedesert_gen_trees_with_palms_branch_init": ".__init__()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L332 | neighbors=[Branch] | lang=en
+- "dunedesert_gen_trees_with_palms_canvas_init": ".__init__()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L116 | neighbors=[Canvas] | lang=en
+- "dunedesert_gen_trees_with_palms_grade": "_grade()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L1197 | neighbors=[gen_trees_with_palms.py] | lang=en
+- "dunedesert_gen_trees_with_palms_lv": "LV()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L735 | neighbors=[gen_trees_with_palms.py] | lang=en
+- "dunedesert_gen_trees_with_palms_rationale_1": "Realistic alpha-card trees for Roblox (Trunk / Branches / Leaves MeshParts + Sur" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L1 | neighbors=[gen_trees_with_palms.py] | lang=en
+- "dunedesert_gen_trees_with_palms_rationale_101": "fir / spruce: scaly grey-brown plates with reddish fresh bark in the cracks, fai" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L101 | neighbors=[bark_fir()] | lang=en
+- "dunedesert_gen_trees_with_palms_rationale_115": "RGBA + height painter; shapes composited 'over' with soft edges." | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L115 | neighbors=[Canvas] | lang=en
+- "dunedesert_gen_trees_with_palms_rationale_1204": "paint + save the texture, or (maps) load it from roblox/textures when it already" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L1204 | neighbors=[_img()] | lang=en
+- "dunedesert_gen_trees_with_palms_rationale_1219": "Trunk / Branches / Leaves materials for a texture style (cached per style)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L1219 | neighbors=[get_materials()] | lang=en
+- "dunedesert_gen_trees_with_palms_rationale_1251": "build one species into coll: [<prefix><name>_Trunk, _Branches, _Leaves] (shared" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L1251 | neighbors=[make_tree()] | lang=en
+- "dunedesert_gen_trees_with_palms_rationale_132": "Tapered stroke along pts (px), clipped to the cell rect clip=(x0,x1,y0,y1)." | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L132 | neighbors=[.capsule_path()] | lang=en
+- "dunedesert_gen_trees_with_palms_rationale_211": "4 x 4 fir sprays: a central twig with paired laterals (frond widest near the bas" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L211 | neighbors=[needle_atlas()] | lang=en
+- "dunedesert_gen_trees_with_palms_rationale_34": "Periodic (tileable) gaussian-filtered noise, fx / fy = feature frequency in cycl" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L34 | neighbors=[fft_noise()] | lang=en
+- "dunedesert_gen_trees_with_palms_rationale_358": "<1 inside the lumpy crown envelope." | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L358 | neighbors=[.env()] | lang=en
+- "dunedesert_gen_trees_with_palms_rationale_427": "surface roots: leave the trunk foot outward and down, then snake along the groun" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L427 | neighbors=[.grow_roots()] | lang=en
+- "dunedesert_gen_trees_with_palms_rationale_475": "paired side sprays in the (roughly horizontal) plane of the branch, shorter towa" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L475 | neighbors=[.laterals()] | lang=en
+- "dunedesert_gen_trees_with_palms_rationale_550": "Leaf-cluster cards (folded, 4 tris) or crossed twig cards (2 x 2 tris)." | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L550 | neighbors=[card_quads()] | lang=en
+- "dunedesert_gen_trees_with_palms_rationale_620": "needle-spray cards along every branch / lateral: most lie in the spray plane (no" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L620 | neighbors=[conifer_cards()] | lang=en
+- "dunedesert_gen_trees_with_palms_rationale_67": "t array -> colour from [(pos, (r,g,b)), ...]." | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L67 | neighbors=[ramp()] | lang=en
+- "dunedesert_gen_trees_with_palms_rationale_859": "leaf-scar rings (rows) with interlocking diamond boot stubs between them, grey-b" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L859 | neighbors=[bark_palm()] | lang=en
+- "dunedesert_gen_trees_with_palms_rationale_876": "4 x 4 pinnate fronds: rachis up the cell centre, ~30 leaflet pairs angled toward" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L876 | neighbors=[frond_atlas()] | lang=en
+- "dunedesert_gen_trees_with_palms_rationale_907": "cells 0, 1: dry brown hanging fronds; cells 2, 3: date clusters (strands of oran" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L907 | neighbors=[palm_twig_atlas()] | lang=en
+- "dunedesert_gen_trees_with_palms_tree_init": ".__init__()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L351 | neighbors=[Tree] | lang=en
+- "dunedesert_hooks_lua_lua_attrs": "lua_attrs()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/hooks_lua.py:L4 | neighbors=[hooks_lua.py] | lang=en
+- "effekseer_ai_authoring_layerbuilder_init": ".__init__()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/authoring.py:L108 | neighbors=[LayerBuilder] | lang=en
+- "effekseer_ai_authoring_layerbuilder_set": ".set()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/authoring.py:L114 | neighbors=[LayerBuilder] | lang=en
+- "effekseer_ai_cli_compile": "_compile()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L118 | neighbors=[cli.py] | lang=en
+- "effekseer_ai_cli_new": "_new()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L22 | neighbors=[cli.py] | lang=en
+- "effekseer_ai_cli_texture_process": "_texture_process()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L124 | neighbors=[cli.py] | lang=en
+- "effekseer_ai_models_rationale_1": "Create Core procedural meshes with validated reflective settings." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/models.py:L1 | neighbors=[models.py] | lang=en
+- "effekseer_ai_preview_preview_effects": "preview_effects()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/preview.py:L5 | neighbors=[preview.py] | lang=en
+- "effekseer_ai_preview_rationale_1": "Render through the official Godot plugin and VfxLab capture harness." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/preview.py:L1 | neighbors=[preview.py] | lang=en
+- "effekseer_ai_resources_process_texture": "process_texture()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/resources.py:L5 | neighbors=[resources.py] | lang=en
 
 ## Instructions
 

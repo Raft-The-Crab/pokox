@@ -1,4 +1,4 @@
-# Node Description Batch 31 of 207
+# Node Description Batch 31 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -17,6 +17,22 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "towncity_town_map_static": "static()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L91 | neighbors=[town_map.py, ground(), markings(), median(), square(), sub()]
+- "towncity_town_props_flower_box": "flower_box()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_props.py:L188 | neighbors=[town_props.py, add(), blob(), flower(), V3(), window_unit()]
+- "towncity_town_props_ring_frame": "ring_frame()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_props.py:L75 | neighbors=[town_props.py, building(), deco_window(), flat rectangular frame ring in the XY p…, V3(), window_unit()]
+- "towncity_town_vehicles_bus": "bus()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_vehicles.py:L101 | neighbors=[town_vehicles.py, body_shader(), body_shell(), _smoothstep(), wheels(), city bus: lofted box body, raked windsc…]
+- "unit_bench_test_bench": "bench()" | kind=code-symbol | source=mute/tests/unit/bench_test.cpp:L59 | neighbors=[bench_test.cpp, best_ns(), check(), compile(), run(), cases()]
+- "unit_config_logging_guard_test": "config_logging_guard_test.cpp" | kind=code-symbol | source=engine/foundation/tests/unit/config_logging_guard_test.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, info(), init(), main(), shutdown(), c7a411f Fix MUT-01-20 audit defects in …]
+- "unit_determinism_test": "determinism_test.cpp" | kind=code-symbol | source=mute/tests/unit/determinism_test.cpp:L1 | neighbors=[037434c Add MUT-24 determinism and capa…, 952997e Audit MUT-01-55 and harden veri…, cases(), error(), main(), ok()]
+- "unit_device_router_test_event": "event()" | kind=code-symbol | source=mute/tests/unit/device_router_test.cpp:L18 | neighbors=[device_router_test.cpp, connect(), disconnect(), pad_axis(), pad_button(), touch_tap()]
+- "unit_diff_test_cases": "cases()" | kind=code-symbol | source=mute/tests/unit/diff_test.cpp:L85 | neighbors=[diff_test.cpp, check(), compile(), diff_case(), total_words(), main()]
+- "unit_diff_test_diff_case": "diff_case()" | kind=code-symbol | source=mute/tests/unit/diff_test.cpp:L66 | neighbors=[diff_test.cpp, cases(), check(), compile(), run(), same_result()]
+- "unit_emit_test_select_module": "select_module()" | kind=code-symbol | source=mute/tests/unit/emit_test.cpp:L70 | neighbors=[emit_test.cpp, cases(), position_cases(), i32(), pv(), v()]
+- "unit_fixed_vec_test_main": "main()" | kind=code-symbol | source=engine/foundation/tests/unit/fixed_vec_test.cpp:L51 | neighbors=[fixed_vec_test.cpp, len_d(), naive_dot(), naive_in_range(), raw3(), v3()]
+- "unit_semantic_test": "semantic_test.cpp" | kind=code-symbol | source=mute/tests/unit/semantic_test.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, cases(), error(), main(), ok(), c7a411f Fix MUT-01-20 audit defects in …]
+- "unit_stdlib_crypto_test": "stdlib_crypto_test.cpp" | kind=code-symbol | source=mute/tests/unit/stdlib_crypto_test.cpp:L1 | neighbors=[60d8044 Mute crypto hostcalls: fail exp…, 952997e Audit MUT-01-55 and harden veri…, 9eeb3ff Merge pull request #2 from Raft…, bytes(), digest_is(), main()]
+- "valleylake_paint_paint_block": "paint_block()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/paint.py:L50 | neighbors=[paint.py, atlas(), cracks(), fnoise(), _hex(), stamps()]
+- "valleylake_valley_map_free": "free()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L227 | neighbors=[valley_map.py, build_solid(), cliffs(), look(), nature(), shore()]
 - "valleylake_valley_map_lake_d": "lake_d()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L53 | neighbors=[valley_map.py, H0(), lake_R(), nature(), preview_water(), signed distance-ish to the shore (negat…]
 - "valleylake_valley_map_lake_r": "lake_R()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L47 | neighbors=[valley_map.py, lake_d(), lake_poly(), nature(), shore radius around LAKE_C by angle (th…, shore()]
 - "valleylake_valley_map_rim_point": "rim_point()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L427 | neighbors=[valley_map.py, build_profile(), cliff_mesh(), cliffs(), point on the rim superellipse at angle …, rim_r()]
@@ -41,22 +57,6 @@ one-sentence description — no prose, no markdown fences.
 - "vfxkit_sequence_validate": "validate()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/sequence.py:L76 | neighbors=[sequence.py, capture(), Structure, effects, stage gate, referen…, gate_path(), length(), read()]
 - "vfxkit_texture_audit": "texture_audit.py" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/texture_audit.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, audit(), cell_report(), content(), Pixel observations grouped by texture r…]
 - "vfxkit_textures_spectral": "spectral()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/textures.py:L14 | neighbors=[textures.py, flame_band(), masks(), procedural(), Seamlessly tileable 1/f noise in 0..1; …, swirl()]
-- "vfxkit_video_resolve_output": "_resolve_output()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/video.py:L68 | neighbors=[video.py, flipbook(), grade(), Bare names land in vfx/textures/process…, _in_project(), _png()]
-- "vm_scheduler": "scheduler.cpp" | kind=code-symbol | source=mute/src/vm/scheduler.cpp:L1 | neighbors=[435b4d3 Add MUT-23 cooperative async sc…, cancel(), find(), run(), spawn(), state()]
-- "vm_values_copy_impl": "copy_impl()" | kind=code-symbol | source=mute/src/vm/values.cpp:L142 | neighbors=[values.cpp, copy(), make_array(), make_string(), object(), release()]
-- "vm_values_free_slot": "free_slot()" | kind=code-symbol | source=mute/src/vm/values.cpp:L23 | neighbors=[values.cpp, alloc(), object(), release(), reset_tick(), set_index()]
-- "vm_values_set_index": "set_index()" | kind=code-symbol | source=mute/src/vm/values.cpp:L105 | neighbors=[values.cpp, free_slot(), make_int(), object(), promote(), reaches()]
-- "vm_vm_core": "vm_core.hpp" | kind=code-symbol | source=mute/src/vm/vm_core.hpp:L1 | neighbors=[952997e Audit MUT-01-55 and harden veri…, DepthGuard(), fail(), result(), step(), VmCore]
-- "voidrealm_void_map_island": "island()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_map.py:L133 | neighbors=[void_map.py, build(), keel_profile(), Rfun(), static(), top_y()]
-- "voidrealm_void_map_ring_scatter": "ring_scatter()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_map.py:L322 | neighbors=[void_map.py, dressing(), free(), place(), reserve(), Rfun()]
-- "voidrealm_void_map_void_debris": "void_debris()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_map.py:L427 | neighbors=[void_map.py, build(), intentional floaters: chips drifting ne…, island_of(), place(), seg_d()]
-- "voidrealm_void_props_crystal_chips": "crystal_chips()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L396 | neighbors=[void_props.py, FS(), shaft(), shard_rock(), V(), ground cover: a low obsidian chip with …]
-- "voidrealm_void_props_float_shard": "float_shard()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L161 | neighbors=[void_props.py, FS(), shaft(), shard_rock(), V(), broken-off island chip: a crust slab wi…]
-- "voidrealm_void_props_pillar": "pillar()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L209 | neighbors=[void_props.py, annulus(), chamfer_box(), FS(), V(), fluted void-stone column: stepped plint…]
-- "voidrealm_void_props_rune_bridge": "rune_bridge()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L690 | neighbors=[void_props.py, rune bridge built along -Z from z=+L/2 …, chamfer_box(), FS(), shaft(), V()]
-- "voidrealm_void_props_rune_circle": "rune_circle()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L290 | neighbors=[void_props.py, flat ceremonial circle: pale trim ring …, annulus(), disc(), FS(), spawn_dais()]
-- "voidrealm_void_props_rune_glyph": "rune_glyph()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L198 | neighbors=[void_props.py, abstract rune inlay (never a letter): d…, rift_gate(), annulus(), shop_kiosk(), void_arch()]
-- "voidrealm_void_props_sign_plate": "sign_plate()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L428 | neighbors=[void_props.py, quest_stand(), blank sign board for a GUI label (no te…, shop_kiosk(), chamfer_box(), FS()]
 
 ## Instructions
 

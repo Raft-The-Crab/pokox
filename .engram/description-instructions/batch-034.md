@@ -1,4 +1,4 @@
-# Node Description Batch 35 of 207
+# Node Description Batch 35 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -17,6 +17,19 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "dunedesert_dune_props_grid_quad": "grid_quad()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L70 | neighbors=[dune_props.py, lerp(), flat top split into ~cell faces (the at…, ruin_house(), step_pyramid()]
+- "dunedesert_dune_props_obelisk_stump": "obelisk_stump()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L406 | neighbors=[dune_props.py, merge_into(), plinth(), _shaft(), sun_relief()]
+- "dunedesert_dune_props_plinth": "plinth()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L129 | neighbors=[dune_props.py, obelisk(), obelisk_stump(), quest_stele(), SHARED BASE: stepped sandstone plinth, …]
+- "dunedesert_dune_props_quest_stele": "quest_stele()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L459 | neighbors=[dune_props.py, frustum(), plinth(), sun_relief(), QUEST stand: tall carved tablet on the …]
+- "dunedesert_dune_props_rolled_rug": "rolled_rug()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L566 | neighbors=[dune_props.py, cargo_pile(), lerp(), sleep_tent(), trader_tent()]
+- "dunedesert_dune_props_ruin_house": "ruin_house()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L301 | neighbors=[dune_props.py, corner of a roofless house: two block w…, block_wall(), grid_quad(), merge_into()]
+- "dunedesert_dune_props_sack": "sack()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L560 | neighbors=[dune_props.py, cargo_pile(), uvsphere(), V(), trader_tent()]
+- "dunedesert_dune_props_sheet": "sheet()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L527 | neighbors=[dune_props.py, camel(), a cloth sheet over a parametric surface…, sleep_tent(), trader_tent()]
+- "dunedesert_dune_props_treasure_mound": "treasure_mound()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L813 | neighbors=[dune_props.py, DIG SPOT anchors: tier 1 a low sand mou…, uvsphere(), V(), waystone_body()]
+- "dunedesert_dune_props_wyrm_rib": "wyrm_rib()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L939 | neighbors=[dune_props.py, one segment of the wyrm's spine lying b…, lerp(), uvsphere(), V()]
+- "dunedesert_dune_props_wyrm_skull": "wyrm_skull()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L908 | neighbors=[dune_props.py, giant sand-wyrm skull lying jaw-open in…, lerp(), uvsphere(), V()]
+- "dunedesert_dune_props_zig_band": "zig_band()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L105 | neighbors=[dune_props.py, pylon_gate(), raised zigzag band between two rails (c…, step_pyramid(), sunken_temple()]
+- "dunedesert_gen_trees_with_palms_bark_fir": "bark_fir()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L100 | neighbors=[gen_trees_with_palms.py, fft_noise(), normal_from_height(), ramp(), fir / spruce: scaly grey-brown plates w…]
 - "dunedesert_gen_trees_with_palms_bark_palm": "bark_palm()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L858 | neighbors=[gen_trees_with_palms.py, fft_noise(), normal_from_height(), ramp(), leaf-scar rings (rows) with interlockin…]
 - "dunedesert_gen_trees_with_palms_branch_length": ".length()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L343 | neighbors=[Branch, card_quads(), conifer_cards(), .children_of(), .laterals()]
 - "dunedesert_gen_trees_with_palms_conifer_cards": "conifer_cards()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L619 | neighbors=[gen_trees_with_palms.py, .at(), .length(), rand_unit(), needle-spray cards along every branch /…]
@@ -44,19 +57,6 @@ one-sentence description — no prose, no markdown fences.
 - "eggplots_egg_props_plot_slab": "plot_slab()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L262 | neighbors=[egg_props.py, lerp(), rbox(), sh(), the yard: chamfered stone footing + acc…]
 - "eggplots_egg_props_windmill": "windmill()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L898 | neighbors=[egg_props.py, backdrop windmill: tapered octagonal to…, lerp(), rbox(), sh()]
 - "evaluator_evaluator_literal_integer": "literal_integer()" | kind=code-symbol | source=mute/src/evaluator/evaluator.cpp:L68 | neighbors=[evaluator.cpp, evaluate_arithmetic(), fail(), integer_suffix(), suffix_length()]
-- "evaluator_evaluator_unsigned_binary": "unsigned_binary()" | kind=code-symbol | source=mute/src/evaluator/evaluator.cpp:L188 | neighbors=[evaluator.cpp, evaluate_arithmetic(), fail(), unsigned_max(), width()]
-- "examples_axolotl_gills": "gills()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/axolotl.py:L100 | neighbors=[axolotl.py, happy(), idle(), swim(), walk()]
-- "exception": "Exception" | kind=code-symbol | neighbors=[cube_demo.cpp, imgui_demo.cpp, triangle_demo.cpp, Skip, sdl_platform_faults.cpp]
-- "fishcenter_fish_map_beam": "beam()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L222 | neighbors=[fish_map.py, prism(), sh_val(), deck_rect(), ring_deck()]
-- "fishcenter_fish_map_compass": "compass()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L299 | neighbors=[fish_map.py, pos(), sh_val(), hardscape(), compass-rose inlay in the spawn plaza d…]
-- "fishcenter_fish_map_outward": "outward()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L35 | neighbors=[fish_map.py, islet_e(), islet_grass(), lp(), nature()]
-- "fishcenter_fish_map_platform": "platform()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L269 | neighbors=[fish_map.py, hardscape(), pos(), sh_val(), central coral-stone platform: polar fla…]
-- "fishcenter_fish_map_prism": "prism()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L202 | neighbors=[fish_map.py, beam(), deck_rect(), plank / slab from a top quad [(x, z) x4…, ring_deck()]
-- "fishcenter_fish_map_rails_flush": "rails_flush()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L483 | neighbors=[fish_map.py, edges(), bay_key(), place(), place every collected run: each bay car…]
-- "fishcenter_fish_props_awning": "awning()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L236 | neighbors=[fish_props.py, loft(), fish_market(), striped canvas awning off a wall at z (…, rod_shop()]
-- "fishcenter_fish_props_boat_house": "boat_house()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L990 | neighbors=[fish_props.py, hut_body(), shutter(), thatch_gable(), BOAT RENTAL (lagoon teal): bamboo hut w…]
-- "fishcenter_fish_props_boat_hull": "boat_hull()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L1111 | neighbors=[fish_props.py, lerp(), motor_boat(), hollow lofted boat hull: U sections clo…, skiff()]
-- "fishcenter_fish_props_fish_index_wall": "fish_index_wall()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L1053 | neighbors=[fish_props.py, fish(), sign_board(), thatch_hip(), AQUARIUM INDEX wall: plank backboard on…]
 
 ## Instructions
 

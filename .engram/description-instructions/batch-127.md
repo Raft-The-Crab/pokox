@@ -1,4 +1,4 @@
-# Node Description Batch 128 of 207
+# Node Description Batch 128 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -12,58 +12,51 @@ describing what it is or does. Use only the provided context.
 For a code symbol (kind=code-symbol — a function, class, or constant),
 describe what the function/symbol does based on its name, source location
 and neighbors — e.g. "Resolves the configured ontology profile from graphify.yaml.".
-For an entity node (any other kind — e.g. a person, place, event, object),
-describe what the entity is and its role, grounded in its type, its
-relations (neighbors) and the provided citations/evidence — e.g.
-"Lady Carfax, a wealthy heiress who disappears en route to Lausanne.".
-Ground entity descriptions in the citations/evidence when present; do not
-speculate beyond the context, so a node with no supporting context may be
-left out of the reply.
 Write every description in English (en). Do not switch languages.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "semantic_determinism_analyzer": "Analyzer" | kind=code-symbol | source=mute/src/semantic/determinism.cpp:L27 | neighbors=[determinism.cpp, .Analyzer()]
-- "semantic_determinism_dump_determinism": "dump_determinism()" | kind=code-symbol | source=mute/src/semantic/determinism.cpp:L136 | neighbors=[determinism.cpp, name()]
-- "semantic_determinism_name": "name()" | kind=code-symbol | source=mute/src/semantic/determinism.cpp:L131 | neighbors=[determinism.cpp, dump_determinism()]
-- "semantic_emit_alu": "alu()" | kind=code-symbol | source=mute/src/semantic/emit.cpp:L9 | neighbors=[emit.cpp, emit_bytecode()]
-- "semantic_emit_is_terminator_pub": "is_terminator_pub()" | kind=code-symbol | source=mute/src/semantic/emit.cpp:L8 | neighbors=[emit.cpp, emit_bytecode()]
-- "semantic_fold_eval_binary": "eval_binary()" | kind=code-symbol | source=mute/src/semantic/fold.cpp:L18 | neighbors=[fold.cpp, fold_constants()]
-- "semantic_fold_eval_compare": "eval_compare()" | kind=code-symbol | source=mute/src/semantic/fold.cpp:L43 | neighbors=[fold.cpp, fold_constants()]
-- "semantic_fold_eval_unary": "eval_unary()" | kind=code-symbol | source=mute/src/semantic/fold.cpp:L36 | neighbors=[fold.cpp, fold_constants()]
-- "semantic_fold_int_scalar": "int_scalar()" | kind=code-symbol | source=mute/src/semantic/fold.cpp:L10 | neighbors=[fold.cpp, fold_constants()]
-- "semantic_lower_lower_function": "lower_function()" | kind=code-symbol | source=mute/src/semantic/lower.cpp:L518 | neighbors=[lower.cpp, lower_function_ex()]
-- "semantic_lower_lowerer": "Lowerer" | kind=code-symbol | source=mute/src/semantic/lower.cpp:L89 | neighbors=[lower.cpp, .Lowerer()]
-- "semantic_lower_requires_mask": "requires_mask()" | kind=code-symbol | source=mute/src/semantic/lower.cpp:L44 | neighbors=[lower.cpp, lower_module()]
-- "semantic_optimize_is_pure": "is_pure()" | kind=code-symbol | source=mute/src/semantic/optimize.cpp:L11 | neighbors=[optimize.cpp, eliminate_dead_code()]
-- "semantic_optimize_is_terminator": "is_terminator()" | kind=code-symbol | source=mute/src/semantic/optimize.cpp:L8 | neighbors=[optimize.cpp, eliminate_dead_code()]
-- "semantic_semantic_accepts": "accepts()" | kind=code-symbol | source=mute/src/semantic/semantic.cpp:L18 | neighbors=[semantic.cpp, same_type()]
-- "semantic_semantic_analyzer": "Analyzer" | kind=code-symbol | source=mute/src/semantic/semantic.cpp:L86 | neighbors=[semantic.cpp, .Analyzer()]
-- "semantic_semantic_dump_semantic": "dump_semantic()" | kind=code-symbol | source=mute/src/semantic/semantic.cpp:L428 | neighbors=[semantic.cpp, name()]
-- "semantic_semantic_is_float_scalar": "is_float_scalar()" | kind=code-symbol | source=mute/src/semantic/semantic.cpp:L54 | neighbors=[semantic.cpp, numeric()]
-- "semantic_semantic_is_integer_scalar": "is_integer_scalar()" | kind=code-symbol | source=mute/src/semantic/semantic.cpp:L50 | neighbors=[semantic.cpp, numeric()]
-- "semantic_semantic_name": "name()" | kind=code-symbol | source=mute/src/semantic/semantic.cpp:L420 | neighbors=[semantic.cpp, dump_semantic()]
-- "semantic_semantic_same_type": "same_type()" | kind=code-symbol | source=mute/src/semantic/semantic.cpp:L13 | neighbors=[semantic.cpp, accepts()]
-- "semantic_ssa_is_terminator": "is_terminator()" | kind=code-symbol | source=mute/src/semantic/ssa.cpp:L9 | neighbors=[ssa.cpp, verify()]
-- "semantic_ssa_verify": "verify()" | kind=code-symbol | source=mute/src/semantic/ssa.cpp:L12 | neighbors=[ssa.cpp, is_terminator()]
-- "shared_bpyx_add_common": "add_common()" | kind=code-symbol | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L62 | neighbors=[_bpyx.py, --objects / --save flags shared by most…]
-- "shared_bpyx_enum_ids": "enum_ids()" | kind=code-symbol | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L104 | neighbors=[_bpyx.py, Valid identifiers of an enum property (…]
-- "shared_bpyx_mesh_tris": "mesh_tris()" | kind=code-symbol | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L117 | neighbors=[_bpyx.py, Triangle count (evaluated = with modifi…]
-- "shared_bpyx_node": "node()" | kind=code-symbol | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L99 | neighbors=[_bpyx.py, First node of `type_` (e.g. 'BSDF_PRINC…]
-- "shared_bpyx_object_mode": "object_mode()" | kind=code-symbol | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L83 | neighbors=[_bpyx.py, Leave edit/sculpt/pose modes; most data…]
-- "shared_bpyx_objects": "objects()" | kind=code-symbol | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L71 | neighbors=[_bpyx.py, Resolve names -> objects. No names: sel…]
-- "shared_bpyx_parser": "parser()" | kind=code-symbol | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L41 | neighbors=[_bpyx.py, ArgumentParser whose help is the script…]
-- "shared_bpyx_r": "r()" | kind=code-symbol | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L132 | neighbors=[_bpyx.py, Round a float or a vector for compact J…]
-- "shared_bpyx_select_only": "select_only()" | kind=code-symbol | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L90 | neighbors=[_bpyx.py, Select exactly `objs` and make `active`…]
-- "shared_bpyx_set_enum": "set_enum()" | kind=code-symbol | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L109 | neighbors=[_bpyx.py, Assign an enum; on failure raise listin…]
-- "skyrise_sky_map_foot": "foot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_map.py:L76 | neighbors=[sky_map.py, place()]
-- "skyrise_sky_map_look": "look()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_map.py:L388 | neighbors=[sky_map.py, free()]
-- "skyrise_sky_map_maker": "maker()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_map.py:L268 | neighbors=[sky_map.py, zone_island()]
-- "skyrise_sky_map_path_dist": "path_dist()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_map.py:L125 | neighbors=[sky_map.py, micro_detail()]
-- "skyrise_sky_map_rationale_182": "stepping-stone path from the entry bridge end through the island middle to the e" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_map.py:L182 | neighbors=[MB, winding_path()]
-- "skyrise_sky_map_rationale_244": "dress the outer ring of island i, keeping bridge heads, gates and stations clear" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_map.py:L244 | neighbors=[MB, rim_dress()]
-- "skyrise_sky_map_rationale_316": "trodden track under the stepping stones: overlapping irregular flat blobs follow" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_map.py:L316 | neighbors=[MB, path_track()]
+- "scripts_pro_lib_spike": "spike()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L190 | neighbors=[pro_lib.py, a crystal / spire: prism up to h * shou…]
+- "scripts_pro_lib_strip_surface": "strip_surface()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L283 | neighbors=[pro_lib.py, a surface between a front curve z = zf(…]
+- "scripts_pro_lib_xf": "xf()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L111 | neighbors=[pro_lib.py, rot = (pitch about X, yaw about Y, roll…]
+- "scripts_qa_check_islands": "_islands()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-asset-qa/scripts/qa_check.py:L109 | neighbors=[qa_check.py, run()]
+- "scripts_qa_check_point_in_tri": "_point_in_tri()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-asset-qa/scripts/qa_check.py:L126 | neighbors=[qa_check.py, run()]
+- "scripts_qa_check_result": "_result()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-asset-qa/scripts/qa_check.py:L417 | neighbors=[qa_check.py, run()]
+- "scripts_qa_check_uv_stats": "_uv_stats()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-asset-qa/scripts/qa_check.py:L133 | neighbors=[qa_check.py, run()]
+- "scripts_render_batch_frames": "_frames()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-rendering/scripts/render_batch.py:L56 | neighbors=[render_batch.py, run()]
+- "scripts_render_batch_gpu": "_gpu()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-rendering/scripts/render_batch.py:L36 | neighbors=[render_batch.py, run()]
+- "scripts_retarget_rot": "_rot()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-animation/scripts/retarget.py:L86 | neighbors=[retarget.py, run()]
+- "scripts_review_shots_bounds": "_bounds()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-asset-qa/scripts/review_shots.py:L27 | neighbors=[review_shots.py, run()]
+- "scripts_review_shots_run": "run()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-asset-qa/scripts/review_shots.py:L35 | neighbors=[review_shots.py, _bounds()]
+- "scripts_rig_check_mirror": "_mirror()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-character-rigging/scripts/rig_check.py:L43 | neighbors=[rig_check.py, run()]
+- "scripts_rig_check_run": "run()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-character-rigging/scripts/rig_check.py:L52 | neighbors=[rig_check.py, _mirror()]
+- "scripts_rigify_build_bounds": "_bounds()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-character-rigging/scripts/rigify_build.py:L36 | neighbors=[rigify_build.py, _fit()]
+- "scripts_rigify_build_remove_face": "_remove_face()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-character-rigging/scripts/rigify_build.py:L58 | neighbors=[rigify_build.py, run()]
+- "scripts_roblox_export_at": "at()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/roblox_export.py:L755 | neighbors=[roblox_export.py, r_pos()]
+- "scripts_roblox_export_base_of": "base_of()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/roblox_export.py:L119 | neighbors=[roblox_export.py, clean_name()]
+- "scripts_roblox_export_collision_of": "collision_of()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/roblox_export.py:L109 | neighbors=[roblox_export.py, _owner()]
+- "scripts_roblox_export_export": "export()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/roblox_export.py:L209 | neighbors=[roblox_export.py, material_split()]
+- "scripts_roblox_export_face_rgb": "_face_rgb()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/roblox_export.py:L159 | neighbors=[roblox_export.py, material_split()]
+- "scripts_roblox_export_look": "look()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/roblox_export.py:L367 | neighbors=[roblox_export.py, r_pos()]
+- "scripts_roblox_export_mat_color": "mat_color()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/roblox_export.py:L134 | neighbors=[roblox_export.py, glow colour (sRGB 0-255) from an emissi…]
+- "scripts_roblox_export_owner": "_owner()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/roblox_export.py:L696 | neighbors=[roblox_export.py, collision_of()]
+- "scripts_roblox_export_split_faces": "split_faces()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/roblox_export.py:L269 | neighbors=[roblox_export.py, faces -> chunks under SPLIT_TRIS / SPLI…]
+- "scripts_roblox_materials_column_of": "column_of()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/roblox_materials.py:L35 | neighbors=[roblox_materials.py, preview()]
+- "scripts_roblox_materials_variant": "_variant()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/roblox_materials.py:L39 | neighbors=[roblox_materials.py, preview()]
+- "scripts_run_in_blender_find_blender": "find_blender()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-core/scripts/run_in_blender.py:L29 | neighbors=[run_in_blender.py, main()]
+- "scripts_run_in_blender_main": "main()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-core/scripts/run_in_blender.py:L48 | neighbors=[run_in_blender.py, find_blender()]
+- "scripts_scatter_instances": "_instances()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-environment-kits/scripts/scatter.py:L140 | neighbors=[scatter.py, run()]
+- "scripts_scatter_layer_coll": "_layer_coll()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-environment-kits/scripts/scatter.py:L231 | neighbors=[scatter.py, run()]
+- "scripts_scene_audit_apply_rot_scale": "_apply_rot_scale()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-scene-setup/scripts/scene_audit.py:L24 | neighbors=[scene_audit.py, run()]
+- "scripts_scene_audit_run": "run()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-scene-setup/scripts/scene_audit.py:L35 | neighbors=[scene_audit.py, _apply_rot_scale()]
+- "scripts_scene_mood_clear": "_clear()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-time-of-day/scripts/scene_mood.py:L105 | neighbors=[scene_mood.py, run()]
+- "scripts_scene_mood_coll": "_coll()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-time-of-day/scripts/scene_mood.py:L118 | neighbors=[scene_mood.py, run()]
+- "scripts_scene_mood_fog_box": "_fog_box()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-time-of-day/scripts/scene_mood.py:L238 | neighbors=[scene_mood.py, run()]
+- "scripts_scene_mood_grade": "_grade()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-time-of-day/scripts/scene_mood.py:L292 | neighbors=[scene_mood.py, run()]
+- "scripts_scene_mood_light": "_light()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-time-of-day/scripts/scene_mood.py:L127 | neighbors=[scene_mood.py, run()]
+- "scripts_scene_mood_mix_rgb": "_mix_rgb()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-time-of-day/scripts/scene_mood.py:L161 | neighbors=[scene_mood.py, _world()]
+- "scripts_scene_mood_norm": "_norm()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-time-of-day/scripts/scene_mood.py:L143 | neighbors=[scene_mood.py, run()]
 
 ## Instructions
 

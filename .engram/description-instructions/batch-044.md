@@ -1,4 +1,4 @@
-# Node Description Batch 45 of 207
+# Node Description Batch 45 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -17,6 +17,21 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "brick_mimic_chest_brick_build": "build()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/mimic_chest_brick.py:L351 | neighbors=[mimic_chest_brick.py, exposed(), lin(), exposed brick faces as flat quads; UVs …]
+- "brick_props_brick_scifi_pistol": "scifi_pistol()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/props_brick.py:L392 | neighbors=[props_brick.py, white + silver sci-fi pistol, muzzle up…, poly(), stroke()]
+- "brick_props_brick_stroke": "stroke()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/props_brick.py:L326 | neighbors=[props_brick.py, thick polyline (bow limbs, strings, tho…, scifi_pistol(), thorn_bow()]
+- "brick_props_brick_thorn_bow": "thorn_bow()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/props_brick.py:L341 | neighbors=[props_brick.py, dark thorn bow (R=8): limbs curling bac…, poly(), stroke()]
+- "brick_props_brick_trunk": "trunk()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/props_brick.py:L28 | neighbors=[props_brick.py, oak(), pine(), tapered trunk: radius r0 at the base ->…]
+- "brick_scarecrow_king_brick_build": "build()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scarecrow_king_brick.py:L435 | neighbors=[scarecrow_king_brick.py, exposed(), lin(), exposed brick faces as flat quads; UVs …]
+- "brick_scarecrow_king_brick_chaind": "chaind()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scarecrow_king_brick.py:L60 | neighbors=[scarecrow_king_brick.py, axd(), chain(), capd()]
+- "brick_scarecrow_king_brick_patch": "patch()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scarecrow_king_brick.py:L139 | neighbors=[scarecrow_king_brick.py, bx(), newid(), put()]
+- "brick_scarecrow_king_brick_put": "put()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scarecrow_king_brick.py:L43 | neighbors=[scarecrow_king_brick.py, patch(), strand(), wood()]
+- "brick_scarecrow_king_brick_strand": "strand()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scarecrow_king_brick.py:L182 | neighbors=[scarecrow_king_brick.py, chain(), put(), tuft()]
+- "brick_scorpion_king_brick_build": "build()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scorpion_king_brick.py:L222 | neighbors=[scorpion_king_brick.py, exposed(), lin(), exposed brick faces as flat quads; UVs …]
+- "brick_scorpion_king_brick_seg": "seg()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scorpion_king_brick.py:L108 | neighbors=[scorpion_king_brick.py, cap(), newid(), put()]
+- "brick_storm_griffin_brick_build": "build()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/storm_griffin_brick.py:L400 | neighbors=[storm_griffin_brick.py, exposed(), lin(), exposed brick faces as flat quads; UVs …]
+- "brick_swamp_croc_brick_build": "build()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/swamp_croc_brick.py:L245 | neighbors=[swamp_croc_brick.py, exposed(), lin(), exposed brick faces as flat quads; UVs …]
+- "brick_swamp_croc_brick_newid": "newid()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/swamp_croc_brick.py:L47 | neighbors=[swamp_croc_brick.py, leg(), pyramid(), strand()]
 - "brick_swamp_croc_brick_put": "put()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/swamp_croc_brick.py:L30 | neighbors=[swamp_croc_brick.py, leg(), pyramid(), tooth()]
 - "brick_swamp_croc_brick_pyramid": "pyramid()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/swamp_croc_brick.py:L82 | neighbors=[swamp_croc_brick.py, newid(), put(), top_at()]
 - "brick_swamp_croc_brick_strand": "strand()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/swamp_croc_brick.py:L102 | neighbors=[swamp_croc_brick.py, newid(), xi_of(), zi_of()]
@@ -42,21 +57,6 @@ one-sentence description — no prose, no markdown fences.
 - "cad_skill_main_gridfinity_gridfinitybin_check_wall_clearance": "._check_wall_clearance()" | kind=code-symbol | source=.agents/skills/cad-skill-main/gridfinity.py:L411 | neighbors=[GridfinityBin, GridfinityError, ._validate(), Feature footprint must leave MIN_WALL o…]
 - "cad_skill_main_gridfinity_gridfinitybin_cylinder_drop": "._cylinder_drop()" | kind=code-symbol | source=.agents/skills/cad-skill-main/gridfinity.py:L537 | neighbors=[GridfinityBin, ._cylinder_cut(), ._validate(), Vertical span of the bore's cylindrical…]
 - "cad_skill_main_gridfinity_rounded_rect": "_rounded_rect()" | kind=code-symbol | source=.agents/skills/cad-skill-main/gridfinity.py:L122 | neighbors=[gridfinity.py, ._compartment_solids(), ._pocket_cut(), Draw a closed rounded-rect wire with pe…]
-- "cad_skill_main_mating_check_mating": "check_mating()" | kind=code-symbol | source=.agents/skills/cad-skill-main/mating.py:L27 | neighbors=[mating.py, MatingError, overlap(), Raise MatingError unless `moving` fits …]
-- "cad_skill_main_mating_matingerror": "MatingError" | kind=code-symbol | source=.agents/skills/cad-skill-main/mating.py:L17 | neighbors=[mating.py, check_mating(), AssertionError, A 20 mm block sitting in a U socket who…]
-- "cad_skill_main_preview_build_grid": "_build_grid()" | kind=code-symbol | source=.agents/skills/cad-skill-main/preview.py:L87 | neighbors=[preview.py, _nice_spacing(), _build_scene(), Create a ground-plane grid mesh at the …]
-- "cad_skill_main_preview_get_font": "_get_font()" | kind=code-symbol | source=.agents/skills/cad-skill-main/preview.py:L297 | neighbors=[preview.py, Try to load a nice sans-serif font, fal…, render_multi_view(), render_single()]
-- "cad_skill_main_preview_info_lines": "_info_lines()" | kind=code-symbol | source=.agents/skills/cad-skill-main/preview.py:L319 | neighbors=[preview.py, Two-line footer with dimensions, volume…, render_multi_view(), render_single()]
-- "cad_skill_main_preview_main": "main()" | kind=code-symbol | source=.agents/skills/cad-skill-main/preview.py:L435 | neighbors=[preview.py, render_multi_view(), render_single(), title_from_path()]
-- "cad_skill_main_run_cadquery_model_main": "main()" | kind=code-symbol | source=.agents/skills/cad-skill-main/run_cadquery_model.py:L173 | neighbors=[run_cadquery_model.py, _append_stderr(), _new_files_by_ext(), _process_stls()]
-- "cad_skill_main_run_cadquery_model_process_stls": "_process_stls()" | kind=code-symbol | source=.agents/skills/cad-skill-main/run_cadquery_model.py:L93 | neighbors=[run_cadquery_model.py, main(), _sibling(), Load each STL once and optionally rende…]
-- "cad_skill_main_stl_to_3mf": "stl_to_3mf.py" | kind=code-symbol | source=.agents/skills/cad-skill-main/stl_to_3mf.py:L1 | neighbors=[convert(), main(), 2680d0e Pushed an update., e77fa31 Add new skills and asset packs …]
-- "candyland_candy_map_add_owner": "add_owner()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_map.py:L205 | neighbors=[candy_map.py, free(), mesh_obj(), place()]
-- "candyland_candy_map_drape_strip": "drape_strip()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_map.py:L294 | neighbors=[candy_map.py, H(), one board tile: the polyline section s0…, trails()]
-- "candyland_candy_map_fit_bad": "fit_bad()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_map.py:L230 | neighbors=[candy_map.py, fit(), _inside_one(), _top()]
-- "candyland_candy_map_ground": "ground()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_map.py:L270 | neighbors=[candy_map.py, axis_coords(), H(), mesh_obj()]
-- "candyland_candy_map_icing_caps": "icing_caps()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_map.py:L432 | neighbors=[candy_map.py, H(), mesh_obj(), icing poured over the frosting hilltops…]
-- "candyland_candy_map_path_mask": "path_mask()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_map.py:L82 | neighbors=[candy_map.py, H0(), poly_d(), 0 on trails / plazas, 1 away from them …]
 
 ## Instructions
 

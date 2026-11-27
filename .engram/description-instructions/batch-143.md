@@ -1,4 +1,4 @@
-# Node Description Batch 144 of 207
+# Node Description Batch 144 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -12,60 +12,51 @@ describing what it is or does. Use only the provided context.
 For a code symbol (kind=code-symbol — a function, class, or constant),
 describe what the function/symbol does based on its name, source location
 and neighbors — e.g. "Resolves the configured ontology profile from graphify.yaml.".
-For an entity node (any other kind — e.g. a person, place, event, object),
-describe what the entity is and its role, grounded in its type, its
-relations (neighbors) and the provided citations/evidence — e.g.
-"Lady Carfax, a wealthy heiress who disappears en route to Lausanne.".
-Ground entity descriptions in the citations/evidence when present; do not
-speculate beyond the context, so a node with no supporting context may be
-left out of the reply.
-LANGUAGE: each entry has a `lang=` marker giving the language of its source.
-Write that entry's description in EXACTLY that language. Do not translate to
-a single common language — match each node's source language individually.
+Write every description in English (en). Do not switch languages.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "unit_worker_auth_test_sign_input": "sign_input()" | kind=code-symbol | source=server/identity/tests/unit/worker_auth_test.cpp:L33 | neighbors=[worker_auth_test.cpp, make_token()] | lang=en
-- "unit_worker_auth_test_test_key": "test_key()" | kind=code-symbol | source=server/identity/tests/unit/worker_auth_test.cpp:L49 | neighbors=[worker_auth_test.cpp, main()] | lang=en
-- "unit_ws_transport_test": "ws_transport_test.cpp" | kind=code-symbol | source=server/net/tests/unit/ws_transport_test.cpp:L1 | neighbors=[1dac49d Created NET-01 to NET-09, Start…, main()] | lang=en
-- "unit_xor_fec_test": "xor_fec_test.cpp" | kind=code-symbol | source=server/net/tests/unit/xor_fec_test.cpp:L1 | neighbors=[1dac49d Created NET-01 to NET-09, Start…, main()] | lang=en
-- "valleylake_compare": "compare.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/compare.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …] | lang=en
-- "valleylake_grid": "grid.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/grid.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …] | lang=en
-- "valleylake_hooks_lua": "hooks_lua.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/hooks_lua.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …] | lang=en
-- "valleylake_paint_hex": "_hex()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/paint.py:L19 | neighbors=[paint.py, paint_block()] | lang=en
-- "valleylake_paint_tri": "tri()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/paint.py:L109 | neighbors=[paint.py, remap()] | lang=en
-- "valleylake_post": "post.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/post.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …] | lang=en
-- "valleylake_turntable": "turntable.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/turntable.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …] | lang=en
-- "valleylake_valley_map_foot": "foot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L133 | neighbors=[valley_map.py, place()] | lang=en
-- "valleylake_valley_map_inside": "inside()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L178 | neighbors=[valley_map.py, clip_fail()] | lang=en
-- "valleylake_valley_map_islet": "islet()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L65 | neighbors=[valley_map.py, H0()] | lang=en
-- "valleylake_valley_map_rationale_110": "stream water level at a centreline point: 0.4 up the valley, dropping with the b" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L110 | neighbors=[MB, wlevel()] | lang=en
-- "valleylake_valley_map_rationale_113": "one height function: natural floor + the stream channel + the plunge pool basin" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L113 | neighbors=[MB, H()] | lang=en
-- "valleylake_valley_map_rationale_144": "solid props are placed at once; soft ones (foliage, same regex as the exporter's" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L144 | neighbors=[MB, place()] | lang=en
-- "valleylake_valley_map_rationale_185": "True if a placed soft prop clips into solids (> 4%, the exporter allows 8) or fl" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L185 | neighbors=[MB, clip_fail()] | lang=en
-- "valleylake_valley_map_rationale_201": "top surface under (x, z) by raycast onto everything solid (rock tops, ground); N" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L201 | neighbors=[MB, surface_y()] | lang=en
-- "valleylake_valley_map_rationale_207": "deferred foliage: try the asked spot, then up to 8 jittered spots nearby; keep t" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L207 | neighbors=[MB, place_soft()] | lang=en
-- "valleylake_valley_map_rationale_285": "dirt paths = draped ribbons 0.12 over the ground (3 verts across, ragged width)," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L285 | neighbors=[MB, paths()] | lang=en
-- "valleylake_valley_map_rationale_311": "the curving pale beach as a draped ring mesh: smooth outer edge (the ground grid" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L311 | neighbors=[MB, beach()] | lang=en
-- "valleylake_valley_map_rationale_346": "lake = fan disc a little past the shore (hidden under the sand), stream ribbon a" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L346 | neighbors=[MB, water()] | lang=en
-- "valleylake_valley_map_rationale_393": "preview-only water look (the exported Lake_Water stays palette + Glass in Roblox" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L393 | neighbors=[MB, preview_water()] | lang=en
-- "valleylake_valley_map_rationale_464": "minimum foot offset per sample so every reserved spot / path keeps CLEAR studs (" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L464 | neighbors=[MB, foot_need()] | lang=it
-- "valleylake_valley_map_rationale_48": "shore radius around LAKE_C by angle (th = atan2(z, x)): big lobe toward the came" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L48 | neighbors=[MB, lake_R()] | lang=en
-- "valleylake_valley_map_rationale_480": "slab boundaries round the ring for tier k: random arc lengths, each slab a round" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L480 | neighbors=[MB, slabs()] | lang=en
-- "valleylake_valley_map_rationale_552": "cliff surface height at (x, z) (None = no cliff there: valley floor or past the" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L552 | neighbors=[MB, prof()] | lang=en
-- "valleylake_valley_map_rationale_70": "bowl coordinate: < 1 inside the rim; the waterfall cleft pushes the rim back" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L70 | neighbors=[MB, rim_s()] | lang=en
-- "valleylake_valley_map_rationale_706": "NE terrace: stone retaining walls (8-stud modules) along its south and west face" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L706 | neighbors=[MB, terrace()] | lang=en
-- "valleylake_valley_map_rationale_714": "retaining walls along the terrace's south and west faces, running until the clif" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L714 | neighbors=[MB, terrace_walls()] | lang=en
-- "valleylake_valley_map_rationale_727": "lantern rope lines: tall poles in a chain, two ropes per span (from both arm tip" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L727 | neighbors=[MB, rope_lines()] | lang=en
-- "valleylake_valley_map_rationale_760": "dock off the west beach, footbridge over the stream, stepping stones, lily pads," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L760 | neighbors=[MB, shore()] | lang=en
-- "valleylake_valley_map_rationale_807": "yaw that swings the hero oak's leaning crown (its leaves' centroid) toward (tx," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L807 | neighbors=[MB, hero_yaw()] | lang=en
-- "valleylake_valley_map_rationale_90": "natural floor: lake bed, beach, grass floor, islet, NE terrace (no stream / pool" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L90 | neighbors=[MB, H0()] | lang=fr
-- "valleylake_valley_map_seg_d": "seg_d()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L76 | neighbors=[valley_map.py, poly_d()] | lang=en
-- "valleylake_valley_map_stream_near": "stream_near()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L101 | neighbors=[valley_map.py, H()] | lang=en
-- "valleylake_valley_map_unplace": "unplace()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L163 | neighbors=[valley_map.py, place_soft()] | lang=en
-- "valleylake_valley_props_canopy": "canopy()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L230 | neighbors=[valley_props.py, leaf_cluster()] | lang=en
-- "valleylake_valley_props_rationale_1008": "soft full conifer: tapered skinned trunk; per tier a dark smooth drooping core s" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L1008 | neighbors=[Palette, pine()] | lang=en
+- "unit_optimize_test_val": "val()" | kind=code-symbol | source=mute/tests/unit/optimize_test.cpp:L35 | neighbors=[optimize_test.cpp, cases()]
+- "unit_package_test_expect_error": "expect_error()" | kind=code-symbol | source=mute/tests/unit/package_test.cpp:L24 | neighbors=[package_test.cpp, cases()]
+- "unit_package_test_expect_ok": "expect_ok()" | kind=code-symbol | source=mute/tests/unit/package_test.cpp:L12 | neighbors=[package_test.cpp, cases()]
+- "unit_package_test_main": "main()" | kind=code-symbol | source=mute/tests/unit/package_test.cpp:L137 | neighbors=[package_test.cpp, cases()]
+- "unit_parser_test_parse_error": "parse_error()" | kind=code-symbol | source=mute/tests/unit/parser_test.cpp:L34 | neighbors=[parser_test.cpp, cases()]
+- "unit_pkb_schema_test_check": "check()" | kind=code-symbol | source=server/authority/tests/unit/pkb_schema_test.cpp:L18 | neighbors=[pkb_schema_test.cpp, main()]
+- "unit_pkb_schema_test_main": "main()" | kind=code-symbol | source=server/authority/tests/unit/pkb_schema_test.cpp:L23 | neighbors=[pkb_schema_test.cpp, check()]
+- "unit_pokomesh_test_write": "write()" | kind=code-symbol | source=engine/resource/tests/unit/pokomesh_test.cpp:L43 | neighbors=[pokomesh_test.cpp, main()]
+- "unit_projection_gate_test_check": "check()" | kind=code-symbol | source=server/authority/tests/unit/projection_gate_test.cpp:L15 | neighbors=[projection_gate_test.cpp, main()]
+- "unit_projection_gate_test_same_generic": "same_generic()" | kind=code-symbol | source=server/authority/tests/unit/projection_gate_test.cpp:L22 | neighbors=[projection_gate_test.cpp, main()]
+- "unit_replay_ring_test_check": "check()" | kind=code-symbol | source=server/authority/tests/unit/replay_ring_test.cpp:L12 | neighbors=[replay_ring_test.cpp, main()]
+- "unit_replay_ring_test_same_event": "same_event()" | kind=code-symbol | source=server/authority/tests/unit/replay_ring_test.cpp:L17 | neighbors=[replay_ring_test.cpp, same_tick()]
+- "unit_revocation_gate_test_check": "check()" | kind=code-symbol | source=server/identity/tests/unit/revocation_gate_test.cpp:L16 | neighbors=[revocation_gate_test.cpp, main()]
+- "unit_revocation_gate_test_main": "main()" | kind=code-symbol | source=server/identity/tests/unit/revocation_gate_test.cpp:L21 | neighbors=[revocation_gate_test.cpp, check()]
+- "unit_rule_evaluator_test_check": "check()" | kind=code-symbol | source=server/authority/tests/unit/rule_evaluator_test.cpp:L17 | neighbors=[rule_evaluator_test.cpp, main()]
+- "unit_rule_evaluator_test_main": "main()" | kind=code-symbol | source=server/authority/tests/unit/rule_evaluator_test.cpp:L22 | neighbors=[rule_evaluator_test.cpp, check()]
+- "unit_sap_broadphase_test_sorted_pairs": "sorted_pairs()" | kind=code-symbol | source=engine/physics/tests/unit/sap_broadphase_test.cpp:L28 | neighbors=[sap_broadphase_test.cpp, main()]
+- "unit_scheduler_test_check": "check()" | kind=code-symbol | source=mute/tests/unit/scheduler_test.cpp:L8 | neighbors=[scheduler_test.cpp, cases()]
+- "unit_scheduler_test_fin": "fin()" | kind=code-symbol | source=mute/tests/unit/scheduler_test.cpp:L9 | neighbors=[scheduler_test.cpp, cases()]
+- "unit_scheduler_test_main": "main()" | kind=code-symbol | source=mute/tests/unit/scheduler_test.cpp:L103 | neighbors=[scheduler_test.cpp, cases()]
+- "unit_sdl_platform_faults_push": "push()" | kind=code-symbol | source=engine/platform/tests/unit/sdl_platform_faults.cpp:L22 | neighbors=[sdl_platform_faults.cpp, main()]
+- "unit_sdl_platform_faults_sdl_initsubsystem": "SDL_InitSubSystem()" | kind=code-symbol | source=engine/platform/tests/unit/sdl_platform_faults.cpp:L28 | neighbors=[sdl_platform_faults.cpp, main()]
+- "unit_sdl_platform_faults_sdl_quitsubsystem": "SDL_QuitSubSystem()" | kind=code-symbol | source=engine/platform/tests/unit/sdl_platform_faults.cpp:L34 | neighbors=[sdl_platform_faults.cpp, main()]
+- "unit_semantic_test_error": "error()" | kind=code-symbol | source=mute/tests/unit/semantic_test.cpp:L22 | neighbors=[semantic_test.cpp, cases()]
+- "unit_semantic_test_main": "main()" | kind=code-symbol | source=mute/tests/unit/semantic_test.cpp:L51 | neighbors=[semantic_test.cpp, cases()]
+- "unit_semantic_test_ok": "ok()" | kind=code-symbol | source=mute/tests/unit/semantic_test.cpp:L12 | neighbors=[semantic_test.cpp, cases()]
+- "unit_session_test": "session_test.cpp" | kind=code-symbol | source=server/authority/tests/unit/session_test.cpp:L1 | neighbors=[6568dc9 Update from ML AI Code, main()]
+- "unit_sign_in_test": "sign_in_test.cpp" | kind=code-symbol | source=server/identity/tests/unit/sign_in_test.cpp:L1 | neighbors=[981b52c Crated IDN-01 to IDN-04, main()]
+- "unit_soft_body_test": "soft_body_test.cpp" | kind=code-symbol | source=engine/physics/tests/unit/soft_body_test.cpp:L1 | neighbors=[69287a0 Land ENG-60-65 deterministic si…, main()]
+- "unit_solver_test_tod": "tod()" | kind=code-symbol | source=engine/physics/tests/unit/solver_test.cpp:L27 | neighbors=[solver_test.cpp, main()]
+- "unit_solver_test_v3": "v3()" | kind=code-symbol | source=engine/physics/tests/unit/solver_test.cpp:L19 | neighbors=[solver_test.cpp, main()]
+- "unit_ssa_test_check": "check()" | kind=code-symbol | source=mute/tests/unit/ssa_test.cpp:L8 | neighbors=[ssa_test.cpp, cases()]
+- "unit_ssa_test_has": "has()" | kind=code-symbol | source=mute/tests/unit/ssa_test.cpp:L9 | neighbors=[ssa_test.cpp, cases()]
+- "unit_ssa_test_main": "main()" | kind=code-symbol | source=mute/tests/unit/ssa_test.cpp:L72 | neighbors=[ssa_test.cpp, cases()]
+- "unit_state_snapshot_test_checksum": "checksum()" | kind=code-symbol | source=mute/tests/unit/state_snapshot_test.cpp:L15 | neighbors=[state_snapshot_test.cpp, main()]
+- "unit_state_snapshot_test_main": "main()" | kind=code-symbol | source=mute/tests/unit/state_snapshot_test.cpp:L20 | neighbors=[state_snapshot_test.cpp, checksum()]
+- "unit_statement_test_error": "error()" | kind=code-symbol | source=mute/tests/unit/statement_test.cpp:L29 | neighbors=[statement_test.cpp, cases()]
+- "unit_stdlib_collections_test_is_error": "is_error()" | kind=code-symbol | source=mute/tests/unit/stdlib_collections_test.cpp:L18 | neighbors=[stdlib_collections_test.cpp, main()]
+- "unit_stdlib_collections_test_main": "main()" | kind=code-symbol | source=mute/tests/unit/stdlib_collections_test.cpp:L29 | neighbors=[stdlib_collections_test.cpp, is_error()]
+- "unit_stdlib_crypto_test_digest_is": "digest_is()" | kind=code-symbol | source=mute/tests/unit/stdlib_crypto_test.cpp:L18 | neighbors=[stdlib_crypto_test.cpp, main()]
 
 ## Instructions
 

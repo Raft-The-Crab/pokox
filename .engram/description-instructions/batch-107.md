@@ -1,4 +1,4 @@
-# Node Description Batch 108 of 207
+# Node Description Batch 108 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -19,53 +19,51 @@ relations (neighbors) and the provided citations/evidence — e.g.
 Ground entity descriptions in the citations/evidence when present; do not
 speculate beyond the context, so a node with no supporting context may be
 left out of the reply.
-LANGUAGE: each entry has a `lang=` marker giving the language of its source.
-Write that entry's description in EXACTLY that language. Do not translate to
-a single common language — match each node's source language individually.
+Write every description in English (en). Do not switch languages.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "effekseer_ai_authoring_rationale_35": "A bind component: a number, an equation string, or [number, equation] meaning th" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/authoring.py:L35 | neighbors=[_term(), EffectSession] | lang=pt
-- "effekseer_ai_authoring_rationale_382": "Build a fresh document from a JSON recipe; repeat calls replace only that output" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/authoring.py:L382 | neighbors=[compile_effect(), EffectSession] | lang=en
-- "effekseer_ai_authoring_rationale_50": "List problems the compiler would otherwise swallow: unknown or misspelt keys at" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/authoring.py:L50 | neighbors=[validate_layer(), EffectSession] | lang=en
-- "effekseer_ai_authoring_rationale_81": "{'start','end','easing'} equivalent of a cutoff curve [[percent_of_life, thresho" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/authoring.py:L81 | neighbors=[cutoff_easing(), EffectSession] | lang=en
-- "effekseer_ai_authoring_unknown": "_unknown()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/authoring.py:L41 | neighbors=[authoring.py, validate_layer()] | lang=en
-- "effekseer_ai_cli_curve_list": "_curve_list()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L107 | neighbors=[cli.py, _open()] | lang=en
-- "effekseer_ai_cli_curve_set": "_curve_set()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L111 | neighbors=[cli.py, _open()] | lang=en
-- "effekseer_ai_cli_emit": "_emit()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L14 | neighbors=[cli.py, main()] | lang=en
-- "effekseer_ai_cli_export": "_export()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L92 | neighbors=[cli.py, _open()] | lang=en
-- "effekseer_ai_cli_image_import": "_image_import()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L85 | neighbors=[cli.py, _open()] | lang=en
-- "effekseer_ai_cli_node_add": "_node_add()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L42 | neighbors=[cli.py, _open()] | lang=en
-- "effekseer_ai_cli_node_list": "_node_list()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L38 | neighbors=[cli.py, _open()] | lang=en
-- "effekseer_ai_cli_node_move": "_node_move()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L63 | neighbors=[cli.py, _open()] | lang=en
-- "effekseer_ai_cli_node_remove": "_node_remove()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L56 | neighbors=[cli.py, _open()] | lang=en
-- "effekseer_ai_cli_node_rename": "_node_rename()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L49 | neighbors=[cli.py, _open()] | lang=en
-- "effekseer_ai_cli_property_get": "_property_get()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L74 | neighbors=[cli.py, _open()] | lang=en
-- "effekseer_ai_cli_property_list": "_property_list()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L70 | neighbors=[cli.py, _open()] | lang=en
-- "effekseer_ai_cli_property_set": "_property_set()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L78 | neighbors=[cli.py, _open()] | lang=en
-- "effekseer_ai_cli_rationale_1": "Command-line operations for the portable EffekseerCore bridge." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L1 | neighbors=[cli.py, EffectSession] | lang=en
-- "effekseer_ai_cli_rationale_130": "Build the CLI parser without accessing an Effekseer installation." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L130 | neighbors=[build_parser(), EffectSession] | lang=en
-- "effekseer_ai_cli_save": "_save()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L32 | neighbors=[cli.py, _open()] | lang=en
-- "effekseer_ai_cli_settings_list": "_settings_list()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L96 | neighbors=[cli.py, _open()] | lang=en
-- "effekseer_ai_cli_settings_set": "_settings_set()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L100 | neighbors=[cli.py, _open()] | lang=en
-- "effekseer_ai_cli_show": "_show()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L28 | neighbors=[cli.py, _open()] | lang=en
-- "effekseer_ai_init_rationale_1": "Python access to the official Effekseer Core API (vendored from effekseer-ai, MI" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/__init__.py:L1 | neighbors=[__init__.py, EffectSession] | lang=en
-- "effekseer_ai_models_assign_procedural_model": "assign_procedural_model()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/models.py:L21 | neighbors=[models.py, model_schema()] | lang=en
-- "effekseer_ai_models_model_schema": "model_schema()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/models.py:L4 | neighbors=[models.py, assign_procedural_model()] | lang=en
-- "effekseer_ai_session_effectsession_as_python": "._as_python()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L373 | neighbors=[EffectSession, .property_get()] | lang=en
-- "effekseer_ai_session_effectsession_export": ".export()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L286 | neighbors=[EffectSession, Export the current document as a runtim…] | lang=en
-- "effekseer_ai_session_effectsession_is_exported_property": "._is_exported_property()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L175 | neighbors=[EffectSession, .property_set()] | lang=en
-- "effekseer_ai_session_effectsession_new_curve_key": "._new_curve_key()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L245 | neighbors=[EffectSession, .curve_set_keys()] | lang=en
-- "effekseer_ai_session_effectsession_node_list": ".node_list()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L66 | neighbors=[EffectSession, List every non-root node currently know…] | lang=en
-- "effekseer_ai_session_effectsession_post_init": ".__post_init__()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L20 | neighbors=[EffectSession, ._index_existing_nodes()] | lang=en
-- "eggplots_egg_map_foot": "foot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_map.py:L68 | neighbors=[egg_map.py, place()] | lang=en
-- "eggplots_egg_map_inset_top": "inset_top()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_map.py:L108 | neighbors=[egg_map.py, hardscape()] | lang=en
-- "eggplots_egg_map_kit": "kit()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_map.py:L63 | neighbors=[egg_map.py, place()] | lang=en
-- "eggplots_egg_map_look": "look()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_map.py:L367 | neighbors=[egg_map.py, free()] | lang=en
-- "eggplots_egg_map_rationale_117": "lane: a stone slab (kerbed, chamfer into the lawn) carrying 4-stud pavers in a r" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_map.py:L117 | neighbors=[hardscape(), MB] | lang=en
-- "eggplots_egg_map_rationale_162": "island lawn + lake bank + hills: fine grid near the island, coarse on the hills;" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_map.py:L162 | neighbors=[ground(), MB] | lang=en
-- "eggplots_egg_map_rationale_298": "point on the island superellipse at parameter angle t, scaled by k" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_map.py:L298 | neighbors=[isle_point(), MB] | lang=en
+- "device_vulkan_clear_renderer_clear_and_present": "clear_and_present()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_clear_renderer.cpp:L123 | neighbors=[vulkan_clear_renderer.cpp, draw_and_present()]
+- "device_vulkan_clear_renderer_impl": "Impl()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_clear_renderer.cpp:L50 | neighbors=[vulkan_clear_renderer.cpp, shutdown()]
+- "device_vulkan_clear_renderer_shutdown_checked": "shutdown_checked()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_clear_renderer.cpp:L186 | neighbors=[vulkan_clear_renderer.cpp, shutdown()]
+- "device_vulkan_clear_renderer_vulkanclearrenderer": "VulkanClearRenderer()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_clear_renderer.cpp:L65 | neighbors=[vulkan_clear_renderer.cpp, .VulkanClearRenderer()]
+- "device_vulkan_imgui_pass_vulkanimguipass": "VulkanImGuiPass()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_imgui_pass.cpp:L338 | neighbors=[vulkan_imgui_pass.cpp, .VulkanImGuiPass()]
+- "device_vulkan_mesh_pass_draw": "draw()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_mesh_pass.cpp:L238 | neighbors=[vulkan_mesh_pass.cpp, draw_and_present()]
+- "device_vulkan_mesh_pass_draw_and_present": "draw_and_present()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_mesh_pass.cpp:L230 | neighbors=[vulkan_mesh_pass.cpp, draw()]
+- "device_vulkan_mesh_pass_vulkanmeshpass": "VulkanMeshPass()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_mesh_pass.cpp:L192 | neighbors=[vulkan_mesh_pass.cpp, .VulkanMeshPass()]
+- "device_vulkan_triangle_pass_draw": "draw()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_triangle_pass.cpp:L212 | neighbors=[vulkan_triangle_pass.cpp, draw_and_present()]
+- "device_vulkan_triangle_pass_draw_and_present": "draw_and_present()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_triangle_pass.cpp:L200 | neighbors=[vulkan_triangle_pass.cpp, draw()]
+- "device_vulkan_triangle_pass_set_texture": "set_texture()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_triangle_pass.cpp:L216 | neighbors=[vulkan_triangle_pass.cpp, set_texture_mips()]
+- "device_vulkan_triangle_pass_set_texture_mips": "set_texture_mips()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_triangle_pass.cpp:L221 | neighbors=[vulkan_triangle_pass.cpp, set_texture()]
+- "device_vulkan_triangle_pass_vulkantrianglepass": "VulkanTrianglePass()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_triangle_pass.cpp:L197 | neighbors=[vulkan_triangle_pass.cpp, .VulkanTrianglePass()]
+- "dunedesert_dune_map_inb": "_inb()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L222 | neighbors=[dune_map.py, _inside_one()]
+- "dunedesert_dune_map_inside": "inside()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L192 | neighbors=[dune_map.py, clip_fail()]
+- "dunedesert_dune_map_kit": "kit()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L116 | neighbors=[dune_map.py, place()]
+- "dunedesert_dune_map_look": "look()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L546 | neighbors=[dune_map.py, free()]
+- "dunedesert_dune_map_rationale_134": "auto-grounded hard props (y None) are fitted: raised / nudged until the exporter" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L134 | neighbors=[place(), MB]
+- "dunedesert_dune_map_rationale_164": "foliage: deferred, placed last against a BVH of every solid (the exporter's hard" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L164 | neighbors=[soft(), MB]
+- "dunedesert_dune_map_rationale_250": "raise the prop in 0.25 steps (its base stays bedded), then try nearby spots; Non" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L250 | neighbors=[fit(), MB]
+- "dunedesert_dune_map_rationale_302": "distant tiered mesas + buttes far outside the frame ring (cheap prisms, rust str" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L302 | neighbors=[horizon(), MB]
+- "dunedesert_dune_map_rationale_323": "worn flagstone slabs over the city + the avenue, missing where the sand has drif" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L323 | neighbors=[paving(), MB]
+- "dunedesert_dune_map_rationale_449": "path markers every ~30 studs along each sand path, alternating sides" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L449 | neighbors=[waystones(), MB]
+- "dunedesert_dune_map_rationale_520": "half-buried relics of the old kingdom between the points of interest: broken col" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L520 | neighbors=[fragments(), MB]
+- "dunedesert_dune_map_rationale_59": "transverse dunes (crests ~N-S, wind from the west): gentle windward rise, steepe" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L59 | neighbors=[dunes(), MB]
+- "dunedesert_dune_map_rationale_69": "frame: high dune ridges on a ring r ~430-560 round the city, lower beyond so the" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L69 | neighbors=[ring(), MB]
+- "dunedesert_dune_map_rationale_75": "temple-local (lx across the trench, lz along it: -Z toward the city, facade at 0" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L75 | neighbors=[T_local(), MB]
+- "dunedesert_dune_map_rationale_79": "ONE height function for the ground mesh and all placement" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L79 | neighbors=[H(), MB]
+- "dunedesert_dune_map_seg_d": "_seg_d()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L52 | neighbors=[dune_map.py, pl_d()]
+- "dunedesert_dune_map_unplace": "unplace()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L160 | neighbors=[dune_map.py, place_soft()]
+- "dunedesert_dune_map_world": "world()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L172 | neighbors=[dune_map.py, set_pieces()]
+- "dunedesert_dune_paint_hex": "_hex()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_paint.py:L21 | neighbors=[dune_paint.py, paint_block()]
+- "dunedesert_dune_paint_paint_block": "paint_block()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_paint.py:L24 | neighbors=[dune_paint.py, _hex()]
+- "dunedesert_dune_props_rationale_1041": "HERO / DUNGEON PORTAL: a columned temple front sunk 12 studs into the dunes, rea" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L1041 | neighbors=[sunken_temple(), Palette]
+- "dunedesert_dune_props_rationale_106": "raised zigzag band between two rails (centre c, length L along local x, facing -" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L106 | neighbors=[zig_band(), Palette]
+- "dunedesert_dune_props_rationale_115": "wall of REAL bevelled blocks through the wall, running bond, broken top prof(x);" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L115 | neighbors=[block_wall(), Palette]
+- "dunedesert_dune_props_rationale_130": "SHARED BASE: stepped sandstone plinth, a chamfered course per step, gold trim li" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L130 | neighbors=[plinth(), Palette]
+- "dunedesert_dune_props_rationale_138": "square base + torus, drummed 10-sided shaft with entasis, flared bell capital +" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L138 | neighbors=[column(), Palette]
+- "dunedesert_dune_props_rationale_170": "HERO: six-tier gilded step pyramid (ashlar faces, cornice lips, sun + chevron re" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L170 | neighbors=[step_pyramid(), Palette]
+- "dunedesert_dune_props_rationale_237": "processional pylon gateway: two battered towers built in courses (each course a" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L237 | neighbors=[pylon_gate(), Palette]
 
 ## Instructions
 

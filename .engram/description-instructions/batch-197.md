@@ -1,4 +1,4 @@
-# Node Description Batch 198 of 207
+# Node Description Batch 198 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -19,53 +19,51 @@ relations (neighbors) and the provided citations/evidence — e.g.
 Ground entity descriptions in the citations/evidence when present; do not
 speculate beyond the context, so a node with no supporting context may be
 left out of the reply.
-LANGUAGE: each entry has a `lang=` marker giving the language of its source.
-Write that entry's description in EXACTLY that language. Do not translate to
-a single common language — match each node's source language individually.
+Write every description in English (en). Do not switch languages.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "unit_parser_dump_main": "main()" | kind=code-symbol | source=mute/tests/unit/parser_dump.cpp:L12 | neighbors=[parser_dump.cpp] | lang=en
-- "unit_program_test_main": "main()" | kind=code-symbol | source=mute/tests/unit/program_test.cpp:L13 | neighbors=[program_test.cpp] | lang=en
-- "unit_run_seed_checks_rationale_1": "Portable GCC/Clang-compatible seed checks. These do NOT use real SDL/Diligent/GP" | kind=entity | source=engine/rhi/tests/unit/run_seed_checks.py:L1 | neighbors=[run_seed_checks.py] | lang=pt
-- "unit_run_seed_checks_run": "run()" | kind=code-symbol | source=engine/rhi/tests/unit/run_seed_checks.py:L34 | neighbors=[run_seed_checks.py] | lang=en
-- "unit_sdl_platform_faults_sdl_createwindow": "SDL_CreateWindow()" | kind=code-symbol | source=engine/platform/tests/unit/sdl_platform_faults.cpp:L35 | neighbors=[sdl_platform_faults.cpp] | lang=en
-- "unit_sdl_platform_faults_sdl_destroywindow": "SDL_DestroyWindow()" | kind=code-symbol | source=engine/platform/tests/unit/sdl_platform_faults.cpp:L43 | neighbors=[sdl_platform_faults.cpp] | lang=en
-- "unit_sdl_platform_faults_sdl_getwindowid": "SDL_GetWindowID()" | kind=code-symbol | source=engine/platform/tests/unit/sdl_platform_faults.cpp:L53 | neighbors=[sdl_platform_faults.cpp] | lang=en
-- "unit_sdl_platform_faults_sdl_getwindowsize": "SDL_GetWindowSize()" | kind=code-symbol | source=engine/platform/tests/unit/sdl_platform_faults.cpp:L54 | neighbors=[sdl_platform_faults.cpp] | lang=en
-- "unit_sdl_platform_faults_sdl_getwindowsizeinpixels": "SDL_GetWindowSizeInPixels()" | kind=code-symbol | source=engine/platform/tests/unit/sdl_platform_faults.cpp:L58 | neighbors=[sdl_platform_faults.cpp] | lang=en
-- "unit_sdl_platform_faults_sdl_pollevent": "SDL_PollEvent()" | kind=code-symbol | source=engine/platform/tests/unit/sdl_platform_faults.cpp:L48 | neighbors=[sdl_platform_faults.cpp] | lang=en
-- "unit_semantic_dump_main": "main()" | kind=code-symbol | source=mute/tests/unit/semantic_dump.cpp:L12 | neighbors=[semantic_dump.cpp] | lang=en
-- "unit_session_test_main": "main()" | kind=code-symbol | source=server/authority/tests/unit/session_test.cpp:L13 | neighbors=[session_test.cpp] | lang=en
-- "unit_sign_in_test_main": "main()" | kind=code-symbol | source=server/identity/tests/unit/sign_in_test.cpp:L10 | neighbors=[sign_in_test.cpp] | lang=en
-- "unit_soft_body_test_main": "main()" | kind=code-symbol | source=engine/physics/tests/unit/soft_body_test.cpp:L17 | neighbors=[soft_body_test.cpp] | lang=en
-- "unit_state_test_main": "main()" | kind=code-symbol | source=mute/tests/unit/state_test.cpp:L11 | neighbors=[state_test.cpp] | lang=en
-- "unit_statement_dump_main": "main()" | kind=code-symbol | source=mute/tests/unit/statement_dump.cpp:L12 | neighbors=[statement_dump.cpp] | lang=en
-- "unit_stdlib_crypto_test_bytes": "bytes()" | kind=code-symbol | source=mute/tests/unit/stdlib_crypto_test.cpp:L17 | neighbors=[stdlib_crypto_test.cpp] | lang=en
-- "unit_stdlib_physics_test_main": "main()" | kind=code-symbol | source=mute/tests/unit/stdlib_physics_test.cpp:L177 | neighbors=[stdlib_physics_test.cpp] | lang=en
-- "unit_step_up_test_main": "main()" | kind=code-symbol | source=server/identity/tests/unit/step_up_test.cpp:L11 | neighbors=[step_up_test.cpp] | lang=en
-- "unit_swapchain_frame_loop_test_main": "main()" | kind=code-symbol | source=engine/rhi/tests/unit/swapchain_frame_loop_test.cpp:L71 | neighbors=[swapchain_frame_loop_test.cpp] | lang=en
-- "unit_test_declaration_golden": "test_declaration_golden.py" | kind=code-symbol | source=mute/tests/unit/test_declaration_golden.py:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …] | lang=en
-- "unit_test_evaluator_golden": "test_evaluator_golden.py" | kind=code-symbol | source=mute/tests/unit/test_evaluator_golden.py:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …] | lang=en
-- "unit_test_evaluator_reference_make": "make()" | kind=code-symbol | source=mute/tests/unit/test_evaluator_reference.py:L9 | neighbors=[test_evaluator_reference.py] | lang=en
-- "unit_test_g1_replay": "test_g1_replay.py" | kind=code-symbol | source=mute/tests/unit/test_g1_replay.py:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …] | lang=en
-- "unit_test_golden": "test_golden.py" | kind=code-symbol | source=mute/tests/unit/test_golden.py:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …] | lang=en
-- "unit_test_math_accuracy_ordered": "ordered()" | kind=code-symbol | source=mute/tests/unit/test_math_accuracy.py:L6 | neighbors=[test_math_accuracy.py] | lang=en
-- "unit_test_math_bits": "test_math_bits.py" | kind=code-symbol | source=mute/tests/unit/test_math_bits.py:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …] | lang=en
-- "unit_test_math_determinism_tracetests_setup": ".setUp()" | kind=code-symbol | source=mute/tests/unit/test_math_determinism.py:L13 | neighbors=[TraceTests] | lang=en
-- "unit_test_math_determinism_tracetests_test_duplicate_json_keys_rejected": ".test_duplicate_json_keys_rejected()" | kind=code-symbol | source=mute/tests/unit/test_math_determinism.py:L48 | neighbors=[TraceTests] | lang=en
-- "unit_test_math_determinism_tracetests_test_overlong_file_rejected": ".test_overlong_file_rejected()" | kind=code-symbol | source=mute/tests/unit/test_math_determinism.py:L51 | neighbors=[TraceTests] | lang=en
-- "unit_test_parser_golden": "test_parser_golden.py" | kind=code-symbol | source=mute/tests/unit/test_parser_golden.py:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …] | lang=en
-- "unit_test_parser_reference_expression": "expression()" | kind=code-symbol | source=mute/tests/unit/test_parser_reference.py:L10 | neighbors=[test_parser_reference.py] | lang=en
-- "unit_test_parser_reference_reference": "reference()" | kind=code-symbol | source=mute/tests/unit/test_parser_reference.py:L19 | neighbors=[test_parser_reference.py] | lang=en
-- "unit_test_pkb_draft_cli_rationale_1": "Check schema preview CLI independently of project source files." | kind=entity | source=mute/tests/unit/test_pkb_draft_cli.py:L1 | neighbors=[test_pkb_draft_cli.py] | lang=en
-- "unit_test_semantic_golden": "test_semantic_golden.py" | kind=code-symbol | source=mute/tests/unit/test_semantic_golden.py:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …] | lang=en
-- "unit_test_statement_golden": "test_statement_golden.py" | kind=code-symbol | source=mute/tests/unit/test_statement_golden.py:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …] | lang=en
-- "unit_test_unicode_generator_run": "run()" | kind=code-symbol | source=mute/tests/unit/test_unicode_generator.py:L21 | neighbors=[test_unicode_generator.py] | lang=en
-- "unit_test_verify_desktop_evidencetests_test_bad_summaries": ".test_bad_summaries()" | kind=code-symbol | source=engine/rhi/tests/unit/test_verify_desktop.py:L23 | neighbors=[EvidenceTests] | lang=en
-- "unit_test_verify_desktop_evidencetests_test_missing_executable": ".test_missing_executable()" | kind=code-symbol | source=engine/rhi/tests/unit/test_verify_desktop.py:L42 | neighbors=[EvidenceTests] | lang=en
-- "unit_test_verify_desktop_evidencetests_test_never_auto_accept": ".test_never_auto_accept()" | kind=code-symbol | source=engine/rhi/tests/unit/test_verify_desktop.py:L27 | neighbors=[EvidenceTests] | lang=en
+- "triangle_enginefactoryvk_setsampler": "SetSampler()" | kind=code-symbol | source=engine/rhi/tests/fakes/triangle/EngineFactoryVk.h:L31 | neighbors=[EngineFactoryVk.h]
+- "triangle_enginefactoryvk_triangle_fake": "triangle_fake()" | kind=code-symbol | source=engine/rhi/tests/fakes/triangle/EngineFactoryVk.h:L5 | neighbors=[EngineFactoryVk.h]
+- "triangle_enginefactoryvk_unmapbuffer": "UnmapBuffer()" | kind=code-symbol | source=engine/rhi/tests/fakes/triangle/EngineFactoryVk.h:L65 | neighbors=[EngineFactoryVk.h]
+- "triangle_enginefactoryvk_updatetexture": "UpdateTexture()" | kind=code-symbol | source=engine/rhi/tests/fakes/triangle/EngineFactoryVk.h:L68 | neighbors=[EngineFactoryVk.h]
+- "triangle_refcntautoptr_refcntautoptr_refcntautoptr": ".RefCntAutoPtr()" | kind=code-symbol | source=engine/rhi/tests/fakes/triangle/RefCntAutoPtr.hpp:L7 | neighbors=[RefCntAutoPtr]
+- "unit_asset_allocation_test_main": "main()" | kind=code-symbol | source=engine/resource/tests/unit/asset_allocation_test.cpp:L18 | neighbors=[asset_allocation_test.cpp]
+- "unit_bit_buffer_test_main": "main()" | kind=code-symbol | source=server/net/tests/unit/bit_buffer_test.cpp:L11 | neighbors=[bit_buffer_test.cpp]
+- "unit_bytecode_vm_test_main": "main()" | kind=code-symbol | source=mute/tests/unit/bytecode_vm_test.cpp:L14 | neighbors=[bytecode_vm_test.cpp]
+- "unit_check_framegraph_mutations_rationale_1": "Optional fault-sensitivity test; compiles intentional defects in temp files." | kind=entity | source=engine/render/tests/unit/check_framegraph_mutations.py:L1 | neighbors=[check_framegraph_mutations.py]
+- "unit_clear_backend_selection_fake": "Fake()" | kind=code-symbol | source=engine/rhi/tests/unit/clear_backend_selection.cpp:L10 | neighbors=[clear_backend_selection.cpp]
+- "unit_clear_backend_selection_main": "main()" | kind=code-symbol | source=engine/rhi/tests/unit/clear_backend_selection.cpp:L15 | neighbors=[clear_backend_selection.cpp]
+- "unit_config_allocation_test_allocate_or_throw": "allocate_or_throw()" | kind=code-symbol | source=engine/foundation/tests/unit/config_allocation_test.cpp:L17 | neighbors=[config_allocation_test.cpp]
+- "unit_config_allocation_test_main": "main()" | kind=code-symbol | source=engine/foundation/tests/unit/config_allocation_test.cpp:L62 | neighbors=[config_allocation_test.cpp]
+- "unit_config_logging_guard_test_info": "info()" | kind=code-symbol | source=engine/foundation/tests/unit/config_logging_guard_test.cpp:L32 | neighbors=[config_logging_guard_test.cpp]
+- "unit_config_logging_guard_test_init": "init()" | kind=code-symbol | source=engine/foundation/tests/unit/config_logging_guard_test.cpp:L26 | neighbors=[config_logging_guard_test.cpp]
+- "unit_config_logging_guard_test_main": "main()" | kind=code-symbol | source=engine/foundation/tests/unit/config_logging_guard_test.cpp:L36 | neighbors=[config_logging_guard_test.cpp]
+- "unit_config_logging_guard_test_shutdown": "shutdown()" | kind=code-symbol | source=engine/foundation/tests/unit/config_logging_guard_test.cpp:L31 | neighbors=[config_logging_guard_test.cpp]
+- "unit_console_test_main": "main()" | kind=code-symbol | source=mute/tests/unit/console_test.cpp:L19 | neighbors=[console_test.cpp]
+- "unit_console_test_write": "write()" | kind=code-symbol | source=mute/tests/unit/console_test.cpp:L15 | neighbors=[console_test.cpp]
+- "unit_cube_sync_test_main": "main()" | kind=code-symbol | source=server/net/tests/unit/cube_sync_test.cpp:L12 | neighbors=[cube_sync_test.cpp]
+- "unit_declaration_dump_main": "main()" | kind=code-symbol | source=mute/tests/unit/declaration_dump.cpp:L12 | neighbors=[declaration_dump.cpp]
+- "unit_delta_test_main": "main()" | kind=code-symbol | source=server/net/tests/unit/delta_test.cpp:L12 | neighbors=[delta_test.cpp]
+- "unit_deterministic_math_dump_main": "main()" | kind=code-symbol | source=mute/tests/unit/deterministic_math_dump.cpp:L8 | neighbors=[deterministic_math_dump.cpp]
+- "unit_deterministic_math_test_main": "main()" | kind=code-symbol | source=mute/tests/unit/deterministic_math_test.cpp:L12 | neighbors=[deterministic_math_test.cpp]
+- "unit_device_binding_test_main": "main()" | kind=code-symbol | source=server/identity/tests/unit/device_binding_test.cpp:L12 | neighbors=[device_binding_test.cpp]
+- "unit_directional_light_test_main": "main()" | kind=code-symbol | source=engine/rhi/tests/unit/directional_light_test.cpp:L6 | neighbors=[directional_light_test.cpp]
+- "unit_duration_query_state_test_main": "main()" | kind=code-symbol | source=engine/foundation/tests/unit/duration_query_state_test.cpp:L3 | neighbors=[duration_query_state_test.cpp]
+- "unit_evaluator_dump_main": "main()" | kind=code-symbol | source=mute/tests/unit/evaluator_dump.cpp:L16 | neighbors=[evaluator_dump.cpp]
+- "unit_flags_contract_main": "main()" | kind=code-symbol | source=engine/foundation/tests/unit/flags_contract.cpp:L8 | neighbors=[flags_contract.cpp]
+- "unit_frame_graph_test_main": "main()" | kind=code-symbol | source=engine/render/tests/unit/frame_graph_test.cpp:L15 | neighbors=[frame_graph_test.cpp]
+- "unit_frame_test_main": "main()" | kind=code-symbol | source=server/net/tests/unit/frame_test.cpp:L10 | neighbors=[frame_test.cpp]
+- "unit_i_platform_contract_main": "main()" | kind=code-symbol | source=engine/platform/tests/unit/i_platform_contract.cpp:L64 | neighbors=[i_platform_contract.cpp]
+- "unit_imgui_pass_faults_fakeshader": "FakeShader()" | kind=code-symbol | source=engine/rhi/tests/unit/imgui_pass_faults.cpp:L38 | neighbors=[imgui_pass_faults.cpp]
+- "unit_imgui_pass_faults_getenginefactoryvk": "GetEngineFactoryVk()" | kind=code-symbol | source=engine/rhi/tests/unit/imgui_pass_faults.cpp:L26 | neighbors=[imgui_pass_faults.cpp]
+- "unit_lexer_dump_main": "main()" | kind=code-symbol | source=mute/tests/unit/lexer_dump.cpp:L12 | neighbors=[lexer_dump.cpp]
+- "unit_opengl_clear_faults_bind": "bind()" | kind=code-symbol | source=engine/rhi/tests/unit/opengl_clear_faults.cpp:L24 | neighbors=[opengl_clear_faults.cpp]
+- "unit_opengl_clear_faults_get_attachment": "get_attachment()" | kind=code-symbol | source=engine/rhi/tests/unit/opengl_clear_faults.cpp:L25 | neighbors=[opengl_clear_faults.cpp]
+- "unit_opengl_clear_faults_get_error": "get_error()" | kind=code-symbol | source=engine/rhi/tests/unit/opengl_clear_faults.cpp:L26 | neighbors=[opengl_clear_faults.cpp]
+- "unit_opengl_clear_faults_get_int": "get_int()" | kind=code-symbol | source=engine/rhi/tests/unit/opengl_clear_faults.cpp:L23 | neighbors=[opengl_clear_faults.cpp]
+- "unit_opengl_clear_faults_getenginefactoryopengl": "GetEngineFactoryOpenGL()" | kind=code-symbol | source=engine/rhi/tests/unit/opengl_clear_faults.cpp:L70 | neighbors=[opengl_clear_faults.cpp]
 
 ## Instructions
 

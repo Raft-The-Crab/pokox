@@ -1,4 +1,4 @@
-# Node Description Batch 181 of 207
+# Node Description Batch 181 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -26,46 +26,46 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "scripts_retarget_rationale_42": "mixamorig:LeftUpLeg' -> ('upleg', 'L'); 'DEF-upper_arm.L' -> ('upperarm', 'L')." | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-animation/scripts/retarget.py:L42 | neighbors=[_split()] | lang=en
-- "scripts_retarget_rationale_57": "{(part, side): bone}, plus the spine chain (hips -> neck order)." | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-animation/scripts/retarget.py:L57 | neighbors=[_parts()] | lang=en
-- "scripts_review_shots_rationale_1": "Render a multi-angle review contact sheet (headless-safe Workbench) for visual Q" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-asset-qa/scripts/review_shots.py:L1 | neighbors=[review_shots.py] | lang=en
-- "scripts_rig_check_rationale_1": "Validate a skeleton + its skinned meshes for animation/engine export; optional s" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-character-rigging/scripts/rig_check.py:L1 | neighbors=[rig_check.py] | lang=en
-- "scripts_rigify_build_rationale_1": "Rigify pipeline: add + fit metarig, generate control rig, build an engine-ready" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-character-rigging/scripts/rigify_build.py:L1 | neighbors=[rigify_build.py] | lang=en
-- "scripts_rigify_build_rationale_83": "root + DEF bones with DEF-only parenting, constrained to the control rig." | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-character-rigging/scripts/rigify_build.py:L83 | neighbors=[game_skeleton()] | lang=en
-- "scripts_roblox_export_add": "_add()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/roblox_export.py:L703 | neighbors=[roblox_export.py] | lang=en
-- "scripts_roblox_export_any_ok": "any_ok()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/roblox_export.py:L740 | neighbors=[roblox_export.py] | lang=en
-- "scripts_roblox_export_arg": "arg()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/roblox_export.py:L19 | neighbors=[roblox_export.py] | lang=en
-- "scripts_roblox_export_bbox": "bbox()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/roblox_export.py:L142 | neighbors=[roblox_export.py] | lang=en
-- "scripts_roblox_export_bounds": "bounds()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/roblox_export.py:L747 | neighbors=[roblox_export.py] | lang=en
-- "scripts_roblox_export_fail": "fail()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/roblox_export.py:L753 | neighbors=[roblox_export.py] | lang=en
-- "scripts_roblox_export_glow_of": "glow_of()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/roblox_export.py:L120 | neighbors=[roblox_export.py] | lang=en
-- "scripts_roblox_export_lrgb": "lrgb()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/roblox_export.py:L404 | neighbors=[roblox_export.py] | lang=en
-- "scripts_roblox_export_lua_rgb": "lua_rgb()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/roblox_export.py:L397 | neighbors=[roblox_export.py] | lang=en
-- "scripts_roblox_export_near": "near()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/roblox_export.py:L725 | neighbors=[roblox_export.py] | lang=en
-- "scripts_roblox_export_num": "num()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/roblox_export.py:L408 | neighbors=[roblox_export.py] | lang=en
-- "scripts_roblox_export_pts_of": "pts_of()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/roblox_export.py:L742 | neighbors=[roblox_export.py] | lang=en
-- "scripts_roblox_export_rationale_135": "glow colour (sRGB 0-255) from an emission material" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/roblox_export.py:L135 | neighbors=[mat_color()] | lang=en
-- "scripts_roblox_export_rationale_151": "object with exactly `name` (the MeshPart name in Roblox): move any existing hold" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/roblox_export.py:L151 | neighbors=[newobj()] | lang=en
-- "scripts_roblox_export_rationale_165": "materials mode: split every palette (solid) object into one object per (Roblox m" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/roblox_export.py:L165 | neighbors=[material_split()] | lang=it
-- "scripts_roblox_export_rationale_270": "faces -> chunks under SPLIT_TRIS / SPLIT_EXTENT (median cut on the longest axis" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/roblox_export.py:L270 | neighbors=[split_faces()] | lang=en
-- "scripts_roblox_export_rationale_293": "average palette colour under a face (for oversize faces turned into Parts)" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/roblox_export.py:L293 | neighbors=[palette_rgb()] | lang=en
-- "scripts_roblox_export_rationale_303": "low-poly oversize mesh (sea plane, skirt slab) -> Parts tiled under the 2048-stu" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/roblox_export.py:L303 | neighbors=[big_part()] | lang=en
-- "scripts_roblox_export_rationale_716": "first hit along d whose owner passes ok(owner index); other owners' faces are st" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/roblox_export.py:L716 | neighbors=[cast()] | lang=en
-- "scripts_roblox_export_rationale_730": "inside ONE solid: >= 5 of 6 axis rays first hit a back face of the same owner (o" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/roblox_export.py:L730 | neighbors=[inside()] | lang=en
-- "scripts_roblox_export_solid_ok": "solid_ok()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/roblox_export.py:L738 | neighbors=[roblox_export.py] | lang=en
-- "scripts_roblox_export_tris_of": "tris_of()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/roblox_export.py:L141 | neighbors=[roblox_export.py] | lang=en
-- "scripts_roblox_materials_rationale_68": "material for palette ramp `col` on object/mesh `name`: per-prop overrides ({pref" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/roblox_materials.py:L68 | neighbors=[resolve()] | lang=en
-- "scripts_roblox_materials_rationale_77": "give every palette mesh one Blender material slot per Roblox material (by palett" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/roblox_materials.py:L77 | neighbors=[preview()] | lang=en
-- "scripts_roblox_materials_rationale_92": "material_map.json for the exporter: palette column index -> Roblox material, + p" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/roblox_materials.py:L92 | neighbors=[write_map()] | lang=en
-- "scripts_run_in_blender_ver": "_ver()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-core/scripts/run_in_blender.py:L24 | neighbors=[run_in_blender.py] | lang=en
-- "scripts_scanner_rationale_159": "Maps files to semantic categories based on filename patterns." | kind=entity | source=.agents/skills/skills-main/play/play-policy-insights/scripts/scanner.py:L159 | neighbors=[_identify_semantic_files()] | lang=en
-- "scripts_scanner_rationale_179": "Internal worker to scan a single file for all signal categories." | kind=entity | source=.agents/skills/skills-main/play/play-policy-insights/scripts/scanner.py:L179 | neighbors=[_scan_single_file()] | lang=en
-- "scripts_scanner_rationale_229": "Orchestrates the parallel scanning of identified files." | kind=entity | source=.agents/skills/skills-main/play/play-policy-insights/scripts/scanner.py:L229 | neighbors=[perform_scan()] | lang=en
-- "scripts_scanner_rationale_37": "Loads the scanner configuration from scanner_config.json with caching." | kind=entity | source=.agents/skills/skills-main/play/play-policy-insights/scripts/scanner.py:L37 | neighbors=[get_scanner_config()] | lang=en
-- "scripts_scanner_rationale_56": "Returns a tuple of supported file extensions from config." | kind=entity | source=.agents/skills/skills-main/play/play-policy-insights/scripts/scanner.py:L56 | neighbors=[get_supported_extensions()] | lang=en
-- "scripts_scanner_rationale_61": "Performs a single master walk to categorize files." | kind=entity | source=.agents/skills/skills-main/play/play-policy-insights/scripts/scanner.py:L61 | neighbors=[collect_target_files()] | lang=en
-- "scripts_scatter_rationale_1": "Biome scatter with Geometry Nodes: Poisson-disk instances of a collection on a s" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-environment-kits/scripts/scatter.py:L1 | neighbors=[scatter.py] | lang=en
-- "scripts_scatter_rationale_30": "Enabled socket by name: Random Value keeps one hidden Min/Max/Value per data typ" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-environment-kits/scripts/scatter.py:L30 | neighbors=[_on()] | lang=en
+- "scripts_play_store_scraper_playstoremetadataparser_init": ".__init__()" | kind=code-symbol | source=.agents/skills/skills-main/play/play-policy-insights/scripts/play_store_scraper.py:L60 | neighbors=[PlayStoreMetadataParser] | lang=en
+- "scripts_play_store_scraper_rationale_140": "Extracts visible text content from HTML structurally." | kind=entity | source=.agents/skills/skills-main/play/play-policy-insights/scripts/play_store_scraper.py:L140 | neighbors=[PlayStoreDataSafetyParser] | lang=en
+- "scripts_play_store_scraper_rationale_164": "Loads the valid data safety taxonomy from policies.json." | kind=entity | source=.agents/skills/skills-main/play/play-policy-insights/scripts/play_store_scraper.py:L164 | neighbors=[load_taxonomy()] | lang=en
+- "scripts_play_store_scraper_rationale_189": "Extracts all metadata into a clean dictionary." | kind=entity | source=.agents/skills/skills-main/play/play-policy-insights/scripts/play_store_scraper.py:L189 | neighbors=[extract_metadata()] | lang=pt
+- "scripts_play_store_scraper_rationale_244": "Extracts Data Safety information structurally." | kind=entity | source=.agents/skills/skills-main/play/play-policy-insights/scripts/play_store_scraper.py:L244 | neighbors=[extract_data_safety()] | lang=en
+- "scripts_play_store_scraper_rationale_29": "Fetches HTML content from a URL with a realistic User-Agent." | kind=entity | source=.agents/skills/skills-main/play/play-policy-insights/scripts/play_store_scraper.py:L29 | neighbors=[fetch_html()] | lang=en
+- "scripts_play_store_scraper_rationale_385": "Scrapes app metadata and Data Safety info for a given package." | kind=entity | source=.agents/skills/skills-main/play/play-policy-insights/scripts/play_store_scraper.py:L385 | neighbors=[scrape_app_details()] | lang=en
+- "scripts_play_store_scraper_rationale_58": "Parses core app metadata from Play Store HTML." | kind=entity | source=.agents/skills/skills-main/play/play-policy-insights/scripts/play_store_scraper.py:L58 | neighbors=[PlayStoreMetadataParser] | lang=en
+- "scripts_post_glow_fx": "fx()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/scripts/post_glow.py:L10 | neighbors=[post_glow.py] | lang=en
+- "scripts_post_glow_rationale_1": "Preview post: single black silhouette outline + Neon-style glow bloom. py post_g" | kind=entity | source=.agents/skills/Voxel Pack/stud/scripts/post_glow.py:L1 | neighbors=[post_glow.py] | lang=en
+- "scripts_post_rationale_1": "Post-process renders from studlib.py: black SILHOUETTE outline (like a Roblox Hi" | kind=entity | source=.agents/skills/Voxel Pack/stud/scripts/post.py:L1 | neighbors=[post.py] | lang=en
+- "scripts_precipitation_rationale_1": "Rain, snow, dust, ash or embers as a seamlessly looping Geometry Nodes system (n" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/precipitation.py:L1 | neighbors=[precipitation.py] | lang=pt
+- "scripts_precipitation_rationale_252": "World AABB of the camera's near frustum (0..distance) over the frame range." | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/precipitation.py:L252 | neighbors=[_camera_box()] | lang=en
+- "scripts_precipitation_rationale_39": "Minimal node-graph helper: n(type, inputs..., **props) -> node; sockets by enabl" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/precipitation.py:L39 | neighbors=[_T] | lang=en
+- "scripts_precipitation_t_init": ".__init__()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/precipitation.py:L41 | neighbors=[_T] | lang=en
+- "scripts_pro_lib_b2r": "b2r()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L21 | neighbors=[pro_lib.py] | lang=en
+- "scripts_pro_lib_ccw": "ccw()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L358 | neighbors=[pro_lib.py] | lang=en
+- "scripts_pro_lib_clean": "clean()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L439 | neighbors=[pro_lib.py] | lang=en
+- "scripts_pro_lib_mb_add": ".add()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L95 | neighbors=[MB] | lang=en
+- "scripts_pro_lib_mb_init": ".__init__()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L93 | neighbors=[MB] | lang=en
+- "scripts_pro_lib_mb_merge": ".merge()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L105 | neighbors=[MB] | lang=en
+- "scripts_pro_lib_mb_tris": ".tris()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L108 | neighbors=[MB] | lang=en
+- "scripts_pro_lib_out_init": ".__init__()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L365 | neighbors=[Out] | lang=en
+- "scripts_pro_lib_preview_setup": "preview_setup()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L447 | neighbors=[pro_lib.py] | lang=en
+- "scripts_pro_lib_rationale_112": "rot = (pitch about X, yaw about Y, roll about Z) in degrees" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L112 | neighbors=[xf()] | lang=en
+- "scripts_pro_lib_rationale_142": "points on a lumpy ellipsoid (radii r = (rx, ry, rz)); flat = cut the bottom at -" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L142 | neighbors=[rock_pts()] | lang=en
+- "scripts_pro_lib_rationale_162": "poly = [(x, z), ...] counter-clockwise seen from above (+Y); extruded y0..y1, to" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L162 | neighbors=[ngon_prism()] | lang=es
+- "scripts_pro_lib_rationale_178": "vertical prism / frustum from y0 to y0 + h" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L178 | neighbors=[cyl()] | lang=en
+- "scripts_pro_lib_rationale_191": "a crystal / spire: prism up to h * shoulder, then a pyramid tip" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L191 | neighbors=[spike()] | lang=pt
+- "scripts_pro_lib_rationale_209": "parallel-transport frames along a polyline (Vectors)" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L209 | neighbors=[frames()] | lang=pt
+- "scripts_pro_lib_rationale_223": "swept polygon along pts; radii scalar or list; rough = random ring radius jitter" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L223 | neighbors=[tube()] | lang=en
+- "scripts_pro_lib_rationale_247": "a flat strip on the ground following pts (x, y, z); widths per point" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L247 | neighbors=[ribbon()] | lang=en
+- "scripts_pro_lib_rationale_266": "heightfield quad grid (Roblox space): y = hfun(x, z)" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L266 | neighbors=[grid()] | lang=es
+- "scripts_pro_lib_rationale_284": "a surface between a front curve z = zf(x) and a back curve zb(x) (quad strip ove" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L284 | neighbors=[strip_surface()] | lang=pt
+- "scripts_pro_lib_rationale_297": "jittered-grid Voronoi cells clipped to the rectangle: list of (site, polygon[(x," | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L297 | neighbors=[voronoi_cells()] | lang=en
+- "scripts_pro_lib_rationale_320": "keep the side of the bisector of s-o closer to s" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L320 | neighbors=[clip_half()] | lang=en
+- "scripts_pro_lib_rationale_364": "named groups -> uploaded meshes. solid groups use the palette; glow groups carry" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L364 | neighbors=[Out] | lang=en
+- "scripts_pro_lib_rationale_376": "a glow piece: uv on the white strip" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L376 | neighbors=[.gadd()] | lang=en
+- "scripts_pro_lib_rationale_38": "ramps: {name: (dark, mid, light)} in column order (max 16). 'white' is always ad" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L38 | neighbors=[.__init__()] | lang=en
+- "scripts_pro_lib_rationale_416": "mesh in Blender space, origin = bbox centre; returns the part record (Roblox spa" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L416 | neighbors=[make_obj()] | lang=en
 
 ## Instructions
 

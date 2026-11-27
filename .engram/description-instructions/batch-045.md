@@ -1,4 +1,4 @@
-# Node Description Batch 46 of 207
+# Node Description Batch 46 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -12,18 +12,26 @@ describing what it is or does. Use only the provided context.
 For a code symbol (kind=code-symbol — a function, class, or constant),
 describe what the function/symbol does based on its name, source location
 and neighbors — e.g. "Resolves the configured ontology profile from graphify.yaml.".
-For an entity node (any other kind — e.g. a person, place, event, object),
-describe what the entity is and its role, grounded in its type, its
-relations (neighbors) and the provided citations/evidence — e.g.
-"Lady Carfax, a wealthy heiress who disappears en route to Lausanne.".
-Ground entity descriptions in the citations/evidence when present; do not
-speculate beyond the context, so a node with no supporting context may be
-left out of the reply.
 Write every description in English (en). Do not switch languages.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "cad_skill_main_mating_check_mating": "check_mating()" | kind=code-symbol | source=.agents/skills/cad-skill-main/mating.py:L27 | neighbors=[mating.py, MatingError, overlap(), Raise MatingError unless `moving` fits …]
+- "cad_skill_main_mating_matingerror": "MatingError" | kind=code-symbol | source=.agents/skills/cad-skill-main/mating.py:L17 | neighbors=[mating.py, check_mating(), AssertionError, A 20 mm block sitting in a U socket who…]
+- "cad_skill_main_preview_build_grid": "_build_grid()" | kind=code-symbol | source=.agents/skills/cad-skill-main/preview.py:L87 | neighbors=[preview.py, _nice_spacing(), _build_scene(), Create a ground-plane grid mesh at the …]
+- "cad_skill_main_preview_get_font": "_get_font()" | kind=code-symbol | source=.agents/skills/cad-skill-main/preview.py:L297 | neighbors=[preview.py, Try to load a nice sans-serif font, fal…, render_multi_view(), render_single()]
+- "cad_skill_main_preview_info_lines": "_info_lines()" | kind=code-symbol | source=.agents/skills/cad-skill-main/preview.py:L319 | neighbors=[preview.py, Two-line footer with dimensions, volume…, render_multi_view(), render_single()]
+- "cad_skill_main_preview_main": "main()" | kind=code-symbol | source=.agents/skills/cad-skill-main/preview.py:L435 | neighbors=[preview.py, render_multi_view(), render_single(), title_from_path()]
+- "cad_skill_main_run_cadquery_model_main": "main()" | kind=code-symbol | source=.agents/skills/cad-skill-main/run_cadquery_model.py:L173 | neighbors=[run_cadquery_model.py, _append_stderr(), _new_files_by_ext(), _process_stls()]
+- "cad_skill_main_run_cadquery_model_process_stls": "_process_stls()" | kind=code-symbol | source=.agents/skills/cad-skill-main/run_cadquery_model.py:L93 | neighbors=[run_cadquery_model.py, main(), _sibling(), Load each STL once and optionally rende…]
+- "cad_skill_main_stl_to_3mf": "stl_to_3mf.py" | kind=code-symbol | source=.agents/skills/cad-skill-main/stl_to_3mf.py:L1 | neighbors=[convert(), main(), 2680d0e Pushed an update., e77fa31 Add new skills and asset packs …]
+- "candyland_candy_map_add_owner": "add_owner()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_map.py:L205 | neighbors=[candy_map.py, free(), mesh_obj(), place()]
+- "candyland_candy_map_drape_strip": "drape_strip()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_map.py:L294 | neighbors=[candy_map.py, H(), one board tile: the polyline section s0…, trails()]
+- "candyland_candy_map_fit_bad": "fit_bad()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_map.py:L230 | neighbors=[candy_map.py, fit(), _inside_one(), _top()]
+- "candyland_candy_map_ground": "ground()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_map.py:L270 | neighbors=[candy_map.py, axis_coords(), H(), mesh_obj()]
+- "candyland_candy_map_icing_caps": "icing_caps()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_map.py:L432 | neighbors=[candy_map.py, H(), mesh_obj(), icing poured over the frosting hilltops…]
+- "candyland_candy_map_path_mask": "path_mask()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_map.py:L82 | neighbors=[candy_map.py, H0(), poly_d(), 0 on trails / plazas, 1 away from them …]
 - "candyland_candy_map_resample": "resample()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_map.py:L61 | neighbors=[candy_map.py, build(), river(), trails()]
 - "candyland_candy_map_station": "station()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_map.py:L182 | neighbors=[candy_map.py, anchor(), place(), to_world()]
 - "candyland_candy_props_biscuit_bridge": "biscuit_bridge()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L896 | neighbors=[candy_props.py, lathe(), round_prof(), biscuit bridge along Z: shortbread roun…]
@@ -49,21 +57,6 @@ one-sentence description — no prose, no markdown fences.
 - "cavemap_cave_ores_druse": "druse()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_ores.py:L76 | neighbors=[cave_ores.py, cart_load(), ore_pile(), crystal cluster: n banded crystals fann…]
 - "cavemap_cave_ores_mound": "mound()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_ores.py:L25 | neighbors=[cave_ores.py, cart_load(), ore_pile(), the heap's hidden-gap filler: a lumpy d…]
 - "cavemap_cave_props_crystal_shards": "crystal_shards()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L322 | neighbors=[cave_props.py, add_crystal(), FS(), ground scatter: a pebble bed with 3-5 s…]
-- "cavemap_cave_props_glowshroom_cluster": "glowshroom_cluster()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L414 | neighbors=[cave_props.py, mound(), mushroom(), a knee-high cluster: 6-8 small mushroom…]
-- "cavemap_cave_props_glowshroom_giant": "glowshroom_giant()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L398 | neighbors=[cave_props.py, mound(), mushroom(), three giant cave mushrooms (16 / 11 / 7…]
-- "cavemap_cave_props_nodules": "nodules()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L391 | neighbors=[cave_props.py, mound(), dot(), shroom_patch()]
-- "cavemap_cave_props_rs": "RS()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L58 | neighbors=[cave_props.py, crystal_spray(), geode(), rock_layered()]
-- "cavemap_cave_props_shroom_patch": "shroom_patch()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L425 | neighbors=[cave_props.py, tiny scatter: thin-stalked glowing bell…, nodules(), V()]
-- "cavemap_cave_props_stalagmite": "stalagmite()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L255 | neighbors=[cave_props.py, grounded dripstone: flared, plate-ringe…, jitter(), V()]
-- "cavemap_cave_props2_cart_load": "cart_load()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L105 | neighbors=[cave_props2.py, blob(), mine_cart(), ore heaped in the tub (cave_ores replac…]
-- "cavemap_cave_props2_crates": "crates()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L203 | neighbors=[cave_props2.py, logp(), W(), stack of 3 braced crates (frame battens…]
-- "cavemap_cave_props2_plank_bridge": "plank_bridge()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L187 | neighbors=[cave_props2.py, logp(), W(), low boardwalk to the islet (span along …]
-- "cavemap_cave_props2_rail_buffer": "rail_buffer()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L59 | neighbors=[cave_props2.py, logp(), W(), end-of-track stop: two posts with back …]
-- "cavemap_cave_props2_rope_bridge": "rope_bridge()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L162 | neighbors=[cave_props2.py, chasm rope bridge (span along Z): end p…, logp(), W()]
-- "cavemap_cave_props3_boards": "boards()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props3.py:L6 | neighbors=[cave_props3.py, mine_shop(), quest_board(), a wall of vertical boards between x0..x…]
-- "cavemap_cave_props3_mine_shop": "mine_shop()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props3.py:L25 | neighbors=[cave_props3.py, boards(), shed_roof(), ORE EXCHANGE: a timber mine-office shed…]
-- "commit:repo:github.com/Raft-The-Crab/pokox@1aefb72a961c694946723dc6e1295bf6eb79dbed": "1aefb72 MUT-42: physics hostcall boundary (header)" | kind=Commit | source=git | neighbors=[main, 0d85dce Merge pull request #6 from Raft…, stdlib_physics.hpp, e77fa31 Add new skills and asset packs …]
-- "commit:repo:github.com/Raft-The-Crab/pokox@2be6ccd764c29da253fae889e9ec51dbb41cbf88": "2be6ccd Character controller: fix missing trailing newline" | kind=Commit | source=git | neighbors=[main, 8246f8b Character controller: fix heade…, character_controller.hpp, 5acf433 Character controller: fix corru…]
 
 ## Instructions
 

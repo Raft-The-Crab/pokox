@@ -1,4 +1,4 @@
-# Node Description Batch 151 of 207
+# Node Description Batch 151 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -19,53 +19,51 @@ relations (neighbors) and the provided citations/evidence — e.g.
 Ground entity descriptions in the citations/evidence when present; do not
 speculate beyond the context, so a node with no supporting context may be
 left out of the reply.
-LANGUAGE: each entry has a `lang=` marker giving the language of its source.
-Write that entry's description in EXACTLY that language. Do not translate to
-a single common language — match each node's source language individually.
+Write every description in English (en). Do not switch languages.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "animation_v2_build_refined_rationale_17": "Continuous velocity at footfall and toe-off; -Y movement during stance." | kind=entity | source=assets/characters/animation-v2/build_refined.py:L17 | neighbors=[foot()] | lang=en
-- "animation_v2_build_refined_rot": "rot()" | kind=code-symbol | source=assets/characters/animation-v2/build_refined.py:L42 | neighbors=[build_refined.py] | lang=en
-- "animation_v2_check_gait_rationale_1": "Quarter-frame ground and stance-target diagnostics for editable rigs." | kind=entity | source=assets/characters/animation-v2/check_gait.py:L1 | neighbors=[check_gait.py] | lang=en
-- "animation_v2_validate_refined_rationale_1": "Checks sampled positions after reopening each clip. Does not certify artistry." | kind=entity | source=assets/characters/animation-v2/validate_refined.py:L1 | neighbors=[validate_refined.py] | lang=en
-- "animation_validate_animations": "validate_animations.py" | kind=code-symbol | source=assets/characters/animation/validate_animations.py:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …] | lang=en
-- "assertionerror": "AssertionError" | kind=code-symbol | neighbors=[MatingError] | lang=en
-- "authority_pkb_schema_pkbauthority_pkbauthority": ".PkbAuthority()" | kind=code-symbol | source=server/authority/include/poko/authority/pkb_schema.hpp:L226 | neighbors=[PkbAuthority] | lang=en
-- "authority_session_sessionauthority_sessionauthority": ".SessionAuthority()" | kind=code-symbol | source=server/authority/include/poko/authority/session.hpp:L64 | neighbors=[SessionAuthority] | lang=en
-- "bin_trace_processor_rationale_214": "Downloads a prebuilt or returns a cached version    The first time this is invok" | kind=entity | source=.agents/skills/skills-main/profilers/android-profiler/references/perfetto/bin/trace_processor:L214 | neighbors=[download_or_get_cached()] | lang=en
-- "bin_trace_processor_rationale_260": "Downloads the prebuilt, if necessary, and returns its path on disk." | kind=entity | source=.agents/skills/skills-main/profilers/android-profiler/references/perfetto/bin/trace_processor:L260 | neighbors=[get_perfetto_prebuilt()] | lang=en
-- "blender_character_blockout_purge_scene": "purge_scene()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/blender/character_blockout.py:L64 | neighbors=[character_blockout.py] | lang=en
-- "blender_character_blockout_rationale_1": "Parametric human blockout from measured sheet fractions.  Every dimension is a f" | kind=entity | source=.agents/skills/ForgeSkills-main/tools/blender/character_blockout.py:L1 | neighbors=[character_blockout.py] | lang=en
-- "blender_character_blockout_rationale_254": "Print measured bounds so the comparison step has numbers, not vibes." | kind=entity | source=.agents/skills/ForgeSkills-main/tools/blender/character_blockout.py:L254 | neighbors=[report()] | lang=en
-- "blender_character_blockout_rationale_90": "Tapered capsule from p0 to p1 with radii r0/r1. Deterministic geometry." | kind=entity | source=.agents/skills/ForgeSkills-main/tools/blender/character_blockout.py:L90 | neighbors=[capsule()] | lang=en
-- "blender_character_blockout_shade_smooth": "shade_smooth()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/blender/character_blockout.py:L175 | neighbors=[character_blockout.py] | lang=en
-- "blender_explorer_common_dim_init": ".__init__()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/blender/explorer_common.py:L51 | neighbors=[Dim] | lang=en
-- "blender_explorer_common_dim_w": ".w()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/blender/explorer_common.py:L57 | neighbors=[Dim] | lang=en
-- "blender_explorer_common_dim_z": ".z()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/blender/explorer_common.py:L54 | neighbors=[Dim] | lang=en
-- "blender_explorer_common_link_to": "link_to()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/blender/explorer_common.py:L95 | neighbors=[explorer_common.py] | lang=en
-- "blender_explorer_common_mat": "mat()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/blender/explorer_common.py:L63 | neighbors=[explorer_common.py] | lang=en
-- "blender_explorer_common_rationale_1": "Explorer character — pass 2: garments, equipment, hair, materials.  Reads the me" | kind=entity | source=.agents/skills/ForgeSkills-main/tools/blender/explorer_common.py:L1 | neighbors=[explorer_common.py] | lang=en
-- "blender_explorer_common_rationale_104": "Duplicate meshes then scale about a pivot — cheap garment offset." | kind=entity | source=.agents/skills/ForgeSkills-main/tools/blender/explorer_common.py:L104 | neighbors=[shell_from()] | lang=pt
-- "blender_explorer_common_rationale_126": "Build a tube from a list of (center Vector, radius_x, radius_y, sides).      Rin" | kind=entity | source=.agents/skills/ForgeSkills-main/tools/blender/explorer_common.py:L126 | neighbors=[loft()] | lang=en
-- "blender_explorer_common_rationale_190": "Cylinder built at the origin, then placed. Never translate verts first.      Tra" | kind=entity | source=.agents/skills/ForgeSkills-main/tools/blender/explorer_common.py:L190 | neighbors=[cylinder()] | lang=en
-- "blender_explorer_common_solid_render": "solid_render()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/blender/explorer_common.py:L222 | neighbors=[explorer_common.py] | lang=en
-- "blender_render_compare_views_rationale_1": "Fixed-camera turnaround renders for reference comparison.  Sets one camera + a n" | kind=entity | source=.agents/skills/ForgeSkills-main/tools/blender/render_compare_views.py:L1 | neighbors=[render_compare_views.py] | lang=en
-- "blender_render_compare_views_rationale_108": "Three-point rig scaled to subject height.      Energies scale with height square" | kind=entity | source=.agents/skills/ForgeSkills-main/tools/blender/render_compare_views.py:L108 | neighbors=[setup_lighting()] | lang=en
-- "blender_render_compare_views_rationale_55": "World bounds from evaluated vertices: bound_box is stale after mesh edits." | kind=entity | source=.agents/skills/ForgeSkills-main/tools/blender/render_compare_views.py:L55 | neighbors=[_scene_bounds()] | lang=en
-- "blender_validate_scene_print_report": "print_report()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/blender/validate_scene.py:L153 | neighbors=[validate_scene.py] | lang=en
-- "blender_validate_scene_rationale_1": "Automated scene validation gate.  Catches the two defect classes that silently r" | kind=entity | source=.agents/skills/ForgeSkills-main/tools/blender/validate_scene.py:L1 | neighbors=[validate_scene.py] | lang=en
-- "blender_validate_scene_rationale_113": "Measured landmark heights, for proportion drift checks." | kind=entity | source=.agents/skills/ForgeSkills-main/tools/blender/validate_scene.py:L113 | neighbors=[landmarks()] | lang=en
-- "blender_validate_scene_rationale_29": "World-space bounds computed from evaluated vertices.      ob.bound_box is a cach" | kind=entity | source=.agents/skills/ForgeSkills-main/tools/blender/validate_scene.py:L29 | neighbors=[scene_bounds()] | lang=en
-- "blender_validate_scene_rationale_69": "Objects whose bounds break the envelope on the horizontal axes." | kind=entity | source=.agents/skills/ForgeSkills-main/tools/blender/validate_scene.py:L69 | neighbors=[find_strays()] | lang=en
-- "blender_validate_scene_rationale_93": "Objects floating away from the body mass - the sideways-cylinder signature." | kind=entity | source=.agents/skills/ForgeSkills-main/tools/blender/validate_scene.py:L93 | neighbors=[find_isolated()] | lang=en
-- "brainstorm_server_auth_test_assertsecurityheaders": "assertSecurityHeaders()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/auth.test.js:L82 | neighbors=[auth.test.js] | lang=en
-- "brainstorm_server_auth_test_content_dir": "CONTENT_DIR" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/auth.test.js:L25 | neighbors=[auth.test.js] | lang=en
-- "brainstorm_server_auth_test_expected_security_headers": "EXPECTED_SECURITY_HEADERS" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/auth.test.js:L28 | neighbors=[auth.test.js] | lang=en
-- "brainstorm_server_auth_test_fs": "fs" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/auth.test.js:L18 | neighbors=[auth.test.js] | lang=en
-- "brainstorm_server_auth_test_get": "get()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/auth.test.js:L45 | neighbors=[auth.test.js] | lang=en
-- "brainstorm_server_auth_test_http": "http" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/auth.test.js:L16 | neighbors=[auth.test.js] | lang=en
+- "warehouse_wh_equip_mesh_stillage": "mesh_stillage()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_equip.py:L135 | neighbors=[wh_equip.py, steel weld-mesh stillage cage with corn…]
+- "warehouse_wh_equip_packing_bench": "packing_bench()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_equip.py:L184 | neighbors=[wh_equip.py, steel packing bench: worktop, undershel…]
+- "warehouse_wh_equip_safety_barrier": "safety_barrier()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_equip.py:L250 | neighbors=[wh_equip.py, yellow polymer-style traffic barrier: p…]
+- "warehouse_wh_equip_site_office": "site_office()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_equip.py:L76 | neighbors=[wh_equip.py, modular mezzanine office: framed white …]
+- "warehouse_wh_equip_stretch_wrapper": "stretch_wrapper()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_equip.py:L208 | neighbors=[wh_equip.py, turntable pallet wrapper: low base + ro…]
+- "warehouse_wh_map_anchor": "anchor()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_map.py:L64 | neighbors=[wh_map.py, build()]
+- "warehouse_wh_map_rationale_118": "deck slabs on the truss top chords with skylight holes, liner rib lines undernea" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_map.py:L118 | neighbors=[MB, roof()]
+- "warehouse_wh_map_rationale_159": "concrete slab (mottled grid), saw-cut joints, lane + bay markings; yard asphalt" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_map.py:L159 | neighbors=[MB, floors()]
+- "warehouse_wh_map_rationale_215": "bays running north from z RACK_S (yaw 90: local front -> -x / west, local +x ->" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_map.py:L215 | neighbors=[MB, rack_row()]
+- "warehouse_wh_map_rationale_36": "delete faces nobody sees: flat bottoms on the floor (y ~ 0 facing down), backs o" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_map.py:L36 | neighbors=[MB, cull()]
+- "warehouse_wh_map_yaw_of": "yaw_of()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_map.py:L67 | neighbors=[wh_map.py, build()]
+- "warehouse_wh_props_floor_pallet": "floor_pallet()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_props.py:L123 | neighbors=[wh_props.py, pallet_load()]
+- "warehouse_wh_real_light": "light()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_real.py:L88 | neighbors=[wh_real.py, r2b()]
+- "warehouse_wh_real_r2b": "r2b()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_real.py:L9 | neighbors=[wh_real.py, light()]
+- "warehouse_wh_struct_crane_bridge": "crane_bridge()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_struct.py:L156 | neighbors=[wh_struct.py, double-girder overhead travelling crane…]
+- "warehouse_wh_struct_crane_trolley": "crane_trolley()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_struct.py:L187 | neighbors=[wh_struct.py, crab: frame, rope drum, gearbox + motor…]
+- "warehouse_wh_struct_dock_door": "dock_door()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_struct.py:L73 | neighbors=[wh_struct.py, loading dock: insulated roller door (op…]
+- "warehouse_wh_struct_high_bay": "high_bay()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_struct.py:L58 | neighbors=[wh_struct.py, LED high-bay 'UFO' lamp on a pendant ro…]
+- "warehouse_wh_struct_personnel_door": "personnel_door()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_struct.py:L132 | neighbors=[wh_struct.py, single steel fire door with frame, visi…]
+- "warehouse_wh_struct_roof_truss": "roof_truss()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_struct.py:L35 | neighbors=[wh_struct.py, pitched lattice truss across the hall (…]
+- "warehouse_wh_struct_runway_beam": "runway_beam()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_struct.py:L147 | neighbors=[wh_struct.py, crane runway girder segment along x: I-…]
+- "warehouse_wh_struct_shipping_container": "shipping_container()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_struct.py:L226 | neighbors=[wh_struct.py, 20 ft ISO box: corrugated side + end wa…]
+- "warehouse_wh_struct_skylight": "skylight()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_struct.py:L280 | neighbors=[wh_struct.py, roof-light: aluminium upstand frame + g…]
+- "warehouse_wh_struct_steel_column": "steel_column()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_struct.py:L9 | neighbors=[wh_struct.py, H-section column: base plate + anchor b…]
+- "warehouse_wh_yard_dock_stair": "dock_stair()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_yard.py:L285 | neighbors=[wh_yard.py, cast concrete stair from the yard up to…]
+- "warehouse_wh_yard_fence_panel": "fence_panel()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_yard.py:L223 | neighbors=[wh_yard.py, 3D weld-mesh fence panel between two po…]
+- "warehouse_wh_yard_yard_bin": "yard_bin()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_yard.py:L257 | neighbors=[wh_yard.py, 1100 l steel trade-waste bin: tapered b…]
+- "warehouse_wh_yard_yard_light": "yard_light()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_yard.py:L241 | neighbors=[wh_yard.py, galvanised tapered column on a bolted b…]
+- "whispering_grove_forest_map_camp_pts": "CAMP_PTS()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_map.py:L374 | neighbors=[forest_map.py, build()]
+- "whispering_grove_forest_map_kit": "kit()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_map.py:L136 | neighbors=[forest_map.py, place()]
+- "whispering_grove_forest_map_look": "look()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_map.py:L379 | neighbors=[forest_map.py, free()]
+- "whispering_grove_forest_map_rationale_143": "footprint radius = widest point of the prop's geometry within 1 stud of its base" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_map.py:L143 | neighbors=[MB, foot()]
+- "whispering_grove_forest_map_rationale_152": "centre=True (soft foliage): sit on the ground at the origin, so a slope never bu" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_map.py:L152 | neighbors=[MB, place()]
+- "whispering_grove_forest_map_rationale_172": "terrain height range over a footprint: big = a slope that would bury the prop's" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_map.py:L172 | neighbors=[MB, spread()]
+- "whispering_grove_forest_map_rationale_418": "distant faceted mountains + a dark forest-floor skirt so the map never ends in s" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_map.py:L418 | neighbors=[MB, horizon()]
+- "whispering_grove_forest_map_rationale_54": "(signed distance past the path edge, path width) for the nearest path" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_map.py:L54 | neighbors=[MB, path_info()]
+- "whispering_grove_forest_props_curve": "curve()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L54 | neighbors=[forest_props.py, oak()]
+- "whispering_grove_forest_props_materials": "materials()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L610 | neighbors=[forest_props.py, to_kit()]
+- "whispering_grove_forest_props_mesh_from": "mesh_from()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L628 | neighbors=[forest_props.py, to_kit()]
+- "whispering_grove_forest_props_ring_pts": "ring_pts()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L51 | neighbors=[forest_props.py, mushroom()]
 
 ## Instructions
 

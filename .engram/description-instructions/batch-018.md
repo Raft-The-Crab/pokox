@@ -1,4 +1,4 @@
-# Node Description Batch 19 of 207
+# Node Description Batch 19 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -26,6 +26,18 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "bytecode_bytecode_disassemble_bytecode": "disassemble_bytecode()" | kind=code-symbol | source=mute/src/bytecode/bytecode.cpp:L191 | neighbors=[bytecode.cpp, assemble_bytecode(), branch(), branch_offset(), long_offset(), mnemonic()] | lang=en
+- "cad_skill_main_gridfinity_gridfinitybin_compartment_solids": "._compartment_solids()" | kind=code-symbol | source=.agents/skills/cad-skill-main/gridfinity.py:L569 | neighbors=[GridfinityBin, .build(), ._compartment_size(), ._label_shelf(), ._scoop(), _rounded_rect()] | lang=en
+- "cad_skill_main_gridfinity_gridfinitybin_validate": "._validate()" | kind=code-symbol | source=.agents/skills/cad-skill-main/gridfinity.py:L321 | neighbors=[GridfinityBin, .build(), ._check_depth(), ._check_wall_clearance(), ._compartment_size(), ._cylinder_drop()] | lang=en
+- "cad_skill_main_mesh_io": "mesh_io.py" | kind=code-symbol | source=.agents/skills/cad-skill-main/mesh_io.py:L1 | neighbors=[bed_fit(), estimate_mass(), load_mesh(), parse_bed(), Pure trimesh STL loading with validatio…, 2680d0e Pushed an update.] | lang=en
+- "cad_skill_main_preview_render_multi_view": "render_multi_view()" | kind=code-symbol | source=.agents/skills/cad-skill-main/preview.py:L361 | neighbors=[preview.py, main(), Render 6-view technical preview in a 3x…, _build_scene(), _get_font(), _info_lines()] | lang=en
+- "cad_skill_main_run_cadquery_model": "run_cadquery_model.py" | kind=code-symbol | source=.agents/skills/cad-skill-main/run_cadquery_model.py:L1 | neighbors=[_append_stderr(), main(), _new_files_by_ext(), _process_stls(), _sibling(), 2680d0e Pushed an update.] | lang=en
+- "candyland_candy_props_drawbridge": "drawbridge()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L729 | neighbors=[candy_props.py, ball(), lathe(), MS(), round_prof(), striped_tube()] | lang=en
+- "candyland_candy_props_drip": "drip()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L181 | neighbors=[candy_props.py, donut_arch(), lathe(), drip_ring(), giant_cone(), icing_cap()] | lang=en
+- "candyland_candy_props_giant_cone": "giant_cone()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L1146 | neighbors=[candy_props.py, drip(), lathe(), soft(), waffle_lathe(), waffle_shade()] | lang=en
+- "candyland_candy_props_icing_cap": "icing_cap()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L752 | neighbors=[candy_props.py, choco_falls(), gumdrop_mountain(), bell_r(), drip(), lathe()] | lang=en
+- "candyland_candy_props_piping": "piping()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L211 | neighbors=[candy_props.py, candy_castle(), cone_tower(), icing piping along a polyline: beaded (…, sign_plate(), spawn_cookie()] | lang=en
+- "candyland_candy_props_sugar": "sugar()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L50 | neighbors=[candy_props.py, bakery_oven(), choco_falls(), gumdrop_bush(), gumdrop_mountain(), sugar-coated: height gradient plus fine…] | lang=en
 - "candyland_candy_props_waffle_lathe": "waffle_lathe()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L265 | neighbors=[candy_props.py, candy_castle(), cone_tower(), giant_cone(), waffle grid: diagonal diamond pattern b…, waffle_bridge()] | lang=en
 - "canyonbazaar_canyon_map_on_paving": "on_paving()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_map.py:L111 | neighbors=[canyon_map.py, ground(), H(), nature(), main_w(), path_x()] | lang=en
 - "canyonbazaar_canyon_map_stories": "stories()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_map.py:L429 | neighbors=[canyon_map.py, build(), cx(), free(), hw(), place()] | lang=en
@@ -54,18 +66,6 @@ one-sentence description — no prose, no markdown fences.
 - "creaturelab_lab_map_wing_floor": "wing_floor()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_map.py:L151 | neighbors=[lab_map.py, build(), lab wing floor: slab, 3-stud square til…, in_wing(), inset_top(), sh_val()] | lang=en
 - "creaturelab_lab_props_evo_chamber": "evo_chamber()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L553 | neighbors=[lab_props.py, ball(), leaf_poly(), merge_prop(), rbox(), .add()] | lang=en
 - "creaturelab_lab_props_lab_wing": "lab_wing()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L909 | neighbors=[lab_props.py, arc_wall(), merge_prop(), rbox(), ring_seg(), .add()] | lang=en
-- "creaturelab_lab_props_leaf_ball": "leaf_ball()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1030 | neighbors=[lab_props.py, bush(), .add(), long_planter(), potted_tree(), chunky stylised leaf mass: a blob + a f…] | lang=en
-- "creaturelab_lab_props_leaf_cluster": "leaf_cluster()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1373 | neighbors=[lab_props.py, fig_tree(), hanging_planter(), ball(), .add(), clustered round leaves: n small smooth …] | lang=en
-- "creaturelab_lab_props_leaf_mass": "leaf_mass()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L2041 | neighbors=[lab_props.py, clump(), leaf_sh(), .add(), olive_tree(), park_tree()] | lang=en
-- "creaturelab_lab_props_leaf_poly": "leaf_poly()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L100 | neighbors=[lab_props.py, catch_ball(), emblem(), evo_chamber(), med_shelf(), plush()] | lang=en
-- "creaturelab_lab_props_plush": "plush()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1562 | neighbors=[lab_props.py, heal_corner(), ball(), leaf_poly(), .add(), upright()] | lang=en
-- "creaturelab_lab_props_pot_plant": "pot_plant()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L253 | neighbors=[lab_props.py, heal_counter(), lerp(), .add(), small round pot + leafy sprouts (used o…, rest_nook()] | lang=en
-- "creaturelab_lab_props_round_bush": "round_bush()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1510 | neighbors=[lab_props.py, smooth round shrub: soft leaf mound wit…, ball(), leaf_cluster(), .add(), round_planter()] | lang=en
-- "creaturelab_lab_props_supply_boxes": "supply_boxes()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1610 | neighbors=[lab_props.py, Shop story: stacked supply cartons (cre…, capsule(), emblem(), rbox(), .add()] | lang=en
-- "creaturelab_lab_props_wall_shelf_lab": "wall_shelf_lab()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1254 | neighbors=[lab_props.py, lab wall shelving: steel frame, binders…, bottle(), pot_plant(), rbox(), shelf_frame()] | lang=en
-- "creaturelab_lab_props_welcome_sign": "welcome_sign()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1151 | neighbors=[lab_props.py, entry monolith on the path: rounded whi…, emblem_badge(), merge_prop(), rbox(), round_bush()] | lang=en
-- "dunedesert_dune_map_fragments": "fragments()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L519 | neighbors=[dune_map.py, build(), free(), on_path(), place(), reserve()] | lang=en
-- "dunedesert_dune_map_free": "free()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L166 | neighbors=[dune_map.py, add_owner(), build_solid(), fragments(), look(), nature()] | lang=en
 
 ## Instructions
 

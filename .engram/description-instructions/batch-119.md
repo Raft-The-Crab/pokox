@@ -1,4 +1,4 @@
-# Node Description Batch 120 of 207
+# Node Description Batch 120 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -19,51 +19,53 @@ relations (neighbors) and the provided citations/evidence — e.g.
 Ground entity descriptions in the citations/evidence when present; do not
 speculate beyond the context, so a node with no supporting context may be
 left out of the reply.
-Write every description in English (en). Do not switch languages.
+LANGUAGE: each entry has a `lang=` marker giving the language of its source.
+Write that entry's description in EXACTLY that language. Do not translate to
+a single common language — match each node's source language individually.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "package_package_parse_import_spec": "parse_import_spec()" | kind=code-symbol | source=mute/src/package/package.cpp:L37 | neighbors=[package.cpp, resolve_packages()]
-- "package_package_unquote": "unquote()" | kind=code-symbol | source=mute/src/package/package.cpp:L30 | neighbors=[package.cpp, resolve_packages()]
-- "parser_declaration_decl_fail": "decl_fail()" | kind=code-symbol | source=mute/src/parser/declaration.cpp:L13 | neighbors=[declaration.cpp, Depth()]
-- "parser_declaration_decl_quoted": "decl_quoted()" | kind=code-symbol | source=mute/src/parser/declaration.cpp:L16 | neighbors=[declaration.cpp, dump_declaration_ast()]
-- "parser_declaration_declarationparser": "DeclarationParser" | kind=code-symbol | source=mute/src/parser/declaration.cpp:L25 | neighbors=[declaration.cpp, .DeclarationParser()]
-- "parser_declaration_depth": "Depth()" | kind=code-symbol | source=mute/src/parser/declaration.cpp:L75 | neighbors=[declaration.cpp, decl_fail()]
-- "parser_declaration_dump_declaration_ast": "dump_declaration_ast()" | kind=code-symbol | source=mute/src/parser/declaration.cpp:L449 | neighbors=[declaration.cpp, decl_quoted()]
-- "parser_parser_expressionparser": "ExpressionParser" | kind=code-symbol | source=mute/src/parser/parser.cpp:L86 | neighbors=[parser.cpp, .ExpressionParser()]
-- "parser_parser_op_spelling": "op_spelling()" | kind=code-symbol | source=mute/src/parser/parser.cpp:L9 | neighbors=[parser.cpp, dump_ast()]
-- "parser_parser_quoted": "quoted()" | kind=code-symbol | source=mute/src/parser/parser.cpp:L70 | neighbors=[parser.cpp, dump_ast()]
-- "parser_statement_depth": "Depth()" | kind=code-symbol | source=mute/src/parser/statement.cpp:L59 | neighbors=[statement.cpp, stmt_fail()]
-- "parser_statement_dump_statement_ast": "dump_statement_ast()" | kind=code-symbol | source=mute/src/parser/statement.cpp:L329 | neighbors=[statement.cpp, quoted()]
-- "parser_statement_quoted": "quoted()" | kind=code-symbol | source=mute/src/parser/statement.cpp:L16 | neighbors=[statement.cpp, dump_statement_ast()]
-- "parser_statement_statementparser": "StatementParser" | kind=code-symbol | source=mute/src/parser/statement.cpp:L25 | neighbors=[statement.cpp, .StatementParser()]
-- "parser_statement_stmt_fail": "stmt_fail()" | kind=code-symbol | source=mute/src/parser/statement.cpp:L13 | neighbors=[statement.cpp, Depth()]
-- "passes_cube_demo_cube_indices": "cube_indices()" | kind=code-symbol | source=engine/render/src/passes/cube_demo.cpp:L62 | neighbors=[cube_demo.cpp, main()]
-- "passes_cube_demo_cube_vertices": "cube_vertices()" | kind=code-symbol | source=engine/render/src/passes/cube_demo.cpp:L39 | neighbors=[cube_demo.cpp, main()]
-- "passes_imgui_demo_build_demo_window": "build_demo_window()" | kind=code-symbol | source=engine/render/src/passes/imgui_demo.cpp:L168 | neighbors=[imgui_demo.cpp, main()]
-- "passes_imgui_demo_composite": "composite()" | kind=code-symbol | source=engine/render/src/passes/imgui_demo.cpp:L61 | neighbors=[imgui_demo.cpp, ensure_gpu_timer()]
-- "passes_imgui_demo_ensure_gpu_timer": "ensure_gpu_timer()" | kind=code-symbol | source=engine/render/src/passes/imgui_demo.cpp:L44 | neighbors=[imgui_demo.cpp, composite()]
-- "passes_imgui_demo_feed_imgui_event": "feed_imgui_event()" | kind=code-symbol | source=engine/render/src/passes/imgui_demo.cpp:L137 | neighbors=[imgui_demo.cpp, imgui_key()]
-- "passes_imgui_demo_imgui_key": "imgui_key()" | kind=code-symbol | source=engine/render/src/passes/imgui_demo.cpp:L113 | neighbors=[imgui_demo.cpp, feed_imgui_event()]
-- "passes_imgui_demo_update_imgui_io": "update_imgui_io()" | kind=code-symbol | source=engine/render/src/passes/imgui_demo.cpp:L82 | neighbors=[imgui_demo.cpp, main()]
-- "petsim_pet_map_catmull": "catmull()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L208 | neighbors=[pet_map.py, path()]
-- "petsim_pet_map_foot": "foot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L122 | neighbors=[pet_map.py, place()]
-- "petsim_pet_map_inside": "inside()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L161 | neighbors=[pet_map.py, clip_fail()]
-- "petsim_pet_map_kit": "kit()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L117 | neighbors=[pet_map.py, place()]
-- "petsim_pet_map_rationale_256": "polar tile disc: rings of soft tiles alternating cream / pink, inset grout, a sk" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L256 | neighbors=[plaza(), MB]
-- "petsim_pet_map_rationale_330": "items = [(key, fn, scale_range)], n tries; keeps clear of paths + reserved spots" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L330 | neighbors=[scatter(), MB]
-- "petsim_pet_map_rationale_341": "clusters of 3-5 breakables off the paths; tier rises with distance from the zone" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L341 | neighbors=[breakables(), MB]
-- "petsim_pet_map_rationale_538": "clouds + rocks on the lagoon round the chain (outside every island, off the brid" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L538 | neighbors=[frame(), MB]
-- "petsim_pet_map_rationale_60": "polar top (dome) + rounded icing shoulder + sponge cliff down into the lagoon. C" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L60 | neighbors=[isle_mesh(), MB]
-- "petsim_pet_map_seg_d": "seg_d()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L556 | neighbors=[pet_map.py, frame()]
-- "petsim_pet_map_shot": "shot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L651 | neighbors=[pet_map.py, link()]
-- "petsim_pet_map_unplace": "unplace()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L149 | neighbors=[pet_map.py, place_soft()]
-- "petsim_pet_props_arc_pts": "arc_pts()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L113 | neighbors=[pet_props.py, trade_pad()]
-- "petsim_pet_props_candy_cane": "candy_cane()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L910 | neighbors=[pet_props.py, hooked cane, red / cream diagonal strip…]
-- "petsim_pet_props_disc_up": "disc_up()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L124 | neighbors=[pet_props.py, rcyl()]
-- "petsim_pet_props_egg_r": "egg_r()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L147 | neighbors=[pet_props.py, egg_prof()]
-- "petsim_pet_props_lift": "lift()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L136 | neighbors=[pet_props.py, egg()]
+- "net_frame_payload_bit_length": "payload_bit_length()" | kind=code-symbol | source=server/net/include/poko/net/frame.hpp:L144 | neighbors=[frame.hpp, pack_frame()] | lang=en
+- "net_frame_sha256": "Sha256" | kind=code-symbol | source=server/net/include/poko/net/frame.hpp:L27 | neighbors=[frame.hpp, .Sha256()] | lang=en
+- "net_jitter_buffer": "jitter_buffer.hpp" | kind=code-symbol | source=server/net/include/poko/net/jitter_buffer.hpp:L1 | neighbors=[1dac49d Created NET-01 to NET-09, Start…, JitterBuffer] | lang=en
+- "net_jitter_buffer_jitterbuffer": "JitterBuffer" | kind=code-symbol | source=server/net/include/poko/net/jitter_buffer.hpp:L35 | neighbors=[jitter_buffer.hpp, .JitterBuffer()] | lang=en
+- "net_udp_echo_udpsocket": "UdpSocket" | kind=code-symbol | source=server/net/include/poko/net/udp_echo.hpp:L38 | neighbors=[udp_echo.hpp, .UdpSocket()] | lang=en
+- "net_ws_transport_ws_decode": "ws_decode()" | kind=code-symbol | source=server/net/include/poko/net/ws_transport.hpp:L69 | neighbors=[ws_transport.hpp, ws_roundtrip()] | lang=en
+- "net_xor_fec_attach_parity": "attach_parity()" | kind=code-symbol | source=server/net/include/poko/net/xor_fec.hpp:L52 | neighbors=[xor_fec.hpp, losses()] | lang=en
+- "net_xor_fec_make_parity": "make_parity()" | kind=code-symbol | source=server/net/include/poko/net/xor_fec.hpp:L73 | neighbors=[xor_fec.hpp, xor_payloads()] | lang=en
+- "net_xor_fec_recover_loss": "recover_loss()" | kind=code-symbol | source=server/net/include/poko/net/xor_fec.hpp:L60 | neighbors=[xor_fec.hpp, losses()] | lang=en
+- "net_xor_fec_xor_payloads": "xor_payloads()" | kind=code-symbol | source=server/net/include/poko/net/xor_fec.hpp:L21 | neighbors=[xor_fec.hpp, make_parity()] | lang=en
+- "oaktrees_gen_trees_export_glb": "export_glb()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L943 | neighbors=[gen_trees.py, main()] | lang=en
+- "oaktrees_gen_trees_load_px": "load_px()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L914 | neighbors=[gen_trees.py, contact_sheet()] | lang=en
+- "oaktrees_gen_trees_make_object": "make_object()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L694 | neighbors=[gen_trees.py, make_tree()] | lang=en
+- "oaktrees_gen_trees_material": "material()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L710 | neighbors=[gen_trees.py, get_materials()] | lang=en
+- "oaktrees_gen_trees_render_turntable": "render_turntable()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L896 | neighbors=[gen_trees.py, main()] | lang=en
+- "oaktrees_gen_trees_resize": "resize()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L921 | neighbors=[gen_trees.py, contact_sheet()] | lang=en
+- "oaktrees_gen_trees_save_png": "save_png()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L52 | neighbors=[gen_trees.py, _img()] | lang=en
+- "oaktrees_gen_trees_setup_scene": "setup_scene()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L853 | neighbors=[gen_trees.py, main()] | lang=en
+- "oaktrees_gen_trees_tri_count": "tri_count()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L893 | neighbors=[gen_trees.py, make_tree()] | lang=en
+- "oaktrees_gen_trees_tube_mesh": "tube_mesh()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L498 | neighbors=[gen_trees.py, make_tree()] | lang=en
+- "onsenvillage_closeup": "closeup.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/closeup.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …] | lang=en
+- "onsenvillage_onsen_map_inb": "_inb()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L145 | neighbors=[onsen_map.py, _inside_one()] | lang=en
+- "onsenvillage_onsen_map_kit": "kit()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L77 | neighbors=[onsen_map.py, place()] | lang=en
+- "onsenvillage_onsen_map_look": "look()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L517 | neighbors=[onsen_map.py, free()] | lang=en
+- "onsenvillage_onsen_map_rationale_117": "the village is mirrored about x = 0: west copy as written, east copy at -x with" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L117 | neighbors=[mirror(), MB] | lang=en
+- "onsenvillage_onsen_map_rationale_195": "stage ground (smooth: banks, stream bed, lawn) + mountains (flat faceted rock wi" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L195 | neighbors=[ground(), MB] | lang=en
+- "onsenvillage_onsen_map_rationale_246": "distant peaks far behind the saddle (pale violet with snow caps) + low ridges at" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L246 | neighbors=[horizon(), MB] | lang=en
+- "onsenvillage_onsen_map_rationale_264": "stream + front pool surface: 4-stud cells kept only where the ground dips below" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L264 | neighbors=[water(), MB] | lang=en
+- "onsenvillage_onsen_map_rationale_283": "each terrace = running-bond flagstone top (inset stones, cream) + ashlar riser o" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L283 | neighbors=[terraces(), MB] | lang=pt
+- "onsenvillage_onsen_map_rationale_327": "flagstone path on the front bank from the bridge foot toward the camera, ragged" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L327 | neighbors=[bank_path(), MB] | lang=en
+- "onsenvillage_onsen_map_rationale_347": "SIGNATURE: railing bays along a terrace lip with gaps at stairs / bridge; stone" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L347 | neighbors=[rail_run(), MB] | lang=en
+- "onsenvillage_onsen_map_rationale_410": "clusters of 2-4 at the stairs and bridge; deliberately NOT mirrored (props break" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L410 | neighbors=[stories(), MB] | lang=en
+- "onsenvillage_onsen_map_rationale_492": "preview-only steam volumes over the hot water (Roblox: ParticleEmitters at these" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L492 | neighbors=[steam(), MB] | lang=en
+- "onsenvillage_onsen_map_rationale_61": "one height function for ground mesh AND placement (terrace tops are flat; risers" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L61 | neighbors=[H(), MB] | lang=en
+- "onsenvillage_onsen_map_rationale_91": "auto-grounded props (y None) are fitted against everything built so far (see fit" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L91 | neighbors=[place(), MB] | lang=en
+- "onsenvillage_onsen_map_terrace_at": "terrace_at()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L40 | neighbors=[onsen_map.py, H()] | lang=en
+- "onsenvillage_onsen_map_top": "_top()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L155 | neighbors=[onsen_map.py, fit_bad()] | lang=en
+- "onsenvillage_onsen_props_bench": "bench()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L717 | neighbors=[onsen_props.py, thick cedar bench: two planks, cross ba…] | lang=en
+- "onsenvillage_onsen_props_crates": "crates()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L695 | neighbors=[onsen_props.py, stack: slatted cedar crates with corner…] | lang=en
+- "onsenvillage_onsen_props_fern_tuft": "fern_tuft()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L877 | neighbors=[onsen_props.py, low clump of sage fronds for wall feet …] | lang=en
 
 ## Instructions
 

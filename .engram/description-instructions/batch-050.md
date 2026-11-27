@@ -1,4 +1,4 @@
-# Node Description Batch 51 of 207
+# Node Description Batch 51 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -17,6 +17,23 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "integration_test_word_reservations": "test_word_reservations.py" | kind=code-symbol | source=backend/storage/d1/tests/integration/test_word_reservations.py:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, ReservationMigrationTests, SQLite-level tests for the D1 word-rese…, c7a411f Fix MUT-01-20 audit defects in …]
+- "math_deterministic_math_calculate": "calculate()" | kind=code-symbol | source=mute/src/math/deterministic_math.cpp:L18 | neighbors=[deterministic_math.cpp, supported(), deterministic_cos(), deterministic_sin()]
+- "medievalbattle_battle_map_channels": "channels()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L38 | neighbors=[battle_map.py, fordw(), H(), [(centre x, half width, bed y)] of the …]
+- "medievalbattle_battle_map_cull_hidden": "cull_hidden()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L108 | neighbors=[battle_map.py, free(), kit(), drop faces buried inside the prop's own…]
+- "medievalbattle_battle_map_ground": "ground()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L198 | neighbors=[battle_map.py, build(), grid_mesh(), sub()]
+- "medievalbattle_battle_map_keep_w": "keep_w()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L74 | neighbors=[battle_map.py, base(), ground_shade(), H()]
+- "medievalbattle_battle_map_trench_drop": "trench_drop()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L54 | neighbors=[battle_map.py, ground_shade(), H(), seg_d()]
+- "medievalbattle_battle_map_water": "water()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L261 | neighbors=[battle_map.py, build(), 4-stud water grid kept only where water…, sub()]
+- "medievalbattle_battle_map_yw": "Yw()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L35 | neighbors=[battle_map.py, centre(), field(), keep()]
+- "medievalbattle_battle_props_add_into": "add_into()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L230 | neighbors=[battle_props.py, bridge_tower(), donjon(), slit_cutter()]
+- "medievalbattle_battle_props_ammo_pile": "ammo_pile()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L1025 | neighbors=[battle_props.py, shot_stone(), T(), trebuchet shot: round stones stacked on…]
+- "medievalbattle_battle_props_ashlar_ring": "ashlar_ring()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L121 | neighbors=[battle_props.py, donjon_top(), ashlar on a cylinder of radius R (flat …, tower_body()]
+- "medievalbattle_battle_props_broadleaf": "broadleaf()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L1498 | neighbors=[battle_props.py, log(), T(), field oak: flared, slightly twisted tru…]
+- "medievalbattle_battle_props_drystone_wall": "drystone_wall()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L1398 | neighbors=[battle_props.py, rough_stone(), T(), low field wall of tightly stacked rough…]
+- "medievalbattle_battle_props_flame": "flame()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L1204 | neighbors=[battle_props.py, brazier(), campfire(), T()]
+- "medievalbattle_battle_props_in_arch": "in_arch()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L361 | neighbors=[battle_props.py, gatehouse(), sundered_bridge(), tower_face()]
+- "medievalbattle_battle_props_rot_mb": "rot_mb()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L964 | neighbors=[battle_props.py, broken_cart(), ladder(), pew()]
 - "medievalbattle_battle_props_rubble": "rubble()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L1423 | neighbors=[battle_props.py, a heap of fallen ashlar blocks and brok…, stone(), T()]
 - "medievalbattle_battle_props_scorch": "scorch()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L1563 | neighbors=[battle_props.py, shallow scorched impact scar (modelled,…, lathe(), T()]
 - "medievalbattle_battle_props_shot_stone": "shot_stone()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L1019 | neighbors=[battle_props.py, ammo_pile(), dressed round trebuchet shot: smooth la…, lathe()]
@@ -37,26 +54,9 @@ one-sentence description — no prose, no markdown fences.
 - "moonclean_moon_props_lerp": "lerp()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L46 | neighbors=[moon_props.py, dust_exchange(), lunar_lander(), station_base()]
 - "moonclean_moon_props_satellite_wreck": "satellite_wreck()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L562 | neighbors=[moon_props.py, crashed satellite half-buried: foil bus…, beam(), dish()]
 - "moonclean_moon_props_wheel": "wheel()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L531 | neighbors=[moon_props.py, moon_rover(), beam(), torus()]
+- "musl_math_cos": "cos.cpp" | kind=code-symbol | source=mute/third_party/musl_math/cos.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, cosine(), kernel_cos(), c7a411f Fix MUT-01-20 audit defects in …]
+- "musl_math_sin": "sin.cpp" | kind=code-symbol | source=mute/third_party/musl_math/sin.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, kernel_sin(), sine(), c7a411f Fix MUT-01-20 audit defects in …]
 - "mute_action_map": "action_map.hpp" | kind=code-symbol | source=mute/include/poko/mute/action_map.hpp:L1 | neighbors=[952997e Audit MUT-01-55 and harden veri…, ActionFrame, ActionMap, ActionSampler]
-- "mute_device_router": "device_router.hpp" | kind=code-symbol | source=mute/include/poko/mute/device_router.hpp:L1 | neighbors=[952997e Audit MUT-01-55 and harden veri…, DeviceRouter, gamepad_device_code(), touch_device_code()]
-- "mute_parser": "parser.hpp" | kind=code-symbol | source=mute/include/poko/mute/parser.hpp:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, Ast, ExpressionParser, to_arithmetic()]
-- "mute_scheduler": "scheduler.hpp" | kind=code-symbol | source=mute/include/poko/mute/scheduler.hpp:L1 | neighbors=[0621f1d Merge pull request #1 from Raft…, 34ca6de Fix GCC/Clang build: add <algor…, 435b4d3 Add MUT-23 cooperative async sc…, Scheduler]
-- "mute_stdlib_math": "stdlib_math.hpp" | kind=code-symbol | source=mute/include/poko/mute/stdlib_math.hpp:L1 | neighbors=[1c81e45 Update from ML AI Code, 952997e Audit MUT-01-55 and harden veri…, SimClock, XorShift128Plus]
-- "mute_stdlib_physics": "stdlib_physics.hpp" | kind=code-symbol | source=mute/include/poko/mute/stdlib_physics.hpp:L1 | neighbors=[0d85dce Merge pull request #6 from Raft…, 1aefb72 MUT-42: physics hostcall bounda…, 2680d0e Pushed an update., 7eabc2d Merge pull request #8 from Raft…]
-- "net_crypto_aead_store64_le": "store64_le()" | kind=code-symbol | source=server/net/include/poko/net/crypto_aead.hpp:L44 | neighbors=[crypto_aead.hpp, aead_open(), aead_seal(), store32_le()]
-- "net_cube_sync": "cube_sync.hpp" | kind=code-symbol | source=server/net/include/poko/net/cube_sync.hpp:L1 | neighbors=[1dac49d Created NET-01 to NET-09, Start…, cube_schema(), CubePeer, exchange_over_udp()]
-- "net_ws_transport_ws_roundtrip": "ws_roundtrip()" | kind=code-symbol | source=server/net/include/poko/net/ws_transport.hpp:L109 | neighbors=[ws_transport.hpp, ws_decode(), ws_encode_client(), ws_encode_server()]
-- "oaktrees_gen_trees_bark_birch": "bark_birch()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L86 | neighbors=[gen_trees.py, fft_noise(), normal_from_height(), ramp()]
-- "oaktrees_gen_trees_bark_oak": "bark_oak()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L71 | neighbors=[gen_trees.py, fft_noise(), normal_from_height(), ramp()]
-- "oaktrees_gen_trees_canvas_leaf": ".leaf()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L153 | neighbors=[Canvas, .grid(), .over(), leaf_atlas()]
-- "oaktrees_gen_trees_contact_sheet": "contact_sheet()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L926 | neighbors=[gen_trees.py, load_px(), resize(), main()]
-- "oaktrees_gen_trees_img": "_img()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L976 | neighbors=[gen_trees.py, get_materials(), save_png(), paint + save the texture, or (maps) loa…]
-- "oaktrees_gen_trees_tree_env": ".env()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L357 | neighbors=[card_quads(), <1 inside the lumpy crown envelope., Tree, .children_of()]
-- "onsenvillage_onsen_map_add_owner": "add_owner()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L137 | neighbors=[onsen_map.py, free(), place(), static()]
-- "onsenvillage_onsen_map_bank_path": "bank_path()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L326 | neighbors=[onsen_map.py, H(), static(), flagstone path on the front bank from t…]
-- "onsenvillage_onsen_map_fit_bad": "fit_bad()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L162 | neighbors=[onsen_map.py, fit(), _inside_one(), _top()]
-- "onsenvillage_onsen_map_horizon": "horizon()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L245 | neighbors=[onsen_map.py, build(), static(), distant peaks far behind the saddle (pa…]
-- "onsenvillage_onsen_map_mirror": "mirror()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L116 | neighbors=[onsen_map.py, place(), the village is mirrored about x = 0: we…, village()]
 
 ## Instructions
 

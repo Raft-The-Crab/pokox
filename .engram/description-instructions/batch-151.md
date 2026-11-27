@@ -1,4 +1,4 @@
-# Node Description Batch 152 of 207
+# Node Description Batch 152 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -12,51 +12,58 @@ describing what it is or does. Use only the provided context.
 For a code symbol (kind=code-symbol — a function, class, or constant),
 describe what the function/symbol does based on its name, source location
 and neighbors — e.g. "Resolves the configured ontology profile from graphify.yaml.".
+For an entity node (any other kind — e.g. a person, place, event, object),
+describe what the entity is and its role, grounded in its type, its
+relations (neighbors) and the provided citations/evidence — e.g.
+"Lady Carfax, a wealthy heiress who disappears en route to Lausanne.".
+Ground entity descriptions in the citations/evidence when present; do not
+speculate beyond the context, so a node with no supporting context may be
+left out of the reply.
 Write every description in English (en). Do not switch languages.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "brainstorm_server_auth_test_path": "path" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/auth.test.js:L19 | neighbors=[auth.test.js]
-- "brainstorm_server_auth_test_server_path": "SERVER_PATH" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/auth.test.js:L22 | neighbors=[auth.test.js]
-- "brainstorm_server_auth_test_spawn": "{ spawn }" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/auth.test.js:L15 | neighbors=[auth.test.js]
-- "brainstorm_server_branding_test_createpackagedserverfixture": "createPackagedServerFixture()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/branding.test.js:L77 | neighbors=[branding.test.js]
-- "brainstorm_server_branding_test_fetchhtml": "fetchHtml()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/branding.test.js:L60 | neighbors=[branding.test.js]
-- "brainstorm_server_branding_test_fs": "fs" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/branding.test.js:L7 | neighbors=[branding.test.js]
-- "brainstorm_server_branding_test_http": "http" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/branding.test.js:L6 | neighbors=[branding.test.js]
-- "brainstorm_server_branding_test_path": "path" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/branding.test.js:L8 | neighbors=[branding.test.js]
-- "brainstorm_server_branding_test_repo_root": "REPO_ROOT" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/branding.test.js:L11 | neighbors=[branding.test.js]
-- "brainstorm_server_branding_test_server_path": "SERVER_PATH" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/branding.test.js:L12 | neighbors=[branding.test.js]
-- "brainstorm_server_branding_test_spawn": "{ spawn }" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/branding.test.js:L5 | neighbors=[branding.test.js]
-- "brainstorm_server_branding_test_writefragment": "writeFragment()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/branding.test.js:L71 | neighbors=[branding.test.js]
-- "brainstorm_server_browser_launcher_test_assert": "assert" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/browser-launcher.test.js:L1 | neighbors=[browser-launcher.test.js]
-- "brainstorm_server_browser_launcher_test_browserlauncherforplatform": "{\n  browserLauncherForPlatform\n}" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/browser-launcher.test.js:L2 | neighbors=[browser-launcher.test.js]
-- "brainstorm_server_browser_launcher_test_test": "test()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/browser-launcher.test.js:L9 | neighbors=[browser-launcher.test.js]
-- "brainstorm_server_helper_test_assert": "assert" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/helper.test.js:L9 | neighbors=[helper.test.js]
-- "brainstorm_server_helper_test_fs": "fs" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/helper.test.js:L10 | neighbors=[helper.test.js]
-- "brainstorm_server_helper_test_helper": "HELPER" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/helper.test.js:L13 | neighbors=[helper.test.js]
-- "brainstorm_server_helper_test_makeenv": "makeEnv()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/helper.test.js:L87 | neighbors=[helper.test.js]
-- "brainstorm_server_helper_test_moduleshim": "moduleShim" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/helper.test.js:L20 | neighbors=[helper.test.js]
-- "brainstorm_server_helper_test_path": "path" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/helper.test.js:L11 | neighbors=[helper.test.js]
-- "brainstorm_server_helper_test_src": "src" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/helper.test.js:L15 | neighbors=[helper.test.js]
-- "brainstorm_server_helper_test_test": "test()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/helper.test.js:L25 | neighbors=[helper.test.js]
-- "brainstorm_server_server_test_content_dir": "CONTENT_DIR" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/server.test.js:L21 | neighbors=[server.test.js]
-- "brainstorm_server_server_test_fetch": "fetch()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/server.test.js:L50 | neighbors=[server.test.js]
-- "brainstorm_server_server_test_fs": "fs" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/server.test.js:L14 | neighbors=[server.test.js]
-- "brainstorm_server_server_test_http": "http" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/server.test.js:L12 | neighbors=[server.test.js]
-- "brainstorm_server_server_test_path": "path" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/server.test.js:L15 | neighbors=[server.test.js]
-- "brainstorm_server_server_test_server_path": "SERVER_PATH" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/server.test.js:L18 | neighbors=[server.test.js]
-- "brainstorm_server_server_test_skiptest_constructor": ".constructor()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/server.test.js:L90 | neighbors=[SkipTest]
-- "brainstorm_server_server_test_spawn": "{ spawn }" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/server.test.js:L11 | neighbors=[server.test.js]
-- "brainstorm_server_server_test_state_dir": "STATE_DIR" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/server.test.js:L22 | neighbors=[server.test.js]
-- "brainstorm_server_server_test_websocket": "WebSocket" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/server.test.js:L13 | neighbors=[server.test.js]
-- "brainstorm_server_ws_protocol_test_assert": "assert" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/ws-protocol.test.js:L14 | neighbors=[ws-protocol.test.js]
-- "brainstorm_server_ws_protocol_test_crypto": "crypto" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/ws-protocol.test.js:L15 | neighbors=[ws-protocol.test.js]
-- "brainstorm_server_ws_protocol_test_path": "path" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/ws-protocol.test.js:L16 | neighbors=[ws-protocol.test.js]
-- "brainstorm_server_ws_protocol_test_runtests": "runTests()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/ws-protocol.test.js:L31 | neighbors=[ws-protocol.test.js]
-- "brainstorm_server_ws_protocol_test_server_path": "SERVER_PATH" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/ws-protocol.test.js:L19 | neighbors=[ws-protocol.test.js]
-- "brick_abyssal_angler_brick_box": "box()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/abyssal_angler_brick.py:L41 | neighbors=[abyssal_angler_brick.py]
-- "brick_abyssal_angler_brick_grow": "grow()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/abyssal_angler_brick.py:L414 | neighbors=[abyssal_angler_brick.py]
+- "whispering_grove_forest_props_shift": "shift()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L279 | neighbors=[forest_props.py, log()]
+- "window_i_platform_iplatform": "IPlatform" | kind=code-symbol | source=engine/platform/include/poko/platform/window/i_platform.hpp:L66 | neighbors=[i_platform.hpp, .IPlatform()]
+- "window_sdl_platform_destroy_window": "destroy_window()" | kind=code-symbol | source=engine/platform/src/window/sdl_platform.cpp:L65 | neighbors=[sdl_platform.cpp, shutdown()]
+- "window_sdl_platform_get_window_size": "get_window_size()" | kind=code-symbol | source=engine/platform/src/window/sdl_platform.cpp:L76 | neighbors=[sdl_platform.cpp, poll_event()]
+- "window_sdl_platform_poll_event": "poll_event()" | kind=code-symbol | source=engine/platform/src/window/sdl_platform.cpp:L88 | neighbors=[sdl_platform.cpp, get_window_size()]
+- "work_constraint_check": "constraint_check.py" | kind=code-symbol | source=assets/characters/work/constraint_check.py:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
+- "work_final_check": "final_check.py" | kind=code-symbol | source=assets/characters/work/final_check.py:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
+- "work_list_images": "list_images.py" | kind=code-symbol | source=assets/characters/work/list_images.py:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
+- "work_load_live": "load_live.py" | kind=code-symbol | source=assets/characters/work/load_live.py:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
+- "work_load_live_blocky": "load_live_blocky.py" | kind=code-symbol | source=assets/characters/work/load_live_blocky.py:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
+- "work_uv_overlap_cross": "_cross()" | kind=code-symbol | source=assets/characters/work/uv_overlap.py:L14 | neighbors=[uv_overlap.py, intersection_area()]
+- "work_uv_overlap_signed_area": "_signed_area()" | kind=code-symbol | source=assets/characters/work/uv_overlap.py:L18 | neighbors=[uv_overlap.py, intersection_area()]
+- "work_verify_attachments3": "verify_attachments3.py" | kind=code-symbol | source=assets/characters/work/verify_attachments3.py:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
+- "work_verify_attachments4": "verify_attachments4.py" | kind=code-symbol | source=assets/characters/work/verify_attachments4.py:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
+- "work_verify_boyr6": "verify_boyr6.py" | kind=code-symbol | source=assets/characters/work/verify_boyr6.py:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
+- "work_verify_boyr6_file": "verify_boyr6_file.py" | kind=code-symbol | source=assets/characters/work/verify_boyr6_file.py:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
+- "work_verify_final": "verify_final.py" | kind=code-symbol | source=assets/characters/work/verify_final.py:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
+- "writing_skills_render_graphs_combinegraphs": "combineGraphs()" | kind=code-symbol | source=.agents/skills/superpowers-main/skills/writing-skills/render-graphs.js:L51 | neighbors=[render-graphs.js, main()]
+- "writing_skills_render_graphs_extractdotblocks": "extractDotBlocks()" | kind=code-symbol | source=.agents/skills/superpowers-main/skills/writing-skills/render-graphs.js:L20 | neighbors=[render-graphs.js, main()]
+- "writing_skills_render_graphs_rendertosvg": "renderToSvg()" | kind=code-symbol | source=.agents/skills/superpowers-main/skills/writing-skills/render-graphs.js:L70 | neighbors=[render-graphs.js, main()]
+- "addon_template_init_rationale_1": "My Tool - Blender extension template (4.2+ extension format, verified on 5.3)." | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-addon-development/assets/addon_template/__init__.py:L1 | neighbors=[__init__.py]
+- "addon_template_init_register": "register()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-addon-development/assets/addon_template/__init__.py:L14 | neighbors=[__init__.py]
+- "addon_template_init_unregister": "unregister()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-addon-development/assets/addon_template/__init__.py:L21 | neighbors=[__init__.py]
+- "addon_template_operators_mytool_ot_offset_selected_poll": ".poll()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-addon-development/assets/addon_template/operators.py:L20 | neighbors=[MYTOOL_OT_offset_selected]
+- "addon_template_operators_mytool_pg_settings": "MYTOOL_PG_settings" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-addon-development/assets/addon_template/operators.py:L5 | neighbors=[operators.py]
+- "addon_template_operators_rationale_11": "Move selected objects along an axis" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-addon-development/assets/addon_template/operators.py:L11 | neighbors=[MYTOOL_OT_offset_selected]
+- "addon_template_ui_menu_func": "menu_func()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-addon-development/assets/addon_template/ui.py:L29 | neighbors=[ui.py]
+- "addon_template_ui_mytool_ap_preferences_draw": ".draw()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-addon-development/assets/addon_template/ui.py:L25 | neighbors=[MYTOOL_AP_preferences]
+- "addon_template_ui_mytool_pt_main_draw": ".draw()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-addon-development/assets/addon_template/ui.py:L11 | neighbors=[MYTOOL_PT_main]
+- "animation_build_animations_foot": "foot()" | kind=code-symbol | source=assets/characters/animation/build_animations.py:L13 | neighbors=[build_animations.py]
+- "animation_build_animations_loc": "loc()" | kind=code-symbol | source=assets/characters/animation/build_animations.py:L36 | neighbors=[build_animations.py]
+- "animation_build_animations_rot": "rot()" | kind=code-symbol | source=assets/characters/animation/build_animations.py:L34 | neighbors=[build_animations.py]
+- "animation_v2_build_refined_loc": "loc()" | kind=code-symbol | source=assets/characters/animation-v2/build_refined.py:L44 | neighbors=[build_refined.py]
+- "animation_v2_build_refined_rationale_1": "Generate separate R6 clips from untouched full adapted bases. Requires Blender 5" | kind=entity | source=assets/characters/animation-v2/build_refined.py:L1 | neighbors=[build_refined.py]
+- "animation_v2_build_refined_rationale_17": "Continuous velocity at footfall and toe-off; -Y movement during stance." | kind=entity | source=assets/characters/animation-v2/build_refined.py:L17 | neighbors=[foot()]
+- "animation_v2_build_refined_rot": "rot()" | kind=code-symbol | source=assets/characters/animation-v2/build_refined.py:L42 | neighbors=[build_refined.py]
+- "animation_v2_check_gait_rationale_1": "Quarter-frame ground and stance-target diagnostics for editable rigs." | kind=entity | source=assets/characters/animation-v2/check_gait.py:L1 | neighbors=[check_gait.py]
+- "animation_v2_validate_refined_rationale_1": "Checks sampled positions after reopening each clip. Does not certify artistry." | kind=entity | source=assets/characters/animation-v2/validate_refined.py:L1 | neighbors=[validate_refined.py]
+- "assertionerror": "AssertionError" | kind=code-symbol | neighbors=[MatingError]
+- "authority_pkb_schema_pkbauthority_pkbauthority": ".PkbAuthority()" | kind=code-symbol | source=server/authority/include/poko/authority/pkb_schema.hpp:L226 | neighbors=[PkbAuthority]
 
 ## Instructions
 

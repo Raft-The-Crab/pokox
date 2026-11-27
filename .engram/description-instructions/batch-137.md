@@ -1,4 +1,4 @@
-# Node Description Batch 138 of 207
+# Node Description Batch 138 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -12,60 +12,51 @@ describing what it is or does. Use only the provided context.
 For a code symbol (kind=code-symbol — a function, class, or constant),
 describe what the function/symbol does based on its name, source location
 and neighbors — e.g. "Resolves the configured ontology profile from graphify.yaml.".
-For an entity node (any other kind — e.g. a person, place, event, object),
-describe what the entity is and its role, grounded in its type, its
-relations (neighbors) and the provided citations/evidence — e.g.
-"Lady Carfax, a wealthy heiress who disappears en route to Lausanne.".
-Ground entity descriptions in the citations/evidence when present; do not
-speculate beyond the context, so a node with no supporting context may be
-left out of the reply.
-LANGUAGE: each entry has a `lang=` marker giving the language of its source.
-Write that entry's description in EXACTLY that language. Do not translate to
-a single common language — match each node's source language individually.
+Write every description in English (en). Do not switch languages.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "towncity_town_landmarks_rationale_351": "platform segment along Z (track side = +X): raised deck with stone edge + yellow" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L351 | neighbors=[MB, platform_canopy()] | lang=en
-- "towncity_town_landmarks_rationale_382": "town square fountain: 8-sided basin (panelled cream wall, overhanging coping, in" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L382 | neighbors=[MB, fountain()] | lang=en
-- "towncity_town_landmarks_rationale_423": "job board kiosk: timber frame on stone feet, shingled gable roof, a BLANK cork b" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L423 | neighbors=[MB, job_board()] | lang=pt
-- "towncity_town_landmarks_rationale_456": "bus shelter: steel frame, glass back + end panels, curved roof, slatted bench, B" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L456 | neighbors=[MB, bus_stop()] | lang=en
-- "towncity_town_landmarks_rationale_46": "clock: cream dial, gold bezel, 12 tick marks (no numerals), two hands, centre bo" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L46 | neighbors=[MB, clock_face()] | lang=en
-- "towncity_town_landmarks_rationale_482": "bank: temple front on a stepped podium, 4 columns, pediment with a coin emblem," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L482 | neighbors=[MB, bank()] | lang=pt
-- "towncity_town_landmarks_rationale_519": "car dealer: open-front display hall (no glass so the cars read), steel portal fr" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L519 | neighbors=[MB, car_showroom()] | lang=en
-- "towncity_town_landmarks_rationale_555": "cheap frame tower for the skyline ring: glass core + per-floor bands (or piers)," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L555 | neighbors=[MB, skyline()] | lang=en
-- "towncity_town_landmarks_rationale_59": "an arched opening framed with voussoirs: the wall around it must be built by the" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L59 | neighbors=[MB, arch_open()] | lang=en
-- "towncity_town_landmarks_rationale_86": "civic hall on a podium: brick wings with arched + tall windows, cream rusticated" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L86 | neighbors=[MB, town_hall()] | lang=en
-- "towncity_town_landmarks_t_point": "T_point()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L238 | neighbors=[town_landmarks.py, clock_tower()] | lang=en
-- "towncity_town_map_bkit": "bkit()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L216 | neighbors=[town_map.py, row()] | lang=en
-- "towncity_town_map_check_rects": "check_rects()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L241 | neighbors=[town_map.py, build()] | lang=en
-- "towncity_town_map_kit": "kit()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L68 | neighbors=[town_map.py, place()] | lang=en
-- "towncity_town_map_look": "look()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L530 | neighbors=[town_map.py, free()] | lang=en
-- "towncity_town_map_rationale_120": "crosswalk stripes across a road: stripes run along `along` ('x' = stripes parall" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L120 | neighbors=[MB, zebra()] | lang=pt
-- "towncity_town_map_rationale_165": "boulevard median: raised planted strip with cream curb, breaks at the avenues an" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L165 | neighbors=[MB, median()] | lang=en
-- "towncity_town_map_rationale_176": "Town Square: plaza paving rings round the fountain, 4 raised lawns with stone ed" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L176 | neighbors=[MB, square()] | lang=en
-- "towncity_town_map_rationale_196": "rail corridor: two tracks along Z behind the station + buffers" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L196 | neighbors=[MB, railway()] | lang=en
-- "towncity_town_map_rationale_222": "lay buildings side by side from `start` (a point on the frontage line = back edg" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L222 | neighbors=[MB, row()] | lang=en
-- "towncity_town_map_rationale_363": "polylines (x, z, along-dir, out-dir) on the sidewalks at 3.5 studs from the curb" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L363 | neighbors=[MB, sidewalk_lines()] | lang=en
-- "towncity_town_map_rationale_453": "back alley z ~141..184 between the shop row and the south row: dumpsters, bags," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L453 | neighbors=[MB, alley()] | lang=en
-- "towncity_town_map_rationale_467": "parked cars along curbs + a few cars in the lanes, the bus at its stop, taxis at" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L467 | neighbors=[MB, traffic()] | lang=en
-- "towncity_town_map_rationale_49": "block rectangles (x0, x1, z0, z1) at curb height = everything that is not road" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L49 | neighbors=[MB, blocks()] | lang=en
-- "towncity_town_map_rationale_86": "local (x, y, z) of a prop turned by yaw -> world offset" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L86 | neighbors=[MB, rot()] | lang=en
-- "towncity_town_props_blob": "blob()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_props.py:L73 | neighbors=[town_props.py, flower_box()] | lang=en
-- "towncity_town_props_lerp": "lerp()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_props.py:L46 | neighbors=[town_props.py, fire_escape()] | lang=en
-- "towncity_town_props_rationale_101": "a single quad facing -Z at depth z" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_props.py:L101 | neighbors=[Palette, front_quad()] | lang=pt
-- "towncity_town_props_rationale_105": "front wall layer (outer face at zf, WALL_T thick, back face dropped) with rectan" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_props.py:L105 | neighbors=[Palette, holed_front()] | lang=en
-- "towncity_town_props_rationale_120": "rooftop / wall AC: cream casing on feet, fan grille ring + hub on top, side louv" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_props.py:L120 | neighbors=[Palette, ac_unit()] | lang=en
-- "towncity_town_props_rationale_130": "classic timber rooftop water tank on a steel stand: staves, iron hoops, conical" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_props.py:L130 | neighbors=[Palette, water_tank()] | lang=pt
-- "towncity_town_props_rationale_156": "stair bulkhead: small box room with a door, coping, vent pipe" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_props.py:L156 | neighbors=[Palette, roof_shed()] | lang=en
-- "towncity_town_props_rationale_177": "a flower head: one 5-petal star face + a centre face, facing n (default: up, tip" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_props.py:L177 | neighbors=[Palette, flower()] | lang=pt
-- "towncity_town_props_rationale_199": "dressing for ONE opening in a front wall whose outer face is at z = zf (front =" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_props.py:L199 | neighbors=[Palette, window_unit()] | lang=en
-- "towncity_town_props_rationale_248": "flat 'decal' window on a plain side / back wall: glass quad + frame ring set 0.0" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_props.py:L248 | neighbors=[Palette, deco_window()] | lang=pt
-- "towncity_town_props_rationale_265": "ground floor front: pilasters, bulkhead panels, display windows with mullions, r" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_props.py:L265 | neighbors=[Palette, shopfront()] | lang=en
-- "towncity_town_props_rationale_313": "sloped striped awning (accent / cream stripes), side cheeks, scalloped valance," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_props.py:L313 | neighbors=[Palette, awning_band()] | lang=en
-- "towncity_town_props_rationale_341": "front facade at z = -d/2. Returns Prop with .sign (centre, size) for the blank f" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_props.py:L341 | neighbors=[Palette, building()] | lang=en
-- "towncity_town_props_rationale_464": "iron fire escape on the back wall (+Z): landing per floor at each window pair, r" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_props.py:L464 | neighbors=[Palette, fire_escape()] | lang=en
-- "towncity_town_props_rationale_54": "axis box between the given bounds; drop = faces to delete ('+x', '-x', '+y', '-y" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_props.py:L54 | neighbors=[Palette, slab()] | lang=en
+- "tests_test_run_wrapper_test_step_discovered": "test_step_discovered()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_run_wrapper.py:L64 | neighbors=[test_run_wrapper.py, run()]
+- "tests_test_run_wrapper_test_strict_empty_fails": "test_strict_empty_fails()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_run_wrapper.py:L39 | neighbors=[test_run_wrapper.py, run()]
+- "tests_test_run_wrapper_test_strict_watertight": "test_strict_watertight()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_run_wrapper.py:L32 | neighbors=[test_run_wrapper.py, run()]
+- "tests_test_safety_test_a_broken_source_only_blocks_itself": "test_a_broken_source_only_blocks_itself()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_safety.py:L50 | neighbors=[test_safety.py, game()]
+- "tests_test_safety_test_a_build_mirrors_only_its_own_resources": "test_a_build_mirrors_only_its_own_resources()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_safety.py:L339 | neighbors=[test_safety.py, game()]
+- "tests_test_safety_test_a_build_never_replaces_a_resource_another_built_effect_uses": "test_a_build_never_replaces_a_resource_another_built_effect_uses()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_safety.py:L220 | neighbors=[test_safety.py, game()]
+- "tests_test_safety_test_a_full_build_of_an_empty_library_refuses_before_touching_anything": "test_a_full_build_of_an_empty_library_refuses_before_touching_anything()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_safety.py:L42 | neighbors=[test_safety.py, game()]
+- "tests_test_safety_test_a_full_build_prunes_only_effects_it_built": "test_a_full_build_prunes_only_effects_it_built()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_safety.py:L93 | neighbors=[test_safety.py, game()]
+- "tests_test_safety_test_conflicts_protect_hand_made_effects_without_a_recipe": "test_conflicts_protect_hand_made_effects_without_a_recipe()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_safety.py:L274 | neighbors=[test_safety.py, conflict_setup()]
+- "tests_test_safety_test_conflicts_protect_owned_effects_unless_they_are_rebuilt_or_removed": "test_conflicts_protect_owned_effects_unless_they_are_rebuilt_or_removed()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_safety.py:L265 | neighbors=[test_safety.py, conflict_setup()]
+- "tests_test_safety_test_doctor_uses_the_same_ownership_rules": "test_doctor_uses_the_same_ownership_rules()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_safety.py:L285 | neighbors=[test_safety.py, game()]
+- "tests_test_safety_test_helpers_never_shadow_built_in_modules": "test_helpers_never_shadow_built_in_modules()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_safety.py:L194 | neighbors=[test_safety.py, game()]
+- "tests_test_safety_test_init_fills_missing_math_textures_without_replacing_edited_ones": "test_init_fills_missing_math_textures_without_replacing_edited_ones()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_safety.py:L183 | neighbors=[test_safety.py, game()]
+- "tests_test_safety_test_init_never_writes_through_a_link_that_leads_outside": "test_init_never_writes_through_a_link_that_leads_outside()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_safety.py:L376 | neighbors=[test_safety.py, game()]
+- "tests_test_safety_test_project_files_never_shadow_modules": "test_project_files_never_shadow_modules()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_safety.py:L63 | neighbors=[test_safety.py, game()]
+- "tests_test_scale_beam_test_beam_recipe_lints_with_hold_and_needs_a_release": "test_beam_recipe_lints_with_hold_and_needs_a_release()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_scale_beam.py:L183 | neighbors=[test_scale_beam.py, recipe_with()]
+- "tests_test_scale_beam_test_lint_counts_repeatedly_emitted_painted_shapes_as_restruck": "test_lint_counts_repeatedly_emitted_painted_shapes_as_restruck()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_scale_beam.py:L220 | neighbors=[test_scale_beam.py, recipe_with()]
+- "tests_test_scale_beam_test_lint_scales_its_craft_limits_with_the_recipe": "test_lint_scales_its_craft_limits_with_the_recipe()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_scale_beam.py:L89 | neighbors=[test_scale_beam.py, recipe_with()]
+- "tests_test_scale_beam_test_scale_character_is_a_no_op_and_records_nothing": "test_scale_character_is_a_no_op_and_records_nothing()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_scale_beam.py:L83 | neighbors=[test_scale_beam.py, recipe_with()]
+- "tests_test_simulation_test_classic_cloth_drapes_on_collider": "test_classic_cloth_drapes_on_collider()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_simulation.py:L22 | neighbors=[test_simulation.py, _grid()]
+- "tests_test_simulation_test_gn_cloth_52_asset": "test_gn_cloth_52_asset()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_simulation.py:L31 | neighbors=[test_simulation.py, _grid()]
+- "tests_test_texturing_test_smart_material_bakes_to_texture": "test_smart_material_bakes_to_texture()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_texturing.py:L65 | neighbors=[test_texturing.py, _stepped_block()]
+- "tests_test_texturing_test_smart_material_curvature_and_roundtrip": "test_smart_material_curvature_and_roundtrip()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_texturing.py:L34 | neighbors=[test_texturing.py, _stepped_block()]
+- "tests_test_tools_test_ablation_verdicts": "test_ablation_verdicts()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tests/test_tools.py:L73 | neighbors=[test_tools.py, _write_ablation()]
+- "tests_test_tools_write_ablation": "_write_ablation()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tests/test_tools.py:L62 | neighbors=[test_tools.py, test_ablation_verdicts()]
+- "tests_test_video_clip": "clip()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_video.py:L21 | neighbors=[test_video.py, 48 frames at 24 fps: black, a warm disc…]
+- "tests_test_video_png": "_png()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_video.py:L17 | neighbors=[test_video.py, test_vse_edit_crossfade_title_audio_mp4…]
+- "tests_test_video_test_track_camera_solves_in_ui_session": "test_track_camera_solves_in_ui_session()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_video.py:L124 | neighbors=[test_video.py, _footage()]
+- "tests_test_video_test_unity_export_writes_the_grid_sidecar_and_stays_inside_the_project": "test_unity_export_writes_the_grid_sidecar_and_stays_inside_the_project()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_video.py:L112 | neighbors=[test_video.py, fake_unity()]
+- "tests_test_video_test_unity_force_keeps_meta_guids": "test_unity_force_keeps_meta_guids()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_video.py:L154 | neighbors=[test_video.py, fake_unity()]
+- "tests_test_video_test_unity_install_copies_the_package_and_draws_its_textures": "test_unity_install_copies_the_package_and_draws_its_textures()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_video.py:L92 | neighbors=[test_video.py, fake_unity()]
+- "tests_test_video_test_vse_edit_crossfade_title_audio_mp4": "test_vse_edit_crossfade_title_audio_mp4()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_video.py:L27 | neighbors=[test_video.py, _png()]
+- "tests_test_weather_instances": "_instances()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_weather.py:L6 | neighbors=[test_weather.py, test_precipitation_loops_and_stops_on_g…]
+- "tests_test_weather_test_precipitation_loops_and_stops_on_ground": "test_precipitation_loops_and_stops_on_ground()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_weather.py:L14 | neighbors=[test_weather.py, _instances()]
+- "tests_test_workflow_isolated": "isolated()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_workflow.py:L45 | neighbors=[test_workflow.py, Point the workspace-relative modules at…]
+- "tests_test_workflow_test_build_and_render_reject_changed_sources_assets_outputs_and_templates": "test_build_and_render_reject_changed_sources_assets_outputs_and_templates()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_workflow.py:L115 | neighbors=[test_workflow.py, captured()]
+- "tests_test_workflow_test_evidence_is_stored_in_the_workspace_work_folder": "test_evidence_is_stored_in_the_workspace_work_folder()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_workflow.py:L102 | neighbors=[test_workflow.py, captured()]
+- "tests_test_workflow_test_reference_compare_requires_exact_fresh_render_frames": "test_reference_compare_requires_exact_fresh_render_frames()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_workflow.py:L230 | neighbors=[test_workflow.py, captured()]
+- "tests_test_workflow_test_review_handoff_refuses_a_missing_or_stale_capture": "test_review_handoff_refuses_a_missing_or_stale_capture()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_workflow.py:L310 | neighbors=[test_workflow.py, captured()]
+- "texture_tex_to_maps_load_gray": "load_gray()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/texture/tex_to_maps.py:L30 | neighbors=[tex_to_maps.py, process()]
 
 ## Instructions
 

@@ -1,4 +1,4 @@
-# Node Description Batch 48 of 207
+# Node Description Batch 48 of 208
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -17,6 +17,21 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "creaturelab_lab_props_shell": "_shell()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1811 | neighbors=[lab_props.py, catch_ball(), one thick shell -> (outer, inner): oute…, lerp()]
+- "creaturelab_lab_props_sliding_doors": "sliding_doors()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L990 | neighbors=[lab_props.py, automatic sliding doors for the south e…, rbox(), .add()]
+- "creaturelab_lab_props_snake_plant": "snake_plant()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1436 | neighbors=[lab_props.py, tall snake plant: square pot, 11 uprigh…, rbox(), .add()]
+- "creaturelab_lab_props_sphere_decal": "sphere_decal()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1801 | neighbors=[lab_props.py, catch_ball(), a raised inlay that hugs a sphere of ra…, _dense()]
+- "creaturelab_lab_props_tree": "tree()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1038 | neighbors=[lab_props.py, rounded park tree: flared birch trunk s…, leaf_ball(), .add()]
+- "creaturelab_lab_props_wait_bench": "wait_bench()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L320 | neighbors=[lab_props.py, waiting bench: steel loop legs, cushion…, rbox(), .add()]
+- "creaturelab_lab_props_water_cooler": "water_cooler()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1765 | neighbors=[lab_props.py, water cooler: white cabinet with a sky …, rbox(), .add()]
+- "creaturelab_lab_props_whiteboard": "whiteboard()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L691 | neighbors=[lab_props.py, rolling whiteboard: two T legs on caste…, rbox(), .add()]
+- "debug_vulkan_diagnostics_since": "since()" | kind=code-symbol | source=engine/rhi/src/debug/vulkan_diagnostics.cpp:L19 | neighbors=[vulkan_diagnostics.cpp, messages(), totals(), stop()]
+- "device_opengles_clear_renderer_initialize_impl": "initialize_impl()" | kind=code-symbol | source=engine/rhi/src/device/opengles_clear_renderer.cpp:L49 | neighbors=[opengles_clear_renderer.cpp, initialize(), shutdown(), initialize_window()]
+- "device_opengles_clear_renderer_shutdown": "shutdown()" | kind=code-symbol | source=engine/rhi/src/device/opengles_clear_renderer.cpp:L149 | neighbors=[opengles_clear_renderer.cpp, initialize_impl(), OpenGLClearESRenderer(), shutdown_checked()]
+- "device_poko_jni_write_line": "write_line()" | kind=code-symbol | source=engine/rhi/src/device/poko_jni.cpp:L34 | neighbors=[poko_jni.cpp, Java_com_poko_glesclear_PokoActivity_na…, Java_com_poko_glesclear_PokoActivity_na…, run_probe()]
+- "device_vulkan_clear_android_shutdown": "shutdown()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_clear_android.cpp:L331 | neighbors=[vulkan_clear_android.cpp, initialize(), shutdown_checked(), VulkanClearAndroidRenderer()]
+- "device_vulkan_clear_renderer_shutdown": "shutdown()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_clear_renderer.cpp:L185 | neighbors=[vulkan_clear_renderer.cpp, Impl(), initialize(), shutdown_checked()]
+- "dunedesert_dune_map_add_owner": "add_owner()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L215 | neighbors=[dune_map.py, free(), place(), static()]
 - "dunedesert_dune_map_fit": "fit()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L249 | neighbors=[dune_map.py, fit_bad(), place(), raise the prop in 0.25 steps (its base …]
 - "dunedesert_dune_map_ground": "ground()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L276 | neighbors=[dune_map.py, build(), H(), static()]
 - "dunedesert_dune_map_on_path": "on_path()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L108 | neighbors=[dune_map.py, fragments(), nature(), pl_d()]
@@ -42,21 +57,6 @@ one-sentence description — no prose, no markdown fences.
 - "effekseer_ai_authoring_layerbuilder_vector": ".vector()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/authoring.py:L129 | neighbors=[LayerBuilder, .advanced(), .rand(), .scalar()]
 - "effekseer_ai_authoring_number": "_number()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/authoring.py:L33 | neighbors=[authoring.py, _code(), .bind(), _term()]
 - "effekseer_ai_authoring_term": "_term()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/authoring.py:L34 | neighbors=[authoring.py, A bind component: a number, an equation…, _number(), validate_layer()]
-- "effekseer_ai_preview": "preview.py" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/preview.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, preview_effects(), Render through the official Godot plugi…]
-- "effekseer_ai_resources": "resources.py" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/resources.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, process_texture(), Preserve original generated masks and p…]
-- "effekseer_ai_session": "session.py" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, EffectSession, The minimal effect-document lifecycle b…]
-- "effekseer_ai_session_effectsession_copy_resource": "._copy_resource()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L308 | neighbors=[EffectSession, .import_image(), .import_model(), Copy an approved asset to this effect's…]
-- "effekseer_ai_session_effectsession_curve_set_keys": ".curve_set_keys()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L220 | neighbors=[EffectSession, ._new_curve_key(), ._object_at_path(), Replace scalar FCurve keys using Core's…]
-- "effekseer_ai_session_effectsession_import_model": ".import_model()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L276 | neighbors=[EffectSession, ._copy_resource(), ._object_at_path(), Copy a model into ``resources/`` and bi…]
-- "effekseer_ai_session_effectsession_index_existing_nodes": "._index_existing_nodes()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L294 | neighbors=[EffectSession, .move_node(), .__post_init__(), .remove_node()]
-- "effekseer_ai_session_effectsession_move_node": ".move_node()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L93 | neighbors=[EffectSession, ._index_existing_nodes(), ._node(), Move a node and return its new structur…]
-- "effekseer_ai_session_effectsession_property_get": ".property_get()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L107 | neighbors=[EffectSession, ._as_python(), ._property_parent(), Read a public Core member without invok…]
-- "effekseer_ai_session_effectsession_property_list": ".property_list()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L132 | neighbors=[EffectSession, ._node(), .settings_list(), Discover editable leaf paths without wa…]
-- "effekseer_ai_session_effectsession_remove_node": ".remove_node()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L84 | neighbors=[EffectSession, ._index_existing_nodes(), ._node(), Remove a node and its descendants from …]
-- "eggplots_egg_map_anchor": "anchor()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_map.py:L103 | neighbors=[egg_map.py, lane(), plot(), spawn_area()]
-- "eggplots_egg_map_hg": "Hg()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_map.py:L88 | neighbors=[egg_map.py, H(), place(), height of the BUILT ground mesh (the co…]
-- "eggplots_egg_map_isle_point": "isle_point()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_map.py:L297 | neighbors=[egg_map.py, dressing(), ground(), point on the island superellipse at par…]
-- "eggplots_egg_map_plot": "plot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_map.py:L210 | neighbors=[egg_map.py, build(), anchor(), to_world()]
 
 ## Instructions
 
