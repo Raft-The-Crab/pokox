@@ -1,4 +1,4 @@
-# Node Description Batch 33 of 208
+# Node Description Batch 33 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -17,6 +17,18 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "whispering_grove_forest_props_lily": "lily()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L578 | neighbors=[forest_props.py, at(), blob(), Prop, .add(), S()]
+- "whispering_grove_forest_props_oak": "oak()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L65 | neighbors=[forest_props.py, curve(), leafy(), Prop, .add(), S()]
+- "addon_template_init": "__init__.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-addon-development/assets/addon_template/__init__.py:L1 | neighbors=[register(), unregister(), My Tool - Blender extension template (4…, 2680d0e Pushed an update., e77fa31 Add new skills and asset packs …]
+- "addon_template_operators_mytool_ot_offset_selected": "MYTOOL_OT_offset_selected" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-addon-development/assets/addon_template/operators.py:L10 | neighbors=[operators.py, .execute(), .invoke(), .poll(), Move selected objects along an axis]
+- "addon_template_ui": "ui.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-addon-development/assets/addon_template/ui.py:L1 | neighbors=[menu_func(), MYTOOL_AP_preferences, MYTOOL_PT_main, 2680d0e Pushed an update., e77fa31 Add new skills and asset packs …]
+- "animation_v2_check_model_structure": "check_model_structure.py" | kind=code-symbol | source=assets/characters/animation-v2/check_model_structure.py:L1 | neighbors=[capture(), floats(), f4a6ac4 Allowlist known validation-laye…, 52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
+- "authority_pkb_schema": "pkb_schema.hpp" | kind=code-symbol | source=server/authority/include/poko/authority/pkb_schema.hpp:L1 | neighbors=[is_protected_domain(), load_pkb_schema(), PkbAuthority, 6568dc9 Update from ML AI Code, 6e2fe3a Created BAK-7 and other BAK tas…]
+- "bin_trace_processor": "trace_processor" | kind=code-symbol | source=.agents/skills/skills-main/profilers/android-profiler/references/perfetto/bin/trace_processor:L1 | neighbors=[download_or_get_cached(), get_perfetto_prebuilt(), run_perfetto_prebuilt(), 2680d0e Pushed an update., e77fa31 Add new skills and asset packs …]
+- "blender_character_blockout_build": "build()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/blender/character_blockout.py:L184 | neighbors=[character_blockout.py, box(), capsule(), get_collection(), sphere()]
+- "blender_character_blockout_capsule": "capsule()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/blender/character_blockout.py:L89 | neighbors=[character_blockout.py, build(), get_collection(), link(), Tapered capsule from p0 to p1 with radi…]
+- "blender_character_blockout_link": "link()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/blender/character_blockout.py:L82 | neighbors=[character_blockout.py, box(), capsule(), get_collection(), sphere()]
+- "blender_explorer_common_assign": "assign()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/blender/explorer_common.py:L87 | neighbors=[explorer_common.py, cylinder(), loft(), rounded_box(), shell_from()]
 - "blender_explorer_common_dim": "Dim" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/blender/explorer_common.py:L50 | neighbors=[Explorer character — pass 2: garments, …, explorer_common.py, .__init__(), .w(), .z()]
 - "blender_render_compare_views_setup_lighting": "setup_lighting()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/blender/render_compare_views.py:L107 | neighbors=[render_compare_views.py, Three-point rig scaled to subject heigh…, render_turnaround(), _area(), _ensure_world()]
 - "brainstorm_server_branding_test_withserver": "withServer()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/branding.test.js:L92 | neighbors=[branding.test.js, cleanup(), sleep(), startServer(), waitForServer()]
@@ -47,18 +59,6 @@ one-sentence description — no prose, no markdown fences.
 - "canyonbazaar_canyon_map_ground": "ground()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_map.py:L175 | neighbors=[canyon_map.py, build(), H(), on_paving(), static()]
 - "canyonbazaar_canyon_map_horizon": "horizon()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_map.py:L224 | neighbors=[canyon_map.py, build(), H(), static(), distant buttes and mesas all round (fla…]
 - "canyonbazaar_canyon_map_hw": "hw()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_map.py:L33 | neighbors=[canyon_map.py, nature(), set_pieces(), stories(), tdist()]
-- "canyonbazaar_canyon_map_path_x": "path_x()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_map.py:L93 | neighbors=[canyon_map.py, on_paving(), cx(), paving(), main path centre: follows the canyon, s…]
-- "canyonbazaar_canyon_map_paving": "paving()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_map.py:L255 | neighbors=[canyon_map.py, build(), path_x(), static(), _stones()]
-- "canyonbazaar_canyon_map_reserve": "reserve()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_map.py:L162 | neighbors=[canyon_map.py, build(), nature(), set_pieces(), stories()]
-- "canyonbazaar_canyon_map_under_wall": "under_wall()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_map.py:L137 | neighbors=[canyon_map.py, place(), True where the built cliff mesh (vertic…, free(), H()]
-- "canyonbazaar_canyon_map_wall": "wall()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_map.py:L48 | neighbors=[canyon_map.py, H(), stepped mesa profile at t studs past th…, levels(), shelf1()]
-- "canyonbazaar_canyon_props_relic_kiosk": "relic_kiosk()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_props.py:L668 | neighbors=[canyon_props.py, RELIC / PET station on the ledge: a sma…, dais(), pot(), sign_board()]
-- "cavemap_cave_map_anchor": "anchor()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_map.py:L201 | neighbors=[cave_map.py, build(), landmarks(), rails(), under_lake()]
-- "cavemap_cave_map_look": "look()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_map.py:L724 | neighbors=[cave_map.py, free(), H(), sky_at(), wd()]
-- "cavemap_cave_map_sky_at": "sky_at()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_map.py:L32 | neighbors=[cave_map.py, build(), landmarks(), look(), shapes()]
-- "cavemap_cave_ores_cart_load": "cart_load()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_ores.py:L135 | neighbors=[cave_ores.py, druse(), mound(), ore_lump(), v2 load: lumps packed into the tub mout…]
-- "cavemap_cave_ores_ore_lump": "ore_lump()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_ores.py:L47 | neighbors=[cave_ores.py, cart_load(), _lump(), ore_pile(), one ore lump: host rock faces + metalli…]
-- "cavemap_cave_props_jitter": "jitter()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L78 | neighbors=[cave_props.py, geode(), low-frequency noise displacement along …, stalactite(), stalagmite()]
 
 ## Instructions
 

@@ -1,4 +1,4 @@
-# Node Description Batch 120 of 208
+# Node Description Batch 120 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -26,46 +26,46 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "net_frame_payload_bit_length": "payload_bit_length()" | kind=code-symbol | source=server/net/include/poko/net/frame.hpp:L144 | neighbors=[frame.hpp, pack_frame()] | lang=en
-- "net_frame_sha256": "Sha256" | kind=code-symbol | source=server/net/include/poko/net/frame.hpp:L27 | neighbors=[frame.hpp, .Sha256()] | lang=en
-- "net_jitter_buffer": "jitter_buffer.hpp" | kind=code-symbol | source=server/net/include/poko/net/jitter_buffer.hpp:L1 | neighbors=[1dac49d Created NET-01 to NET-09, Start…, JitterBuffer] | lang=en
-- "net_jitter_buffer_jitterbuffer": "JitterBuffer" | kind=code-symbol | source=server/net/include/poko/net/jitter_buffer.hpp:L35 | neighbors=[jitter_buffer.hpp, .JitterBuffer()] | lang=en
-- "net_udp_echo_udpsocket": "UdpSocket" | kind=code-symbol | source=server/net/include/poko/net/udp_echo.hpp:L38 | neighbors=[udp_echo.hpp, .UdpSocket()] | lang=en
-- "net_ws_transport_ws_decode": "ws_decode()" | kind=code-symbol | source=server/net/include/poko/net/ws_transport.hpp:L69 | neighbors=[ws_transport.hpp, ws_roundtrip()] | lang=en
-- "net_xor_fec_attach_parity": "attach_parity()" | kind=code-symbol | source=server/net/include/poko/net/xor_fec.hpp:L52 | neighbors=[xor_fec.hpp, losses()] | lang=en
-- "net_xor_fec_make_parity": "make_parity()" | kind=code-symbol | source=server/net/include/poko/net/xor_fec.hpp:L73 | neighbors=[xor_fec.hpp, xor_payloads()] | lang=en
-- "net_xor_fec_recover_loss": "recover_loss()" | kind=code-symbol | source=server/net/include/poko/net/xor_fec.hpp:L60 | neighbors=[xor_fec.hpp, losses()] | lang=en
-- "net_xor_fec_xor_payloads": "xor_payloads()" | kind=code-symbol | source=server/net/include/poko/net/xor_fec.hpp:L21 | neighbors=[xor_fec.hpp, make_parity()] | lang=en
-- "oaktrees_gen_trees_export_glb": "export_glb()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L943 | neighbors=[gen_trees.py, main()] | lang=en
-- "oaktrees_gen_trees_load_px": "load_px()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L914 | neighbors=[gen_trees.py, contact_sheet()] | lang=en
-- "oaktrees_gen_trees_make_object": "make_object()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L694 | neighbors=[gen_trees.py, make_tree()] | lang=en
-- "oaktrees_gen_trees_material": "material()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L710 | neighbors=[gen_trees.py, get_materials()] | lang=en
-- "oaktrees_gen_trees_render_turntable": "render_turntable()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L896 | neighbors=[gen_trees.py, main()] | lang=en
-- "oaktrees_gen_trees_resize": "resize()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L921 | neighbors=[gen_trees.py, contact_sheet()] | lang=en
-- "oaktrees_gen_trees_save_png": "save_png()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L52 | neighbors=[gen_trees.py, _img()] | lang=en
-- "oaktrees_gen_trees_setup_scene": "setup_scene()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L853 | neighbors=[gen_trees.py, main()] | lang=en
-- "oaktrees_gen_trees_tri_count": "tri_count()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L893 | neighbors=[gen_trees.py, make_tree()] | lang=en
-- "oaktrees_gen_trees_tube_mesh": "tube_mesh()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L498 | neighbors=[gen_trees.py, make_tree()] | lang=en
-- "onsenvillage_closeup": "closeup.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/closeup.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …] | lang=en
-- "onsenvillage_onsen_map_inb": "_inb()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L145 | neighbors=[onsen_map.py, _inside_one()] | lang=en
-- "onsenvillage_onsen_map_kit": "kit()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L77 | neighbors=[onsen_map.py, place()] | lang=en
-- "onsenvillage_onsen_map_look": "look()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L517 | neighbors=[onsen_map.py, free()] | lang=en
-- "onsenvillage_onsen_map_rationale_117": "the village is mirrored about x = 0: west copy as written, east copy at -x with" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L117 | neighbors=[mirror(), MB] | lang=en
-- "onsenvillage_onsen_map_rationale_195": "stage ground (smooth: banks, stream bed, lawn) + mountains (flat faceted rock wi" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L195 | neighbors=[ground(), MB] | lang=en
-- "onsenvillage_onsen_map_rationale_246": "distant peaks far behind the saddle (pale violet with snow caps) + low ridges at" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L246 | neighbors=[horizon(), MB] | lang=en
-- "onsenvillage_onsen_map_rationale_264": "stream + front pool surface: 4-stud cells kept only where the ground dips below" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L264 | neighbors=[water(), MB] | lang=en
-- "onsenvillage_onsen_map_rationale_283": "each terrace = running-bond flagstone top (inset stones, cream) + ashlar riser o" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L283 | neighbors=[terraces(), MB] | lang=pt
-- "onsenvillage_onsen_map_rationale_327": "flagstone path on the front bank from the bridge foot toward the camera, ragged" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L327 | neighbors=[bank_path(), MB] | lang=en
-- "onsenvillage_onsen_map_rationale_347": "SIGNATURE: railing bays along a terrace lip with gaps at stairs / bridge; stone" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L347 | neighbors=[rail_run(), MB] | lang=en
-- "onsenvillage_onsen_map_rationale_410": "clusters of 2-4 at the stairs and bridge; deliberately NOT mirrored (props break" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L410 | neighbors=[stories(), MB] | lang=en
-- "onsenvillage_onsen_map_rationale_492": "preview-only steam volumes over the hot water (Roblox: ParticleEmitters at these" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L492 | neighbors=[steam(), MB] | lang=en
-- "onsenvillage_onsen_map_rationale_61": "one height function for ground mesh AND placement (terrace tops are flat; risers" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L61 | neighbors=[H(), MB] | lang=en
-- "onsenvillage_onsen_map_rationale_91": "auto-grounded props (y None) are fitted against everything built so far (see fit" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L91 | neighbors=[place(), MB] | lang=en
-- "onsenvillage_onsen_map_terrace_at": "terrace_at()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L40 | neighbors=[onsen_map.py, H()] | lang=en
-- "onsenvillage_onsen_map_top": "_top()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L155 | neighbors=[onsen_map.py, fit_bad()] | lang=en
-- "onsenvillage_onsen_props_bench": "bench()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L717 | neighbors=[onsen_props.py, thick cedar bench: two planks, cross ba…] | lang=en
-- "onsenvillage_onsen_props_crates": "crates()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L695 | neighbors=[onsen_props.py, stack: slatted cedar crates with corner…] | lang=en
-- "onsenvillage_onsen_props_fern_tuft": "fern_tuft()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L877 | neighbors=[onsen_props.py, low clump of sage fronds for wall feet …] | lang=en
+- "medievalbattle_battle_map_rationale_262": "4-stud water grid kept only where water shows: a cell needs a corner below the s" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L262 | neighbors=[water(), MB] | lang=pt
+- "medievalbattle_battle_map_rationale_39": "[(centre x, half width, bed y)] of the river at z" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L39 | neighbors=[channels(), MB] | lang=en
+- "medievalbattle_battle_map_tree_pick": "tree_pick()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L419 | neighbors=[battle_map.py, scatter()] | lang=en
+- "medievalbattle_battle_map_wet": "wet()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L160 | neighbors=[battle_map.py, H()] | lang=en
+- "medievalbattle_battle_props_boulder": "boulder()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L1436 | neighbors=[battle_props.py, T()] | lang=en
+- "medievalbattle_battle_props_bush": "bush()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L1549 | neighbors=[battle_props.py, T()] | lang=en
+- "medievalbattle_battle_props_duckboard": "duckboard()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L943 | neighbors=[battle_props.py, T()] | lang=en
+- "medievalbattle_battle_props_grass_tuft": "grass_tuft()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L1556 | neighbors=[battle_props.py, T()] | lang=en
+- "medievalbattle_battle_props_round_tower": "round_tower()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L341 | neighbors=[battle_props.py, tower_body()] | lang=en
+- "medievalbattle_closeup": "closeup.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/closeup.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …] | lang=en
+- "mesh_refcntautoptr_refcntautoptr": "RefCntAutoPtr" | kind=code-symbol | source=engine/rhi/tests/fakes/mesh/RefCntAutoPtr.hpp:L5 | neighbors=[RefCntAutoPtr.hpp, .RefCntAutoPtr()] | lang=en
+- "migrations_0001_accounts_games_assets": "assets" | kind=code-symbol | source=backend/storage/postgres/migrations/0001_accounts_games.sql:L22 | neighbors=[0001_accounts_games.sql, games] | lang=en
+- "migrations_0001_accounts_games_users": "users" | kind=code-symbol | source=backend/storage/postgres/migrations/0001_accounts_games.sql:L5 | neighbors=[0001_accounts_games.sql, games] | lang=en
+- "migrations_0002_ledger_balances_games": "games" | kind=code-symbol | source=backend/storage/postgres/migrations/0002_ledger_balances.sql:L29 | neighbors=[0002_ledger_balances.sql, share_entries] | lang=en
+- "migrations_0002_ledger_balances_share_entries": "share_entries" | kind=code-symbol | source=backend/storage/postgres/migrations/0002_ledger_balances.sql:L26 | neighbors=[0002_ledger_balances.sql, games] | lang=en
+- "moonclean_moon_map_near_riser": "near_riser()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_map.py:L191 | neighbors=[moon_map.py, scatter()] | lang=en
+- "moonclean_moon_map_radial_samples": "radial_samples()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_map.py:L194 | neighbors=[moon_map.py, ground()] | lang=en
+- "moonclean_moon_map_rationale_154": "height of the built ground MESH (coarser than H): props sit on what players see" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_map.py:L154 | neighbors=[Hm(), MB] | lang=en
+- "moonclean_moon_map_rationale_166": "highest mesh point under a prop's footprint: low flat props sit on it so no bump" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_map.py:L166 | neighbors=[top_of(), MB] | lang=en
+- "moonclean_moon_map_rationale_211": "(q, depth) of the nearest pock / crater under (x, z), q = dist / radius; None ou" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_map.py:L211 | neighbors=[pock_at(), MB] | lang=en
+- "moonclean_moon_map_rationale_315": "the signature beacon rail along a lip: posts every `step`, cable to the next; ga" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_map.py:L315 | neighbors=[rail_ring(), MB] | lang=en
+- "moonclean_moon_map_rationale_336": "modelled crater props on every pock / crater (the ground only carries a shallow" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_map.py:L336 | neighbors=[craters(), MB] | lang=en
+- "moonclean_moon_map_rationale_367": "airlock gate at the head of ramp k (k = 0 is the free zone-1 entry), rails down" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_map.py:L367 | neighbors=[crater_ramp(), MB] | lang=en
+- "moonclean_moon_map_rationale_400": "mess=True (low dust / junk / meteor pieces): only on calm ground, sat on the mes" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_map.py:L400 | neighbors=[scatter(), MB] | lang=en
+- "moonclean_moon_map_rationale_75": "crater height before ramps / sub-craters" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_map.py:L75 | neighbors=[profile(), MB] | lang=en
+- "moonclean_moon_map_rationale_89": "the crater prop's skirt (1.8 R) must stay on its shelf, off the trodden path and" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_map.py:L89 | neighbors=[_crater_ok(), MB] | lang=en
+- "moonclean_moon_map_rationale_97": "weight 0..1 of ramp k at (r, a) and the ramp height there" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_map.py:L97 | neighbors=[ramp_w(), MB] | lang=en
+- "moonclean_moon_props_dust_pile": "dust_pile()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L694 | neighbors=[moon_props.py, sweepable heap: stacked mounds + a spar…] | lang=en
+- "moonclean_moon_props_earth": "earth()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L742 | neighbors=[moon_props.py, Earth for the sky: faceted sphere, ocea…] | lang=en
+- "moonclean_moon_props_ice_shards": "ice_shards()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L732 | neighbors=[moon_props.py, collectable ice: 3 short glowing shards…] | lang=en
+- "moonclean_moon_props_junk_heap": "junk_heap()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L705 | neighbors=[moon_props.py, space junk to haul: bent hull panel, sn…] | lang=en
+- "mute_action_map_actionsampler": "ActionSampler" | kind=code-symbol | source=mute/include/poko/mute/action_map.hpp:L144 | neighbors=[action_map.hpp, .ActionSampler()] | lang=en
+- "mute_console_consolelog": "ConsoleLog" | kind=code-symbol | source=mute/include/poko/mute/console.hpp:L33 | neighbors=[console.hpp, .ConsoleLog()] | lang=en
+- "mute_debugger_vmdebugger": "VmDebugger" | kind=code-symbol | source=mute/include/poko/mute/debugger.hpp:L36 | neighbors=[debugger.hpp, .VmDebugger()] | lang=en
+- "mute_declaration_declarationast": "DeclarationAst" | kind=code-symbol | source=mute/include/poko/mute/declaration.hpp:L44 | neighbors=[declaration.hpp, .DeclarationAst()] | lang=en
+- "mute_determinism": "determinism.hpp" | kind=code-symbol | source=mute/include/poko/mute/determinism.hpp:L1 | neighbors=[037434c Add MUT-24 determinism and capa…, 952997e Audit MUT-01-55 and harden veri…] | lang=en
+- "mute_emit": "emit.hpp" | kind=code-symbol | source=mute/include/poko/mute/emit.hpp:L1 | neighbors=[335e0dc Add MUT-26 IR-to-bytecode emitt…, 952997e Audit MUT-01-55 and harden veri…] | lang=en
+- "mute_events": "events.hpp" | kind=code-symbol | source=mute/include/poko/mute/events.hpp:L1 | neighbors=[952997e Audit MUT-01-55 and harden veri…, EventBus] | lang=en
+- "mute_input_snapshot_gamepad_control": "gamepad_control()" | kind=code-symbol | source=mute/include/poko/mute/input_snapshot.hpp:L59 | neighbors=[input_snapshot.hpp, touch_id()] | lang=en
+- "mute_input_snapshot_gamepad_slot": "gamepad_slot()" | kind=code-symbol | source=mute/include/poko/mute/input_snapshot.hpp:L56 | neighbors=[input_snapshot.hpp, touch_display()] | lang=en
 
 ## Instructions
 

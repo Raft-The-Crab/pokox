@@ -1468,3 +1468,99 @@ target_compile_features(pokox_matchmaker_party_book_test PRIVATE cxx_std_20)
 set_target_properties(pokox_matchmaker_party_book_test PROPERTIES CXX_EXTENSIONS OFF)
 add_test(NAME pokox_matchmaker_party_book_test COMMAND pokox_matchmaker_party_book_test)
 set_tests_properties(pokox_matchmaker_party_book_test PROPERTIES TIMEOUT 15)
+
+# SHL-01 — spec-12 Windows shell bridge: cargo-built Rust staticlib plus a
+# cbindgen-generated C header, proven by a C++ link test. Builds only when
+# POKO_WITH_SHELL_BRIDGE is ON (cargo must be on PATH).
+option(POKO_WITH_SHELL_BRIDGE "Build the Rust shell bridge staticlib (SHL-01)" OFF)
+if(POKO_WITH_SHELL_BRIDGE)
+  find_program(POKO_CARGO_EXECUTABLE NAMES cargo REQUIRED)
+  find_program(POKO_CBINDGEN_EXECUTABLE NAMES cbindgen REQUIRED)
+  set(POKO_SHELL_CRATE_DIR ${CMAKE_SOURCE_DIR}/client/windows/bridge/poko-shell)
+  set(POKO_SHELL_C_ABI_DIR ${CMAKE_SOURCE_DIR}/client/windows/bridge/c_abi)
+
+  add_custom_command(
+    OUTPUT ${POKO_SHELL_C_ABI_DIR}/poko_shell.h
+           ${CMAKE_CURRENT_BINARY_DIR}/libpoko_shell.a
+    COMMAND ${POKO_CBINDGEN_EXECUTABLE} --quiet --output ${POKO_SHELL_C_ABI_DIR}/poko_shell.h ${POKO_SHELL_CRATE_DIR}
+    COMMAND ${POKO_CARGO_EXECUTABLE} build --release --manifest-path ${POKO_SHELL_CRATE_DIR}/Cargo.toml
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            ${POKO_SHELL_CRATE_DIR}/target/release/libpoko_shell.a
+            ${CMAKE_CURRENT_BINARY_DIR}/libpoko_shell.a
+    DEPENDS ${POKO_SHELL_CRATE_DIR}/Cargo.toml
+            ${POKO_SHELL_CRATE_DIR}/cbindgen.toml
+            ${POKO_SHELL_CRATE_DIR}/src/lib.rs
+    COMMENT "Building poko_shell staticlib (cargo) and C header (cbindgen)")
+  add_custom_target(poko_shell_bridge DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/libpoko_shell.a)
+
+  add_executable(pokox_shell_c_abi_link_test
+    client/windows/bridge/tests/unit/c_abi_link_test.cpp)
+  add_dependencies(pokox_shell_c_abi_link_test poko_shell_bridge)
+  target_include_directories(pokox_shell_c_abi_link_test
+    PRIVATE ${POKO_SHELL_C_ABI_DIR})
+  target_link_libraries(pokox_shell_c_abi_link_test
+    PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/libpoko_shell.a)
+  target_compile_features(pokox_shell_c_abi_link_test PRIVATE cxx_std_20)
+  set_target_properties(pokox_shell_c_abi_link_test PROPERTIES CXX_EXTENSIONS OFF)
+  add_test(NAME pokox_shell_c_abi_link_test COMMAND pokox_shell_c_abi_link_test)
+
+  # SHL-02 — shell creation with the ABI-version check.
+  add_executable(pokox_shell_create_test
+    client/windows/bridge/tests/unit/shell_create_test.cpp)
+  add_dependencies(pokox_shell_create_test poko_shell_bridge)
+  target_include_directories(pokox_shell_create_test
+    PRIVATE ${POKO_SHELL_C_ABI_DIR})
+  target_link_libraries(pokox_shell_create_test
+    PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/libpoko_shell.a)
+  target_compile_features(pokox_shell_create_test PRIVATE cxx_std_20)
+  set_target_properties(pokox_shell_create_test PROPERTIES CXX_EXTENSIONS OFF)
+  add_test(NAME pokox_shell_create_test COMMAND pokox_shell_create_test)
+
+  # SHL-03 — event push/drain accumulation with the event golden.
+  add_executable(pokox_shell_events_test
+    client/windows/bridge/tests/unit/shell_events_test.cpp)
+  add_dependencies(pokox_shell_events_test poko_shell_bridge)
+  target_include_directories(pokox_shell_events_test
+    PRIVATE ${POKO_SHELL_C_ABI_DIR})
+  target_link_libraries(pokox_shell_events_test
+    PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/libpoko_shell.a)
+  target_compile_features(pokox_shell_events_test PRIVATE cxx_std_20)
+  set_target_properties(pokox_shell_events_test PROPERTIES CXX_EXTENSIONS OFF)
+  add_test(NAME pokox_shell_events_test COMMAND pokox_shell_events_test)
+
+  # SHL-04 — the egui frame with RawInput; "Label renders".
+  add_executable(pokox_shell_frame_test
+    client/windows/bridge/tests/unit/shell_frame_test.cpp)
+  add_dependencies(pokox_shell_frame_test poko_shell_bridge)
+  target_include_directories(pokox_shell_frame_test
+    PRIVATE ${POKO_SHELL_C_ABI_DIR})
+  target_link_libraries(pokox_shell_frame_test
+    PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/libpoko_shell.a)
+  target_compile_features(pokox_shell_frame_test PRIVATE cxx_std_20)
+  set_target_properties(pokox_shell_frame_test PROPERTIES CXX_EXTENSIONS OFF)
+  add_test(NAME pokox_shell_frame_test COMMAND pokox_shell_frame_test)
+
+  # SHL-05/06 — tessellation to PMES v1 layout and the texture delta.
+  add_executable(pokox_shell_mesh_test
+    client/windows/bridge/tests/unit/shell_mesh_test.cpp)
+  add_dependencies(pokox_shell_mesh_test poko_shell_bridge)
+  target_include_directories(pokox_shell_mesh_test
+    PRIVATE ${POKO_SHELL_C_ABI_DIR})
+  target_link_libraries(pokox_shell_mesh_test
+    PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/libpoko_shell.a)
+  target_compile_features(pokox_shell_mesh_test PRIVATE cxx_std_20)
+  set_target_properties(pokox_shell_mesh_test PROPERTIES CXX_EXTENSIONS OFF)
+  add_test(NAME pokox_shell_mesh_test COMMAND pokox_shell_mesh_test)
+
+  # SHL-07 — RAII guard and the 10k-frame flat-memory run.
+  add_executable(pokox_shell_raii_test
+    client/windows/bridge/tests/unit/shell_raii_test.cpp)
+  add_dependencies(pokox_shell_raii_test poko_shell_bridge)
+  target_include_directories(pokox_shell_raii_test
+    PRIVATE ${POKO_SHELL_C_ABI_DIR} client/windows/bridge/include)
+  target_link_libraries(pokox_shell_raii_test
+    PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/libpoko_shell.a)
+  target_compile_features(pokox_shell_raii_test PRIVATE cxx_std_20)
+  set_target_properties(pokox_shell_raii_test PROPERTIES CXX_EXTENSIONS OFF)
+  add_test(NAME pokox_shell_raii_test COMMAND pokox_shell_raii_test)
+endif()

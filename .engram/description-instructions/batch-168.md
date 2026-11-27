@@ -1,4 +1,4 @@
-# Node Description Batch 169 of 208
+# Node Description Batch 169 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -26,46 +26,46 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "input_device_router_name": "name()" | kind=code-symbol | source=mute/src/input/device_router.cpp:L107 | neighbors=[device_router.cpp] | lang=en
-- "input_input_snapshot_button_down": "button_down()" | kind=code-symbol | source=mute/src/input/input_snapshot.cpp:L99 | neighbors=[input_snapshot.cpp] | lang=en
-- "input_input_snapshot_key_down": "key_down()" | kind=code-symbol | source=mute/src/input/input_snapshot.cpp:L95 | neighbors=[input_snapshot.cpp] | lang=en
-- "input_input_snapshot_name": "name()" | kind=code-symbol | source=mute/src/input/input_snapshot.cpp:L342 | neighbors=[input_snapshot.cpp] | lang=en
-- "integration_config_logging_guard_real_test_main": "main()" | kind=code-symbol | source=engine/foundation/tests/integration/config_logging_guard_real_test.cpp:L10 | neighbors=[config_logging_guard_real_test.cpp] | lang=en
-- "integration_cube_golden_rationale_31": "RGB8 PNG with filter 0 and explicit uncompressed DEFLATE blocks." | kind=entity | source=engine/render/tests/integration/cube_golden.py:L31 | neighbors=[canonical_png()] | lang=en
-- "integration_cube_golden_x11_init": ".__init__()" | kind=code-symbol | source=engine/render/tests/integration/cube_golden.py:L58 | neighbors=[X11] | lang=en
-- "integration_cube_golden_ximage": "XImage" | kind=code-symbol | source=engine/render/tests/integration/cube_golden.py:L48 | neighbors=[cube_golden.py] | lang=en
-- "integration_public_header_compat_main": "main()" | kind=code-symbol | source=engine/rhi/tests/integration/public_header_compat.cpp:L13 | neighbors=[public_header_compat.cpp] | lang=en
-- "integration_sdl_platform_test_main": "main()" | kind=code-symbol | source=engine/platform/tests/integration/sdl_platform_test.cpp:L14 | neighbors=[sdl_platform_test.cpp] | lang=en
-- "integration_test_cube_fixed_view_x11_main": "main()" | kind=code-symbol | source=engine/render/tests/integration/test_cube_fixed_view_x11.py:L13 | neighbors=[test_cube_fixed_view_x11.py] | lang=en
-- "integration_test_cube_golden_unit_goldenencodertests_test_actual_cannot_replace_reference_or_be_a_symlink": ".test_actual_cannot_replace_reference_or_be_a_symlink()" | kind=code-symbol | source=engine/render/tests/integration/test_cube_golden_unit.py:L62 | neighbors=[GoldenEncoderTests] | lang=en
-- "integration_test_cube_golden_unit_goldenencodertests_test_bad_inputs": ".test_bad_inputs()" | kind=code-symbol | source=engine/render/tests/integration/test_cube_golden_unit.py:L57 | neighbors=[GoldenEncoderTests] | lang=en
-- "integration_test_cube_golden_unit_goldenencodertests_test_capture_cannot_replace_shipped_reference": ".test_capture_cannot_replace_shipped_reference()" | kind=code-symbol | source=engine/render/tests/integration/test_cube_golden_unit.py:L91 | neighbors=[GoldenEncoderTests] | lang=en
-- "integration_test_directional_light_x11_main": "main()" | kind=code-symbol | source=engine/render/tests/integration/test_directional_light_x11.py:L17 | neighbors=[test_directional_light_x11.py] | lang=en
-- "integration_test_imgui_inputs_rationale_1": "Check the real ImGui demo rejects bad SPIR-V before initializing a window." | kind=entity | source=engine/render/tests/integration/test_imgui_inputs.py:L1 | neighbors=[test_imgui_inputs.py] | lang=en
-- "integration_test_mute_console_x11_main": "main()" | kind=code-symbol | source=engine/render/tests/integration/test_mute_console_x11.py:L20 | neighbors=[test_mute_console_x11.py] | lang=en
-- "integration_test_mute_state_console_x11_main": "main()" | kind=code-symbol | source=engine/render/tests/integration/test_mute_state_console_x11.py:L15 | neighbors=[test_mute_state_console_x11.py] | lang=en
-- "integration_test_shader_pipeline_check_spirv": "check_spirv()" | kind=code-symbol | source=engine/render/tests/integration/test_shader_pipeline.py:L24 | neighbors=[test_shader_pipeline.py] | lang=en
-- "integration_test_shader_pipeline_rationale_1": "Exercise the real host compiler and CMake shader rule in an isolated build." | kind=entity | source=engine/render/tests/integration/test_shader_pipeline.py:L1 | neighbors=[test_shader_pipeline.py] | lang=en
-- "integration_test_shader_pipeline_run": "run()" | kind=code-symbol | source=engine/render/tests/integration/test_shader_pipeline.py:L17 | neighbors=[test_shader_pipeline.py] | lang=en
-- "integration_test_shader_pipeline_update_shader": "update_shader()" | kind=code-symbol | source=engine/render/tests/integration/test_shader_pipeline.py:L70 | neighbors=[test_shader_pipeline.py] | lang=en
-- "integration_test_triangle_inputs_rationale_1": "Check the real demo rejects bad SPIR-V before initializing a window." | kind=entity | source=engine/render/tests/integration/test_triangle_inputs.py:L1 | neighbors=[test_triangle_inputs.py] | lang=en
-- "integration_test_triangle_x11_visual_find_window": "find_window()" | kind=code-symbol | source=engine/render/tests/integration/test_triangle_x11_visual.py:L39 | neighbors=[test_triangle_x11_visual.py] | lang=en
-- "integration_test_triangle_x11_visual_green": "green()" | kind=code-symbol | source=engine/render/tests/integration/test_triangle_x11_visual.py:L90 | neighbors=[test_triangle_x11_visual.py] | lang=en
-- "integration_test_triangle_x11_visual_pixel": "pixel()" | kind=code-symbol | source=engine/render/tests/integration/test_triangle_x11_visual.py:L80 | neighbors=[test_triangle_x11_visual.py] | lang=en
-- "integration_test_triangle_x11_visual_red": "red()" | kind=code-symbol | source=engine/render/tests/integration/test_triangle_x11_visual.py:L89 | neighbors=[test_triangle_x11_visual.py] | lang=en
-- "integration_test_uniform_x11_visual_find_window": "find_window()" | kind=code-symbol | source=engine/render/tests/integration/test_uniform_x11_visual.py:L40 | neighbors=[test_uniform_x11_visual.py] | lang=en
-- "integration_test_uniform_x11_visual_pixel": "pixel()" | kind=code-symbol | source=engine/render/tests/integration/test_uniform_x11_visual.py:L80 | neighbors=[test_uniform_x11_visual.py] | lang=en
-- "integration_test_word_reservations_rationale_1": "SQLite-level tests for the D1 word-reservation migration." | kind=entity | source=backend/storage/d1/tests/integration/test_word_reservations.py:L1 | neighbors=[test_word_reservations.py] | lang=en
-- "integration_test_word_reservations_reservationmigrationtests_setup": ".setUp()" | kind=code-symbol | source=backend/storage/d1/tests/integration/test_word_reservations.py:L11 | neighbors=[ReservationMigrationTests] | lang=en
-- "integration_test_word_reservations_reservationmigrationtests_test_direct_reapplication_fails_instead_of_masking_schema_conflict": ".test_direct_reapplication_fails_instead_of_masking_schema_conflict()" | kind=code-symbol | source=backend/storage/d1/tests/integration/test_word_reservations.py:L44 | neighbors=[ReservationMigrationTests] | lang=en
-- "integration_test_word_reservations_reservationmigrationtests_test_first_release_word_is_globally_reserved": ".test_first_release_word_is_globally_reserved()" | kind=code-symbol | source=backend/storage/d1/tests/integration/test_word_reservations.py:L17 | neighbors=[ReservationMigrationTests] | lang=en
-- "integration_test_word_reservations_reservationmigrationtests_test_game_reservations_have_independent_scope": ".test_game_reservations_have_independent_scope()" | kind=code-symbol | source=backend/storage/d1/tests/integration/test_word_reservations.py:L37 | neighbors=[ReservationMigrationTests] | lang=en
-- "integration_test_word_reservations_reservationmigrationtests_test_global_reservation_cannot_name_a_game": ".test_global_reservation_cannot_name_a_game()" | kind=code-symbol | source=backend/storage/d1/tests/integration/test_word_reservations.py:L30 | neighbors=[ReservationMigrationTests] | lang=en
-- "integration_test_word_reservations_reservationmigrationtests_test_global_reservation_is_unique_even_with_null_game_id": ".test_global_reservation_is_unique_even_with_null_game_id()" | kind=code-symbol | source=backend/storage/d1/tests/integration/test_word_reservations.py:L23 | neighbors=[ReservationMigrationTests] | lang=en
-- "integration_x11_demo_smoke_clientdata": "ClientData" | kind=code-symbol | source=engine/platform/tests/integration/x11_demo_smoke.py:L31 | neighbors=[x11_demo_smoke.py] | lang=en
-- "integration_x11_demo_smoke_clientmessage": "ClientMessage" | kind=code-symbol | source=engine/platform/tests/integration/x11_demo_smoke.py:L35 | neighbors=[x11_demo_smoke.py] | lang=en
-- "integration_x11_demo_smoke_rationale_1": "Optional Linux/X11 host smoke test; not a Windows or Android test.  Usage: DISPL" | kind=entity | source=engine/platform/tests/integration/x11_demo_smoke.py:L1 | neighbors=[x11_demo_smoke.py] | lang=pt
-- "integration_x11_demo_smoke_xevent": "XEvent" | kind=code-symbol | source=engine/platform/tests/integration/x11_demo_smoke.py:L40 | neighbors=[x11_demo_smoke.py] | lang=en
+- "frostpeak_frost_props_market_stall": "market_stall()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_props.py:L195 | neighbors=[frost_props.py] | lang=en
+- "frostpeak_frost_props_sled": "sled()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_props.py:L153 | neighbors=[frost_props.py] | lang=en
+- "frostpeak_frost_props_snowman": "snowman()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_props.py:L138 | neighbors=[frost_props.py] | lang=en
+- "fuzz_fuzz_bytecode_llvmfuzzertestoneinput": "LLVMFuzzerTestOneInput()" | kind=code-symbol | source=fuzz/fuzz_bytecode.cpp:L4 | neighbors=[fuzz_bytecode.cpp] | lang=en
+- "fuzz_fuzz_cbor_llvmfuzzertestoneinput": "LLVMFuzzerTestOneInput()" | kind=code-symbol | source=fuzz/fuzz_cbor.cpp:L4 | neighbors=[fuzz_cbor.cpp] | lang=en
+- "fuzz_fuzz_lexer_llvmfuzzertestoneinput": "LLVMFuzzerTestOneInput()" | kind=code-symbol | source=fuzz/fuzz_lexer.cpp:L4 | neighbors=[fuzz_lexer.cpp] | lang=en
+- "fuzz_fuzz_pokomesh_llvmfuzzertestoneinput": "LLVMFuzzerTestOneInput()" | kind=code-symbol | source=fuzz/fuzz_pokomesh.cpp:L4 | neighbors=[fuzz_pokomesh.cpp] | lang=en
+- "godot_ablation_report_rationale_1": "Rank Godot graphics settings by frame-time cost against how much they change the" | kind=entity | source=.agents/skills/ForgeSkills-main/tools/godot/ablation_report.py:L1 | neighbors=[ablation_report.py] | lang=en
+- "godot_ablation_report_rationale_54": "Full-scene GPU ms and noise floors for one view." | kind=entity | source=.agents/skills/ForgeSkills-main/tools/godot/ablation_report.py:L54 | neighbors=[view_baseline()] | lang=en
+- "harness_golden_rationale_17": "Return the first differing offset and sizes, or None if files match." | kind=entity | source=tools/testutils/harness/golden.py:L17 | neighbors=[first_difference()] | lang=en
+- "harness_golden_rationale_36": "Replace the reference atomically, only on an explicit update request." | kind=entity | source=tools/testutils/harness/golden.py:L36 | neighbors=[update_golden()] | lang=en
+- "hermes_conftest_mock_ctx": "mock_ctx()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/hermes/conftest.py:L8 | neighbors=[conftest.py] | lang=en
+- "hermes_plugin_init_rationale_41": "Return a flat ``key: value`` scalar from a SKILL.md frontmatter block.      Herm" | kind=entity | source=.agents/skills/superpowers-main/.hermes-plugin/__init__.py:L41 | neighbors=[_frontmatter_value()] | lang=pt
+- "hermes_plugin_init_rationale_9": "Locate the stock skills/ tree for either supported install layout.      - git-cl" | kind=entity | source=.agents/skills/superpowers-main/.hermes-plugin/__init__.py:L9 | neighbors=[_skills_dir()] | lang=en
+- "hermes_test_plugin_rationale_119": "Copy the plugin module + a minimal skills tree in the given layout." | kind=entity | source=.agents/skills/superpowers-main/tests/hermes/test_plugin.py:L119 | neighbors=[._stage()] | lang=en
+- "hermes_test_plugin_rationale_165": "Hermes builds its skill catalogue from register_skill(description=...),     whic" | kind=entity | source=.agents/skills/superpowers-main/tests/hermes/test_plugin.py:L165 | neighbors=[TestSkillDescriptions] | lang=en
+- "hermes_test_plugin_rationale_21": "Re-import plugin module fresh." | kind=entity | source=.agents/skills/superpowers-main/tests/hermes/test_plugin.py:L21 | neighbors=[_load_plugin()] | lang=en
+- "identity_account_record": "account_record.hpp" | kind=code-symbol | source=server/identity/include/poko/identity/account_record.hpp:L1 | neighbors=[981b52c Crated IDN-01 to IDN-04] | lang=en
+- "identity_device_binding_devicebindingservice_devicebindingservice": ".DeviceBindingService()" | kind=code-symbol | source=server/identity/include/poko/identity/device_binding.hpp:L42 | neighbors=[DeviceBindingService] | lang=en
+- "identity_revocation_gate_ticketissuancegate_ticketissuancegate": ".TicketIssuanceGate()" | kind=code-symbol | source=server/identity/include/poko/identity/revocation_gate.hpp:L51 | neighbors=[TicketIssuanceGate] | lang=en
+- "identity_sign_in_accountstore_accountstore": ".AccountStore()" | kind=code-symbol | source=server/identity/include/poko/identity/sign_in.hpp:L22 | neighbors=[AccountStore] | lang=en
+- "identity_sign_in_format_user_id": "format_user_id()" | kind=code-symbol | source=server/identity/include/poko/identity/sign_in.hpp:L64 | neighbors=[sign_in.hpp] | lang=en
+- "identity_sign_in_signinservice_signinservice": ".SignInService()" | kind=code-symbol | source=server/identity/include/poko/identity/sign_in.hpp:L71 | neighbors=[SignInService] | lang=en
+- "identity_step_up_stepupservice_stepupservice": ".StepUpService()" | kind=code-symbol | source=server/identity/include/poko/identity/step_up.hpp:L23 | neighbors=[StepUpService] | lang=en
+- "identity_velocity_haversine_km": "haversine_km()" | kind=code-symbol | source=server/identity/include/poko/identity/velocity.hpp:L34 | neighbors=[velocity.hpp] | lang=en
+- "identity_velocity_loginvelocityservice_loginvelocityservice": ".LoginVelocityService()" | kind=code-symbol | source=server/identity/include/poko/identity/velocity.hpp:L65 | neighbors=[LoginVelocityService] | lang=en
+- "identity_worker_auth_base64url_decode": "base64url_decode()" | kind=code-symbol | source=server/identity/include/poko/identity/worker_auth.hpp:L42 | neighbors=[worker_auth.hpp] | lang=en
+- "identity_worker_auth_base64url_encode": "base64url_encode()" | kind=code-symbol | source=server/identity/include/poko/identity/worker_auth.hpp:L65 | neighbors=[worker_auth.hpp] | lang=en
+- "identity_worker_auth_firebasetokenverifier_firebasetokenverifier": ".FirebaseTokenVerifier()" | kind=code-symbol | source=server/identity/include/poko/identity/worker_auth.hpp:L114 | neighbors=[FirebaseTokenVerifier] | lang=en
+- "identity_worker_auth_sessiontickets_sessiontickets": ".SessionTickets()" | kind=code-symbol | source=server/identity/include/poko/identity/worker_auth.hpp:L243 | neighbors=[SessionTickets] | lang=en
+- "imgui_enginefactoryvk_diligent": "Diligent()" | kind=code-symbol | source=engine/rhi/tests/fakes/imgui/EngineFactoryVk.h:L10 | neighbors=[EngineFactoryVk.h] | lang=en
+- "imgui_enginefactoryvk_graphicspipeline": "GraphicsPipeline()" | kind=code-symbol | source=engine/rhi/tests/fakes/imgui/EngineFactoryVk.h:L60 | neighbors=[EngineFactoryVk.h] | lang=en
+- "imgui_enginefactoryvk_ideviceobject": "IDeviceObject()" | kind=code-symbol | source=engine/rhi/tests/fakes/imgui/EngineFactoryVk.h:L82 | neighbors=[EngineFactoryVk.h] | lang=en
+- "imgui_enginefactoryvk_ienginefactory": "IEngineFactory()" | kind=code-symbol | source=engine/rhi/tests/fakes/imgui/EngineFactoryVk.h:L124 | neighbors=[EngineFactoryVk.h] | lang=en
+- "imgui_enginefactoryvk_rtvformats": "RTVFormats()" | kind=code-symbol | source=engine/rhi/tests/fakes/imgui/EngineFactoryVk.h:L58 | neighbors=[EngineFactoryVk.h] | lang=en
+- "imgui_refcntautoptr_refcntautoptr_refcntautoptr": ".RefCntAutoPtr()" | kind=code-symbol | source=engine/rhi/tests/fakes/imgui/RefCntAutoPtr.hpp:L9 | neighbors=[RefCntAutoPtr] | lang=en
+- "input_action_map_name": "name()" | kind=code-symbol | source=mute/src/input/action_map.cpp:L337 | neighbors=[action_map.cpp] | lang=en
+- "input_device_router_clear": "clear()" | kind=code-symbol | source=mute/src/input/device_router.cpp:L103 | neighbors=[device_router.cpp] | lang=en
+- "input_device_router_disconnect": "disconnect()" | kind=code-symbol | source=mute/src/input/device_router.cpp:L47 | neighbors=[device_router.cpp] | lang=en
+- "input_device_router_find": "find()" | kind=code-symbol | source=mute/src/input/device_router.cpp:L62 | neighbors=[device_router.cpp] | lang=en
 
 ## Instructions
 

@@ -1,4 +1,4 @@
-# Node Description Batch 191 of 208
+# Node Description Batch 191 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -26,46 +26,46 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "tests_test_animation_rationale_9": "Keyframe the hips ('spine', child of root) moving dist metres toward -Y over 24" | kind=entity | source=.agents/skills/blender-skills-main/tests/test_animation.py:L9 | neighbors=[_walk()] | lang=en
-- "tests_test_animation_test_loop_check_hitches_kink_dip_and_smooth_reversal": "test_loop_check_hitches_kink_dip_and_smooth_reversal()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_animation.py:L170 | neighbors=[test_animation.py] | lang=en
-- "tests_test_animation_test_loop_check_pops_fix_and_root_motion": "test_loop_check_pops_fix_and_root_motion()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_animation.py:L149 | neighbors=[test_animation.py] | lang=en
-- "tests_test_atmosphere_test_fog_density_from_visibility_and_moods": "test_fog_density_from_visibility_and_moods()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_atmosphere.py:L50 | neighbors=[test_atmosphere.py] | lang=en
-- "tests_test_atmosphere_test_time_presets_sun_color_and_balance": "test_time_presets_sun_color_and_balance()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_atmosphere.py:L24 | neighbors=[test_atmosphere.py] | lang=en
-- "tests_test_clothing_test_garment_morphs_and_drape": "test_garment_morphs_and_drape()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_clothing.py:L26 | neighbors=[test_clothing.py] | lang=en
-- "tests_test_clothing_test_garment_weights_mask_and_pose": "test_garment_weights_mask_and_pose()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_clothing.py:L7 | neighbors=[test_clothing.py] | lang=en
-- "tests_test_core_rationale_12": "Execute every ```python block of a reference doc on a fresh scene." | kind=entity | source=.agents/skills/blender-skills-main/tests/test_core.py:L12 | neighbors=[_run_md_blocks()] | lang=pt
-- "tests_test_core_rationale_36": "Any reference doc tagged '(runs standalone)' must execute cleanly." | kind=entity | source=.agents/skills/blender-skills-main/tests/test_core.py:L36 | neighbors=[test_snippet_docs_across_skills()] | lang=en
-- "tests_test_core_test_env_report": "test_env_report()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_core.py:L29 | neighbors=[test_core.py] | lang=en
-- "tests_test_effekseer_ai_rationale_1": "The vendored effekseer_ai bridge: portable CLI surface and an explicit, never-gu" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/tests/test_effekseer_ai.py:L1 | neighbors=[test_effekseer_ai.py] | lang=en
-- "tests_test_effekseer_ai_rationale_31": "A public release must never probe a contributor's local disks." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/tests/test_effekseer_ai.py:L31 | neighbors=[test_editor_bin_directory_requires_an_e…] | lang=pt
-- "tests_test_effekseer_ai_test_cli_exposes_only_the_portable_effect_bridge_commands": "test_cli_exposes_only_the_portable_effect_bridge_commands()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_effekseer_ai.py:L9 | neighbors=[test_effekseer_ai.py] | lang=en
-- "tests_test_effekseer_ai_test_cli_rejects_removed_recipe_commands": "test_cli_rejects_removed_recipe_commands()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_effekseer_ai.py:L18 | neighbors=[test_effekseer_ai.py] | lang=en
-- "tests_test_effekseer_ai_test_editor_bin_directory_rejects_a_directory_without_core": "test_editor_bin_directory_rejects_a_directory_without_core()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_effekseer_ai.py:L38 | neighbors=[test_effekseer_ai.py] | lang=en
-- "tests_test_effekseer_ai_test_editor_bin_directory_uses_a_configured_core_directory": "test_editor_bin_directory_uses_a_configured_core_directory()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_effekseer_ai.py:L45 | neighbors=[test_effekseer_ai.py] | lang=en
-- "tests_test_effekseer_ai_test_runtime_config_is_bundled": "test_runtime_config_is_bundled()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_effekseer_ai.py:L54 | neighbors=[test_effekseer_ai.py] | lang=en
-- "tests_test_effekseer_ai_test_vendored_package_has_no_protocol_server_and_keeps_its_license": "test_vendored_package_has_no_protocol_server_and_keeps_its_license()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_effekseer_ai.py:L24 | neighbors=[test_effekseer_ai.py] | lang=en
-- "tests_test_environment_test_kit_check_flags_and_fixes": "test_kit_check_flags_and_fixes()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_environment.py:L70 | neighbors=[test_environment.py] | lang=en
-- "tests_test_environment_test_terrain_attributes_flatten_and_engine_maps": "test_terrain_attributes_flatten_and_engine_maps()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_environment.py:L12 | neighbors=[test_environment.py] | lang=en
-- "tests_test_examples_rationale_1": "Shipped example effects: complete, valid, self-consistent with their briefs and" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/tests/test_examples.py:L1 | neighbors=[test_examples.py] | lang=en
-- "tests_test_examples_test_each_example_source_loads_and_matches_its_brief": "test_each_example_source_loads_and_matches_its_brief()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_examples.py:L53 | neighbors=[test_examples.py] | lang=en
-- "tests_test_examples_test_example_show_accepts_pair_and_single_names": "test_example_show_accepts_pair_and_single_names()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_examples.py:L44 | neighbors=[test_examples.py] | lang=en
-- "tests_test_examples_test_example_show_gives_a_timeline_with_layer_roles_and_paired_projectiles": "test_example_show_gives_a_timeline_with_layer_roles_and_paired_projectiles()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_examples.py:L77 | neighbors=[test_examples.py] | lang=en
-- "tests_test_examples_test_example_textures_are_installed_and_their_prompts_recorded": "test_example_textures_are_installed_and_their_prompts_recorded()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_examples.py:L102 | neighbors=[test_examples.py] | lang=en
-- "tests_test_examples_test_loaded_examples_are_detached_copies": "test_loaded_examples_are_detached_copies()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_examples.py:L94 | neighbors=[test_examples.py] | lang=en
-- "tests_test_examples_test_value_pair_preserves_geometry_and_rejects_unsynchronized_randomness": "test_value_pair_preserves_geometry_and_rejects_unsynchronized_randomness()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_examples.py:L112 | neighbors=[test_examples.py] | lang=en
-- "tests_test_export_test_batch_export_at_origin": "test_batch_export_at_origin()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_export.py:L41 | neighbors=[test_export.py] | lang=en
-- "tests_test_export_test_static_fbx_has_no_animation_take": "test_static_fbx_has_no_animation_take()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_export.py:L51 | neighbors=[test_export.py] | lang=en
-- "tests_test_facial_test_arkit_split_mirror_drivers_report": "test_arkit_split_mirror_drivers_report()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_facial.py:L6 | neighbors=[test_facial.py] | lang=en
-- "tests_test_geonodes_test_build_apply_set_inputs": "test_build_apply_set_inputs()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_geonodes.py:L36 | neighbors=[test_geonodes.py] | lang=en
-- "tests_test_geonodes_test_describe": "test_describe()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_geonodes.py:L55 | neighbors=[test_geonodes.py] | lang=en
-- "tests_test_geonodes_test_reference_recipes_build_and_evaluate": "test_reference_recipes_build_and_evaluate()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_geonodes.py:L63 | neighbors=[test_geonodes.py] | lang=en
-- "tests_test_geonodes_test_repeat_zone": "test_repeat_zone()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_geonodes.py:L48 | neighbors=[test_geonodes.py] | lang=en
-- "tests_test_golden_goldenharnesstests_setup": ".setUp()" | kind=code-symbol | source=tools/testutils/harness/tests/test_golden.py:L18 | neighbors=[GoldenHarnessTests] | lang=en
-- "tests_test_gridfinity_test_bad_notch_side_raises": "test_bad_notch_side_raises()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_gridfinity.py:L183 | neighbors=[test_gridfinity.py] | lang=en
-- "tests_test_gridfinity_test_compartments_only_once": "test_compartments_only_once()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_gridfinity.py:L171 | neighbors=[test_gridfinity.py] | lang=en
-- "tests_test_gridfinity_test_cylinder_pocket_tilt_limits": "test_cylinder_pocket_tilt_limits()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_gridfinity.py:L94 | neighbors=[test_gridfinity.py] | lang=en
-- "tests_test_gridfinity_test_notch_offset_past_wall_raises": "test_notch_offset_past_wall_raises()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_gridfinity.py:L112 | neighbors=[test_gridfinity.py] | lang=en
-- "tests_test_gridfinity_test_oversized_cylinder_pocket_raises": "test_oversized_cylinder_pocket_raises()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_gridfinity.py:L88 | neighbors=[test_gridfinity.py] | lang=en
+- "stdlib_stdlib_math_vec3_sub": "vec3_sub()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L69 | neighbors=[stdlib_math.cpp] | lang=en
+- "stdlib_stdlib_math_vec4_add": "vec4_add()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L86 | neighbors=[stdlib_math.cpp] | lang=en
+- "stdlib_stdlib_math_vec4_scale": "vec4_scale()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L87 | neighbors=[stdlib_math.cpp] | lang=en
+- "stdlib_stdlib_string_byte_length": "byte_length()" | kind=code-symbol | source=mute/src/stdlib/stdlib_string.cpp:L56 | neighbors=[stdlib_string.cpp] | lang=en
+- "stdlib_stdlib_string_compare_bytes": "compare_bytes()" | kind=code-symbol | source=mute/src/stdlib/stdlib_string.cpp:L92 | neighbors=[stdlib_string.cpp] | lang=en
+- "stdlib_stdlib_string_find_bytes": "find_bytes()" | kind=code-symbol | source=mute/src/stdlib/stdlib_string.cpp:L98 | neighbors=[stdlib_string.cpp] | lang=en
+- "stdlib_stdlib_string_name": "name()" | kind=code-symbol | source=mute/src/stdlib/stdlib_string.cpp:L113 | neighbors=[stdlib_string.cpp] | lang=en
+- "sugarworks_sugar_kit_sheet_shot": "shot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_kit_sheet.py:L44 | neighbors=[sugar_kit_sheet.py] | lang=en
+- "sugarworks_sugar_map_h": "H()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_map.py:L33 | neighbors=[sugar_map.py] | lang=en
+- "sugarworks_sugar_map_shot": "shot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_map.py:L252 | neighbors=[sugar_map.py] | lang=en
+- "sugarworks_sugar_props_candy_corn": "candy_corn()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L408 | neighbors=[sugar_props.py] | lang=en
+- "sugarworks_sugar_props_candy_crate": "candy_crate()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L276 | neighbors=[sugar_props.py] | lang=en
+- "sugarworks_sugar_props_rationale_193": "button on a squat base with a price board on a post behind it (board faces -Z)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L193 | neighbors=[buy_button()] | lang=pt
+- "sugarworks_sugar_props_rock_cliff": "rock_cliff()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L349 | neighbors=[sugar_props.py] | lang=en
+- "systematic_debugging_condition_based_waiting_example_waitforevent": "waitForEvent()" | kind=code-symbol | source=.agents/skills/superpowers-main/skills/systematic-debugging/condition-based-waiting-example.ts:L20 | neighbors=[condition-based-waiting-example.ts] | lang=en
+- "systematic_debugging_condition_based_waiting_example_waitforeventcount": "waitForEventCount()" | kind=code-symbol | source=.agents/skills/superpowers-main/skills/systematic-debugging/condition-based-waiting-example.ts:L60 | neighbors=[condition-based-waiting-example.ts] | lang=en
+- "systematic_debugging_condition_based_waiting_example_waitforeventmatch": "waitForEventMatch()" | kind=code-symbol | source=.agents/skills/superpowers-main/skills/systematic-debugging/condition-based-waiting-example.ts:L111 | neighbors=[condition-based-waiting-example.ts] | lang=en
+- "targets_android_std_shim_bit_cast": "bit_cast()" | kind=code-symbol | source=tools/targets/android_std_shim.hpp:L20 | neighbors=[android_std_shim.hpp] | lang=en
+- "targets_android_std_shim_from_chars": "from_chars()" | kind=code-symbol | source=tools/targets/android_std_shim.hpp:L33 | neighbors=[android_std_shim.hpp] | lang=en
+- "tests_conftest_can_symlink": "_can_symlink()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/conftest.py:L50 | neighbors=[conftest.py] | lang=en
+- "tests_conftest_rationale_1": "Shared test setup for the effekseer-vfx skill.  vfxkit.paths computes the projec" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/tests/conftest.py:L1 | neighbors=[conftest.py] | lang=en
+- "tests_conftest_rationale_13": "Generate a watertight 10mm cube STL on demand." | kind=entity | source=.agents/skills/cad-skill-main/tests/conftest.py:L13 | neighbors=[tmp_stl()] | lang=pt
+- "tests_conftest_rationale_28": "CadQuery script that writes a watertight cube next to itself." | kind=entity | source=.agents/skills/cad-skill-main/tests/conftest.py:L28 | neighbors=[good_script()] | lang=en
+- "tests_conftest_rationale_41": "CadQuery script that writes both an STL and a STEP next to itself." | kind=entity | source=.agents/skills/cad-skill-main/tests/conftest.py:L41 | neighbors=[step_script()] | lang=en
+- "tests_conftest_rationale_55": "CadQuery script that raises (fillet radius too large)." | kind=entity | source=.agents/skills/cad-skill-main/tests/conftest.py:L55 | neighbors=[bad_script()] | lang=en
+- "tests_conftest_rationale_66": "Script that exits 0 without writing any STL." | kind=entity | source=.agents/skills/cad-skill-main/tests/conftest.py:L66 | neighbors=[empty_script()] | lang=en
+- "tests_conftest_rationale_69": "Environment for running `python -m vfxkit` in a subprocess with the scripts fold" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/tests/conftest.py:L69 | neighbors=[cli_env()] | lang=en
+- "tests_conftest_rationale_79": "The shared temporary game project whose vfx/src holds the sixteen examples." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/tests/conftest.py:L79 | neighbors=[project()] | lang=en
+- "tests_fixtures_rationale_1": "Procedural test fixtures (no binary .blend files in the repo)." | kind=entity | source=.agents/skills/blender-skills-main/tests/fixtures.py:L1 | neighbors=[fixtures.py] | lang=en
+- "tests_fixtures_rationale_34": "Two coplanar overlapping planes in different objects + one inside a single mesh." | kind=entity | source=.agents/skills/blender-skills-main/tests/fixtures.py:L34 | neighbors=[zfight_pair()] | lang=en
+- "tests_fixtures_rationale_47": "A body with a floating island and a separate floating object." | kind=entity | source=.agents/skills/blender-skills-main/tests/fixtures.py:L47 | neighbors=[detached_part()] | lang=pt
+- "tests_fixtures_rationale_57": "Smart-project UVs so bake/texel tests have a UV map." | kind=entity | source=.agents/skills/blender-skills-main/tests/fixtures.py:L57 | neighbors=[unwrap()] | lang=pt
+- "tests_fixtures_rationale_68": "Ground slab (top at z=0), two buildings, a grey sphere, each with a Principled m" | kind=entity | source=.agents/skills/blender-skills-main/tests/fixtures.py:L68 | neighbors=[street()] | lang=pt
+- "tests_fixtures_rationale_89": "Capsule-ish mesh + 3-bone chain armature, auto-weighted. Returns (mesh, armature" | kind=entity | source=.agents/skills/blender-skills-main/tests/fixtures.py:L89 | neighbors=[simple_character()] | lang=en
+- "tests_flags_contract_main": "main()" | kind=code-symbol | source=engine/foundation/tests/flags_contract.cpp:L7 | neighbors=[flags_contract.cpp] | lang=en
+- "tests_run_all_rationale_1": "In-Blender test runner. Discovers tests/test_*.py, runs each test_* on a fresh e" | kind=entity | source=.agents/skills/blender-skills-main/tests/run_all.py:L1 | neighbors=[run_all.py] | lang=pt
+- "tests_run_all_rationale_23": "Import skills/<skill>/scripts/<script>.py fresh (tests call run() directly)." | kind=entity | source=.agents/skills/blender-skills-main/tests/run_all.py:L23 | neighbors=[skill_module()] | lang=en
+- "tests_run_all_rationale_44": "Skip when BAS_SKIP_GPU=1 (CI runners without GPU/EGL: EEVEE, Workbench renders)." | kind=entity | source=.agents/skills/blender-skills-main/tests/run_all.py:L44 | neighbors=[requires_gpu()] | lang=en
+- "tests_test_addon_test_template_validates_builds_and_registers": "test_template_validates_builds_and_registers()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_addon.py:L11 | neighbors=[test_addon.py] | lang=en
+- "tests_test_agent_loop_rationale_1": "Agent feedback loop: field validation, static lint, review metrics, iteration hi" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/tests/test_agent_loop.py:L1 | neighbors=[test_agent_loop.py] | lang=en
 
 ## Instructions
 

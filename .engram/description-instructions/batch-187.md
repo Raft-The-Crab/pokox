@@ -1,4 +1,4 @@
-# Node Description Batch 188 of 208
+# Node Description Batch 188 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -19,53 +19,51 @@ relations (neighbors) and the provided citations/evidence — e.g.
 Ground entity descriptions in the citations/evidence when present; do not
 speculate beyond the context, so a node with no supporting context may be
 left out of the reply.
-LANGUAGE: each entry has a `lang=` marker giving the language of its source.
-Write that entry's description in EXACTLY that language. Do not translate to
-a single common language — match each node's source language individually.
+Write every description in English (en). Do not switch languages.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "src_soft_body_pin_node": "pin_node()" | kind=code-symbol | source=engine/physics/src/soft_body.cpp:L90 | neighbors=[soft_body.cpp] | lang=en
-- "src_solver_add_contact": "add_contact()" | kind=code-symbol | source=engine/physics/src/solver.cpp:L80 | neighbors=[solver.cpp] | lang=en
-- "src_solver_find_body": "find_body()" | kind=code-symbol | source=engine/physics/src/solver.cpp:L69 | neighbors=[solver.cpp] | lang=en
-- "src_solver_integrate": "integrate()" | kind=code-symbol | source=engine/physics/src/solver.cpp:L238 | neighbors=[solver.cpp] | lang=en
-- "src_solver_remove_body": "remove_body()" | kind=code-symbol | source=engine/physics/src/solver.cpp:L57 | neighbors=[solver.cpp] | lang=en
-- "src_solver_upsert_body": "upsert_body()" | kind=code-symbol | source=engine/physics/src/solver.cpp:L50 | neighbors=[solver.cpp] | lang=en
-- "src_vfx_dark_vortex_rationale_1": "VFX_Dark_Vortex: Dark impact played where VFX_Projectile_Dark arrives: a black h" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Dark_Vortex.py:L1 | neighbors=[VFX_Dark_Vortex.py] | lang=pt
-- "src_vfx_dark_vortex_recipe": "recipe()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Dark_Vortex.py:L9 | neighbors=[VFX_Dark_Vortex.py] | lang=en
-- "src_vfx_fire_explosion_rationale_1": "VFX_Fire_Explosion: Fire impact played where VFX_Projectile_Fire arrives.  Examp" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Fire_Explosion.py:L1 | neighbors=[VFX_Fire_Explosion.py] | lang=en
-- "src_vfx_fire_explosion_recipe": "recipe()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Fire_Explosion.py:L9 | neighbors=[VFX_Fire_Explosion.py] | lang=en
-- "src_vfx_heal_rationale_1": "VFX_Heal: Heal on the caster: no impact frame, a slow upward rise.  Example from" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Heal.py:L1 | neighbors=[VFX_Heal.py] | lang=en
-- "src_vfx_heal_recipe": "recipe()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Heal.py:L9 | neighbors=[VFX_Heal.py] | lang=en
-- "src_vfx_hit_heavy_rationale_1": "VFX_Hit_Heavy: Heavy melee hit: the blow lands on the target in place.  Example" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Hit_Heavy.py:L1 | neighbors=[VFX_Hit_Heavy.py] | lang=en
-- "src_vfx_hit_heavy_recipe": "recipe()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Hit_Heavy.py:L9 | neighbors=[VFX_Hit_Heavy.py] | lang=en
-- "src_vfx_ice_spikes_rationale_1": "VFX_Ice_Spikes: Ground ice eruption played where VFX_Projectile_Ice arrives.  Ex" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Ice_Spikes.py:L1 | neighbors=[VFX_Ice_Spikes.py] | lang=en
-- "src_vfx_ice_spikes_recipe": "recipe()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Ice_Spikes.py:L9 | neighbors=[VFX_Ice_Spikes.py] | lang=en
-- "src_vfx_kaiju_atomic_beam_rationale_1": "VFX_Kaiju_Atomic_Beam: a sustained atomic breath that the game aims and sweeps (" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Kaiju_Atomic_Beam.py:L1 | neighbors=[VFX_Kaiju_Atomic_Beam.py] | lang=en
-- "src_vfx_kaiju_atomic_beam_recipe": "recipe()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Kaiju_Atomic_Beam.py:L9 | neighbors=[VFX_Kaiju_Atomic_Beam.py] | lang=en
-- "src_vfx_kaiju_atomic_charge_rationale_1": "VFX_Kaiju_Atomic_Charge: dorsal plates light up from the tail to the head before" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Kaiju_Atomic_Charge.py:L1 | neighbors=[VFX_Kaiju_Atomic_Charge.py] | lang=en
-- "src_vfx_kaiju_atomic_charge_recipe": "recipe()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Kaiju_Atomic_Charge.py:L15 | neighbors=[VFX_Kaiju_Atomic_Charge.py] | lang=en
-- "src_vfx_kaiju_explosion_rationale_1": "VFX_Kaiju_Explosion: a photographic, building-sized fuel explosion for a kaiju b" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Kaiju_Explosion.py:L1 | neighbors=[VFX_Kaiju_Explosion.py] | lang=pt
-- "src_vfx_kaiju_explosion_recipe": "recipe()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Kaiju_Explosion.py:L19 | neighbors=[VFX_Kaiju_Explosion.py] | lang=en
-- "src_vfx_magic_charge_rationale_1": "VFX_Magic_Charge: Arcane charge on the caster: a long inward build, then one rel" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Magic_Charge.py:L1 | neighbors=[VFX_Magic_Charge.py] | lang=en
-- "src_vfx_magic_charge_recipe": "recipe()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Magic_Charge.py:L9 | neighbors=[VFX_Magic_Charge.py] | lang=en
-- "src_vfx_poison_cloud_rationale_1": "VFX_Poison_Cloud: Poison splash and lingering cloud played where VFX_Projectile_" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Poison_Cloud.py:L1 | neighbors=[VFX_Poison_Cloud.py] | lang=en
-- "src_vfx_poison_cloud_recipe": "recipe()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Poison_Cloud.py:L9 | neighbors=[VFX_Poison_Cloud.py] | lang=en
-- "src_vfx_projectile_dark_rationale_1": "VFX_Projectile_Dark: Shadow orb projectile; paired with VFX_Dark_Vortex on arriv" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Projectile_Dark.py:L1 | neighbors=[VFX_Projectile_Dark.py] | lang=en
-- "src_vfx_projectile_dark_recipe": "recipe()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Projectile_Dark.py:L9 | neighbors=[VFX_Projectile_Dark.py] | lang=en
-- "src_vfx_projectile_fire_rationale_1": "VFX_Projectile_Fire: Fireball projectile; paired with VFX_Fire_Explosion on arri" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Projectile_Fire.py:L1 | neighbors=[VFX_Projectile_Fire.py] | lang=en
-- "src_vfx_projectile_fire_recipe": "recipe()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Projectile_Fire.py:L9 | neighbors=[VFX_Projectile_Fire.py] | lang=en
-- "src_vfx_projectile_ice_rationale_1": "VFX_Projectile_Ice: Ice lance projectile; paired with VFX_Ice_Spikes on arrival." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Projectile_Ice.py:L1 | neighbors=[VFX_Projectile_Ice.py] | lang=en
-- "src_vfx_projectile_ice_recipe": "recipe()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Projectile_Ice.py:L9 | neighbors=[VFX_Projectile_Ice.py] | lang=en
-- "src_vfx_projectile_poison_rationale_1": "VFX_Projectile_Poison: Lobbed venom glob; paired with VFX_Poison_Cloud on arriva" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Projectile_Poison.py:L1 | neighbors=[VFX_Projectile_Poison.py] | lang=en
-- "src_vfx_projectile_poison_recipe": "recipe()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Projectile_Poison.py:L9 | neighbors=[VFX_Projectile_Poison.py] | lang=en
-- "src_vfx_shield_dome_rationale_1": "VFX_Shield_Dome: Shield dome on the caster: raise, hold, then break into fragmen" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Shield_Dome.py:L1 | neighbors=[VFX_Shield_Dome.py] | lang=en
-- "src_vfx_shield_dome_recipe": "recipe()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Shield_Dome.py:L9 | neighbors=[VFX_Shield_Dome.py] | lang=en
-- "src_vfx_slash_fire_rationale_1": "VFX_Slash_Fire: Fire sword slash played on the target (melee).  Example from the" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Slash_Fire.py:L1 | neighbors=[VFX_Slash_Fire.py] | lang=en
-- "src_vfx_slash_fire_recipe": "recipe()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Slash_Fire.py:L9 | neighbors=[VFX_Slash_Fire.py] | lang=en
-- "src_visual_solver_remove_body": "remove_body()" | kind=code-symbol | source=engine/physics/src/visual_solver.cpp:L142 | neighbors=[visual_solver.cpp] | lang=en
-- "state_state_round": "round()" | kind=code-symbol | source=mute/src/state/state.cpp:L14 | neighbors=[state.cpp] | lang=en
+- "skyrise_sky_models4_pebbles": "pebbles()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models4.py:L32 | neighbors=[sky_models4.py]
+- "skyrise_sky_models4_rationale_10": "one grass blade: thin tapered wedge (4 verts, 4 tris) leaning outward, tip bent" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models4.py:L10 | neighbors=[blade()]
+- "skyrise_sky_models4_rationale_114": "bridge from z=0 to z=-L rising by `rise`.     wood: irregular planks with nail h" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models4.py:L114 | neighbors=[bridge()]
+- "skyrise_sky_models4_rationale_182": "low tiered fountain: octagonal stone basin with a lip, water surface, gold trim," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models4.py:L182 | neighbors=[plaza_fountain()]
+- "skyrise_sky_models4_rationale_24": "modelled blade cluster, dark at the root, light at the tips" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models4.py:L24 | neighbors=[grass_tuft()]
+- "skyrise_sky_models4_rationale_41": "small flower clump: stems + 5-petal star heads + gold centres, one or two colour" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models4.py:L41 | neighbors=[wildflowers()]
+- "skyrise_sky_models4_rationale_52": "two or three toadstools: lathe stems, red caps with white spots" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models4.py:L52 | neighbors=[mushrooms()]
+- "skyrise_sky_models4_rationale_69": "twiggy desert shrub: forked twigs from a root knot" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models4.py:L69 | neighbors=[dry_shrub()]
+- "skyrise_sky_models4_snow_mound": "snow_mound()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models4.py:L80 | neighbors=[sky_models4.py]
+- "skyrise_sky_props_basalt_rocks": "basalt_rocks()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L419 | neighbors=[sky_props.py]
+- "skyrise_sky_props_charred_tree": "charred_tree()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L439 | neighbors=[sky_props.py]
+- "skyrise_sky_props_lava_pool": "lava_pool()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L428 | neighbors=[sky_props.py]
+- "skyrise_sky_props_leaderboard": "leaderboard()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L294 | neighbors=[sky_props.py]
+- "skyrise_sky_props_mesa_rock": "mesa_rock()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L392 | neighbors=[sky_props.py]
+- "skyrise_sky_props_path_stone": "path_stone()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L152 | neighbors=[sky_props.py]
+- "skyrise_sky_props_rationale_250": "sell station: glowing pad with a giant coin on a stand behind it (front -Z)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L250 | neighbors=[sell_pad()]
+- "skyrise_sky_props_rationale_509": "glowing zig-zag crack in the ground (flat, walk-over)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L509 | neighbors=[lava_crack()]
+- "skyrise_sky_props_signpost": "signpost()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L457 | neighbors=[sky_props.py]
+- "src_asset_store_acquire": "acquire()" | kind=code-symbol | source=engine/resource/src/asset_store.cpp:L199 | neighbors=[asset_store.cpp]
+- "src_asset_store_assetstore": "AssetStore()" | kind=code-symbol | source=engine/resource/src/asset_store.cpp:L95 | neighbors=[asset_store.cpp]
+- "src_asset_store_key": "key()" | kind=code-symbol | source=engine/resource/src/asset_store.cpp:L304 | neighbors=[asset_store.cpp]
+- "src_asset_store_last_error": "last_error()" | kind=code-symbol | source=engine/resource/src/asset_store.cpp:L189 | neighbors=[asset_store.cpp]
+- "src_asset_store_load_count": "load_count()" | kind=code-symbol | source=engine/resource/src/asset_store.cpp:L103 | neighbors=[asset_store.cpp]
+- "src_asset_store_payload": "payload()" | kind=code-symbol | source=engine/resource/src/asset_store.cpp:L306 | neighbors=[asset_store.cpp]
+- "src_asset_store_poll_async": "poll_async()" | kind=code-symbol | source=engine/resource/src/asset_store.cpp:L139 | neighbors=[asset_store.cpp]
+- "src_asset_store_request_async": "request_async()" | kind=code-symbol | source=engine/resource/src/asset_store.cpp:L106 | neighbors=[asset_store.cpp]
+- "src_asset_store_resident_count": "resident_count()" | kind=code-symbol | source=engine/resource/src/asset_store.cpp:L100 | neighbors=[asset_store.cpp]
+- "src_asset_store_state": "State()" | kind=code-symbol | source=engine/resource/src/asset_store.cpp:L46 | neighbors=[asset_store.cpp]
+- "src_asset_store_unload_count": "unload_count()" | kind=code-symbol | source=engine/resource/src/asset_store.cpp:L104 | neighbors=[asset_store.cpp]
+- "src_camera_orbit": "orbit()" | kind=code-symbol | source=engine/render/src/camera.cpp:L52 | neighbors=[camera.cpp]
+- "src_camera_zoom": "zoom()" | kind=code-symbol | source=engine/render/src/camera.cpp:L56 | neighbors=[camera.cpp]
+- "src_compose_axes": "axes()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/references/images/src/compose.py:L72 | neighbors=[compose.py]
+- "src_convex_shape_support": "support()" | kind=code-symbol | source=engine/physics/src/convex_shape.cpp:L5 | neighbors=[convex_shape.cpp]
+- "src_frame_stats_record_cpu": "record_cpu()" | kind=code-symbol | source=engine/foundation/src/frame_stats.cpp:L16 | neighbors=[frame_stats.cpp]
+- "src_frame_stats_record_gpu": "record_gpu()" | kind=code-symbol | source=engine/foundation/src/frame_stats.cpp:L24 | neighbors=[frame_stats.cpp]
+- "src_gallery_drum": "drum()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/references/images/src/gallery.py:L54 | neighbors=[gallery.py]
+- "src_gallery_put": "put()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/references/images/src/gallery.py:L29 | neighbors=[gallery.py]
+- "src_gallery_ring_gate": "ring_gate()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/references/images/src/gallery.py:L94 | neighbors=[gallery.py]
+- "src_gallery_scene_reset": "scene_reset()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/references/images/src/gallery.py:L15 | neighbors=[gallery.py]
+- "src_gallery_shot": "shot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/references/images/src/gallery.py:L46 | neighbors=[gallery.py]
 
 ## Instructions
 

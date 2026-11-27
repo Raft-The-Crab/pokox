@@ -1,4 +1,4 @@
-# Node Description Batch 173 of 208
+# Node Description Batch 173 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -12,58 +12,51 @@ describing what it is or does. Use only the provided context.
 For a code symbol (kind=code-symbol — a function, class, or constant),
 describe what the function/symbol does based on its name, source location
 and neighbors — e.g. "Resolves the configured ontology profile from graphify.yaml.".
-For an entity node (any other kind — e.g. a person, place, event, object),
-describe what the entity is and its role, grounded in its type, its
-relations (neighbors) and the provided citations/evidence — e.g.
-"Lady Carfax, a wealthy heiress who disappears en route to Lausanne.".
-Ground entity descriptions in the citations/evidence when present; do not
-speculate beyond the context, so a node with no supporting context may be
-left out of the reply.
 Write every description in English (en). Do not switch languages.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "oaktrees_gen_trees_rationale_358": "<1 inside the lumpy crown envelope." | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L358 | neighbors=[.env()]
-- "oaktrees_gen_trees_rationale_427": "surface roots: leave the trunk foot outward and down, then snake along the groun" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L427 | neighbors=[.grow_roots()]
-- "oaktrees_gen_trees_rationale_475": "paired side sprays in the (roughly horizontal) plane of the branch, shorter towa" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L475 | neighbors=[.laterals()]
-- "oaktrees_gen_trees_rationale_550": "Leaf-cluster cards (folded, 4 tris) or crossed twig cards (2 x 2 tris)." | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L550 | neighbors=[card_quads()]
-- "oaktrees_gen_trees_rationale_620": "needle-spray cards along every branch / lateral: most lie in the spray plane (no" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L620 | neighbors=[conifer_cards()]
-- "oaktrees_gen_trees_rationale_67": "t array -> colour from [(pos, (r,g,b)), ...]." | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L67 | neighbors=[ramp()]
-- "oaktrees_gen_trees_rationale_977": "paint + save the texture, or (maps) load it from roblox/textures when it already" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L977 | neighbors=[_img()]
-- "oaktrees_gen_trees_rationale_992": "Trunk / Branches / Leaves materials for a texture style (cached per style)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L992 | neighbors=[get_materials()]
-- "oaktrees_gen_trees_tree_init": ".__init__()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L351 | neighbors=[Tree]
-- "onsenvillage_onsen_map_foot": "foot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L82 | neighbors=[onsen_map.py]
-- "onsenvillage_onsen_map_material_skin": "material_skin()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L566 | neighbors=[onsen_map.py]
-- "onsenvillage_onsen_map_shot": "shot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L574 | neighbors=[onsen_map.py]
-- "onsenvillage_onsen_props_boulder": "boulder()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L845 | neighbors=[onsen_props.py]
-- "onsenvillage_onsen_props_rationale_169": "bronze onion cap (the signature post finial)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L169 | neighbors=[giboshi()]
-- "onsenvillage_onsen_props_shrub": "shrub()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L869 | neighbors=[onsen_props.py]
-- "onsenvillage_onsen_props_smooth": "smooth()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L44 | neighbors=[onsen_props.py]
-- "onsenvillage_onsen_props_stepping_stones": "stepping_stones()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L771 | neighbors=[onsen_props.py]
-- "opencode_test_bootstrap_caching_afterfirst": "afterFirst" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-bootstrap-caching.mjs:L41 | neighbors=[test-bootstrap-caching.mjs]
-- "opencode_test_bootstrap_caching_aftersecond": "afterSecond" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-bootstrap-caching.mjs:L45 | neighbors=[test-bootstrap-caching.mjs]
-- "opencode_test_bootstrap_caching_assertmappingconstants": "assertMappingConstants()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-bootstrap-caching.mjs:L172 | neighbors=[test-bootstrap-caching.mjs]
-- "opencode_test_bootstrap_caching_assertmissingbootstrap": "assertMissingBootstrap()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-bootstrap-caching.mjs:L152 | neighbors=[test-bootstrap-caching.mjs]
-- "opencode_test_bootstrap_caching_assertpresentbootstrap": "assertPresentBootstrap()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-bootstrap-caching.mjs:L120 | neighbors=[test-bootstrap-caching.mjs]
-- "opencode_test_bootstrap_caching_assertteachesbareskillids": "assertTeachesBareSkillIds()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-bootstrap-caching.mjs:L214 | neighbors=[test-bootstrap-caching.mjs]
-- "opencode_test_bootstrap_caching_assertv2bootstrap": "assertV2Bootstrap()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-bootstrap-caching.mjs:L265 | neighbors=[test-bootstrap-caching.mjs]
-- "opencode_test_bootstrap_caching_bootstraptext": "bootstrapText()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-bootstrap-caching.mjs:L114 | neighbors=[test-bootstrap-caching.mjs]
-- "opencode_test_bootstrap_caching_countbootstrapparts": "countBootstrapParts()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-bootstrap-caching.mjs:L108 | neighbors=[test-bootstrap-caching.mjs]
-- "opencode_test_bootstrap_caching_firstoutput": "firstOutput" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-bootstrap-caching.mjs:L39 | neighbors=[test-bootstrap-caching.mjs]
-- "opencode_test_bootstrap_caching_isbootstrapskillpath": "isBootstrapSkillPath()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-bootstrap-caching.mjs:L95 | neighbors=[test-bootstrap-caching.mjs]
-- "opencode_test_bootstrap_caching_makeoutput": "makeOutput()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-bootstrap-caching.mjs:L99 | neighbors=[test-bootstrap-caching.mjs]
-- "opencode_test_bootstrap_caching_mappingfailures": "mappingFailures" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-bootstrap-caching.mjs:L37 | neighbors=[test-bootstrap-caching.mjs]
-- "opencode_test_bootstrap_caching_result": "result" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-bootstrap-caching.mjs:L52 | neighbors=[test-bootstrap-caching.mjs]
-- "opencode_test_bootstrap_caching_runv2contexthook": "runV2ContextHook()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-bootstrap-caching.mjs:L230 | neighbors=[test-bootstrap-caching.mjs]
-- "opencode_test_bootstrap_caching_secondoutput": "secondOutput" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-bootstrap-caching.mjs:L43 | neighbors=[test-bootstrap-caching.mjs]
-- "opencode_test_hook_registration_capturehooks": "captureHooks()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-hook-registration.mjs:L18 | neighbors=[test-hook-registration.mjs]
-- "opencode_test_hook_registration_event": "event()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-hook-registration.mjs:L31 | neighbors=[test-hook-registration.mjs]
-- "opencode_test_hook_registration_pluginurl": "pluginURL" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-hook-registration.mjs:L14 | neighbors=[test-hook-registration.mjs]
-- "opencode_test_hook_registration_session": "session()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-hook-registration.mjs:L38 | neighbors=[test-hook-registration.mjs]
-- "opencode_test_session_bootstrap_bootstrapcount": "bootstrapCount()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-session-bootstrap.mjs:L25 | neighbors=[test-session-bootstrap.mjs]
-- "opencode_test_session_bootstrap_checkpoint": "checkpoint" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-session-bootstrap.mjs:L167 | neighbors=[test-session-bootstrap.mjs]
-- "opencode_test_session_bootstrap_childevent": "childEvent" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-session-bootstrap.mjs:L183 | neighbors=[test-session-bootstrap.mjs]
+- "mute_input_snapshot_inputtimeline": "InputTimeline" | kind=code-symbol | source=mute/include/poko/mute/input_snapshot.hpp:L132 | neighbors=[input_snapshot.hpp]
+- "mute_input_snapshot_pack_device_code": "pack_device_code()" | kind=code-symbol | source=mute/include/poko/mute/input_snapshot.hpp:L47 | neighbors=[input_snapshot.hpp]
+- "mute_input_snapshot_pack_gamepad_code": "pack_gamepad_code()" | kind=code-symbol | source=mute/include/poko/mute/input_snapshot.hpp:L53 | neighbors=[input_snapshot.hpp]
+- "mute_input_snapshot_unpack_device_code": "unpack_device_code()" | kind=code-symbol | source=mute/include/poko/mute/input_snapshot.hpp:L50 | neighbors=[input_snapshot.hpp]
+- "mute_optimize": "optimize.hpp" | kind=code-symbol | source=mute/include/poko/mute/optimize.hpp:L1 | neighbors=[e499073 Add MUT-29 dead-code eliminatio…]
+- "mute_parser_ast_ast": ".Ast()" | kind=code-symbol | source=mute/include/poko/mute/parser.hpp:L47 | neighbors=[Ast]
+- "mute_parser_expressionparser": "ExpressionParser" | kind=code-symbol | source=mute/include/poko/mute/parser.hpp:L44 | neighbors=[parser.hpp]
+- "mute_parser_to_arithmetic": "to_arithmetic()" | kind=code-symbol | source=mute/include/poko/mute/parser.hpp:L64 | neighbors=[parser.hpp]
+- "mute_scheduler_scheduler_scheduler": ".Scheduler()" | kind=code-symbol | source=mute/include/poko/mute/scheduler.hpp:L47 | neighbors=[Scheduler]
+- "mute_statement_statementast_statementast": ".StatementAst()" | kind=code-symbol | source=mute/include/poko/mute/statement.hpp:L36 | neighbors=[StatementAst]
+- "mute_statement_statementparser": "StatementParser" | kind=code-symbol | source=mute/include/poko/mute/statement.hpp:L21 | neighbors=[statement.hpp]
+- "mute_stdlib_collections_bytearray": "ByteArray" | kind=code-symbol | source=mute/include/poko/mute/stdlib_collections.hpp:L21 | neighbors=[stdlib_collections.hpp]
+- "mute_stdlib_collections_orderedstringmap": "OrderedStringMap" | kind=code-symbol | source=mute/include/poko/mute/stdlib_collections.hpp:L37 | neighbors=[stdlib_collections.hpp]
+- "mute_stdlib_crypto": "stdlib_crypto.hpp" | kind=code-symbol | source=mute/include/poko/mute/stdlib_crypto.hpp:L1 | neighbors=[952997e Audit MUT-01-55 and harden veri…]
+- "mute_stdlib_math_simclock": "SimClock" | kind=code-symbol | source=mute/include/poko/mute/stdlib_math.hpp:L84 | neighbors=[stdlib_math.hpp]
+- "mute_stdlib_math_xorshift128plus": "XorShift128Plus" | kind=code-symbol | source=mute/include/poko/mute/stdlib_math.hpp:L69 | neighbors=[stdlib_math.hpp]
+- "mute_stdlib_string": "stdlib_string.hpp" | kind=code-symbol | source=mute/include/poko/mute/stdlib_string.hpp:L1 | neighbors=[952997e Audit MUT-01-55 and harden veri…]
+- "mute_values_aggregatestore_aggregatestore": ".AggregateStore()" | kind=code-symbol | source=mute/include/poko/mute/values.hpp:L52 | neighbors=[AggregateStore]
+- "net_bit_buffer_bitbuffer_bitbuffer": ".BitBuffer()" | kind=code-symbol | source=server/net/include/poko/net/bit_buffer.hpp:L20 | neighbors=[BitBuffer]
+- "net_bit_buffer_get_array": "get_array()" | kind=code-symbol | source=server/net/include/poko/net/bit_buffer.hpp:L120 | neighbors=[bit_buffer.hpp]
+- "net_bit_buffer_get_delta": "get_delta()" | kind=code-symbol | source=server/net/include/poko/net/bit_buffer.hpp:L128 | neighbors=[bit_buffer.hpp]
+- "net_bit_buffer_put_array": "put_array()" | kind=code-symbol | source=server/net/include/poko/net/bit_buffer.hpp:L69 | neighbors=[bit_buffer.hpp]
+- "net_bit_buffer_put_delta": "put_delta()" | kind=code-symbol | source=server/net/include/poko/net/bit_buffer.hpp:L79 | neighbors=[bit_buffer.hpp]
+- "net_cube_sync_cube_schema": "cube_schema()" | kind=code-symbol | source=server/net/include/poko/net/cube_sync.hpp:L26 | neighbors=[cube_sync.hpp]
+- "net_cube_sync_cubepeer_cubepeer": ".CubePeer()" | kind=code-symbol | source=server/net/include/poko/net/cube_sync.hpp:L64 | neighbors=[CubePeer]
+- "net_cube_sync_exchange_over_udp": "exchange_over_udp()" | kind=code-symbol | source=server/net/include/poko/net/cube_sync.hpp:L111 | neighbors=[cube_sync.hpp]
+- "net_delta_decode_delta": "decode_delta()" | kind=code-symbol | source=server/net/include/poko/net/delta.hpp:L84 | neighbors=[delta.hpp]
+- "net_delta_deltaschema": "DeltaSchema" | kind=code-symbol | source=server/net/include/poko/net/delta.hpp:L36 | neighbors=[delta.hpp]
+- "net_delta_encode_delta": "encode_delta()" | kind=code-symbol | source=server/net/include/poko/net/delta.hpp:L61 | neighbors=[delta.hpp]
+- "net_delta_resendwindow": "ResendWindow" | kind=code-symbol | source=server/net/include/poko/net/delta.hpp:L108 | neighbors=[delta.hpp]
+- "net_frame_sha256_sha256": ".Sha256()" | kind=code-symbol | source=server/net/include/poko/net/frame.hpp:L29 | neighbors=[Sha256]
+- "net_jitter_buffer_jitterbuffer_jitterbuffer": ".JitterBuffer()" | kind=code-symbol | source=server/net/include/poko/net/jitter_buffer.hpp:L37 | neighbors=[JitterBuffer]
+- "net_udp_echo_echo_server_loop": "echo_server_loop()" | kind=code-symbol | source=server/net/include/poko/net/udp_echo.hpp:L127 | neighbors=[udp_echo.hpp]
+- "net_udp_echo_udpsocket_udpsocket": ".UdpSocket()" | kind=code-symbol | source=server/net/include/poko/net/udp_echo.hpp:L40 | neighbors=[UdpSocket]
+- "net_xor_fec_rotated_group": "rotated_group()" | kind=code-symbol | source=server/net/include/poko/net/xor_fec.hpp:L82 | neighbors=[xor_fec.hpp]
+- "oaktrees_gen_trees_arg": "arg()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L17 | neighbors=[gen_trees.py]
+- "oaktrees_gen_trees_basis_card": "basis_card()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L541 | neighbors=[gen_trees.py]
+- "oaktrees_gen_trees_branch_init": ".__init__()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L332 | neighbors=[Branch]
+- "oaktrees_gen_trees_canvas_init": ".__init__()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L116 | neighbors=[Canvas]
+- "oaktrees_gen_trees_grade": "_grade()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L970 | neighbors=[gen_trees.py]
 
 ## Instructions
 

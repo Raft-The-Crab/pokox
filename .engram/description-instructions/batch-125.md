@@ -1,4 +1,4 @@
-# Node Description Batch 126 of 208
+# Node Description Batch 126 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -26,46 +26,46 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "scripts_bake_maps_set_device": "_set_device()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-texture-baking/scripts/bake_maps.py:L32 | neighbors=[bake_maps.py, run()] | lang=en
-- "scripts_batch_process_gather": "gather()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-pipeline-automation/scripts/batch_process.py:L47 | neighbors=[batch_process.py, run()] | lang=en
-- "scripts_batch_process_inventory": "inventory()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-pipeline-automation/scripts/batch_process.py:L69 | neighbors=[batch_process.py, run()] | lang=en
-- "scripts_batch_process_load": "load()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-pipeline-automation/scripts/batch_process.py:L60 | neighbors=[batch_process.py, run()] | lang=en
-- "scripts_batch_process_module": "_module()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-pipeline-automation/scripts/batch_process.py:L89 | neighbors=[batch_process.py, run()] | lang=en
-- "scripts_bind_mesh_unweighted": "unweighted()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-character-rigging/scripts/bind_mesh.py:L27 | neighbors=[bind_mesh.py, run()] | lang=en
-- "scripts_bld_grid_cut": ".cut()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/scripts/bld.py:L31 | neighbors=[Grid, ._sl()] | lang=en
-- "scripts_bld_grid_export": ".export()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/scripts/bld.py:L100 | neighbors=[Grid, _c()] | lang=en
-- "scripts_bld_hx": "hx()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/scripts/bld.py:L11 | neighbors=[bld.py, _c()] | lang=en
-- "scripts_blocks_f": "_f()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/blocks.py:L154 | neighbors=[blocks.py, write_rbxmx()] | lang=en
-- "scripts_blocks_neon_mat": "neon_mat()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/blocks.py:L102 | neighbors=[blocks.py, mesh_blocks()] | lang=en
-- "scripts_blocks_rationale_112": "palette material + procedural studs (one round stud per `studs` studs, on every" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/blocks.py:L112 | neighbors=[stud_material(), MB] | lang=it
-- "scripts_blocks_rationale_157": "groups: {folder name: [Block, ...]} in world space. Writes a Model with one Fold" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/blocks.py:L157 | neighbors=[write_rbxmx(), MB] | lang=en
-- "scripts_blocks_rationale_21": "(pitch about X, yaw about Y, roll about Z) degrees, same order as pro_lib.xf" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/blocks.py:L21 | neighbors=[rotm(), MB] | lang=en
-- "scripts_blocks_rationale_72": "one solid mesh (palette + studs) + one mesh per neon colour + one for transparen" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/blocks.py:L72 | neighbors=[mesh_blocks(), MB] | lang=en
-- "scripts_blocks_shape_bm": "shape_bm()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/blocks.py:L53 | neighbors=[blocks.py, mesh_blocks()] | lang=en
-- "scripts_blocks_stud_material": "stud_material()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/blocks.py:L111 | neighbors=[blocks.py, palette material + procedural studs (on…] | lang=en
-- "scripts_bpyx_add_common": "add_common()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/_bpyx.py:L62 | neighbors=[_bpyx.py, --objects / --save flags shared by most…] | lang=en
-- "scripts_bpyx_enum_ids": "enum_ids()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/_bpyx.py:L104 | neighbors=[_bpyx.py, Valid identifiers of an enum property (…] | lang=en
-- "scripts_bpyx_mesh_tris": "mesh_tris()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/_bpyx.py:L117 | neighbors=[_bpyx.py, Triangle count (evaluated = with modifi…] | lang=en
-- "scripts_bpyx_node": "node()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/_bpyx.py:L99 | neighbors=[_bpyx.py, First node of `type_` (e.g. 'BSDF_PRINC…] | lang=en
-- "scripts_bpyx_object_mode": "object_mode()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/_bpyx.py:L83 | neighbors=[_bpyx.py, Leave edit/sculpt/pose modes; most data…] | lang=en
-- "scripts_bpyx_objects": "objects()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/_bpyx.py:L71 | neighbors=[_bpyx.py, Resolve names -> objects. No names: sel…] | lang=en
-- "scripts_bpyx_parser": "parser()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/_bpyx.py:L41 | neighbors=[_bpyx.py, ArgumentParser whose help is the script…] | lang=en
-- "scripts_bpyx_r": "r()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/_bpyx.py:L132 | neighbors=[_bpyx.py, Round a float or a vector for compact J…] | lang=en
-- "scripts_bpyx_select_only": "select_only()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/_bpyx.py:L90 | neighbors=[_bpyx.py, Select exactly `objs` and make `active`…] | lang=en
-- "scripts_bpyx_set_enum": "set_enum()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/_bpyx.py:L109 | neighbors=[_bpyx.py, Assign an enum; on failure raise listin…] | lang=en
-- "scripts_brick_rig_dilate6": "_dilate6()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/scripts/brick_rig.py:L51 | neighbors=[brick_rig.py, export()] | lang=en
-- "scripts_build_pbr_material_gltf_output_group": "_gltf_output_group()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-pbr-materials/scripts/build_pbr_material.py:L91 | neighbors=[build_pbr_material.py, run()] | lang=en
-- "scripts_build_pbr_material_srgb_to_lin": "_srgb_to_lin()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-pbr-materials/scripts/build_pbr_material.py:L57 | neighbors=[build_pbr_material.py, run()] | lang=en
-- "scripts_compare_bbox": "bbox()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/scripts/compare.py:L20 | neighbors=[compare.py, main()] | lang=en
-- "scripts_compare_concept_mask": "concept_mask()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/scripts/compare.py:L12 | neighbors=[compare.py, main()] | lang=en
-- "scripts_contact_sheet": "contact_sheet.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/contact_sheet.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …] | lang=en
-- "scripts_decal_grid": "_grid()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-texturing/scripts/decal.py:L63 | neighbors=[decal.py, run()] | lang=en
-- "scripts_decal_material": "_material()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-texturing/scripts/decal.py:L24 | neighbors=[decal.py, run()] | lang=en
-- "scripts_env_report_gpu": "_gpu()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-core/scripts/env_report.py:L17 | neighbors=[env_report.py, run()] | lang=en
-- "scripts_env_report_run": "run()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-core/scripts/env_report.py:L27 | neighbors=[env_report.py, _gpu()] | lang=en
-- "scripts_export_asset_coerce": "_coerce()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-export-pipelines/scripts/export_asset.py:L101 | neighbors=[export_asset.py, run()] | lang=en
-- "scripts_export_asset_export": "_export()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-export-pipelines/scripts/export_asset.py:L93 | neighbors=[export_asset.py, run()] | lang=en
-- "scripts_export_asset_gather": "_gather()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-export-pipelines/scripts/export_asset.py:L79 | neighbors=[export_asset.py, run()] | lang=en
+- "plusspeed_plus_props_v3_rationale_45": "marquee light bulbs around a sign" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v3.py:L45 | neighbors=[bulbs_frame(), BlockProp] | lang=pt
+- "plusspeed_plus_props_v3_rationale_91": "street lantern pillar: chamfered stepped plinth, 8-sided banded column, capital," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v3.py:L91 | neighbors=[lamp_pillar(), BlockProp] | lang=en
+- "plusspeed_plus_props_v3_speed_shoe": "speed_shoe()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v3.py:L59 | neighbors=[plus_props_v3.py, shop_stall()] | lang=en
+- "plusspeed_plus_props_v3_treadmill": "treadmill()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v3.py:L239 | neighbors=[plus_props_v3.py, chamfer_block()] | lang=en
+- "plusspeed_plus_props_v4_kerb_lip": "kerb_lip()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v4.py:L47 | neighbors=[plus_props_v4.py, alternating colour / white kerb blocks …] | lang=en
+- "plusspeed_plus_props_v4_podium_board": "podium_board()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v4.py:L225 | neighbors=[plus_props_v4.py, plinth()] | lang=en
+- "plusspeed_plus_props_v4_rationale_18": "rows[0] is the top row. Art is centred on X at pos, bottom at pos.y, front face" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v4.py:L18 | neighbors=[pixel_art(), BlockProp] | lang=en
+- "plusspeed_plus_props_v4_rationale_39": "fn(x, y) -> char, x/y in -1..1 (y up); returns rows top->bottom" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v4.py:L39 | neighbors=[raster(), BlockProp] | lang=es
+- "plusspeed_plus_props_v4_rationale_48": "alternating colour / white kerb blocks with a wedge bevel on the outer edge; gro" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v4.py:L48 | neighbors=[kerb_lip(), BlockProp] | lang=en
+- "preserved_verify_preservation_capture": "capture()" | kind=code-symbol | source=assets/characters/preserved/verify_preservation.py:L12 | neighbors=[verify_preservation.py, floats()] | lang=en
+- "preserved_verify_preservation_floats": "floats()" | kind=code-symbol | source=assets/characters/preserved/verify_preservation.py:L8 | neighbors=[verify_preservation.py, capture()] | lang=en
+- "program_program_compile_program_bytecode": "compile_program_bytecode()" | kind=code-symbol | source=mute/src/program/program.cpp:L342 | neighbors=[program.cpp, prepare_globals()] | lang=en
+- "program_program_depth": "Depth()" | kind=code-symbol | source=mute/src/program/program.cpp:L25 | neighbors=[program.cpp, fail()] | lang=en
+- "program_program_inspect_program_state_schema": "inspect_program_state_schema()" | kind=code-symbol | source=mute/src/program/program.cpp:L334 | neighbors=[program.cpp, prepare_globals()] | lang=en
+- "program_program_parser": "Parser" | kind=code-symbol | source=mute/src/program/program.cpp:L50 | neighbors=[program.cpp, .Parser()] | lang=en
+- "program_program_run_program": "run_program()" | kind=code-symbol | source=mute/src/program/program.cpp:L331 | neighbors=[program.cpp, run_stateful_program()] | lang=en
+- "program_program_run_program_bytecode": "run_program_bytecode()" | kind=code-symbol | source=mute/src/program/program.cpp:L356 | neighbors=[program.cpp, run_stateful_program_bytecode()] | lang=en
+- "program_program_runner": "Runner" | kind=code-symbol | source=mute/src/program/program.cpp:L166 | neighbors=[program.cpp, .Runner()] | lang=en
+- "refmatch_compare_band_errors": "band_errors()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/refmatch/compare.py:L256 | neighbors=[compare.py, evaluate()] | lang=en
+- "refmatch_compare_gaussian_kernel": "_gaussian_kernel()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/refmatch/compare.py:L355 | neighbors=[compare.py, ssim()] | lang=en
+- "refmatch_compare_hex": "_hex()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/refmatch/compare.py:L334 | neighbors=[compare.py, palette_report()] | lang=en
+- "refmatch_compare_hist_correlation": "hist_correlation()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/refmatch/compare.py:L349 | neighbors=[compare.py, evaluate()] | lang=en
+- "refmatch_compare_kmeans": "_kmeans()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/refmatch/compare.py:L282 | neighbors=[compare.py, palette_report()] | lang=en
+- "refmatch_compare_luminance_histogram": "luminance_histogram()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/refmatch/compare.py:L338 | neighbors=[compare.py, evaluate()] | lang=en
+- "refmatch_compare_silhouette_iou": "silhouette_iou()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/refmatch/compare.py:L225 | neighbors=[compare.py, evaluate()] | lang=en
+- "refmatch_compare_srgb_to_lab": "_srgb_to_lab()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/refmatch/compare.py:L300 | neighbors=[compare.py, palette_report()] | lang=en
+- "refmatch_measure_sheet_load": "load()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/refmatch/measure_sheet.py:L22 | neighbors=[measure_sheet.py, main()] | lang=en
+- "refmatch_measure_sheet_palette": "palette()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/refmatch/measure_sheet.py:L94 | neighbors=[measure_sheet.py, main()] | lang=en
+- "refmatch_measure_sheet_save_crop": "save_crop()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/refmatch/measure_sheet.py:L44 | neighbors=[measure_sheet.py, main()] | lang=en
+- "refmatch_measure_sheet_tight": "tight()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/refmatch/measure_sheet.py:L37 | neighbors=[measure_sheet.py, main()] | lang=en
+- "refmatch_overlay_overlay": "_overlay()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/refmatch/overlay.py:L32 | neighbors=[overlay.py, build()] | lang=en
+- "refmatch_overlay_panel": "_panel()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/refmatch/overlay.py:L20 | neighbors=[overlay.py, build()] | lang=en
+- "refmatch_palette_report_hex_of": "hex_of()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/refmatch/palette_report.py:L34 | neighbors=[palette_report.py, extract()] | lang=en
+- "refmatch_palette_report_hex_to_rgb": "hex_to_rgb()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/refmatch/palette_report.py:L38 | neighbors=[palette_report.py, compare_to_render()] | lang=en
+- "refmatch_palette_report_kmeans": "kmeans()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/refmatch/palette_report.py:L57 | neighbors=[palette_report.py, extract()] | lang=en
+- "refmatch_palette_report_load_palette": "load_palette()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/refmatch/palette_report.py:L97 | neighbors=[palette_report.py, main()] | lang=en
+- "refmatch_palette_report_print_rows": "print_rows()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/refmatch/palette_report.py:L144 | neighbors=[palette_report.py, main()] | lang=en
+- "render_camera_orbitcamera": "OrbitCamera" | kind=code-symbol | source=engine/render/include/poko/render/camera.hpp:L10 | neighbors=[camera.hpp, .OrbitCamera()] | lang=en
+- "resource_asset_store_assethandle": "AssetHandle" | kind=code-symbol | source=engine/resource/include/poko/resource/asset_store.hpp:L24 | neighbors=[asset_store.hpp, .AssetHandle()] | lang=en
+- "resource_asset_store_assetstore": "AssetStore" | kind=code-symbol | source=engine/resource/include/poko/resource/asset_store.hpp:L26 | neighbors=[asset_store.hpp, .AssetStore()] | lang=en
 
 ## Instructions
 

@@ -72,6 +72,10 @@ struct TouchCacheEntry {
   bool touching = false;
 };
 struct TouchCache {
+  // Lookup/clear/insert only — never iterate: unordered_map's iteration
+  // order is not reproducible, and this struct sits on the deterministic
+  // cast path. Results are consumed via exact-key lookups and sorted
+  // downstream, which is what keeps the cache bit-identical.
   std::unordered_map<std::size_t, std::vector<TouchCacheEntry>> buckets;
   std::size_t entries = 0;
 };

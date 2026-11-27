@@ -1,4 +1,4 @@
-# Node Description Batch 47 of 208
+# Node Description Batch 47 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -12,58 +12,51 @@ describing what it is or does. Use only the provided context.
 For a code symbol (kind=code-symbol — a function, class, or constant),
 describe what the function/symbol does based on its name, source location
 and neighbors — e.g. "Resolves the configured ontology profile from graphify.yaml.".
-For an entity node (any other kind — e.g. a person, place, event, object),
-describe what the entity is and its role, grounded in its type, its
-relations (neighbors) and the provided citations/evidence — e.g.
-"Lady Carfax, a wealthy heiress who disappears en route to Lausanne.".
-Ground entity descriptions in the citations/evidence when present; do not
-speculate beyond the context, so a node with no supporting context may be
-left out of the reply.
 Write every description in English (en). Do not switch languages.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "cad_skill_main_run_cadquery_model_main": "main()" | kind=code-symbol | source=.agents/skills/cad-skill-main/run_cadquery_model.py:L173 | neighbors=[run_cadquery_model.py, _append_stderr(), _new_files_by_ext(), _process_stls()]
+- "cad_skill_main_run_cadquery_model_process_stls": "_process_stls()" | kind=code-symbol | source=.agents/skills/cad-skill-main/run_cadquery_model.py:L93 | neighbors=[run_cadquery_model.py, main(), _sibling(), Load each STL once and optionally rende…]
+- "cad_skill_main_stl_to_3mf": "stl_to_3mf.py" | kind=code-symbol | source=.agents/skills/cad-skill-main/stl_to_3mf.py:L1 | neighbors=[convert(), main(), 2680d0e Pushed an update., e77fa31 Add new skills and asset packs …]
+- "candyland_candy_map_add_owner": "add_owner()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_map.py:L205 | neighbors=[candy_map.py, free(), mesh_obj(), place()]
+- "candyland_candy_map_drape_strip": "drape_strip()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_map.py:L294 | neighbors=[candy_map.py, H(), one board tile: the polyline section s0…, trails()]
+- "candyland_candy_map_fit_bad": "fit_bad()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_map.py:L230 | neighbors=[candy_map.py, fit(), _inside_one(), _top()]
+- "candyland_candy_map_ground": "ground()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_map.py:L270 | neighbors=[candy_map.py, axis_coords(), H(), mesh_obj()]
+- "candyland_candy_map_icing_caps": "icing_caps()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_map.py:L432 | neighbors=[candy_map.py, H(), mesh_obj(), icing poured over the frosting hilltops…]
+- "candyland_candy_map_path_mask": "path_mask()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_map.py:L82 | neighbors=[candy_map.py, H0(), poly_d(), 0 on trails / plazas, 1 away from them …]
+- "candyland_candy_map_resample": "resample()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_map.py:L61 | neighbors=[candy_map.py, build(), river(), trails()]
+- "candyland_candy_map_station": "station()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_map.py:L182 | neighbors=[candy_map.py, anchor(), place(), to_world()]
+- "candyland_candy_props_biscuit_bridge": "biscuit_bridge()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L896 | neighbors=[candy_props.py, lathe(), round_prof(), biscuit bridge along Z: shortbread roun…]
+- "candyland_candy_props_candy_egg": "candy_egg()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L471 | neighbors=[candy_props.py, lathe(), egg_machine(), decorated egg: lathe egg with horizonta…]
+- "candyland_candy_props_cupcake_liner": "cupcake_liner()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L236 | neighbors=[candy_props.py, cupcake_fountain(), orient(), pleated paper liner: frustum whose radi…]
+- "candyland_candy_props_gumdrop_bush": "gumdrop_bush()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L1035 | neighbors=[candy_props.py, lathe(), sugar(), 3-5 sugar-coated gumdrops of different …]
+- "candyland_candy_props_marshmallow": "marshmallow()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L1122 | neighbors=[candy_props.py, lathe(), round_prof(), stepping-stone marshmallow: rounded cyl…]
+- "candyland_candy_props_swirl": "swirl()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L250 | neighbors=[candy_props.py, candy_castle(), cupcake_fountain(), soft-serve swirl: a tube coiling up and…]
+- "candyland_candy_props_swirl_disc": "swirl_disc()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L516 | neighbors=[candy_props.py, egg_machine(), lollipop_tree(), flat lollipop swirl: two interleaved Ar…]
+- "canyonbazaar_canyon_map_medallion": "medallion()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_map.py:L300 | neighbors=[canyon_map.py, build(), static(), spawn medallion: an inlaid eight-point …]
+- "canyonbazaar_canyon_map_shelf1": "shelf1()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_map.py:L38 | neighbors=[canyon_map.py, nature(), walkable ledge width (studs) per wall: …, wall()]
+- "canyonbazaar_canyon_map_sight_x": "sight_x()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_map.py:L89 | neighbors=[canyon_map.py, nature(), spawn -> temple door sightline x at z (…, cx()]
+- "canyonbazaar_canyon_props_forge_station": "forge_station()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_props.py:L597 | neighbors=[canyon_props.py, dais(), sign_board(), UPGRADE station: a sandstone forge hear…]
+- "canyonbazaar_canyon_props_pottery_cluster": "pottery_cluster()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_props.py:L207 | neighbors=[canyon_props.py, crate(), pot(), story cluster: big jars, a toppled amph…]
+- "cavemap_cave_map_build_dist": "build_dist()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_map.py:L121 | neighbors=[cave_map.py, build(), air(), signed distance (studs) to the cave wal…]
+- "cavemap_cave_map_bvh_of": "bvh_of()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_map.py:L209 | neighbors=[cave_map.py, build_solid(), free(), shell()]
+- "cavemap_cave_map_islet_d": "islet_d()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_map.py:L85 | neighbors=[cave_map.py, H(), under_lake(), water()]
+- "cavemap_cave_map_poly_d": "poly_d()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_map.py:L83 | neighbors=[cave_map.py, path_d(), seg_d(), tunnel_d()]
+- "cavemap_cave_map_put_rock": "put_rock()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_map.py:L396 | neighbors=[cave_map.py, H(), place(), rocks()]
+- "cavemap_cave_map_remesh": "remesh()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_map.py:L268 | neighbors=[cave_map.py, crust(), free(), shell()]
+- "cavemap_cave_map_tunnel_d": "tunnel_d()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_map.py:L86 | neighbors=[cave_map.py, mine_sets(), rocks(), poly_d()]
+- "cavemap_cave_map_union_mesh": "union_mesh()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_map.py:L261 | neighbors=[cave_map.py, crust(), shell(), free()]
+- "cavemap_cave_ores_druse": "druse()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_ores.py:L76 | neighbors=[cave_ores.py, cart_load(), ore_pile(), crystal cluster: n banded crystals fann…]
+- "cavemap_cave_ores_mound": "mound()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_ores.py:L25 | neighbors=[cave_ores.py, cart_load(), ore_pile(), the heap's hidden-gap filler: a lumpy d…]
+- "cavemap_cave_props_crystal_shards": "crystal_shards()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L322 | neighbors=[cave_props.py, add_crystal(), FS(), ground scatter: a pebble bed with 3-5 s…]
 - "cavemap_cave_props_glowshroom_cluster": "glowshroom_cluster()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L414 | neighbors=[cave_props.py, mound(), mushroom(), a knee-high cluster: 6-8 small mushroom…]
 - "cavemap_cave_props_glowshroom_giant": "glowshroom_giant()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L398 | neighbors=[cave_props.py, mound(), mushroom(), three giant cave mushrooms (16 / 11 / 7…]
 - "cavemap_cave_props_nodules": "nodules()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L391 | neighbors=[cave_props.py, mound(), dot(), shroom_patch()]
 - "cavemap_cave_props_rs": "RS()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L58 | neighbors=[cave_props.py, crystal_spray(), geode(), rock_layered()]
 - "cavemap_cave_props_shroom_patch": "shroom_patch()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L425 | neighbors=[cave_props.py, tiny scatter: thin-stalked glowing bell…, nodules(), V()]
 - "cavemap_cave_props_stalagmite": "stalagmite()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L255 | neighbors=[cave_props.py, grounded dripstone: flared, plate-ringe…, jitter(), V()]
-- "cavemap_cave_props2_cart_load": "cart_load()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L105 | neighbors=[cave_props2.py, blob(), mine_cart(), ore heaped in the tub (cave_ores replac…]
-- "cavemap_cave_props2_crates": "crates()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L203 | neighbors=[cave_props2.py, logp(), W(), stack of 3 braced crates (frame battens…]
-- "cavemap_cave_props2_plank_bridge": "plank_bridge()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L187 | neighbors=[cave_props2.py, logp(), W(), low boardwalk to the islet (span along …]
-- "cavemap_cave_props2_rail_buffer": "rail_buffer()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L59 | neighbors=[cave_props2.py, logp(), W(), end-of-track stop: two posts with back …]
-- "cavemap_cave_props2_rope_bridge": "rope_bridge()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L162 | neighbors=[cave_props2.py, chasm rope bridge (span along Z): end p…, logp(), W()]
-- "cavemap_cave_props3_boards": "boards()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props3.py:L6 | neighbors=[cave_props3.py, mine_shop(), quest_board(), a wall of vertical boards between x0..x…]
-- "cavemap_cave_props3_mine_shop": "mine_shop()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props3.py:L25 | neighbors=[cave_props3.py, boards(), shed_roof(), ORE EXCHANGE: a timber mine-office shed…]
-- "commit:repo:github.com/Raft-The-Crab/pokox@1aefb72a961c694946723dc6e1295bf6eb79dbed": "1aefb72 MUT-42: physics hostcall boundary (header)" | kind=Commit | source=git | neighbors=[main, 0d85dce Merge pull request #6 from Raft…, stdlib_physics.hpp, e77fa31 Add new skills and asset packs …]
-- "commit:repo:github.com/Raft-The-Crab/pokox@2be6ccd764c29da253fae889e9ec51dbb41cbf88": "2be6ccd Character controller: fix missing trailing newline" | kind=Commit | source=git | neighbors=[main, 8246f8b Character controller: fix heade…, character_controller.hpp, 5acf433 Character controller: fix corru…]
-- "commit:repo:github.com/Raft-The-Crab/pokox@3faf30f053a8221c2ceada68a0bf48ef4f0c1cf6": "3faf30f Character controller: value-keyed touch memo for the cast path" | kind=Commit | source=git | neighbors=[038387e Character controller: value-key…, main, 5acf433 Character controller: fix corru…, character_controller.cpp]
-- "commit:repo:github.com/Raft-The-Crab/pokox@510655313c402807d3acdf94b0449314e27274e4": "5106553 MUT-42: physics hostcall implementation" | kind=Commit | source=git | neighbors=[0d85dce Merge pull request #6 from Raft…, main, 78dbd1e Merge pull request #7 from Raft…, stdlib_physics.cpp]
-- "commit:repo:github.com/Raft-The-Crab/pokox@5acf4338aa740565f209dfedd33775883e9f114b": "5acf433 Character controller: fix corrupted push of touch memo" | kind=Commit | source=git | neighbors=[3faf30f Character controller: value-key…, main, 2be6ccd Character controller: fix missi…, character_controller.cpp]
-- "commit:repo:github.com/Raft-The-Crab/pokox@668ca7213c228415b3f0a5203cc399d8f6bc67e0": "668ca72 Wait for X11 console input readiness before measuring" | kind=Commit | source=git | neighbors=[main, fc4604e Record CI billing block and X11…, test_mute_console_x11.py, 9f1db23 Record CI fix and green run evi…]
-- "commit:repo:github.com/Raft-The-Crab/pokox@8246f8b010a828516116ab1d896a8e1735378983": "8246f8b Character controller: fix header corruption from previous push" | kind=Commit | source=git | neighbors=[2be6ccd Character controller: fix missi…, main, 81d94fb Merge pull request #5 from Raft…, character_controller.hpp]
-- "commit:repo:github.com/Raft-The-Crab/pokox@8e05db15e1ce451b0efb13ee623800ec899bfcb6": "8e05db1 Character controller: conservative bounding-sphere prune before GJK/EPA" | kind=Commit | source=git | neighbors=[main, 60f3d98 Merge pull request #3 from Raft…, character_controller.cpp, ba75e97 Update FUNDING.yml with additio…]
-- "commit:repo:github.com/Raft-The-Crab/pokox@9b779908f74a3c15fd09c1a51ac72d0e35ee3d05": "9b77990 Android GLES probe: no data race or dangling capture in the Vulkan work…" | kind=Commit | source=git | neighbors=[60d8044 Mute crypto hostcalls: fail exp…, main, 87beff4 Sim solver: reject self/duplica…, opengles_native_activity.cpp]
-- "commit:repo:github.com/Raft-The-Crab/pokox@ba75e978011efd64936438b831a64db5d9b05a37": "ba75e97 Update FUNDING.yml with additional sponsorship options" | kind=Commit | source=git | neighbors=[main, 60f3d98 Merge pull request #3 from Raft…, 8e05db1 Character controller: conservat…, e04375a Run tests]
-- "commit:repo:github.com/Raft-The-Crab/pokox@d6139c3d93d51c626c0226ae8bf5cf2ab8159f33": "d6139c3 Fix X11 test click helper argument" | kind=Commit | source=git | neighbors=[main, 9f1db23 Record CI fix and green run evi…, test_mute_console_x11.py, e624dc7 Click console input before each…]
-- "commit:repo:github.com/Raft-The-Crab/pokox@e624dc71af773ab4687d4a78842503a755f5ea29": "e624dc7 Click console input before each X11 interaction" | kind=Commit | source=git | neighbors=[6d9948d Re-resolve X11 demo window duri…, main, d6139c3 Fix X11 test click helper argum…, test_mute_console_x11.py]
-- "creaturelab_lab_map_ground": "ground()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_map.py:L238 | neighbors=[lab_map.py, build(), static(), lawn grid: 3-stud cells near the buildi…]
-- "creaturelab_lab_map_inset_top": "inset_top()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_map.py:L87 | neighbors=[lab_map.py, hardscape(), polar_tiles(), wing_floor()]
-- "creaturelab_lab_map_sub": "sub()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_map.py:L23 | neighbors=[lab_map.py, place(), set_roof(), static()]
-- "creaturelab_lab_props_blossom_tree": "blossom_tree()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1491 | neighbors=[lab_props.py, ball(), .add(), small ornamental tree: smooth trunk, ro…]
-- "creaturelab_lab_props_dock_cables": "dock_cables()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1645 | neighbors=[lab_props.py, rbox(), .add(), Storage story: cable runs across the fl…]
-- "creaturelab_lab_props_flower_bed": "flower_bed()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1227 | neighbors=[lab_props.py, ball(), .add(), low flower clumps in a soft oval: round…]
-- "creaturelab_lab_props_garden_wall": "garden_wall()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1522 | neighbors=[lab_props.py, rbox(), .add(), low garden boundary wall: white rendere…]
-- "creaturelab_lab_props_hall_ceiling": "hall_ceiling()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1316 | neighbors=[lab_props.py, lerp(), .add(), coffered ceiling hung under the dome (n…]
-- "creaturelab_lab_props_hedge": "hedge()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1218 | neighbors=[lab_props.py, rbox(), .add(), clipped hedge segment: rounded box mass…]
-- "creaturelab_lab_props_lamp_post": "lamp_post()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1100 | neighbors=[lab_props.py, capsule(), .add(), plaza lamp: round foot, slim white post…]
-- "creaturelab_lab_props_lily_pads": "lily_pads()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1532 | neighbors=[lab_props.py, ball(), .add(), floating lily pads (notched discs) with…]
-- "creaturelab_lab_props_pc_terminal": "pc_terminal()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L442 | neighbors=[lab_props.py, rbox(), .add(), storage terminal: rounded pedestal, ang…]
-- "creaturelab_lab_props_potted_tree": "potted_tree()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1129 | neighbors=[lab_props.py, leaf_ball(), .add(), indoor potted tree: tall white pot with…]
-- "creaturelab_lab_props_rope_line": "rope_line()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1661 | neighbors=[lab_props.py, queue rope line: n steel stanchions wit…, ball(), .add()]
-- "creaturelab_lab_props_round_tree": "round_tree()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1469 | neighbors=[lab_props.py, outdoor rounded park tree in the same l…, ball(), .add()]
 
 ## Instructions
 

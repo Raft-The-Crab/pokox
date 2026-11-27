@@ -1,4 +1,4 @@
-# Node Description Batch 38 of 208
+# Node Description Batch 38 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -17,6 +17,24 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "oaktrees_gen_trees_branch_length": ".length()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L343 | neighbors=[Branch, card_quads(), conifer_cards(), .children_of(), .laterals()]
+- "oaktrees_gen_trees_canvas_finish": ".finish()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L186 | neighbors=[Canvas, normal_from_height(), leaf_atlas(), needle_atlas(), twig_atlas()]
+- "oaktrees_gen_trees_conifer_cards": "conifer_cards()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L619 | neighbors=[gen_trees.py, .at(), .length(), rand_unit(), needle-spray cards along every branch /…]
+- "oaktrees_gen_trees_get_materials": "get_materials()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L991 | neighbors=[gen_trees.py, _img(), material(), make_tree(), Trunk / Branches / Leaves materials for…]
+- "oaktrees_gen_trees_needle_atlas": "needle_atlas()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L210 | neighbors=[gen_trees.py, Canvas, .capsule_path(), .finish(), 4 x 4 fir sprays: a central twig with p…]
+- "oaktrees_gen_trees_normal_from_height": "normal_from_height()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L42 | neighbors=[gen_trees.py, bark_birch(), bark_fir(), bark_oak(), .finish()]
+- "oaktrees_gen_trees_ramp": "ramp()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L66 | neighbors=[gen_trees.py, bark_birch(), bark_fir(), bark_oak(), t array -> colour from [(pos, (r,g,b)),…]
+- "oaktrees_gen_trees_rand_unit": "rand_unit()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L346 | neighbors=[gen_trees.py, card_quads(), conifer_cards(), .grow(), .grow_roots()]
+- "oaktrees_gen_trees_tree_build_conifer": ".build_conifer()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L450 | neighbors=[Tree, .build(), .at(), .grow(), .laterals()]
+- "oaktrees_gen_trees_tree_grow_roots": ".grow_roots()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L426 | neighbors=[surface roots: leave the trunk foot out…, Tree, .build(), Branch, rand_unit()]
+- "onsenvillage_onsen_map_free": "free()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L119 | neighbors=[onsen_map.py, add_owner(), look(), nature(), steam()]
+- "onsenvillage_onsen_map_ground": "ground()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L194 | neighbors=[onsen_map.py, build(), mountains(), static(), stage ground (smooth: banks, stream bed…]
+- "onsenvillage_onsen_map_reserve": "reserve()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L120 | neighbors=[onsen_map.py, build(), nature(), stories(), village()]
+- "onsenvillage_onsen_map_stories": "stories()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L409 | neighbors=[onsen_map.py, build(), clusters of 2-4 at the stairs and bridg…, place(), reserve()]
+- "onsenvillage_onsen_map_water": "water()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L263 | neighbors=[onsen_map.py, build(), stream + front pool surface: 4-stud cel…, H(), static()]
+- "onsenvillage_onsen_props_balcony": "balcony()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L176 | neighbors=[onsen_props.py, giboshi(), lerp(), house(), deck on brackets along a wall at z (sid…]
+- "onsenvillage_onsen_props_skirt_roof": "skirt_roof()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L118 | neighbors=[onsen_props.py, house(), pagoda(), pent roof around a storey (pagoda tiers…, flared_roof()]
+- "passes_triangle_demo": "triangle_demo.cpp" | kind=code-symbol | source=engine/render/src/passes/triangle_demo.cpp:L1 | neighbors=[f4a6ac4 Allowlist known validation-laye…, Exception, main(), 52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
 - "petsim_pet_map_face": "face()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L194 | neighbors=[pet_map.py, crystal(), egg_stand(), hub(), link()]
 - "petsim_pet_map_frame": "frame()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L537 | neighbors=[pet_map.py, build(), place(), seg_d(), clouds + rocks on the lagoon round the …]
 - "petsim_pet_map_isle_mesh": "isle_mesh()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L59 | neighbors=[pet_map.py, build(), isle_R(), top_y(), polar top (dome) + rounded icing should…]
@@ -33,30 +51,12 @@ one-sentence description — no prose, no markdown fences.
 - "petsim_pet_props_spawn_pad": "spawn_pad()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L618 | neighbors=[pet_props.py, round spawn dais: two soft tiers, mint …, paw(), rcyl(), soft()]
 - "petsim_pet_props_trade_pad": "trade_pad()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L519 | neighbors=[pet_props.py, flat trade circle: cream disc with a pa…, arc_pts(), rcyl(), soft()]
 - "physics_visual_solver": "visual_solver.hpp" | kind=code-symbol | source=engine/physics/include/poko/physics/visual_solver.hpp:L1 | neighbors=[69287a0 Land ENG-60-65 deterministic si…, 87beff4 Sim solver: reject self/duplica…, 9eeb3ff Merge pull request #2 from Raft…, VisualSolver, VisualWorld]
-- "pkb_pkb_draft": "pkb_draft.cpp" | kind=code-symbol | source=mute/src/pkb/pkb_draft.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, head(), make_pkb_schema_draft(), text(), c7a411f Fix MUT-01-20 audit defects in …]
 - "plusspeed_plus_props_v3_lamp_pillar": "lamp_pillar()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v3.py:L90 | neighbors=[plus_props_v3.py, chamfer_block(), cyl_v(), octo(), street lantern pillar: chamfered steppe…]
 - "plusspeed_plus_props_v3_octo": "octo()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v3.py:L20 | neighbors=[plus_props_v3.py, hatchery(), lamp_pillar(), 8-sided column from two overlapping blo…, shop_stall()]
 - "plusspeed_plus_props_v3_rebirth_altar": "rebirth_altar()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v3.py:L196 | neighbors=[plus_props_v3.py, REBIRTH portal: 8-sided stepped dais wi…, chamfer_block(), cyl_v(), ring()]
 - "plusspeed_plus_props_v3_ring": "ring()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v3.py:L29 | neighbors=[plus_props_v3.py, hatchery(), n blocks laid tangent around a circle (…, rebirth_altar(), wins_pad()]
+- "preserved_verify_preservation": "verify_preservation.py" | kind=code-symbol | source=assets/characters/preserved/verify_preservation.py:L1 | neighbors=[f4a6ac4 Allowlist known validation-laye…, capture(), floats(), 52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
 - "program_program_run_stateful_program": "run_stateful_program()" | kind=code-symbol | source=mute/src/program/program.cpp:L321 | neighbors=[program.cpp, run_program(), commit_globals(), fail(), prepare_globals()]
-- "program_program_run_stateful_program_bytecode": "run_stateful_program_bytecode()" | kind=code-symbol | source=mute/src/program/program.cpp:L347 | neighbors=[program.cpp, run_program_bytecode(), commit_globals(), fail(), prepare_globals()]
-- "refmatch_compare_background_fit_mask": "background_fit_mask()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/refmatch/compare.py:L61 | neighbors=[compare.py, _quad_basis(), significant_components(), Segment the subject by subtracting a fi…, subject_mask()]
-- "refmatch_compare_letterbox": "letterbox()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/refmatch/compare.py:L35 | neighbors=[compare.py, _fit_size(), load_rgb(), mask_at_native(), Resize a PIL image into size with aspec…]
-- "refmatch_compare_mask_at_native": "mask_at_native()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/refmatch/compare.py:L414 | neighbors=[compare.py, evaluate(), letterbox(), subject_mask(), Segment at the image's NATIVE resolutio…]
-- "refmatch_compare_normalize_mask": "normalize_mask()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/refmatch/compare.py:L191 | neighbors=[compare.py, evaluate(), _fit_size(), tight_crop(), Crop to the tight subject box, then sca…]
-- "refmatch_compare_palette_report": "palette_report()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/refmatch/compare.py:L313 | neighbors=[compare.py, evaluate(), _hex(), _kmeans(), _srgb_to_lab()]
-- "refmatch_compare_significant_components": "significant_components()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/refmatch/compare.py:L161 | neighbors=[compare.py, background_fit_mask(), flood_background_mask(), Keep every connected component above a …, subject_mask()]
-- "refmatch_palette_report_main": "main()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/refmatch/palette_report.py:L163 | neighbors=[palette_report.py, compare_to_render(), extract(), load_palette(), print_rows()]
-- "resource_asset_store": "asset_store.hpp" | kind=code-symbol | source=engine/resource/include/poko/resource/asset_store.hpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, AssetHandle, AssetStore, typed(), c7a411f Fix MUT-01-20 audit defects in …]
-- "scripts_apply_stack": "apply_stack.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-hardsurface-modeling/scripts/apply_stack.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, run(), _smooth_faces(), Build (and optionally apply) a producti…]
-- "scripts_bake_action_run": "run()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-animation/scripts/bake_action.py:L81 | neighbors=[bake_action.py, _assign(), list_actions(), _mute(), _root_motion()]
-- "scripts_batch_process_run": "run()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-pipeline-automation/scripts/batch_process.py:L97 | neighbors=[batch_process.py, gather(), inventory(), load(), _module()]
-- "scripts_bld": "bld.py" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/scripts/bld.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, _c(), Grid, hx()]
-- "scripts_bld_c": "_c()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/scripts/bld.py:L12 | neighbors=[bld.py, hx(), .box(), .export(), .fbox()]
-- "scripts_bld_grid_sl": "._sl()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/scripts/bld.py:L24 | neighbors=[Grid, .box(), .cut(), .fbox(), .fcut()]
-- "scripts_blocks_mesh_blocks": "mesh_blocks()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/blocks.py:L71 | neighbors=[blocks.py, neon_mat(), rgb_of(), shape_bm(), one solid mesh (palette + studs) + one …]
-- "scripts_blocks_rotm": "rotm()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/blocks.py:L20 | neighbors=[blocks.py, .b(), .put(), (pitch about X, yaw about Y, roll about…, transformed()]
-- "scripts_brick_rig_export": "export()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/scripts/brick_rig.py:L106 | neighbors=[brick_rig.py, assign(), _dilate6(), _quads(), verify()]
 
 ## Instructions
 

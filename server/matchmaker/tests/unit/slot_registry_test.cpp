@@ -91,7 +91,7 @@ int main() {
   check(reg3.release("h1") && reg3.find("h1")->state == Reg::State::ready,
         "a real departure recovers Full to Ready");
   check(reg3.heartbeat("h1", 99, 122) && reg3.find("h1")->players == 19,
-        "beat after recovery leaves the honest count");
+        "reports never set the count or the state");
 
   // Wake path: Cold -> Waking -> Ready; a Waking slot refuses admission
   // (the honest "wait till HF #2 is available" state).

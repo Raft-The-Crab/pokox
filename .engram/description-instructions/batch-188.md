@@ -1,4 +1,4 @@
-# Node Description Batch 189 of 208
+# Node Description Batch 189 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -12,51 +12,60 @@ describing what it is or does. Use only the provided context.
 For a code symbol (kind=code-symbol — a function, class, or constant),
 describe what the function/symbol does based on its name, source location
 and neighbors — e.g. "Resolves the configured ontology profile from graphify.yaml.".
-Write every description in English (en). Do not switch languages.
+For an entity node (any other kind — e.g. a person, place, event, object),
+describe what the entity is and its role, grounded in its type, its
+relations (neighbors) and the provided citations/evidence — e.g.
+"Lady Carfax, a wealthy heiress who disappears en route to Lausanne.".
+Ground entity descriptions in the citations/evidence when present; do not
+speculate beyond the context, so a node with no supporting context may be
+left out of the reply.
+LANGUAGE: each entry has a `lang=` marker giving the language of its source.
+Write that entry's description in EXACTLY that language. Do not translate to
+a single common language — match each node's source language individually.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "stdlib_events_clear_phase": "clear_phase()" | kind=code-symbol | source=mute/src/stdlib/events.cpp:L33 | neighbors=[events.cpp]
-- "stdlib_events_dispatch": "dispatch()" | kind=code-symbol | source=mute/src/stdlib/events.cpp:L51 | neighbors=[events.cpp]
-- "stdlib_events_emit": "emit()" | kind=code-symbol | source=mute/src/stdlib/events.cpp:L42 | neighbors=[events.cpp]
-- "stdlib_events_name": "name()" | kind=code-symbol | source=mute/src/stdlib/events.cpp:L99 | neighbors=[events.cpp]
-- "stdlib_events_subscribe": "subscribe()" | kind=code-symbol | source=mute/src/stdlib/events.cpp:L17 | neighbors=[events.cpp]
-- "stdlib_events_subscriptions": "subscriptions()" | kind=code-symbol | source=mute/src/stdlib/events.cpp:L71 | neighbors=[events.cpp]
-- "stdlib_events_unsubscribe": "unsubscribe()" | kind=code-symbol | source=mute/src/stdlib/events.cpp:L25 | neighbors=[events.cpp]
-- "stdlib_stdlib_collections_contains": "contains()" | kind=code-symbol | source=mute/src/stdlib/stdlib_collections.cpp:L61 | neighbors=[stdlib_collections.cpp]
-- "stdlib_stdlib_collections_dump": "dump()" | kind=code-symbol | source=mute/src/stdlib/stdlib_collections.cpp:L77 | neighbors=[stdlib_collections.cpp]
-- "stdlib_stdlib_collections_get": "get()" | kind=code-symbol | source=mute/src/stdlib/stdlib_collections.cpp:L21 | neighbors=[stdlib_collections.cpp]
-- "stdlib_stdlib_collections_insert": "insert()" | kind=code-symbol | source=mute/src/stdlib/stdlib_collections.cpp:L49 | neighbors=[stdlib_collections.cpp]
-- "stdlib_stdlib_collections_key_less": "key_less()" | kind=code-symbol | source=mute/src/stdlib/stdlib_collections.cpp:L16 | neighbors=[stdlib_collections.cpp]
-- "stdlib_stdlib_collections_name": "name()" | kind=code-symbol | source=mute/src/stdlib/stdlib_collections.cpp:L104 | neighbors=[stdlib_collections.cpp]
-- "stdlib_stdlib_collections_set": "set()" | kind=code-symbol | source=mute/src/stdlib/stdlib_collections.cpp:L25 | neighbors=[stdlib_collections.cpp]
-- "stdlib_stdlib_crypto_crypto_hostcall_defs": "crypto_hostcall_defs()" | kind=code-symbol | source=mute/src/stdlib/stdlib_crypto.cpp:L141 | neighbors=[stdlib_crypto.cpp]
-- "stdlib_stdlib_crypto_from_hex": "from_hex()" | kind=code-symbol | source=mute/src/stdlib/stdlib_crypto.cpp:L123 | neighbors=[stdlib_crypto.cpp]
-- "stdlib_stdlib_crypto_to_hex": "to_hex()" | kind=code-symbol | source=mute/src/stdlib/stdlib_crypto.cpp:L112 | neighbors=[stdlib_crypto.cpp]
-- "stdlib_stdlib_math_advance": "advance()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L168 | neighbors=[stdlib_math.cpp]
-- "stdlib_stdlib_math_det_clamp": "det_clamp()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L26 | neighbors=[stdlib_math.cpp]
-- "stdlib_stdlib_math_det_floor": "det_floor()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L24 | neighbors=[stdlib_math.cpp]
-- "stdlib_stdlib_math_det_pow": "det_pow()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L38 | neighbors=[stdlib_math.cpp]
-- "stdlib_stdlib_math_det_round": "det_round()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L25 | neighbors=[stdlib_math.cpp]
-- "stdlib_stdlib_math_from_state": "from_state()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L157 | neighbors=[stdlib_math.cpp]
-- "stdlib_stdlib_math_mat4_identity": "mat4_identity()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L96 | neighbors=[stdlib_math.cpp]
-- "stdlib_stdlib_math_mat4_multiply": "mat4_multiply()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L97 | neighbors=[stdlib_math.cpp]
-- "stdlib_stdlib_math_mat4_transform_point": "mat4_transform_point()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L108 | neighbors=[stdlib_math.cpp]
-- "stdlib_stdlib_math_quat_multiply": "quat_multiply()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L121 | neighbors=[stdlib_math.cpp]
-- "stdlib_stdlib_math_simclock": "SimClock()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L165 | neighbors=[stdlib_math.cpp]
-- "stdlib_stdlib_math_time_hostcall_defs": "time_hostcall_defs()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L170 | neighbors=[stdlib_math.cpp]
-- "stdlib_stdlib_math_vec2_add": "vec2_add()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L55 | neighbors=[stdlib_math.cpp]
-- "stdlib_stdlib_math_vec2_scale": "vec2_scale()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L57 | neighbors=[stdlib_math.cpp]
-- "stdlib_stdlib_math_vec2_sub": "vec2_sub()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L56 | neighbors=[stdlib_math.cpp]
-- "stdlib_stdlib_math_vec3_sub": "vec3_sub()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L69 | neighbors=[stdlib_math.cpp]
-- "stdlib_stdlib_math_vec4_add": "vec4_add()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L86 | neighbors=[stdlib_math.cpp]
-- "stdlib_stdlib_math_vec4_scale": "vec4_scale()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L87 | neighbors=[stdlib_math.cpp]
-- "stdlib_stdlib_string_byte_length": "byte_length()" | kind=code-symbol | source=mute/src/stdlib/stdlib_string.cpp:L56 | neighbors=[stdlib_string.cpp]
-- "stdlib_stdlib_string_compare_bytes": "compare_bytes()" | kind=code-symbol | source=mute/src/stdlib/stdlib_string.cpp:L92 | neighbors=[stdlib_string.cpp]
-- "stdlib_stdlib_string_find_bytes": "find_bytes()" | kind=code-symbol | source=mute/src/stdlib/stdlib_string.cpp:L98 | neighbors=[stdlib_string.cpp]
-- "stdlib_stdlib_string_name": "name()" | kind=code-symbol | source=mute/src/stdlib/stdlib_string.cpp:L113 | neighbors=[stdlib_string.cpp]
-- "sugarworks_sugar_kit_sheet_shot": "shot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_kit_sheet.py:L44 | neighbors=[sugar_kit_sheet.py]
+- "src_logging_shutdown": "shutdown()" | kind=code-symbol | source=engine/foundation/src/logging.cpp:L92 | neighbors=[logging.cpp] | lang=en
+- "src_loop_backlog_seconds": "backlog_seconds()" | kind=code-symbol | source=engine/foundation/src/loop.cpp:L65 | neighbors=[loop.cpp] | lang=en
+- "src_loop_reset_backlog": "reset_backlog()" | kind=code-symbol | source=engine/foundation/src/loop.cpp:L69 | neighbors=[loop.cpp] | lang=en
+- "src_loop_step_seconds": "step_seconds()" | kind=code-symbol | source=engine/foundation/src/loop.cpp:L61 | neighbors=[loop.cpp] | lang=en
+- "src_main_main": "main()" | kind=code-symbol | source=engine/foundation/src/main.cpp:L7 | neighbors=[main.cpp] | lang=en
+- "src_sap_broadphase_remove": "remove()" | kind=code-symbol | source=engine/physics/src/sap_broadphase.cpp:L11 | neighbors=[sap_broadphase.cpp] | lang=en
+- "src_soft_body_collide_plane_y": "collide_plane_y()" | kind=code-symbol | source=engine/physics/src/soft_body.cpp:L136 | neighbors=[soft_body.cpp] | lang=en
+- "src_soft_body_collide_sphere": "collide_sphere()" | kind=code-symbol | source=engine/physics/src/soft_body.cpp:L145 | neighbors=[soft_body.cpp] | lang=en
+- "src_soft_body_pin_node": "pin_node()" | kind=code-symbol | source=engine/physics/src/soft_body.cpp:L90 | neighbors=[soft_body.cpp] | lang=en
+- "src_solver_add_contact": "add_contact()" | kind=code-symbol | source=engine/physics/src/solver.cpp:L80 | neighbors=[solver.cpp] | lang=en
+- "src_solver_find_body": "find_body()" | kind=code-symbol | source=engine/physics/src/solver.cpp:L69 | neighbors=[solver.cpp] | lang=en
+- "src_solver_integrate": "integrate()" | kind=code-symbol | source=engine/physics/src/solver.cpp:L238 | neighbors=[solver.cpp] | lang=en
+- "src_solver_remove_body": "remove_body()" | kind=code-symbol | source=engine/physics/src/solver.cpp:L57 | neighbors=[solver.cpp] | lang=en
+- "src_solver_upsert_body": "upsert_body()" | kind=code-symbol | source=engine/physics/src/solver.cpp:L50 | neighbors=[solver.cpp] | lang=en
+- "src_vfx_dark_vortex_rationale_1": "VFX_Dark_Vortex: Dark impact played where VFX_Projectile_Dark arrives: a black h" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Dark_Vortex.py:L1 | neighbors=[VFX_Dark_Vortex.py] | lang=pt
+- "src_vfx_dark_vortex_recipe": "recipe()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Dark_Vortex.py:L9 | neighbors=[VFX_Dark_Vortex.py] | lang=en
+- "src_vfx_fire_explosion_rationale_1": "VFX_Fire_Explosion: Fire impact played where VFX_Projectile_Fire arrives.  Examp" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Fire_Explosion.py:L1 | neighbors=[VFX_Fire_Explosion.py] | lang=en
+- "src_vfx_fire_explosion_recipe": "recipe()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Fire_Explosion.py:L9 | neighbors=[VFX_Fire_Explosion.py] | lang=en
+- "src_vfx_heal_rationale_1": "VFX_Heal: Heal on the caster: no impact frame, a slow upward rise.  Example from" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Heal.py:L1 | neighbors=[VFX_Heal.py] | lang=en
+- "src_vfx_heal_recipe": "recipe()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Heal.py:L9 | neighbors=[VFX_Heal.py] | lang=en
+- "src_vfx_hit_heavy_rationale_1": "VFX_Hit_Heavy: Heavy melee hit: the blow lands on the target in place.  Example" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Hit_Heavy.py:L1 | neighbors=[VFX_Hit_Heavy.py] | lang=en
+- "src_vfx_hit_heavy_recipe": "recipe()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Hit_Heavy.py:L9 | neighbors=[VFX_Hit_Heavy.py] | lang=en
+- "src_vfx_ice_spikes_rationale_1": "VFX_Ice_Spikes: Ground ice eruption played where VFX_Projectile_Ice arrives.  Ex" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Ice_Spikes.py:L1 | neighbors=[VFX_Ice_Spikes.py] | lang=en
+- "src_vfx_ice_spikes_recipe": "recipe()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Ice_Spikes.py:L9 | neighbors=[VFX_Ice_Spikes.py] | lang=en
+- "src_vfx_kaiju_atomic_beam_rationale_1": "VFX_Kaiju_Atomic_Beam: a sustained atomic breath that the game aims and sweeps (" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Kaiju_Atomic_Beam.py:L1 | neighbors=[VFX_Kaiju_Atomic_Beam.py] | lang=en
+- "src_vfx_kaiju_atomic_beam_recipe": "recipe()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Kaiju_Atomic_Beam.py:L9 | neighbors=[VFX_Kaiju_Atomic_Beam.py] | lang=en
+- "src_vfx_kaiju_atomic_charge_rationale_1": "VFX_Kaiju_Atomic_Charge: dorsal plates light up from the tail to the head before" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Kaiju_Atomic_Charge.py:L1 | neighbors=[VFX_Kaiju_Atomic_Charge.py] | lang=en
+- "src_vfx_kaiju_atomic_charge_recipe": "recipe()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Kaiju_Atomic_Charge.py:L15 | neighbors=[VFX_Kaiju_Atomic_Charge.py] | lang=en
+- "src_vfx_kaiju_explosion_rationale_1": "VFX_Kaiju_Explosion: a photographic, building-sized fuel explosion for a kaiju b" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Kaiju_Explosion.py:L1 | neighbors=[VFX_Kaiju_Explosion.py] | lang=pt
+- "src_vfx_kaiju_explosion_recipe": "recipe()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Kaiju_Explosion.py:L19 | neighbors=[VFX_Kaiju_Explosion.py] | lang=en
+- "src_vfx_magic_charge_rationale_1": "VFX_Magic_Charge: Arcane charge on the caster: a long inward build, then one rel" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Magic_Charge.py:L1 | neighbors=[VFX_Magic_Charge.py] | lang=en
+- "src_vfx_magic_charge_recipe": "recipe()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Magic_Charge.py:L9 | neighbors=[VFX_Magic_Charge.py] | lang=en
+- "src_vfx_poison_cloud_rationale_1": "VFX_Poison_Cloud: Poison splash and lingering cloud played where VFX_Projectile_" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Poison_Cloud.py:L1 | neighbors=[VFX_Poison_Cloud.py] | lang=en
+- "src_vfx_poison_cloud_recipe": "recipe()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Poison_Cloud.py:L9 | neighbors=[VFX_Poison_Cloud.py] | lang=en
+- "src_vfx_projectile_dark_rationale_1": "VFX_Projectile_Dark: Shadow orb projectile; paired with VFX_Dark_Vortex on arriv" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Projectile_Dark.py:L1 | neighbors=[VFX_Projectile_Dark.py] | lang=en
+- "src_vfx_projectile_dark_recipe": "recipe()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Projectile_Dark.py:L9 | neighbors=[VFX_Projectile_Dark.py] | lang=en
+- "src_vfx_projectile_fire_rationale_1": "VFX_Projectile_Fire: Fireball projectile; paired with VFX_Fire_Explosion on arri" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Projectile_Fire.py:L1 | neighbors=[VFX_Projectile_Fire.py] | lang=en
+- "src_vfx_projectile_fire_recipe": "recipe()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Projectile_Fire.py:L9 | neighbors=[VFX_Projectile_Fire.py] | lang=en
+- "src_vfx_projectile_ice_rationale_1": "VFX_Projectile_Ice: Ice lance projectile; paired with VFX_Ice_Spikes on arrival." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Projectile_Ice.py:L1 | neighbors=[VFX_Projectile_Ice.py] | lang=en
+- "src_vfx_projectile_ice_recipe": "recipe()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/assets/examples/src/VFX_Projectile_Ice.py:L9 | neighbors=[VFX_Projectile_Ice.py] | lang=en
 
 ## Instructions
 

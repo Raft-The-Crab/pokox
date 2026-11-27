@@ -1,4 +1,4 @@
-# Node Description Batch 163 of 208
+# Node Description Batch 163 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -19,51 +19,53 @@ relations (neighbors) and the provided citations/evidence — e.g.
 Ground entity descriptions in the citations/evidence when present; do not
 speculate beyond the context, so a node with no supporting context may be
 left out of the reply.
-Write every description in English (en). Do not switch languages.
+LANGUAGE: each entry has a `lang=` marker giving the language of its source.
+Write that entry's description in EXACTLY that language. Do not translate to
+a single common language — match each node's source language individually.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "device_fallback_clear_backends_shutdown": "shutdown()" | kind=code-symbol | source=engine/rhi/src/device/fallback_clear_backends.cpp:L29 | neighbors=[fallback_clear_backends.cpp]
-- "device_fallback_clear_backends_vulkanclearbackend_vulkanclearbackend": ".VulkanClearBackend()" | kind=code-symbol | source=engine/rhi/include/poko/rhi/device/fallback_clear_backends.hpp:L12 | neighbors=[VulkanClearBackend]
-- "device_fallback_clear_demo_main": "main()" | kind=code-symbol | source=engine/rhi/src/device/fallback_clear_demo.cpp:L14 | neighbors=[fallback_clear_demo.cpp]
-- "device_opengl_clear_renderer_impl": "Impl()" | kind=code-symbol | source=engine/rhi/src/device/opengl_clear_renderer.cpp:L105 | neighbors=[opengl_clear_renderer.cpp]
-- "device_opengl_clear_renderer_openglclearrenderer_openglclearrenderer": ".OpenGLClearRenderer()" | kind=code-symbol | source=engine/rhi/include/poko/rhi/device/opengl_clear_renderer.hpp:L15 | neighbors=[OpenGLClearRenderer()]
-- "device_opengl_clear_renderer_sdlplatform": "SdlPlatform" | kind=code-symbol | source=engine/rhi/include/poko/rhi/device/opengl_clear_renderer.hpp:L5 | neighbors=[opengl_clear_renderer.cpp]
-- "device_opengles_clear_backend_clear_and_present": "clear_and_present()" | kind=code-symbol | source=engine/rhi/src/device/opengles_clear_backend.cpp:L7 | neighbors=[opengles_clear_backend.cpp]
-- "device_opengles_clear_backend_initialize": "initialize()" | kind=code-symbol | source=engine/rhi/src/device/opengles_clear_backend.cpp:L3 | neighbors=[opengles_clear_backend.cpp]
-- "device_opengles_clear_backend_openglesclearbackend_openglesclearbackend": ".OpenGLESClearBackend()" | kind=code-symbol | source=engine/rhi/include/poko/rhi/device/opengles_clear_backend.hpp:L14 | neighbors=[OpenGLESClearBackend]
-- "device_opengles_clear_backend_shutdown": "shutdown()" | kind=code-symbol | source=engine/rhi/src/device/opengles_clear_backend.cpp:L10 | neighbors=[opengles_clear_backend.cpp]
-- "device_opengles_clear_renderer_clear_and_present": "clear_and_present()" | kind=code-symbol | source=engine/rhi/src/device/opengles_clear_renderer.cpp:L114 | neighbors=[opengles_clear_renderer.cpp]
-- "device_opengles_clear_renderer_clear_and_verify": "clear_and_verify()" | kind=code-symbol | source=engine/rhi/src/device/opengles_clear_renderer.cpp:L124 | neighbors=[opengles_clear_renderer.cpp]
-- "device_opengles_clear_renderer_framebuffer_is_srgb": "framebuffer_is_srgb()" | kind=code-symbol | source=engine/rhi/src/device/opengles_clear_renderer.cpp:L167 | neighbors=[opengles_clear_renderer.cpp]
-- "device_opengles_clear_renderer_openglclearesrenderer_openglclearesrenderer": ".OpenGLClearESRenderer()" | kind=code-symbol | source=engine/rhi/include/poko/rhi/device/opengles_clear_renderer.hpp:L14 | neighbors=[OpenGLClearESRenderer()]
-- "device_opengles_clear_renderer_read_center_pixel": "read_center_pixel()" | kind=code-symbol | source=engine/rhi/src/device/opengles_clear_renderer.cpp:L140 | neighbors=[opengles_clear_renderer.cpp]
-- "device_opengles_native_activity_on_app_cmd": "on_app_cmd()" | kind=code-symbol | source=engine/rhi/src/device/opengles_native_activity.cpp:L180 | neighbors=[opengles_native_activity.cpp]
-- "device_poko_jni_java_com_poko_glesclear_pokoactivity_nativesurfacedestroyed": "Java_com_poko_glesclear_PokoActivity_nativeSurfaceDestroyed()" | kind=code-symbol | source=engine/rhi/src/device/poko_jni.cpp:L131 | neighbors=[poko_jni.cpp]
-- "device_read_spirv_read_spirv": "read_spirv()" | kind=code-symbol | source=engine/rhi/src/device/read_spirv.hpp:L10 | neighbors=[read_spirv.hpp]
-- "device_swapchain_frame_loop_run_swapchain_frame": "run_swapchain_frame()" | kind=code-symbol | source=engine/rhi/src/device/swapchain_frame_loop.hpp:L45 | neighbors=[swapchain_frame_loop.hpp]
-- "device_vulkan_clear_android_clear_and_present": "clear_and_present()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_clear_android.cpp:L226 | neighbors=[vulkan_clear_android.cpp]
-- "device_vulkan_clear_android_destroy_swapchain_resources": "destroy_swapchain_resources()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_clear_android.cpp:L147 | neighbors=[vulkan_clear_android.cpp]
-- "device_vulkan_clear_android_vulkanclearandroidrenderer_vulkanclearandroidrenderer": ".VulkanClearAndroidRenderer()" | kind=code-symbol | source=engine/rhi/include/poko/rhi/device/vulkan_clear_android.hpp:L13 | neighbors=[VulkanClearAndroidRenderer()]
-- "device_vulkan_clear_demo_main": "main()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_clear_demo.cpp:L16 | neighbors=[vulkan_clear_demo.cpp]
-- "device_vulkan_clear_renderer_sdlplatform": "SdlPlatform" | kind=code-symbol | source=engine/rhi/include/poko/rhi/device/vulkan_clear_renderer.hpp:L7 | neighbors=[vulkan_clear_renderer.cpp]
-- "device_vulkan_clear_renderer_vulkanclearrenderer_vulkanclearrenderer": ".VulkanClearRenderer()" | kind=code-symbol | source=engine/rhi/include/poko/rhi/device/vulkan_clear_renderer.hpp:L30 | neighbors=[VulkanClearRenderer()]
-- "device_vulkan_imgui_pass_draw": "draw()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_imgui_pass.cpp:L341 | neighbors=[vulkan_imgui_pass.cpp]
-- "device_vulkan_imgui_pass_impl": "Impl()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_imgui_pass.cpp:L34 | neighbors=[vulkan_imgui_pass.cpp]
-- "device_vulkan_imgui_pass_vulkandiagnostics": "VulkanDiagnostics" | kind=code-symbol | source=engine/rhi/include/poko/rhi/device/vulkan_imgui_pass.hpp:L7 | neighbors=[vulkan_imgui_pass.cpp]
-- "device_vulkan_imgui_pass_vulkanimguipass_vulkanimguipass": ".VulkanImGuiPass()" | kind=code-symbol | source=engine/rhi/include/poko/rhi/device/vulkan_imgui_pass.hpp:L24 | neighbors=[VulkanImGuiPass()]
-- "device_vulkan_mesh_pass_impl": "Impl()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_mesh_pass.cpp:L39 | neighbors=[vulkan_mesh_pass.cpp]
-- "device_vulkan_mesh_pass_set_light_direction": "set_light_direction()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_mesh_pass.cpp:L196 | neighbors=[vulkan_mesh_pass.cpp]
-- "device_vulkan_mesh_pass_set_mesh": "set_mesh()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_mesh_pass.cpp:L204 | neighbors=[vulkan_mesh_pass.cpp]
-- "device_vulkan_mesh_pass_set_view_proj": "set_view_proj()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_mesh_pass.cpp:L199 | neighbors=[vulkan_mesh_pass.cpp]
-- "device_vulkan_mesh_pass_vulkandiagnostics": "VulkanDiagnostics" | kind=code-symbol | source=engine/rhi/include/poko/rhi/device/vulkan_mesh_pass.hpp:L10 | neighbors=[vulkan_mesh_pass.cpp]
-- "device_vulkan_mesh_pass_vulkanmeshpass_vulkanmeshpass": ".VulkanMeshPass()" | kind=code-symbol | source=engine/rhi/include/poko/rhi/device/vulkan_mesh_pass.hpp:L28 | neighbors=[VulkanMeshPass()]
-- "device_vulkan_triangle_pass_impl": "Impl()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_triangle_pass.cpp:L42 | neighbors=[vulkan_triangle_pass.cpp]
-- "device_vulkan_triangle_pass_vulkandiagnostics": "VulkanDiagnostics" | kind=code-symbol | source=engine/rhi/include/poko/rhi/device/vulkan_triangle_pass.hpp:L7 | neighbors=[vulkan_triangle_pass.cpp]
-- "device_vulkan_triangle_pass_vulkantrianglepass_vulkantrianglepass": ".VulkanTrianglePass()" | kind=code-symbol | source=engine/rhi/include/poko/rhi/device/vulkan_triangle_pass.hpp:L17 | neighbors=[VulkanTrianglePass()]
-- "docref_rfc_6455": "RFC-6455" | kind=entity | source=.agents/skills/superpowers-main/tests/brainstorm-server/ws-protocol.test.js:L51 | neighbors=[ws-protocol.test.js]
-- "dunedesert_dune_map_foot": "foot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L125 | neighbors=[dune_map.py]
+- "cavemap_cave_props3_rationale_164": "stone ring, teepee logs, flame tongues + embers (glow), a spit on Y-sticks with" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props3.py:L164 | neighbors=[campfire_pit()] | lang=en
+- "cavemap_cave_props3_rationale_185": "notice board: two posts on stone feet, plank board with a frame, a little shingl" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props3.py:L185 | neighbors=[quest_board()] | lang=pt
+- "cavemap_cave_props3_rationale_205": "split-log bench on two chunk feet" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props3.py:L205 | neighbors=[log_seat()] | lang=en
+- "cavemap_cave_props3_rationale_214": "DEEP-DIVE ELEVATOR: timber headframe (two leaning A-frames with ties + braces) c" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props3.py:L214 | neighbors=[deep_lift()] | lang=en
+- "cavemap_cave_props3_rationale_26": "ORE EXCHANGE: a timber mine-office shed on a plank deck with log sills: board wa" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props3.py:L26 | neighbors=[mine_shop()] | lang=pt
+- "cavemap_cave_props3_rationale_269": "SPORE BREWERY: a stone hearth under a fat iron cauldron of glowing brew, small f" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props3.py:L269 | neighbors=[brew_station()] | lang=pt
+- "cavemap_cave_props3_rationale_298": "spawn platform: layered round stone plinth (sloped lip, walkable), slab ring on" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props3.py:L298 | neighbors=[spawn_dais()] | lang=en
+- "cavemap_cave_props3_rationale_318": "waterfall from a ceiling crack (origin = bottom centre at the lake surface, wall" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props3.py:L318 | neighbors=[cave_falls()] | lang=en
+- "cavemap_cave_props3_rationale_354": "shallow puddle on the floor: a flat irregular water film with a lit rim + a few" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props3.py:L354 | neighbors=[glow_puddle()] | lang=pt
+- "cavemap_cave_props3_rationale_365": "glow-worm colony on the vault (origin at the top, hangs): fine silk threads of d" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props3.py:L365 | neighbors=[glow_worms()] | lang=en
+- "cavemap_cave_props3_rationale_376": "ring round the top of the sun shaft (origin = ring centre at the rim height): la" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props3.py:L376 | neighbors=[skylight_lip()] | lang=en
+- "cavemap_cave_props3_rationale_392": "THE GLOWROOT (hero): an ancient root mass that grew down from the vault to the l" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props3.py:L392 | neighbors=[glowroot()] | lang=en
+- "cavemap_cave_props3_rationale_7": "a wall of vertical boards between x0..x1 (y0..y1) at depth z, rotated by yaw abo" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props3.py:L7 | neighbors=[boards()] | lang=en
+- "cavemap_cave_props3_rationale_79": "CRYSTAL FORGE: an ashlar beehive kiln with a glowing arched mouth and a banded s" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props3.py:L79 | neighbors=[crystal_forge()] | lang=en
+- "cavemap_hooks_lua_lua_attrs": "lua_attrs()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/hooks_lua.py:L6 | neighbors=[hooks_lua.py] | lang=en
+- "cavemap_palette_sheet_rgb": "rgb()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/palette_sheet.py:L9 | neighbors=[palette_sheet.py] | lang=en
+- "cavemap_post_export_kind": "kind()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/post_export.py:L11 | neighbors=[post_export.py] | lang=en
+- "console_console_clear": "clear()" | kind=code-symbol | source=mute/src/console/console.cpp:L193 | neighbors=[console.cpp] | lang=en
+- "console_console_console_input_full": "console_input_full()" | kind=code-symbol | source=mute/src/console/console.cpp:L117 | neighbors=[console.cpp] | lang=en
+- "creaturelab_lab_map_look": "look()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_map.py:L577 | neighbors=[lab_map.py] | lang=en
+- "creaturelab_lab_map_material_skin": "material_skin()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_map.py:L615 | neighbors=[lab_map.py] | lang=en
+- "creaturelab_lab_props_loft": "loft()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L59 | neighbors=[lab_props.py] | lang=en
+- "creaturelab_lab_props_rationale_1031": "chunky stylised leaf mass: a blob + a few smaller blobs around (canopy, bush)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1031 | neighbors=[leaf_ball()] | lang=pt
+- "creaturelab_lab_props_rationale_1141": "low wide pot with arching fern fronds (both sides modelled)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1141 | neighbors=[potted_fern()] | lang=en
+- "creaturelab_lab_props_rationale_1245": "flat-bottomed cumulus for the sky (SmoothPlastic white)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1245 | neighbors=[cloud()] | lang=en
+- "creaturelab_lab_props_rationale_1766": "water cooler: white cabinet with a sky front, upturned blue water bottle (glass)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1766 | neighbors=[water_cooler()] | lang=en
+- "creaturelab_lab_props_rationale_254": "small round pot + leafy sprouts (used on counters, desks)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L254 | neighbors=[pot_plant()] | lang=en
+- "creaturelab_lab_props_rationale_471": "two curved arrows chasing each other in a circle (trade icon, a shape)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L471 | neighbors=[swap_icon()] | lang=pt
+- "creaturelab_lab_props_rationale_737": "the portal between the hall and the lab wing (fits an 18 wide x 17 tall opening)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L737 | neighbors=[lab_archway()] | lang=en
+- "creaturelab_lab_props_skel_init": ".__init__()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1940 | neighbors=[Skel] | lang=en
+- "debug_vulkan_diagnostics_capture": "capture()" | kind=code-symbol | source=engine/rhi/src/debug/vulkan_diagnostics.cpp:L22 | neighbors=[vulkan_diagnostics.cpp] | lang=en
+- "debug_vulkan_diagnostics_filter_is_environment_layer_version_warning": "is_environment_layer_version_warning()" | kind=code-symbol | source=engine/rhi/src/debug/vulkan_diagnostics_filter.cpp:L4 | neighbors=[vulkan_diagnostics_filter.cpp] | lang=en
+- "debug_vulkan_diagnostics_impl": "Impl()" | kind=code-symbol | source=engine/rhi/src/debug/vulkan_diagnostics.cpp:L51 | neighbors=[vulkan_diagnostics.cpp] | lang=en
+- "debug_vulkan_diagnostics_vulkandiagnostics_vulkandiagnostics": ".VulkanDiagnostics()" | kind=code-symbol | source=engine/rhi/include/poko/rhi/debug/vulkan_diagnostics.hpp:L15 | neighbors=[VulkanDiagnostics()] | lang=en
+- "device_clear_backend_selection_clear_and_present": "clear_and_present()" | kind=code-symbol | source=engine/rhi/src/device/clear_backend_selection.cpp:L39 | neighbors=[clear_backend_selection.cpp] | lang=en
+- "device_clear_backend_selection_clearbackend_clearbackend": ".ClearBackend()" | kind=code-symbol | source=engine/rhi/include/poko/rhi/device/clear_backend_selection.hpp:L12 | neighbors=[ClearBackend] | lang=en
+- "device_clear_backend_selection_clearbackendselection_clearbackendselection": ".ClearBackendSelection()" | kind=code-symbol | source=engine/rhi/include/poko/rhi/device/clear_backend_selection.hpp:L35 | neighbors=[ClearBackendSelection()] | lang=en
+- "device_fallback_clear_backends_clear_and_present": "clear_and_present()" | kind=code-symbol | source=engine/rhi/src/device/fallback_clear_backends.cpp:L24 | neighbors=[fallback_clear_backends.cpp] | lang=en
+- "device_fallback_clear_backends_initialize": "initialize()" | kind=code-symbol | source=engine/rhi/src/device/fallback_clear_backends.cpp:L6 | neighbors=[fallback_clear_backends.cpp] | lang=en
+- "device_fallback_clear_backends_openglclearbackend_openglclearbackend": ".OpenGLClearBackend()" | kind=code-symbol | source=engine/rhi/include/poko/rhi/device/fallback_clear_backends.hpp:L30 | neighbors=[OpenGLClearBackend] | lang=en
 
 ## Instructions
 

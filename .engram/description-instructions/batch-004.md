@@ -1,4 +1,4 @@
-# Node Description Batch 5 of 208
+# Node Description Batch 5 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -17,12 +17,15 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "valleylake_valley_props_flat": "flat()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L61 | neighbors=[valley_props.py, barrel(), blossom_tree(), bush(), dock(), flower_patch()]
+- "warehouse_wh_props": "wh_props.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_props.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, beam_pair(), carton(), drum_bm(), floor_pallet()]
+- "brick_arcane_train_brick": "arcane_train_brick.py" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/arcane_train_brick.py:L1 | neighbors=[B(), box(), build(), cyly(), cylz(), disc_x()]
+- "bytecode_bytecode": "bytecode.cpp" | kind=code-symbol | source=mute/src/bytecode/bytecode.cpp:L1 | neighbors=[assemble_bytecode(), branch(), branch_offset(), decode_bytecode(), disassemble_bytecode(), encode_bytecode()]
+- "candyland_candy_props_round_prof": "round_prof()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L96 | neighbors=[candy_props.py, bakery_oven(), biscuit_bridge(), candy_castle(), candy_lamp(), cone_tower()]
 - "creaturelab_lab_props_capsule": "capsule()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L133 | neighbors=[lab_props.py, catch_ball(), capsule_prop(), capsule_shelf(), capsule_statue(), cradle()]
-- "device_vulkan_clear_android": "vulkan_clear_android.cpp" | kind=code-symbol | source=engine/rhi/src/device/vulkan_clear_android.cpp:L1 | neighbors=[2960ac1 Android Vulkan clear: no fence …, 52dbcb9 Surface graphics warnings in X1…, 9eeb3ff Merge pull request #2 from Raft…, clear_and_present(), destroy_swapchain_resources(), initialize()]
 - "fishcenter_fish_props_lerp": "lerp()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L42 | neighbors=[fish_props.py, bait_shop(), barrel(), boat_hull(), hammock_palms(), lighthouse()]
 - "moonclean_moon_props_lathe": "lathe()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L48 | neighbors=[moon_props.py, beacon_post(), crater(), dish(), dust_exchange(), egg()]
 - "petsim_pet_map_place": "place()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L132 | neighbors=[pet_map.py, breakables(), candy(), crystal(), egg_stand(), fence_ring()]
-- "semantic_semantic": "semantic.cpp" | kind=code-symbol | source=mute/src/semantic/semantic.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, accepts(), analyze(), Analyzer, dump_semantic(), generic_arity()]
 - "skyrise_sky_models2": "sky_models2.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models2.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, basalt_rocks(), bottle(), cactus(), chest()]
 - "skyrise_sky_models4": "sky_models4.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models4.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, ash_pile(), blade(), bridge(), dry_shrub()]
 - "sugarworks_sugar_map": "sugar_map.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_map.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, build(), face(), free(), ground()]
@@ -32,9 +35,9 @@ one-sentence description — no prose, no markdown fences.
 - "towncity_city_paint": "city_paint.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/city_paint.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, area(), atlas(), axes_of(), block()]
 - "unit_action_map_test": "action_map_test.cpp" | kind=code-symbol | source=mute/tests/unit/action_map_test.cpp:L1 | neighbors=[952997e Audit MUT-01-55 and harden veri…, apply_events(), axis(), game_map(), kb(), key()]
 - "unit_emit_test": "emit_test.cpp" | kind=code-symbol | source=mute/tests/unit/emit_test.cpp:L1 | neighbors=[335e0dc Add MUT-26 IR-to-bytecode emitt…, 85b7130 Close MUT-26 limits: AST-to-SSA…, 952997e Audit MUT-01-55 and harden veri…, arith_module(), calls_module(), cases()]
+- "unit_opengl_clear_faults": "opengl_clear_faults.cpp" | kind=code-symbol | source=engine/rhi/tests/unit/opengl_clear_faults.cpp:L1 | neighbors=[f4a6ac4 Allowlist known validation-laye…, bind(), get_attachment(), get_error(), get_int(), GetEngineFactoryOpenGL()]
 - "vfxkit_lint": "lint.py" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/lint.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, authoring.py, colours(), compare_elements(), documented_textures()]
 - "vfxkit_unity": "unity.py" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/unity.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, _blob(), bottom_inset(), export(), _inner_gradient()]
-- "bytecode_bytecode": "bytecode.cpp" | kind=code-symbol | source=mute/src/bytecode/bytecode.cpp:L1 | neighbors=[assemble_bytecode(), branch(), branch_offset(), decode_bytecode(), disassemble_bytecode(), encode_bytecode()]
 - "cad_skill_main_preview": "preview.py" | kind=code-symbol | source=.agents/skills/cad-skill-main/preview.py:L1 | neighbors=[_add_edges(), _build_grid(), _build_scene(), _get_font(), _info_lines(), main()]
 - "candyland_candy_props_candy_castle": "candy_castle()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L661 | neighbors=[candy_props.py, ball(), cone_tower(), drip_ring(), lathe(), MS()]
 - "creaturelab_lab_props_lerp": "lerp()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L45 | neighbors=[lab_props.py, _dense(), fig_tree(), hall_ceiling(), heal_counter(), monstera()]
@@ -45,7 +48,6 @@ one-sentence description — no prose, no markdown fences.
 - "medievalbattle_battle_props_sundered_bridge": "sundered_bridge()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L549 | neighbors=[battle_props.py, 4-span stone bridge along X (abutments …, ash_sh(), ashlar(), bar(), course_wall()]
 - "petsim_pet_map_build": "build()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L596 | neighbors=[pet_map.py, build_solid(), candy(), crystal(), edge_pt(), frame()]
 - "towncity_town_props_add": "add()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_props.py:L67 | neighbors=[town_props.py, ac_unit(), antenna(), awning_band(), building(), deco_window()]
-- "unit_opengl_clear_faults": "opengl_clear_faults.cpp" | kind=code-symbol | source=engine/rhi/tests/unit/opengl_clear_faults.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, bind(), get_attachment(), get_error(), get_int(), GetEngineFactoryOpenGL()]
 - "unit_test_verify_desktop_evidencetests": "EvidenceTests" | kind=code-symbol | source=engine/rhi/tests/unit/test_verify_desktop.py:L18 | neighbors=[test_verify_desktop.py, .simulate(), .test_bad_summaries(), .test_failed_configure_preserved(), .test_missing_executable(), .test_never_auto_accept()]
 - "valleylake_valley_map_h": "H()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L112 | neighbors=[valley_map.py, build(), build_profile(), cliff_clear(), cliffs(), ground()]
 - "valleylake_valley_map_place": "place()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L143 | neighbors=[valley_map.py, cliffs(), nature(), foot(), H(), kit()]
@@ -55,8 +57,6 @@ one-sentence description — no prose, no markdown fences.
 - "vm_debugger": "debugger.cpp" | kind=code-symbol | source=mute/src/vm/debugger.cpp:L1 | neighbors=[952997e Audit MUT-01-55 and harden veri…, add_breakpoint(), clear_breakpoints(), finish(), finished(), has_breakpoint()]
 - "voidrealm_void_props_chamfer_box": "chamfer_box()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L102 | neighbors=[void_props.py, arena_rim(), brazier(), crystal_lantern(), pillar(), quest_stand()]
 - "cad_skill_main_gridfinity": "gridfinity.py" | kind=code-symbol | source=.agents/skills/cad-skill-main/gridfinity.py:L1 | neighbors=[_Compartments, _compound(), _corner_radii(), _CylinderPocket, _fused(), GridfinityBin]
-- "cad_skill_main_gridfinity_gridfinitybin_build": ".build()" | kind=code-symbol | source=.agents/skills/cad-skill-main/gridfinity.py:L438 | neighbors=[GridfinityBin, _compound(), _fused(), ._base_cells(), ._base_hole_cutter(), ._body()]
-- "candyland_candy_props_ball": "ball()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L121 | neighbors=[candy_props.py, bakery_oven(), candy_castle(), candy_flower(), candy_lamp(), cone_tower()]
 
 ## Instructions
 

@@ -1,4 +1,4 @@
-# Node Description Batch 7 of 208
+# Node Description Batch 7 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -24,12 +24,18 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "creaturelab_lab_props_catch_ball": "catch_ball()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1844 | neighbors=[lab_props.py, ball_lineup(), capsule(), ball(), _ball_sh(), leaf_poly()]
+- "creaturelab_lab_props_upright": "upright()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L95 | neighbors=[lab_props.py, art_frame(), emblem(), ext_bench(), heal_machine(), lab_archway()]
+- "device_opengles_clear_renderer": "opengles_clear_renderer.cpp" | kind=code-symbol | source=engine/rhi/src/device/opengles_clear_renderer.cpp:L1 | neighbors=[f4a6ac4 Allowlist known validation-laye…, clear_and_present(), clear_and_verify(), framebuffer_is_srgb(), initialize(), initialize_impl()]
+- "dunedesert_gen_trees_with_palms_canvas": "Canvas" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L114 | neighbors=[gen_trees_with_palms.py, .capsule_path(), .finish(), .grid(), .__init__(), .leaf()]
 - "effekseer_ai_authoring": "authoring.py" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/authoring.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, _code(), compile_effect(), cutoff_easing(), layer_schema()]
 - "gles_clear_pokoactivity_pokoactivity": "PokoActivity" | kind=code-symbol | source=engine/rhi/android/gles-clear/PokoActivity.java:L11 | neighbors=[PokoActivity.java, Activity, Callback, .nativeInit(), .nativeSetSurface(), .nativeSurfaceDestroyed()]
 - "hermes_test_plugin_load_plugin": "_load_plugin()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/hermes/test_plugin.py:L20 | neighbors=[test_plugin.py, Re-import plugin module fresh., .test_first_turn_returns_bootstrap_cont…, .test_hook_tolerates_future_kwargs(), .test_later_turns_return_none(), .test_non_subagent_platforms_receive_bo…]
 - "input_action_map_find": "find()" | kind=code-symbol | source=mute/src/input/action_map.cpp:L83 | neighbors=[action_map.cpp, add_binding(), bindings(), clear_bindings(), contains(), define_action()]
+- "lexer_lexer": "lexer.cpp" | kind=code-symbol | source=mute/src/lexer/lexer.cpp:L1 | neighbors=[f4a6ac4 Allowlist known validation-laye…, decode(), digit(), digit_for(), is_continue(), is_start()]
 - "moonclean_moon_map_place": "place()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_map.py:L169 | neighbors=[moon_map.py, crater_ramp(), craters(), hub(), peak(), foot()]
 - "moonclean_moon_map_zone": "zone()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_map.py:L412 | neighbors=[moon_map.py, build(), face(), free(), Hm(), on_ramp()]
+- "passes_imgui_demo": "imgui_demo.cpp" | kind=code-symbol | source=engine/render/src/passes/imgui_demo.cpp:L1 | neighbors=[f4a6ac4 Allowlist known validation-laye…, Exception, build_demo_window(), composite(), ensure_gpu_timer(), feed_imgui_event()]
 - "petsim_pet_map_link": "link()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L286 | neighbors=[pet_map.py, build(), anchor(), edge_pt(), face(), H()]
 - "petsim_pet_props_puff": "puff()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L70 | neighbors=[pet_props.py, cloud(), crystal_clump(), crystal_spire(), egg_stand(), pet_statue()]
 - "refmatch_compare_evaluate": "evaluate()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/refmatch/compare.py:L442 | neighbors=[compare.py, band_errors(), band_widths(), bbox_report(), hist_correlation(), load_alpha()]
@@ -40,11 +46,12 @@ one-sentence description — no prose, no markdown fences.
 - "skyrise_sky_map_micro_detail": "micro_detail()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_map.py:L332 | neighbors=[sky_map.py, build(), ext(), free(), island_at(), kit()]
 - "skyrise_sky_map_zone_island": "zone_island()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_map.py:L277 | neighbors=[sky_map.py, build(), face(), free(), island_at(), maker()]
 - "skyrise_sky_props_sphere": "sphere()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L58 | neighbors=[sky_props.py, bridge(), bush(), cactus(), chest(), cloud()]
+- "src_logging": "logging.cpp" | kind=code-symbol | source=engine/foundation/src/logging.cpp:L1 | neighbors=[f4a6ac4 Allowlist known validation-laye…, critical(), debug(), emit(), error(), info()]
 - "stdlib_stdlib_crypto": "stdlib_crypto.cpp" | kind=code-symbol | source=mute/src/stdlib/stdlib_crypto.cpp:L1 | neighbors=[60d8044 Mute crypto hostcalls: fail exp…, 952997e Audit MUT-01-55 and harden veri…, 9eeb3ff Merge pull request #2 from Raft…, append_u32_be(), compress(), crypto_hostcall_defs()]
 - "tests_test_sequence": "test_sequence.py" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_sequence.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, test_a_blockout_sequence_needs_blockout…, test_blockout_lint_holds_recipes_to_mat…, test_detail_needs_the_blockout_gate_and…, test_game_frames_become_evidence_and_a_…]
 - "texture_tex_to_maps": "tex_to_maps.py" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/texture/tex_to_maps.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, blur(), derive_ao(), derive_normal(), derive_roughness()]
+- "unit_evaluator_test": "evaluator_test.cpp" | kind=code-symbol | source=mute/tests/unit/evaluator_test.cpp:L1 | neighbors=[f4a6ac4 Allowlist known validation-laye…, bindings(), cases(), check(), deep(), error_case()]
 - "unit_optimize_test": "optimize_test.cpp" | kind=code-symbol | source=mute/tests/unit/optimize_test.cpp:L1 | neighbors=[e499073 Add MUT-29 dead-code eliminatio…, cases(), check(), count_instrs(), count_op(), i32t()]
-- "unit_sdl_platform_faults": "sdl_platform_faults.cpp" | kind=code-symbol | source=engine/platform/tests/unit/sdl_platform_faults.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, Exception, main(), push(), SDL_CreateWindow(), SDL_DestroyWindow()]
 - "vfxkit_workflow": "workflow.py" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/workflow.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, absolute(), digest(), effect_id(), file_hash()]
 - "whispering_grove_forest_props_elder_tree": "elder_tree()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L512 | neighbors=[forest_props.py, arch_cap(), arch_frame(), arch_prism(), arch_tunnel(), at()]
 - "blender_character_blockout": "character_blockout.py" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/blender/character_blockout.py:L1 | neighbors=[box(), build(), capsule(), get_collection(), link(), purge_scene()]
@@ -57,13 +64,6 @@ one-sentence description — no prose, no markdown fences.
 - "cavemap_cave_props_v": "V()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L34 | neighbors=[cave_props.py, add_crystal(), flowstone_curtain(), geode(), glow_vine(), mound()]
 - "cavemap_cave_props2_w": "W()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L10 | neighbors=[cave_props2.py, crates(), mine_cart(), mine_frame(), mine_lantern_post(), ore_pile()]
 - "commit:repo:github.com/Raft-The-Crab/pokox@6568dc953fff853264807a3c4242300ec826ce6e": "6568dc9 Update from ML AI Code" | kind=Commit | source=git | neighbors=[pkb_schema.hpp, session.hpp, main, 6e2fe3a Created BAK-7 and other BAK tas…, revocation_gate.hpp, worker_auth.hpp]
-- "commit:repo:github.com/Raft-The-Crab/pokox@85b7130e02b055babd8c6b7c59480aab90c62e41": "85b7130 Close MUT-26 limits: AST-to-SSA lowering and load_imm literals" | kind=Commit | source=git | neighbors=[45151c3 Refresh graph after MUT-26 emit…, main, bytecode.cpp, d14bc19 Refresh graph after MUT-26 lowe…, test_version.py, bytecode.hpp]
-- "creaturelab_lab_props_emblem": "emblem()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L110 | neighbors=[lab_props.py, leaf_poly(), .add(), upright(), emblem_badge(), floor_mat()]
-- "debug_vulkan_diagnostics": "vulkan_diagnostics.cpp" | kind=code-symbol | source=engine/rhi/src/debug/vulkan_diagnostics.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, f4a6ac4 Allowlist known validation-laye…, capture(), Impl(), messages(), since()]
-- "device_opengles_clear_renderer": "opengles_clear_renderer.cpp" | kind=code-symbol | source=engine/rhi/src/device/opengles_clear_renderer.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, clear_and_present(), clear_and_verify(), framebuffer_is_srgb(), initialize(), initialize_impl()]
-- "dunedesert_dune_map_place": "place()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L133 | neighbors=[dune_map.py, dig_spots(), fragments(), nature(), add_owner(), fit()]
-- "dunedesert_dune_props_lerp": "lerp()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L46 | neighbors=[dune_props.py, dry_shrub(), grid_quad(), obelisk_fallen(), outcrop(), pylon_gate()]
-- "extensions_superpowers": "superpowers.ts" | kind=code-symbol | source=.agents/skills/superpowers-main/.pi/extensions/superpowers.ts:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, bootstrapSkillPath, extensionDir, firstNonCompactionSummaryIndex(), getBootstrapContent()]
 
 ## Instructions
 

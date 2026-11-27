@@ -1,4 +1,4 @@
-# Node Description Batch 15 of 208
+# Node Description Batch 15 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -24,6 +24,18 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "whispering_grove_forest_props_prop_gadd": ".gadd()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L39 | neighbors=[altar(), campfire(), crystal_cluster(), elder_tree(), lantern_post(), mushroom()]
+- "animation_build_animations": "build_animations.py" | kind=code-symbol | source=assets/characters/animation/build_animations.py:L1 | neighbors=[foot(), interp(), loc(), rot(), smooth(), f4a6ac4 Allowlist known validation-laye…]
+- "brainstorm_server_branding_test_assert": "assert" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/branding.test.js:L9 | neighbors=[branding.test.js, assertBrandedFallbackText(), assertBrandedWithLogo(), assertFramedLogoSupportsDarkTheme(), assertFramedScreenUsesBrandHeader(), assertHeaderAvoidsNarrowOverlap()]
+- "brainstorm_server_ws_protocol_test": "ws-protocol.test.js" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/ws-protocol.test.js:L1 | neighbors=[assert, crypto, path, runTests(), SERVER_PATH, RFC-6455]
+- "brick_bone_hydra_brick_full": "full()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/bone_hydra_brick.py:L39 | neighbors=[bone_hydra_brick.py, cap(), crack(), keep_main(), obox(), oell()]
+- "brick_bone_hydra_brick_sl_of": "sl_of()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/bone_hydra_brick.py:L36 | neighbors=[bone_hydra_brick.py, cap(), head(), obox(), oell(), rblock()]
+- "cad_skill_main_outline_from_scan": "outline_from_scan.py" | kind=code-symbol | source=.agents/skills/cad-skill-main/outline_from_scan.py:L1 | neighbors=[align_and_scale(), main(), max_section_outline(), recentered(), rotate_min_square(), Extract a 2D pocket outline from a 3D s…]
+- "candyland_candy_map_place": "place()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_map.py:L132 | neighbors=[candy_map.py, build(), add_owner(), fit(), kit(), sub()]
+- "candyland_candy_props_candy_lamp": "candy_lamp()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L1104 | neighbors=[candy_props.py, ball(), lathe(), MS(), round_prof(), striped_tube()]
+- "candyland_candy_props_choco_falls": "choco_falls()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L770 | neighbors=[candy_props.py, bell_r(), icing_cap(), lathe(), soft(), sugar()]
+- "candyland_candy_props_drip_ring": "drip_ring()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L186 | neighbors=[candy_props.py, bakery_oven(), candy_castle(), cone_tower(), cupcake_fountain(), drip()]
+- "candyland_candy_props_sign_plate": "sign_plate()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L226 | neighbors=[candy_props.py, bakery_oven(), egg_machine(), gumball_machine(), quest_stand(), blank wafer sign: cream face in a beade…]
 - "canyonbazaar_canyon_map_cx": "cx()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_map.py:L30 | neighbors=[canyon_map.py, dcx(), nature(), path_x(), set_pieces(), sight_x()]
 - "canyonbazaar_canyon_props_brass_lantern": "brass_lantern()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_props.py:L84 | neighbors=[canyon_props.py, carved_stair(), lantern_post(), market_gate(), parapet_niche(), quest_board()]
 - "cavemap_cave_map_ceil_y": "ceil_y()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_map.py:L236 | neighbors=[cave_map.py, H(), dripstone(), landmarks(), place_soft(), inner shell height above (x, z) by rayc…]
@@ -47,23 +59,11 @@ one-sentence description — no prose, no markdown fences.
 - "creaturelab_lab_props_shelf_frame": "shelf_frame()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L284 | neighbors=[lab_props.py, capsule_shelf(), med_shelf(), potion_shelf(), open shelving: side panels, back panel,…, rbox()]
 - "creaturelab_lab_props_skel": "Skel" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1939 | neighbors=[lab_props.py, fiddle_fig(), olive_tree(), park_tree(), .add(), .grow()]
 - "creaturelab_lab_props_trade_desk": "trade_desk()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L481 | neighbors=[lab_props.py, trade / battle registration desk: white…, ball(), capsule(), rbox(), .add()]
+- "device_clear_backend_selection": "clear_backend_selection.cpp" | kind=code-symbol | source=engine/rhi/src/device/clear_backend_selection.cpp:L1 | neighbors=[f4a6ac4 Allowlist known validation-laye…, clear_and_present(), ClearBackend, ClearBackendSelection(), shutdown(), start()]
+- "device_fallback_clear_backends": "fallback_clear_backends.cpp" | kind=code-symbol | source=engine/rhi/src/device/fallback_clear_backends.cpp:L1 | neighbors=[f4a6ac4 Allowlist known validation-laye…, clear_and_present(), initialize(), OpenGLClearBackend, shutdown(), VulkanClearBackend]
+- "device_poko_jni": "poko_jni.cpp" | kind=code-symbol | source=engine/rhi/src/device/poko_jni.cpp:L1 | neighbors=[f4a6ac4 Allowlist known validation-laye…, Java_com_poko_glesclear_PokoActivity_na…, Java_com_poko_glesclear_PokoActivity_na…, Java_com_poko_glesclear_PokoActivity_na…, run_probe(), write_line()]
 - "device_vulkan_clear_android_initialize": "initialize()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_clear_android.cpp:L213 | neighbors=[vulkan_clear_android.cpp, make_device_objects(), make_instance(), make_surface(), make_swapchain(), pick_device()]
 - "dunedesert_dune_map_nature": "nature()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L473 | neighbors=[dune_map.py, build(), free(), on_path(), place(), reserve()]
-- "dunedesert_gen_trees_with_palms_canvas_capsule_path": ".capsule_path()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L131 | neighbors=[Canvas, .grid(), .over(), frond_atlas(), leaf_atlas(), needle_atlas()]
-- "effekseer_ai_session_effectsession_node": "._node()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L323 | neighbors=[EffectSession, .add_node(), .move_node(), .property_list(), ._property_parent(), .property_set()]
-- "effekseer_ai_session_effectsession_property_set": ".property_set()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L112 | neighbors=[EffectSession, .import_image(), ._assign_value(), ._is_exported_property(), ._node(), ._property_parent()]
-- "eggplots_egg_map_build": "build()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_map.py:L358 | neighbors=[egg_map.py, dressing(), ground(), hardscape(), lane(), plot()]
-- "eggplots_egg_map_place": "place()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_map.py:L76 | neighbors=[egg_map.py, dressing(), lane(), foot(), Hg(), kit()]
-- "eggplots_egg_props_gate_frame": "gate_frame()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L204 | neighbors=[egg_props.py, egg(), egg_finial(), lerp(), rbox(), sh()]
-- "eggplots_egg_props_stall": "stall()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L680 | neighbors=[egg_props.py, egg_shop(), market stand shell: stone footing, hone…, sell_stand(), rbox(), sh()]
-- "evaluator_evaluator_materialize": "materialize()" | kind=code-symbol | source=mute/src/evaluator/evaluator.cpp:L80 | neighbors=[evaluator.cpp, evaluate_arithmetic(), fail(), is_unsigned(), signed_max(), unsigned_max()]
-- "evaluator_evaluator_signed_binary": "signed_binary()" | kind=code-symbol | source=mute/src/evaluator/evaluator.cpp:L200 | neighbors=[evaluator.cpp, evaluate_arithmetic(), fail(), magnitude(), negative(), signed_max()]
-- "fishcenter_fish_map_edges": "edges()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L518 | neighbors=[fish_map.py, build(), arc_with_gaps(), halfang(), lp(), place()]
-- "fishcenter_fish_map_islet_grass": "islet_grass()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L376 | neighbors=[fish_map.py, build(), H(), outward(), pos(), static()]
-- "fishcenter_fish_map_ring_deck": "ring_deck()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L250 | neighbors=[fish_map.py, hardscape(), the ring boardwalk: radial planks (acro…, beam(), piling(), pos()]
-- "fishcenter_fish_map_static": "static()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L129 | neighbors=[fish_map.py, ground(), hardscape(), horizon(), islet_grass(), add_owner()]
-- "fishcenter_fish_map_stations": "stations()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L563 | neighbors=[fish_map.py, build(), anchor(), lp(), lp_y(), place()]
-- "fishcenter_fish_props_hammock_palms": "hammock_palms()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L709 | neighbors=[fish_props.py, lash(), lerp(), loft(), _merge_prop(), palm()]
 
 ## Instructions
 

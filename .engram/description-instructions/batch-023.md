@@ -1,4 +1,4 @@
-# Node Description Batch 24 of 208
+# Node Description Batch 24 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -17,6 +17,20 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "unit_character_controller_test_main": "main()" | kind=code-symbol | source=engine/physics/tests/unit/character_controller_test.cpp:L120 | neighbors=[character_controller_test.cpp, aabb(), params(), tod(), todv(), v3()]
+- "unit_config_logging_guard_test": "config_logging_guard_test.cpp" | kind=code-symbol | source=engine/foundation/tests/unit/config_logging_guard_test.cpp:L1 | neighbors=[f4a6ac4 Allowlist known validation-laye…, info(), init(), main(), shutdown(), 52dbcb9 Surface graphics warnings in X1…]
+- "unit_debugger_test_cases": "cases()" | kind=code-symbol | source=mute/tests/unit/debugger_test.cpp:L20 | neighbors=[debugger_test.cpp, arith(), check(), divzero(), imm(), pay()]
+- "unit_fold_test_cases": "cases()" | kind=code-symbol | source=mute/tests/unit/fold_test.cpp:L41 | neighbors=[fold_test.cpp, check(), count_op(), i32t(), run_source(), val()]
+- "unit_input_snapshot_test_record_hashes": "record_hashes()" | kind=code-symbol | source=mute/tests/unit/input_snapshot_test.cpp:L43 | neighbors=[input_snapshot_test.cpp, main(), button(), key(), motion(), simple()]
+- "unit_semantic_test": "semantic_test.cpp" | kind=code-symbol | source=mute/tests/unit/semantic_test.cpp:L1 | neighbors=[f4a6ac4 Allowlist known validation-laye…, cases(), error(), main(), ok(), 52dbcb9 Surface graphics warnings in X1…]
+- "unit_solver_test_main": "main()" | kind=code-symbol | source=engine/physics/tests/unit/solver_test.cpp:L49 | neighbors=[solver_test.cpp, body(), contact(), fx(), statics(), tod()]
+- "unit_ssa_test_cases": "cases()" | kind=code-symbol | source=mute/tests/unit/ssa_test.cpp:L28 | neighbors=[ssa_test.cpp, check(), has(), i32(), v(), valid_module()]
+- "unit_stdlib_math_test": "stdlib_math_test.cpp" | kind=code-symbol | source=mute/tests/unit/stdlib_math_test.cpp:L1 | neighbors=[1c81e45 Update from ML AI Code, 5eb3f50 Mute det_pow: integer-exponent …, 952997e Audit MUT-01-55 and harden veri…, 9eeb3ff Merge pull request #2 from Raft…, main(), near()]
+- "unit_values_test": "values_test.cpp" | kind=code-symbol | source=mute/tests/unit/values_test.cpp:L1 | neighbors=[5edd00c Fix MUT-21/22 audit defects in …, 964ba8a Resolve MUT-22 values runtime l…, e685cdf Add MUT-22 aggregate VM value a…, cases(), check(), main()]
+- "valleylake_valley_map_build_profile": "build_profile()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L490 | neighbors=[valley_map.py, build(), foot_need(), H(), rim_point(), rim_r()]
+- "valleylake_valley_map_cliff_clear": "cliff_clear()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L558 | neighbors=[valley_map.py, H(), prof(), cliffs(), clip_fail(), nature()]
+- "valleylake_valley_map_ground": "ground()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L239 | neighbors=[valley_map.py, build(), H(), polar(), prof(), rim_s()]
+- "valleylake_valley_map_place_soft": "place_soft()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L206 | neighbors=[valley_map.py, build(), clip_fail(), place(), surface_y(), unplace()]
 - "valleylake_valley_map_prof": "prof()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L551 | neighbors=[valley_map.py, cliff_clear(), cliffs(), ground(), polar(), _prof_i()]
 - "valleylake_valley_map_static": "static()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L229 | neighbors=[valley_map.py, beach(), cliff_mesh(), ground(), paths(), sub()]
 - "valleylake_valley_map_stations_and_village": "stations_and_village()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L661 | neighbors=[valley_map.py, build(), anchor(), face(), in_terr(), place()]
@@ -27,6 +41,7 @@ one-sentence description — no prose, no markdown fences.
 - "vfxkit_evidence_build_issues": "build_issues()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/evidence.py:L112 | neighbors=[evidence.py, current_recipe(), inputs(), read_build(), capture_issues(), context()]
 - "vfxkit_paths": "paths.py" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/paths.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, full_mode_platform(), godot(), initialized(), setup_command()]
 - "vfxkit_textures_masks": "masks()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/textures.py:L32 | neighbors=[textures.py, flame_band(), spectral(), speed_streaks(), swirl(), worley()]
+- "vm_register_vm": "register_vm.cpp" | kind=code-symbol | source=mute/src/vm/register_vm.cpp:L1 | neighbors=[85b7130 Close MUT-26 limits: AST-to-SSA…, 952997e Audit MUT-01-55 and harden veri…, f4a6ac4 Allowlist known validation-laye…, run_register_module(), run_register_vm(), 52dbcb9 Surface graphics warnings in X1…]
 - "voidrealm_void_map_h": "H()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_map.py:L58 | neighbors=[void_map.py, bridges(), build_paths(), island_of(), top_y(), place()]
 - "voidrealm_void_map_reserve": "reserve()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_map.py:L113 | neighbors=[void_map.py, bridges(), build(), build_paths(), dressing(), ring_scatter()]
 - "voidrealm_void_map_rfun": "Rfun()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_map.py:L44 | neighbors=[void_map.py, dressing(), edge_pt(), island(), island_of(), ring_scatter()]
@@ -42,21 +57,6 @@ one-sentence description — no prose, no markdown fences.
 - "whispering_grove_forest_map_place": "place()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_map.py:L151 | neighbors=[forest_map.py, build(), foot(), H(), kit(), sub()]
 - "whispering_grove_forest_props_bush": "bush()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L191 | neighbors=[forest_props.py, at(), blob(), leafy(), Prop, .add()]
 - "whispering_grove_forest_props_quest_board": "quest_board()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L419 | neighbors=[forest_props.py, at(), blob(), Prop, .add(), .gadd()]
-- "work_uv_overlap": "uv_overlap.py" | kind=code-symbol | source=assets/characters/work/uv_overlap.py:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, _cross(), find_cross_mesh_overlaps(), intersection_area(), _signed_area(), Test positive-area overlap between tria…]
-- "writing_skills_render_graphs": "render-graphs.js" | kind=code-symbol | source=.agents/skills/superpowers-main/skills/writing-skills/render-graphs.js:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, combineGraphs(), extractDotBlocks(), extractGraphBody(), main()]
-- "authority_replay_ring_encode_replay": "encode_replay()" | kind=code-symbol | source=server/authority/include/poko/authority/replay_ring.hpp:L185 | neighbors=[replay_ring.hpp, cbor_bool(), cbor_head(), cbor_text(), cbor_uint(), emit_litlen()]
-- "blender_character_blockout_get_collection": "get_collection()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/blender/character_blockout.py:L74 | neighbors=[character_blockout.py, box(), build(), capsule(), link(), sphere()]
-- "blender_explorer_build": "explorer_build.py" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/blender/explorer_build.py:L1 | neighbors=[build_explorer(), _fresh_col(), _mats(), Explorer character — pass 2: garments, …, 2680d0e Pushed an update., e77fa31 Add new skills and asset packs …]
-- "blender_validate_scene_scene_bounds": "scene_bounds()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/blender/validate_scene.py:L28 | neighbors=[validate_scene.py, find_isolated(), find_strays(), landmarks(), World-space bounds computed from evalua…, validate()]
-- "blender_validate_scene_validate": "validate()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/blender/validate_scene.py:L128 | neighbors=[validate_scene.py, find_isolated(), find_strays(), landmarks(), scene_bounds(), tri_count()]
-- "brainstorm_server_auth_test_runtests": "runTests()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/auth.test.js:L126 | neighbors=[auth.test.js, assertStartedOnExpectedPort(), cleanup(), sleep(), startServer(), waitForServer()]
-- "brainstorm_server_server_test_runtests": "runTests()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/server.test.js:L126 | neighbors=[server.test.js, assertStartedOnExpectedPort(), cleanup(), sleep(), startServer(), waitForServer()]
-- "brick_abyssal_angler_brick_ix": "ix()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/abyssal_angler_brick.py:L52 | neighbors=[abyssal_angler_brick.py, cell(), front_z(), lip_cell(), side_x(), top_y()]
-- "brick_kraken_post": "kraken_post.py" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/kraken_post.py:L1 | neighbors=[fit(), fx(), view(), Post pass for kraken.py (self-contained…, 2680d0e Pushed an update., e77fa31 Add new skills and asset packs …]
-- "brick_props_brick_poly": "poly()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/props_brick.py:L312 | neighbors=[props_brick.py, assault_rifle(), side-profile polygon (x, y fine coords)…, scifi_pistol(), sniper(), thorn_bow()]
-- "bytecode_bytecode_assemble_bytecode": "assemble_bytecode()" | kind=code-symbol | source=mute/src/bytecode/bytecode.cpp:L121 | neighbors=[bytecode.cpp, branch(), disassemble_bytecode(), long_payload(), mnemonic(), validate_bytecode()]
-- "cad_skill_main_mating": "mating.py" | kind=code-symbol | source=.agents/skills/cad-skill-main/mating.py:L1 | neighbors=[check_mating(), MatingError, overlap(), Fit checks for printed parts that go to…, 2680d0e Pushed an update., e77fa31 Add new skills and asset packs …]
-- "cad_skill_main_preview_render_frame": "_render_frame()" | kind=code-symbol | source=.agents/skills/cad-skill-main/preview.py:L256 | neighbors=[preview.py, Render one frame from an existing scene…, _add_edges(), _rotation_matrix(), render_multi_view(), render_view()]
 
 ## Instructions
 

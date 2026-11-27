@@ -1,4 +1,4 @@
-# Node Description Batch 95 of 208
+# Node Description Batch 95 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -12,51 +12,58 @@ describing what it is or does. Use only the provided context.
 For a code symbol (kind=code-symbol — a function, class, or constant),
 describe what the function/symbol does based on its name, source location
 and neighbors — e.g. "Resolves the configured ontology profile from graphify.yaml.".
+For an entity node (any other kind — e.g. a person, place, event, object),
+describe what the entity is and its role, grounded in its type, its
+relations (neighbors) and the provided citations/evidence — e.g.
+"Lady Carfax, a wealthy heiress who disappears en route to Lausanne.".
+Ground entity descriptions in the citations/evidence when present; do not
+speculate beyond the context, so a node with no supporting context may be
+left out of the reply.
 Write every description in English (en). Do not switch languages.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "brick_ember_dragon_brick_lin": "lin()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/ember_dragon_brick.py:L329 | neighbors=[ember_dragon_brick.py, build()]
-- "brick_ember_dragon_brick_put": "put()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/ember_dragon_brick.py:L34 | neighbors=[ember_dragon_brick.py, tri()]
-- "brick_ember_dragon_brick_render_all": "render_all()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/ember_dragon_brick.py:L389 | neighbors=[ember_dragon_brick.py, B()]
-- "brick_ember_dragon_brick_sd_cap": "sd_cap()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/ember_dragon_brick.py:L47 | neighbors=[ember_dragon_brick.py, sd_chain()]
-- "brick_ember_dragon_brick_top_at": "top_at()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/ember_dragon_brick.py:L260 | neighbors=[ember_dragon_brick.py, xo()]
-- "brick_ember_dragon_brick_tri": "tri()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/ember_dragon_brick.py:L208 | neighbors=[ember_dragon_brick.py, put()]
-- "brick_ember_dragon_brick_xo": "xo()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/ember_dragon_brick.py:L75 | neighbors=[ember_dragon_brick.py, top_at()]
-- "brick_frost_mammoth_brick_b": "B()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/frost_mammoth_brick.py:L294 | neighbors=[frost_mammoth_brick.py, render_all()]
-- "brick_frost_mammoth_brick_chain": "chain()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/frost_mammoth_brick.py:L51 | neighbors=[frost_mammoth_brick.py, chain_t()]
-- "brick_frost_mammoth_brick_chain_t": "chain_t()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/frost_mammoth_brick.py:L40 | neighbors=[frost_mammoth_brick.py, chain()]
-- "brick_frost_mammoth_brick_exposed": "exposed()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/frost_mammoth_brick.py:L240 | neighbors=[frost_mammoth_brick.py, build()]
-- "brick_frost_mammoth_brick_lin": "lin()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/frost_mammoth_brick.py:L239 | neighbors=[frost_mammoth_brick.py, build()]
-- "brick_frost_mammoth_brick_render_all": "render_all()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/frost_mammoth_brick.py:L295 | neighbors=[frost_mammoth_brick.py, B()]
-- "brick_kraken_brick_b": "B()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/kraken_brick.py:L357 | neighbors=[kraken_brick.py, render_all()]
-- "brick_kraken_brick_cap": "cap()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/kraken_brick.py:L43 | neighbors=[kraken_brick.py, chain()]
-- "brick_kraken_brick_catmull": "catmull()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/kraken_brick.py:L92 | neighbors=[kraken_brick.py, tentacle()]
-- "brick_kraken_brick_chain": "chain()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/kraken_brick.py:L48 | neighbors=[kraken_brick.py, cap()]
-- "brick_kraken_brick_exposed": "exposed()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/kraken_brick.py:L305 | neighbors=[kraken_brick.py, build()]
-- "brick_kraken_brick_lin": "lin()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/kraken_brick.py:L304 | neighbors=[kraken_brick.py, build()]
-- "brick_kraken_brick_newid": "newid()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/kraken_brick.py:L56 | neighbors=[kraken_brick.py, tentacle()]
-- "brick_kraken_brick_render_all": "render_all()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/kraken_brick.py:L358 | neighbors=[kraken_brick.py, B()]
-- "brick_kraken_brick_top_y": "top_y()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/kraken_brick.py:L236 | neighbors=[kraken_brick.py, ix()]
-- "brick_lich_king_brick_b": "B()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/lich_king_brick.py:L486 | neighbors=[lich_king_brick.py, render_all()]
-- "brick_lich_king_brick_back_layer": "back_layer()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/lich_king_brick.py:L71 | neighbors=[lich_king_brick.py, shift()]
-- "brick_lich_king_brick_band_edge": "band_edge()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/lich_king_brick.py:L211 | neighbors=[lich_king_brick.py, ci()]
-- "brick_lich_king_brick_cube_dil": "cube_dil()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/lich_king_brick.py:L402 | neighbors=[lich_king_brick.py, shift()]
-- "brick_lich_king_brick_dil": "dil()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/lich_king_brick.py:L58 | neighbors=[lich_king_brick.py, shift()]
-- "brick_lich_king_brick_ero": "ero()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/lich_king_brick.py:L64 | neighbors=[lich_king_brick.py, shift()]
-- "brick_lich_king_brick_exposed": "exposed()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/lich_king_brick.py:L433 | neighbors=[lich_king_brick.py, build()]
-- "brick_lich_king_brick_front_face": "front_face()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/lich_king_brick.py:L72 | neighbors=[lich_king_brick.py, shift()]
-- "brick_lich_king_brick_front_layer": "front_layer()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/lich_king_brick.py:L70 | neighbors=[lich_king_brick.py, shift()]
-- "brick_lich_king_brick_lin": "lin()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/lich_king_brick.py:L432 | neighbors=[lich_king_brick.py, build()]
-- "brick_lich_king_brick_put": "put()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/lich_king_brick.py:L31 | neighbors=[lich_king_brick.py, links()]
-- "brick_lich_king_brick_render_all": "render_all()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/lich_king_brick.py:L487 | neighbors=[lich_king_brick.py, B()]
-- "brick_lich_king_brick_rune": "rune()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/lich_king_brick.py:L243 | neighbors=[lich_king_brick.py, glow()]
-- "brick_lich_king_brick_sleeve": "sleeve()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/lich_king_brick.py:L130 | neighbors=[lich_king_brick.py, chain()]
-- "brick_lich_king_brick_stamp": "stamp()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/lich_king_brick.py:L173 | neighbors=[lich_king_brick.py, ci()]
-- "brick_living_armor_brick_b": "B()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/living_armor_brick.py:L430 | neighbors=[living_armor_brick.py, render_all()]
-- "brick_living_armor_brick_cap": "cap()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/living_armor_brick.py:L49 | neighbors=[living_armor_brick.py, chain()]
-- "brick_living_armor_brick_chain": "chain()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/living_armor_brick.py:L54 | neighbors=[living_armor_brick.py, cap()]
+- "bin_trace_processor_run_perfetto_prebuilt": "run_perfetto_prebuilt()" | kind=code-symbol | source=.agents/skills/skills-main/profilers/android-profiler/references/perfetto/bin/trace_processor:L301 | neighbors=[trace_processor, get_perfetto_prebuilt()]
+- "blender_character_blockout_report": "report()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/blender/character_blockout.py:L253 | neighbors=[character_blockout.py, Print measured bounds so the comparison…]
+- "blender_explorer_build_fresh_col": "_fresh_col()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/blender/explorer_build.py:L33 | neighbors=[explorer_build.py, build_explorer()]
+- "blender_explorer_build_mats": "_mats()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/blender/explorer_build.py:L43 | neighbors=[explorer_build.py, build_explorer()]
+- "blender_explorer_build_rationale_1": "Explorer character — pass 2: garments, equipment, hair.  Builds on the blockout." | kind=entity | source=.agents/skills/ForgeSkills-main/tools/blender/explorer_build.py:L1 | neighbors=[explorer_build.py, Dim]
+- "blender_explorer_common_rounded_box": "rounded_box()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/blender/explorer_common.py:L164 | neighbors=[explorer_common.py, assign()]
+- "blender_render_compare_views_area": "_area()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/blender/render_compare_views.py:L36 | neighbors=[render_compare_views.py, setup_lighting()]
+- "blender_render_compare_views_ensure_world": "_ensure_world()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/blender/render_compare_views.py:L23 | neighbors=[render_compare_views.py, setup_lighting()]
+- "blender_render_compare_views_setup_render": "setup_render()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/blender/render_compare_views.py:L132 | neighbors=[render_compare_views.py, render_turnaround()]
+- "blender_validate_scene_tri_count": "tri_count()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/blender/validate_scene.py:L60 | neighbors=[validate_scene.py, validate()]
+- "brainstorm_server_auth_test_cleanup": "cleanup()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/auth.test.js:L36 | neighbors=[auth.test.js, runTests()]
+- "brainstorm_server_auth_test_runbootstrapscript": "runBootstrapScript()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/auth.test.js:L88 | neighbors=[auth.test.js, assert]
+- "brainstorm_server_auth_test_sleep": "sleep()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/auth.test.js:L40 | neighbors=[auth.test.js, runTests()]
+- "brainstorm_server_auth_test_startserver": "startServer()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/auth.test.js:L76 | neighbors=[auth.test.js, runTests()]
+- "brainstorm_server_auth_test_waitforserver": "waitForServer()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/auth.test.js:L97 | neighbors=[auth.test.js, runTests()]
+- "brainstorm_server_auth_test_websocket": "WebSocket" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/auth.test.js:L17 | neighbors=[auth.test.js, wsConnect()]
+- "brainstorm_server_auth_test_wsconnect": "wsConnect()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/auth.test.js:L59 | neighbors=[auth.test.js, WebSocket]
+- "brainstorm_server_branding_test_assertbrandedfallbacktext": "assertBrandedFallbackText()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/branding.test.js:L157 | neighbors=[branding.test.js, assert]
+- "brainstorm_server_branding_test_asserttelemetryimage": "assertTelemetryImage()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/branding.test.js:L164 | neighbors=[branding.test.js, assert]
+- "brainstorm_server_branding_test_main": "main()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/branding.test.js:L242 | neighbors=[branding.test.js, test()]
+- "brainstorm_server_branding_test_sleep": "sleep()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/branding.test.js:L25 | neighbors=[branding.test.js, withServer()]
+- "brainstorm_server_branding_test_waitforserver": "waitForServer()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/branding.test.js:L42 | neighbors=[branding.test.js, withServer()]
+- "brainstorm_server_server_test_assert": "assert" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/server.test.js:L16 | neighbors=[server.test.js, serverStartedMessage()]
+- "brainstorm_server_server_test_cleanup": "cleanup()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/server.test.js:L27 | neighbors=[server.test.js, runTests()]
+- "brainstorm_server_server_test_ensuresymlinkworks": "ensureSymlinkWorks()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/server.test.js:L116 | neighbors=[server.test.js, skip()]
+- "brainstorm_server_server_test_startserver": "startServer()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/server.test.js:L65 | neighbors=[server.test.js, runTests()]
+- "brainstorm_server_server_test_waitfor": "waitFor()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/server.test.js:L42 | neighbors=[server.test.js, sleep()]
+- "brainstorm_server_server_test_waitforserver": "waitForServer()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/server.test.js:L71 | neighbors=[server.test.js, runTests()]
+- "brick_abyssal_angler_brick_b": "B()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/abyssal_angler_brick.py:L347 | neighbors=[abyssal_angler_brick.py, render_all()]
+- "brick_abyssal_angler_brick_cap": "cap()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/abyssal_angler_brick.py:L43 | neighbors=[abyssal_angler_brick.py, chain()]
+- "brick_abyssal_angler_brick_cell": "cell()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/abyssal_angler_brick.py:L62 | neighbors=[abyssal_angler_brick.py, ix()]
+- "brick_abyssal_angler_brick_chain": "chain()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/abyssal_angler_brick.py:L48 | neighbors=[abyssal_angler_brick.py, cap()]
+- "brick_abyssal_angler_brick_exposed": "exposed()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/abyssal_angler_brick.py:L289 | neighbors=[abyssal_angler_brick.py, build()]
+- "brick_abyssal_angler_brick_front_z": "front_z()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/abyssal_angler_brick.py:L53 | neighbors=[abyssal_angler_brick.py, ix()]
+- "brick_abyssal_angler_brick_lin": "lin()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/abyssal_angler_brick.py:L288 | neighbors=[abyssal_angler_brick.py, build()]
+- "brick_abyssal_angler_brick_lip_cell": "lip_cell()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/abyssal_angler_brick.py:L119 | neighbors=[abyssal_angler_brick.py, ix()]
+- "brick_abyssal_angler_brick_put": "put()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/abyssal_angler_brick.py:L32 | neighbors=[abyssal_angler_brick.py, tooth()]
+- "brick_abyssal_angler_brick_render_all": "render_all()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/abyssal_angler_brick.py:L348 | neighbors=[abyssal_angler_brick.py, B()]
+- "brick_abyssal_angler_brick_side_x": "side_x()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/abyssal_angler_brick.py:L56 | neighbors=[abyssal_angler_brick.py, ix()]
+- "brick_abyssal_angler_brick_tooth": "tooth()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/abyssal_angler_brick.py:L110 | neighbors=[abyssal_angler_brick.py, put()]
 
 ## Instructions
 

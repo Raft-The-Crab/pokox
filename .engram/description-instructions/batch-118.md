@@ -1,4 +1,4 @@
-# Node Description Batch 119 of 208
+# Node Description Batch 119 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -19,51 +19,53 @@ relations (neighbors) and the provided citations/evidence — e.g.
 Ground entity descriptions in the citations/evidence when present; do not
 speculate beyond the context, so a node with no supporting context may be
 left out of the reply.
-Write every description in English (en). Do not switch languages.
+LANGUAGE: each entry has a `lang=` marker giving the language of its source.
+Write that entry's description in EXACTLY that language. Do not translate to
+a single common language — match each node's source language individually.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "moonclean_moon_map_rationale_400": "mess=True (low dust / junk / meteor pieces): only on calm ground, sat on the mes" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_map.py:L400 | neighbors=[scatter(), MB]
-- "moonclean_moon_map_rationale_75": "crater height before ramps / sub-craters" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_map.py:L75 | neighbors=[profile(), MB]
-- "moonclean_moon_map_rationale_89": "the crater prop's skirt (1.8 R) must stay on its shelf, off the trodden path and" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_map.py:L89 | neighbors=[_crater_ok(), MB]
-- "moonclean_moon_map_rationale_97": "weight 0..1 of ramp k at (r, a) and the ramp height there" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_map.py:L97 | neighbors=[ramp_w(), MB]
-- "moonclean_moon_props_dust_pile": "dust_pile()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L694 | neighbors=[moon_props.py, sweepable heap: stacked mounds + a spar…]
-- "moonclean_moon_props_earth": "earth()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L742 | neighbors=[moon_props.py, Earth for the sky: faceted sphere, ocea…]
-- "moonclean_moon_props_ice_shards": "ice_shards()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L732 | neighbors=[moon_props.py, collectable ice: 3 short glowing shards…]
-- "moonclean_moon_props_junk_heap": "junk_heap()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L705 | neighbors=[moon_props.py, space junk to haul: bent hull panel, sn…]
-- "musl_math_math_internal": "math_internal.hpp" | kind=code-symbol | source=mute/third_party/musl_math/math_internal.hpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
-- "mute_action_map_actionsampler": "ActionSampler" | kind=code-symbol | source=mute/include/poko/mute/action_map.hpp:L144 | neighbors=[action_map.hpp, .ActionSampler()]
-- "mute_console_consolelog": "ConsoleLog" | kind=code-symbol | source=mute/include/poko/mute/console.hpp:L33 | neighbors=[console.hpp, .ConsoleLog()]
-- "mute_debugger_vmdebugger": "VmDebugger" | kind=code-symbol | source=mute/include/poko/mute/debugger.hpp:L36 | neighbors=[debugger.hpp, .VmDebugger()]
-- "mute_declaration_declarationast": "DeclarationAst" | kind=code-symbol | source=mute/include/poko/mute/declaration.hpp:L44 | neighbors=[declaration.hpp, .DeclarationAst()]
-- "mute_determinism": "determinism.hpp" | kind=code-symbol | source=mute/include/poko/mute/determinism.hpp:L1 | neighbors=[037434c Add MUT-24 determinism and capa…, 952997e Audit MUT-01-55 and harden veri…]
-- "mute_deterministic_math": "deterministic_math.hpp" | kind=code-symbol | source=mute/include/poko/mute/deterministic_math.hpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
-- "mute_emit": "emit.hpp" | kind=code-symbol | source=mute/include/poko/mute/emit.hpp:L1 | neighbors=[335e0dc Add MUT-26 IR-to-bytecode emitt…, 952997e Audit MUT-01-55 and harden veri…]
-- "mute_evaluator": "evaluator.hpp" | kind=code-symbol | source=mute/include/poko/mute/evaluator.hpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
-- "mute_events": "events.hpp" | kind=code-symbol | source=mute/include/poko/mute/events.hpp:L1 | neighbors=[952997e Audit MUT-01-55 and harden veri…, EventBus]
-- "mute_input_snapshot_gamepad_control": "gamepad_control()" | kind=code-symbol | source=mute/include/poko/mute/input_snapshot.hpp:L59 | neighbors=[input_snapshot.hpp, touch_id()]
-- "mute_input_snapshot_gamepad_slot": "gamepad_slot()" | kind=code-symbol | source=mute/include/poko/mute/input_snapshot.hpp:L56 | neighbors=[input_snapshot.hpp, touch_display()]
-- "mute_input_snapshot_inputreplay": "InputReplay" | kind=code-symbol | source=mute/include/poko/mute/input_snapshot.hpp:L160 | neighbors=[input_snapshot.hpp, .InputReplay()]
-- "mute_input_snapshot_touch_display": "touch_display()" | kind=code-symbol | source=mute/include/poko/mute/input_snapshot.hpp:L62 | neighbors=[input_snapshot.hpp, gamepad_slot()]
-- "mute_input_snapshot_touch_id": "touch_id()" | kind=code-symbol | source=mute/include/poko/mute/input_snapshot.hpp:L65 | neighbors=[input_snapshot.hpp, gamepad_control()]
-- "mute_lexer": "lexer.hpp" | kind=code-symbol | source=mute/include/poko/mute/lexer.hpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
-- "mute_lower": "lower.hpp" | kind=code-symbol | source=mute/include/poko/mute/lower.hpp:L1 | neighbors=[85b7130 Close MUT-26 limits: AST-to-SSA…, 952997e Audit MUT-01-55 and harden veri…]
-- "mute_package": "package.hpp" | kind=code-symbol | source=mute/include/poko/mute/package.hpp:L1 | neighbors=[5edd00c Fix MUT-21/22 audit defects in …, c7e951a Add MUT-21 package, import and …]
-- "mute_parser_ast": "Ast" | kind=code-symbol | source=mute/include/poko/mute/parser.hpp:L45 | neighbors=[parser.hpp, .Ast()]
-- "mute_pkb_draft": "pkb_draft.hpp" | kind=code-symbol | source=mute/include/poko/mute/pkb_draft.hpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
-- "mute_program": "program.hpp" | kind=code-symbol | source=mute/include/poko/mute/program.hpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
-- "mute_scheduler_scheduler": "Scheduler" | kind=code-symbol | source=mute/include/poko/mute/scheduler.hpp:L33 | neighbors=[scheduler.hpp, .Scheduler()]
-- "mute_semantic": "semantic.hpp" | kind=code-symbol | source=mute/include/poko/mute/semantic.hpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
-- "mute_state": "state.hpp" | kind=code-symbol | source=mute/include/poko/mute/state.hpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
-- "mute_state_snapshot": "state_snapshot.hpp" | kind=code-symbol | source=mute/include/poko/mute/state_snapshot.hpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
-- "mute_statement_statementast": "StatementAst" | kind=code-symbol | source=mute/include/poko/mute/statement.hpp:L34 | neighbors=[statement.hpp, .StatementAst()]
-- "mute_values_aggregatestore": "AggregateStore" | kind=code-symbol | source=mute/include/poko/mute/values.hpp:L43 | neighbors=[values.hpp, .AggregateStore()]
-- "net_bit_buffer_bitbuffer": "BitBuffer" | kind=code-symbol | source=server/net/include/poko/net/bit_buffer.hpp:L18 | neighbors=[bit_buffer.hpp, .BitBuffer()]
-- "net_crypto_aead_consttime_equal": "consttime_equal()" | kind=code-symbol | source=server/net/include/poko/net/crypto_aead.hpp:L208 | neighbors=[crypto_aead.hpp, aead_open()]
-- "net_crypto_aead_rotl32": "rotl32()" | kind=code-symbol | source=server/net/include/poko/net/crypto_aead.hpp:L30 | neighbors=[crypto_aead.hpp, qr()]
-- "net_cube_sync_cubepeer": "CubePeer" | kind=code-symbol | source=server/net/include/poko/net/cube_sync.hpp:L62 | neighbors=[cube_sync.hpp, .CubePeer()]
-- "net_frame_constant_time_equal": "constant_time_equal()" | kind=code-symbol | source=server/net/include/poko/net/frame.hpp:L132 | neighbors=[frame.hpp, unpack_frame()]
+- "integration_test_imgui_toggle_x11_main": "main()" | kind=code-symbol | source=engine/render/tests/integration/test_imgui_toggle_x11.py:L23 | neighbors=[test_imgui_toggle_x11.py, find_window()] | lang=en
+- "integration_test_version_command": "command()" | kind=code-symbol | source=tools/version/tests/integration/test_version.py:L45 | neighbors=[test_version.py, .test_real_binary_tracks_git_state()] | lang=en
+- "integration_test_version_copy_sources": "copy_sources()" | kind=code-symbol | source=tools/version/tests/integration/test_version.py:L30 | neighbors=[test_version.py, .test_real_binary_tracks_git_state()] | lang=en
+- "integration_test_version_main": "main()" | kind=code-symbol | source=tools/version/tests/integration/test_version.py:L107 | neighbors=[test_version.py, parse_options()] | lang=en
+- "integration_test_version_parse_options": "parse_options()" | kind=code-symbol | source=tools/version/tests/integration/test_version.py:L21 | neighbors=[test_version.py, main()] | lang=en
+- "integration_test_version_versionintegrationtests": "VersionIntegrationTests" | kind=code-symbol | source=tools/version/tests/integration/test_version.py:L54 | neighbors=[test_version.py, .test_real_binary_tracks_git_state()] | lang=en
+- "iplatform": "IPlatform" | kind=code-symbol | neighbors=[TestPlatform, ~SdlPlatform()] | lang=en
+- "lexer_lexer_decode": "decode()" | kind=code-symbol | source=mute/src/lexer/lexer.cpp:L11 | neighbors=[lexer.cpp, lex()] | lang=en
+- "lexer_lexer_digit": "digit()" | kind=code-symbol | source=mute/src/lexer/lexer.cpp:L43 | neighbors=[lexer.cpp, lex()] | lang=en
+- "lexer_lexer_digit_for": "digit_for()" | kind=code-symbol | source=mute/src/lexer/lexer.cpp:L44 | neighbors=[lexer.cpp, lex()] | lang=en
+- "lexer_lexer_is_continue": "is_continue()" | kind=code-symbol | source=mute/src/lexer/lexer.cpp:L51 | neighbors=[lexer.cpp, lex()] | lang=en
+- "lexer_lexer_is_start": "is_start()" | kind=code-symbol | source=mute/src/lexer/lexer.cpp:L50 | neighbors=[lexer.cpp, lex()] | lang=en
+- "lexer_lexer_keyword": "keyword()" | kind=code-symbol | source=mute/src/lexer/lexer.cpp:L52 | neighbors=[lexer.cpp, lex()] | lang=en
+- "lexer_lexer_string_body": "string_body()" | kind=code-symbol | source=mute/src/lexer/lexer.cpp:L64 | neighbors=[lexer.cpp, lex()] | lang=en
+- "lexer_lexer_suffix": "suffix()" | kind=code-symbol | source=mute/src/lexer/lexer.cpp:L56 | neighbors=[lexer.cpp, lex()] | lang=en
+- "matchmaker_allocator_matchmaker": "Matchmaker" | kind=code-symbol | source=server/matchmaker/include/poko/matchmaker/allocator.hpp:L114 | neighbors=[allocator.hpp, .Matchmaker()] | lang=en
+- "matchmaker_allocator_ticketsigner": "TicketSigner" | kind=code-symbol | source=server/matchmaker/include/poko/matchmaker/allocator.hpp:L28 | neighbors=[allocator.hpp, .TicketSigner()] | lang=en
+- "matchmaker_byo_registration": "byo_registration.hpp" | kind=code-symbol | source=server/matchmaker/include/poko/matchmaker/byo_registration.hpp:L1 | neighbors=[b925296 Finishes BAK tasks., ByoRegistration] | lang=en
+- "matchmaker_byo_registration_byoregistration": "ByoRegistration" | kind=code-symbol | source=server/matchmaker/include/poko/matchmaker/byo_registration.hpp:L39 | neighbors=[byo_registration.hpp, .ByoRegistration()] | lang=en
+- "matchmaker_match_queue": "match_queue.hpp" | kind=code-symbol | source=server/matchmaker/include/poko/matchmaker/match_queue.hpp:L1 | neighbors=[b925296 Finishes BAK tasks., MatchQueue] | lang=en
+- "matchmaker_party_book": "party_book.hpp" | kind=code-symbol | source=server/matchmaker/include/poko/matchmaker/party_book.hpp:L1 | neighbors=[b925296 Finishes BAK tasks., PartyBook] | lang=en
+- "matchmaker_party_book_partybook": "PartyBook" | kind=code-symbol | source=server/matchmaker/include/poko/matchmaker/party_book.hpp:L29 | neighbors=[party_book.hpp, .PartyBook()] | lang=en
+- "matchmaker_reconnect": "reconnect.hpp" | kind=code-symbol | source=server/matchmaker/include/poko/matchmaker/reconnect.hpp:L1 | neighbors=[b925296 Finishes BAK tasks., ReconnectFlow] | lang=en
+- "matchmaker_reconnect_reconnectflow": "ReconnectFlow" | kind=code-symbol | source=server/matchmaker/include/poko/matchmaker/reconnect.hpp:L33 | neighbors=[reconnect.hpp, .ReconnectFlow()] | lang=en
+- "matchmaker_slot_registry": "slot_registry.hpp" | kind=code-symbol | source=server/matchmaker/include/poko/matchmaker/slot_registry.hpp:L1 | neighbors=[b925296 Finishes BAK tasks., SlotRegistry] | lang=en
+- "matchmaker_wake_lock": "wake_lock.hpp" | kind=code-symbol | source=server/matchmaker/include/poko/matchmaker/wake_lock.hpp:L1 | neighbors=[b925296 Finishes BAK tasks., WakeLock] | lang=en
+- "matchmaker_wake_lock_wakelock": "WakeLock" | kind=code-symbol | source=server/matchmaker/include/poko/matchmaker/wake_lock.hpp:L29 | neighbors=[wake_lock.hpp, .WakeLock()] | lang=en
+- "math_deterministic_math_deterministic_cos": "deterministic_cos()" | kind=code-symbol | source=mute/src/math/deterministic_math.cpp:L27 | neighbors=[deterministic_math.cpp, calculate()] | lang=en
+- "math_deterministic_math_deterministic_sin": "deterministic_sin()" | kind=code-symbol | source=mute/src/math/deterministic_math.cpp:L26 | neighbors=[deterministic_math.cpp, calculate()] | lang=en
+- "math_deterministic_math_supported": "supported()" | kind=code-symbol | source=mute/src/math/deterministic_math.cpp:L9 | neighbors=[deterministic_math.cpp, calculate()] | lang=en
+- "medievalbattle_battle_map_face": "face()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L157 | neighbors=[battle_map.py, field()] | lang=en
+- "medievalbattle_battle_map_foot": "foot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L128 | neighbors=[battle_map.py, place()] | lang=en
+- "medievalbattle_battle_map_fordw": "fordw()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L37 | neighbors=[battle_map.py, channels()] | lang=en
+- "medievalbattle_battle_map_isle_y": "isle_y()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L85 | neighbors=[battle_map.py, H()] | lang=en
+- "medievalbattle_battle_map_look": "look()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L481 | neighbors=[battle_map.py, free()] | lang=en
+- "medievalbattle_battle_map_on_road": "on_road()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L161 | neighbors=[battle_map.py, road_d()] | lang=en
+- "medievalbattle_battle_map_rationale_109": "drop faces buried inside the prop's own solid parts (block bases inside a wall," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L109 | neighbors=[cull_hidden(), MB] | lang=en
+- "medievalbattle_battle_map_rationale_138": "height of the built ground MESH (4-stud grid) at x, z: props sit on what the pla" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L138 | neighbors=[Hm(), MB] | lang=en
+- "medievalbattle_battle_map_rationale_165": "column per face (grass / road dirt / ford gravel / under-water mud), value per V" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L165 | neighbors=[ground_shade(), MB] | lang=it
+- "medievalbattle_battle_map_rationale_229": "roads as smooth ribbon meshes draped on H (+0.08): ragged soft edges and a light" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L229 | neighbors=[roads(), MB] | lang=en
 
 ## Instructions
 

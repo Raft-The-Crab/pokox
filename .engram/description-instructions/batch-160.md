@@ -1,4 +1,4 @@
-# Node Description Batch 161 of 208
+# Node Description Batch 161 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -26,46 +26,46 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "candyland_hooks_lua_lua_attrs": "lua_attrs()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/hooks_lua.py:L5 | neighbors=[hooks_lua.py] | lang=en
-- "canyonbazaar_canyon_map_material_skin": "material_skin()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_map.py:L568 | neighbors=[canyon_map.py] | lang=en
-- "canyonbazaar_canyon_map_rationale_167": "local prop point -> world (Roblox), same yaw convention as place()" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_map.py:L167 | neighbors=[world()] | lang=en
-- "canyonbazaar_canyon_map_rationale_171": "yaw that turns a prop's -Z front to look along (dx, dz)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_map.py:L171 | neighbors=[yaw_face()] | lang=en
-- "canyonbazaar_canyon_map_rationale_39": "walkable ledge width (studs) per wall: wide under the relic kiosk (east, z -60)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_map.py:L39 | neighbors=[shelf1()] | lang=en
-- "canyonbazaar_canyon_map_rationale_90": "spawn -> temple door sightline x at z (kept clear of tall dressing)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_map.py:L90 | neighbors=[sight_x()] | lang=en
-- "canyonbazaar_canyon_map_shot": "shot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_map.py:L576 | neighbors=[canyon_map.py] | lang=en
-- "canyonbazaar_canyon_props_dry_grass": "dry_grass()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_props.py:L442 | neighbors=[canyon_props.py] | lang=en
-- "canyonbazaar_canyon_props_smooth": "smooth()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_props.py:L44 | neighbors=[canyon_props.py] | lang=en
-- "cavemap_cave_map_rationale_237": "inner shell height above (x, z) by raycast up from the floor (Roblox y)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_map.py:L237 | neighbors=[ceil_y()] | lang=en
-- "cavemap_cave_map_shot": "shot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_map.py:L792 | neighbors=[cave_map.py] | lang=en
-- "cavemap_cave_ores_rationale_102": "pick resting with its head on the ground and the haft leaning on the heap" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_ores.py:L102 | neighbors=[pickaxe()] | lang=en
-- "cavemap_cave_ores_rationale_112": "heap of broken ore: graded angular host lumps with metallic seams and set-in ore" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_ores.py:L112 | neighbors=[ore_pile()] | lang=en
-- "cavemap_cave_ores_rationale_136": "v2 load: lumps packed into the tub mouth (heaped in the middle), seams + set-in" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_ores.py:L136 | neighbors=[cart_load()] | lang=en
-- "cavemap_cave_ores_rationale_17": "angular broken-rock lump: a hull of few points (big flat fracture faces), slight" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_ores.py:L17 | neighbors=[_lump()] | lang=en
-- "cavemap_cave_ores_rationale_26": "the heap's hidden-gap filler: a lumpy dome of broken rock with ore-seam faces (b" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_ores.py:L26 | neighbors=[mound()] | lang=en
-- "cavemap_cave_ores_rationale_48": "one ore lump: host rock faces + metallic ore-seam faces (noise) + blocky ore cry" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_ores.py:L48 | neighbors=[ore_lump()] | lang=en
-- "cavemap_cave_ores_rationale_77": "crystal cluster: n banded crystals fanning from one root, tallest at the centre" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_ores.py:L77 | neighbors=[druse()] | lang=en
-- "cavemap_cave_ores_rationale_87": "square-mouth shovel: dished steel blade + socket, ash shaft, D grip; foot = blad" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_ores.py:L87 | neighbors=[shovel()] | lang=en
-- "cavemap_cave_paint_block": "block()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_paint.py:L14 | neighbors=[cave_paint.py] | lang=en
-- "cavemap_cave_props_flat": "flat()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L48 | neighbors=[cave_props.py] | lang=en
-- "cavemap_cave_props_rationale_79": "low-frequency noise displacement along vertex normals (organic surfaces)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L79 | neighbors=[jitter()] | lang=en
-- "cavemap_cave_props_rock_dim": "rock_dim()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L198 | neighbors=[cave_props.py] | lang=en
-- "cavemap_cave_props2_plank": "plank()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L7 | neighbors=[cave_props2.py] | lang=en
-- "cavemap_cave_props2_rationale_106": "ore heaped in the tub (cave_ores replaces this with the v2 load)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L106 | neighbors=[cart_load()] | lang=en
-- "cavemap_cave_props2_rationale_115": "square chamfered post on a cairn footing, crossarm with angle brace, hanging lan" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L115 | neighbors=[mine_lantern_post()] | lang=en
-- "cavemap_cave_props2_rationale_128": "3-storey mining scaffold against a wall (back = +Z): round posts, plank decks wi" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L128 | neighbors=[scaffold()] | lang=pt
-- "cavemap_cave_props2_rationale_13": "hanging oil lantern: ring hook, vented cap, 4 cage bars round a GLOWING glass, b" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L13 | neighbors=[oil_lantern()] | lang=pt
-- "cavemap_cave_props2_rationale_163": "chasm rope bridge (span along Z): end post pairs with rope wraps and stakes, irr" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L163 | neighbors=[rope_bridge()] | lang=en
-- "cavemap_cave_props2_rationale_188": "low boardwalk to the islet (span along Z): log piles with iron bands, stringers," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L188 | neighbors=[plank_bridge()] | lang=en
-- "cavemap_cave_props2_rationale_204": "stack of 3 braced crates (frame battens + diagonal brace on the faces) with a pi" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L204 | neighbors=[crates()] | lang=en
-- "cavemap_cave_props2_rationale_220": "three staved barrels (bulged lathe, iron hoops, lid), one lying on its side" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L220 | neighbors=[barrels()] | lang=en
-- "cavemap_cave_props2_rationale_231": "heap of broken ore with glowing crystal chunks and a shovel stuck in it" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L231 | neighbors=[ore_pile()] | lang=en
-- "cavemap_cave_props2_rationale_24": "tunnel timber set: two splayed round posts on footing stones, a cap log, knee br" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L24 | neighbors=[mine_frame()] | lang=pt
-- "cavemap_cave_props2_rationale_244": "timber rack with hung pickaxes and shovels, a coil of rope and a lantern" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L244 | neighbors=[tool_rack()] | lang=en
-- "cavemap_cave_props2_rationale_46": "6-stud track: two I-profile rails on 3 bevelled sleepers with spike heads, on a" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L46 | neighbors=[rail_seg()] | lang=en
-- "cavemap_cave_props2_rationale_60": "end-of-track stop: two posts with back struts, a cross beam with iron bumper pad" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L60 | neighbors=[rail_buffer()] | lang=en
-- "cavemap_cave_props2_rationale_80": "riveted tub on a timber chassis, 4 flanged wheels on axles, couplers, rolled rim" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L80 | neighbors=[mine_cart()] | lang=pt
-- "cavemap_cave_props3_rationale_133": "A-frame canvas tent: ridge log on X-poles, two canvas slopes sagging between the" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props3.py:L133 | neighbors=[camp_tent()] | lang=en
-- "cavemap_cave_props3_rationale_15": "overlapping board-and-batten shed roof falling to the front, with a fascia board" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props3.py:L15 | neighbors=[shed_roof()] | lang=en
+- "cad_skill_main_mating_rationale_22": "Volume in mm^3 shared by two CadQuery Workplanes (0 when apart)." | kind=entity | source=.agents/skills/cad-skill-main/mating.py:L22 | neighbors=[overlap()] | lang=en
+- "cad_skill_main_mating_rationale_29": "Raise MatingError unless `moving` fits `fixed` with play only up to     `clearan" | kind=entity | source=.agents/skills/cad-skill-main/mating.py:L29 | neighbors=[check_mating()] | lang=en
+- "cad_skill_main_mesh_io_rationale_1": "Pure trimesh STL loading with validation guards.  Kept separate from preview.py" | kind=entity | source=.agents/skills/cad-skill-main/mesh_io.py:L1 | neighbors=[mesh_io.py] | lang=en
+- "cad_skill_main_mesh_io_rationale_120": "Approximate printed mass in grams (default: PLA, 2 walls, 15% infill).      A sl" | kind=entity | source=.agents/skills/cad-skill-main/mesh_io.py:L120 | neighbors=[estimate_mass()] | lang=en
+- "cad_skill_main_mesh_io_rationale_14": "Load an STL file via trimesh.      Raises ValueError if the file cannot be parse" | kind=entity | source=.agents/skills/cad-skill-main/mesh_io.py:L14 | neighbors=[load_mesh()] | lang=en
+- "cad_skill_main_mesh_io_rationale_70": "Turn a printer name, \"WxDxH\" or a single \"N\" (cube) into (x, y, z) mm.      Rais" | kind=entity | source=.agents/skills/cad-skill-main/mesh_io.py:L70 | neighbors=[parse_bed()] | lang=pt
+- "cad_skill_main_mesh_io_rationale_95": "Check a part's bounding box against a build volume.      The part may be rotated" | kind=entity | source=.agents/skills/cad-skill-main/mesh_io.py:L95 | neighbors=[bed_fit()] | lang=pt
+- "cad_skill_main_outline_from_scan_rationale_1": "Extract a 2D pocket outline from a 3D scan of an object.  Produces the max cross" | kind=entity | source=.agents/skills/cad-skill-main/outline_from_scan.py:L1 | neighbors=[outline_from_scan.py] | lang=en
+- "cad_skill_main_outline_from_scan_rationale_31": "PCA-align in XY, center on the origin, floor to Z=0, scale." | kind=entity | source=.agents/skills/cad-skill-main/outline_from_scan.py:L31 | neighbors=[align_and_scale()] | lang=en
+- "cad_skill_main_outline_from_scan_rationale_46": "Union of horizontal sections from Z=step/2 up to zmax." | kind=entity | source=.agents/skills/cad-skill-main/outline_from_scan.py:L46 | neighbors=[max_section_outline()] | lang=en
+- "cad_skill_main_outline_from_scan_rationale_65": "Angle (deg) minimizing the bounding square of poly + clearance." | kind=entity | source=.agents/skills/cad-skill-main/outline_from_scan.py:L65 | neighbors=[rotate_min_square()] | lang=en
+- "cad_skill_main_preview_rationale_150": "Create a pyrender scene containing the mesh, lights, and optionally ground." | kind=entity | source=.agents/skills/cad-skill-main/preview.py:L150 | neighbors=[_build_scene()] | lang=en
+- "cad_skill_main_preview_rationale_220": "Overlay edge lines detected from the depth buffer onto the color image." | kind=entity | source=.agents/skills/cad-skill-main/preview.py:L220 | neighbors=[_add_edges()] | lang=en
+- "cad_skill_main_preview_rationale_257": "Render one frame from an existing scene.      Adds a camera, renders, then remov" | kind=entity | source=.agents/skills/cad-skill-main/preview.py:L257 | neighbors=[_render_frame()] | lang=en
+- "cad_skill_main_preview_rationale_285": "Render the mesh from a specific angle. Returns a PIL Image." | kind=entity | source=.agents/skills/cad-skill-main/preview.py:L285 | neighbors=[render_view()] | lang=en
+- "cad_skill_main_preview_rationale_298": "Try to load a nice sans-serif font, falling back to PIL default." | kind=entity | source=.agents/skills/cad-skill-main/preview.py:L298 | neighbors=[_get_font()] | lang=en
+- "cad_skill_main_preview_rationale_315": "cat_flap_cover.stl\" -> \"Cat Flap Cover\"." | kind=entity | source=.agents/skills/cad-skill-main/preview.py:L315 | neighbors=[title_from_path()] | lang=en
+- "cad_skill_main_preview_rationale_320": "Two-line footer with dimensions, volume, triangle count, and status." | kind=entity | source=.agents/skills/cad-skill-main/preview.py:L320 | neighbors=[_info_lines()] | lang=en
+- "cad_skill_main_preview_rationale_339": "Render a single isometric view with title and footer." | kind=entity | source=.agents/skills/cad-skill-main/preview.py:L339 | neighbors=[render_single()] | lang=en
+- "cad_skill_main_preview_rationale_362": "Render 6-view technical preview in a 3x2 grid.      Views: isometric, front, rig" | kind=entity | source=.agents/skills/cad-skill-main/preview.py:L362 | neighbors=[render_multi_view()] | lang=en
+- "cad_skill_main_preview_rationale_39": "Build a camera-pose matrix from elevation and azimuth (degrees).      Convention" | kind=entity | source=.agents/skills/cad-skill-main/preview.py:L39 | neighbors=[_rotation_matrix()] | lang=en
+- "cad_skill_main_preview_rationale_79": "Pick a human-friendly grid spacing that gives ~8-12 lines." | kind=entity | source=.agents/skills/cad-skill-main/preview.py:L79 | neighbors=[_nice_spacing()] | lang=en
+- "cad_skill_main_preview_rationale_88": "Create a ground-plane grid mesh at the bottom of the object.      Returns (groun" | kind=entity | source=.agents/skills/cad-skill-main/preview.py:L88 | neighbors=[_build_grid()] | lang=en
+- "cad_skill_main_run_cadquery_model_rationale_63": "Return {ext: [paths]} in script_dir matching each *.{ext}     (case-insensitive)" | kind=entity | source=.agents/skills/cad-skill-main/run_cadquery_model.py:L63 | neighbors=[_new_files_by_ext()] | lang=en
+- "cad_skill_main_run_cadquery_model_rationale_94": "Load each STL once and optionally render a preview + check watertightness." | kind=entity | source=.agents/skills/cad-skill-main/run_cadquery_model.py:L94 | neighbors=[_process_stls()] | lang=en
+- "callback": "Callback" | kind=code-symbol | neighbors=[PokoActivity] | lang=en
+- "candyland_candy_map_foot": "foot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_map.py:L122 | neighbors=[candy_map.py] | lang=en
+- "candyland_candy_map_rationale_478": "cotton-candy cloud ring beyond the mountains (soft subdivided puffs, pastel)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_map.py:L478 | neighbors=[horizon()] | lang=en
+- "candyland_candy_map_rationale_68": "Chaikin corner cutting (keeps the ends)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_map.py:L68 | neighbors=[smooth_pl()] | lang=en
+- "candyland_candy_map_rationale_83": "0 on trails / plazas, 1 away from them (hills fade out near them)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_map.py:L83 | neighbors=[path_mask()] | lang=en
+- "candyland_candy_map_shot": "shot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_map.py:L687 | neighbors=[candy_map.py] | lang=en
+- "candyland_candy_props_rationale_146": "torus in the XZ plane (ring axis = Y)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L146 | neighbors=[torus()] | lang=en
+- "candyland_candy_props_rationale_196": "one rod sprinkle (open-ended 5-sided rod, 10 tris)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L196 | neighbors=[sprinkle()] | lang=en
+- "candyland_candy_props_rationale_200": "sprinkles lying on a surface: list of (point, normal)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L200 | neighbors=[sprinkles_on()] | lang=en
+- "candyland_candy_props_rationale_270": "shade for waffle_lathe: ridges light, pockets darker (same column)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L270 | neighbors=[WAF()] | lang=en
+- "candyland_candy_props_rationale_472": "decorated egg: lathe egg with horizontal colour bands (bands from cols)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L472 | neighbors=[candy_egg()] | lang=en
+- "candyland_candy_props_rationale_748": "gumdrop bell radius at height y (0..Hh)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L748 | neighbors=[bell_r()] | lang=es
+- "candyland_candy_props_two_tone": "two_tone()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L277 | neighbors=[candy_props.py] | lang=en
+- "candyland_candy_props_waffle": "waffle()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L262 | neighbors=[candy_props.py] | lang=en
+- "candyland_candy_studio_wrapped": "_wrapped()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_studio.py:L6 | neighbors=[candy_studio.py] | lang=en
 
 ## Instructions
 

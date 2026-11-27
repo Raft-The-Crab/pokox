@@ -1,4 +1,4 @@
-# Node Description Batch 121 of 208
+# Node Description Batch 121 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -19,53 +19,51 @@ relations (neighbors) and the provided citations/evidence — e.g.
 Ground entity descriptions in the citations/evidence when present; do not
 speculate beyond the context, so a node with no supporting context may be
 left out of the reply.
-LANGUAGE: each entry has a `lang=` marker giving the language of its source.
-Write that entry's description in EXACTLY that language. Do not translate to
-a single common language — match each node's source language individually.
+Write every description in English (en). Do not switch languages.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "onsenvillage_onsen_props_koi_pond": "koi_pond()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L449 | neighbors=[onsen_props.py, small round stone pond: dressed rim, wa…] | lang=en
-- "onsenvillage_onsen_props_planter": "planter()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L516 | neighbors=[onsen_props.py, stone trough planter (hollow, soil insi…] | lang=en
-- "onsenvillage_onsen_props_pool_outline": "pool_outline()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L397 | neighbors=[onsen_props.py, hot_pool()] | lang=en
-- "onsenvillage_onsen_props_rationale_105": "rectangular hip roof over a hw x hd (half sizes) wall box: ridge along X, ridge" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L105 | neighbors=[hip_roof(), Palette] | lang=pt
-- "onsenvillage_onsen_props_rationale_119": "pent roof around a storey (pagoda tiers, inn skirts): from the eave down to the" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L119 | neighbors=[skirt_roof(), Palette] | lang=en
-- "onsenvillage_onsen_props_rationale_126": "wall panel L long (x -L/2..L/2), H high, th thick, holes [(x0, x1, y0, y1)] cut" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L126 | neighbors=[holed_wall(), Palette] | lang=es
-- "onsenvillage_onsen_props_rationale_138": "cut window: timber frame round the hole, sill, recessed shoji lattice with a war" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L138 | neighbors=[window(), Palette] | lang=en
-- "onsenvillage_onsen_props_rationale_154": "cut doorway: heavy posts + lintel, a sliding lattice door half open, warm lit in" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L154 | neighbors=[doorway(), Palette] | lang=nl
-- "onsenvillage_onsen_props_rationale_177": "deck on brackets along a wall at z (side = -1 front), cedar rail with giboshi po" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L177 | neighbors=[balcony(), Palette] | lang=en
-- "onsenvillage_onsen_props_rationale_200": "SHARED BASE: sand-ashlar plinth (block faces) with a chamfered cap course, sunk" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L200 | neighbors=[plinth(), Palette] | lang=en
-- "onsenvillage_onsen_props_rationale_209": "dark cedar framing: corner posts, extra posts, a head beam (nageshi) and sill al" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L209 | neighbors=[frame_storey(), Palette] | lang=en
-- "onsenvillage_onsen_props_rationale_224": "four plaster walls of one storey with cut openings; returns the x positions of w" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L224 | neighbors=[storey_walls(), Palette] | lang=en
-- "onsenvillage_onsen_props_rationale_245": "chouchin: glowing ribbed paper body with dark wood top + bottom rings and a hang" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L245 | neighbors=[paper_lantern(), Palette] | lang=en
-- "onsenvillage_onsen_props_rationale_258": "village house / inn: ashlar plinth, plaster storeys with cut windows + door, ced" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L258 | neighbors=[house(), Palette] | lang=en
-- "onsenvillage_onsen_props_rationale_283": "open market front: back + side walls, a wide opening with a counter, shelves of" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L283 | neighbors=[shopfront(), Palette] | lang=en
-- "onsenvillage_onsen_props_rationale_315": "HERO: five-tier bathhouse pagoda. Stepped ashlar platform + veranda, five storey" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L315 | neighbors=[pagoda(), Palette] | lang=en
-- "onsenvillage_onsen_props_rationale_375": "open bath shelter over a pool: round cedar columns on stone bases, tie beams, br" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L375 | neighbors=[bath_pavilion(), Palette] | lang=pt
-- "onsenvillage_onsen_props_rationale_406": "steaming rock pool: raised ashlar-and-boulder rim, cut-stone curb, milky water," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L406 | neighbors=[hot_pool(), Palette] | lang=en
-- "onsenvillage_onsen_props_rationale_450": "small round stone pond: dressed rim, water, three koi, lily pads, a moss boulder" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L450 | neighbors=[koi_pond(), Palette] | lang=pt
-- "onsenvillage_onsen_props_rationale_475": "the closing post at the end of a railing run (bays carry only their left post, s" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L475 | neighbors=[railing_post(), Palette] | lang=en
-- "onsenvillage_onsen_props_rationale_479": "SIGNATURE: cedar railing bay with giboshi-capped posts, top + mid rails, slim ba" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L479 | neighbors=[railing(), Palette] | lang=en
-- "onsenvillage_onsen_props_rationale_49": "Asian glazed roof: a lofted surface from the eave polygon `outer` (corners [(x," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L49 | neighbors=[flared_roof(), Palette] | lang=en
-- "onsenvillage_onsen_props_rationale_493": "stone lantern (kasuga-style): hex stepped base, bulged shaft, hex platform, fire" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L493 | neighbors=[toro(), Palette] | lang=en
-- "onsenvillage_onsen_props_rationale_517": "stone trough planter (hollow, soil inside) with cloud-pruned sage shrubs and a f" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L517 | neighbors=[planter(), Palette] | lang=en
-- "onsenvillage_onsen_props_rationale_547": "stone stair: bevelled sand treads with tone variation and a nosing shadow, ashla" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L547 | neighbors=[stair_flight(), Palette] | lang=en
-- "onsenvillage_onsen_props_rationale_571": "arched cedar footbridge: plank deck on curved stringers, giboshi-capped rail pos" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L571 | neighbors=[footbridge(), Palette] | lang=en
-- "onsenvillage_onsen_props_rationale_609": "drying rack: two cedar uprights with feet, three poles, folded towels draped ove" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L609 | neighbors=[towel_rack(), Palette] | lang=en
-- "onsenvillage_onsen_props_rationale_633": "yatai cart: two spoked wheels, cedar counter cabin with a plank top, small persi" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L633 | neighbors=[noodle_stall(), Palette] | lang=en
-- "onsenvillage_onsen_props_rationale_668": "sake cask: straw-wrapped body, rope bands, lid; lying casks rest on their side" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L668 | neighbors=[taru(), Palette] | lang=en
-- "onsenvillage_onsen_props_rationale_682": "cluster: cedar pallet, three standing casks, one on top, one lying in a chock, a" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L682 | neighbors=[sake_barrels(), Palette] | lang=pt
-- "onsenvillage_onsen_props_rationale_696": "stack: slatted cedar crates with corner battens, a rope-tied sack pile and a bas" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L696 | neighbors=[crates(), Palette] | lang=en
-- "onsenvillage_onsen_props_rationale_718": "thick cedar bench: two planks, cross battens, iron bolts, carved stone feet" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L718 | neighbors=[bench(), Palette] | lang=en
-- "onsenvillage_onsen_props_rationale_728": "two-wheeled hand cart: plank bed with side boards, long handles, spoked wheels," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L728 | neighbors=[hand_cart(), Palette] | lang=en
-- "onsenvillage_onsen_props_rationale_746": "cedar lamp post with a crossarm and a hanging paper lantern, stone footing" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L746 | neighbors=[paper_lantern_post(), Palette] | lang=en
-- "onsenvillage_onsen_props_rationale_757": "shrine gate: two cedar columns on stone bases, double lintel (kasagi with upswep" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L757 | neighbors=[torii(), Palette] | lang=en
-- "onsenvillage_onsen_props_rationale_780": "Japanese black pine: thick leaning trunk with a kink, horizontal limbs ending in" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L780 | neighbors=[jp_pine(), Palette] | lang=en
-- "onsenvillage_onsen_props_rationale_807": "broadleaf in the garden style: flared forked trunk, 5 boughs, a dense rounded cr" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L807 | neighbors=[cloud_tree(), Palette] | lang=en
-- "onsenvillage_onsen_props_rationale_835": "mountain cedar for the backdrop: straight trunk, stacked drooping sage skirts (n" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L835 | neighbors=[cedar(), Palette] | lang=en
-- "onsenvillage_onsen_props_rationale_852": "tall framing crag: 4-5 overlapping tapered rock columns of different heights (on" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L852 | neighbors=[crag(), Palette] | lang=en
-- "onsenvillage_onsen_props_rationale_878": "low clump of sage fronds for wall feet and banks" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L878 | neighbors=[fern_tuft(), Palette] | lang=en
+- "mute_input_snapshot_inputreplay": "InputReplay" | kind=code-symbol | source=mute/include/poko/mute/input_snapshot.hpp:L160 | neighbors=[input_snapshot.hpp, .InputReplay()]
+- "mute_input_snapshot_touch_display": "touch_display()" | kind=code-symbol | source=mute/include/poko/mute/input_snapshot.hpp:L62 | neighbors=[input_snapshot.hpp, gamepad_slot()]
+- "mute_input_snapshot_touch_id": "touch_id()" | kind=code-symbol | source=mute/include/poko/mute/input_snapshot.hpp:L65 | neighbors=[input_snapshot.hpp, gamepad_control()]
+- "mute_lower": "lower.hpp" | kind=code-symbol | source=mute/include/poko/mute/lower.hpp:L1 | neighbors=[85b7130 Close MUT-26 limits: AST-to-SSA…, 952997e Audit MUT-01-55 and harden veri…]
+- "mute_package": "package.hpp" | kind=code-symbol | source=mute/include/poko/mute/package.hpp:L1 | neighbors=[5edd00c Fix MUT-21/22 audit defects in …, c7e951a Add MUT-21 package, import and …]
+- "mute_parser_ast": "Ast" | kind=code-symbol | source=mute/include/poko/mute/parser.hpp:L45 | neighbors=[parser.hpp, .Ast()]
+- "mute_scheduler_scheduler": "Scheduler" | kind=code-symbol | source=mute/include/poko/mute/scheduler.hpp:L33 | neighbors=[scheduler.hpp, .Scheduler()]
+- "mute_statement_statementast": "StatementAst" | kind=code-symbol | source=mute/include/poko/mute/statement.hpp:L34 | neighbors=[statement.hpp, .StatementAst()]
+- "mute_values_aggregatestore": "AggregateStore" | kind=code-symbol | source=mute/include/poko/mute/values.hpp:L43 | neighbors=[values.hpp, .AggregateStore()]
+- "net_bit_buffer_bitbuffer": "BitBuffer" | kind=code-symbol | source=server/net/include/poko/net/bit_buffer.hpp:L18 | neighbors=[bit_buffer.hpp, .BitBuffer()]
+- "net_crypto_aead_consttime_equal": "consttime_equal()" | kind=code-symbol | source=server/net/include/poko/net/crypto_aead.hpp:L208 | neighbors=[crypto_aead.hpp, aead_open()]
+- "net_crypto_aead_rotl32": "rotl32()" | kind=code-symbol | source=server/net/include/poko/net/crypto_aead.hpp:L30 | neighbors=[crypto_aead.hpp, qr()]
+- "net_cube_sync_cubepeer": "CubePeer" | kind=code-symbol | source=server/net/include/poko/net/cube_sync.hpp:L62 | neighbors=[cube_sync.hpp, .CubePeer()]
+- "net_frame_constant_time_equal": "constant_time_equal()" | kind=code-symbol | source=server/net/include/poko/net/frame.hpp:L132 | neighbors=[frame.hpp, unpack_frame()]
+- "net_frame_payload_bit_length": "payload_bit_length()" | kind=code-symbol | source=server/net/include/poko/net/frame.hpp:L144 | neighbors=[frame.hpp, pack_frame()]
+- "net_frame_sha256": "Sha256" | kind=code-symbol | source=server/net/include/poko/net/frame.hpp:L27 | neighbors=[frame.hpp, .Sha256()]
+- "net_jitter_buffer": "jitter_buffer.hpp" | kind=code-symbol | source=server/net/include/poko/net/jitter_buffer.hpp:L1 | neighbors=[1dac49d Created NET-01 to NET-09, Start…, JitterBuffer]
+- "net_jitter_buffer_jitterbuffer": "JitterBuffer" | kind=code-symbol | source=server/net/include/poko/net/jitter_buffer.hpp:L35 | neighbors=[jitter_buffer.hpp, .JitterBuffer()]
+- "net_udp_echo_udpsocket": "UdpSocket" | kind=code-symbol | source=server/net/include/poko/net/udp_echo.hpp:L38 | neighbors=[udp_echo.hpp, .UdpSocket()]
+- "net_ws_transport_ws_decode": "ws_decode()" | kind=code-symbol | source=server/net/include/poko/net/ws_transport.hpp:L69 | neighbors=[ws_transport.hpp, ws_roundtrip()]
+- "net_xor_fec_attach_parity": "attach_parity()" | kind=code-symbol | source=server/net/include/poko/net/xor_fec.hpp:L52 | neighbors=[xor_fec.hpp, losses()]
+- "net_xor_fec_make_parity": "make_parity()" | kind=code-symbol | source=server/net/include/poko/net/xor_fec.hpp:L73 | neighbors=[xor_fec.hpp, xor_payloads()]
+- "net_xor_fec_recover_loss": "recover_loss()" | kind=code-symbol | source=server/net/include/poko/net/xor_fec.hpp:L60 | neighbors=[xor_fec.hpp, losses()]
+- "net_xor_fec_xor_payloads": "xor_payloads()" | kind=code-symbol | source=server/net/include/poko/net/xor_fec.hpp:L21 | neighbors=[xor_fec.hpp, make_parity()]
+- "oaktrees_gen_trees_export_glb": "export_glb()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L943 | neighbors=[gen_trees.py, main()]
+- "oaktrees_gen_trees_load_px": "load_px()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L914 | neighbors=[gen_trees.py, contact_sheet()]
+- "oaktrees_gen_trees_make_object": "make_object()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L694 | neighbors=[gen_trees.py, make_tree()]
+- "oaktrees_gen_trees_material": "material()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L710 | neighbors=[gen_trees.py, get_materials()]
+- "oaktrees_gen_trees_render_turntable": "render_turntable()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L896 | neighbors=[gen_trees.py, main()]
+- "oaktrees_gen_trees_resize": "resize()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L921 | neighbors=[gen_trees.py, contact_sheet()]
+- "oaktrees_gen_trees_save_png": "save_png()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L52 | neighbors=[gen_trees.py, _img()]
+- "oaktrees_gen_trees_setup_scene": "setup_scene()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L853 | neighbors=[gen_trees.py, main()]
+- "oaktrees_gen_trees_tri_count": "tri_count()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L893 | neighbors=[gen_trees.py, make_tree()]
+- "oaktrees_gen_trees_tube_mesh": "tube_mesh()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L498 | neighbors=[gen_trees.py, make_tree()]
+- "onsenvillage_closeup": "closeup.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/closeup.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …]
+- "onsenvillage_onsen_map_inb": "_inb()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L145 | neighbors=[onsen_map.py, _inside_one()]
+- "onsenvillage_onsen_map_kit": "kit()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L77 | neighbors=[onsen_map.py, place()]
+- "onsenvillage_onsen_map_look": "look()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L517 | neighbors=[onsen_map.py, free()]
+- "onsenvillage_onsen_map_rationale_117": "the village is mirrored about x = 0: west copy as written, east copy at -x with" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L117 | neighbors=[mirror(), MB]
+- "onsenvillage_onsen_map_rationale_195": "stage ground (smooth: banks, stream bed, lawn) + mountains (flat faceted rock wi" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L195 | neighbors=[ground(), MB]
 
 ## Instructions
 

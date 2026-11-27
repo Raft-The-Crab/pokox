@@ -1,4 +1,4 @@
-# Node Description Batch 136 of 208
+# Node Description Batch 136 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -19,51 +19,53 @@ relations (neighbors) and the provided citations/evidence — e.g.
 Ground entity descriptions in the citations/evidence when present; do not
 speculate beyond the context, so a node with no supporting context may be
 left out of the reply.
-Write every description in English (en). Do not switch languages.
+LANGUAGE: each entry has a `lang=` marker giving the language of its source.
+Write that entry's description in EXACTLY that language. Do not translate to
+a single common language — match each node's source language individually.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "tests_run_all_skill_module": "skill_module()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/run_all.py:L22 | neighbors=[run_all.py, Import skills/<skill>/scripts/<script>.…]
-- "tests_test_agent_loop_test_lint_accepts_a_cel_contact_and_a_restruck_painted_shape": "test_lint_accepts_a_cel_contact_and_a_restruck_painted_shape()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_agent_loop.py:L65 | neighbors=[test_agent_loop.py, recipe()]
-- "tests_test_agent_loop_test_lint_passes_the_library_and_reports_each_hard_rule": "test_lint_passes_the_library_and_reports_each_hard_rule()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_agent_loop.py:L49 | neighbors=[test_agent_loop.py, recipe()]
-- "tests_test_agent_loop_test_lint_warns_about_craft_problems": "test_lint_warns_about_craft_problems()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_agent_loop.py:L78 | neighbors=[test_agent_loop.py, recipe()]
-- "tests_test_agent_loop_test_review_metrics_accept_a_well_formed_effect": "test_review_metrics_accept_a_well_formed_effect()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_agent_loop.py:L112 | neighbors=[test_agent_loop.py, frames()]
-- "tests_test_agent_loop_test_review_metrics_do_not_flag_known_false_positives": "test_review_metrics_do_not_flag_known_false_positives()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_agent_loop.py:L159 | neighbors=[test_agent_loop.py, frames()]
-- "tests_test_agent_loop_test_review_metrics_flag_off_peak_flash_flat_colour_and_wrong_direction": "test_review_metrics_flag_off_peak_flash_flat_colour_and_wrong_direction()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_agent_loop.py:L129 | neighbors=[test_agent_loop.py, frames()]
-- "tests_test_agent_loop_test_short_effect_with_an_empty_second_half_is_a_dead_tail": "test_short_effect_with_an_empty_second_half_is_a_dead_tail()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_agent_loop.py:L148 | neighbors=[test_agent_loop.py, frames()]
-- "tests_test_animation_rig": "_rig()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_animation.py:L82 | neighbors=[test_animation.py, test_retarget_mixamo_to_rigify_names()]
-- "tests_test_animation_test_bake_to_copy_with_root_motion_and_export": "test_bake_to_copy_with_root_motion_and_export()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_animation.py:L25 | neighbors=[test_animation.py, _walk()]
-- "tests_test_animation_test_retarget_mixamo_to_rigify_names": "test_retarget_mixamo_to_rigify_names()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_animation.py:L105 | neighbors=[test_animation.py, _rig()]
-- "tests_test_atmosphere_mean_luma": "_mean_luma()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_atmosphere.py:L6 | neighbors=[test_atmosphere.py, _render()]
-- "tests_test_atmosphere_test_night_renders_darker_than_noon": "test_night_renders_darker_than_noon()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_atmosphere.py:L40 | neighbors=[test_atmosphere.py, _render()]
-- "tests_test_baking_test_high_to_low_bake_normal_ao_curv_orm_basecolor": "test_high_to_low_bake_normal_ao_curv_orm_basecolor()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_baking.py:L16 | neighbors=[test_baking.py, _pixels()]
-- "tests_test_baking_test_self_bake_procedural_roughness": "test_self_bake_procedural_roughness()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_baking.py:L41 | neighbors=[test_baking.py, _pixels()]
-- "tests_test_core_test_bpy_patterns_snippets_run": "test_bpy_patterns_snippets_run()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_core.py:L25 | neighbors=[test_core.py, _run_md_blocks()]
-- "tests_test_effekseer_ai_test_editor_bin_directory_requires_an_explicit_configuration": "test_editor_bin_directory_requires_an_explicit_configuration()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_effekseer_ai.py:L30 | neighbors=[test_effekseer_ai.py, A public release must never probe a con…]
-- "tests_test_environment_test_scatter_respects_slope_height_and_realize": "test_scatter_respects_slope_height_and_realize()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_environment.py:L54 | neighbors=[test_environment.py, _trees()]
-- "tests_test_environment_trees": "_trees()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_environment.py:L41 | neighbors=[test_environment.py, test_scatter_respects_slope_height_and_…]
-- "tests_test_examples_test_catalog_lists_every_shipped_example_as_pairs_singles_and_sets": "test_catalog_lists_every_shipped_example_as_pairs_singles_and_sets()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_examples.py:L16 | neighbors=[test_examples.py, example_ids()]
-- "tests_test_examples_test_lint_of_all_examples_has_no_errors": "test_lint_of_all_examples_has_no_errors()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_examples.py:L66 | neighbors=[test_examples.py, example_ids()]
-- "tests_test_export_reimport_dims": "_reimport_dims()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_export.py:L8 | neighbors=[test_export.py, test_all_presets_roundtrip_scale()]
-- "tests_test_export_test_all_presets_roundtrip_scale": "test_all_presets_roundtrip_scale()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_export.py:L22 | neighbors=[test_export.py, _reimport_dims()]
-- "tests_test_golden_goldenharnesstests_test_binary_match": ".test_binary_match()" | kind=code-symbol | source=tools/testutils/harness/tests/test_golden.py:L26 | neighbors=[GoldenHarnessTests, .pair()]
-- "tests_test_golden_goldenharnesstests_test_binary_mismatch_does_not_update_reference": ".test_binary_mismatch_does_not_update_reference()" | kind=code-symbol | source=tools/testutils/harness/tests/test_golden.py:L33 | neighbors=[GoldenHarnessTests, .pair()]
-- "tests_test_golden_goldenharnesstests_test_chunk_boundary": ".test_chunk_boundary()" | kind=code-symbol | source=tools/testutils/harness/tests/test_golden.py:L62 | neighbors=[GoldenHarnessTests, .pair()]
-- "tests_test_golden_goldenharnesstests_test_different_lengths_and_empty_files": ".test_different_lengths_and_empty_files()" | kind=code-symbol | source=tools/testutils/harness/tests/test_golden.py:L53 | neighbors=[GoldenHarnessTests, .pair()]
-- "tests_test_golden_goldenharnesstests_test_incomplete_arguments_are_errors": ".test_incomplete_arguments_are_errors()" | kind=code-symbol | source=tools/testutils/harness/tests/test_golden.py:L103 | neighbors=[GoldenHarnessTests, run()]
-- "tests_test_golden_goldenharnesstests_test_missing_file_is_error": ".test_missing_file_is_error()" | kind=code-symbol | source=tools/testutils/harness/tests/test_golden.py:L70 | neighbors=[GoldenHarnessTests, .pair()]
-- "tests_test_golden_goldenharnesstests_test_png_match": ".test_png_match()" | kind=code-symbol | source=tools/testutils/harness/tests/test_golden.py:L42 | neighbors=[GoldenHarnessTests, .pair()]
-- "tests_test_golden_goldenharnesstests_test_png_mismatch": ".test_png_mismatch()" | kind=code-symbol | source=tools/testutils/harness/tests/test_golden.py:L48 | neighbors=[GoldenHarnessTests, .pair()]
-- "tests_test_golden_goldenharnesstests_test_update_missing_actual_preserves_existing_reference": ".test_update_missing_actual_preserves_existing_reference()" | kind=code-symbol | source=tools/testutils/harness/tests/test_golden.py:L96 | neighbors=[GoldenHarnessTests, run()]
-- "tests_test_golden_goldenharnesstests_test_update_same_path_refused": ".test_update_same_path_refused()" | kind=code-symbol | source=tools/testutils/harness/tests/test_golden.py:L89 | neighbors=[GoldenHarnessTests, run()]
-- "tests_test_hair_test_groom_attached_masked_with_assets": "test_groom_attached_masked_with_assets()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_hair.py:L15 | neighbors=[test_hair.py, _head()]
-- "tests_test_hair_test_hair_cards_and_atlas": "test_hair_cards_and_atlas()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_hair.py:L29 | neighbors=[test_hair.py, _head()]
-- "tests_test_materials_img": "_img()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_materials.py:L6 | neighbors=[test_materials.py, test_texture_set_autowire_orm_dx_normal…]
-- "tests_test_materials_test_texture_set_autowire_orm_dx_normal": "test_texture_set_autowire_orm_dx_normal()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_materials.py:L16 | neighbors=[test_materials.py, _img()]
-- "tests_test_mating_rationale_8": "A 20 mm block sitting in a U socket whose opening is `gap` wide." | kind=entity | source=.agents/skills/cad-skill-main/tests/test_mating.py:L8 | neighbors=[MatingError, _socket()]
-- "tests_test_mating_test_collision_fails": "test_collision_fails()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_mating.py:L28 | neighbors=[test_mating.py, _socket()]
-- "tests_test_mating_test_good_fit_passes": "test_good_fit_passes()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_mating.py:L24 | neighbors=[test_mating.py, _socket()]
+- "sugarworks_sugar_props_fence_post": "fence_post()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L81 | neighbors=[sugar_props.py, one fence post: cream pillar + pink gum…] | lang=en
+- "sugarworks_sugar_props_gumdrop_bush": "gumdrop_bush()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L241 | neighbors=[sugar_props.py, dome()] | lang=en
+- "sugarworks_sugar_props_hazard": "hazard()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L365 | neighbors=[sugar_props.py, flat lemon/choc hazard stripe band alon…] | lang=en
+- "sugarworks_sugar_props_peppermint": "peppermint()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L418 | neighbors=[sugar_props.py, flat peppermint swirl stepping disc] | lang=en
+- "sugarworks_sugar_props_plot_base": "plot_base()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L61 | neighbors=[sugar_props.py, the plot slab: tiled concrete, pink bor…] | lang=en
+- "sugarworks_sugar_props_rationale_107": "starter dropper: steel legs, lemon hopper with a funnel, candy jar on top, warni" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L107 | neighbors=[Palette, dropper()] | lang=en
+- "sugarworks_sugar_props_rationale_132": "belt segment along X: legs, dark belt with ribs, steel side rails, lemon chevron" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L132 | neighbors=[Palette, conveyor()] | lang=en
+- "sugarworks_sugar_props_rationale_152": "scanner arch over the belt: two steel pillars, grape crown, glowing ring + scan" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L152 | neighbors=[Palette, upgrader()] | lang=en
+- "sugarworks_sugar_props_rationale_164": "chocolate melting vat: drum with cream drip rim, glowing mouth facing -X, lollip" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L164 | neighbors=[Palette, collector()] | lang=en
+- "sugarworks_sugar_props_rationale_211": "empty build slot: four lemon corner brackets + a dashed outline, flush on the sl" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L211 | neighbors=[Palette, slot_marker()] | lang=en
+- "sugarworks_sugar_props_rationale_252": "candy-cane street lamp: striped post, hook over -Z, hanging lantern" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L252 | neighbors=[Palette, candy_lamp()] | lang=en
+- "sugarworks_sugar_props_rationale_266": "chocolate-bar bench: segmented seat + back, steel legs; sit side = -Z" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L266 | neighbors=[Palette, choc_bench()] | lang=en
+- "sugarworks_sugar_props_rationale_294": "HERO: the Candy Exchange - drum hall with pilasters and an arched entrance (-Z)," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L294 | neighbors=[Palette, exchange()] | lang=en
+- "sugarworks_sugar_props_rationale_356": "pipe from the collector's side (origin) down to the cash pad 18 studs along -Z," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L356 | neighbors=[Palette, coin_chute()] | lang=en
+- "sugarworks_sugar_props_rationale_366": "flat lemon/choc hazard stripe band along X, flush on the slab" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L366 | neighbors=[Palette, hazard()] | lang=en
+- "sugarworks_sugar_props_rationale_373": "painted mint walkway along Z, cream edge dashes (lifted .02 off the slab: no cop" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L373 | neighbors=[Palette, walkway()] | lang=en
+- "sugarworks_sugar_props_rationale_381": "pallet with tied sugar sacks" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L381 | neighbors=[Palette, candy_sacks()] | lang=en
+- "sugarworks_sugar_props_rationale_391": "three-tier chocolate fountain: pink bowls, chocolate pouring between them, pool" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L391 | neighbors=[Palette, choc_fountain()] | lang=en
+- "sugarworks_sugar_props_rationale_419": "flat peppermint swirl stepping disc" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L419 | neighbors=[Palette, peppermint()] | lang=en
+- "sugarworks_sugar_props_rationale_49": "candy-cane tube: alternating colour segments along a polyline" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L49 | neighbors=[Palette, stripes()] | lang=pt
+- "sugarworks_sugar_props_rationale_62": "the plot slab: tiled concrete, pink border, chamfered edge; top at y 1.2" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L62 | neighbors=[Palette, plot_base()] | lang=en
+- "sugarworks_sugar_props_rationale_72": "low cream wall + pink cap + team-colour glow strip between two posts (posts = fe" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L72 | neighbors=[Palette, fence()] | lang=en
+- "sugarworks_sugar_props_rationale_82": "one fence post: cream pillar + pink gumdrop cap" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L82 | neighbors=[Palette, fence_post()] | lang=en
+- "sugarworks_sugar_props_rationale_89": "owner gate: two striped pillars with gumdrop tops, sign board, glowing claim pad" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L89 | neighbors=[Palette, gate()] | lang=en
+- "sugarworks_sugar_props_slot_marker": "slot_marker()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L210 | neighbors=[sugar_props.py, empty build slot: four lemon corner bra…] | lang=en
+- "sugarworks_sugar_props_spawn_pad": "spawn_pad()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L283 | neighbors=[sugar_props.py, torus()] | lang=en
+- "sugarworks_sugar_props_walkway": "walkway()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L372 | neighbors=[sugar_props.py, painted mint walkway along Z, cream edg…] | lang=en
+- "sugarworks_sugar_props_wrapper_bin": "wrapper_bin()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L427 | neighbors=[sugar_props.py, dome()] | lang=en
+- "superpowers_main_index": "index.js" | kind=code-symbol | source=.agents/skills/superpowers-main/index.js:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …] | lang=en
+- "surfaceholder": "SurfaceHolder" | kind=code-symbol | neighbors=[PokoActivity.java, PokoActivity] | lang=en
+- "surfaceview": "SurfaceView" | kind=code-symbol | neighbors=[PokoActivity.java, PokoActivity] | lang=en
+- "targets_run_dual_target_tests_android_tools": "android_tools()" | kind=code-symbol | source=tools/targets/run_dual_target_tests.py:L156 | neighbors=[run_dual_target_tests.py, android_leg()] | lang=en
+- "targets_run_dual_target_tests_main": "main()" | kind=code-symbol | source=tools/targets/run_dual_target_tests.py:L365 | neighbors=[run_dual_target_tests.py, now()] | lang=en
+- "targets_run_dual_target_tests_msvc_tools": "msvc_tools()" | kind=code-symbol | source=tools/targets/run_dual_target_tests.py:L126 | neighbors=[run_dual_target_tests.py, windows_leg()] | lang=en
+- "targets_run_dual_target_tests_write_log": "write_log()" | kind=code-symbol | source=tools/targets/run_dual_target_tests.py:L91 | neighbors=[run_dual_target_tests.py, run_command()] | lang=en
+- "tests_conftest_bad_script": "bad_script()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/conftest.py:L54 | neighbors=[conftest.py, CadQuery script that raises (fillet rad…] | lang=en
+- "tests_conftest_cli_env": "cli_env()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/conftest.py:L68 | neighbors=[conftest.py, Environment for running `python -m vfxk…] | lang=en
+- "tests_conftest_empty_script": "empty_script()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/conftest.py:L65 | neighbors=[conftest.py, Script that exits 0 without writing any…] | lang=en
+- "tests_conftest_good_script": "good_script()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/conftest.py:L27 | neighbors=[conftest.py, CadQuery script that writes a watertigh…] | lang=en
+- "tests_conftest_project": "project()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/conftest.py:L78 | neighbors=[conftest.py, The shared temporary game project whose…] | lang=en
 
 ## Instructions
 

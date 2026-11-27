@@ -1,4 +1,4 @@
-# Node Description Batch 178 of 208
+# Node Description Batch 178 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -26,46 +26,46 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "scripts_bake_maps_rationale_123": "Divergence of the tangent normal field: convex > 0.5 (white), concave < 0.5 (dar" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-texture-baking/scripts/bake_maps.py:L123 | neighbors=[_curvature_from_normal()] | lang=en
-- "scripts_bake_maps_rationale_56": "Route a per-material signal into an Emission shader. Returns an undo list." | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-texture-baking/scripts/bake_maps.py:L56 | neighbors=[_signal_override()] | lang=en
-- "scripts_bake_maps_rationale_98": "Ensure every low material has an active Image node pointing at img." | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-texture-baking/scripts/bake_maps.py:L98 | neighbors=[_target_node()] | lang=en
-- "scripts_batch_process_rationale_1": "Batch over many files in one Blender process: convert formats, inventory report," | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-pipeline-automation/scripts/batch_process.py:L1 | neighbors=[batch_process.py] | lang=en
-- "scripts_bind_mesh_rationale_1": "Skin meshes to an armature with robust automatic weights, then clean them for en" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-character-rigging/scripts/bind_mesh.py:L1 | neighbors=[bind_mesh.py] | lang=en
-- "scripts_bind_mesh_rationale_72": "Factor that brings the rig to ~1.8 m for bone heat; 1.0 when already 0.5-20 m ta" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-character-rigging/scripts/bind_mesh.py:L72 | neighbors=[_heat_scale()] | lang=en
-- "scripts_bld_grid_init": ".__init__()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/scripts/bld.py:L19 | neighbors=[Grid] | lang=en
-- "scripts_bld_rationale_41": "organic shape in fine bricks: fn(x, y, z) -> bool mask, x/z centred, y up (fine" | kind=entity | source=.agents/skills/Voxel Pack/stud/scripts/bld.py:L41 | neighbors=[.fshape()] | lang=es
-- "scripts_bld_rationale_46": "leafy clump / boulder: ellipsoid with a lumpy surface (no smooth sphere)." | kind=entity | source=.agents/skills/Voxel Pack/stud/scripts/bld.py:L46 | neighbors=[.blob()] | lang=en
-- "scripts_bld_rationale_54": "extrude a traced reference map (scripts/trace_ref.py) in fine bricks: 1 cell = 1" | kind=entity | source=.agents/skills/Voxel Pack/stud/scripts/bld.py:L54 | neighbors=[.trace()] | lang=en
-- "scripts_bld_rationale_90": "front-facing window in fine bricks; zf = fine z of the wall's outer layer. Pane" | kind=entity | source=.agents/skills/Voxel Pack/stud/scripts/bld.py:L90 | neighbors=[.window()] | lang=en
-- "scripts_blocks_block_init": ".__init__()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/blocks.py:L17 | neighbors=[Block] | lang=en
-- "scripts_blocks_blockprop_count": ".count()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/blocks.py:L35 | neighbors=[BlockProp] | lang=en
-- "scripts_blocks_blockprop_init": ".__init__()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/blocks.py:L25 | neighbors=[BlockProp] | lang=en
-- "scripts_blocks_clear_material": "clear_material()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/blocks.py:L145 | neighbors=[blocks.py] | lang=en
-- "scripts_blocks_rationale_30": "nest another BlockProp (e.g. a lamp on a gate)" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/blocks.py:L30 | neighbors=[.put()] | lang=pt
-- "scripts_blocks_rationale_38": "world-space copies of a prop's blocks (uniform scale s scales sizes and offsets)" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/blocks.py:L38 | neighbors=[transformed()] | lang=en
-- "scripts_bpyx_default": "_default()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/_bpyx.py:L24 | neighbors=[_bpyx.py] | lang=en
-- "scripts_bpyx_rationale_1": "_bpyx - tiny shared helpers for blender-agent-skills scripts (Blender 5.2 LTS+," | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/_bpyx.py:L1 | neighbors=[_bpyx.py] | lang=en
-- "scripts_bpyx_rationale_100": "First node of `type_` (e.g. 'BSDF_PRINCIPLED'). Names are localized - never look" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/_bpyx.py:L100 | neighbors=[node()] | lang=en
-- "scripts_bpyx_rationale_105": "Valid identifiers of an enum property (works on types or instances)." | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/_bpyx.py:L105 | neighbors=[enum_ids()] | lang=en
-- "scripts_bpyx_rationale_110": "Assign an enum; on failure raise listing valid values (dynamic enums under-repor" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/_bpyx.py:L110 | neighbors=[set_enum()] | lang=en
-- "scripts_bpyx_rationale_118": "Triangle count (evaluated = with modifiers)." | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/_bpyx.py:L118 | neighbors=[mesh_tris()] | lang=en
-- "scripts_bpyx_rationale_133": "Round a float or a vector for compact JSON." | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/_bpyx.py:L133 | neighbors=[r()] | lang=pt
-- "scripts_bpyx_rationale_20": "Arguments after '--' (Blender ignores them)." | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/_bpyx.py:L20 | neighbors=[argv()] | lang=en
-- "scripts_bpyx_rationale_36": "Print compact JSON on one marked line (parsed by run_in_blender.py)." | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/_bpyx.py:L36 | neighbors=[emit()] | lang=en
-- "scripts_bpyx_rationale_42": "ArgumentParser whose help is the script docstring's first line." | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/_bpyx.py:L42 | neighbors=[parser()] | lang=en
-- "scripts_bpyx_rationale_47": "CLI entry: parse args after '--', run, emit JSON. Exit 1 on failure." | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/_bpyx.py:L47 | neighbors=[cli()] | lang=en
-- "scripts_bpyx_rationale_63": "--objects / --save flags shared by most scripts." | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/_bpyx.py:L63 | neighbors=[add_common()] | lang=en
-- "scripts_bpyx_rationale_72": "Resolve names -> objects. No names: selected of `types`, else all visible of `ty" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/_bpyx.py:L72 | neighbors=[objects()] | lang=en
-- "scripts_bpyx_rationale_84": "Leave edit/sculpt/pose modes; most data API work needs OBJECT mode." | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/_bpyx.py:L84 | neighbors=[object_mode()] | lang=en
-- "scripts_bpyx_rationale_91": "Select exactly `objs` and make `active` (default first) active." | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/_bpyx.py:L91 | neighbors=[select_only()] | lang=en
-- "scripts_brick_rig_rationale_1": "Rig + Roblox export for the BRICK pipeline (always run it: every brick model shi" | kind=entity | source=.agents/skills/Voxel Pack/stud/scripts/brick_rig.py:L1 | neighbors=[brick_rig.py] | lang=en
-- "scripts_brick_rig_rationale_201": "fresh session: import the GLB, check bones + rigid weights, pose, render rest +" | kind=entity | source=.agents/skills/Voxel Pack/stud/scripts/brick_rig.py:L201 | neighbors=[verify()] | lang=en
-- "scripts_brick_rig_rationale_30": "int label per voxel (index into RIG, -1 = empty)." | kind=entity | source=.agents/skills/Voxel Pack/stud/scripts/brick_rig.py:L30 | neighbors=[assign()] | lang=it
-- "scripts_brick_rig_rationale_46": "overrides that split `mask` (e.g. one tentacle) between its own bones only, by n" | kind=entity | source=.agents/skills/Voxel Pack/stud/scripts/brick_rig.py:L46 | neighbors=[limb()] | lang=en
-- "scripts_brick_rig_rationale_60": "K: 2D int keys (-1 = none). Returns rectangles (i, j, di, dj, key) covering ever" | kind=entity | source=.agents/skills/Voxel Pack/stud/scripts/brick_rig.py:L60 | neighbors=[_greedy2d()] | lang=en
-- "scripts_brick_rig_rationale_75": "greedy quads of the exposed faces of cells with keys >= 0, exposure tested again" | kind=entity | source=.agents/skills/Voxel Pack/stud/scripts/brick_rig.py:L75 | neighbors=[_quads()] | lang=en
-- "scripts_brick_sheet_key": "key()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/scripts/brick_sheet.py:L9 | neighbors=[brick_sheet.py] | lang=en
-- "scripts_brick_sheet_rationale_1": "Contact sheet of the brick pipeline's *_fx.png renders (3 per row, 450 px tiles," | kind=entity | source=.agents/skills/Voxel Pack/stud/scripts/brick_sheet.py:L1 | neighbors=[brick_sheet.py] | lang=en
+- "plusspeed_plus_props_treadmill": "treadmill()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props.py:L253 | neighbors=[plus_props.py] | lang=en
+- "plusspeed_plus_props_voxel_tree": "voxel_tree()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props.py:L28 | neighbors=[plus_props.py] | lang=en
+- "plusspeed_plus_props_wins_pad": "wins_pad()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props.py:L234 | neighbors=[plus_props.py] | lang=en
+- "preserved_preserve_r6_rationale_1": "Preservation-first R6 export. Never overwrites source or prior outputs.  Blender" | kind=entity | source=assets/characters/preserved/preserve_r6.py:L1 | neighbors=[preserve_r6.py] | lang=en
+- "preserved_preview_face_glb_point_at": "point_at()" | kind=code-symbol | source=assets/characters/preserved/preview_face_glb.py:L38 | neighbors=[preview_face_glb.py] | lang=en
+- "preserved_verify_roundtrip_rationale_1": "Read-only Blender GLB round-trip check. Run in a separate background process.  b" | kind=entity | source=assets/characters/preserved/verify_roundtrip.py:L1 | neighbors=[verify_roundtrip.py] | lang=en
+- "program_program_assemble_program_bytecode": "assemble_program_bytecode()" | kind=code-symbol | source=mute/src/program/program.cpp:L363 | neighbors=[program.cpp] | lang=en
+- "program_program_disassemble_program_bytecode": "disassemble_program_bytecode()" | kind=code-symbol | source=mute/src/program/program.cpp:L359 | neighbors=[program.cpp] | lang=en
+- "program_program_parser_parser": ".Parser()" | kind=code-symbol | source=mute/src/program/program.cpp:L52 | neighbors=[Parser] | lang=en
+- "program_program_runner_runner": ".Runner()" | kind=code-symbol | source=mute/src/program/program.cpp:L168 | neighbors=[Runner] | lang=en
+- "refmatch_compare_print_report": "print_report()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/refmatch/compare.py:L508 | neighbors=[compare.py] | lang=en
+- "refmatch_compare_rationale_1": "Reference comparison metrics.  Computes the numbers the reconstruction skill req" | kind=entity | source=.agents/skills/ForgeSkills-main/tools/refmatch/compare.py:L1 | neighbors=[compare.py] | lang=en
+- "refmatch_compare_rationale_148": "Foreground mask.      Prefers an exact alpha channel when supplied (a transparen" | kind=entity | source=.agents/skills/ForgeSkills-main/tools/refmatch/compare.py:L148 | neighbors=[subject_mask()] | lang=en
+- "refmatch_compare_rationale_162": "Keep every connected component above a size threshold (not just the largest)." | kind=entity | source=.agents/skills/ForgeSkills-main/tools/refmatch/compare.py:L162 | neighbors=[significant_components()] | lang=en
+- "refmatch_compare_rationale_192": "Crop to the tight subject box, then scale to fit and center.      Resizing strai" | kind=entity | source=.agents/skills/ForgeSkills-main/tools/refmatch/compare.py:L192 | neighbors=[normalize_mask()] | lang=en
+- "refmatch_compare_rationale_232": "Width of the subject at N bands, normalized by the subject's own max width." | kind=entity | source=.agents/skills/ForgeSkills-main/tools/refmatch/compare.py:L232 | neighbors=[band_widths()] | lang=en
+- "refmatch_compare_rationale_261": "Compare subject aspect ratio (width / height), not absolute pixels.      Compari" | kind=entity | source=.agents/skills/ForgeSkills-main/tools/refmatch/compare.py:L261 | neighbors=[bbox_report()] | lang=en
+- "refmatch_compare_rationale_30": "Isotropic scale of (w, h) so the whole image fits inside size." | kind=entity | source=.agents/skills/ForgeSkills-main/tools/refmatch/compare.py:L30 | neighbors=[_fit_size()] | lang=en
+- "refmatch_compare_rationale_36": "Resize a PIL image into size with aspect intact, centered on black padding." | kind=entity | source=.agents/skills/ForgeSkills-main/tools/refmatch/compare.py:L36 | neighbors=[letterbox()] | lang=en
+- "refmatch_compare_rationale_363": "Separable convolution, same size out. Horizontal then vertical pass." | kind=entity | source=.agents/skills/ForgeSkills-main/tools/refmatch/compare.py:L363 | neighbors=[_conv_sep()] | lang=en
+- "refmatch_compare_rationale_404": "Read alpha if the file has one. A transparent render is ground truth." | kind=entity | source=.agents/skills/ForgeSkills-main/tools/refmatch/compare.py:L404 | neighbors=[load_alpha()] | lang=en
+- "refmatch_compare_rationale_415": "Segment at the image's NATIVE resolution, then resample with aspect intact." | kind=entity | source=.agents/skills/ForgeSkills-main/tools/refmatch/compare.py:L415 | neighbors=[mask_at_native()] | lang=en
+- "refmatch_compare_rationale_54": "Normalized quadratic basis over the image plane: [1, x, y, x^2, xy, y^2]." | kind=entity | source=.agents/skills/ForgeSkills-main/tools/refmatch/compare.py:L54 | neighbors=[_quad_basis()] | lang=es
+- "refmatch_compare_rationale_62": "Segment the subject by subtracting a fitted backdrop surface.      A single medi" | kind=entity | source=.agents/skills/ForgeSkills-main/tools/refmatch/compare.py:L62 | neighbors=[background_fit_mask()] | lang=en
+- "refmatch_compare_rationale_97": "Segment by flood-filling the backdrop from the borders.      Thresholding agains" | kind=entity | source=.agents/skills/ForgeSkills-main/tools/refmatch/compare.py:L97 | neighbors=[flood_background_mask()] | lang=en
+- "refmatch_measure_sheet_rationale_1": "Extract clean single-view reference panels from a concept sheet.  The sheet is a" | kind=entity | source=.agents/skills/ForgeSkills-main/tools/refmatch/measure_sheet.py:L1 | neighbors=[measure_sheet.py] | lang=en
+- "refmatch_measure_sheet_rationale_63": "Find the tallest narrow subject column inside a region — the front view." | kind=entity | source=.agents/skills/ForgeSkills-main/tools/refmatch/measure_sheet.py:L63 | neighbors=[auto_front()] | lang=en
+- "refmatch_overlay_rationale_1": "Side-by-side diagnostic sheet.  Metrics tell you the score. This tells you what" | kind=entity | source=.agents/skills/ForgeSkills-main/tools/refmatch/overlay.py:L1 | neighbors=[overlay.py] | lang=en
+- "refmatch_palette_report_rationale_1": "Palette extraction and delta-E comparison.  Two jobs:   1. Read a named palette" | kind=entity | source=.agents/skills/ForgeSkills-main/tools/refmatch/palette_report.py:L1 | neighbors=[palette_report.py] | lang=en
+- "refmatch_palette_report_rationale_123": "For each named palette role, find the nearest render cluster and report delta-E." | kind=entity | source=.agents/skills/ForgeSkills-main/tools/refmatch/palette_report.py:L123 | neighbors=[compare_to_render()] | lang=en
+- "refmatch_palette_report_rationale_46": "Subject pixels of an image, segmented at native resolution." | kind=entity | source=.agents/skills/ForgeSkills-main/tools/refmatch/palette_report.py:L46 | neighbors=[subject_pixels()] | lang=en
+- "refmatch_palette_report_rationale_89": "CIE76 delta-E. Above ~12 is a clearly different color to most viewers." | kind=entity | source=.agents/skills/ForgeSkills-main/tools/refmatch/palette_report.py:L89 | neighbors=[delta_e()] | lang=en
+- "render_camera_orbitcamera_orbitcamera": ".OrbitCamera()" | kind=code-symbol | source=engine/render/include/poko/render/camera.hpp:L12 | neighbors=[OrbitCamera] | lang=en
+- "resource_asset_store_assethandle_assethandle": ".AssetHandle()" | kind=code-symbol | source=engine/resource/include/poko/resource/asset_store.hpp:L73 | neighbors=[AssetHandle] | lang=en
+- "resource_asset_store_assetstore_assetstore": ".AssetStore()" | kind=code-symbol | source=engine/resource/include/poko/resource/asset_store.hpp:L30 | neighbors=[AssetStore] | lang=en
+- "resource_asset_store_typed": "typed()" | kind=code-symbol | source=engine/resource/include/poko/resource/asset_store.hpp:L87 | neighbors=[asset_store.hpp] | lang=en
+- "rhi_clearbackend": "rhi::ClearBackend" | kind=code-symbol | neighbors=[FailingPrimaryBackend] | lang=en
+- "rhi_directional_light_directionallight": "DirectionalLight" | kind=code-symbol | source=engine/rhi/include/poko/rhi/directional_light.hpp:L8 | neighbors=[directional_light.hpp] | lang=en
+- "schema_0001_word_reservations_word_reservations": "word_reservations" | kind=code-symbol | source=backend/storage/d1/schema/0001_word_reservations.sql:L3 | neighbors=[0001_word_reservations.sql] | lang=en
+- "scripts_analyze_rationale_1": "Analyzes R8 keep rule radius JSON output and computes optimization scores." | kind=entity | source=.agents/skills/skills-main/performance/r8-analyzer/scripts/analyze.py:L1 | neighbors=[analyze.py] | lang=en
 
 ## Instructions
 

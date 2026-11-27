@@ -1,4 +1,4 @@
-# Node Description Batch 150 of 208
+# Node Description Batch 150 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -26,46 +26,46 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "voidrealm_void_props_rationale_409": "tuft of curling void-moss blades (teal) with glowing magenta tips" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L409 | neighbors=[Palette, void_grass()] | lang=en
-- "voidrealm_void_props_rationale_420": "shared station base: stepped octagonal void-stone dais with a pale trim lip and" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L420 | neighbors=[Palette, station_dais()] | lang=en
-- "voidrealm_void_props_rationale_429": "blank sign board for a GUI label (no text in the mesh): trim frame + dark face +" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L429 | neighbors=[Palette, sign_plate()] | lang=en
-- "voidrealm_void_props_rationale_437": "Void Merchant: dais, stone counter with trim, back shelf wall of wares, four cry" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L437 | neighbors=[Palette, shop_kiosk()] | lang=en
-- "voidrealm_void_props_rationale_46": "per-vertex height gradient (dark low -> light high) + normal lift + noise" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L46 | neighbors=[Palette, V()] | lang=en
-- "voidrealm_void_props_rationale_475": "Ascension Altar: round 3-step dais, faceted obelisk with a glowing rune channel," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L475 | neighbors=[Palette, upgrade_altar()] | lang=en
-- "voidrealm_void_props_rationale_520": "Seer's Lectern: dais, curved stone screen with a blank board between two crystal" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L520 | neighbors=[Palette, quest_stand()] | lang=en
-- "voidrealm_void_props_rationale_552": "spawn platform: big round stepped dais, rune circle inlay, four obelisk markers" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L552 | neighbors=[Palette, spawn_dais()] | lang=en
-- "voidrealm_void_props_rationale_572": "arena edge: a ring of low stone wall segments with trim caps and glow rune strip" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L572 | neighbors=[Palette, arena_rim()] | lang=en
-- "voidrealm_void_props_rationale_591": "HERO 2 - the Rift Gate: octagonal stepped dais, a full ring of 18 void-stone vou" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L591 | neighbors=[Palette, rift_gate()] | lang=en
-- "voidrealm_void_props_rationale_63": "flat ring sector (r0..r1) from y0 to y1" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L63 | neighbors=[Palette, annulus()] | lang=en
-- "voidrealm_void_props_rationale_645": "HERO 1 - the Singularity: a black core (r 22) wrapped by a thin white photon rin" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L645 | neighbors=[Palette, singularity()] | lang=en
-- "voidrealm_void_props_rationale_691": "rune bridge built along -Z from z=+L/2 (y -dy/2) to z=-L/2 (y +dy/2): bevelled p" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L691 | neighbors=[Palette, rune_bridge()] | lang=en
-- "voidrealm_void_props_rationale_729": "floating stepping stone: flat paved top (walkable), faceted obsidian keel with a" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L729 | neighbors=[Palette, step_stone()] | lang=en
-- "voidrealm_void_props_rationale_742": "gravity lift pad: round 2-tier dais with 8 crystal teeth, a glowing cyan core di" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L742 | neighbors=[Palette, lift_pad()] | lang=en
-- "voidrealm_void_props_rationale_759": "gravity lift column (glow only, walk-through): 6 thin streak bars on r 3 + rings" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L759 | neighbors=[Palette, lift_beam()] | lang=en
-- "voidrealm_void_props_rationale_85": "a crystal: irregular hex prism from `base` to h*shoulder, then an off-centre fac" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L85 | neighbors=[Palette, shaft()] | lang=en
-- "voidrealm_void_props_rationale_99": "angular obsidian chunk: hull of few points = big glassy facets" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L99 | neighbors=[Palette, shard_rock()] | lang=en
-- "warehouse_fitlib_fit": "fit()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/fitlib.py:L54 | neighbors=[fitlib.py, fit_bad()] | lang=en
-- "warehouse_fitlib_inb": "_inb()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/fitlib.py:L19 | neighbors=[fitlib.py, _inside_one()] | lang=en
-- "warehouse_fitlib_top": "_top()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/fitlib.py:L29 | neighbors=[fitlib.py, fit_bad()] | lang=en
-- "warehouse_kitlib_b": "B()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/kitlib.py:L36 | neighbors=[kitlib.py, .add()] | lang=en
-- "warehouse_kitlib_cy": "CY()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/kitlib.py:L38 | neighbors=[kitlib.py, .add()] | lang=en
-- "warehouse_kitlib_drop_bottom": "drop_bottom()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/kitlib.py:L138 | neighbors=[kitlib.py, delete downward faces lying on y (sits …] | lang=en
-- "warehouse_kitlib_glowbox": "glowbox()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/kitlib.py:L42 | neighbors=[kitlib.py, .gadd()] | lang=en
-- "warehouse_kitlib_pol": "pol()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/kitlib.py:L100 | neighbors=[kitlib.py, V()] | lang=en
-- "warehouse_kitlib_quad_top": "quad_top()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/kitlib.py:L118 | neighbors=[kitlib.py, quad()] | lang=en
-- "warehouse_kitlib_rationale_121": "I / H section of length L along axis ('y' column, 'x' or 'z' beam), centred on t" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/kitlib.py:L121 | neighbors=[Palette, ibeam()] | lang=en
-- "warehouse_kitlib_rationale_46": "a reusable sub-assembly emitted into props with a chain of rotations then a tran" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/kitlib.py:L46 | neighbors=[Palette, Sub] | lang=pt
-- "warehouse_kitlib_rationale_59": "revolve [(r, y)] round Y" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/kitlib.py:L59 | neighbors=[Palette, lathe()] | lang=es
-- "warehouse_kitlib_rationale_78": "profile in the Z-Y plane [(z, y)], extruded along X" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/kitlib.py:L78 | neighbors=[Palette, prism_x()] | lang=en
-- "warehouse_kitlib_rationale_85": "profile in the X-Y plane [(x, y)], extruded along Z" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/kitlib.py:L85 | neighbors=[Palette, prism_z()] | lang=en
-- "warehouse_kitlib_ring_tube": "ring_tube()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/kitlib.py:L91 | neighbors=[kitlib.py, V()] | lang=en
-- "warehouse_kitlib_sf": "SF()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/kitlib.py:L131 | neighbors=[kitlib.py, per-face colour from fn(centre, normal)…] | lang=en
-- "warehouse_kitlib_sphere": "sphere()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/kitlib.py:L101 | neighbors=[kitlib.py, lathe()] | lang=en
-- "warehouse_kitlib_t": "T()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/kitlib.py:L40 | neighbors=[kitlib.py, .add()] | lang=en
-- "warehouse_wh_equip_charger_unit": "charger_unit()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_equip.py:L224 | neighbors=[wh_equip.py, wall-mounted forklift battery charger w…] | lang=en
-- "warehouse_wh_equip_conveyor": "conveyor()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_equip.py:L164 | neighbors=[wh_equip.py, gravity roller conveyor: side channels,…] | lang=en
-- "warehouse_wh_equip_fire_point": "fire_point()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_equip.py:L235 | neighbors=[wh_equip.py, fire point (wall prop): hose-reel cabin…] | lang=en
-- "warehouse_wh_equip_ibc_tote": "ibc_tote()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_equip.py:L114 | neighbors=[wh_equip.py, 1000 l IBC: steel pallet base, white HD…] | lang=en
+- "vfxkit_video_eval": "_eval()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/video.py:L279 | neighbors=[video.py, grade()] | lang=en
+- "vfxkit_video_ffmpeg": "_ffmpeg()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/video.py:L37 | neighbors=[video.py, _decode()] | lang=en
+- "vfxkit_video_parse_frames": "_parse_frames()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/video.py:L135 | neighbors=[video.py, flipbook()] | lang=en
+- "vfxkit_video_prompt_text": "_prompt_text()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/video.py:L103 | neighbors=[video.py, flipbook()] | lang=en
+- "vfxkit_video_ramp": "_ramp()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/video.py:L268 | neighbors=[video.py, grade()] | lang=en
+- "vfxkit_video_smoothstep": "_smoothstep()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/video.py:L109 | neighbors=[video.py, grade()] | lang=en
+- "vfxkit_workflow_absolute": "absolute()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/workflow.py:L47 | neighbors=[workflow.py, unchanged()] | lang=en
+- "vfxkit_workflow_relative": "relative()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/workflow.py:L36 | neighbors=[workflow.py, snapshot()] | lang=en
+- "vm_debugger_has_breakpoint": "has_breakpoint()" | kind=code-symbol | source=mute/src/vm/debugger.cpp:L29 | neighbors=[debugger.cpp, run()] | lang=en
+- "vm_debugger_result": "result()" | kind=code-symbol | source=mute/src/vm/debugger.cpp:L58 | neighbors=[debugger.cpp, finish()] | lang=en
+- "vm_debugger_stack": "stack()" | kind=code-symbol | source=mute/src/vm/debugger.cpp:L59 | neighbors=[debugger.cpp, pc()] | lang=en
+- "vm_hostcall_host_type": "host_type()" | kind=code-symbol | source=mute/src/vm/hostcall.cpp:L5 | neighbors=[hostcall.cpp, add()] | lang=en
+- "vm_hostcall_unauthorized_hostcalls": "unauthorized_hostcalls()" | kind=code-symbol | source=mute/src/vm/hostcall.cpp:L33 | neighbors=[hostcall.cpp, find()] | lang=en
+- "vm_scheduler_cancel": "cancel()" | kind=code-symbol | source=mute/src/vm/scheduler.cpp:L15 | neighbors=[scheduler.cpp, find()] | lang=en
+- "vm_scheduler_run": "run()" | kind=code-symbol | source=mute/src/vm/scheduler.cpp:L32 | neighbors=[scheduler.cpp, find()] | lang=en
+- "vm_values_as_string": "as_string()" | kind=code-symbol | source=mute/src/vm/values.cpp:L128 | neighbors=[values.cpp, object()] | lang=en
+- "vm_values_copy": "copy()" | kind=code-symbol | source=mute/src/vm/values.cpp:L139 | neighbors=[values.cpp, copy_impl()] | lang=en
+- "vm_values_get_index": "get_index()" | kind=code-symbol | source=mute/src/vm/values.cpp:L81 | neighbors=[values.cpp, object()] | lang=en
+- "vm_values_length": "length()" | kind=code-symbol | source=mute/src/vm/values.cpp:L133 | neighbors=[values.cpp, object()] | lang=en
+- "vm_values_make_int": "make_int()" | kind=code-symbol | source=mute/src/vm/values.cpp:L5 | neighbors=[values.cpp, set_index()] | lang=en
+- "vm_vm_core_step": "step()" | kind=code-symbol | source=mute/src/vm/vm_core.cpp:L47 | neighbors=[vm_core.hpp, fail()] | lang=en
+- "vm_vm_core_vmcore": "VmCore" | kind=code-symbol | source=mute/src/vm/vm_core.hpp:L13 | neighbors=[vm_core.hpp, fail()] | lang=en
+- "voidrealm_grid": "grid.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/grid.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …] | lang=en
+- "voidrealm_post": "post.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/post.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …] | lang=en
+- "voidrealm_void_map_ang": "ang()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_map.py:L43 | neighbors=[void_map.py, stations()] | lang=en
+- "voidrealm_void_map_foot": "foot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_map.py:L70 | neighbors=[void_map.py, place()] | lang=en
+- "voidrealm_void_map_inner": "inner()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_map.py:L220 | neighbors=[void_map.py, bridges()] | lang=en
+- "voidrealm_void_map_look": "look()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_map.py:L451 | neighbors=[void_map.py, free()] | lang=en
+- "voidrealm_void_map_lowz": "LOWZ()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_map.py:L97 | neighbors=[void_map.py, place()] | lang=en
+- "voidrealm_void_map_rationale_100": "share of a placed kit prop's body (above its lowest 15%) inside the solid in bvh" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_map.py:L100 | neighbors=[MB, clip_frac()] | lang=en
+- "voidrealm_void_map_rationale_115": "copy a prop part (Roblox-space MB) to its world placement, for walkable pieces k" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_map.py:L115 | neighbors=[MB, placed_mb()] | lang=en
+- "voidrealm_void_map_rationale_428": "intentional floaters: chips drifting near the shards and between them, far silho" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_map.py:L428 | neighbors=[MB, void_debris()] | lang=en
+- "voidrealm_void_map_rationale_79": "ground on the LOWEST footprint point (all footprint samples must be on the islan" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_map.py:L79 | neighbors=[MB, place()] | lang=en
+- "voidrealm_void_map_rim_chunk": "rim_chunk()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_map.py:L414 | neighbors=[void_map.py, dressing()] | lang=en
+- "voidrealm_void_map_seg_d": "seg_d()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_map.py:L423 | neighbors=[void_map.py, void_debris()] | lang=en
+- "voidrealm_void_props_lerp": "lerp()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L42 | neighbors=[void_props.py, upgrade_altar()] | lang=en
+- "voidrealm_void_props_rationale_109": "obsidian seat + big painted crystals leaning out + small painted + neon crystals" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L109 | neighbors=[Palette, crystal_cluster()] | lang=en
+- "voidrealm_void_props_rationale_151": "the big crystal on the Starwatch shard: one huge cyan/violet column cluster on a" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L151 | neighbors=[Palette, heart_crystal()] | lang=en
+- "voidrealm_void_props_rationale_162": "broken-off island chip: a crust slab with a chipped lip, a two-tier faceted obsi" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L162 | neighbors=[Palette, float_shard()] | lang=pt
+- "voidrealm_void_props_rationale_187": "distant silhouette: a broken island chunk (wide flat top, keel tapering to one o" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L187 | neighbors=[Palette, far_rock()] | lang=pt
 
 ## Instructions
 

@@ -1,4 +1,4 @@
-# Node Description Batch 164 of 208
+# Node Description Batch 164 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -19,53 +19,51 @@ relations (neighbors) and the provided citations/evidence — e.g.
 Ground entity descriptions in the citations/evidence when present; do not
 speculate beyond the context, so a node with no supporting context may be
 left out of the reply.
-LANGUAGE: each entry has a `lang=` marker giving the language of its source.
-Write that entry's description in EXACTLY that language. Do not translate to
-a single common language — match each node's source language individually.
+Write every description in English (en). Do not switch languages.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "dunedesert_dune_map_shot": "shot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L588 | neighbors=[dune_map.py] | lang=en
-- "dunedesert_dune_paint_remap": "remap()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_paint.py:L68 | neighbors=[dune_paint.py] | lang=en
-- "dunedesert_dune_props_rationale_792": "flat disc split into rings / sectors of ~cell (atlas-friendly)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L792 | neighbors=[grid_disc()] | lang=en
-- "dunedesert_dune_props_rationale_83": "battered block: base w0 x d0 at y0 -> top w1 x d1 at y1 (x / z full sizes)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L83 | neighbors=[frustum()] | lang=es
-- "dunedesert_dune_props_rationale_88": "a disc on the plane facing -Z (thickness d toward -Z)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L88 | neighbors=[disc()] | lang=en
-- "dunedesert_gen_trees_with_palms_arg": "arg()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L17 | neighbors=[gen_trees_with_palms.py] | lang=en
-- "dunedesert_gen_trees_with_palms_basis_card": "basis_card()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L541 | neighbors=[gen_trees_with_palms.py] | lang=en
-- "dunedesert_gen_trees_with_palms_branch_init": ".__init__()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L332 | neighbors=[Branch] | lang=en
-- "dunedesert_gen_trees_with_palms_canvas_init": ".__init__()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L116 | neighbors=[Canvas] | lang=en
-- "dunedesert_gen_trees_with_palms_grade": "_grade()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L1197 | neighbors=[gen_trees_with_palms.py] | lang=en
-- "dunedesert_gen_trees_with_palms_lv": "LV()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L735 | neighbors=[gen_trees_with_palms.py] | lang=en
-- "dunedesert_gen_trees_with_palms_rationale_1": "Realistic alpha-card trees for Roblox (Trunk / Branches / Leaves MeshParts + Sur" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L1 | neighbors=[gen_trees_with_palms.py] | lang=en
-- "dunedesert_gen_trees_with_palms_rationale_101": "fir / spruce: scaly grey-brown plates with reddish fresh bark in the cracks, fai" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L101 | neighbors=[bark_fir()] | lang=en
-- "dunedesert_gen_trees_with_palms_rationale_115": "RGBA + height painter; shapes composited 'over' with soft edges." | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L115 | neighbors=[Canvas] | lang=en
-- "dunedesert_gen_trees_with_palms_rationale_1204": "paint + save the texture, or (maps) load it from roblox/textures when it already" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L1204 | neighbors=[_img()] | lang=en
-- "dunedesert_gen_trees_with_palms_rationale_1219": "Trunk / Branches / Leaves materials for a texture style (cached per style)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L1219 | neighbors=[get_materials()] | lang=en
-- "dunedesert_gen_trees_with_palms_rationale_1251": "build one species into coll: [<prefix><name>_Trunk, _Branches, _Leaves] (shared" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L1251 | neighbors=[make_tree()] | lang=en
-- "dunedesert_gen_trees_with_palms_rationale_132": "Tapered stroke along pts (px), clipped to the cell rect clip=(x0,x1,y0,y1)." | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L132 | neighbors=[.capsule_path()] | lang=en
-- "dunedesert_gen_trees_with_palms_rationale_211": "4 x 4 fir sprays: a central twig with paired laterals (frond widest near the bas" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L211 | neighbors=[needle_atlas()] | lang=en
-- "dunedesert_gen_trees_with_palms_rationale_34": "Periodic (tileable) gaussian-filtered noise, fx / fy = feature frequency in cycl" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L34 | neighbors=[fft_noise()] | lang=en
-- "dunedesert_gen_trees_with_palms_rationale_358": "<1 inside the lumpy crown envelope." | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L358 | neighbors=[.env()] | lang=en
-- "dunedesert_gen_trees_with_palms_rationale_427": "surface roots: leave the trunk foot outward and down, then snake along the groun" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L427 | neighbors=[.grow_roots()] | lang=en
-- "dunedesert_gen_trees_with_palms_rationale_475": "paired side sprays in the (roughly horizontal) plane of the branch, shorter towa" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L475 | neighbors=[.laterals()] | lang=en
-- "dunedesert_gen_trees_with_palms_rationale_550": "Leaf-cluster cards (folded, 4 tris) or crossed twig cards (2 x 2 tris)." | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L550 | neighbors=[card_quads()] | lang=en
-- "dunedesert_gen_trees_with_palms_rationale_620": "needle-spray cards along every branch / lateral: most lie in the spray plane (no" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L620 | neighbors=[conifer_cards()] | lang=en
-- "dunedesert_gen_trees_with_palms_rationale_67": "t array -> colour from [(pos, (r,g,b)), ...]." | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L67 | neighbors=[ramp()] | lang=en
-- "dunedesert_gen_trees_with_palms_rationale_859": "leaf-scar rings (rows) with interlocking diamond boot stubs between them, grey-b" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L859 | neighbors=[bark_palm()] | lang=en
-- "dunedesert_gen_trees_with_palms_rationale_876": "4 x 4 pinnate fronds: rachis up the cell centre, ~30 leaflet pairs angled toward" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L876 | neighbors=[frond_atlas()] | lang=en
-- "dunedesert_gen_trees_with_palms_rationale_907": "cells 0, 1: dry brown hanging fronds; cells 2, 3: date clusters (strands of oran" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L907 | neighbors=[palm_twig_atlas()] | lang=en
-- "dunedesert_gen_trees_with_palms_tree_init": ".__init__()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L351 | neighbors=[Tree] | lang=en
-- "dunedesert_hooks_lua_lua_attrs": "lua_attrs()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/hooks_lua.py:L4 | neighbors=[hooks_lua.py] | lang=en
-- "effekseer_ai_authoring_layerbuilder_init": ".__init__()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/authoring.py:L108 | neighbors=[LayerBuilder] | lang=en
-- "effekseer_ai_authoring_layerbuilder_set": ".set()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/authoring.py:L114 | neighbors=[LayerBuilder] | lang=en
-- "effekseer_ai_cli_compile": "_compile()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L118 | neighbors=[cli.py] | lang=en
-- "effekseer_ai_cli_new": "_new()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L22 | neighbors=[cli.py] | lang=en
-- "effekseer_ai_cli_texture_process": "_texture_process()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L124 | neighbors=[cli.py] | lang=en
-- "effekseer_ai_models_rationale_1": "Create Core procedural meshes with validated reflective settings." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/models.py:L1 | neighbors=[models.py] | lang=en
-- "effekseer_ai_preview_preview_effects": "preview_effects()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/preview.py:L5 | neighbors=[preview.py] | lang=en
-- "effekseer_ai_preview_rationale_1": "Render through the official Godot plugin and VfxLab capture harness." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/preview.py:L1 | neighbors=[preview.py] | lang=en
-- "effekseer_ai_resources_process_texture": "process_texture()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/resources.py:L5 | neighbors=[resources.py] | lang=en
+- "device_fallback_clear_backends_shutdown": "shutdown()" | kind=code-symbol | source=engine/rhi/src/device/fallback_clear_backends.cpp:L29 | neighbors=[fallback_clear_backends.cpp]
+- "device_fallback_clear_backends_vulkanclearbackend_vulkanclearbackend": ".VulkanClearBackend()" | kind=code-symbol | source=engine/rhi/include/poko/rhi/device/fallback_clear_backends.hpp:L12 | neighbors=[VulkanClearBackend]
+- "device_fallback_clear_demo_main": "main()" | kind=code-symbol | source=engine/rhi/src/device/fallback_clear_demo.cpp:L14 | neighbors=[fallback_clear_demo.cpp]
+- "device_opengl_clear_renderer_impl": "Impl()" | kind=code-symbol | source=engine/rhi/src/device/opengl_clear_renderer.cpp:L105 | neighbors=[opengl_clear_renderer.cpp]
+- "device_opengl_clear_renderer_openglclearrenderer_openglclearrenderer": ".OpenGLClearRenderer()" | kind=code-symbol | source=engine/rhi/include/poko/rhi/device/opengl_clear_renderer.hpp:L15 | neighbors=[OpenGLClearRenderer()]
+- "device_opengl_clear_renderer_sdlplatform": "SdlPlatform" | kind=code-symbol | source=engine/rhi/include/poko/rhi/device/opengl_clear_renderer.hpp:L5 | neighbors=[opengl_clear_renderer.cpp]
+- "device_opengles_clear_backend_clear_and_present": "clear_and_present()" | kind=code-symbol | source=engine/rhi/src/device/opengles_clear_backend.cpp:L7 | neighbors=[opengles_clear_backend.cpp]
+- "device_opengles_clear_backend_initialize": "initialize()" | kind=code-symbol | source=engine/rhi/src/device/opengles_clear_backend.cpp:L3 | neighbors=[opengles_clear_backend.cpp]
+- "device_opengles_clear_backend_openglesclearbackend_openglesclearbackend": ".OpenGLESClearBackend()" | kind=code-symbol | source=engine/rhi/include/poko/rhi/device/opengles_clear_backend.hpp:L14 | neighbors=[OpenGLESClearBackend]
+- "device_opengles_clear_backend_shutdown": "shutdown()" | kind=code-symbol | source=engine/rhi/src/device/opengles_clear_backend.cpp:L10 | neighbors=[opengles_clear_backend.cpp]
+- "device_opengles_clear_renderer_clear_and_present": "clear_and_present()" | kind=code-symbol | source=engine/rhi/src/device/opengles_clear_renderer.cpp:L114 | neighbors=[opengles_clear_renderer.cpp]
+- "device_opengles_clear_renderer_clear_and_verify": "clear_and_verify()" | kind=code-symbol | source=engine/rhi/src/device/opengles_clear_renderer.cpp:L124 | neighbors=[opengles_clear_renderer.cpp]
+- "device_opengles_clear_renderer_framebuffer_is_srgb": "framebuffer_is_srgb()" | kind=code-symbol | source=engine/rhi/src/device/opengles_clear_renderer.cpp:L167 | neighbors=[opengles_clear_renderer.cpp]
+- "device_opengles_clear_renderer_openglclearesrenderer_openglclearesrenderer": ".OpenGLClearESRenderer()" | kind=code-symbol | source=engine/rhi/include/poko/rhi/device/opengles_clear_renderer.hpp:L14 | neighbors=[OpenGLClearESRenderer()]
+- "device_opengles_clear_renderer_read_center_pixel": "read_center_pixel()" | kind=code-symbol | source=engine/rhi/src/device/opengles_clear_renderer.cpp:L140 | neighbors=[opengles_clear_renderer.cpp]
+- "device_opengles_native_activity_on_app_cmd": "on_app_cmd()" | kind=code-symbol | source=engine/rhi/src/device/opengles_native_activity.cpp:L180 | neighbors=[opengles_native_activity.cpp]
+- "device_poko_jni_java_com_poko_glesclear_pokoactivity_nativesurfacedestroyed": "Java_com_poko_glesclear_PokoActivity_nativeSurfaceDestroyed()" | kind=code-symbol | source=engine/rhi/src/device/poko_jni.cpp:L131 | neighbors=[poko_jni.cpp]
+- "device_read_spirv_read_spirv": "read_spirv()" | kind=code-symbol | source=engine/rhi/src/device/read_spirv.hpp:L10 | neighbors=[read_spirv.hpp]
+- "device_swapchain_frame_loop_run_swapchain_frame": "run_swapchain_frame()" | kind=code-symbol | source=engine/rhi/src/device/swapchain_frame_loop.hpp:L45 | neighbors=[swapchain_frame_loop.hpp]
+- "device_vulkan_clear_android_clear_and_present": "clear_and_present()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_clear_android.cpp:L226 | neighbors=[vulkan_clear_android.cpp]
+- "device_vulkan_clear_android_destroy_swapchain_resources": "destroy_swapchain_resources()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_clear_android.cpp:L147 | neighbors=[vulkan_clear_android.cpp]
+- "device_vulkan_clear_android_vulkanclearandroidrenderer_vulkanclearandroidrenderer": ".VulkanClearAndroidRenderer()" | kind=code-symbol | source=engine/rhi/include/poko/rhi/device/vulkan_clear_android.hpp:L13 | neighbors=[VulkanClearAndroidRenderer()]
+- "device_vulkan_clear_demo_main": "main()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_clear_demo.cpp:L16 | neighbors=[vulkan_clear_demo.cpp]
+- "device_vulkan_clear_renderer_sdlplatform": "SdlPlatform" | kind=code-symbol | source=engine/rhi/include/poko/rhi/device/vulkan_clear_renderer.hpp:L7 | neighbors=[vulkan_clear_renderer.cpp]
+- "device_vulkan_clear_renderer_vulkanclearrenderer_vulkanclearrenderer": ".VulkanClearRenderer()" | kind=code-symbol | source=engine/rhi/include/poko/rhi/device/vulkan_clear_renderer.hpp:L30 | neighbors=[VulkanClearRenderer()]
+- "device_vulkan_imgui_pass_draw": "draw()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_imgui_pass.cpp:L341 | neighbors=[vulkan_imgui_pass.cpp]
+- "device_vulkan_imgui_pass_impl": "Impl()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_imgui_pass.cpp:L34 | neighbors=[vulkan_imgui_pass.cpp]
+- "device_vulkan_imgui_pass_vulkandiagnostics": "VulkanDiagnostics" | kind=code-symbol | source=engine/rhi/include/poko/rhi/device/vulkan_imgui_pass.hpp:L7 | neighbors=[vulkan_imgui_pass.cpp]
+- "device_vulkan_imgui_pass_vulkanimguipass_vulkanimguipass": ".VulkanImGuiPass()" | kind=code-symbol | source=engine/rhi/include/poko/rhi/device/vulkan_imgui_pass.hpp:L24 | neighbors=[VulkanImGuiPass()]
+- "device_vulkan_mesh_pass_impl": "Impl()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_mesh_pass.cpp:L39 | neighbors=[vulkan_mesh_pass.cpp]
+- "device_vulkan_mesh_pass_set_light_direction": "set_light_direction()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_mesh_pass.cpp:L196 | neighbors=[vulkan_mesh_pass.cpp]
+- "device_vulkan_mesh_pass_set_mesh": "set_mesh()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_mesh_pass.cpp:L204 | neighbors=[vulkan_mesh_pass.cpp]
+- "device_vulkan_mesh_pass_set_view_proj": "set_view_proj()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_mesh_pass.cpp:L199 | neighbors=[vulkan_mesh_pass.cpp]
+- "device_vulkan_mesh_pass_vulkandiagnostics": "VulkanDiagnostics" | kind=code-symbol | source=engine/rhi/include/poko/rhi/device/vulkan_mesh_pass.hpp:L10 | neighbors=[vulkan_mesh_pass.cpp]
+- "device_vulkan_mesh_pass_vulkanmeshpass_vulkanmeshpass": ".VulkanMeshPass()" | kind=code-symbol | source=engine/rhi/include/poko/rhi/device/vulkan_mesh_pass.hpp:L28 | neighbors=[VulkanMeshPass()]
+- "device_vulkan_triangle_pass_impl": "Impl()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_triangle_pass.cpp:L42 | neighbors=[vulkan_triangle_pass.cpp]
+- "device_vulkan_triangle_pass_vulkandiagnostics": "VulkanDiagnostics" | kind=code-symbol | source=engine/rhi/include/poko/rhi/device/vulkan_triangle_pass.hpp:L7 | neighbors=[vulkan_triangle_pass.cpp]
+- "device_vulkan_triangle_pass_vulkantrianglepass_vulkantrianglepass": ".VulkanTrianglePass()" | kind=code-symbol | source=engine/rhi/include/poko/rhi/device/vulkan_triangle_pass.hpp:L17 | neighbors=[VulkanTrianglePass()]
+- "docref_rfc_6455": "RFC-6455" | kind=entity | source=.agents/skills/superpowers-main/tests/brainstorm-server/ws-protocol.test.js:L51 | neighbors=[ws-protocol.test.js]
+- "dunedesert_dune_map_foot": "foot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L125 | neighbors=[dune_map.py]
 
 ## Instructions
 

@@ -1,4 +1,4 @@
-# Node Description Batch 61 of 208
+# Node Description Batch 61 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -12,60 +12,51 @@ describing what it is or does. Use only the provided context.
 For a code symbol (kind=code-symbol — a function, class, or constant),
 describe what the function/symbol does based on its name, source location
 and neighbors — e.g. "Resolves the configured ontology profile from graphify.yaml.".
-For an entity node (any other kind — e.g. a person, place, event, object),
-describe what the entity is and its role, grounded in its type, its
-relations (neighbors) and the provided citations/evidence — e.g.
-"Lady Carfax, a wealthy heiress who disappears en route to Lausanne.".
-Ground entity descriptions in the citations/evidence when present; do not
-speculate beyond the context, so a node with no supporting context may be
-left out of the reply.
-LANGUAGE: each entry has a `lang=` marker giving the language of its source.
-Write that entry's description in EXACTLY that language. Do not translate to
-a single common language — match each node's source language individually.
+Write every description in English (en). Do not switch languages.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "vm_values_alloc": "alloc()" | kind=code-symbol | source=mute/src/vm/values.cpp:L44 | neighbors=[values.cpp, free_slot(), make_array(), make_string()] | lang=en
-- "vm_values_make_string": "make_string()" | kind=code-symbol | source=mute/src/vm/values.cpp:L60 | neighbors=[values.cpp, copy_impl(), alloc(), handle_for()] | lang=en
-- "vm_values_release": "release()" | kind=code-symbol | source=mute/src/vm/values.cpp:L173 | neighbors=[values.cpp, copy_impl(), free_slot(), object()] | lang=en
-- "voidrealm_void_map_anchor": "anchor()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_map.py:L124 | neighbors=[void_map.py, bridges(), build(), stations()] | lang=en
-- "voidrealm_void_map_face": "face()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_map.py:L111 | neighbors=[void_map.py, bridges(), dressing(), stations()] | lang=en
-- "voidrealm_void_map_top_y": "top_y()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_map.py:L56 | neighbors=[void_map.py, H(), island(), stations()] | lang=en
-- "voidrealm_void_props_far_rock": "far_rock()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L186 | neighbors=[void_props.py, FS(), shaft(), distant silhouette: a broken island chu…] | lang=en
-- "voidrealm_void_props_spore_pods": "spore_pods()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L374 | neighbors=[void_props.py, 3-5 bulbous magenta pods on short stems…, FS(), V()] | lang=en
-- "voidrealm_void_props_tendril": "tendril()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L350 | neighbors=[void_props.py, root bulb + 5 curling tendrils (taperin…, FS(), V()] | lang=en
-- "warehouse_fitlib_fit_bad": "fit_bad()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/fitlib.py:L36 | neighbors=[fitlib.py, fit(), _inside_one(), _top()] | lang=en
-- "warehouse_kitlib_ibeam": "ibeam()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/kitlib.py:L120 | neighbors=[kitlib.py, prism_x(), prism_z(), I / H section of length L along axis ('…] | lang=en
-- "warehouse_kitlib_quad": "quad()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/kitlib.py:L108 | neighbors=[kitlib.py, V(), quad_top(), one single-sided quad: axis 'y' = facin…] | lang=en
-- "warehouse_kitlib_v": "V()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/kitlib.py:L35 | neighbors=[kitlib.py, pol(), quad(), ring_tube()] | lang=en
-- "warehouse_wh_map_bx": "bx()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_map.py:L76 | neighbors=[wh_map.py, shade(), roof(), walls()] | lang=en
-- "warehouse_wh_map_floors": "floors()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_map.py:L158 | neighbors=[wh_map.py, mesh_obj(), shade(), concrete slab (mottled grid), saw-cut j…] | lang=en
-- "warehouse_wh_map_rack_row": "rack_row()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_map.py:L214 | neighbors=[wh_map.py, build(), place(), bays running north from z RACK_S (yaw 9…] | lang=en
-- "warehouse_wh_map_shade": "shade()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_map.py:L71 | neighbors=[wh_map.py, bx(), floors(), walls()] | lang=en
-- "warehouse_wh_map_walls": "walls()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_map.py:L81 | neighbors=[wh_map.py, bx(), mesh_obj(), shade()] | lang=en
-- "warehouse_wh_props_pallet_sub": "pallet_sub()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_props.py:L11 | neighbors=[wh_props.py, pallet_load(), pallet_stack(), EUR-style pallet: top deck boards, 3 bl…] | lang=en
-- "warehouse_wh_props_upright_frame": "upright_frame()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_props.py:L135 | neighbors=[wh_props.py, rack_bay(), rack_end(), one rack frame: two perforated posts (z…] | lang=en
-- "warehouse_wh_real": "wh_real.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_real.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, light(), r2b()] | lang=en
-- "warehouse_wh_veh_wheel": "wheel()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_veh.py:L6 | neighbors=[wh_veh.py, forklift(), pallet_jack(), tyre + rim + hub nuts, axle along x, ce…] | lang=en
-- "warehouse_wh_yard_axle_set": "axle_set()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_yard.py:L8 | neighbors=[wh_yard.py, truck_wheel(), box_trailer(), tractor_unit()] | lang=en
-- "warehouse_wh_yard_truck_wheel": "truck_wheel()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_yard.py:L11 | neighbors=[wh_yard.py, axle_set(), truck wheel: deep-sidewall tyre with tr…, tractor_unit()] | lang=en
-- "whispering_grove_forest_map_free": "free()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_map.py:L177 | neighbors=[forest_map.py, build(), look(), scatter()] | lang=en
-- "whispering_grove_forest_map_scatter": "scatter()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_map.py:L180 | neighbors=[forest_map.py, build(), free(), keepout()] | lang=en
-- "whispering_grove_forest_map_segd": "segd()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_map.py:L43 | neighbors=[forest_map.py, build(), path_info(), stream_d()] | lang=en
-- "whispering_grove_forest_map_spread": "spread()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_map.py:L171 | neighbors=[forest_map.py, build(), terrain height range over a footprint: …, H()] | lang=en
-- "whispering_grove_forest_props_arch_frame": "arch_frame()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L116 | neighbors=[forest_props.py, arch_outline(), elder_tree(), solid stone frame between the inner out…] | lang=en
-- "whispering_grove_forest_props_arch_prism": "arch_prism()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L132 | neighbors=[forest_props.py, arch_outline(), elder_tree(), closed solid of the door opening (boole…] | lang=en
-- "whispering_grove_forest_props_arch_tunnel": "arch_tunnel()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L157 | neighbors=[forest_props.py, arch_outline(), elder_tree(), the dark passage behind the frame: wall…] | lang=en
-- "whispering_grove_forest_props_barrel": "barrel()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L356 | neighbors=[forest_props.py, Prop, .add(), S()] | lang=en
-- "whispering_grove_forest_props_pine": "pine()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L85 | neighbors=[forest_props.py, Prop, .add(), S()] | lang=en
-- "whispering_grove_forest_props_rationale_111": "door outline in the XY plane, open at the bottom: left foot -> up -> semicircle" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L111 | neighbors=[MB, Palette, Sh, arch_outline()] | lang=en
-- "whispering_grove_forest_props_rationale_117": "solid stone frame between the inner outline and one t wider, extruded z0..z1 (z1" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L117 | neighbors=[MB, Palette, Sh, arch_frame()] | lang=en
-- "whispering_grove_forest_props_rationale_158": "the dark passage behind the frame: walls + floor only, faces pointing inward" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L158 | neighbors=[MB, Palette, Sh, arch_tunnel()] | lang=en
-- "whispering_grove_forest_props_rationale_206": "one modelled fern frond: a serrated, thickened strip arching up then down" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L206 | neighbors=[MB, Palette, Sh, frond()] | lang=pt
-- "whispering_grove_forest_props_rationale_35": "one kit prop: a solid mesh on the palette + optional glow meshes (Neon in Roblox" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L35 | neighbors=[MB, Palette, Sh, Prop] | lang=en
-- "whispering_grove_forest_props_rationale_413": "a licking flame: a tapering tube that sways and twists to a point" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L413 | neighbors=[MB, Palette, Sh, flame_tongue()] | lang=en
-- "whispering_grove_forest_props_rationale_642": "kit meshes: <Prop> (solid) + <Prop>_Glow_<key>. Origin = bottom centre (prop bui" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L642 | neighbors=[MB, Palette, Sh, to_kit()] | lang=en
+- "unit_visual_solver_test": "visual_solver_test.cpp" | kind=code-symbol | source=engine/physics/tests/unit/visual_solver_test.cpp:L1 | neighbors=[69287a0 Land ENG-60-65 deterministic si…, dyn_sphere(), main(), static_box()]
+- "valleylake_paint_atlas": "atlas()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/paint.py:L95 | neighbors=[paint.py, paint_block(), install(), the 1024 px atlas image for a pro_lib P…]
+- "valleylake_paint_fnoise": "fnoise()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/paint.py:L21 | neighbors=[paint.py, cracks(), paint_block(), periodic FFT noise in [-1, 1]; aniso > …]
+- "valleylake_valley_map_anchor": "anchor()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L235 | neighbors=[valley_map.py, build(), shore(), stations_and_village()]
+- "valleylake_valley_map_beach": "beach()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L310 | neighbors=[valley_map.py, static(), build(), the curving pale beach as a draped ring…]
+- "valleylake_valley_map_ground_rock": "ground_rock()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L441 | neighbors=[valley_map.py, H(), rock_dim(), put_rock()]
+- "valleylake_valley_map_hero_yaw": "hero_yaw()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L806 | neighbors=[valley_map.py, kit(), yaw that swings the hero oak's leaning …, shore()]
+- "valleylake_valley_map_in_terr": "in_terr()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L85 | neighbors=[valley_map.py, H0(), nature(), stations_and_village()]
+- "valleylake_valley_map_poly_d": "poly_d()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L81 | neighbors=[valley_map.py, path_d(), seg_d(), stream_d()]
+- "valleylake_valley_map_put_rock": "put_rock()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L445 | neighbors=[valley_map.py, cliffs(), ground_rock(), place()]
+- "valleylake_valley_map_stream_d": "stream_d()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L82 | neighbors=[valley_map.py, H0(), poly_d(), terrace_walls()]
+- "valleylake_valley_props_basket": "basket()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L581 | neighbors=[valley_props.py, .add(), crates(), market_stall()]
+- "valleylake_valley_props_bush": "bush()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L333 | neighbors=[valley_props.py, flat(), leaf_cluster(), .add()]
+- "valleylake_valley_props_crates": "crates()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L596 | neighbors=[valley_props.py, barrel(), basket(), crate()]
+- "valleylake_valley_props_engawa": "engawa()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L505 | neighbors=[valley_props.py, .add(), house(), veranda deck along a wall (z = wall lin…]
+- "valleylake_valley_props_flower_patch": "flower_patch()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L361 | neighbors=[valley_props.py, flat(), .add(), V()]
+- "valleylake_valley_props_grass_tuft": "grass_tuft()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L347 | neighbors=[valley_props.py, .add(), V(), blade clump: thin bent blades fanning o…]
+- "valleylake_valley_props_lily_pads": "lily_pads()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L377 | neighbors=[valley_props.py, flat(), .add(), V()]
+- "valleylake_valley_props_moss_cap": "moss_cap()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L93 | neighbors=[valley_props.py, boulder(), thick moss shell over the up-facing par…, waterfall()]
+- "valleylake_valley_props_reeds": "reeds()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L395 | neighbors=[valley_props.py, flat(), .add(), V()]
+- "valleylake_valley_props_rim_shade": "rim_shade()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L123 | neighbors=[valley_props.py, boulder(), per-vertex convexity -> painted rim hig…, waterfall()]
+- "valleylake_valley_props_sign_stand": "sign_stand()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L831 | neighbors=[valley_props.py, station sign: blank board (GUI goes on …, .add(), V()]
+- "valleylake_valley_props_skin_mesh": "skin_mesh()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L844 | neighbors=[valley_props.py, broadleaf(), gnarled_tree(), branching skeleton -> one smooth closed…]
+- "vfxkit_discover": "discover.py" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/discover.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, discover(), Dump every Core property path of a fres…]
+- "vfxkit_evidence_context": "context()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/evidence.py:L285 | neighbors=[evidence.py, build_issues(), current_recipe(), latest()]
+- "vfxkit_evidence_current_recipe": "current_recipe()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/evidence.py:L27 | neighbors=[evidence.py, build_issues(), context(), verify()]
+- "vfxkit_evidence_dependencies": "dependencies()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/evidence.py:L159 | neighbors=[evidence.py, capture_issues(), A staged impact can show its incoming p…, write_capture()]
+- "vfxkit_evidence_now": "now()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/evidence.py:L19 | neighbors=[evidence.py, submit(), write_build(), write_capture()]
+- "vfxkit_evidence_read_capture": "read_capture()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/evidence.py:L153 | neighbors=[evidence.py, latest(), store(), submit()]
+- "vfxkit_examples_catalog": "catalog()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/examples.py:L17 | neighbors=[examples.py, ids(), listing(), show()]
+- "vfxkit_examples_ids": "ids()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/examples.py:L21 | neighbors=[examples.py, add(), catalog(), show_any()]
+- "vfxkit_examples_show": "show()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/examples.py:L87 | neighbors=[examples.py, Layer plan with absolute frames, so an …, catalog(), show_any()]
+- "vfxkit_examples_show_any": "show_any()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/examples.py:L121 | neighbors=[examples.py, `show` for one effect, or for every eff…, ids(), show()]
+- "vfxkit_finalize": "finalize.py" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/finalize.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, finalize(), Package current generated assets; never…]
+- "vfxkit_library_library": "library()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/library.py:L61 | neighbors=[library.py, load(), sources(), Every recipe; any source that fails to …]
+- "vfxkit_lint_compare_elements": "compare_elements()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/lint.py:L201 | neighbors=[lint.py, features(), lint_library(), Pairs in one category whose elements di…]
+- "vfxkit_lint_look": "look()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/lint.py:L87 | neighbors=[lint.py, features(), stem(), What a layer draws: renderer plus its t…]
+- "vfxkit_lint_stem": "stem()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/lint.py:L55 | neighbors=[lint.py, features(), lint(), look()]
+- "vfxkit_ownership_name_key": "name_key()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/ownership.py:L60 | neighbors=[ownership.py, may_use(), Comparison key of a resource name: Unic…, same_name()]
+- "vfxkit_ownership_unmanaged": "unmanaged()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/ownership.py:L45 | neighbors=[ownership.py, Effect files this skill did not build: …, owned(), valid_id()]
 
 ## Instructions
 

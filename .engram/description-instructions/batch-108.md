@@ -1,4 +1,4 @@
-# Node Description Batch 109 of 208
+# Node Description Batch 109 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -19,53 +19,51 @@ relations (neighbors) and the provided citations/evidence — e.g.
 Ground entity descriptions in the citations/evidence when present; do not
 speculate beyond the context, so a node with no supporting context may be
 left out of the reply.
-LANGUAGE: each entry has a `lang=` marker giving the language of its source.
-Write that entry's description in EXACTLY that language. Do not translate to
-a single common language — match each node's source language individually.
+Write every description in English (en). Do not switch languages.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "dunedesert_dune_props_rationale_285": "broken wall of real bevelled blocks with a ragged top; optional doorway with a l" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L285 | neighbors=[ruin_wall(), Palette] | lang=en
-- "dunedesert_dune_props_rationale_302": "corner of a roofless house: two block walls meeting at a pier, a doorway, a wind" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L302 | neighbors=[ruin_house(), Palette] | lang=pt
-- "dunedesert_dune_props_rationale_322": "free-standing broken arch: block piers, round arch of voussoirs with a gold keys" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L322 | neighbors=[ruin_arch(), Palette] | lang=en
-- "dunedesert_dune_props_rationale_343": "kind 0 standing column, 1 broken column (jagged top), 2 broken stub + fallen dru" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L343 | neighbors=[column_set(), Palette] | lang=en
-- "dunedesert_dune_props_rationale_357": "square tapered shaft (w0 at 0 .. w1 at H) cut at y0..y1, in drums, relief column" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L357 | neighbors=[_shaft(), Palette] | lang=es
-- "dunedesert_dune_props_rationale_381": "standing obelisk on the stepped plinth: drummed tapered shaft, relief columns on" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L381 | neighbors=[obelisk(), Palette] | lang=en
-- "dunedesert_dune_props_rationale_390": "toppled obelisk piece lying on its side along x: 'top' (with pyramidion) or 'mid" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L390 | neighbors=[obelisk_fallen(), Palette] | lang=en
-- "dunedesert_dune_props_rationale_423": "path marker: weathered standing stone with a carved sun disc on its front, a gol" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L423 | neighbors=[waystone(), Palette] | lang=pt
-- "dunedesert_dune_props_rationale_436": "spawn: round three-step sandstone dais (r 13.4) with a gold sun mosaic (disc, 16" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L436 | neighbors=[spawn_dais(), Palette] | lang=en
-- "dunedesert_dune_props_rationale_460": "QUEST stand: tall carved tablet on the plinth with three BLANK recessed panels (" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L460 | neighbors=[quest_stele(), Palette] | lang=en
-- "dunedesert_dune_props_rationale_489": "UPGRADE station: octagonal stepped plinth, carved pedestal with gold claws holdi" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L489 | neighbors=[sun_astrolabe(), Palette] | lang=en
-- "dunedesert_dune_props_rationale_50": "soft per-loop shade: height ramp + vertex-normal lift + low-frequency noise" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L50 | neighbors=[V(), Palette] | lang=en
-- "dunedesert_dune_props_rationale_528": "a cloth sheet over a parametric surface fn(u, v) -> Vector (u, v in 0..1), solid" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L528 | neighbors=[sheet(), Palette] | lang=pt
-- "dunedesert_dune_props_rationale_551": "plank crate: bevelled body with plank grooves (thin proud boards), corner straps" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L551 | neighbors=[crate(), Palette] | lang=en
-- "dunedesert_dune_props_rationale_577": "SHOP: caravan trader's tent: 6 poles, a long low roof of indigo + cream bands st" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L577 | neighbors=[trader_tent(), Palette] | lang=en
-- "dunedesert_dune_props_rationale_633": "A-frame nomad tent: ridge pole on two forked posts, two cloth slopes with sag +" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L633 | neighbors=[sleep_tent(), Palette] | lang=en
-- "dunedesert_dune_props_rationale_64": "merge a temporary Prop's solid (+ glow) into P, optionally mapping every vertex" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L64 | neighbors=[merge_into(), Palette] | lang=pt
-- "dunedesert_dune_props_rationale_656": "stylised camel (smooth hide): ellipsoid body + single hump, S-curved neck, long" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L656 | neighbors=[camel(), Palette] | lang=en
-- "dunedesert_dune_props_rationale_704": "rest corner: a big patterned rug (border, field, medallion), three cushions, a b" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L704 | neighbors=[rug_spread(), Palette] | lang=pt
-- "dunedesert_dune_props_rationale_71": "flat top split into ~cell faces (the atlas squeezes a face that spans more than" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L71 | neighbors=[grid_quad(), Palette] | lang=en
-- "dunedesert_dune_props_rationale_721": "stone ring, crossed logs, flame glow, a three-legged tripod with a hanging pot," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L721 | neighbors=[campfire(), Palette] | lang=pt
-- "dunedesert_dune_props_rationale_745": "caravan cargo: crates stacked, sacks, rolled rugs, two water jars and a saddle b" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L745 | neighbors=[cargo_pile(), Palette] | lang=en
-- "dunedesert_dune_props_rationale_755": "oasis: a round pool (r 10) with a turquoise water disc set below a rim of cut sa" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L755 | neighbors=[oasis_pool(), Palette] | lang=pt
-- "dunedesert_dune_props_rationale_814": "DIG SPOT anchors: tier 1 a low sand mound with a cracked jar and a marker stick," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L814 | neighbors=[treasure_mound(), Palette] | lang=pt
-- "dunedesert_dune_props_rationale_859": "sandstone outcrop: two or three wind-cut rock masses, layered (darker bands low," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L859 | neighbors=[outcrop(), Palette] | lang=en
-- "dunedesert_dune_props_rationale_872": "desert scrub: a woody tangle of forking twigs from one root crown with small dus" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L872 | neighbors=[dry_shrub(), Palette] | lang=en
-- "dunedesert_dune_props_rationale_884": "tuft of tall pale dune grass: tapered folded blades arching out of a tight crown" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L884 | neighbors=[dune_grass(), Palette] | lang=en
-- "dunedesert_dune_props_rationale_898": "smooth sand drift banked against ruins (no collision): a long soft lump, steep l" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L898 | neighbors=[sand_drift(), Palette] | lang=pt
-- "dunedesert_dune_props_rationale_909": "giant sand-wyrm skull lying jaw-open in the sand: long ridged cranium with deep" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L909 | neighbors=[wyrm_skull(), Palette] | lang=en
-- "dunedesert_dune_props_rationale_93": "SIGNATURE: raised sun disc + ray wedges on a plane facing -Z, turned by yaw and" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L93 | neighbors=[sun_relief(), Palette] | lang=en
-- "dunedesert_dune_props_rationale_940": "one segment of the wyrm's spine lying belly-down: the vertebra (with a spinous p" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L940 | neighbors=[wyrm_rib(), Palette] | lang=en
-- "dunedesert_dune_props_rationale_960": "wind-cut sandstone stack: 3-5 rounded slabs piled and offset (each narrower), da" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L960 | neighbors=[rock_stack(), Palette] | lang=en
-- "dunedesert_dune_props_rationale_972": "HERO: giant half-buried stone head of a sun-king (face sculpted by displacement" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L972 | neighbors=[colossus_head(), Palette] | lang=en
-- "dunedesert_dune_props_smooth": "smooth()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L47 | neighbors=[dune_props.py, colossus_head()] | lang=en
-- "dunedesert_dune_props_spike_flame": "spike_flame()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L740 | neighbors=[dune_props.py, campfire()] | lang=en
-- "dunedesert_dune_props_waystone_body": "waystone_body()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L854 | neighbors=[dune_props.py, treasure_mound()] | lang=en
-- "dunedesert_gen_trees_with_palms_export_glb": "export_glb()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L1169 | neighbors=[gen_trees_with_palms.py, main()] | lang=en
-- "dunedesert_gen_trees_with_palms_load_px": "load_px()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L1140 | neighbors=[gen_trees_with_palms.py, contact_sheet()] | lang=en
-- "dunedesert_gen_trees_with_palms_make_object": "make_object()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L694 | neighbors=[gen_trees_with_palms.py, make_tree()] | lang=en
-- "dunedesert_gen_trees_with_palms_material": "material()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L710 | neighbors=[gen_trees_with_palms.py, get_materials()] | lang=en
+- "device_clear_backend_selection_clearbackend": "ClearBackend" | kind=code-symbol | source=engine/rhi/include/poko/rhi/device/clear_backend_selection.hpp:L10 | neighbors=[clear_backend_selection.cpp, .ClearBackend()]
+- "device_clear_backend_selection_start": "start()" | kind=code-symbol | source=engine/rhi/src/device/clear_backend_selection.cpp:L7 | neighbors=[clear_backend_selection.cpp, shutdown()]
+- "device_opengl_clear_renderer_clear_and_present": "clear_and_present()" | kind=code-symbol | source=engine/rhi/src/device/opengl_clear_renderer.cpp:L170 | neighbors=[opengl_clear_renderer.cpp, native_window()]
+- "device_opengl_clear_renderer_default_framebuffer_is_srgb": "default_framebuffer_is_srgb()" | kind=code-symbol | source=engine/rhi/src/device/opengl_clear_renderer.cpp:L21 | neighbors=[opengl_clear_renderer.cpp, initialize()]
+- "device_opengl_clear_renderer_shutdown": "shutdown()" | kind=code-symbol | source=engine/rhi/src/device/opengl_clear_renderer.cpp:L200 | neighbors=[opengl_clear_renderer.cpp, OpenGLClearRenderer()]
+- "device_opengles_clear_demo_failingprimarybackend": "FailingPrimaryBackend" | kind=code-symbol | source=engine/rhi/src/device/opengles_clear_demo.cpp:L25 | neighbors=[opengles_clear_demo.cpp, rhi::ClearBackend]
+- "device_opengles_clear_demo_linear_to_srgb_byte": "linear_to_srgb_byte()" | kind=code-symbol | source=engine/rhi/src/device/opengles_clear_demo.cpp:L18 | neighbors=[opengles_clear_demo.cpp, report_pixel()]
+- "device_opengles_clear_demo_main": "main()" | kind=code-symbol | source=engine/rhi/src/device/opengles_clear_demo.cpp:L55 | neighbors=[opengles_clear_demo.cpp, report_pixel()]
+- "device_opengles_clear_renderer_initialize": "initialize()" | kind=code-symbol | source=engine/rhi/src/device/opengles_clear_renderer.cpp:L36 | neighbors=[opengles_clear_renderer.cpp, initialize_impl()]
+- "device_opengles_clear_renderer_initialize_window": "initialize_window()" | kind=code-symbol | source=engine/rhi/src/device/opengles_clear_renderer.cpp:L39 | neighbors=[opengles_clear_renderer.cpp, initialize_impl()]
+- "device_opengles_clear_renderer_shutdown_checked": "shutdown_checked()" | kind=code-symbol | source=engine/rhi/src/device/opengles_clear_renderer.cpp:L162 | neighbors=[opengles_clear_renderer.cpp, shutdown()]
+- "device_poko_jni_java_com_poko_glesclear_pokoactivity_nativeinit": "Java_com_poko_glesclear_PokoActivity_nativeInit()" | kind=code-symbol | source=engine/rhi/src/device/poko_jni.cpp:L108 | neighbors=[poko_jni.cpp, write_line()]
+- "device_vulkan_clear_android_make_device_objects": "make_device_objects()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_clear_android.cpp:L97 | neighbors=[vulkan_clear_android.cpp, initialize()]
+- "device_vulkan_clear_android_make_instance": "make_instance()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_clear_android.cpp:L42 | neighbors=[vulkan_clear_android.cpp, initialize()]
+- "device_vulkan_clear_android_make_surface": "make_surface()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_clear_android.cpp:L53 | neighbors=[vulkan_clear_android.cpp, initialize()]
+- "device_vulkan_clear_android_make_swapchain": "make_swapchain()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_clear_android.cpp:L156 | neighbors=[vulkan_clear_android.cpp, initialize()]
+- "device_vulkan_clear_android_pick_device": "pick_device()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_clear_android.cpp:L58 | neighbors=[vulkan_clear_android.cpp, initialize()]
+- "device_vulkan_clear_android_pick_surface_format": "pick_surface_format()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_clear_android.cpp:L79 | neighbors=[vulkan_clear_android.cpp, initialize()]
+- "device_vulkan_clear_android_shutdown_checked": "shutdown_checked()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_clear_android.cpp:L352 | neighbors=[vulkan_clear_android.cpp, shutdown()]
+- "device_vulkan_clear_renderer_clear_and_present": "clear_and_present()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_clear_renderer.cpp:L123 | neighbors=[vulkan_clear_renderer.cpp, draw_and_present()]
+- "device_vulkan_clear_renderer_impl": "Impl()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_clear_renderer.cpp:L50 | neighbors=[vulkan_clear_renderer.cpp, shutdown()]
+- "device_vulkan_clear_renderer_shutdown_checked": "shutdown_checked()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_clear_renderer.cpp:L186 | neighbors=[vulkan_clear_renderer.cpp, shutdown()]
+- "device_vulkan_clear_renderer_vulkanclearrenderer": "VulkanClearRenderer()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_clear_renderer.cpp:L65 | neighbors=[vulkan_clear_renderer.cpp, .VulkanClearRenderer()]
+- "device_vulkan_imgui_pass_vulkanimguipass": "VulkanImGuiPass()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_imgui_pass.cpp:L338 | neighbors=[vulkan_imgui_pass.cpp, .VulkanImGuiPass()]
+- "device_vulkan_mesh_pass_draw": "draw()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_mesh_pass.cpp:L238 | neighbors=[vulkan_mesh_pass.cpp, draw_and_present()]
+- "device_vulkan_mesh_pass_draw_and_present": "draw_and_present()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_mesh_pass.cpp:L230 | neighbors=[vulkan_mesh_pass.cpp, draw()]
+- "device_vulkan_mesh_pass_vulkanmeshpass": "VulkanMeshPass()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_mesh_pass.cpp:L192 | neighbors=[vulkan_mesh_pass.cpp, .VulkanMeshPass()]
+- "device_vulkan_triangle_pass_draw": "draw()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_triangle_pass.cpp:L212 | neighbors=[vulkan_triangle_pass.cpp, draw_and_present()]
+- "device_vulkan_triangle_pass_draw_and_present": "draw_and_present()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_triangle_pass.cpp:L200 | neighbors=[vulkan_triangle_pass.cpp, draw()]
+- "device_vulkan_triangle_pass_set_texture": "set_texture()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_triangle_pass.cpp:L216 | neighbors=[vulkan_triangle_pass.cpp, set_texture_mips()]
+- "device_vulkan_triangle_pass_set_texture_mips": "set_texture_mips()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_triangle_pass.cpp:L221 | neighbors=[vulkan_triangle_pass.cpp, set_texture()]
+- "device_vulkan_triangle_pass_vulkantrianglepass": "VulkanTrianglePass()" | kind=code-symbol | source=engine/rhi/src/device/vulkan_triangle_pass.cpp:L197 | neighbors=[vulkan_triangle_pass.cpp, .VulkanTrianglePass()]
+- "dunedesert_dune_map_inb": "_inb()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L222 | neighbors=[dune_map.py, _inside_one()]
+- "dunedesert_dune_map_inside": "inside()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L192 | neighbors=[dune_map.py, clip_fail()]
+- "dunedesert_dune_map_kit": "kit()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L116 | neighbors=[dune_map.py, place()]
+- "dunedesert_dune_map_look": "look()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L546 | neighbors=[dune_map.py, free()]
+- "dunedesert_dune_map_rationale_134": "auto-grounded hard props (y None) are fitted: raised / nudged until the exporter" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L134 | neighbors=[place(), MB]
+- "dunedesert_dune_map_rationale_164": "foliage: deferred, placed last against a BVH of every solid (the exporter's hard" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L164 | neighbors=[soft(), MB]
+- "dunedesert_dune_map_rationale_250": "raise the prop in 0.25 steps (its base stays bedded), then try nearby spots; Non" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L250 | neighbors=[fit(), MB]
+- "dunedesert_dune_map_rationale_302": "distant tiered mesas + buttes far outside the frame ring (cheap prisms, rust str" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L302 | neighbors=[horizon(), MB]
 
 ## Instructions
 

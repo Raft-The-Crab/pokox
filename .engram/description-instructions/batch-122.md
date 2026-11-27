@@ -1,4 +1,4 @@
-# Node Description Batch 123 of 208
+# Node Description Batch 123 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -26,46 +26,46 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "petsim_pet_map_unplace": "unplace()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L149 | neighbors=[pet_map.py, place_soft()] | lang=en
-- "petsim_pet_props_arc_pts": "arc_pts()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L113 | neighbors=[pet_props.py, trade_pad()] | lang=en
-- "petsim_pet_props_candy_cane": "candy_cane()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L910 | neighbors=[pet_props.py, hooked cane, red / cream diagonal strip…] | lang=en
-- "petsim_pet_props_disc_up": "disc_up()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L124 | neighbors=[pet_props.py, rcyl()] | lang=en
-- "petsim_pet_props_egg_r": "egg_r()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L147 | neighbors=[pet_props.py, egg_prof()] | lang=en
-- "petsim_pet_props_lift": "lift()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L136 | neighbors=[pet_props.py, egg()] | lang=en
-- "petsim_pet_props_mascot_test": "mascot_test()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L1061 | neighbors=[pet_props.py, puffpaw()] | lang=en
-- "petsim_pet_props_rationale_1006": "chunky rail fence segment from x = 0 to x = L: one fat post with a ball cap at x" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L1006 | neighbors=[fence(), Palette] | lang=en
-- "petsim_pet_props_rationale_1022": "chibi lamp: bulgy base, slim post with a candy ring, round glowing lantern under" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L1022 | neighbors=[lamp_post(), Palette] | lang=en
-- "petsim_pet_props_rationale_1033": "chubby rounded bench: two soft seat slats + back slat on stubby round legs. Fron" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L1033 | neighbors=[bench(), Palette] | lang=en
-- "petsim_pet_props_rationale_1044": "frame cloud floating on the lagoon: 4-6 overlapping puffs merged, flat bottom" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L1044 | neighbors=[cloud(), Palette] | lang=en
-- "petsim_pet_props_rationale_120": "a chunky star standing upright facing -Z, centred at the origin, rounded front e" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L120 | neighbors=[star(), Palette] | lang=en
-- "petsim_pet_props_rationale_128": "paw-print icon: palm pad + 4 toe beans, built flat then stood up facing -Z (pitc" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L128 | neighbors=[paw(), Palette] | lang=en
-- "petsim_pet_props_rationale_155": "smooth lathe egg + decoration: 'spots', 'stars', 'zig', 'swirl', 'gems', 'flower" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L155 | neighbors=[egg(), Palette] | lang=en
-- "petsim_pet_props_rationale_204": "the mascot: chubby sitting creature, huge head, tall round ears, big eyes with h" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L204 | neighbors=[puffpaw(), Palette] | lang=en
-- "petsim_pet_props_rationale_272": "hub hero: 3-tier pastel fountain (scalloped basin, water, mid bowl with a pale w" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L272 | neighbors=[pet_fountain(), Palette] | lang=en
-- "petsim_pet_props_rationale_324": "the Puffpaw statue + its quilted cushion: a separate MeshPart sharing the founta" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L324 | neighbors=[pet_statue(), Palette] | lang=en
-- "petsim_pet_props_rationale_336": "6 chunky pastel bands on a half circle, standing on two big cloud feet, sparkle" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L336 | neighbors=[rainbow_arch(), Palette] | lang=pt
-- "petsim_pet_props_rationale_358": "open-front kiosk: round dais, curved back wall with toy shelves, 4 chubby pillar" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L358 | neighbors=[pet_shop(), Palette] | lang=en
-- "petsim_pet_props_rationale_452": "giant gumball machine: rounded red drum base (coin plate, glowing up-chevron, ch" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L452 | neighbors=[upgrade_machine(), Palette] | lang=en
-- "petsim_pet_props_rationale_487": "round trade table with a big scalloped two-tone umbrella and two chubby stools." | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L487 | neighbors=[trade_booth(), Palette] | lang=en
-- "petsim_pet_props_rationale_52": "height gradient a->b between y0..y1 plus a lit side toward SUN (needs the shape" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L52 | neighbors=[soft(), Palette] | lang=es
-- "petsim_pet_props_rationale_520": "flat trade circle: cream disc with a pastel rim and two glowing curved swap arro" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L520 | neighbors=[trade_pad(), Palette] | lang=en
-- "petsim_pet_props_rationale_535": "blank board in a chunky rounded frame on two candy posts, a crown icon on top. F" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L535 | neighbors=[leaderboard(), Palette] | lang=pt
-- "petsim_pet_props_rationale_567": "fluted cake pedestal with a glowing ring under a giant decorated egg; 3 little s" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L567 | neighbors=[egg_stand(), Palette] | lang=pt
-- "petsim_pet_props_rationale_585": "toll arch: two chubby stacked pillars with paw-ball finials, a rounded arch beam" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L585 | neighbors=[zone_gate(), Palette] | lang=en
-- "petsim_pet_props_rationale_619": "round spawn dais: two soft tiers, mint rim, a big paw-print inlay. Walkable (pre" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L619 | neighbors=[spawn_pad(), Palette] | lang=pt
-- "petsim_pet_props_rationale_628": "humped chunky bridge along -Z (start z = 0 .. end z = -L), deck rises by `rise`;" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L628 | neighbors=[bridge(), Palette] | lang=en
-- "petsim_pet_props_rationale_669": "low gold mound with a short coin stack and loose coins leaning on it" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L669 | neighbors=[coin_pile(), Palette] | lang=en
-- "petsim_pet_props_rationale_683": "rounded treasure chest: plank body, domed lid, metal bands + lock (gold = tier 3" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L683 | neighbors=[chest(), Palette] | lang=en
-- "petsim_pet_props_rationale_703": "chubby present: soft box, crossing ribbon bands, a two-loop bow" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L703 | neighbors=[gift_box(), Palette] | lang=pt
-- "petsim_pet_props_rationale_71": "soft cloud / crown: a sphere pushed out by smooth lobes, flattened underneath (s" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L71 | neighbors=[puff(), Palette] | lang=en
-- "petsim_pet_props_rationale_730": "chibi puffball crown: a core ball + n round bubbles on a fibonacci spiral over i" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L730 | neighbors=[bubble_crown(), Palette] | lang=pt
-- "petsim_pet_props_rationale_743": "lollipop / puffball tree: curved tapered trunk with a root flare, one big smooth" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L743 | neighbors=[puff_tree(), Palette] | lang=en
-- "petsim_pet_props_rationale_756": "candy tree: candy-striped trunk (stripe faces alternate), two-tone cotton-candy" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L756 | neighbors=[cotton_tree(), Palette] | lang=en
-- "petsim_pet_props_rationale_778": "dream tree: pale twisty trunk, lilac puff crown with glowing crystal points poki" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L778 | neighbors=[crystal_tree(), Palette] | lang=en
-- "petsim_pet_props_rationale_810": "5-7 chibi daisies: thin stem, leaf, scalloped petal disc, round centre" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L810 | neighbors=[flower_patch(), Palette] | lang=en
-- "petsim_pet_props_rationale_838": "chubby toadstool: bulgy stem, domed cap with white spots, ring skirt" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L838 | neighbors=[mushroom(), Palette] | lang=en
-- "petsim_pet_props_rationale_855": "checkered blanket (cells alternate red / cream), a wicker basket with a handle," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L855 | neighbors=[picnic_set(), Palette] | lang=pt
-- "petsim_pet_props_rationale_893": "giant swirl lollipop: two interleaved coiled candy ropes (pink + cream) form the" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_props.py:L893 | neighbors=[lollipop(), Palette] | lang=en
+- "onsenvillage_onsen_props_rationale_609": "drying rack: two cedar uprights with feet, three poles, folded towels draped ove" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L609 | neighbors=[towel_rack(), Palette] | lang=en
+- "onsenvillage_onsen_props_rationale_633": "yatai cart: two spoked wheels, cedar counter cabin with a plank top, small persi" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L633 | neighbors=[noodle_stall(), Palette] | lang=en
+- "onsenvillage_onsen_props_rationale_668": "sake cask: straw-wrapped body, rope bands, lid; lying casks rest on their side" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L668 | neighbors=[taru(), Palette] | lang=en
+- "onsenvillage_onsen_props_rationale_682": "cluster: cedar pallet, three standing casks, one on top, one lying in a chock, a" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L682 | neighbors=[sake_barrels(), Palette] | lang=pt
+- "onsenvillage_onsen_props_rationale_696": "stack: slatted cedar crates with corner battens, a rope-tied sack pile and a bas" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L696 | neighbors=[crates(), Palette] | lang=en
+- "onsenvillage_onsen_props_rationale_718": "thick cedar bench: two planks, cross battens, iron bolts, carved stone feet" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L718 | neighbors=[bench(), Palette] | lang=en
+- "onsenvillage_onsen_props_rationale_728": "two-wheeled hand cart: plank bed with side boards, long handles, spoked wheels," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L728 | neighbors=[hand_cart(), Palette] | lang=en
+- "onsenvillage_onsen_props_rationale_746": "cedar lamp post with a crossarm and a hanging paper lantern, stone footing" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L746 | neighbors=[paper_lantern_post(), Palette] | lang=en
+- "onsenvillage_onsen_props_rationale_757": "shrine gate: two cedar columns on stone bases, double lintel (kasagi with upswep" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L757 | neighbors=[torii(), Palette] | lang=en
+- "onsenvillage_onsen_props_rationale_780": "Japanese black pine: thick leaning trunk with a kink, horizontal limbs ending in" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L780 | neighbors=[jp_pine(), Palette] | lang=en
+- "onsenvillage_onsen_props_rationale_807": "broadleaf in the garden style: flared forked trunk, 5 boughs, a dense rounded cr" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L807 | neighbors=[cloud_tree(), Palette] | lang=en
+- "onsenvillage_onsen_props_rationale_835": "mountain cedar for the backdrop: straight trunk, stacked drooping sage skirts (n" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L835 | neighbors=[cedar(), Palette] | lang=en
+- "onsenvillage_onsen_props_rationale_852": "tall framing crag: 4-5 overlapping tapered rock columns of different heights (on" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L852 | neighbors=[crag(), Palette] | lang=en
+- "onsenvillage_onsen_props_rationale_878": "low clump of sage fronds for wall feet and banks" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L878 | neighbors=[fern_tuft(), Palette] | lang=en
+- "onsenvillage_onsen_props_stair_flight": "stair_flight()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L546 | neighbors=[onsen_props.py, stone stair: bevelled sand treads with …] | lang=en
+- "onsenvillage_onsen_props_torii": "torii()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L756 | neighbors=[onsen_props.py, shrine gate: two cedar columns on stone…] | lang=en
+- "package_build_tool_after_token": "after_token()" | kind=code-symbol | source=mute/src/package/build_tool.cpp:L39 | neighbors=[build_tool.cpp, declared_identity()] | lang=en
+- "package_build_tool_name": "name()" | kind=code-symbol | source=mute/src/package/build_tool.cpp:L141 | neighbors=[build_tool.cpp, build_project()] | lang=en
+- "package_build_tool_next_quoted": "next_quoted()" | kind=code-symbol | source=mute/src/package/build_tool.cpp:L43 | neighbors=[build_tool.cpp, declared_identity()] | lang=en
+- "package_package_inner_position": "inner_position()" | kind=code-symbol | source=mute/src/package/package.cpp:L21 | neighbors=[package.cpp, resolve_packages()] | lang=en
+- "package_package_parse_import_spec": "parse_import_spec()" | kind=code-symbol | source=mute/src/package/package.cpp:L37 | neighbors=[package.cpp, resolve_packages()] | lang=en
+- "package_package_unquote": "unquote()" | kind=code-symbol | source=mute/src/package/package.cpp:L30 | neighbors=[package.cpp, resolve_packages()] | lang=en
+- "parser_declaration_decl_fail": "decl_fail()" | kind=code-symbol | source=mute/src/parser/declaration.cpp:L13 | neighbors=[declaration.cpp, Depth()] | lang=en
+- "parser_declaration_decl_quoted": "decl_quoted()" | kind=code-symbol | source=mute/src/parser/declaration.cpp:L16 | neighbors=[declaration.cpp, dump_declaration_ast()] | lang=en
+- "parser_declaration_declarationparser": "DeclarationParser" | kind=code-symbol | source=mute/src/parser/declaration.cpp:L25 | neighbors=[declaration.cpp, .DeclarationParser()] | lang=en
+- "parser_declaration_depth": "Depth()" | kind=code-symbol | source=mute/src/parser/declaration.cpp:L75 | neighbors=[declaration.cpp, decl_fail()] | lang=en
+- "parser_declaration_dump_declaration_ast": "dump_declaration_ast()" | kind=code-symbol | source=mute/src/parser/declaration.cpp:L449 | neighbors=[declaration.cpp, decl_quoted()] | lang=en
+- "parser_parser_expressionparser": "ExpressionParser" | kind=code-symbol | source=mute/src/parser/parser.cpp:L86 | neighbors=[parser.cpp, .ExpressionParser()] | lang=en
+- "parser_parser_op_spelling": "op_spelling()" | kind=code-symbol | source=mute/src/parser/parser.cpp:L9 | neighbors=[parser.cpp, dump_ast()] | lang=en
+- "parser_parser_quoted": "quoted()" | kind=code-symbol | source=mute/src/parser/parser.cpp:L70 | neighbors=[parser.cpp, dump_ast()] | lang=en
+- "parser_statement_depth": "Depth()" | kind=code-symbol | source=mute/src/parser/statement.cpp:L59 | neighbors=[statement.cpp, stmt_fail()] | lang=en
+- "parser_statement_dump_statement_ast": "dump_statement_ast()" | kind=code-symbol | source=mute/src/parser/statement.cpp:L329 | neighbors=[statement.cpp, quoted()] | lang=en
+- "parser_statement_quoted": "quoted()" | kind=code-symbol | source=mute/src/parser/statement.cpp:L16 | neighbors=[statement.cpp, dump_statement_ast()] | lang=en
+- "parser_statement_statementparser": "StatementParser" | kind=code-symbol | source=mute/src/parser/statement.cpp:L25 | neighbors=[statement.cpp, .StatementParser()] | lang=en
+- "parser_statement_stmt_fail": "stmt_fail()" | kind=code-symbol | source=mute/src/parser/statement.cpp:L13 | neighbors=[statement.cpp, Depth()] | lang=en
+- "passes_cube_demo_cube_indices": "cube_indices()" | kind=code-symbol | source=engine/render/src/passes/cube_demo.cpp:L62 | neighbors=[cube_demo.cpp, main()] | lang=en
+- "passes_cube_demo_cube_vertices": "cube_vertices()" | kind=code-symbol | source=engine/render/src/passes/cube_demo.cpp:L39 | neighbors=[cube_demo.cpp, main()] | lang=en
+- "passes_imgui_demo_build_demo_window": "build_demo_window()" | kind=code-symbol | source=engine/render/src/passes/imgui_demo.cpp:L168 | neighbors=[imgui_demo.cpp, main()] | lang=en
+- "passes_imgui_demo_composite": "composite()" | kind=code-symbol | source=engine/render/src/passes/imgui_demo.cpp:L61 | neighbors=[imgui_demo.cpp, ensure_gpu_timer()] | lang=en
+- "passes_imgui_demo_ensure_gpu_timer": "ensure_gpu_timer()" | kind=code-symbol | source=engine/render/src/passes/imgui_demo.cpp:L44 | neighbors=[imgui_demo.cpp, composite()] | lang=en
 
 ## Instructions
 

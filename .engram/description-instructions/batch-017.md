@@ -1,4 +1,4 @@
-# Node Description Batch 18 of 208
+# Node Description Batch 18 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -17,17 +17,30 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "tests_run_all": "run_all.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/run_all.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, fresh(), main(), requires_gpu(), skill_module()]
+- "tests_test_animation": "test_animation.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_animation.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, _rig(), test_bake_to_copy_with_root_motion_and_…, test_loop_check_hitches_kink_dip_and_sm…, test_loop_check_pops_fix_and_root_motio…]
+- "tests_test_mating": "test_mating.py" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_mating.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, _socket(), test_collision_fails(), test_good_fit_passes(), test_loose_fit_fails()]
+- "tests_test_npr": "test_npr.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_npr.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, _bands(), _clusters(), _scene(), test_remove_restores_slots_on_unmateria…]
+- "tests_test_workflow_captured": "captured()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_workflow.py:L82 | neighbors=[test_workflow.py, test_build_and_render_reject_changed_so…, test_completion_requires_brief_review_a…, test_evidence_is_stored_in_the_workspac…, test_independent_report_binds_images_sc…, test_reference_compare_requires_exact_f…]
+- "tools_g2_replay_probe_main": "main()" | kind=code-symbol | source=engine/physics/tools/g2_replay_probe.cpp:L117 | neighbors=[g2_replay_probe.cpp, bounds_of(), combine_friction(), combine_restitution(), fx(), shape_of()]
+- "tools_readme_hero": "readme_hero.py" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/readme_hero.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, figure(), font(), frame(), main()]
+- "towncity_city_paint_tile": "tile()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/city_paint.py:L45 | neighbors=[city_paint.py, block(), one periodic WP x HP tile at base shade…, clip(), edge(), hash2()]
+- "towncity_town_map_dressing": "dressing()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L378 | neighbors=[town_map.py, build(), face(), free(), near_intersection(), place()]
+- "towncity_town_map_reserve": "reserve()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L90 | neighbors=[town_map.py, alley(), build(), dressing(), landmarks(), row()]
+- "towncity_town_map_row": "row()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L221 | neighbors=[town_map.py, buildings(), landmarks(), lay buildings side by side from `start`…, bkit(), face()]
 - "unit_action_map_test_game_map": "game_map()" | kind=code-symbol | source=mute/tests/unit/action_map_test.cpp:L51 | neighbors=[action_map_test.cpp, axis(), kb(), mouse(), pad(), tap()]
 - "unit_debugger_test": "debugger_test.cpp" | kind=code-symbol | source=mute/tests/unit/debugger_test.cpp:L1 | neighbors=[952997e Audit MUT-01-55 and harden veri…, arith(), cases(), check(), divzero(), imm()]
 - "unit_emit_test_position_cases": "position_cases()" | kind=code-symbol | source=mute/tests/unit/emit_test.cpp:L209 | neighbors=[emit_test.cpp, main(), arith_module(), check(), compile_source(), i32()]
 - "unit_emit_test_v": "v()" | kind=code-symbol | source=mute/tests/unit/emit_test.cpp:L15 | neighbors=[emit_test.cpp, arith_module(), calls_module(), cases(), hostcall_module(), position_cases()]
 - "unit_fixed_vec_test": "fixed_vec_test.cpp" | kind=code-symbol | source=engine/foundation/tests/unit/fixed_vec_test.cpp:L1 | neighbors=[06cfbe9 Narrowphase: local pair frame +…, 9eeb3ff Merge pull request #2 from Raft…, len_d(), main(), naive_dot(), naive_in_range()]
 - "unit_fold_test": "fold_test.cpp" | kind=code-symbol | source=mute/tests/unit/fold_test.cpp:L1 | neighbors=[4cead55 Add MUT-27 bytecode verificatio…, cases(), check(), count_op(), i32t(), main()]
-- "unit_lexer_contract_test": "lexer_contract_test.cpp" | kind=code-symbol | source=mute/tests/unit/lexer_contract_test.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, check(), deterministic_streams(), diagnostic(), examples(), main()]
+- "unit_imgui_pass_faults": "imgui_pass_faults.cpp" | kind=code-symbol | source=engine/rhi/tests/unit/imgui_pass_faults.cpp:L1 | neighbors=[f4a6ac4 Allowlist known validation-laye…, FakeShader(), GetEngineFactoryVk(), main(), reset(), write_spirv()]
+- "unit_lexer_test": "lexer_test.cpp" | kind=code-symbol | source=mute/tests/unit/lexer_test.cpp:L1 | neighbors=[f4a6ac4 Allowlist known validation-laye…, check(), error(), main(), test_cases(), unicode_conformance()]
+- "unit_pokomesh_test": "pokomesh_test.cpp" | kind=code-symbol | source=engine/resource/tests/unit/pokomesh_test.cpp:L1 | neighbors=[f4a6ac4 Allowlist known validation-laye…, main(), make_pmes(), put32(), putf(), write()]
 - "unit_ssa_test": "ssa_test.cpp" | kind=code-symbol | source=mute/tests/unit/ssa_test.cpp:L1 | neighbors=[fd66d0d Add MUT-25 typed SSA IR and ver…, cases(), check(), has(), i32(), main()]
 - "unit_stress_test_check": "check()" | kind=code-symbol | source=mute/tests/unit/stress_test.cpp:L20 | neighbors=[stress_test.cpp, bytecode_limits(), lexer_limits(), package_limits(), pipeline_limits(), program_limits()]
 - "unit_stress_test_main": "main()" | kind=code-symbol | source=mute/tests/unit/stress_test.cpp:L123 | neighbors=[stress_test.cpp, bytecode_limits(), lexer_limits(), package_limits(), pipeline_limits(), program_limits()]
-- "unit_vulkan_triangle_pass_test": "vulkan_triangle_pass_test.cpp" | kind=code-symbol | source=engine/rhi/tests/unit/vulkan_triangle_pass_test.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, draw_and_present(), main(), messages(), reset(), VulkanClearRenderer()]
+- "unit_vulkan_mesh_pass_test": "vulkan_mesh_pass_test.cpp" | kind=code-symbol | source=engine/rhi/tests/unit/vulkan_mesh_pass_test.cpp:L1 | neighbors=[f4a6ac4 Allowlist known validation-laye…, draw_and_present(), main(), messages(), VulkanClearRenderer(), VulkanDiagnostics()]
 - "unit_worker_auth_test": "worker_auth_test.cpp" | kind=code-symbol | source=server/identity/tests/unit/worker_auth_test.cpp:L1 | neighbors=[6568dc9 Update from ML AI Code, check(), fake_rsa_verify(), main(), make_token(), sample_ticket()]
 - "valleylake_valley_map_reserve": "reserve()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L228 | neighbors=[valley_map.py, build(), cliffs(), nature(), rope_lines(), shore()]
 - "valleylake_valley_props_blossom_tree": "blossom_tree()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L289 | neighbors=[valley_props.py, clump(), flat(), leaf_cluster(), limb(), .add()]
@@ -44,19 +57,6 @@ one-sentence description — no prose, no markdown fences.
 - "vfxkit_lint_lint": "lint()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/lint.py:L105 | neighbors=[lint.py, colours(), documented_textures(), hot(), release_frames(), screen_errors()]
 - "vfxkit_primitives_beam": "beam()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/primitives.py:L433 | neighbors=[primitives.py, _beam_strip(), fade(), radial_sparks(), ramp(), smoke()]
 - "vfxkit_sequence_frame_number": "_frame_number()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/sequence.py:L155 | neighbors=[sequence.py, capture(), concept_compare(), handoff(), paintover(), sheet_around_steps()]
-- "vfxkit_sequence_read": "read()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/sequence.py:L47 | neighbors=[sequence.py, capture(), concept_compare(), handoff(), issues(), paintover()]
-- "vfxkit_sequence_submit": "submit()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/sequence.py:L368 | neighbors=[sequence.py, criteria(), _frame_number(), gate_path(), issues(), _now()]
-- "voidrealm_void_props_spawn_dais": "spawn_dais()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/voidrealm/void_props.py:L551 | neighbors=[void_props.py, spawn platform: big round stepped dais,…, annulus(), chamfer_box(), FS(), rune_circle()]
-- "warehouse_fitlib": "fitlib.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/fitlib.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, add_owner(), fit(), fit_bad(), _inb()]
-- "whispering_grove_forest_props_campfire": "campfire()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L392 | neighbors=[forest_props.py, at(), blob(), flame_tongue(), Prop, .add()]
-- "whispering_grove_forest_props_log": "log()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L264 | neighbors=[forest_props.py, at(), blob(), mushroom(), Prop, .add()]
-- "whispering_grove_forest_props_mushroom": "mushroom()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L229 | neighbors=[forest_props.py, log(), at(), Prop, .add(), .gadd()]
-- "work_test_uv_overlap_overlaptests": "OverlapTests" | kind=code-symbol | source=assets/characters/work/test_uv_overlap.py:L5 | neighbors=[test_uv_overlap.py, .test_bounding_boxes_overlap_but_triang…, .test_edge_and_point_contact_are_not_ov…, .test_identical_cross_mesh_triangles_ar…, .test_invalid_values_rejected(), .test_outside_atlas_and_degenerate()]
-- "animation_build_animations": "build_animations.py" | kind=code-symbol | source=assets/characters/animation/build_animations.py:L1 | neighbors=[foot(), interp(), loc(), rot(), smooth(), 52dbcb9 Surface graphics warnings in X1…]
-- "brainstorm_server_branding_test_test": "test()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/brainstorm-server/branding.test.js:L110 | neighbors=[branding.test.js, assertBrandedWithLogo(), assertFramedLogoSupportsDarkTheme(), assertFramedScreenUsesBrandHeader(), assertHeaderAvoidsNarrowOverlap(), assertLogoKeepsTransparentBackground()]
-- "brick_bone_hydra_brick_head": "head()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/bone_hydra_brick.py:L263 | neighbors=[bone_hydra_brick.py, dil(), J2L(), newid(), put(), sl_of()]
-- "brick_lich_king_brick_shift": "shift()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/lich_king_brick.py:L55 | neighbors=[lich_king_brick.py, back_layer(), cube_dil(), dil(), ero(), front_face()]
-- "brick_props_brick_grass_base": "grass_base()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/props_brick.py:L46 | neighbors=[props_brick.py, bush(), oak(), pine(), mossy ground disc with stepped edge + a…, rocks()]
 
 ## Instructions
 

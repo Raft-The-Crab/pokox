@@ -1,4 +1,4 @@
-# Node Description Batch 148 of 208
+# Node Description Batch 148 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -12,51 +12,60 @@ describing what it is or does. Use only the provided context.
 For a code symbol (kind=code-symbol — a function, class, or constant),
 describe what the function/symbol does based on its name, source location
 and neighbors — e.g. "Resolves the configured ontology profile from graphify.yaml.".
-Write every description in English (en). Do not switch languages.
+For an entity node (any other kind — e.g. a person, place, event, object),
+describe what the entity is and its role, grounded in its type, its
+relations (neighbors) and the provided citations/evidence — e.g.
+"Lady Carfax, a wealthy heiress who disappears en route to Lausanne.".
+Ground entity descriptions in the citations/evidence when present; do not
+speculate beyond the context, so a node with no supporting context may be
+left out of the reply.
+LANGUAGE: each entry has a `lang=` marker giving the language of its source.
+Write that entry's description in EXACTLY that language. Do not translate to
+a single common language — match each node's source language individually.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "vfxkit_handoff_handoff": "handoff()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/handoff.py:L25 | neighbors=[handoff.py, reviewer_skill()]
-- "vfxkit_library_describe": "describe()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/library.py:L57 | neighbors=[library.py, partial()]
-- "vfxkit_library_forget_helpers": "_forget_helpers()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/library.py:L35 | neighbors=[library.py, load()]
-- "vfxkit_library_get": "get()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/library.py:L90 | neighbors=[library.py, load()]
-- "vfxkit_lint_colours": "colours()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/lint.py:L61 | neighbors=[lint.py, lint()]
-- "vfxkit_main": "__main__.py" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/__main__.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …]
-- "vfxkit_ownership_digest": "digest()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/ownership.py:L18 | neighbors=[ownership.py, owned()]
-- "vfxkit_ownership_same_name": "same_name()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/ownership.py:L66 | neighbors=[ownership.py, name_key()]
-- "vfxkit_paths_full_mode_platform": "full_mode_platform()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/paths.py:L35 | neighbors=[paths.py, Where build and render (EffekseerCore t…]
-- "vfxkit_paths_godot": "godot()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/paths.py:L54 | neighbors=[paths.py, Godot 4 executable: GODOT, then `godot`…]
-- "vfxkit_paths_initialized": "initialized()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/paths.py:L21 | neighbors=[paths.py, `vfx init` has run here: a vfx/ folder …]
-- "vfxkit_paths_setup_command": "setup_command()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/paths.py:L46 | neighbors=[paths.py, How to run setup on this system, as a c…]
-- "vfxkit_primitives_beam_inputs": "beam_inputs()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/primitives.py:L417 | neighbors=[primitives.py, Default inputs of a beam recipe (effect…]
-- "vfxkit_primitives_budget": "budget()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/primitives.py:L314 | neighbors=[primitives.py, life_max()]
-- "vfxkit_primitives_contrast_pair": "contrast_pair()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/primitives.py:L370 | neighbors=[primitives.py, One fixed sprite plus a matching Blend …]
-- "vfxkit_primitives_effect": "effect()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/primitives.py:L273 | neighbors=[primitives.py, impact (0..1) and light drive the lab's…]
-- "vfxkit_primitives_is_path": "is_path()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/primitives.py:L15 | neighbors=[primitives.py, A texture already resolved to a file pa…]
-- "vfxkit_primitives_sustain": "sustain()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/primitives.py:L361 | neighbors=[primitives.py, Projectile emitter: one instance every …]
-- "vfxkit_reference_analyse": "analyse()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/reference.py:L32 | neighbors=[reference.py, import_clip()]
-- "vfxkit_reference_checked_id": "checked_id()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/reference.py:L13 | neighbors=[reference.py, read()]
-- "vfxkit_review_frame_state": "frame_state()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/review.py:L87 | neighbors=[review.py, capture()]
-- "vfxkit_review_overview": "overview()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/review.py:L328 | neighbors=[review.py, Library pages from the last capture: on…]
-- "vfxkit_review_sample_plan": "sample_plan()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/review.py:L79 | neighbors=[review.py, capture()]
-- "vfxkit_review_sheet": "sheet()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/review.py:L307 | neighbors=[review.py, capture()]
-- "vfxkit_scale_factors": "factors()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/scale.py:L165 | neighbors=[scale.py, (world, time, budget) of a built recipe…]
-- "vfxkit_sequence_lab_capture": "_lab_capture()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/sequence.py:L262 | neighbors=[sequence.py, capture()]
-- "vfxkit_sequence_rubric": "rubric()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/sequence.py:L58 | neighbors=[sequence.py, criteria()]
-- "vfxkit_textures_inspect_all": "inspect_all()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/textures.py:L204 | neighbors=[textures.py, inspect()]
-- "vfxkit_unity_periodic": "_periodic()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/unity.py:L56 | neighbors=[unity.py, textures()]
-- "vfxkit_unity_sheet": "_sheet()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/unity.py:L91 | neighbors=[unity.py, textures()]
-- "vfxkit_video_eval": "_eval()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/video.py:L279 | neighbors=[video.py, grade()]
-- "vfxkit_video_ffmpeg": "_ffmpeg()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/video.py:L37 | neighbors=[video.py, _decode()]
-- "vfxkit_video_parse_frames": "_parse_frames()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/video.py:L135 | neighbors=[video.py, flipbook()]
-- "vfxkit_video_prompt_text": "_prompt_text()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/video.py:L103 | neighbors=[video.py, flipbook()]
-- "vfxkit_video_ramp": "_ramp()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/video.py:L268 | neighbors=[video.py, grade()]
-- "vfxkit_video_smoothstep": "_smoothstep()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/video.py:L109 | neighbors=[video.py, grade()]
-- "vfxkit_workflow_absolute": "absolute()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/workflow.py:L47 | neighbors=[workflow.py, unchanged()]
-- "vfxkit_workflow_relative": "relative()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/workflow.py:L36 | neighbors=[workflow.py, snapshot()]
-- "vm_debugger_has_breakpoint": "has_breakpoint()" | kind=code-symbol | source=mute/src/vm/debugger.cpp:L29 | neighbors=[debugger.cpp, run()]
-- "vm_debugger_result": "result()" | kind=code-symbol | source=mute/src/vm/debugger.cpp:L58 | neighbors=[debugger.cpp, finish()]
+- "valleylake_valley_map_unplace": "unplace()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L163 | neighbors=[valley_map.py, place_soft()] | lang=en
+- "valleylake_valley_props_canopy": "canopy()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L230 | neighbors=[valley_props.py, leaf_cluster()] | lang=en
+- "valleylake_valley_props_rationale_1008": "soft full conifer: tapered skinned trunk; per tier a dark smooth drooping core s" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L1008 | neighbors=[Palette, pine()] | lang=en
+- "valleylake_valley_props_rationale_1040": "tip masses pulled toward one crown height, bridged to their nearest neighbour, p" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L1040 | neighbors=[Palette, merged_crown()] | lang=en
+- "valleylake_valley_props_rationale_1054": "stylised broadleaf: skinned trunk with a root flare forking into 3-4 limbs; one" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L1054 | neighbors=[Palette, broadleaf()] | lang=en
+- "valleylake_valley_props_rationale_124": "per-vertex convexity -> painted rim highlight (convex top edges lighter) / crevi" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L124 | neighbors=[Palette, rim_shade()] | lang=en
+- "valleylake_valley_props_rationale_149": "one carved rounded rock: superellipsoid mass with soft-flattened cut planes (a f" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L149 | neighbors=[Palette, boulder()] | lang=en
+- "valleylake_valley_props_rationale_200": "one painted leaf clump: a dark core lobe + n leaf cards (pointed diamonds, singl" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L200 | neighbors=[Palette, leaf_cluster()] | lang=pt
+- "valleylake_valley_props_rationale_238": "curved branch from a to b, arching up" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L238 | neighbors=[Palette, limb()] | lang=en
+- "valleylake_valley_props_rationale_244": "stylised broadleaf: thick tapered trunk forking into 3-4 arching limbs, each car" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L244 | neighbors=[Palette, broadleaf()] | lang=en
+- "valleylake_valley_props_rationale_265": "tall stylised pine: straight trunk, 8 tiers of separate drooping branch sprays (" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L265 | neighbors=[Palette, pine()] | lang=en
+- "valleylake_valley_props_rationale_290": "the one cherry tree: dark crooked trunk with arching limbs, pink painted clumps," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L290 | neighbors=[Palette, blossom_tree()] | lang=en
+- "valleylake_valley_props_rationale_307": "HERO: the big leaning islet tree. Thick twisting trunk leaning out over the wate" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L307 | neighbors=[Palette, gnarled_tree()] | lang=en
+- "valleylake_valley_props_rationale_407": "straight gable roof (ridge along X): two lofted tile slabs with a slight concave" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L407 | neighbors=[Palette, gable_roof()] | lang=en
+- "valleylake_valley_props_rationale_458": "wall in XY facing -Z: dark timber posts + rails framing inset shoji panels (latt" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L458 | neighbors=[Palette, timber_wall()] | lang=en
+- "valleylake_valley_props_rationale_48": "per-loop shade: height gradient y0..y1 (a -> b) + vertex-normal lift + low-freq" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L48 | neighbors=[Palette, V()] | lang=es
+- "valleylake_valley_props_rationale_493": "rounded fieldstone footing course under a house (the shared base, echoes the roc" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L493 | neighbors=[Palette, footing()] | lang=en
+- "valleylake_valley_props_rationale_518": "village houses. long = single storey longhouse 24 x 11, gable to the sides, fron" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L518 | neighbors=[Palette, house()] | lang=en
+- "valleylake_valley_props_rationale_606": "open stall: 4 posts on stone pads, a small dark gable roof, counter with baskets" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L606 | neighbors=[Palette, market_stall()] | lang=en
+- "valleylake_valley_props_rationale_631": "small red paper lantern: lathed ribbed body (red) + caps + a glow core inside" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L631 | neighbors=[Palette, paper_lantern()] | lang=pt
+- "valleylake_valley_props_rationale_641": "tall timber pole with a cross arm + strut, rope cleats; lantern ropes hang from" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L641 | neighbors=[Palette, rope_pole()] | lang=en
+- "valleylake_valley_props_rationale_65": "pillowy rounded-box mass: a subdivided cube pushed onto a superellipsoid |x|^n+|" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L65 | neighbors=[Palette, rounded_mass()] | lang=pt
+- "valleylake_valley_props_rationale_652": "rope span along +X from x 0 (left arm tip) to L, catenary sag, with n small pape" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L652 | neighbors=[Palette, lantern_rope()] | lang=en
+- "valleylake_valley_props_rationale_663": "low wooden lantern post for the shore path: post, small roof cap, a hanging pape" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L663 | neighbors=[Palette, lantern_post()] | lang=en
+- "valleylake_valley_props_rationale_679": "L-shaped fishing dock: a 4-wide walkway (along -Z from the beach at z 0) with an" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L679 | neighbors=[Palette, dock()] | lang=en
+- "valleylake_valley_props_rationale_722": "small arched plank bridge over the stream (span along Z, origin = centre at bank" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L722 | neighbors=[Palette, footbridge()] | lang=en
+- "valleylake_valley_props_rationale_741": "retaining wall module (front = -Z): coursed rounded fieldstones (soft, echoes th" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L741 | neighbors=[Palette, stone_wall()] | lang=en
+- "valleylake_valley_props_rationale_766": "stone flight up the retaining wall (front = -Z, climbs toward +Z), rounded cheek" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L766 | neighbors=[Palette, stone_stair()] | lang=en
+- "valleylake_valley_props_rationale_780": "HERO: a broad curved sheet spilling off a mossy carved lip, bowing out and widen" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L780 | neighbors=[Palette, waterfall()] | lang=pt
+- "valleylake_valley_props_rationale_832": "station sign: blank board (GUI goes on it, nothing written) in a timber frame on" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L832 | neighbors=[Palette, sign_stand()] | lang=en
+- "valleylake_valley_props_rationale_845": "branching skeleton -> one smooth closed trunk mesh: Blender Skin modifier (smoot" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L845 | neighbors=[Palette, skin_mesh()] | lang=en
+- "valleylake_valley_props_rationale_863": "node list [(pos, radius)] + edges; helpers to grow curved, tapering limbs" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L863 | neighbors=[Palette, Skel] | lang=en
+- "valleylake_valley_props_rationale_870": "limb from node `parent` along d (curving by bend per step, wobbling), n segments" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L870 | neighbors=[Palette, .grow()] | lang=en
+- "valleylake_valley_props_rationale_879": "bark grooves (noise stretched along the height = long vertical furrows) + shadin" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L879 | neighbors=[Palette, bark()] | lang=en
+- "valleylake_valley_props_rationale_895": "one soft canopy mass: a displaced dark core blob + many small leaf cards at rand" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L895 | neighbors=[Palette, leaf_mass()] | lang=pt
+- "valleylake_valley_props_rationale_930": "buttress roots gripping the ground: start high on the flare, run out low along t" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L930 | neighbors=[Palette, roots()] | lang=en
+- "valleylake_valley_props_rationale_94": "thick moss shell over the up-facing part of `bm`: faces whose verts all face up" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L94 | neighbors=[Palette, moss_cap()] | lang=en
+- "valleylake_valley_props_rationale_940": "HERO: the islet tree, rebuilt as a real tree. Skinned skeleton: thick flared bas" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L940 | neighbors=[Palette, gnarled_tree()] | lang=en
+- "valleylake_valley_props_rationale_986": "stylised broadleaf (same method, lighter): skinned trunk with a root flare forki" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L986 | neighbors=[Palette, broadleaf()] | lang=en
+- "valleylake_valley_props_smooth": "smooth()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L44 | neighbors=[valley_props.py, waterfall()] | lang=en
 
 ## Instructions
 

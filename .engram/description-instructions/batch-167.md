@@ -1,4 +1,4 @@
-# Node Description Batch 168 of 208
+# Node Description Batch 168 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -26,46 +26,46 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "frostpeak_frost_props_market_stall": "market_stall()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_props.py:L195 | neighbors=[frost_props.py] | lang=en
-- "frostpeak_frost_props_sled": "sled()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_props.py:L153 | neighbors=[frost_props.py] | lang=en
-- "frostpeak_frost_props_snowman": "snowman()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_props.py:L138 | neighbors=[frost_props.py] | lang=en
-- "fuzz_fuzz_bytecode_llvmfuzzertestoneinput": "LLVMFuzzerTestOneInput()" | kind=code-symbol | source=fuzz/fuzz_bytecode.cpp:L4 | neighbors=[fuzz_bytecode.cpp] | lang=en
-- "fuzz_fuzz_cbor_llvmfuzzertestoneinput": "LLVMFuzzerTestOneInput()" | kind=code-symbol | source=fuzz/fuzz_cbor.cpp:L4 | neighbors=[fuzz_cbor.cpp] | lang=en
-- "fuzz_fuzz_lexer_llvmfuzzertestoneinput": "LLVMFuzzerTestOneInput()" | kind=code-symbol | source=fuzz/fuzz_lexer.cpp:L4 | neighbors=[fuzz_lexer.cpp] | lang=en
-- "fuzz_fuzz_pokomesh_llvmfuzzertestoneinput": "LLVMFuzzerTestOneInput()" | kind=code-symbol | source=fuzz/fuzz_pokomesh.cpp:L4 | neighbors=[fuzz_pokomesh.cpp] | lang=en
-- "godot_ablation_report_rationale_1": "Rank Godot graphics settings by frame-time cost against how much they change the" | kind=entity | source=.agents/skills/ForgeSkills-main/tools/godot/ablation_report.py:L1 | neighbors=[ablation_report.py] | lang=en
-- "godot_ablation_report_rationale_54": "Full-scene GPU ms and noise floors for one view." | kind=entity | source=.agents/skills/ForgeSkills-main/tools/godot/ablation_report.py:L54 | neighbors=[view_baseline()] | lang=en
-- "harness_golden_rationale_17": "Return the first differing offset and sizes, or None if files match." | kind=entity | source=tools/testutils/harness/golden.py:L17 | neighbors=[first_difference()] | lang=en
-- "harness_golden_rationale_36": "Replace the reference atomically, only on an explicit update request." | kind=entity | source=tools/testutils/harness/golden.py:L36 | neighbors=[update_golden()] | lang=en
-- "hermes_conftest_mock_ctx": "mock_ctx()" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/hermes/conftest.py:L8 | neighbors=[conftest.py] | lang=en
-- "hermes_plugin_init_rationale_41": "Return a flat ``key: value`` scalar from a SKILL.md frontmatter block.      Herm" | kind=entity | source=.agents/skills/superpowers-main/.hermes-plugin/__init__.py:L41 | neighbors=[_frontmatter_value()] | lang=pt
-- "hermes_plugin_init_rationale_9": "Locate the stock skills/ tree for either supported install layout.      - git-cl" | kind=entity | source=.agents/skills/superpowers-main/.hermes-plugin/__init__.py:L9 | neighbors=[_skills_dir()] | lang=en
-- "hermes_test_plugin_rationale_119": "Copy the plugin module + a minimal skills tree in the given layout." | kind=entity | source=.agents/skills/superpowers-main/tests/hermes/test_plugin.py:L119 | neighbors=[._stage()] | lang=en
-- "hermes_test_plugin_rationale_165": "Hermes builds its skill catalogue from register_skill(description=...),     whic" | kind=entity | source=.agents/skills/superpowers-main/tests/hermes/test_plugin.py:L165 | neighbors=[TestSkillDescriptions] | lang=en
-- "hermes_test_plugin_rationale_21": "Re-import plugin module fresh." | kind=entity | source=.agents/skills/superpowers-main/tests/hermes/test_plugin.py:L21 | neighbors=[_load_plugin()] | lang=en
-- "identity_account_record": "account_record.hpp" | kind=code-symbol | source=server/identity/include/poko/identity/account_record.hpp:L1 | neighbors=[981b52c Crated IDN-01 to IDN-04] | lang=en
-- "identity_device_binding_devicebindingservice_devicebindingservice": ".DeviceBindingService()" | kind=code-symbol | source=server/identity/include/poko/identity/device_binding.hpp:L42 | neighbors=[DeviceBindingService] | lang=en
-- "identity_revocation_gate_ticketissuancegate_ticketissuancegate": ".TicketIssuanceGate()" | kind=code-symbol | source=server/identity/include/poko/identity/revocation_gate.hpp:L51 | neighbors=[TicketIssuanceGate] | lang=en
-- "identity_sign_in_accountstore_accountstore": ".AccountStore()" | kind=code-symbol | source=server/identity/include/poko/identity/sign_in.hpp:L22 | neighbors=[AccountStore] | lang=en
-- "identity_sign_in_format_user_id": "format_user_id()" | kind=code-symbol | source=server/identity/include/poko/identity/sign_in.hpp:L64 | neighbors=[sign_in.hpp] | lang=en
-- "identity_sign_in_signinservice_signinservice": ".SignInService()" | kind=code-symbol | source=server/identity/include/poko/identity/sign_in.hpp:L71 | neighbors=[SignInService] | lang=en
-- "identity_step_up_stepupservice_stepupservice": ".StepUpService()" | kind=code-symbol | source=server/identity/include/poko/identity/step_up.hpp:L23 | neighbors=[StepUpService] | lang=en
-- "identity_velocity_haversine_km": "haversine_km()" | kind=code-symbol | source=server/identity/include/poko/identity/velocity.hpp:L34 | neighbors=[velocity.hpp] | lang=en
-- "identity_velocity_loginvelocityservice_loginvelocityservice": ".LoginVelocityService()" | kind=code-symbol | source=server/identity/include/poko/identity/velocity.hpp:L65 | neighbors=[LoginVelocityService] | lang=en
-- "identity_worker_auth_base64url_decode": "base64url_decode()" | kind=code-symbol | source=server/identity/include/poko/identity/worker_auth.hpp:L42 | neighbors=[worker_auth.hpp] | lang=en
-- "identity_worker_auth_base64url_encode": "base64url_encode()" | kind=code-symbol | source=server/identity/include/poko/identity/worker_auth.hpp:L65 | neighbors=[worker_auth.hpp] | lang=en
-- "identity_worker_auth_firebasetokenverifier_firebasetokenverifier": ".FirebaseTokenVerifier()" | kind=code-symbol | source=server/identity/include/poko/identity/worker_auth.hpp:L114 | neighbors=[FirebaseTokenVerifier] | lang=en
-- "identity_worker_auth_sessiontickets_sessiontickets": ".SessionTickets()" | kind=code-symbol | source=server/identity/include/poko/identity/worker_auth.hpp:L243 | neighbors=[SessionTickets] | lang=en
-- "imgui_enginefactoryvk_diligent": "Diligent()" | kind=code-symbol | source=engine/rhi/tests/fakes/imgui/EngineFactoryVk.h:L10 | neighbors=[EngineFactoryVk.h] | lang=en
-- "imgui_enginefactoryvk_graphicspipeline": "GraphicsPipeline()" | kind=code-symbol | source=engine/rhi/tests/fakes/imgui/EngineFactoryVk.h:L60 | neighbors=[EngineFactoryVk.h] | lang=en
-- "imgui_enginefactoryvk_ideviceobject": "IDeviceObject()" | kind=code-symbol | source=engine/rhi/tests/fakes/imgui/EngineFactoryVk.h:L82 | neighbors=[EngineFactoryVk.h] | lang=en
-- "imgui_enginefactoryvk_ienginefactory": "IEngineFactory()" | kind=code-symbol | source=engine/rhi/tests/fakes/imgui/EngineFactoryVk.h:L124 | neighbors=[EngineFactoryVk.h] | lang=en
-- "imgui_enginefactoryvk_rtvformats": "RTVFormats()" | kind=code-symbol | source=engine/rhi/tests/fakes/imgui/EngineFactoryVk.h:L58 | neighbors=[EngineFactoryVk.h] | lang=en
-- "imgui_refcntautoptr_refcntautoptr_refcntautoptr": ".RefCntAutoPtr()" | kind=code-symbol | source=engine/rhi/tests/fakes/imgui/RefCntAutoPtr.hpp:L9 | neighbors=[RefCntAutoPtr] | lang=en
-- "input_action_map_name": "name()" | kind=code-symbol | source=mute/src/input/action_map.cpp:L337 | neighbors=[action_map.cpp] | lang=en
-- "input_device_router_clear": "clear()" | kind=code-symbol | source=mute/src/input/device_router.cpp:L103 | neighbors=[device_router.cpp] | lang=en
-- "input_device_router_disconnect": "disconnect()" | kind=code-symbol | source=mute/src/input/device_router.cpp:L47 | neighbors=[device_router.cpp] | lang=en
-- "input_device_router_find": "find()" | kind=code-symbol | source=mute/src/input/device_router.cpp:L62 | neighbors=[device_router.cpp] | lang=en
+- "extensions_superpowers_skillsdir": "skillsDir" | kind=code-symbol | source=.agents/skills/superpowers-main/.pi/extensions/superpowers.ts:L11 | neighbors=[superpowers.ts] | lang=en
+- "extensions_superpowers_superpowerspiextension": "superpowersPiExtension()" | kind=code-symbol | source=.agents/skills/superpowers-main/.pi/extensions/superpowers.ts:L16 | neighbors=[superpowers.ts] | lang=en
+- "fakes_enginefactoryopengl_diligent": "Diligent()" | kind=code-symbol | source=engine/rhi/tests/fakes/EngineFactoryOpenGL.h:L4 | neighbors=[EngineFactoryOpenGL.h] | lang=en
+- "fakes_enginefactoryopengl_ienginefactory": "IEngineFactory()" | kind=code-symbol | source=engine/rhi/tests/fakes/EngineFactoryOpenGL.h:L6 | neighbors=[EngineFactoryOpenGL.h] | lang=en
+- "fakes_enginefactoryvk_diligent": "Diligent()" | kind=code-symbol | source=engine/rhi/tests/fakes/EngineFactoryVk.h:L7 | neighbors=[EngineFactoryVk.h] | lang=en
+- "fakes_refcntautoptr_refcntautoptr_refcntautoptr": ".RefCntAutoPtr()" | kind=code-symbol | source=engine/rhi/tests/fakes/RefCntAutoPtr.hpp:L6 | neighbors=[RefCntAutoPtr] | lang=en
+- "fishcenter_fish_map_foot": "foot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L92 | neighbors=[fish_map.py] | lang=en
+- "fishcenter_fish_map_material_skin": "material_skin()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L745 | neighbors=[fish_map.py] | lang=en
+- "fishcenter_fish_map_rationale_55": "<= 1 inside an islet's ellipse (smallest over all islets)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L55 | neighbors=[islet_e()] | lang=en
+- "fishcenter_fish_map_shot": "shot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L760 | neighbors=[fish_map.py] | lang=en
+- "fishcenter_fish_props_rationale_515": "flat-bottomed cumulus for the horizon (SmoothPlastic white)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L515 | neighbors=[cloud()] | lang=en
+- "fishcenter_fish_props_rationale_710": "two palms with a striped hammock slung between them on ropes (a resting story)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L710 | neighbors=[hammock_palms()] | lang=pt
+- "foundation_cbor_member": "Member()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/cbor.hpp:L51 | neighbors=[cbor.hpp] | lang=en
+- "foundation_config_logging_logguard_logguard": ".LogGuard()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/config_logging.hpp:L17 | neighbors=[LogGuard] | lang=en
+- "foundation_duration_query_state_begin": "begin()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/duration_query_state.hpp:L9 | neighbors=[duration_query_state.hpp] | lang=en
+- "foundation_duration_query_state_durationquerystate": "DurationQueryState" | kind=code-symbol | source=engine/foundation/include/poko/foundation/duration_query_state.hpp:L6 | neighbors=[duration_query_state.hpp] | lang=en
+- "foundation_duration_query_state_end": "end()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/duration_query_state.hpp:L16 | neighbors=[duration_query_state.hpp] | lang=en
+- "foundation_duration_query_state_poll": "poll()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/duration_query_state.hpp:L23 | neighbors=[duration_query_state.hpp] | lang=en
+- "foundation_fixed_divide": "divide()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/fixed.hpp:L123 | neighbors=[fixed.hpp] | lang=en
+- "foundation_fixed_fixed_fixed": ".Fixed()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/fixed.hpp:L39 | neighbors=[Fixed] | lang=en
+- "foundation_fixed_sqrt": "sqrt()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/fixed.hpp:L143 | neighbors=[fixed.hpp] | lang=en
+- "foundation_fixed_vec_cross": "cross()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/fixed_vec.hpp:L137 | neighbors=[fixed_vec.hpp] | lang=en
+- "foundation_fixed_vec_fixedvec3": "FixedVec3()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/fixed_vec.hpp:L24 | neighbors=[fixed_vec.hpp] | lang=en
+- "foundation_fixed_vec_max": "max()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/fixed_vec.hpp:L81 | neighbors=[fixed_vec.hpp] | lang=en
+- "foundation_fixed_vec_min": "min()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/fixed_vec.hpp:L77 | neighbors=[fixed_vec.hpp] | lang=en
+- "foundation_frame_stats_framestats": "FrameStats" | kind=code-symbol | source=engine/foundation/include/poko/foundation/frame_stats.hpp:L13 | neighbors=[frame_stats.hpp] | lang=en
+- "foundation_loop_fixedsteploop": "FixedStepLoop" | kind=code-symbol | source=engine/foundation/include/poko/foundation/loop.hpp:L27 | neighbors=[loop.hpp] | lang=en
+- "foundation_vec3f_cross": "cross()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/vec3f.hpp:L59 | neighbors=[vec3f.hpp] | lang=en
+- "foundation_vec3f_vec3f": "Vec3f()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/vec3f.hpp:L17 | neighbors=[vec3f.hpp] | lang=en
+- "framegraph_frame_graph_add_pass": "add_pass()" | kind=code-symbol | source=engine/render/src/framegraph/frame_graph.cpp:L21 | neighbors=[frame_graph.cpp] | lang=en
+- "framegraph_frame_graph_clear": "clear()" | kind=code-symbol | source=engine/render/src/framegraph/frame_graph.cpp:L26 | neighbors=[frame_graph.cpp] | lang=en
+- "framegraph_frame_graph_framegraph_framegraph": ".FrameGraph()" | kind=code-symbol | source=engine/render/include/poko/render/framegraph/frame_graph.hpp:L48 | neighbors=[FrameGraph] | lang=en
+- "framegraph_frame_graph_import_resource": "import_resource()" | kind=code-symbol | source=engine/render/src/framegraph/frame_graph.cpp:L16 | neighbors=[frame_graph.cpp] | lang=en
+- "frostpeak_frost_kit_sheet_shot": "shot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_kit_sheet.py:L43 | neighbors=[frost_kit_sheet.py] | lang=en
+- "frostpeak_frost_map_canopy_shade": "canopy_shade()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_map.py:L176 | neighbors=[frost_map.py] | lang=en
+- "frostpeak_frost_map_chaikin": "chaikin()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_map.py:L24 | neighbors=[frost_map.py] | lang=en
+- "frostpeak_frost_map_horizon_d": "horizon_d()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_map.py:L162 | neighbors=[frost_map.py] | lang=en
+- "frostpeak_frost_map_rationale_154": "yaw that turns a building's +Z front (its door) toward (tx, tz)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_map.py:L154 | neighbors=[front_to()] | lang=en
+- "frostpeak_frost_map_shot": "shot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_map.py:L337 | neighbors=[frost_map.py] | lang=en
+- "frostpeak_frost_props_bench": "bench()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_props.py:L162 | neighbors=[frost_props.py] | lang=en
 
 ## Instructions
 

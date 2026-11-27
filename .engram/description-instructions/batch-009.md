@@ -1,4 +1,4 @@
-# Node Description Batch 10 of 208
+# Node Description Batch 10 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -24,7 +24,13 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "src_config": "config.cpp" | kind=code-symbol | source=engine/foundation/src/config.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, collect_unknown(), fail(), find_key(), load_file(), parse_level()]
+- "scripts_bind_mesh": "bind_mesh.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-character-rigging/scripts/bind_mesh.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, cleanup(), _ctx(), _heat_scale(), _height()]
+- "scripts_blocks_block": "Block" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/blocks.py:L15 | neighbors=[v4 stadium hub: striped infield inside …, stepped canyon: tier n is a row of 24-w…, race kerb along Z: alternating colour/w…, running-track oval: red lane band, whit…, put theme props on cap tops (centre of …, blocks.py]
+- "scripts_garment": "garment.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-clothing/scripts/garment.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, _drape(), _hide_body(), penetration(), _region()]
+- "scripts_qa_check": "qa_check.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-asset-qa/scripts/qa_check.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, _feeds(), _islands(), _material_issues(), _mesh_world()]
+- "scripts_surface_weather_g": "_G" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/surface_weather.py:L31 | neighbors=[surface_weather.py, build_group(), .__init__(), .link(), .math(), .mix()]
+- "skyrise_sky_map_build": "build()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_map.py:L199 | neighbors=[sky_map.py, face(), island_mesh(), micro_detail(), path_track(), place()]
+- "skyrise_sky_props_lathe": "lathe()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L39 | neighbors=[sky_props.py, cactus(), crystal_node(), egg_shrine(), gem(), ice_spike()]
 - "src_soft_body": "soft_body.cpp" | kind=code-symbol | source=engine/physics/src/soft_body.cpp:L1 | neighbors=[69287a0 Land ENG-60-65 deterministic si…, add_node(), add_spring(), apply_acceleration(), clamp01(), collide_plane_y()]
 - "stdlib_stdlib_string": "stdlib_string.cpp" | kind=code-symbol | source=mute/src/stdlib/stdlib_string.cpp:L1 | neighbors=[952997e Audit MUT-01-55 and harden veri…, byte_length(), codepoint_count(), compare_bytes(), concat(), decode()]
 - "sugarworks_sugar_props_torus": "torus()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L44 | neighbors=[sugar_props.py, buy_button(), cash_pad(), choc_fountain(), coin_chute(), collector()]
@@ -58,12 +64,6 @@ one-sentence description — no prose, no markdown fences.
 - "cavemap_cave_map_vines": "vines()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_map.py:L587 | neighbors=[cave_map.py, build(), glow-root vines hanging from the vault …, ceil_y(), free(), H()]
 - "cavemap_cave_ores": "cave_ores.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_ores.py:L1 | neighbors=[cart_load(), druse(), _lump(), mound(), ore_lump(), ore_pile()]
 - "commit:repo:github.com/Raft-The-Crab/pokox@1c81e45b51593286d3d388efbe3965f6bfd2a939": "1c81e45 Update from ML AI Code" | kind=Commit | source=git | neighbors=[main, e04375a Run tests, config_file_test.cpp, stdlib_math.hpp, cbor.cpp, stdlib_math.cpp]
-- "commit:repo:github.com/Raft-The-Crab/pokox@4cead55894b2108428ac5afe169253bd4ffc026b": "4cead55 Add MUT-27 bytecode verification and MUT-28 constant folding" | kind=Commit | source=git | neighbors=[main, bytecode.cpp, e499073 Add MUT-29 dead-code eliminatio…, fold.hpp, fold.cpp, lower.cpp]
-- "creaturelab_lab_props_fiddle_fig": "fiddle_fig()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1990 | neighbors=[lab_props.py, leaf_card(), leaf_sh(), pot(), Skel, .add()]
-- "creaturelab_lab_props_park_tree": "park_tree()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L2068 | neighbors=[lab_props.py, blossom_park(), leaf_mass(), lerp(), Skel, .add()]
-- "device_opengl_clear_renderer": "opengl_clear_renderer.cpp" | kind=code-symbol | source=engine/rhi/src/device/opengl_clear_renderer.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, clear_and_present(), default_framebuffer_is_srgb(), Impl(), initialize(), native_window()]
-- "device_vulkan_mesh_pass": "vulkan_mesh_pass.cpp" | kind=code-symbol | source=engine/rhi/src/device/vulkan_mesh_pass.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, draw(), draw_and_present(), Impl(), set_light_direction(), set_mesh()]
-- "dunedesert_dune_props_sunken_temple": "sunken_temple()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L1040 | neighbors=[dune_props.py, HERO / DUNGEON PORTAL: a columned templ…, block_wall(), column(), frustum(), merge_into()]
 
 ## Instructions
 

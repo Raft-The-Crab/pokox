@@ -1,4 +1,4 @@
-# Node Description Batch 35 of 208
+# Node Description Batch 35 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -17,6 +17,18 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "creaturelab_lab_props_skin_mesh": "skin_mesh()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1922 | neighbors=[lab_props.py, fiddle_fig(), olive_tree(), park_tree(), branching skeleton -> one smooth trunk …]
+- "creaturelab_lab_props_starter_table": "starter_table()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L715 | neighbors=[lab_props.py, starter-capsule table: round white pede…, capsule(), rbox(), .add()]
+- "creaturelab_lab_props_topiary_hedge": "topiary_hedge()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1501 | neighbors=[lab_props.py, clipped hedge with a smooth rounded pro…, ball(), rbox(), .add()]
+- "creaturelab_lab_props_wing_trim": "wing_trim()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1347 | neighbors=[lab_props.py, lab wing interior trim + ceiling beams …, rbox(), ring_seg(), .add()]
+- "creaturelab_lab_props_wood_sh": "wood_sh()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1952 | neighbors=[lab_props.py, fiddle_fig(), olive_tree(), park_tree(), lerp()]
+- "dunedesert_dune_map_dig_spots": "dig_spots()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L467 | neighbors=[dune_map.py, build(), anchor(), place(), reserve()]
+- "dunedesert_dune_map_horizon": "horizon()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L301 | neighbors=[dune_map.py, build(), H(), static(), distant tiered mesas + buttes far outsi…]
+- "dunedesert_dune_map_paving": "paving()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L322 | neighbors=[dune_map.py, build(), H(), static(), worn flagstone slabs over the city + th…]
+- "dunedesert_dune_paint": "dune_paint.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_paint.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, _hex(), paint_block(), remap()]
+- "dunedesert_dune_props_block_wall": "block_wall()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L114 | neighbors=[dune_props.py, wall of REAL bevelled blocks through th…, ruin_house(), ruin_wall(), sunken_temple()]
+- "dunedesert_dune_props_camel": "camel()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L655 | neighbors=[dune_props.py, sheet(), uvsphere(), V(), stylised camel (smooth hide): ellipsoid…]
+- "dunedesert_dune_props_column": "column()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L137 | neighbors=[dune_props.py, column_set(), square base + torus, drummed 10-sided s…, step_pyramid(), sunken_temple()]
 - "dunedesert_dune_props_grid_quad": "grid_quad()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L70 | neighbors=[dune_props.py, lerp(), flat top split into ~cell faces (the at…, ruin_house(), step_pyramid()]
 - "dunedesert_dune_props_obelisk_stump": "obelisk_stump()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L406 | neighbors=[dune_props.py, merge_into(), plinth(), _shaft(), sun_relief()]
 - "dunedesert_dune_props_plinth": "plinth()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L129 | neighbors=[dune_props.py, obelisk(), obelisk_stump(), quest_stele(), SHARED BASE: stepped sandstone plinth, …]
@@ -45,18 +57,6 @@ one-sentence description — no prose, no markdown fences.
 - "effekseer_ai_runtime_load_core": "load_core()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/runtime.py:L43 | neighbors=[runtime.py, export_binary(), editor_bin_directory(), runtime_config_path(), Load and return the official static ``E…]
 - "effekseer_ai_session_effectsession_import_image": ".import_image()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L263 | neighbors=[EffectSession, ._copy_resource(), ._object_at_path(), .property_set(), Copy an image beside the effect and opt…]
 - "effekseer_ai_session_effectsession_property_parent": "._property_parent()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L329 | neighbors=[EffectSession, ._object_at_path(), .property_get(), ._node(), .property_set()]
-- "eggplots_egg_map_ground": "ground()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_map.py:L161 | neighbors=[egg_map.py, build(), isle_point(), static(), island lawn + lake bank + hills: fine g…]
-- "eggplots_egg_map_lane": "lane()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_map.py:L249 | neighbors=[egg_map.py, build(), anchor(), place(), reserve()]
-- "eggplots_egg_map_reserve": "reserve()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_map.py:L94 | neighbors=[egg_map.py, build(), dressing(), lane(), spawn_area()]
-- "eggplots_egg_props_barn": "barn()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L861 | neighbors=[egg_props.py, rbox(), sh(), upright(), backdrop red barn (seen from across the…]
-- "eggplots_egg_props_deco_egg": "deco_egg()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L485 | neighbors=[egg_props.py, egg(), sh(), straw_nest(), giant painted egg (lane / plaza decor) …]
-- "eggplots_egg_props_feed_trough": "feed_trough()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L402 | neighbors=[egg_props.py, egg(), rbox(), sh(), grain trough: honey plank trough on spl…]
-- "eggplots_egg_props_fence_run": "fence_run()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L176 | neighbors=[egg_props.py, rbox(), sh(), upright(), picket fence segment along +X (0..L), f…]
-- "eggplots_egg_props_hay_bale": "hay_bale()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L384 | neighbors=[egg_props.py, rbox(), sh(), hay_stack(), square hay bale: chamfered straw block,…]
-- "eggplots_egg_props_nest_statue": "nest_statue()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L776 | neighbors=[egg_props.py, egg(), sh(), straw_nest(), spawn centrepiece: round stone plinth w…]
-- "eggplots_egg_props_plot_slab": "plot_slab()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L262 | neighbors=[egg_props.py, lerp(), rbox(), sh(), the yard: chamfered stone footing + acc…]
-- "eggplots_egg_props_windmill": "windmill()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L898 | neighbors=[egg_props.py, backdrop windmill: tapered octagonal to…, lerp(), rbox(), sh()]
-- "evaluator_evaluator_literal_integer": "literal_integer()" | kind=code-symbol | source=mute/src/evaluator/evaluator.cpp:L68 | neighbors=[evaluator.cpp, evaluate_arithmetic(), fail(), integer_suffix(), suffix_length()]
 
 ## Instructions
 

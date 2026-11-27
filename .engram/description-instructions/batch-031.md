@@ -1,4 +1,4 @@
-# Node Description Batch 32 of 208
+# Node Description Batch 32 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -17,8 +17,19 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "vfxkit_evidence_verify": "verify()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/evidence.py:L251 | neighbors=[evidence.py, build_issues(), capture_issues(), current_recipe(), latest(), store()]
+- "vfxkit_primitives_fade": "fade()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/primitives.py:L18 | neighbors=[primitives.py, beam(), decay(), shock_ring(), smoke(), wisps()]
+- "vfxkit_primitives_ramp": "ramp()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/primitives.py:L161 | neighbors=[primitives.py, beam(), billow(), flame(), Colour over life as a gradient: ramp((0…, shell_fragments()]
+- "vfxkit_primitives_tex": "tex()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/primitives.py:L14 | neighbors=[primitives.py, mesh(), orbit_band(), slash_arc(), sprite(), wisps()]
+- "vfxkit_scaffold": "scaffold.py" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/scaffold.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, download(), initialize(), toolchain_lock(), Create or refresh the project's vfx/ wo…]
+- "vfxkit_scale_map": "_map()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/scale.py:L56 | neighbors=[scale.py, _frames(), _life(), Apply f to a number, a [min, max] range…, _space(), _time()]
+- "vfxkit_sequence_handoff": "handoff()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/sequence.py:L309 | neighbors=[sequence.py, criteria(), _frame_number(), issues(), latest(), read()]
+- "vfxkit_sequence_issues": "issues()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/sequence.py:L296 | neighbors=[sequence.py, handoff(), path(), read(), recipe_hashes(), submit()]
+- "vfxkit_sequence_latest": "latest()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/sequence.py:L289 | neighbors=[sequence.py, concept_compare(), handoff(), sequence_id(), store(), paintover()]
+- "vfxkit_sequence_validate": "validate()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/sequence.py:L76 | neighbors=[sequence.py, capture(), Structure, effects, stage gate, referen…, gate_path(), length(), read()]
+- "vfxkit_texture_audit": "texture_audit.py" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/texture_audit.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, audit(), cell_report(), content(), Pixel observations grouped by texture r…]
+- "vfxkit_textures_spectral": "spectral()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/textures.py:L14 | neighbors=[textures.py, flame_band(), masks(), procedural(), Seamlessly tileable 1/f noise in 0..1; …, swirl()]
 - "vfxkit_video_resolve_output": "_resolve_output()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/video.py:L68 | neighbors=[video.py, flipbook(), grade(), Bare names land in vfx/textures/process…, _in_project(), _png()]
-- "vm_register_vm": "register_vm.cpp" | kind=code-symbol | source=mute/src/vm/register_vm.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, 85b7130 Close MUT-26 limits: AST-to-SSA…, 952997e Audit MUT-01-55 and harden veri…, run_register_module(), run_register_vm(), c7a411f Fix MUT-01-20 audit defects in …]
 - "vm_scheduler": "scheduler.cpp" | kind=code-symbol | source=mute/src/vm/scheduler.cpp:L1 | neighbors=[435b4d3 Add MUT-23 cooperative async sc…, cancel(), find(), run(), spawn(), state()]
 - "vm_values_copy_impl": "copy_impl()" | kind=code-symbol | source=mute/src/vm/values.cpp:L142 | neighbors=[values.cpp, copy(), make_array(), make_string(), object(), release()]
 - "vm_values_free_slot": "free_slot()" | kind=code-symbol | source=mute/src/vm/values.cpp:L23 | neighbors=[values.cpp, alloc(), object(), release(), reset_tick(), set_index()]
@@ -46,17 +57,6 @@ one-sentence description — no prose, no markdown fences.
 - "whispering_grove_forest_props_crystal_cluster": "crystal_cluster()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L599 | neighbors=[forest_props.py, at(), Prop, .add(), .gadd(), S()]
 - "whispering_grove_forest_props_flower_patch": "flower_patch()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L294 | neighbors=[forest_props.py, at(), blob(), Prop, .add(), S()]
 - "whispering_grove_forest_props_lantern_post": "lantern_post()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L320 | neighbors=[forest_props.py, at(), Prop, .add(), .gadd(), S()]
-- "whispering_grove_forest_props_lily": "lily()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L578 | neighbors=[forest_props.py, at(), blob(), Prop, .add(), S()]
-- "whispering_grove_forest_props_oak": "oak()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L65 | neighbors=[forest_props.py, curve(), leafy(), Prop, .add(), S()]
-- "addon_template_init": "__init__.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-addon-development/assets/addon_template/__init__.py:L1 | neighbors=[register(), unregister(), My Tool - Blender extension template (4…, 2680d0e Pushed an update., e77fa31 Add new skills and asset packs …]
-- "addon_template_operators_mytool_ot_offset_selected": "MYTOOL_OT_offset_selected" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-addon-development/assets/addon_template/operators.py:L10 | neighbors=[operators.py, .execute(), .invoke(), .poll(), Move selected objects along an axis]
-- "addon_template_ui": "ui.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-addon-development/assets/addon_template/ui.py:L1 | neighbors=[menu_func(), MYTOOL_AP_preferences, MYTOOL_PT_main, 2680d0e Pushed an update., e77fa31 Add new skills and asset packs …]
-- "authority_pkb_schema": "pkb_schema.hpp" | kind=code-symbol | source=server/authority/include/poko/authority/pkb_schema.hpp:L1 | neighbors=[is_protected_domain(), load_pkb_schema(), PkbAuthority, 6568dc9 Update from ML AI Code, 6e2fe3a Created BAK-7 and other BAK tas…]
-- "bin_trace_processor": "trace_processor" | kind=code-symbol | source=.agents/skills/skills-main/profilers/android-profiler/references/perfetto/bin/trace_processor:L1 | neighbors=[download_or_get_cached(), get_perfetto_prebuilt(), run_perfetto_prebuilt(), 2680d0e Pushed an update., e77fa31 Add new skills and asset packs …]
-- "blender_character_blockout_build": "build()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/blender/character_blockout.py:L184 | neighbors=[character_blockout.py, box(), capsule(), get_collection(), sphere()]
-- "blender_character_blockout_capsule": "capsule()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/blender/character_blockout.py:L89 | neighbors=[character_blockout.py, build(), get_collection(), link(), Tapered capsule from p0 to p1 with radi…]
-- "blender_character_blockout_link": "link()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/blender/character_blockout.py:L82 | neighbors=[character_blockout.py, box(), capsule(), get_collection(), sphere()]
-- "blender_explorer_common_assign": "assign()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/blender/explorer_common.py:L87 | neighbors=[explorer_common.py, cylinder(), loft(), rounded_box(), shell_from()]
 
 ## Instructions
 

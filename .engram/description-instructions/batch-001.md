@@ -1,4 +1,4 @@
-# Node Description Batch 2 of 208
+# Node Description Batch 2 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -24,6 +24,7 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "cad_skill_main_gridfinity_gridfinitybin": "GridfinityBin" | kind=code-symbol | source=.agents/skills/cad-skill-main/gridfinity.py:L186 | neighbors=[gridfinity.py, .add_compartments(), .add_cylinder_pocket(), .add_finger_notch(), .add_pocket(), .add_polygon_pocket()]
 - "medievalbattle_battle_map": "battle_map.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, base(), build(), centre(), channels()]
 - "towncity_town_map": "town_map.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, alley(), anchor(), anchor_local(), bkit()]
 - "eggplots_egg_props_sh": "sh()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L73 | neighbors=[egg_props.py, barn(), bench(), bush(), collect_pad(), conveyor_end()]
@@ -61,9 +62,8 @@ one-sentence description — no prose, no markdown fences.
 - "brick_abyssal_angler_brick": "abyssal_angler_brick.py" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/abyssal_angler_brick.py:L1 | neighbors=[B(), box(), build(), cap(), cell(), chain()]
 - "effekseer_ai_cli": "cli.py" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, build_parser(), _compile(), _curve_list(), _curve_set()]
 - "frostpeak_frost_map": "frost_map.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_map.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, build(), canopy_shade(), chaikin(), _drift()]
+- "unit_vulkan_clear_faults": "vulkan_clear_faults.cpp" | kind=code-symbol | source=engine/rhi/tests/unit/vulkan_clear_faults.cpp:L1 | neighbors=[f4a6ac4 Allowlist known validation-laye…, Chain(), Context(), Device(), emit(), foreign()]
 - "brick_ember_dragon_brick": "ember_dragon_brick.py" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/ember_dragon_brick.py:L1 | neighbors=[B(), box(), build(), chain(), _dil(), exposed()]
-- "brick_storm_griffin_brick": "storm_griffin_brick.py" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/storm_griffin_brick.py:L1 | neighbors=[arm(), B(), bb(), build(), chain(), chain_t()]
-- "candyland_candy_props_lathe": "lathe()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L64 | neighbors=[candy_props.py, bakery_oven(), biscuit_bridge(), candy_castle(), candy_egg(), candy_lamp()]
 
 ## Instructions
 

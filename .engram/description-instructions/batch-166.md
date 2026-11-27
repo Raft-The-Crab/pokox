@@ -1,4 +1,4 @@
-# Node Description Batch 167 of 208
+# Node Description Batch 167 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -19,53 +19,51 @@ relations (neighbors) and the provided citations/evidence — e.g.
 Ground entity descriptions in the citations/evidence when present; do not
 speculate beyond the context, so a node with no supporting context may be
 left out of the reply.
-LANGUAGE: each entry has a `lang=` marker giving the language of its source.
-Write that entry's description in EXACTLY that language. Do not translate to
-a single common language — match each node's source language individually.
+Write every description in English (en). Do not switch languages.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "extensions_superpowers_skillsdir": "skillsDir" | kind=code-symbol | source=.agents/skills/superpowers-main/.pi/extensions/superpowers.ts:L11 | neighbors=[superpowers.ts] | lang=en
-- "extensions_superpowers_superpowerspiextension": "superpowersPiExtension()" | kind=code-symbol | source=.agents/skills/superpowers-main/.pi/extensions/superpowers.ts:L16 | neighbors=[superpowers.ts] | lang=en
-- "fakes_enginefactoryopengl_diligent": "Diligent()" | kind=code-symbol | source=engine/rhi/tests/fakes/EngineFactoryOpenGL.h:L4 | neighbors=[EngineFactoryOpenGL.h] | lang=en
-- "fakes_enginefactoryopengl_ienginefactory": "IEngineFactory()" | kind=code-symbol | source=engine/rhi/tests/fakes/EngineFactoryOpenGL.h:L6 | neighbors=[EngineFactoryOpenGL.h] | lang=en
-- "fakes_enginefactoryvk_diligent": "Diligent()" | kind=code-symbol | source=engine/rhi/tests/fakes/EngineFactoryVk.h:L7 | neighbors=[EngineFactoryVk.h] | lang=en
-- "fakes_refcntautoptr_refcntautoptr_refcntautoptr": ".RefCntAutoPtr()" | kind=code-symbol | source=engine/rhi/tests/fakes/RefCntAutoPtr.hpp:L6 | neighbors=[RefCntAutoPtr] | lang=en
-- "fishcenter_fish_map_foot": "foot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L92 | neighbors=[fish_map.py] | lang=en
-- "fishcenter_fish_map_material_skin": "material_skin()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L745 | neighbors=[fish_map.py] | lang=en
-- "fishcenter_fish_map_rationale_55": "<= 1 inside an islet's ellipse (smallest over all islets)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L55 | neighbors=[islet_e()] | lang=en
-- "fishcenter_fish_map_shot": "shot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L760 | neighbors=[fish_map.py] | lang=en
-- "fishcenter_fish_props_rationale_515": "flat-bottomed cumulus for the horizon (SmoothPlastic white)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L515 | neighbors=[cloud()] | lang=en
-- "fishcenter_fish_props_rationale_710": "two palms with a striped hammock slung between them on ropes (a resting story)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_props.py:L710 | neighbors=[hammock_palms()] | lang=pt
-- "foundation_cbor_member": "Member()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/cbor.hpp:L51 | neighbors=[cbor.hpp] | lang=en
-- "foundation_config_logging_logguard_logguard": ".LogGuard()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/config_logging.hpp:L17 | neighbors=[LogGuard] | lang=en
-- "foundation_duration_query_state_begin": "begin()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/duration_query_state.hpp:L9 | neighbors=[duration_query_state.hpp] | lang=en
-- "foundation_duration_query_state_durationquerystate": "DurationQueryState" | kind=code-symbol | source=engine/foundation/include/poko/foundation/duration_query_state.hpp:L6 | neighbors=[duration_query_state.hpp] | lang=en
-- "foundation_duration_query_state_end": "end()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/duration_query_state.hpp:L16 | neighbors=[duration_query_state.hpp] | lang=en
-- "foundation_duration_query_state_poll": "poll()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/duration_query_state.hpp:L23 | neighbors=[duration_query_state.hpp] | lang=en
-- "foundation_fixed_divide": "divide()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/fixed.hpp:L123 | neighbors=[fixed.hpp] | lang=en
-- "foundation_fixed_fixed_fixed": ".Fixed()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/fixed.hpp:L39 | neighbors=[Fixed] | lang=en
-- "foundation_fixed_sqrt": "sqrt()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/fixed.hpp:L143 | neighbors=[fixed.hpp] | lang=en
-- "foundation_fixed_vec_cross": "cross()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/fixed_vec.hpp:L137 | neighbors=[fixed_vec.hpp] | lang=en
-- "foundation_fixed_vec_fixedvec3": "FixedVec3()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/fixed_vec.hpp:L24 | neighbors=[fixed_vec.hpp] | lang=en
-- "foundation_fixed_vec_max": "max()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/fixed_vec.hpp:L81 | neighbors=[fixed_vec.hpp] | lang=en
-- "foundation_fixed_vec_min": "min()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/fixed_vec.hpp:L77 | neighbors=[fixed_vec.hpp] | lang=en
-- "foundation_frame_stats_framestats": "FrameStats" | kind=code-symbol | source=engine/foundation/include/poko/foundation/frame_stats.hpp:L13 | neighbors=[frame_stats.hpp] | lang=en
-- "foundation_loop_fixedsteploop": "FixedStepLoop" | kind=code-symbol | source=engine/foundation/include/poko/foundation/loop.hpp:L27 | neighbors=[loop.hpp] | lang=en
-- "foundation_vec3f_cross": "cross()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/vec3f.hpp:L59 | neighbors=[vec3f.hpp] | lang=en
-- "foundation_vec3f_vec3f": "Vec3f()" | kind=code-symbol | source=engine/foundation/include/poko/foundation/vec3f.hpp:L17 | neighbors=[vec3f.hpp] | lang=en
-- "framegraph_frame_graph_add_pass": "add_pass()" | kind=code-symbol | source=engine/render/src/framegraph/frame_graph.cpp:L21 | neighbors=[frame_graph.cpp] | lang=en
-- "framegraph_frame_graph_clear": "clear()" | kind=code-symbol | source=engine/render/src/framegraph/frame_graph.cpp:L26 | neighbors=[frame_graph.cpp] | lang=en
-- "framegraph_frame_graph_framegraph_framegraph": ".FrameGraph()" | kind=code-symbol | source=engine/render/include/poko/render/framegraph/frame_graph.hpp:L48 | neighbors=[FrameGraph] | lang=en
-- "framegraph_frame_graph_import_resource": "import_resource()" | kind=code-symbol | source=engine/render/src/framegraph/frame_graph.cpp:L16 | neighbors=[frame_graph.cpp] | lang=en
-- "frostpeak_frost_kit_sheet_shot": "shot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_kit_sheet.py:L43 | neighbors=[frost_kit_sheet.py] | lang=en
-- "frostpeak_frost_map_canopy_shade": "canopy_shade()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_map.py:L176 | neighbors=[frost_map.py] | lang=en
-- "frostpeak_frost_map_chaikin": "chaikin()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_map.py:L24 | neighbors=[frost_map.py] | lang=en
-- "frostpeak_frost_map_horizon_d": "horizon_d()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_map.py:L162 | neighbors=[frost_map.py] | lang=en
-- "frostpeak_frost_map_rationale_154": "yaw that turns a building's +Z front (its door) toward (tx, tz)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_map.py:L154 | neighbors=[front_to()] | lang=en
-- "frostpeak_frost_map_shot": "shot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_map.py:L337 | neighbors=[frost_map.py] | lang=en
-- "frostpeak_frost_props_bench": "bench()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/frostpeak/frost_props.py:L162 | neighbors=[frost_props.py] | lang=en
+- "evaluator_evaluator_name": "name()" | kind=code-symbol | source=mute/src/evaluator/evaluator.cpp:L336 | neighbors=[evaluator.cpp]
+- "evaluator_evaluator_supported_float": "supported_float()" | kind=code-symbol | source=mute/src/evaluator/evaluator.cpp:L141 | neighbors=[evaluator.cpp]
+- "examples_arctic_fox_build": "build()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/arctic_fox.py:L26 | neighbors=[arctic_fox.py]
+- "examples_arctic_fox_idle": "idle()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/arctic_fox.py:L86 | neighbors=[arctic_fox.py]
+- "examples_arctic_fox_pounce": "pounce()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/arctic_fox.py:L104 | neighbors=[arctic_fox.py]
+- "examples_arctic_fox_wag": "wag()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/arctic_fox.py:L117 | neighbors=[arctic_fox.py]
+- "examples_arctic_fox_walk": "walk()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/arctic_fox.py:L94 | neighbors=[arctic_fox.py]
+- "examples_bunny_big_jump": "big_jump()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/bunny.py:L119 | neighbors=[bunny.py]
+- "examples_bunny_build": "build()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/bunny.py:L26 | neighbors=[bunny.py]
+- "examples_bunny_ear_wiggle": "ear_wiggle()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/bunny.py:L132 | neighbors=[bunny.py]
+- "examples_bunny_hop": "hop()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/bunny.py:L108 | neighbors=[bunny.py]
+- "examples_bunny_idle": "idle()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/bunny.py:L99 | neighbors=[bunny.py]
+- "examples_cat_flap_cover_rationale_1": "Cover plate for the hole left by a removed Cat Mate 4-way cat flap.  Sticks on w" | kind=entity | source=.agents/skills/cad-skill-main/examples/cat_flap_cover.py:L1 | neighbors=[cat_flap_cover.py]
+- "examples_desk_cable_tray_rationale_1": "Under-desk cable tray, built from identical segments.  A 400 mm tray does not fi" | kind=entity | source=.agents/skills/cad-skill-main/examples/desk_cable_tray.py:L1 | neighbors=[desk_cable_tray.py]
+- "examples_duck_build": "build()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/duck.py:L25 | neighbors=[duck.py]
+- "examples_duck_flap": "flap()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/duck.py:L102 | neighbors=[duck.py]
+- "examples_duck_idle": "idle()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/duck.py:L80 | neighbors=[duck.py]
+- "examples_duck_quack": "quack()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/duck.py:L94 | neighbors=[duck.py]
+- "examples_duck_walk": "walk()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/duck.py:L86 | neighbors=[duck.py]
+- "examples_mx_master3_bin_3x3_rot": "_rot()" | kind=code-symbol | source=.agents/skills/cad-skill-main/examples/mx_master3_bin_3x3.py:L77 | neighbors=[mx_master3_bin_3x3.py]
+- "examples_owl_build": "build()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/owl.py:L25 | neighbors=[owl.py]
+- "examples_owl_flap": "flap()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/owl.py:L118 | neighbors=[owl.py]
+- "examples_owl_head_turn": "head_turn()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/owl.py:L124 | neighbors=[owl.py]
+- "examples_owl_idle": "idle()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/owl.py:L103 | neighbors=[owl.py]
+- "examples_owl_walk": "walk()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/owl.py:L110 | neighbors=[owl.py]
+- "examples_penguin_build": "build()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/penguin.py:L26 | neighbors=[penguin.py]
+- "examples_penguin_flap": "flap()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/penguin.py:L128 | neighbors=[penguin.py]
+- "examples_penguin_idle": "idle()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/penguin.py:L99 | neighbors=[penguin.py]
+- "examples_penguin_slide": "slide()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/penguin.py:L115 | neighbors=[penguin.py]
+- "examples_penguin_walk": "walk()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/penguin.py:L106 | neighbors=[penguin.py]
+- "examples_red_panda_build": "build()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/red_panda.py:L28 | neighbors=[red_panda.py]
+- "examples_red_panda_idle": "idle()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/red_panda.py:L107 | neighbors=[red_panda.py]
+- "examples_red_panda_pounce": "pounce()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/red_panda.py:L125 | neighbors=[red_panda.py]
+- "examples_red_panda_wag": "wag()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/red_panda.py:L138 | neighbors=[red_panda.py]
+- "examples_red_panda_walk": "walk()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/red_panda.py:L115 | neighbors=[red_panda.py]
+- "extensions_superpowers_bootstrapskillpath": "bootstrapSkillPath" | kind=code-symbol | source=.agents/skills/superpowers-main/.pi/extensions/superpowers.ts:L12 | neighbors=[superpowers.ts]
+- "extensions_superpowers_extensiondir": "extensionDir" | kind=code-symbol | source=.agents/skills/superpowers-main/.pi/extensions/superpowers.ts:L9 | neighbors=[superpowers.ts]
+- "extensions_superpowers_firstnoncompactionsummaryindex": "firstNonCompactionSummaryIndex()" | kind=code-symbol | source=.agents/skills/superpowers-main/.pi/extensions/superpowers.ts:L110 | neighbors=[superpowers.ts]
+- "extensions_superpowers_messagecontainsbootstrap": "messageContainsBootstrap()" | kind=code-symbol | source=.agents/skills/superpowers-main/.pi/extensions/superpowers.ts:L95 | neighbors=[superpowers.ts]
+- "extensions_superpowers_packageroot": "packageRoot" | kind=code-symbol | source=.agents/skills/superpowers-main/.pi/extensions/superpowers.ts:L10 | neighbors=[superpowers.ts]
 
 ## Instructions
 

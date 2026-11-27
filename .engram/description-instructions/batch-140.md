@@ -1,4 +1,4 @@
-# Node Description Batch 141 of 208
+# Node Description Batch 141 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -19,51 +19,53 @@ relations (neighbors) and the provided citations/evidence — e.g.
 Ground entity descriptions in the citations/evidence when present; do not
 speculate beyond the context, so a node with no supporting context may be
 left out of the reply.
-Write every description in English (en). Do not switch languages.
+LANGUAGE: each entry has a `lang=` marker giving the language of its source.
+Write that entry's description in EXACTLY that language. Do not translate to
+a single common language — match each node's source language individually.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "towncity_town_props_rationale_464": "iron fire escape on the back wall (+Z): landing per floor at each window pair, r" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_props.py:L464 | neighbors=[Palette, fire_escape()]
-- "towncity_town_props_rationale_54": "axis box between the given bounds; drop = faces to delete ('+x', '-x', '+y', '-y" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_props.py:L54 | neighbors=[Palette, slab()]
-- "towncity_town_props_rationale_76": "flat rectangular frame ring in the XY plane, centred, inner w x h, bar width t," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_props.py:L76 | neighbors=[Palette, ring_frame()]
-- "towncity_town_street_bench": "bench()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_street.py:L71 | neighbors=[town_street.py, park bench: cast-iron scroll ends (prof…]
-- "towncity_town_street_dumpster": "dumpster()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_street.py:L135 | neighbors=[town_street.py, commercial dumpster: tapered body, rim,…]
-- "towncity_town_street_flower_bed": "flower_bed()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_street.py:L232 | neighbors=[town_street.py, low stone-edged bed with a row of leaf …]
-- "towncity_town_street_hydrant": "hydrant()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_street.py:L123 | neighbors=[town_street.py, fire hydrant: lathed red body, bonnet +…]
-- "towncity_town_street_litter_bin": "litter_bin()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_street.py:L110 | neighbors=[town_street.py, municipal bin: base, ribbed teal body, …]
-- "towncity_town_street_pallets": "pallets()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_street.py:L169 | neighbors=[town_street.py, 3 stacked shipping pallets (deck boards…]
-- "towncity_town_street_planter": "planter()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_street.py:L90 | neighbors=[town_street.py, stone planter box: plinth, panelled bod…]
-- "towncity_town_street_street_grate": "street_grate()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_street.py:L247 | neighbors=[town_street.py, the street tree pit alone (stone kerb +…]
-- "towncity_town_street_street_lamp": "street_lamp()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_street.py:L7 | neighbors=[town_street.py, town lantern post: two-step octagonal p…]
-- "towncity_town_street_street_tree": "street_tree()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_street.py:L192 | neighbors=[town_street.py, tree: flared trunk with roots, 4 limbs,…]
-- "towncity_town_street_traffic_light": "traffic_light()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_street.py:L43 | neighbors=[town_street.py, mast-arm signal: base + yellow pole, ar…]
-- "towncity_town_street_trash_bags": "trash_bags()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_street.py:L158 | neighbors=[town_street.py, heap of bin bags + two cardboard boxes]
-- "towncity_town_street_wall_pipes": "wall_pipes()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_street.py:L179 | neighbors=[town_street.py, alley wall services (stands against a w…]
-- "towncity_town_vehicles_taxi": "taxi()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_vehicles.py:L94 | neighbors=[town_vehicles.py, car()]
-- "towncity_town_vehicles_track_seg": "track_seg()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_vehicles.py:L194 | neighbors=[town_vehicles.py, one track segment along Z: ballast bed,…]
-- "towncity_town_vehicles_train_shader": "_train_shader()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_vehicles.py:L148 | neighbors=[town_vehicles.py, train_car()]
-- "transitions_v2_check_subframes": "check_subframes.py" | kind=code-symbol | source=assets/characters/transitions-v2/check_subframes.py:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
-- "triangle_refcntautoptr_refcntautoptr": "RefCntAutoPtr" | kind=code-symbol | source=engine/rhi/tests/fakes/triangle/RefCntAutoPtr.hpp:L5 | neighbors=[RefCntAutoPtr.hpp, .RefCntAutoPtr()]
-- "unit_action_map_test_apply_events": "apply_events()" | kind=code-symbol | source=mute/tests/unit/action_map_test.cpp:L47 | neighbors=[action_map_test.cpp, main()]
-- "unit_action_map_test_key": "key()" | kind=code-symbol | source=mute/tests/unit/action_map_test.cpp:L19 | neighbors=[action_map_test.cpp, main()]
-- "unit_action_map_test_mouse_button": "mouse_button()" | kind=code-symbol | source=mute/tests/unit/action_map_test.cpp:L22 | neighbors=[action_map_test.cpp, main()]
-- "unit_action_map_test_pad_axis": "pad_axis()" | kind=code-symbol | source=mute/tests/unit/action_map_test.cpp:L31 | neighbors=[action_map_test.cpp, main()]
-- "unit_action_map_test_pad_button": "pad_button()" | kind=code-symbol | source=mute/tests/unit/action_map_test.cpp:L28 | neighbors=[action_map_test.cpp, main()]
-- "unit_action_map_test_touch": "touch()" | kind=code-symbol | source=mute/tests/unit/action_map_test.cpp:L34 | neighbors=[action_map_test.cpp, main()]
-- "unit_action_map_test_wheel": "wheel()" | kind=code-symbol | source=mute/tests/unit/action_map_test.cpp:L25 | neighbors=[action_map_test.cpp, main()]
-- "unit_action_map_test_wheel_up": "wheel_up()" | kind=code-symbol | source=mute/tests/unit/action_map_test.cpp:L40 | neighbors=[action_map_test.cpp, game_map()]
-- "unit_asset_store_test_counting_loader": "counting_loader()" | kind=code-symbol | source=engine/resource/tests/unit/asset_store_test.cpp:L21 | neighbors=[asset_store_test.cpp, main()]
-- "unit_asset_store_test_main": "main()" | kind=code-symbol | source=engine/resource/tests/unit/asset_store_test.cpp:L29 | neighbors=[asset_store_test.cpp, counting_loader()]
-- "unit_bench_test_check": "check()" | kind=code-symbol | source=mute/tests/unit/bench_test.cpp:L15 | neighbors=[bench_test.cpp, bench()]
-- "unit_bench_test_i32": "i32()" | kind=code-symbol | source=mute/tests/unit/bench_test.cpp:L16 | neighbors=[bench_test.cpp, compile()]
-- "unit_bench_test_main": "main()" | kind=code-symbol | source=mute/tests/unit/bench_test.cpp:L88 | neighbors=[bench_test.cpp, cases()]
-- "unit_bit_buffer_test": "bit_buffer_test.cpp" | kind=code-symbol | source=server/net/tests/unit/bit_buffer_test.cpp:L1 | neighbors=[1dac49d Created NET-01 to NET-09, Start…, main()]
-- "unit_build_tool_test_main": "main()" | kind=code-symbol | source=mute/tests/unit/build_tool_test.cpp:L28 | neighbors=[build_tool_test.cpp, read()]
-- "unit_build_tool_test_read": "read()" | kind=code-symbol | source=mute/tests/unit/build_tool_test.cpp:L18 | neighbors=[build_tool_test.cpp, main()]
-- "unit_camera_test_near": "near()" | kind=code-symbol | source=engine/render/tests/unit/camera_test.cpp:L12 | neighbors=[camera_test.cpp, main()]
-- "unit_camera_test_transform": "transform()" | kind=code-symbol | source=engine/render/tests/unit/camera_test.cpp:L13 | neighbors=[camera_test.cpp, main()]
-- "unit_capability_test_ceiling": "ceiling()" | kind=code-symbol | source=mute/tests/unit/capability_test.cpp:L28 | neighbors=[capability_test.cpp, main()]
+- "towncity_town_landmarks_job_board": "job_board()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L422 | neighbors=[town_landmarks.py, job board kiosk: timber frame on stone …] | lang=en
+- "towncity_town_landmarks_platform_canopy": "platform_canopy()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L350 | neighbors=[town_landmarks.py, platform segment along Z (track side = …] | lang=en
+- "towncity_town_landmarks_rationale_171": "tower standing on the town hall roof: brick shaft with cream quoins + bands, clo" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L171 | neighbors=[MB, clock_tower()] | lang=en
+- "towncity_town_landmarks_rationale_20": "classical column: square plinth, torus base, fluted-look shaft (12 sides, slight" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L20 | neighbors=[MB, column()] | lang=en
+- "towncity_town_landmarks_rationale_233": "corner block at corner (sx, sz) of a square of half-size h: a x b deep into the" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L233 | neighbors=[MB, cslab()] | lang=en
+- "towncity_town_landmarks_rationale_253": "brick head house: central great arched window with fan glazing over a walk-throu" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L253 | neighbors=[MB, train_station()] | lang=en
+- "towncity_town_landmarks_rationale_351": "platform segment along Z (track side = +X): raised deck with stone edge + yellow" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L351 | neighbors=[MB, platform_canopy()] | lang=en
+- "towncity_town_landmarks_rationale_382": "town square fountain: 8-sided basin (panelled cream wall, overhanging coping, in" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L382 | neighbors=[MB, fountain()] | lang=en
+- "towncity_town_landmarks_rationale_423": "job board kiosk: timber frame on stone feet, shingled gable roof, a BLANK cork b" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L423 | neighbors=[MB, job_board()] | lang=pt
+- "towncity_town_landmarks_rationale_456": "bus shelter: steel frame, glass back + end panels, curved roof, slatted bench, B" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L456 | neighbors=[MB, bus_stop()] | lang=en
+- "towncity_town_landmarks_rationale_46": "clock: cream dial, gold bezel, 12 tick marks (no numerals), two hands, centre bo" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L46 | neighbors=[MB, clock_face()] | lang=en
+- "towncity_town_landmarks_rationale_482": "bank: temple front on a stepped podium, 4 columns, pediment with a coin emblem," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L482 | neighbors=[MB, bank()] | lang=pt
+- "towncity_town_landmarks_rationale_519": "car dealer: open-front display hall (no glass so the cars read), steel portal fr" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L519 | neighbors=[MB, car_showroom()] | lang=en
+- "towncity_town_landmarks_rationale_555": "cheap frame tower for the skyline ring: glass core + per-floor bands (or piers)," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L555 | neighbors=[MB, skyline()] | lang=en
+- "towncity_town_landmarks_rationale_59": "an arched opening framed with voussoirs: the wall around it must be built by the" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L59 | neighbors=[MB, arch_open()] | lang=en
+- "towncity_town_landmarks_rationale_86": "civic hall on a podium: brick wings with arched + tall windows, cream rusticated" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L86 | neighbors=[MB, town_hall()] | lang=en
+- "towncity_town_landmarks_t_point": "T_point()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L238 | neighbors=[town_landmarks.py, clock_tower()] | lang=en
+- "towncity_town_map_bkit": "bkit()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L216 | neighbors=[town_map.py, row()] | lang=en
+- "towncity_town_map_check_rects": "check_rects()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L241 | neighbors=[town_map.py, build()] | lang=en
+- "towncity_town_map_kit": "kit()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L68 | neighbors=[town_map.py, place()] | lang=en
+- "towncity_town_map_look": "look()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L530 | neighbors=[town_map.py, free()] | lang=en
+- "towncity_town_map_rationale_120": "crosswalk stripes across a road: stripes run along `along` ('x' = stripes parall" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L120 | neighbors=[MB, zebra()] | lang=pt
+- "towncity_town_map_rationale_165": "boulevard median: raised planted strip with cream curb, breaks at the avenues an" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L165 | neighbors=[MB, median()] | lang=en
+- "towncity_town_map_rationale_176": "Town Square: plaza paving rings round the fountain, 4 raised lawns with stone ed" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L176 | neighbors=[MB, square()] | lang=en
+- "towncity_town_map_rationale_196": "rail corridor: two tracks along Z behind the station + buffers" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L196 | neighbors=[MB, railway()] | lang=en
+- "towncity_town_map_rationale_222": "lay buildings side by side from `start` (a point on the frontage line = back edg" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L222 | neighbors=[MB, row()] | lang=en
+- "towncity_town_map_rationale_363": "polylines (x, z, along-dir, out-dir) on the sidewalks at 3.5 studs from the curb" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L363 | neighbors=[MB, sidewalk_lines()] | lang=en
+- "towncity_town_map_rationale_453": "back alley z ~141..184 between the shop row and the south row: dumpsters, bags," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L453 | neighbors=[MB, alley()] | lang=en
+- "towncity_town_map_rationale_467": "parked cars along curbs + a few cars in the lanes, the bus at its stop, taxis at" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L467 | neighbors=[MB, traffic()] | lang=en
+- "towncity_town_map_rationale_49": "block rectangles (x0, x1, z0, z1) at curb height = everything that is not road" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L49 | neighbors=[MB, blocks()] | lang=en
+- "towncity_town_map_rationale_86": "local (x, y, z) of a prop turned by yaw -> world offset" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L86 | neighbors=[MB, rot()] | lang=en
+- "towncity_town_props_blob": "blob()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_props.py:L73 | neighbors=[town_props.py, flower_box()] | lang=en
+- "towncity_town_props_lerp": "lerp()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_props.py:L46 | neighbors=[town_props.py, fire_escape()] | lang=en
+- "towncity_town_props_rationale_101": "a single quad facing -Z at depth z" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_props.py:L101 | neighbors=[Palette, front_quad()] | lang=pt
+- "towncity_town_props_rationale_105": "front wall layer (outer face at zf, WALL_T thick, back face dropped) with rectan" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_props.py:L105 | neighbors=[Palette, holed_front()] | lang=en
+- "towncity_town_props_rationale_120": "rooftop / wall AC: cream casing on feet, fan grille ring + hub on top, side louv" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_props.py:L120 | neighbors=[Palette, ac_unit()] | lang=en
+- "towncity_town_props_rationale_130": "classic timber rooftop water tank on a steel stand: staves, iron hoops, conical" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_props.py:L130 | neighbors=[Palette, water_tank()] | lang=pt
+- "towncity_town_props_rationale_156": "stair bulkhead: small box room with a door, coping, vent pipe" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_props.py:L156 | neighbors=[Palette, roof_shed()] | lang=en
+- "towncity_town_props_rationale_177": "a flower head: one 5-petal star face + a centre face, facing n (default: up, tip" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_props.py:L177 | neighbors=[Palette, flower()] | lang=pt
+- "towncity_town_props_rationale_199": "dressing for ONE opening in a front wall whose outer face is at z = zf (front =" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_props.py:L199 | neighbors=[Palette, window_unit()] | lang=en
 
 ## Instructions
 

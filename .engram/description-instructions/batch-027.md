@@ -1,4 +1,4 @@
-# Node Description Batch 28 of 208
+# Node Description Batch 28 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -17,6 +17,15 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "integration_cube_golden_x11": "X11" | kind=code-symbol | source=engine/render/tests/integration/cube_golden.py:L57 | neighbors=[cube_golden.py, run(), .capture(), .close(), .find_window(), .__init__()]
+- "integration_logging_file_test": "logging_file_test.cpp" | kind=code-symbol | source=engine/foundation/tests/integration/logging_file_test.cpp:L1 | neighbors=[f4a6ac4 Allowlist known validation-laye…, count_stamps(), main(), read_file(), 52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
+- "integration_test_cube_golden_unit": "test_cube_golden_unit.py" | kind=code-symbol | source=engine/render/tests/integration/test_cube_golden_unit.py:L1 | neighbors=[952997e Audit MUT-01-55 and harden veri…, f4a6ac4 Allowlist known validation-laye…, decode(), GoldenEncoderTests, 52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
+- "integration_test_cube_golden_unit_goldenencodertests": "GoldenEncoderTests" | kind=code-symbol | source=engine/render/tests/integration/test_cube_golden_unit.py:L50 | neighbors=[test_cube_golden_unit.py, .test_actual_cannot_replace_reference_o…, .test_bad_inputs(), .test_capture_cannot_replace_shipped_re…, .test_reference_is_full_cube_with_three…, .test_roundtrip_and_multiple_deflate_bl…]
+- "integration_test_mute_state_console_x11": "test_mute_state_console_x11.py" | kind=code-symbol | source=engine/render/tests/integration/test_mute_state_console_x11.py:L1 | neighbors=[6d9948d Re-resolve X11 demo window duri…, cb2a354 Re-assert window focus in X11 c…, f4a6ac4 Allowlist known validation-laye…, main(), 52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
+- "medievalbattle_battle_map_centre": "centre()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L338 | neighbors=[battle_map.py, build(), place(), reserve(), X(), Yw()]
+- "medievalbattle_battle_map_hm": "Hm()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L137 | neighbors=[battle_map.py, field(), H(), keep(), place(), height of the built ground MESH (4-stud…]
+- "medievalbattle_battle_map_reserve": "reserve()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L159 | neighbors=[battle_map.py, build(), centre(), field(), keep(), scatter()]
+- "medievalbattle_battle_map_roads": "roads()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L228 | neighbors=[battle_map.py, build(), roads as smooth ribbon meshes draped on…, H(), sub(), X()]
 - "medievalbattle_battle_props_barrel": "barrel()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L1267 | neighbors=[battle_props.py, lathe(), T(), torus(), supply_pile(), well()]
 - "medievalbattle_battle_props_brazier": "brazier()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L1236 | neighbors=[battle_props.py, flame(), lathe(), T(), torus(), iron brazier: three curled legs, rivete…]
 - "medievalbattle_battle_props_cheval": "cheval()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L909 | neighbors=[battle_props.py, frame_to(), log(), T(), torus(), cheval de frise: a squared log run thro…]
@@ -40,6 +49,7 @@ one-sentence description — no prose, no markdown fences.
 - "moonclean_moon_map_zone_of": "zone_of()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_map.py:L126 | neighbors=[moon_map.py, _crater_ok(), craters(), ground_shade(), H(), zone()]
 - "moonclean_moon_props_gear_locker": "gear_locker()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L210 | neighbors=[moon_props.py, lathe(), station_base(), torus(), vac_pack(), SHOP: curved white locker wall with 3 v…]
 - "moonclean_moon_props_moon_rover": "moon_rover()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L539 | neighbors=[moon_props.py, beam(), dish(), torus(), wheel(), abandoned lunar rover: tube chassis, 4 …]
+- "mute_parser": "parser.hpp" | kind=code-symbol | source=mute/include/poko/mute/parser.hpp:L1 | neighbors=[f4a6ac4 Allowlist known validation-laye…, Ast, ExpressionParser, to_arithmetic(), 52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
 - "mute_values": "values.hpp" | kind=code-symbol | source=mute/include/poko/mute/values.hpp:L1 | neighbors=[0621f1d Merge pull request #1 from Raft…, 34ca6de Fix GCC/Clang build: add <algor…, 5edd00c Fix MUT-21/22 audit defects in …, 964ba8a Resolve MUT-22 values runtime l…, e685cdf Add MUT-22 aggregate VM value a…, AggregateStore]
 - "net_bit_buffer": "bit_buffer.hpp" | kind=code-symbol | source=server/net/include/poko/net/bit_buffer.hpp:L1 | neighbors=[1dac49d Created NET-01 to NET-09, Start…, BitBuffer, get_array(), get_delta(), put_array(), put_delta()]
 - "net_crypto_aead_aead_seal": "aead_seal()" | kind=code-symbol | source=server/net/include/poko/net/crypto_aead.hpp:L219 | neighbors=[crypto_aead.hpp, chacha20_block(), chacha20_xor(), poly1305_mac(), store32_le(), store64_le()]
@@ -47,16 +57,6 @@ one-sentence description — no prose, no markdown fences.
 - "net_crypto_aead_store32_le": "store32_le()" | kind=code-symbol | source=server/net/include/poko/net/crypto_aead.hpp:L37 | neighbors=[crypto_aead.hpp, aead_open(), aead_seal(), chacha20_xor(), poly1305_mac(), store64_le()]
 - "oaktrees_gen_trees_branch": "Branch" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L331 | neighbors=[gen_trees.py, .at(), .__init__(), .length(), .grow(), .grow_roots()]
 - "oaktrees_gen_trees_canvas_capsule_path": ".capsule_path()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L131 | neighbors=[Canvas, .grid(), .over(), leaf_atlas(), needle_atlas(), Tapered stroke along pts (px), clipped …]
-- "oaktrees_gen_trees_card_quads": "card_quads()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L549 | neighbors=[gen_trees.py, .at(), .length(), rand_unit(), .env(), Leaf-cluster cards (folded, 4 tris) or …]
-- "oaktrees_gen_trees_fft_noise": "fft_noise()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L33 | neighbors=[gen_trees.py, bark_birch(), bark_fir(), bark_oak(), leaf_atlas(), Periodic (tileable) gaussian-filtered n…]
-- "oaktrees_gen_trees_leaf_atlas": "leaf_atlas()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L270 | neighbors=[gen_trees.py, Canvas, .capsule_path(), .finish(), .leaf(), fft_noise()]
-- "oaktrees_gen_trees_main": "main()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L1038 | neighbors=[gen_trees.py, contact_sheet(), export_glb(), make_tree(), render_turntable(), setup_scene()]
-- "oaktrees_gen_trees_tree_children_of": ".children_of()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L380 | neighbors=[Tree, .build(), .at(), .length(), .env(), .grow()]
-- "oaktrees_gen_trees_tree_laterals": ".laterals()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L474 | neighbors=[paired side sprays in the (roughly hori…, Tree, .build_conifer(), .at(), .length(), .grow()]
-- "onsenvillage_onsen_map_village": "village()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L358 | neighbors=[onsen_map.py, build(), mirror(), place(), rail_run(), reserve()]
-- "onsenvillage_onsen_props_flared_roof": "flared_roof()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L47 | neighbors=[onsen_props.py, hip_roof(), pagoda(), Asian glazed roof: a lofted surface fro…, skirt_roof(), toro()]
-- "onsenvillage_onsen_props_hip_roof": "hip_roof()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L104 | neighbors=[onsen_props.py, bath_pavilion(), flared_roof(), house(), noodle_stall(), rectangular hip roof over a hw x hd (ha…]
-- "opencode_test_hook_registration": "test-hook-registration.mjs" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-hook-registration.mjs:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, captureHooks(), event(), pluginURL, session()]
 
 ## Instructions
 

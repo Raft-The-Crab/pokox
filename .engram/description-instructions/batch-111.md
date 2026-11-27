@@ -1,4 +1,4 @@
-# Node Description Batch 112 of 208
+# Node Description Batch 112 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -19,53 +19,51 @@ relations (neighbors) and the provided citations/evidence — e.g.
 Ground entity descriptions in the citations/evidence when present; do not
 speculate beyond the context, so a node with no supporting context may be
 left out of the reply.
-LANGUAGE: each entry has a `lang=` marker giving the language of its source.
-Write that entry's description in EXACTLY that language. Do not translate to
-a single common language — match each node's source language individually.
+Write every description in English (en). Do not switch languages.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "eggplots_egg_props_rationale_521": "the egg dispenser at the north head of the lane. Concept: a giant cracked egg th" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L521 | neighbors=[hatchery(), Palette] | lang=en
-- "eggplots_egg_props_rationale_60": "2D poly [(x, up)] standing upright facing -Z, extruded d toward the front (-Z) f" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L60 | neighbors=[upright(), Palette] | lang=en
-- "eggplots_egg_props_rationale_648": "the drain at the south end: a low woven basket ring (honey staves + cream wicker" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L648 | neighbors=[egg_drain(), Palette] | lang=en
-- "eggplots_egg_props_rationale_670": "welcome path in the plot colour on the lane walkway in front of a gate: rounded" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L670 | neighbors=[gate_mat(), Palette] | lang=en
-- "eggplots_egg_props_rationale_681": "market stand shell: stone footing, honey counter with a cream top, 4 posts, a st" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L681 | neighbors=[stall(), Palette] | lang=pt
-- "eggplots_egg_props_rationale_707": "Egg Shop stand (buy): yellow / cream awning, egg cartons and painted eggs on the" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L707 | neighbors=[egg_shop(), Palette] | lang=en
-- "eggplots_egg_props_rationale_723": "Upgrades stand: teal / cream awning, a workbench counter with a vice-free incuba" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L723 | neighbors=[upgrade_stand(), Palette] | lang=pt
-- "eggplots_egg_props_rationale_749": "Sell stand: orange / cream awning, a balance scale with egg on one pan and coins" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L749 | neighbors=[sell_stand(), Palette] | lang=en
-- "eggplots_egg_props_rationale_76": "egg outline (r, y) bottom -> top: widest a little below the middle, narrower dom" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L76 | neighbors=[egg_profile(), Palette] | lang=en
-- "eggplots_egg_props_rationale_777": "spawn centrepiece: round stone plinth with steps, a big straw nest holding three" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L777 | neighbors=[nest_statue(), Palette] | lang=en
-- "eggplots_egg_props_rationale_801": "low-poly round tree: tapered faceted trunk with a root flare, 3-4 faceted canopy" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L801 | neighbors=[tree(), Palette] | lang=en
-- "eggplots_egg_props_rationale_813": "low-poly cone tree: three stacked faceted cones, a short trunk" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L813 | neighbors=[pine(), Palette] | lang=pt
-- "eggplots_egg_props_rationale_833": "ground flowers: a tuft of leaves + 5-7 little 5-petal flowers (decor, no collisi" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L833 | neighbors=[flower_patch(), Palette] | lang=en
-- "eggplots_egg_props_rationale_85": "a band of the egg between heights t0..t1 (fractions of H), radius x grow: painte" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L85 | neighbors=[egg_slice(), Palette] | lang=en
-- "eggplots_egg_props_rationale_853": "island edge ranch fence: two round-topped honey posts, three split rails (cheap:" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L853 | neighbors=[ranch_fence(), Palette] | lang=en
-- "eggplots_egg_props_rationale_862": "backdrop red barn (seen from across the lake): stone plinth, red board walls wit" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L862 | neighbors=[barn(), Palette] | lang=en
-- "eggplots_egg_props_rationale_899": "backdrop windmill: tapered octagonal tower (cream, honey trim), red cap, 4 latti" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L899 | neighbors=[windmill(), Palette] | lang=en
-- "eggplots_egg_props_reeds": "reeds()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L936 | neighbors=[egg_props.py, sh()] | lang=en
-- "eggplots_egg_props_silo": "silo()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L890 | neighbors=[egg_props.py, sh()] | lang=en
-- "eggplots_sheet": "sheet.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/sheet.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …] | lang=en
-- "evaluator_evaluator_floatenvironment": "FloatEnvironment" | kind=code-symbol | source=mute/src/evaluator/evaluator.cpp:L92 | neighbors=[evaluator.cpp, .FloatEnvironment()] | lang=en
-- "evaluator_evaluator_literal_float": "literal_float()" | kind=code-symbol | source=mute/src/evaluator/evaluator.cpp:L162 | neighbors=[evaluator.cpp, fail()] | lang=en
-- "examples_axolotl_gill_base": "gill_base()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/axolotl.py:L30 | neighbors=[axolotl.py, build()] | lang=en
-- "examples_axolotl_happy": "happy()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/axolotl.py:L137 | neighbors=[axolotl.py, gills()] | lang=en
-- "examples_axolotl_idle": "idle()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/axolotl.py:L108 | neighbors=[axolotl.py, gills()] | lang=en
-- "examples_axolotl_swim": "swim()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/axolotl.py:L126 | neighbors=[axolotl.py, gills()] | lang=en
-- "examples_axolotl_unit": "_unit()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/axolotl.py:L26 | neighbors=[axolotl.py, build()] | lang=en
-- "examples_axolotl_walk": "walk()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/axolotl.py:L116 | neighbors=[axolotl.py, gills()] | lang=en
-- "examples_gridfinity_d110_bin_rationale_1": "Gridfinity 3x2 cradle bin for the Orico D110 label printer.  The hand-rolled ori" | kind=entity | source=.agents/skills/cad-skill-main/examples/gridfinity_d110_bin.py:L1 | neighbors=[GridfinityBin, gridfinity_d110_bin.py] | lang=en
-- "examples_mx_master3_bin_3x3_rationale_1": "Gridfinity 3x3 diagonal cradle bin for the Logitech MX Master 3.  Showcases the" | kind=entity | source=.agents/skills/cad-skill-main/examples/mx_master3_bin_3x3.py:L1 | neighbors=[GridfinityBin, mx_master3_bin_3x3.py] | lang=en
-- "extensions_superpowers_pitoolmapping": "piToolMapping()" | kind=code-symbol | source=.agents/skills/superpowers-main/.pi/extensions/superpowers.ts:L83 | neighbors=[superpowers.ts, getBootstrapContent()] | lang=en
-- "extensions_superpowers_stripfrontmatter": "stripFrontmatter()" | kind=code-symbol | source=.agents/skills/superpowers-main/.pi/extensions/superpowers.ts:L78 | neighbors=[superpowers.ts, getBootstrapContent()] | lang=en
-- "fakes_basicplatformdebug": "BasicPlatformDebug.hpp" | kind=code-symbol | source=engine/rhi/tests/fakes/BasicPlatformDebug.hpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …] | lang=en
-- "fakes_refcntautoptr_refcntautoptr": "RefCntAutoPtr" | kind=code-symbol | source=engine/rhi/tests/fakes/RefCntAutoPtr.hpp:L4 | neighbors=[RefCntAutoPtr.hpp, .RefCntAutoPtr()] | lang=en
-- "fishcenter_fish_map_anchor": "anchor()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L514 | neighbors=[fish_map.py, stations()] | lang=en
-- "fishcenter_fish_map_bay_key": "bay_key()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L456 | neighbors=[fish_map.py, rails_flush()] | lang=en
-- "fishcenter_fish_map_halfang": "halfang()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L511 | neighbors=[fish_map.py, edges()] | lang=en
-- "fishcenter_fish_map_inb": "_inb()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L153 | neighbors=[fish_map.py, _inside_one()] | lang=en
-- "fishcenter_fish_map_kit": "kit()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L87 | neighbors=[fish_map.py, place()] | lang=en
-- "fishcenter_fish_map_look": "look()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/fishcenter/fish_map.py:L701 | neighbors=[fish_map.py, free()] | lang=en
+- "effekseer_ai_cli_curve_set": "_curve_set()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L111 | neighbors=[cli.py, _open()]
+- "effekseer_ai_cli_emit": "_emit()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L14 | neighbors=[cli.py, main()]
+- "effekseer_ai_cli_export": "_export()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L92 | neighbors=[cli.py, _open()]
+- "effekseer_ai_cli_image_import": "_image_import()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L85 | neighbors=[cli.py, _open()]
+- "effekseer_ai_cli_node_add": "_node_add()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L42 | neighbors=[cli.py, _open()]
+- "effekseer_ai_cli_node_list": "_node_list()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L38 | neighbors=[cli.py, _open()]
+- "effekseer_ai_cli_node_move": "_node_move()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L63 | neighbors=[cli.py, _open()]
+- "effekseer_ai_cli_node_remove": "_node_remove()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L56 | neighbors=[cli.py, _open()]
+- "effekseer_ai_cli_node_rename": "_node_rename()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L49 | neighbors=[cli.py, _open()]
+- "effekseer_ai_cli_property_get": "_property_get()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L74 | neighbors=[cli.py, _open()]
+- "effekseer_ai_cli_property_list": "_property_list()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L70 | neighbors=[cli.py, _open()]
+- "effekseer_ai_cli_property_set": "_property_set()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L78 | neighbors=[cli.py, _open()]
+- "effekseer_ai_cli_rationale_1": "Command-line operations for the portable EffekseerCore bridge." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L1 | neighbors=[cli.py, EffectSession]
+- "effekseer_ai_cli_rationale_130": "Build the CLI parser without accessing an Effekseer installation." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L130 | neighbors=[build_parser(), EffectSession]
+- "effekseer_ai_cli_save": "_save()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L32 | neighbors=[cli.py, _open()]
+- "effekseer_ai_cli_settings_list": "_settings_list()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L96 | neighbors=[cli.py, _open()]
+- "effekseer_ai_cli_settings_set": "_settings_set()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L100 | neighbors=[cli.py, _open()]
+- "effekseer_ai_cli_show": "_show()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L28 | neighbors=[cli.py, _open()]
+- "effekseer_ai_init_rationale_1": "Python access to the official Effekseer Core API (vendored from effekseer-ai, MI" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/__init__.py:L1 | neighbors=[__init__.py, EffectSession]
+- "effekseer_ai_models_assign_procedural_model": "assign_procedural_model()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/models.py:L21 | neighbors=[models.py, model_schema()]
+- "effekseer_ai_models_model_schema": "model_schema()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/models.py:L4 | neighbors=[models.py, assign_procedural_model()]
+- "effekseer_ai_session_effectsession_as_python": "._as_python()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L373 | neighbors=[EffectSession, .property_get()]
+- "effekseer_ai_session_effectsession_export": ".export()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L286 | neighbors=[EffectSession, Export the current document as a runtim…]
+- "effekseer_ai_session_effectsession_is_exported_property": "._is_exported_property()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L175 | neighbors=[EffectSession, .property_set()]
+- "effekseer_ai_session_effectsession_new_curve_key": "._new_curve_key()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L245 | neighbors=[EffectSession, .curve_set_keys()]
+- "effekseer_ai_session_effectsession_node_list": ".node_list()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L66 | neighbors=[EffectSession, List every non-root node currently know…]
+- "effekseer_ai_session_effectsession_post_init": ".__post_init__()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L20 | neighbors=[EffectSession, ._index_existing_nodes()]
+- "eggplots_egg_map_foot": "foot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_map.py:L68 | neighbors=[egg_map.py, place()]
+- "eggplots_egg_map_inset_top": "inset_top()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_map.py:L108 | neighbors=[egg_map.py, hardscape()]
+- "eggplots_egg_map_kit": "kit()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_map.py:L63 | neighbors=[egg_map.py, place()]
+- "eggplots_egg_map_look": "look()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_map.py:L367 | neighbors=[egg_map.py, free()]
+- "eggplots_egg_map_rationale_117": "lane: a stone slab (kerbed, chamfer into the lawn) carrying 4-stud pavers in a r" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_map.py:L117 | neighbors=[hardscape(), MB]
+- "eggplots_egg_map_rationale_162": "island lawn + lake bank + hills: fine grid near the island, coarse on the hills;" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_map.py:L162 | neighbors=[ground(), MB]
+- "eggplots_egg_map_rationale_298": "point on the island superellipse at parameter angle t, scaled by k" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_map.py:L298 | neighbors=[isle_point(), MB]
+- "eggplots_egg_map_rationale_89": "height of the BUILT ground mesh (the coarse hill grid departs from H by several" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_map.py:L89 | neighbors=[Hg(), MB]
+- "eggplots_egg_map_sh_val": "sh_val()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_map.py:L27 | neighbors=[egg_map.py, hardscape()]
+- "eggplots_egg_map_t": "T()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_map.py:L159 | neighbors=[egg_map.py, hardscape()]
+- "eggplots_egg_props_bush": "bush()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L822 | neighbors=[egg_props.py, sh()]
+- "eggplots_egg_props_lily_pads": "lily_pads()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L928 | neighbors=[egg_props.py, sh()]
+- "eggplots_egg_props_merge_prop": "merge_prop()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L64 | neighbors=[egg_props.py, hay_stack()]
 
 ## Instructions
 

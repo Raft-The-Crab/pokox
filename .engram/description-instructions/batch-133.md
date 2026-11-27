@@ -1,4 +1,4 @@
-# Node Description Batch 134 of 208
+# Node Description Batch 134 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -12,58 +12,51 @@ describing what it is or does. Use only the provided context.
 For a code symbol (kind=code-symbol — a function, class, or constant),
 describe what the function/symbol does based on its name, source location
 and neighbors — e.g. "Resolves the configured ontology profile from graphify.yaml.".
-For an entity node (any other kind — e.g. a person, place, event, object),
-describe what the entity is and its role, grounded in its type, its
-relations (neighbors) and the provided citations/evidence — e.g.
-"Lady Carfax, a wealthy heiress who disappears en route to Lausanne.".
-Ground entity descriptions in the citations/evidence when present; do not
-speculate beyond the context, so a node with no supporting context may be
-left out of the reply.
 Write every description in English (en). Do not switch languages.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "stdlib_stdlib_collections_remove": "remove()" | kind=code-symbol | source=mute/src/stdlib/stdlib_collections.cpp:L65 | neighbors=[stdlib_collections.cpp, erase()]
-- "stdlib_stdlib_crypto_append_u32_be": "append_u32_be()" | kind=code-symbol | source=mute/src/stdlib/stdlib_crypto.cpp:L48 | neighbors=[stdlib_crypto.cpp, sha256()]
-- "stdlib_stdlib_crypto_rotr": "rotr()" | kind=code-symbol | source=mute/src/stdlib/stdlib_crypto.cpp:L18 | neighbors=[stdlib_crypto.cpp, compress()]
-- "stdlib_stdlib_crypto_sign_detached": "sign_detached()" | kind=code-symbol | source=mute/src/stdlib/stdlib_crypto.cpp:L98 | neighbors=[stdlib_crypto.cpp, hmac_sha256()]
-- "stdlib_stdlib_crypto_verify_detached": "verify_detached()" | kind=code-symbol | source=mute/src/stdlib/stdlib_crypto.cpp:L102 | neighbors=[stdlib_crypto.cpp, hmac_sha256()]
-- "stdlib_stdlib_math_next_i32": "next_i32()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L154 | neighbors=[stdlib_math.cpp, next_u64()]
-- "stdlib_stdlib_math_next_u64": "next_u64()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L143 | neighbors=[stdlib_math.cpp, next_i32()]
-- "stdlib_stdlib_math_splitmix64": "splitmix64()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L14 | neighbors=[stdlib_math.cpp, XorShift128Plus()]
-- "stdlib_stdlib_math_vec2_dot": "vec2_dot()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L59 | neighbors=[stdlib_math.cpp, vec2_length_squared()]
-- "stdlib_stdlib_math_vec2_lerp": "vec2_lerp()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L58 | neighbors=[stdlib_math.cpp, det_lerp()]
-- "stdlib_stdlib_math_vec3_add": "vec3_add()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L68 | neighbors=[stdlib_math.cpp, quat_rotate()]
-- "stdlib_stdlib_math_vec3_cross": "vec3_cross()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L71 | neighbors=[stdlib_math.cpp, quat_rotate()]
-- "stdlib_stdlib_math_vec3_dot": "vec3_dot()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L77 | neighbors=[stdlib_math.cpp, vec3_length_squared()]
-- "stdlib_stdlib_math_vec3_lerp": "vec3_lerp()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L74 | neighbors=[stdlib_math.cpp, det_lerp()]
-- "stdlib_stdlib_math_vec3_scale": "vec3_scale()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L70 | neighbors=[stdlib_math.cpp, quat_rotate()]
-- "stdlib_stdlib_math_vec4_dot": "vec4_dot()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L88 | neighbors=[stdlib_math.cpp, vec4_normalize()]
-- "stdlib_stdlib_math_xorshift128plus": "XorShift128Plus()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L137 | neighbors=[stdlib_math.cpp, splitmix64()]
-- "stdlib_stdlib_physics_fixed_from_raw": "fixed_from_raw()" | kind=code-symbol | source=mute/src/stdlib/stdlib_physics.cpp:L12 | neighbors=[stdlib_physics.cpp, physics_hostcall_defs()]
-- "stdlib_stdlib_physics_touching_at": "touching_at()" | kind=code-symbol | source=mute/src/stdlib/stdlib_physics.cpp:L24 | neighbors=[stdlib_physics.cpp, physics_raycast()]
-- "stdlib_stdlib_string_concat": "concat()" | kind=code-symbol | source=mute/src/stdlib/stdlib_string.cpp:L82 | neighbors=[stdlib_string.cpp, valid_utf8()]
-- "stdlib_stdlib_string_to_lower_ascii": "to_lower_ascii()" | kind=code-symbol | source=mute/src/stdlib/stdlib_string.cpp:L105 | neighbors=[stdlib_string.cpp, valid_utf8()]
-- "sugarworks_sugar_map_free": "free()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_map.py:L53 | neighbors=[sugar_map.py, look()]
-- "sugarworks_sugar_map_ground": "ground()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_map.py:L100 | neighbors=[sugar_map.py, sub()]
-- "sugarworks_sugar_map_horizon": "horizon()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_map.py:L237 | neighbors=[sugar_map.py, sub()]
-- "sugarworks_sugar_map_kit": "kit()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_map.py:L37 | neighbors=[sugar_map.py, place()]
-- "sugarworks_sugar_map_look": "look()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_map.py:L212 | neighbors=[sugar_map.py, free()]
-- "sugarworks_sugar_map_on_hard": "on_hard()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_map.py:L54 | neighbors=[sugar_map.py, road / sidewalks / plots / plaza / apro…]
-- "sugarworks_sugar_map_rationale_50": "plot-local (lx, lz) -> world; local -Z = the plot's road side" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_map.py:L50 | neighbors=[MB, local()]
-- "sugarworks_sugar_map_rationale_55": "road / sidewalks / plots / plaza / apron: no scatter there" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_map.py:L55 | neighbors=[MB, on_hard()]
-- "sugarworks_sugar_props_candy_sacks": "candy_sacks()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L380 | neighbors=[sugar_props.py, pallet with tied sugar sacks]
-- "sugarworks_sugar_props_cash_pad": "cash_pad()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L183 | neighbors=[sugar_props.py, torus()]
-- "sugarworks_sugar_props_choc_bench": "choc_bench()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L265 | neighbors=[sugar_props.py, chocolate-bar bench: segmented seat + b…]
-- "sugarworks_sugar_props_dropper": "dropper()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L106 | neighbors=[sugar_props.py, starter dropper: steel legs, lemon hopp…]
-- "sugarworks_sugar_props_fence": "fence()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L71 | neighbors=[sugar_props.py, low cream wall + pink cap + team-colour…]
-- "sugarworks_sugar_props_fence_post": "fence_post()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L81 | neighbors=[sugar_props.py, one fence post: cream pillar + pink gum…]
-- "sugarworks_sugar_props_gumdrop_bush": "gumdrop_bush()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L241 | neighbors=[sugar_props.py, dome()]
-- "sugarworks_sugar_props_hazard": "hazard()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L365 | neighbors=[sugar_props.py, flat lemon/choc hazard stripe band alon…]
-- "sugarworks_sugar_props_peppermint": "peppermint()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L418 | neighbors=[sugar_props.py, flat peppermint swirl stepping disc]
-- "sugarworks_sugar_props_plot_base": "plot_base()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L61 | neighbors=[sugar_props.py, the plot slab: tiled concrete, pink bor…]
-- "sugarworks_sugar_props_rationale_107": "starter dropper: steel legs, lemon hopper with a funnel, candy jar on top, warni" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L107 | neighbors=[Palette, dropper()]
+- "src_gallery_ground": "ground()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/references/images/src/gallery.py:L43 | neighbors=[gallery.py, flat()]
+- "src_haze": "haze.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/references/images/src/haze.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …]
+- "src_ktx2_fail": "fail()" | kind=code-symbol | source=engine/resource/src/ktx2.cpp:L32 | neighbors=[ktx2.cpp, load_ktx2()]
+- "src_ktx2_in_bounds": "in_bounds()" | kind=code-symbol | source=engine/resource/src/ktx2.cpp:L38 | neighbors=[ktx2.cpp, load_ktx2()]
+- "src_logging_critical": "critical()" | kind=code-symbol | source=engine/foundation/src/logging.cpp:L105 | neighbors=[logging.cpp, emit()]
+- "src_logging_debug": "debug()" | kind=code-symbol | source=engine/foundation/src/logging.cpp:L101 | neighbors=[logging.cpp, emit()]
+- "src_logging_error": "error()" | kind=code-symbol | source=engine/foundation/src/logging.cpp:L104 | neighbors=[logging.cpp, emit()]
+- "src_logging_info": "info()" | kind=code-symbol | source=engine/foundation/src/logging.cpp:L102 | neighbors=[logging.cpp, emit()]
+- "src_logging_init": "init()" | kind=code-symbol | source=engine/foundation/src/logging.cpp:L66 | neighbors=[logging.cpp, to_spdlog()]
+- "src_logging_trace": "trace()" | kind=code-symbol | source=engine/foundation/src/logging.cpp:L100 | neighbors=[logging.cpp, emit()]
+- "src_logging_warn": "warn()" | kind=code-symbol | source=engine/foundation/src/logging.cpp:L103 | neighbors=[logging.cpp, emit()]
+- "src_loop_alpha": "alpha()" | kind=code-symbol | source=engine/foundation/src/loop.cpp:L55 | neighbors=[loop.cpp, valid_limits()]
+- "src_loop_fixedsteploop": "FixedStepLoop()" | kind=code-symbol | source=engine/foundation/src/loop.cpp:L18 | neighbors=[loop.cpp, to_ns()]
+- "src_narrowphase_aabb_of": "aabb_of()" | kind=code-symbol | source=engine/physics/src/narrowphase.cpp:L602 | neighbors=[narrowphase.cpp, collide()]
+- "src_narrowphase_centroid": "centroid()" | kind=code-symbol | source=engine/physics/src/narrowphase.cpp:L34 | neighbors=[narrowphase.cpp, gjk_distance()]
+- "src_narrowphase_face_barycentric": "face_barycentric()" | kind=code-symbol | source=engine/physics/src/narrowphase.cpp:L318 | neighbors=[narrowphase.cpp, epa_penetration()]
+- "src_narrowphase_local_extent": "local_extent()" | kind=code-symbol | source=engine/physics/src/narrowphase.cpp:L622 | neighbors=[narrowphase.cpp, collide()]
+- "src_narrowphase_local_shape": "local_shape()" | kind=code-symbol | source=engine/physics/src/narrowphase.cpp:L633 | neighbors=[narrowphase.cpp, collide()]
+- "src_narrowphase_tetra_faces": "tetra_faces()" | kind=code-symbol | source=engine/physics/src/narrowphase.cpp:L301 | neighbors=[narrowphase.cpp, epa_penetration()]
+- "src_pokomesh_finite_vec3": "finite_vec3()" | kind=code-symbol | source=engine/resource/src/pokomesh.cpp:L38 | neighbors=[pokomesh.cpp, parse_pokomesh()]
+- "src_pokomesh_read_f32": "read_f32()" | kind=code-symbol | source=engine/resource/src/pokomesh.cpp:L32 | neighbors=[pokomesh.cpp, parse_pokomesh()]
+- "src_pokomesh_read_u32": "read_u32()" | kind=code-symbol | source=engine/resource/src/pokomesh.cpp:L26 | neighbors=[pokomesh.cpp, parse_pokomesh()]
+- "src_sap_broadphase_clear": "clear()" | kind=code-symbol | source=engine/physics/src/sap_broadphase.cpp:L77 | neighbors=[sap_broadphase.cpp, commit()]
+- "src_sap_broadphase_insert": "insert()" | kind=code-symbol | source=engine/physics/src/sap_broadphase.cpp:L7 | neighbors=[sap_broadphase.cpp, commit()]
+- "src_soft_body_apply_acceleration": "apply_acceleration()" | kind=code-symbol | source=engine/physics/src/soft_body.cpp:L95 | neighbors=[soft_body.cpp, step()]
+- "src_solver_begin_step": "begin_step()" | kind=code-symbol | source=engine/physics/src/solver.cpp:L75 | neighbors=[solver.cpp, clear()]
+- "src_solver_tangent_basis": "tangent_basis()" | kind=code-symbol | source=engine/physics/src/solver.cpp:L26 | neighbors=[solver.cpp, solve()]
+- "src_visual_solver_add_collider": "add_collider()" | kind=code-symbol | source=engine/physics/src/visual_solver.cpp:L385 | neighbors=[visual_solver.cpp, add_body()]
+- "src_visual_solver_add_contact": "add_contact()" | kind=code-symbol | source=engine/physics/src/visual_solver.cpp:L169 | neighbors=[visual_solver.cpp, step()]
+- "src_visual_solver_collide_box_box": "collide_box_box()" | kind=code-symbol | source=engine/physics/src/visual_solver.cpp:L104 | neighbors=[visual_solver.cpp, collide_visual()]
+- "src_visual_solver_collide_sphere_sphere": "collide_sphere_sphere()" | kind=code-symbol | source=engine/physics/src/visual_solver.cpp:L48 | neighbors=[visual_solver.cpp, collide_visual()]
+- "src_visual_solver_integrate": "integrate()" | kind=code-symbol | source=engine/physics/src/visual_solver.cpp:L318 | neighbors=[visual_solver.cpp, step()]
+- "src_visual_solver_tangent_basis": "tangent_basis()" | kind=code-symbol | source=engine/physics/src/visual_solver.cpp:L19 | neighbors=[visual_solver.cpp, solve()]
+- "state_state_hash_state": "hash_state()" | kind=code-symbol | source=mute/src/state/state.cpp:L30 | neighbors=[state.cpp, xxhash64()]
+- "state_state_merge": "merge()" | kind=code-symbol | source=mute/src/state/state.cpp:L15 | neighbors=[state.cpp, xxhash64()]
+- "state_state_read32": "read32()" | kind=code-symbol | source=mute/src/state/state.cpp:L11 | neighbors=[state.cpp, xxhash64()]
+- "state_state_read64": "read64()" | kind=code-symbol | source=mute/src/state/state.cpp:L8 | neighbors=[state.cpp, xxhash64()]
+- "state_state_snapshot_append_le": "append_le()" | kind=code-symbol | source=mute/src/state/state_snapshot.cpp:L12 | neighbors=[state_snapshot.cpp, save_state_snapshot()]
+- "state_state_snapshot_read_le": "read_le()" | kind=code-symbol | source=mute/src/state/state_snapshot.cpp:L15 | neighbors=[state_snapshot.cpp, load_state_snapshot()]
+- "stdlib_events_hash": "hash()" | kind=code-symbol | source=mute/src/stdlib/events.cpp:L78 | neighbors=[events.cpp, mix()]
 
 ## Instructions
 

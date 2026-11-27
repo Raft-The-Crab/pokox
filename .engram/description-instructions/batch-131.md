@@ -1,4 +1,4 @@
-# Node Description Batch 132 of 208
+# Node Description Batch 132 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -19,53 +19,51 @@ relations (neighbors) and the provided citations/evidence — e.g.
 Ground entity descriptions in the citations/evidence when present; do not
 speculate beyond the context, so a node with no supporting context may be
 left out of the reply.
-LANGUAGE: each entry has a `lang=` marker giving the language of its source.
-Write that entry's description in EXACTLY that language. Do not translate to
-a single common language — match each node's source language individually.
+Write every description in English (en). Do not switch languages.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "skyrise_sky_props_rationale_159": "bridge from z=0 to z=-L, rising by `rise`: planks (wood) or slabs (stone) with p" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L159 | neighbors=[Palette, bridge()] | lang=en
-- "skyrise_sky_props_rationale_199": "zone gate: two banded stone pillars, arched crest with the zone gem, glowing bar" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L199 | neighbors=[Palette, zone_gate()] | lang=en
-- "skyrise_sky_props_rationale_227": "egg hatch station: tiered round podium, giant spotted egg on a cushion, four cry" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L227 | neighbors=[Palette, egg_shrine()] | lang=pt
-- "skyrise_sky_props_rationale_266": "upgrade booth: counter, striped awning, posts, big glowing up-arrow sign (front" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L266 | neighbors=[Palette, upgrade_stand()] | lang=en
-- "skyrise_sky_props_rationale_316": "simulator puffy tree: curved trunk + 3-6 smooth round canopy balls" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L316 | neighbors=[Palette, puffy_tree()] | lang=en
-- "skyrise_sky_props_rationale_356": "treasure chest, lid open (back +Z hinge), coins + a gem inside" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L356 | neighbors=[Palette, chest()] | lang=pt
-- "skyrise_sky_props_rationale_40": "revolve [(r, y), ...] (bottom -> top) around Y; caps where r == 0 collapse to a" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L40 | neighbors=[Palette, lathe()] | lang=es
-- "skyrise_sky_props_rationale_467": "HERO: giant golden trophy on a tiered marble pedestal; cup with handles, crown +" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L467 | neighbors=[Palette, trophy()] | lang=en
-- "skyrise_sky_props_rationale_66": "faceted octahedron-ish gem standing on its tip" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L66 | neighbors=[Palette, gem()] | lang=en
-- "skyrise_sky_props_rationale_71": "underside of a floating island: rings from the rim inward/down to a tip, strata" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L71 | neighbors=[Palette, island_under()] | lang=en
-- "skyrise_sky_props_snow_tree": "snow_tree()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L410 | neighbors=[sky_props.py, lathe()] | lang=en
-- "src_asset_store_assethandle": "AssetHandle()" | kind=code-symbol | source=engine/resource/src/asset_store.cpp:L254 | neighbors=[asset_store.cpp, release()] | lang=en
-- "src_asset_store_is_loading": "is_loading()" | kind=code-symbol | source=engine/resource/src/asset_store.cpp:L195 | neighbors=[asset_store.cpp, load_state()] | lang=en
-- "src_asset_store_load_state": "load_state()" | kind=code-symbol | source=engine/resource/src/asset_store.cpp:L170 | neighbors=[asset_store.cpp, is_loading()] | lang=en
-- "src_asset_store_release": "release()" | kind=code-symbol | source=engine/resource/src/asset_store.cpp:L257 | neighbors=[asset_store.cpp, AssetHandle()] | lang=en
-- "src_camera_look_at": "look_at()" | kind=code-symbol | source=engine/render/src/camera.cpp:L22 | neighbors=[camera.cpp, view_proj()] | lang=en
-- "src_camera_multiply": "multiply()" | kind=code-symbol | source=engine/render/src/camera.cpp:L40 | neighbors=[camera.cpp, view_proj()] | lang=en
-- "src_camera_perspective": "perspective()" | kind=code-symbol | source=engine/render/src/camera.cpp:L11 | neighbors=[camera.cpp, view_proj()] | lang=en
-- "src_cbor_half_to_double": "half_to_double()" | kind=code-symbol | source=engine/foundation/src/cbor.cpp:L82 | neighbors=[cbor.cpp, decode_item()] | lang=en
-- "src_cbor_read_argument": "read_argument()" | kind=code-symbol | source=engine/foundation/src/cbor.cpp:L73 | neighbors=[cbor.cpp, decode_item()] | lang=en
-- "src_cbor_valid_utf8": "valid_utf8()" | kind=code-symbol | source=engine/foundation/src/cbor.cpp:L44 | neighbors=[cbor.cpp, decode_item()] | lang=en
-- "src_character_controller_append_shape_raws": "append_shape_raws()" | kind=code-symbol | source=engine/physics/src/character_controller.cpp:L96 | neighbors=[character_controller.cpp, touch_key()] | lang=en
-- "src_character_controller_planar": "planar()" | kind=code-symbol | source=engine/physics/src/character_controller.cpp:L29 | neighbors=[character_controller.cpp, update()] | lang=en
-- "src_compose_pair": "pair()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/references/images/src/compose.py:L16 | neighbors=[compose.py, pill()] | lang=en
-- "src_compose_pill": "pill()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/references/images/src/compose.py:L11 | neighbors=[compose.py, pair()] | lang=en
-- "src_config_collect_unknown": "collect_unknown()" | kind=code-symbol | source=engine/foundation/src/config.cpp:L82 | neighbors=[config.cpp, load_file()] | lang=en
-- "src_config_fail": "fail()" | kind=code-symbol | source=engine/foundation/src/config.cpp:L14 | neighbors=[config.cpp, load_file()] | lang=en
-- "src_config_parse_level": "parse_level()" | kind=code-symbol | source=engine/foundation/src/config.cpp:L70 | neighbors=[config.cpp, load_file()] | lang=en
-- "src_config_resolve": "resolve()" | kind=code-symbol | source=engine/foundation/src/config.cpp:L172 | neighbors=[config.cpp, load_file()] | lang=en
-- "src_convex_shape": "convex_shape.cpp" | kind=code-symbol | source=engine/physics/src/convex_shape.cpp:L1 | neighbors=[69287a0 Land ENG-60-65 deterministic si…, support()] | lang=en
-- "src_frame_stats_cpu_ms": "cpu_ms()" | kind=code-symbol | source=engine/foundation/src/frame_stats.cpp:L38 | neighbors=[frame_stats.cpp, window_mean()] | lang=en
-- "src_frame_stats_fps": "fps()" | kind=code-symbol | source=engine/foundation/src/frame_stats.cpp:L31 | neighbors=[frame_stats.cpp, window_mean()] | lang=en
-- "src_frame_stats_gpu_ms": "gpu_ms()" | kind=code-symbol | source=engine/foundation/src/frame_stats.cpp:L43 | neighbors=[frame_stats.cpp, window_mean()] | lang=en
-- "src_gallery_flat": "flat()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/references/images/src/gallery.py:L37 | neighbors=[gallery.py, ground()] | lang=en
-- "src_gallery_ground": "ground()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/references/images/src/gallery.py:L43 | neighbors=[gallery.py, flat()] | lang=en
-- "src_haze": "haze.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/references/images/src/haze.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …] | lang=en
-- "src_ktx2_fail": "fail()" | kind=code-symbol | source=engine/resource/src/ktx2.cpp:L32 | neighbors=[ktx2.cpp, load_ktx2()] | lang=en
-- "src_ktx2_in_bounds": "in_bounds()" | kind=code-symbol | source=engine/resource/src/ktx2.cpp:L38 | neighbors=[ktx2.cpp, load_ktx2()] | lang=en
-- "src_logging_critical": "critical()" | kind=code-symbol | source=engine/foundation/src/logging.cpp:L105 | neighbors=[logging.cpp, emit()] | lang=en
-- "src_logging_debug": "debug()" | kind=code-symbol | source=engine/foundation/src/logging.cpp:L101 | neighbors=[logging.cpp, emit()] | lang=en
+- "shared_bpyx_node": "node()" | kind=code-symbol | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L99 | neighbors=[_bpyx.py, First node of `type_` (e.g. 'BSDF_PRINC…]
+- "shared_bpyx_object_mode": "object_mode()" | kind=code-symbol | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L83 | neighbors=[_bpyx.py, Leave edit/sculpt/pose modes; most data…]
+- "shared_bpyx_objects": "objects()" | kind=code-symbol | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L71 | neighbors=[_bpyx.py, Resolve names -> objects. No names: sel…]
+- "shared_bpyx_parser": "parser()" | kind=code-symbol | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L41 | neighbors=[_bpyx.py, ArgumentParser whose help is the script…]
+- "shared_bpyx_r": "r()" | kind=code-symbol | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L132 | neighbors=[_bpyx.py, Round a float or a vector for compact J…]
+- "shared_bpyx_select_only": "select_only()" | kind=code-symbol | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L90 | neighbors=[_bpyx.py, Select exactly `objs` and make `active`…]
+- "shared_bpyx_set_enum": "set_enum()" | kind=code-symbol | source=.agents/skills/blender-skills-main/shared/_bpyx.py:L109 | neighbors=[_bpyx.py, Assign an enum; on failure raise listin…]
+- "skyrise_sky_map_foot": "foot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_map.py:L76 | neighbors=[sky_map.py, place()]
+- "skyrise_sky_map_look": "look()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_map.py:L388 | neighbors=[sky_map.py, free()]
+- "skyrise_sky_map_maker": "maker()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_map.py:L268 | neighbors=[sky_map.py, zone_island()]
+- "skyrise_sky_map_path_dist": "path_dist()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_map.py:L125 | neighbors=[sky_map.py, micro_detail()]
+- "skyrise_sky_map_rationale_182": "stepping-stone path from the entry bridge end through the island middle to the e" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_map.py:L182 | neighbors=[MB, winding_path()]
+- "skyrise_sky_map_rationale_244": "dress the outer ring of island i, keeping bridge heads, gates and stations clear" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_map.py:L244 | neighbors=[MB, rim_dress()]
+- "skyrise_sky_map_rationale_316": "trodden track under the stepping stones: overlapping irregular flat blobs follow" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_map.py:L316 | neighbors=[MB, path_track()]
+- "skyrise_sky_map_rationale_333": "clumps of small ground detail: off paths, bridge heads, stations (free()), and t" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_map.py:L333 | neighbors=[MB, micro_detail()]
+- "skyrise_sky_map_rationale_38": "index of the island whose rim (minus margin m) contains (x, z), else None" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_map.py:L38 | neighbors=[MB, island_at()]
+- "skyrise_sky_map_rationale_86": "height of the built island top MESH (what players stand on); H before the tops e" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_map.py:L86 | neighbors=[MB, Hm()]
+- "skyrise_sky_map_segd": "segd()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_map.py:L64 | neighbors=[sky_map.py, on_bridge_line()]
+- "skyrise_sky_models_bevel_box": "bevel_box()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models.py:L18 | neighbors=[sky_models.py, zone_gate()]
+- "skyrise_sky_models_blossom_tree": "blossom_tree()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models.py:L72 | neighbors=[sky_models.py, puffy_tree()]
+- "skyrise_sky_models_snow_tree": "snow_tree()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models.py:L75 | neighbors=[sky_models.py, pine: 4 star tiers with drooping snow c…]
+- "skyrise_sky_models2_basalt_rocks": "basalt_rocks()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models2.py:L132 | neighbors=[sky_models2.py, hexagonal basalt columns of stepped hei…]
+- "skyrise_sky_models2_bottle": "bottle()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models2.py:L12 | neighbors=[sky_models2.py, upgrade_stand()]
+- "skyrise_sky_models2_crystal_node": "crystal_node()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models2.py:L72 | neighbors=[sky_models2.py, 6-9 hexagonal crystals with pointed tip…]
+- "skyrise_sky_models2_egg_shrine": "egg_shrine()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models2.py:L151 | neighbors=[sky_models2.py, egg hatch altar: 3-tier dais with gold …]
+- "skyrise_sky_models2_leaderboard": "leaderboard()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models2.py:L253 | neighbors=[sky_models2.py, stone frame with side columns and a gem…]
+- "skyrise_sky_models2_teleport_pad": "teleport_pad()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models2.py:L280 | neighbors=[sky_models2.py, stepped round platform with inlaid glow…]
+- "skyrise_sky_models3_bush": "bush()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models3.py:L62 | neighbors=[sky_models3.py, lumpy faceted bush: 4-6 clumps, lighter…]
+- "skyrise_sky_models3_charred_tree": "charred_tree()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models3.py:L43 | neighbors=[sky_models3.py, burnt tree: thick twisting trunk with 4…]
+- "skyrise_sky_models3_lamp_post": "lamp_post()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models3.py:L76 | neighbors=[sky_models3.py, iron street lantern: stepped stone base…]
+- "skyrise_sky_models3_lava_pool": "lava_pool()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models3.py:L28 | neighbors=[sky_models3.py, molten pool: ring of basalt boulders, g…]
+- "skyrise_sky_models3_mesa_rock": "mesa_rock()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models3.py:L8 | neighbors=[sky_models3.py, sandstone butte: 3 eroded faceted tiers…]
+- "skyrise_sky_models3_signpost": "signpost()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models3.py:L92 | neighbors=[sky_models3.py, zone signpost: planked arrow board with…]
+- "skyrise_sky_models4_bridge": "bridge()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models4.py:L113 | neighbors=[sky_models4.py, bridge from z=0 to z=-L rising by `rise…]
+- "skyrise_sky_models4_dry_shrub": "dry_shrub()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models4.py:L68 | neighbors=[sky_models4.py, twiggy desert shrub: forked twigs from …]
+- "skyrise_sky_models4_dune_grass": "dune_grass()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models4.py:L65 | neighbors=[sky_models4.py, grass_tuft()]
+- "skyrise_sky_models4_mushrooms": "mushrooms()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models4.py:L51 | neighbors=[sky_models4.py, two or three toadstools: lathe stems, r…]
+- "skyrise_sky_models4_plaza_fountain": "plaza_fountain()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models4.py:L181 | neighbors=[sky_models4.py, low tiered fountain: octagonal stone ba…]
+- "skyrise_sky_models4_star": "star()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models4.py:L18 | neighbors=[sky_models4.py, wildflowers()]
+- "skyrise_sky_props_bush": "bush()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L449 | neighbors=[sky_props.py, sphere()]
 
 ## Instructions
 

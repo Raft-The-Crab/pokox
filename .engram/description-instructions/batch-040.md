@@ -1,4 +1,4 @@
-# Node Description Batch 41 of 208
+# Node Description Batch 41 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -17,6 +17,23 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "src_visual_solver_solve": "solve()" | kind=code-symbol | source=engine/physics/src/visual_solver.cpp:L176 | neighbors=[visual_solver.cpp, clampf(), clear(), tangent_basis(), step()]
+- "state_state_xxhash64": "xxhash64()" | kind=code-symbol | source=mute/src/state/state.cpp:L17 | neighbors=[state.cpp, hash_state(), merge(), read32(), read64()]
+- "stdlib_stdlib_math_det_sqrt": "det_sqrt()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L23 | neighbors=[stdlib_math.cpp, quat_normalize(), vec2_normalize(), vec3_normalize(), vec4_normalize()]
+- "stdlib_stdlib_math_quat_rotate": "quat_rotate()" | kind=code-symbol | source=mute/src/stdlib/stdlib_math.cpp:L128 | neighbors=[stdlib_math.cpp, quat_normalize(), vec3_add(), vec3_cross(), vec3_scale()]
+- "sugarworks_sugar_map_place": "place()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_map.py:L41 | neighbors=[sugar_map.py, build(), kit(), sub(), plot()]
+- "sugarworks_sugar_map_plot": "plot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_map.py:L64 | neighbors=[sugar_map.py, build(), face(), local(), place()]
+- "sugarworks_sugar_props_collector": "collector()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L163 | neighbors=[sugar_props.py, stripes(), subdiv_line(), torus(), chocolate melting vat: drum with cream …]
+- "sugarworks_sugar_props_dome": "dome()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L36 | neighbors=[sugar_props.py, exchange(), gumdrop_bush(), lollipop_tree(), wrapper_bin()]
+- "sugarworks_sugar_props_gate": "gate()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L88 | neighbors=[sugar_props.py, stripes(), subdiv_line(), torus(), owner gate: two striped pillars with gu…]
+- "sugarworks_sugar_props_subdiv_line": "subdiv_line()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L53 | neighbors=[sugar_props.py, candy_lamp(), collector(), exchange(), gate()]
+- "systematic_debugging_condition_based_waiting_example": "condition-based-waiting-example.ts" | kind=code-symbol | source=.agents/skills/superpowers-main/skills/systematic-debugging/condition-based-waiting-example.ts:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, waitForEvent(), waitForEventCount(), waitForEventMatch()]
+- "tests_test_baking": "test_baking.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_baking.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, _pixels(), test_high_to_low_bake_normal_ao_curv_or…, test_self_bake_procedural_roughness()]
+- "tests_test_golden": "test_golden.py" | kind=code-symbol | source=tools/testutils/harness/tests/test_golden.py:L1 | neighbors=[f4a6ac4 Allowlist known validation-laye…, GoldenHarnessTests, run(), 52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
+- "tests_test_gridfinity_assert_footprint": "_assert_footprint()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_gridfinity.py:L29 | neighbors=[test_gridfinity.py, test_bin_with_lip_magnets_screws(), test_compartments_scoop_label(), test_minimal_bin_no_lip(), test_polygon_pocket_with_clearance_and_…]
+- "tests_test_gridfinity_test_bin_with_lip_magnets_screws": "test_bin_with_lip_magnets_screws()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_gridfinity.py:L48 | neighbors=[test_gridfinity.py, 2x1, 3U with lip and base holes., _assert_footprint(), _mesh(), _volume()]
+- "tests_test_gridfinity_volume": "_volume()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_gridfinity.py:L24 | neighbors=[test_gridfinity.py, B-rep volume, no tessellation round-tri…, test_bin_with_lip_magnets_screws(), test_compartments_scoop_label(), test_finger_notch_removes_material()]
+- "tests_test_hair": "test_hair.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_hair.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, _head(), test_groom_attached_masked_with_assets(), test_hair_cards_and_atlas()]
 - "tests_test_materials": "test_materials.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_materials.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, _img(), test_presets_and_srgb_color_override(), test_texture_set_autowire_orm_dx_normal…]
 - "tests_test_privacy_file_hits": "file_hits()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_privacy.py:L122 | neighbors=[test_privacy.py, jpeg_metadata(), png_metadata(), text_hits(), test_no_file_in_the_package_leaks_perso…]
 - "tests_test_privacy_text_hits": "text_hits()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_privacy.py:L69 | neighbors=[test_privacy.py, file_hits(), test_scanner_catches_each_kind_of_leak_…, attribution_allowed(), publisher_allowed()]
@@ -40,23 +57,6 @@ one-sentence description — no prose, no markdown fences.
 - "towncity_town_props_water_tank": "water_tank()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_props.py:L129 | neighbors=[town_props.py, building(), classic timber rooftop water tank on a …, add(), ball()]
 - "towncity_town_vehicles_body_shell": "body_shell()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_vehicles.py:L21 | neighbors=[town_vehicles.py, loft_closed(), bus(), car(), lofted body: ring per section s (0 fron…]
 - "towncity_town_vehicles_car_shell": "_car_shell()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_vehicles.py:L135 | neighbors=[town_vehicles.py, loft_closed(), _smoothstep(), carriage / cab section loft: rounded ro…, train_car()]
-- "unit_camera_test": "camera_test.cpp" | kind=code-symbol | source=engine/render/tests/unit/camera_test.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, main(), near(), transform(), c7a411f Fix MUT-01-20 audit defects in …]
-- "unit_capability_test_narrowed_module": "narrowed_module()" | kind=code-symbol | source=mute/tests/unit/capability_test.cpp:L38 | neighbors=[capability_test.cpp, main(), i32(), pv(), v()]
-- "unit_emit_test_arith_module": "arith_module()" | kind=code-symbol | source=mute/tests/unit/emit_test.cpp:L18 | neighbors=[emit_test.cpp, i32(), v(), cases(), position_cases()]
-- "unit_emit_test_calls_module": "calls_module()" | kind=code-symbol | source=mute/tests/unit/emit_test.cpp:L28 | neighbors=[emit_test.cpp, i32(), pv(), v(), cases()]
-- "unit_emit_test_hostcall_module": "hostcall_module()" | kind=code-symbol | source=mute/tests/unit/emit_test.cpp:L47 | neighbors=[emit_test.cpp, cases(), i32(), pv(), v()]
-- "unit_emit_test_pv": "pv()" | kind=code-symbol | source=mute/tests/unit/emit_test.cpp:L16 | neighbors=[emit_test.cpp, calls_module(), cases(), hostcall_module(), select_module()]
-- "unit_evaluator_test_cases": "cases()" | kind=code-symbol | source=mute/tests/unit/evaluator_test.cpp:L41 | neighbors=[evaluator_test.cpp, error_case(), signed_case(), unsigned_case(), main()]
-- "unit_evaluator_test_eval": "eval()" | kind=code-symbol | source=mute/tests/unit/evaluator_test.cpp:L19 | neighbors=[evaluator_test.cpp, error_case(), floating(), signed_case(), unsigned_case()]
-- "unit_evaluator_test_floating": "floating()" | kind=code-symbol | source=mute/tests/unit/evaluator_test.cpp:L80 | neighbors=[evaluator_test.cpp, check(), error_case(), eval(), main()]
-- "unit_evaluator_test_main": "main()" | kind=code-symbol | source=mute/tests/unit/evaluator_test.cpp:L213 | neighbors=[evaluator_test.cpp, bindings(), cases(), deep(), floating()]
-- "unit_fixed_test": "fixed_test.cpp" | kind=code-symbol | source=engine/foundation/tests/unit/fixed_test.cpp:L1 | neighbors=[1c81e45 Update from ML AI Code, 69287a0 Land ENG-60-65 deterministic si…, fx(), isqrt_ref(), main()]
-- "unit_hostcall_test": "hostcall_test.cpp" | kind=code-symbol | source=mute/tests/unit/hostcall_test.cpp:L1 | neighbors=[952997e Audit MUT-01-55 and harden veri…, check(), def(), main(), run_err()]
-- "unit_ktx2_test_main": "main()" | kind=code-symbol | source=engine/resource/tests/unit/ktx2_test.cpp:L60 | neighbors=[ktx2_test.cpp, make_ktx2(), set32(), set64(), write()]
-- "unit_limits_test": "limits_test.cpp" | kind=code-symbol | source=mute/tests/unit/limits_test.cpp:L1 | neighbors=[952997e Audit MUT-01-55 and harden veri…, check(), compile_recursion(), main(), run_recursion()]
-- "unit_lower_test_cases": "cases()" | kind=code-symbol | source=mute/tests/unit/lower_test.cpp:L69 | neighbors=[lower_test.cpp, check(), run_module(), run_source(), main()]
-- "unit_narrowphase_test_main": "main()" | kind=code-symbol | source=engine/physics/tests/unit/narrowphase_test.cpp:L38 | neighbors=[narrowphase_test.cpp, aabb(), sphere(), tod(), v3()]
-- "unit_optimize_test_module_of": "module_of()" | kind=code-symbol | source=mute/tests/unit/optimize_test.cpp:L24 | neighbors=[optimize_test.cpp, cases(), lower_src(), run_base(), run_opt()]
 
 ## Instructions
 

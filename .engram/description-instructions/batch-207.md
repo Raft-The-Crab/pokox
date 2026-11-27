@@ -1,4 +1,4 @@
-# Node Description Batch 208 of 208
+# Node Description Batch 208 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -19,37 +19,53 @@ relations (neighbors) and the provided citations/evidence — e.g.
 Ground entity descriptions in the citations/evidence when present; do not
 speculate beyond the context, so a node with no supporting context may be
 left out of the reply.
-Write every description in English (en). Do not switch languages.
+LANGUAGE: each entry has a `lang=` marker giving the language of its source.
+Write that entry's description in EXACTLY that language. Do not translate to
+a single common language — match each node's source language individually.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "window_sdl_platform_sdlplatform_sdlplatform": ".SdlPlatform()" | kind=code-symbol | source=engine/platform/include/poko/platform/window/sdl_platform.hpp:L15 | neighbors=[~SdlPlatform()]
-- "window_sdl_window_demo_main": "main()" | kind=code-symbol | source=engine/platform/src/window/sdl_window_demo.cpp:L8 | neighbors=[sdl_window_demo.cpp]
-- "work_adapt_blockyr6_rationale_1": "Adapt BlockyR6 for PokoX (same two fixes as BoyR6, different bone names).  Run:" | kind=entity | source=assets/characters/work/adapt_blockyr6.py:L1 | neighbors=[adapt_blockyr6.py]
-- "work_adapt_blockyr6_world_point": "world_point()" | kind=code-symbol | source=assets/characters/work/adapt_blockyr6.py:L53 | neighbors=[adapt_blockyr6.py]
-- "work_adapt_boyr6_bone_world_point": "bone_world_point()" | kind=code-symbol | source=assets/characters/work/adapt_boyr6.py:L86 | neighbors=[adapt_boyr6.py]
-- "work_adapt_boyr6_rationale_1": "Adapt BoyR6 for PokoX.  Fixes:   1. Head shading: collapse the dead customFaces" | kind=entity | source=assets/characters/work/adapt_boyr6.py:L1 | neighbors=[adapt_boyr6.py]
-- "work_mcp_client_rationale_1": "Minimal client for the BlenderMCP TCP socket at 127.0.0.1:9876." | kind=entity | source=assets/characters/work/mcp_client.py:L1 | neighbors=[mcp_client.py]
-- "work_mcp_client_send": "send()" | kind=code-symbol | source=assets/characters/work/mcp_client.py:L9 | neighbors=[mcp_client.py]
-- "work_test_uv_overlap_overlaptests_test_bounding_boxes_overlap_but_triangles_do_not": ".test_bounding_boxes_overlap_but_triangles_do_not()" | kind=code-symbol | source=assets/characters/work/test_uv_overlap.py:L23 | neighbors=[OverlapTests]
-- "work_test_uv_overlap_overlaptests_test_edge_and_point_contact_are_not_overlap": ".test_edge_and_point_contact_are_not_overlap()" | kind=code-symbol | source=assets/characters/work/test_uv_overlap.py:L18 | neighbors=[OverlapTests]
-- "work_test_uv_overlap_overlaptests_test_identical_cross_mesh_triangles_are_detected": ".test_identical_cross_mesh_triangles_are_detected()" | kind=code-symbol | source=assets/characters/work/test_uv_overlap.py:L6 | neighbors=[OverlapTests]
-- "work_test_uv_overlap_overlaptests_test_invalid_values_rejected": ".test_invalid_values_rejected()" | kind=code-symbol | source=assets/characters/work/test_uv_overlap.py:L37 | neighbors=[OverlapTests]
-- "work_test_uv_overlap_overlaptests_test_outside_atlas_and_degenerate": ".test_outside_atlas_and_degenerate()" | kind=code-symbol | source=assets/characters/work/test_uv_overlap.py:L32 | neighbors=[OverlapTests]
-- "work_test_uv_overlap_overlaptests_test_partial_overlap_with_opposite_winding": ".test_partial_overlap_with_opposite_winding()" | kind=code-symbol | source=assets/characters/work/test_uv_overlap.py:L12 | neighbors=[OverlapTests]
-- "work_test_uv_overlap_overlaptests_test_same_mesh_is_not_counted": ".test_same_mesh_is_not_counted()" | kind=code-symbol | source=assets/characters/work/test_uv_overlap.py:L28 | neighbors=[OverlapTests]
-- "work_test_uv_overlap_rationale_1": "Regression tests independent of Blender: python test_uv_overlap.py." | kind=entity | source=assets/characters/work/test_uv_overlap.py:L1 | neighbors=[test_uv_overlap.py]
-- "work_trace_face_dump_tree": "dump_tree()" | kind=code-symbol | source=assets/characters/work/trace_face.py:L3 | neighbors=[trace_face.py]
-- "work_uv_overlap_rationale_1": "Test positive-area overlap between triangles belonging to different meshes.  Sha" | kind=entity | source=assets/characters/work/uv_overlap.py:L1 | neighbors=[uv_overlap.py]
-- "work_uv_overlap_rationale_23": "Return the UV area common to two triangles, independent of winding." | kind=entity | source=assets/characters/work/uv_overlap.py:L23 | neighbors=[intersection_area()]
-- "work_uv_overlap_rationale_47": "Input: iterable of (mesh_name, triangle of three (u,v) pairs).      Returns coun" | kind=entity | source=assets/characters/work/uv_overlap.py:L47 | neighbors=[find_cross_mesh_overlaps()]
-- "work_validate_production_rationale_1": "Validate the opened R6 .blend. Run with Blender background mode.  Example: blend" | kind=entity | source=assets/characters/work/validate_production.py:L1 | neighbors=[validate_production.py]
-- "work_verify_attachment_motion_rationale_1": "Headless attachment smoke test. Does not save any changes to the .blend.  Run: b" | kind=entity | source=assets/characters/work/verify_attachment_motion.py:L1 | neighbors=[verify_attachment_motion.py]
-- "work_verify_attachments_nearest_surface": "nearest_surface()" | kind=code-symbol | source=assets/characters/work/verify_attachments.py:L7 | neighbors=[verify_attachments.py]
-- "work_verify_attachments2_bbox_dist": "bbox_dist()" | kind=code-symbol | source=assets/characters/work/verify_attachments2.py:L7 | neighbors=[verify_attachments2.py]
-- "work_verify_final_attachments_rationale_1": "Definitive attachment connectivity: rotate each ancestor about X, Y and Z. A cor" | kind=entity | source=assets/characters/work/verify_final_attachments.py:L1 | neighbors=[verify_final_attachments.py]
-- "writing_skills_render_graphs_extractgraphbody": "extractGraphBody()" | kind=code-symbol | source=.agents/skills/superpowers-main/skills/writing-skills/render-graphs.js:L38 | neighbors=[render-graphs.js]
+- "warehouse_wh_props_rationale_105": "blue plastic stacking crates with hand-hole recesses" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_props.py:L105 | neighbors=[load_crates()] | lang=en
+- "warehouse_wh_props_rationale_12": "EUR-style pallet: top deck boards, 3 block rows, stringers, bottom boards. lite" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_props.py:L12 | neighbors=[pallet_sub()] | lang=en
+- "warehouse_wh_props_rationale_127": "a stack of empty pallets, slightly misaligned" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_props.py:L127 | neighbors=[pallet_stack()] | lang=en
+- "warehouse_wh_props_rationale_136": "one rack frame: two perforated posts (z0 aisle side, z1 flue side), base plates," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_props.py:L136 | neighbors=[upright_frame()] | lang=en
+- "warehouse_wh_props_rationale_152": "two step beams at level y between uprights x0..x1: front (zf, aisle side) + back" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_props.py:L152 | neighbors=[beam_pair()] | lang=es
+- "warehouse_wh_props_rationale_166": "one 9-stud bay of selective pallet racking, local front (aisle) = -z. double = b" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_props.py:L166 | neighbors=[rack_bay()] | lang=en
+- "warehouse_wh_props_rationale_190": "the last upright frames of a row + yellow end-of-aisle frame protectors (frame=F" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_props.py:L190 | neighbors=[rack_end()] | lang=en
+- "warehouse_wh_props_rationale_32": "one cardboard carton: box with a tape strip over the top and a blank paper label" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_props.py:L32 | neighbors=[carton()] | lang=en
+- "warehouse_wh_props_rationale_57": "stretch-wrapped carton block: brown cartons seen through a milky film; banding s" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_props.py:L57 | neighbors=[load_wrapped()] | lang=pt
+- "warehouse_wh_props_rationale_79": "steel 200 l drum: rolled rims + two rolling hoops" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_props.py:L79 | neighbors=[drum_bm()] | lang=en
+- "warehouse_wh_props_rationale_94": "pillowy bags in brick bond, 4 layers" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_props.py:L94 | neighbors=[load_sacks()] | lang=en
+- "warehouse_wh_struct_rationale_10": "H-section column: base plate + anchor bolts + grout pad, cap plate, optional cra" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_struct.py:L10 | neighbors=[steel_column()] | lang=en
+- "warehouse_wh_struct_rationale_133": "single steel fire door with frame, vision panel, push bar, closer (wall prop, in" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_struct.py:L133 | neighbors=[personnel_door()] | lang=en
+- "warehouse_wh_struct_rationale_148": "crane runway girder segment along x: I-beam 1.4 deep + square rail on top (rail" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_struct.py:L148 | neighbors=[runway_beam()] | lang=en
+- "warehouse_wh_struct_rationale_157": "double-girder overhead travelling crane: box girders along z, end trucks on the" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_struct.py:L157 | neighbors=[crane_bridge()] | lang=en
+- "warehouse_wh_struct_rationale_188": "crab: frame, rope drum, gearbox + motor, two rope falls down to the hook block," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_struct.py:L188 | neighbors=[crane_trolley()] | lang=en
+- "warehouse_wh_struct_rationale_227": "20 ft ISO box: corrugated side + end walls (trapezoid profile), top/bottom rails" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_struct.py:L227 | neighbors=[shipping_container()] | lang=en
+- "warehouse_wh_struct_rationale_281": "roof-light: aluminium upstand frame + glazing bars round a translucent panel (gl" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_struct.py:L281 | neighbors=[skylight()] | lang=pt
+- "warehouse_wh_struct_rationale_36": "pitched lattice truss across the hall (along z), square-hollow chords + webs; si" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_struct.py:L36 | neighbors=[roof_truss()] | lang=en
+- "warehouse_wh_struct_rationale_59": "LED high-bay 'UFO' lamp on a pendant rod: finned heat sink, driver, diffuser glo" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_struct.py:L59 | neighbors=[high_bay()] | lang=pt
+- "warehouse_wh_struct_rationale_74": "loading dock: insulated roller door (open / half / closed) in a 10 x 12 opening," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_struct.py:L74 | neighbors=[dock_door()] | lang=nl
+- "warehouse_wh_veh_rationale_25": "electric counterbalance forklift: yellow body, rounded counterweight, overhead g" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_veh.py:L25 | neighbors=[forklift()] | lang=en
+- "warehouse_wh_veh_rationale_7": "tyre + rim + hub nuts, axle along x, centre c, outer face toward side (+1 = +x)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_veh.py:L7 | neighbors=[wheel()] | lang=en
+- "warehouse_wh_veh_rationale_92": "hand pallet truck: twin forks, pump body, tiller handle (forks toward -z)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_veh.py:L92 | neighbors=[pallet_jack()] | lang=en
+- "warehouse_wh_yard_rationale_12": "truck wheel: deep-sidewall tyre with tread blocks, dished steel disc with 6 hand" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_yard.py:L12 | neighbors=[truck_wheel()] | lang=en
+- "warehouse_wh_yard_rationale_134": "cab-over tractor: high-roof raked cab with round front corners, wrap-round winds" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_yard.py:L134 | neighbors=[tractor_unit()] | lang=en
+- "warehouse_wh_yard_rationale_224": "3D weld-mesh fence panel between two posts: vertical wires, double horizontals," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_yard.py:L224 | neighbors=[fence_panel()] | lang=en
+- "warehouse_wh_yard_rationale_242": "galvanised tapered column on a bolted base, outreach arm, two LED floodlight hea" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_yard.py:L242 | neighbors=[yard_light()] | lang=pt
+- "warehouse_wh_yard_rationale_258": "1100 l steel trade-waste bin: tapered body, two lids, push handles, 4 castors" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_yard.py:L258 | neighbors=[yard_bin()] | lang=en
+- "warehouse_wh_yard_rationale_286": "cast concrete stair from the yard up to the dock floor: steps with steel nosings" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_yard.py:L286 | neighbors=[dock_stair()] | lang=en
+- "warehouse_wh_yard_rationale_37": "moulded wheel-arch liner over the top half of a tyre: a curved strip with a lip," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_yard.py:L37 | neighbors=[wheel_arch()] | lang=en
+- "warehouse_wh_yard_rationale_49": "main + wide-angle mirrors: sculpted housings (body-colour backs, black rims) sta" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_yard.py:L49 | neighbors=[truck_mirrors()] | lang=en
+- "warehouse_wh_yard_rationale_68": "13.6 m box semi-trailer: aluminium-panel body with post ribs, rear doors (open =" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_yard.py:L68 | neighbors=[box_trailer()] | lang=en
+- "warehouse_wh_yard_traffic_cone": "traffic_cone()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_yard.py:L272 | neighbors=[wh_yard.py] | lang=en
+- "warehouse_wh_yard_wheel_chock": "wheel_chock()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/warehouse/wh_yard.py:L279 | neighbors=[wh_yard.py] | lang=en
+- "whispering_grove_forest_map_canopy_shade": "canopy_shade()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_map.py:L365 | neighbors=[forest_map.py] | lang=en
+- "whispering_grove_forest_map_chaikin": "chaikin()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_map.py:L23 | neighbors=[forest_map.py] | lang=en
+- "whispering_grove_forest_map_rationale_168": "yaw (deg) that turns a prop's -Z front toward (tx, tz)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_map.py:L168 | neighbors=[face()] | lang=en
+- "whispering_grove_forest_map_shot": "shot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_map.py:L409 | neighbors=[forest_map.py] | lang=en
+- "whispering_grove_forest_props_prop_init": ".__init__()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/whispering_grove/forest_props.py:L36 | neighbors=[Prop] | lang=en
 
 ## Instructions
 

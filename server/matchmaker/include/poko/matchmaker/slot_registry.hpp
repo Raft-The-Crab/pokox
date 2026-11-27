@@ -73,18 +73,16 @@ public:
     return Register::registered;
   }
 
-  // Heartbeat (POST /dev/slot/heartbeat): refresh the TTL; Full with room
-  // again returns to Ready. Reports never set the count: the registry's
-  // own admission count is the truth (anti-abuse: CCU reports are
-  // cross-checked against admitted tickets), so a forged lower report
-  // cannot free seats, and a higher one cannot exceed the cap. A report
-  // above the cap is clamped for the Full/Ready transition only.
+  // Heartbeat (POST /dev/slot/heartbeat): refresh the TTL only. The
+  // player count is the registry's own admission count — the truth — and
+  // reports can never set it: a forged lower report cannot free seats,
+  // a forged higher one cannot exceed the cap (anti-abuse: CCU reports
+  // are cross-checked against admitted tickets). Full -> Ready happens
+  // only through release (a real departure).
   [[nodiscard]] bool heartbeat(const std::string& slot_id, std::uint32_t reported_players, std::uint64_t now_tick) {
     auto it = slots_.find(slot_id);
     if (it == slots_.end()) return false;
     it->second.last_heartbeat_tick = now_tick;
-    if (it->second.state == State::ready && reported_players >= kMaxPlayersPerSlot)
-      it->second.state = State::full; // the slot process says it is full
     return true;
   }
 

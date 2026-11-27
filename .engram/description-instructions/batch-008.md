@@ -1,4 +1,4 @@
-# Node Description Batch 9 of 208
+# Node Description Batch 9 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -24,6 +24,10 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "candyland_candy_props_cupcake_fountain": "cupcake_fountain()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L282 | neighbors=[candy_props.py, ball(), cupcake_liner(), drip_ring(), lathe(), MS()]
+- "candyland_candy_props_egg_machine": "egg_machine()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L482 | neighbors=[candy_props.py, ball(), candy_egg(), lathe(), MS(), round_prof()]
+- "candyland_candy_props_striped_tube": "striped_tube()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L149 | neighbors=[candy_props.py, bakery_oven(), candy_cane(), candy_castle(), candy_lamp(), cotton_candy_tree()]
+- "candyland_candy_props_sweet_shop": "sweet_shop()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L343 | neighbors=[candy_props.py, SWEET SHOP: gingerbread cottage, chocol…, ball(), gable_roof_bars(), lathe(), MS()]
 - "canyonbazaar_canyon_map_h": "H()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_map.py:L78 | neighbors=[canyon_map.py, ground(), mouth(), on_paving(), tdist(), wall()]
 - "cavemap_cave_map_fungi": "fungi()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_map.py:L566 | neighbors=[cave_map.py, build(), free(), in_hole(), lake_d(), light()]
 - "cavemap_cave_props_strata_mass": "strata_mass()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L85 | neighbors=[cave_props.py, crystal_spray(), geode(), glow_vine(), lake_glow(), mound()]
@@ -32,7 +36,8 @@ one-sentence description — no prose, no markdown fences.
 - "creaturelab_lab_map_build": "build()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_map.py:L570 | neighbors=[lab_map.py, exterior(), garden_paths(), ground(), hall_floor(), hardscape()]
 - "creaturelab_lab_map_exterior": "exterior()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_map.py:L477 | neighbors=[lab_map.py, build(), anchor(), face_in(), free(), path_free()]
 - "creaturelab_lab_props_ring_seg": "ring_seg()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L68 | neighbors=[lab_props.py, arc_wall(), catch_ball(), entrance_canopy(), hall_trim(), lab_wing()]
-- "device_vulkan_clear_renderer": "vulkan_clear_renderer.cpp" | kind=code-symbol | source=engine/rhi/src/device/vulkan_clear_renderer.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, clear_and_present(), draw_and_present(), Impl(), initialize(), native_window()]
+- "device_opengl_clear_renderer": "opengl_clear_renderer.cpp" | kind=code-symbol | source=engine/rhi/src/device/opengl_clear_renderer.cpp:L1 | neighbors=[f4a6ac4 Allowlist known validation-laye…, clear_and_present(), default_framebuffer_is_srgb(), Impl(), initialize(), native_window()]
+- "device_vulkan_mesh_pass": "vulkan_mesh_pass.cpp" | kind=code-symbol | source=engine/rhi/src/device/vulkan_mesh_pass.cpp:L1 | neighbors=[f4a6ac4 Allowlist known validation-laye…, draw(), draw_and_present(), Impl(), set_light_direction(), set_mesh()]
 - "dunedesert_dune_map_build": "build()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L538 | neighbors=[dune_map.py, dig_spots(), fragments(), ground(), horizon(), nature()]
 - "dunedesert_dune_props_frustum": "frustum()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L82 | neighbors=[dune_props.py, obelisk(), obelisk_fallen(), pylon_gate(), quest_stele(), battered block: base w0 x d0 at y0 -> t…]
 - "dunedesert_dune_props_trader_tent": "trader_tent()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L576 | neighbors=[dune_props.py, SHOP: caravan trader's tent: 6 poles, a…, crate(), jar(), lerp(), peg_rope()]
@@ -52,18 +57,13 @@ one-sentence description — no prose, no markdown fences.
 - "oaktrees_gen_trees_canvas": "Canvas" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L114 | neighbors=[gen_trees.py, .capsule_path(), .finish(), .grid(), .__init__(), .leaf()]
 - "onsenvillage_onsen_map_place": "place()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L90 | neighbors=[onsen_map.py, mirror(), nature(), add_owner(), fit(), kit()]
 - "opencode_test_skill_registration": "test-skill-registration.mjs" | kind=code-symbol | source=.agents/skills/superpowers-main/tests/opencode/test-skill-registration.mjs:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, added, failures, fixtureRoot, frontmatterFixtures]
+- "parser_parser": "parser.cpp" | kind=code-symbol | source=mute/src/parser/parser.cpp:L1 | neighbors=[f4a6ac4 Allowlist known validation-laye…, dump_ast(), expr_op(), ExpressionParser, is_assign_op(), name()]
+- "parser_statement": "statement.cpp" | kind=code-symbol | source=mute/src/parser/statement.cpp:L1 | neighbors=[f4a6ac4 Allowlist known validation-laye…, Depth(), dump_statement_ast(), LoopScope(), name(), parse_statements()]
 - "petsim_pet_map_candy": "candy()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L496 | neighbors=[pet_map.py, build(), breakables(), fence_ring(), free(), path_d()]
 - "petsim_pet_map_h": "H()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L51 | neighbors=[pet_map.py, breakables(), egg_stand(), fence_ring(), isle_at(), top_y()]
 - "petsim_pet_map_meadow": "meadow()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L474 | neighbors=[pet_map.py, build(), breakables(), fence_ring(), free(), path_d()]
 - "petsim_pet_map_scatter": "scatter()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/petsim/pet_map.py:L329 | neighbors=[pet_map.py, candy(), crystal(), hub(), meadow(), items = [(key, fn, scale_range)], n tri…]
 - "plusspeed_plus_map_blk": "blk()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_map.py:L19 | neighbors=[plus_map.py, grp(), finish(), floor(), hub(), kerb_x()]
-- "scripts_bind_mesh": "bind_mesh.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-character-rigging/scripts/bind_mesh.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, cleanup(), _ctx(), _heat_scale(), _height()]
-- "scripts_blocks_block": "Block" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/blocks.py:L15 | neighbors=[v4 stadium hub: striped infield inside …, stepped canyon: tier n is a row of 24-w…, race kerb along Z: alternating colour/w…, running-track oval: red lane band, whit…, put theme props on cap tops (centre of …, blocks.py]
-- "scripts_garment": "garment.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-clothing/scripts/garment.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, _drape(), _hide_body(), penetration(), _region()]
-- "scripts_qa_check": "qa_check.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-asset-qa/scripts/qa_check.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, _feeds(), _islands(), _material_issues(), _mesh_world()]
-- "scripts_surface_weather_g": "_G" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/surface_weather.py:L31 | neighbors=[surface_weather.py, build_group(), .__init__(), .link(), .math(), .mix()]
-- "skyrise_sky_map_build": "build()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_map.py:L199 | neighbors=[sky_map.py, face(), island_mesh(), micro_detail(), path_track(), place()]
-- "skyrise_sky_props_lathe": "lathe()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L39 | neighbors=[sky_props.py, cactus(), crystal_node(), egg_shrine(), gem(), ice_spike()]
 
 ## Instructions
 

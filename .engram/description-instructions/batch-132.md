@@ -1,4 +1,4 @@
-# Node Description Batch 133 of 208
+# Node Description Batch 133 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -12,51 +12,60 @@ describing what it is or does. Use only the provided context.
 For a code symbol (kind=code-symbol — a function, class, or constant),
 describe what the function/symbol does based on its name, source location
 and neighbors — e.g. "Resolves the configured ontology profile from graphify.yaml.".
-Write every description in English (en). Do not switch languages.
+For an entity node (any other kind — e.g. a person, place, event, object),
+describe what the entity is and its role, grounded in its type, its
+relations (neighbors) and the provided citations/evidence — e.g.
+"Lady Carfax, a wealthy heiress who disappears en route to Lausanne.".
+Ground entity descriptions in the citations/evidence when present; do not
+speculate beyond the context, so a node with no supporting context may be
+left out of the reply.
+LANGUAGE: each entry has a `lang=` marker giving the language of its source.
+Write that entry's description in EXACTLY that language. Do not translate to
+a single common language — match each node's source language individually.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "src_logging_error": "error()" | kind=code-symbol | source=engine/foundation/src/logging.cpp:L104 | neighbors=[logging.cpp, emit()]
-- "src_logging_info": "info()" | kind=code-symbol | source=engine/foundation/src/logging.cpp:L102 | neighbors=[logging.cpp, emit()]
-- "src_logging_init": "init()" | kind=code-symbol | source=engine/foundation/src/logging.cpp:L66 | neighbors=[logging.cpp, to_spdlog()]
-- "src_logging_trace": "trace()" | kind=code-symbol | source=engine/foundation/src/logging.cpp:L100 | neighbors=[logging.cpp, emit()]
-- "src_logging_warn": "warn()" | kind=code-symbol | source=engine/foundation/src/logging.cpp:L103 | neighbors=[logging.cpp, emit()]
-- "src_loop_alpha": "alpha()" | kind=code-symbol | source=engine/foundation/src/loop.cpp:L55 | neighbors=[loop.cpp, valid_limits()]
-- "src_loop_fixedsteploop": "FixedStepLoop()" | kind=code-symbol | source=engine/foundation/src/loop.cpp:L18 | neighbors=[loop.cpp, to_ns()]
-- "src_narrowphase_aabb_of": "aabb_of()" | kind=code-symbol | source=engine/physics/src/narrowphase.cpp:L602 | neighbors=[narrowphase.cpp, collide()]
-- "src_narrowphase_centroid": "centroid()" | kind=code-symbol | source=engine/physics/src/narrowphase.cpp:L34 | neighbors=[narrowphase.cpp, gjk_distance()]
-- "src_narrowphase_face_barycentric": "face_barycentric()" | kind=code-symbol | source=engine/physics/src/narrowphase.cpp:L318 | neighbors=[narrowphase.cpp, epa_penetration()]
-- "src_narrowphase_local_extent": "local_extent()" | kind=code-symbol | source=engine/physics/src/narrowphase.cpp:L622 | neighbors=[narrowphase.cpp, collide()]
-- "src_narrowphase_local_shape": "local_shape()" | kind=code-symbol | source=engine/physics/src/narrowphase.cpp:L633 | neighbors=[narrowphase.cpp, collide()]
-- "src_narrowphase_tetra_faces": "tetra_faces()" | kind=code-symbol | source=engine/physics/src/narrowphase.cpp:L301 | neighbors=[narrowphase.cpp, epa_penetration()]
-- "src_pokomesh_finite_vec3": "finite_vec3()" | kind=code-symbol | source=engine/resource/src/pokomesh.cpp:L38 | neighbors=[pokomesh.cpp, parse_pokomesh()]
-- "src_pokomesh_read_f32": "read_f32()" | kind=code-symbol | source=engine/resource/src/pokomesh.cpp:L32 | neighbors=[pokomesh.cpp, parse_pokomesh()]
-- "src_pokomesh_read_u32": "read_u32()" | kind=code-symbol | source=engine/resource/src/pokomesh.cpp:L26 | neighbors=[pokomesh.cpp, parse_pokomesh()]
-- "src_sap_broadphase_clear": "clear()" | kind=code-symbol | source=engine/physics/src/sap_broadphase.cpp:L77 | neighbors=[sap_broadphase.cpp, commit()]
-- "src_sap_broadphase_insert": "insert()" | kind=code-symbol | source=engine/physics/src/sap_broadphase.cpp:L7 | neighbors=[sap_broadphase.cpp, commit()]
-- "src_soft_body_apply_acceleration": "apply_acceleration()" | kind=code-symbol | source=engine/physics/src/soft_body.cpp:L95 | neighbors=[soft_body.cpp, step()]
-- "src_solver_begin_step": "begin_step()" | kind=code-symbol | source=engine/physics/src/solver.cpp:L75 | neighbors=[solver.cpp, clear()]
-- "src_solver_tangent_basis": "tangent_basis()" | kind=code-symbol | source=engine/physics/src/solver.cpp:L26 | neighbors=[solver.cpp, solve()]
-- "src_visual_solver_add_collider": "add_collider()" | kind=code-symbol | source=engine/physics/src/visual_solver.cpp:L385 | neighbors=[visual_solver.cpp, add_body()]
-- "src_visual_solver_add_contact": "add_contact()" | kind=code-symbol | source=engine/physics/src/visual_solver.cpp:L169 | neighbors=[visual_solver.cpp, step()]
-- "src_visual_solver_collide_box_box": "collide_box_box()" | kind=code-symbol | source=engine/physics/src/visual_solver.cpp:L104 | neighbors=[visual_solver.cpp, collide_visual()]
-- "src_visual_solver_collide_sphere_sphere": "collide_sphere_sphere()" | kind=code-symbol | source=engine/physics/src/visual_solver.cpp:L48 | neighbors=[visual_solver.cpp, collide_visual()]
-- "src_visual_solver_integrate": "integrate()" | kind=code-symbol | source=engine/physics/src/visual_solver.cpp:L318 | neighbors=[visual_solver.cpp, step()]
-- "src_visual_solver_tangent_basis": "tangent_basis()" | kind=code-symbol | source=engine/physics/src/visual_solver.cpp:L19 | neighbors=[visual_solver.cpp, solve()]
-- "state_state_hash_state": "hash_state()" | kind=code-symbol | source=mute/src/state/state.cpp:L30 | neighbors=[state.cpp, xxhash64()]
-- "state_state_merge": "merge()" | kind=code-symbol | source=mute/src/state/state.cpp:L15 | neighbors=[state.cpp, xxhash64()]
-- "state_state_read32": "read32()" | kind=code-symbol | source=mute/src/state/state.cpp:L11 | neighbors=[state.cpp, xxhash64()]
-- "state_state_read64": "read64()" | kind=code-symbol | source=mute/src/state/state.cpp:L8 | neighbors=[state.cpp, xxhash64()]
-- "state_state_snapshot_append_le": "append_le()" | kind=code-symbol | source=mute/src/state/state_snapshot.cpp:L12 | neighbors=[state_snapshot.cpp, save_state_snapshot()]
-- "state_state_snapshot_read_le": "read_le()" | kind=code-symbol | source=mute/src/state/state_snapshot.cpp:L15 | neighbors=[state_snapshot.cpp, load_state_snapshot()]
-- "stdlib_events_hash": "hash()" | kind=code-symbol | source=mute/src/stdlib/events.cpp:L78 | neighbors=[events.cpp, mix()]
-- "stdlib_events_mix": "mix()" | kind=code-symbol | source=mute/src/stdlib/events.cpp:L11 | neighbors=[events.cpp, hash()]
-- "stdlib_stdlib_collections_erase": "erase()" | kind=code-symbol | source=mute/src/stdlib/stdlib_collections.cpp:L35 | neighbors=[stdlib_collections.cpp, remove()]
-- "stdlib_stdlib_collections_hash": "hash()" | kind=code-symbol | source=mute/src/stdlib/stdlib_collections.cpp:L40 | neighbors=[stdlib_collections.cpp, hash_bytes()]
-- "stdlib_stdlib_collections_hash_bytes": "hash_bytes()" | kind=code-symbol | source=mute/src/stdlib/stdlib_collections.cpp:L10 | neighbors=[stdlib_collections.cpp, hash()]
-- "stdlib_stdlib_collections_keys": "keys()" | kind=code-symbol | source=mute/src/stdlib/stdlib_collections.cpp:L71 | neighbors=[stdlib_collections.cpp, push_back()]
-- "stdlib_stdlib_collections_push_back": "push_back()" | kind=code-symbol | source=mute/src/stdlib/stdlib_collections.cpp:L30 | neighbors=[stdlib_collections.cpp, keys()]
+- "skyrise_sky_props_cloud": "cloud()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L143 | neighbors=[sky_props.py, sphere()] | lang=en
+- "skyrise_sky_props_crystal_node": "crystal_node()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L367 | neighbors=[sky_props.py, lathe()] | lang=en
+- "skyrise_sky_props_ice_spike": "ice_spike()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L400 | neighbors=[sky_props.py, lathe()] | lang=en
+- "skyrise_sky_props_lamp_post": "lamp_post()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L306 | neighbors=[sky_props.py, sphere()] | lang=en
+- "skyrise_sky_props_lava_crack": "lava_crack()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L508 | neighbors=[sky_props.py, glowing zig-zag crack in the ground (fl…] | lang=en
+- "skyrise_sky_props_rationale_133": "small decorative sky rock: grass cap, rock cone, maybe a tiny tree" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L133 | neighbors=[Palette, floating_rock()] | lang=pt
+- "skyrise_sky_props_rationale_159": "bridge from z=0 to z=-L, rising by `rise`: planks (wood) or slabs (stone) with p" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L159 | neighbors=[Palette, bridge()] | lang=en
+- "skyrise_sky_props_rationale_199": "zone gate: two banded stone pillars, arched crest with the zone gem, glowing bar" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L199 | neighbors=[Palette, zone_gate()] | lang=en
+- "skyrise_sky_props_rationale_227": "egg hatch station: tiered round podium, giant spotted egg on a cushion, four cry" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L227 | neighbors=[Palette, egg_shrine()] | lang=pt
+- "skyrise_sky_props_rationale_266": "upgrade booth: counter, striped awning, posts, big glowing up-arrow sign (front" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L266 | neighbors=[Palette, upgrade_stand()] | lang=en
+- "skyrise_sky_props_rationale_316": "simulator puffy tree: curved trunk + 3-6 smooth round canopy balls" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L316 | neighbors=[Palette, puffy_tree()] | lang=en
+- "skyrise_sky_props_rationale_356": "treasure chest, lid open (back +Z hinge), coins + a gem inside" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L356 | neighbors=[Palette, chest()] | lang=pt
+- "skyrise_sky_props_rationale_40": "revolve [(r, y), ...] (bottom -> top) around Y; caps where r == 0 collapse to a" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L40 | neighbors=[Palette, lathe()] | lang=es
+- "skyrise_sky_props_rationale_467": "HERO: giant golden trophy on a tiered marble pedestal; cup with handles, crown +" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L467 | neighbors=[Palette, trophy()] | lang=en
+- "skyrise_sky_props_rationale_66": "faceted octahedron-ish gem standing on its tip" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L66 | neighbors=[Palette, gem()] | lang=en
+- "skyrise_sky_props_rationale_71": "underside of a floating island: rings from the rim inward/down to a tip, strata" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L71 | neighbors=[Palette, island_under()] | lang=en
+- "skyrise_sky_props_snow_tree": "snow_tree()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py:L410 | neighbors=[sky_props.py, lathe()] | lang=en
+- "src_asset_store_assethandle": "AssetHandle()" | kind=code-symbol | source=engine/resource/src/asset_store.cpp:L254 | neighbors=[asset_store.cpp, release()] | lang=en
+- "src_asset_store_is_loading": "is_loading()" | kind=code-symbol | source=engine/resource/src/asset_store.cpp:L195 | neighbors=[asset_store.cpp, load_state()] | lang=en
+- "src_asset_store_load_state": "load_state()" | kind=code-symbol | source=engine/resource/src/asset_store.cpp:L170 | neighbors=[asset_store.cpp, is_loading()] | lang=en
+- "src_asset_store_release": "release()" | kind=code-symbol | source=engine/resource/src/asset_store.cpp:L257 | neighbors=[asset_store.cpp, AssetHandle()] | lang=en
+- "src_camera_look_at": "look_at()" | kind=code-symbol | source=engine/render/src/camera.cpp:L22 | neighbors=[camera.cpp, view_proj()] | lang=en
+- "src_camera_multiply": "multiply()" | kind=code-symbol | source=engine/render/src/camera.cpp:L40 | neighbors=[camera.cpp, view_proj()] | lang=en
+- "src_camera_perspective": "perspective()" | kind=code-symbol | source=engine/render/src/camera.cpp:L11 | neighbors=[camera.cpp, view_proj()] | lang=en
+- "src_cbor_half_to_double": "half_to_double()" | kind=code-symbol | source=engine/foundation/src/cbor.cpp:L82 | neighbors=[cbor.cpp, decode_item()] | lang=en
+- "src_cbor_read_argument": "read_argument()" | kind=code-symbol | source=engine/foundation/src/cbor.cpp:L73 | neighbors=[cbor.cpp, decode_item()] | lang=en
+- "src_cbor_valid_utf8": "valid_utf8()" | kind=code-symbol | source=engine/foundation/src/cbor.cpp:L44 | neighbors=[cbor.cpp, decode_item()] | lang=en
+- "src_character_controller_append_shape_raws": "append_shape_raws()" | kind=code-symbol | source=engine/physics/src/character_controller.cpp:L96 | neighbors=[character_controller.cpp, touch_key()] | lang=en
+- "src_character_controller_planar": "planar()" | kind=code-symbol | source=engine/physics/src/character_controller.cpp:L29 | neighbors=[character_controller.cpp, update()] | lang=en
+- "src_compose_pair": "pair()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/references/images/src/compose.py:L16 | neighbors=[compose.py, pill()] | lang=en
+- "src_compose_pill": "pill()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/references/images/src/compose.py:L11 | neighbors=[compose.py, pair()] | lang=en
+- "src_config_collect_unknown": "collect_unknown()" | kind=code-symbol | source=engine/foundation/src/config.cpp:L82 | neighbors=[config.cpp, load_file()] | lang=en
+- "src_config_fail": "fail()" | kind=code-symbol | source=engine/foundation/src/config.cpp:L14 | neighbors=[config.cpp, load_file()] | lang=en
+- "src_config_parse_level": "parse_level()" | kind=code-symbol | source=engine/foundation/src/config.cpp:L70 | neighbors=[config.cpp, load_file()] | lang=en
+- "src_config_resolve": "resolve()" | kind=code-symbol | source=engine/foundation/src/config.cpp:L172 | neighbors=[config.cpp, load_file()] | lang=en
+- "src_convex_shape": "convex_shape.cpp" | kind=code-symbol | source=engine/physics/src/convex_shape.cpp:L1 | neighbors=[69287a0 Land ENG-60-65 deterministic si…, support()] | lang=en
+- "src_frame_stats_cpu_ms": "cpu_ms()" | kind=code-symbol | source=engine/foundation/src/frame_stats.cpp:L38 | neighbors=[frame_stats.cpp, window_mean()] | lang=en
+- "src_frame_stats_fps": "fps()" | kind=code-symbol | source=engine/foundation/src/frame_stats.cpp:L31 | neighbors=[frame_stats.cpp, window_mean()] | lang=en
+- "src_frame_stats_gpu_ms": "gpu_ms()" | kind=code-symbol | source=engine/foundation/src/frame_stats.cpp:L43 | neighbors=[frame_stats.cpp, window_mean()] | lang=en
+- "src_gallery_flat": "flat()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/references/images/src/gallery.py:L37 | neighbors=[gallery.py, ground()] | lang=en
 
 ## Instructions
 

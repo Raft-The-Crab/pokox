@@ -14,3 +14,6 @@ __pycache__/
 
 # Local list of test environment variable names
 .env.example
+
+# Rust shell bridge (SHL-01) build output
+client/windows/bridge/poko-shell/target/

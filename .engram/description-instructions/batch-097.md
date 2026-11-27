@@ -1,4 +1,4 @@
-# Node Description Batch 98 of 208
+# Node Description Batch 98 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -12,51 +12,58 @@ describing what it is or does. Use only the provided context.
 For a code symbol (kind=code-symbol — a function, class, or constant),
 describe what the function/symbol does based on its name, source location
 and neighbors — e.g. "Resolves the configured ontology profile from graphify.yaml.".
+For an entity node (any other kind — e.g. a person, place, event, object),
+describe what the entity is and its role, grounded in its type, its
+relations (neighbors) and the provided citations/evidence — e.g.
+"Lady Carfax, a wealthy heiress who disappears en route to Lausanne.".
+Ground entity descriptions in the citations/evidence when present; do not
+speculate beyond the context, so a node with no supporting context may be
+left out of the reply.
 Write every description in English (en). Do not switch languages.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "brick_tyrant_rex_brick_render_all": "render_all()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/tyrant_rex_brick.py:L352 | neighbors=[tyrant_rex_brick.py, B()]
-- "brick_tyrant_rex_brick_tooth": "tooth()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/tyrant_rex_brick.py:L203 | neighbors=[tyrant_rex_brick.py, put()]
-- "brick_venom_widow_brick_b": "B()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/venom_widow_brick.py:L256 | neighbors=[venom_widow_brick.py, render_all()]
-- "brick_venom_widow_brick_chain": "chain()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/venom_widow_brick.py:L45 | neighbors=[venom_widow_brick.py, cap()]
-- "brick_venom_widow_brick_exposed": "exposed()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/venom_widow_brick.py:L202 | neighbors=[venom_widow_brick.py, build()]
-- "brick_venom_widow_brick_hourglass": "hourglass()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/venom_widow_brick.py:L80 | neighbors=[venom_widow_brick.py, put()]
-- "brick_venom_widow_brick_lin": "lin()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/venom_widow_brick.py:L201 | neighbors=[venom_widow_brick.py, build()]
-- "brick_venom_widow_brick_newid": "newid()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/venom_widow_brick.py:L50 | neighbors=[venom_widow_brick.py, band()]
-- "brick_venom_widow_brick_render_all": "render_all()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/venom_widow_brick.py:L257 | neighbors=[venom_widow_brick.py, B()]
-- "brick_venom_widow_brick_unit": "unit()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/venom_widow_brick.py:L152 | neighbors=[venom_widow_brick.py, spikes()]
-- "brick_venom_widow_brick_zsurf": "zsurf()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/venom_widow_brick.py:L113 | neighbors=[venom_widow_brick.py, eye()]
-- "brick_volcano_tortoise_brick_b": "B()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/volcano_tortoise_brick.py:L375 | neighbors=[volcano_tortoise_brick.py, render_all()]
-- "brick_volcano_tortoise_brick_exposed": "exposed()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/volcano_tortoise_brick.py:L319 | neighbors=[volcano_tortoise_brick.py, build()]
-- "brick_volcano_tortoise_brick_lin": "lin()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/volcano_tortoise_brick.py:L318 | neighbors=[volcano_tortoise_brick.py, build()]
-- "brick_volcano_tortoise_brick_render_all": "render_all()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/volcano_tortoise_brick.py:L376 | neighbors=[volcano_tortoise_brick.py, B()]
-- "brick_war_mech_brick_b": "B()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/war_mech_brick.py:L366 | neighbors=[war_mech_brick.py, render_all()]
-- "brick_war_mech_brick_cap": "cap()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/war_mech_brick.py:L52 | neighbors=[war_mech_brick.py, pipe()]
-- "brick_war_mech_brick_cell": "cell()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/war_mech_brick.py:L71 | neighbors=[war_mech_brick.py, rivets()]
-- "brick_war_mech_brick_exposed": "exposed()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/war_mech_brick.py:L312 | neighbors=[war_mech_brick.py, build()]
-- "brick_war_mech_brick_lin": "lin()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/war_mech_brick.py:L311 | neighbors=[war_mech_brick.py, build()]
-- "brick_war_mech_brick_newid": "newid()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/war_mech_brick.py:L32 | neighbors=[war_mech_brick.py, put()]
-- "brick_war_mech_brick_obox": "obox()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/war_mech_brick.py:L46 | neighbors=[war_mech_brick.py, finger()]
-- "brick_war_mech_brick_pipe": "pipe()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/war_mech_brick.py:L58 | neighbors=[war_mech_brick.py, cap()]
-- "brick_war_mech_brick_render_all": "render_all()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/war_mech_brick.py:L367 | neighbors=[war_mech_brick.py, B()]
-- "brick_war_rhino_brick_b": "B()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/war_rhino_brick.py:L233 | neighbors=[war_rhino_brick.py, render_all()]
-- "brick_war_rhino_brick_cap": "cap()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/war_rhino_brick.py:L41 | neighbors=[war_rhino_brick.py, chain()]
-- "brick_war_rhino_brick_chain": "chain()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/war_rhino_brick.py:L46 | neighbors=[war_rhino_brick.py, cap()]
-- "brick_war_rhino_brick_exposed": "exposed()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/war_rhino_brick.py:L179 | neighbors=[war_rhino_brick.py, build()]
-- "brick_war_rhino_brick_lin": "lin()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/war_rhino_brick.py:L178 | neighbors=[war_rhino_brick.py, build()]
-- "brick_war_rhino_brick_render_all": "render_all()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/war_rhino_brick.py:L234 | neighbors=[war_rhino_brick.py, B()]
-- "bytecode_bytecode_decode_bytecode": "decode_bytecode()" | kind=code-symbol | source=mute/src/bytecode/bytecode.cpp:L106 | neighbors=[bytecode.cpp, validate_bytecode()]
-- "bytecode_bytecode_encode_bytecode": "encode_bytecode()" | kind=code-symbol | source=mute/src/bytecode/bytecode.cpp:L97 | neighbors=[bytecode.cpp, validate_bytecode()]
-- "bytecode_bytecode_long_payload": "long_payload()" | kind=code-symbol | source=mute/src/bytecode/bytecode.cpp:L33 | neighbors=[bytecode.cpp, assemble_bytecode()]
-- "cad_skill_main_gridfinity_gridfinitybin_body": "._body()" | kind=code-symbol | source=.agents/skills/cad-skill-main/gridfinity.py:L499 | neighbors=[GridfinityBin, .build()]
-- "cad_skill_main_gridfinity_gridfinitybin_floor_z": ".floor_z()" | kind=code-symbol | source=.agents/skills/cad-skill-main/gridfinity.py:L229 | neighbors=[GridfinityBin, Z of the interior floor: base profile p…]
-- "cad_skill_main_gridfinity_gridfinitybin_max_depth": ".max_depth()" | kind=code-symbol | source=.agents/skills/cad-skill-main/gridfinity.py:L234 | neighbors=[GridfinityBin, Deepest cavity possible from the top of…]
-- "cad_skill_main_gridfinity_gridfinitybin_notch_cut": "._notch_cut()" | kind=code-symbol | source=.agents/skills/cad-skill-main/gridfinity.py:L620 | neighbors=[GridfinityBin, .build()]
-- "cad_skill_main_gridfinity_gridfinitybin_polygon_cut": "._polygon_cut()" | kind=code-symbol | source=.agents/skills/cad-skill-main/gridfinity.py:L530 | neighbors=[GridfinityBin, .build()]
-- "cad_skill_main_gridfinity_gridfinitybin_summary": ".summary()" | kind=code-symbol | source=.agents/skills/cad-skill-main/gridfinity.py:L660 | neighbors=[GridfinityBin, One-paragraph description of the built …]
-- "cad_skill_main_mesh_io_bed_fit": "bed_fit()" | kind=code-symbol | source=.agents/skills/cad-skill-main/mesh_io.py:L94 | neighbors=[mesh_io.py, Check a part's bounding box against a b…]
+- "brick_props_brick_rationale_29": "tapered trunk: radius r0 at the base -> r1 at the top, root flare at the bottom," | kind=entity | source=.agents/skills/Voxel Pack/stud/examples/brick/props_brick.py:L29 | neighbors=[trunk(), Grid]
+- "brick_props_brick_rationale_313": "side-profile polygon (x, y fine coords) extruded through |Z| < z: the way to dra" | kind=entity | source=.agents/skills/Voxel Pack/stud/examples/brick/props_brick.py:L313 | neighbors=[poly(), Grid]
+- "brick_props_brick_rationale_327": "thick polyline (bow limbs, strings, thorns) through |Z| < z." | kind=entity | source=.agents/skills/Voxel Pack/stud/examples/brick/props_brick.py:L327 | neighbors=[stroke(), Grid]
+- "brick_props_brick_rationale_342": "dark thorn bow (R=8): limbs curling back with silver inlay, thorn spikes off the" | kind=entity | source=.agents/skills/Voxel Pack/stud/examples/brick/props_brick.py:L342 | neighbors=[thorn_bow(), Grid]
+- "brick_props_brick_rationale_370": "silver + gold sniper rifle, muzzle up: barrel, black muzzle brake with a glow sl" | kind=entity | source=.agents/skills/Voxel Pack/stud/examples/brick/props_brick.py:L370 | neighbors=[sniper(), Grid]
+- "brick_props_brick_rationale_393": "white + silver sci-fi pistol, muzzle up: stepped slide with a dark slot of glowi" | kind=entity | source=.agents/skills/Voxel Pack/stud/examples/brick/props_brick.py:L393 | neighbors=[scifi_pistol(), Grid]
+- "brick_props_brick_rationale_409": "dark assault rifle, muzzle up: body with rail teeth, orange stripes, blue checke" | kind=entity | source=.agents/skills/Voxel Pack/stud/examples/brick/props_brick.py:L409 | neighbors=[assault_rifle(), Grid]
+- "brick_props_brick_rationale_435": "weapon traced 1:1 from a user reference (refs/<name>.npz made by scripts/trace_r" | kind=entity | source=.agents/skills/Voxel Pack/stud/examples/brick/props_brick.py:L435 | neighbors=[traced(), Grid]
+- "brick_props_brick_rationale_47": "mossy ground disc with stepped edge + a few grass tufts so the prop sits on the" | kind=entity | source=.agents/skills/Voxel Pack/stud/examples/brick/props_brick.py:L47 | neighbors=[grass_base(), Grid]
+- "brick_props_brick_rocks": "rocks()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/props_brick.py:L88 | neighbors=[props_brick.py, grass_base()]
+- "brick_props_brick_traced": "traced()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/props_brick.py:L434 | neighbors=[props_brick.py, weapon traced 1:1 from a user reference…]
+- "brick_props_brick_void_crystal_blade": "void_crystal_blade()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/props_brick.py:L230 | neighbors=[props_brick.py, crystal sword after a user reference (R…]
+- "brick_props_brick_well": "well()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/props_brick.py:L97 | neighbors=[props_brick.py, grass_base()]
+- "brick_scarecrow_king_brick_axd": "axd()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scarecrow_king_brick.py:L229 | neighbors=[scarecrow_king_brick.py, chaind()]
+- "brick_scarecrow_king_brick_b": "B()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scarecrow_king_brick.py:L483 | neighbors=[scarecrow_king_brick.py, render_all()]
+- "brick_scarecrow_king_brick_bx": "bx()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scarecrow_king_brick.py:L53 | neighbors=[scarecrow_king_brick.py, patch()]
+- "brick_scarecrow_king_brick_capd": "capd()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scarecrow_king_brick.py:L55 | neighbors=[scarecrow_king_brick.py, chaind()]
+- "brick_scarecrow_king_brick_exposed": "exposed()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scarecrow_king_brick.py:L429 | neighbors=[scarecrow_king_brick.py, build()]
+- "brick_scarecrow_king_brick_fan": "fan()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scarecrow_king_brick.py:L189 | neighbors=[scarecrow_king_brick.py, tuft()]
+- "brick_scarecrow_king_brick_frame": "frame()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scarecrow_king_brick.py:L22 | neighbors=[scarecrow_king_brick.py, switch the coordinate arrays every shap…]
+- "brick_scarecrow_king_brick_h3": "h3()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scarecrow_king_brick.py:L65 | neighbors=[scarecrow_king_brick.py, wood()]
+- "brick_scarecrow_king_brick_lin": "lin()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scarecrow_king_brick.py:L428 | neighbors=[scarecrow_king_brick.py, build()]
+- "brick_scarecrow_king_brick_newid": "newid()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scarecrow_king_brick.py:L72 | neighbors=[scarecrow_king_brick.py, patch()]
+- "brick_scarecrow_king_brick_render_all": "render_all()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scarecrow_king_brick.py:L484 | neighbors=[scarecrow_king_brick.py, B()]
+- "brick_scorpion_king_brick_b": "B()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scorpion_king_brick.py:L270 | neighbors=[scorpion_king_brick.py, render_all()]
+- "brick_scorpion_king_brick_ball": "ball()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scorpion_king_brick.py:L323 | neighbors=[scorpion_king_brick.py, sd_ell()]
+- "brick_scorpion_king_brick_chain": "chain()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scorpion_king_brick.py:L44 | neighbors=[scorpion_king_brick.py, cap()]
+- "brick_scorpion_king_brick_exposed": "exposed()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scorpion_king_brick.py:L216 | neighbors=[scorpion_king_brick.py, build()]
+- "brick_scorpion_king_brick_lin": "lin()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scorpion_king_brick.py:L215 | neighbors=[scorpion_king_brick.py, build()]
+- "brick_scorpion_king_brick_newid": "newid()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scorpion_king_brick.py:L52 | neighbors=[scorpion_king_brick.py, seg()]
+- "brick_scorpion_king_brick_render_all": "render_all()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/scorpion_king_brick.py:L271 | neighbors=[scorpion_king_brick.py, B()]
+- "brick_shop_brick": "shop_brick.py" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/shop_brick.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …]
+- "brick_storm_griffin_brick_arm": "arm()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/storm_griffin_brick.py:L321 | neighbors=[storm_griffin_brick.py, unit()]
+- "brick_storm_griffin_brick_b": "B()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/storm_griffin_brick.py:L451 | neighbors=[storm_griffin_brick.py, render_all()]
+- "brick_storm_griffin_brick_chain": "chain()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/storm_griffin_brick.py:L61 | neighbors=[storm_griffin_brick.py, chain_t()]
+- "brick_storm_griffin_brick_chain_t": "chain_t()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/storm_griffin_brick.py:L50 | neighbors=[storm_griffin_brick.py, chain()]
+- "brick_storm_griffin_brick_exposed": "exposed()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/storm_griffin_brick.py:L394 | neighbors=[storm_griffin_brick.py, build()]
+- "brick_storm_griffin_brick_fdir": "fdir()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/storm_griffin_brick.py:L324 | neighbors=[storm_griffin_brick.py, unit()]
+- "brick_storm_griffin_brick_lin": "lin()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/storm_griffin_brick.py:L393 | neighbors=[storm_griffin_brick.py, build()]
+- "brick_storm_griffin_brick_render_all": "render_all()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/storm_griffin_brick.py:L452 | neighbors=[storm_griffin_brick.py, B()]
 
 ## Instructions
 

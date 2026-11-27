@@ -79,6 +79,12 @@ private:
 
 namespace replay_detail {
 
+// Decoder caps for wire-sourced counts (see decode_replay): a hostile
+// replay must never drive an unbounded allocation.
+inline constexpr std::uint64_t kMaxTicksInReplay = 1 << 20;      // 1,048,576 ticks
+inline constexpr std::uint64_t kMaxFieldsPerTick = 4096;
+inline constexpr std::uint64_t kMaxEventsPerTick = 4096;
+
 inline void cbor_head(std::vector<std::uint8_t>& out, std::uint8_t major, std::uint64_t n) {
   if (n < 24) { out.push_back(static_cast<std::uint8_t>((major << 5) | n)); return; }
   if (n <= 255) { out.push_back(static_cast<std::uint8_t>((major << 5) | 24)); out.push_back(static_cast<std::uint8_t>(n)); return; }
@@ -321,6 +327,9 @@ struct FixedTables {
   if (!c.key("ticks")) return false;
   std::uint8_t major = 0; std::uint64_t n_ticks = 0;
   if (!c.head(major, n_ticks) || major != 4) return false;
+  // Wire-sourced counts are hostile: cap them before any resize so a
+  // forged 64-bit count cannot drive an unbounded allocation (OOM).
+  if (n_ticks > replay_detail::kMaxTicksInReplay) return false;
   out.clear();
   std::vector<ReplayTick> accumulated;
   for (std::uint64_t t = 0; t < n_ticks; ++t) {
@@ -337,6 +346,7 @@ struct FixedTables {
     if (!c.key("fields")) return false;
     std::uint64_t nf = 0;
     if (!c.head(major, nf) || major != 4) return false;
+    if (nf > replay_detail::kMaxFieldsPerTick) return false;
     tick.fields.resize(static_cast<std::size_t>(nf));
     for (std::uint64_t f = 0; f < nf; ++f) {
       std::uint64_t a = 0;
@@ -348,6 +358,7 @@ struct FixedTables {
     if (!c.key("events")) return false;
     std::uint64_t ne = 0;
     if (!c.head(major, ne) || major != 4) return false;
+    if (ne > replay_detail::kMaxEventsPerTick) return false;
     tick.events.resize(static_cast<std::size_t>(ne));
     for (std::uint64_t e = 0; e < ne; ++e) {
       std::uint64_t ep = 0;

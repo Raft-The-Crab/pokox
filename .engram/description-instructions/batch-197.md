@@ -1,4 +1,4 @@
-# Node Description Batch 198 of 208
+# Node Description Batch 198 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -19,51 +19,53 @@ relations (neighbors) and the provided citations/evidence — e.g.
 Ground entity descriptions in the citations/evidence when present; do not
 speculate beyond the context, so a node with no supporting context may be
 left out of the reply.
-Write every description in English (en). Do not switch languages.
+LANGUAGE: each entry has a `lang=` marker giving the language of its source.
+Write that entry's description in EXACTLY that language. Do not translate to
+a single common language — match each node's source language individually.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "triangle_enginefactoryvk_setsampler": "SetSampler()" | kind=code-symbol | source=engine/rhi/tests/fakes/triangle/EngineFactoryVk.h:L31 | neighbors=[EngineFactoryVk.h]
-- "triangle_enginefactoryvk_triangle_fake": "triangle_fake()" | kind=code-symbol | source=engine/rhi/tests/fakes/triangle/EngineFactoryVk.h:L5 | neighbors=[EngineFactoryVk.h]
-- "triangle_enginefactoryvk_unmapbuffer": "UnmapBuffer()" | kind=code-symbol | source=engine/rhi/tests/fakes/triangle/EngineFactoryVk.h:L65 | neighbors=[EngineFactoryVk.h]
-- "triangle_enginefactoryvk_updatetexture": "UpdateTexture()" | kind=code-symbol | source=engine/rhi/tests/fakes/triangle/EngineFactoryVk.h:L68 | neighbors=[EngineFactoryVk.h]
-- "triangle_refcntautoptr_refcntautoptr_refcntautoptr": ".RefCntAutoPtr()" | kind=code-symbol | source=engine/rhi/tests/fakes/triangle/RefCntAutoPtr.hpp:L7 | neighbors=[RefCntAutoPtr]
-- "unit_asset_allocation_test_main": "main()" | kind=code-symbol | source=engine/resource/tests/unit/asset_allocation_test.cpp:L18 | neighbors=[asset_allocation_test.cpp]
-- "unit_bit_buffer_test_main": "main()" | kind=code-symbol | source=server/net/tests/unit/bit_buffer_test.cpp:L11 | neighbors=[bit_buffer_test.cpp]
-- "unit_bytecode_vm_test_main": "main()" | kind=code-symbol | source=mute/tests/unit/bytecode_vm_test.cpp:L14 | neighbors=[bytecode_vm_test.cpp]
-- "unit_check_framegraph_mutations_rationale_1": "Optional fault-sensitivity test; compiles intentional defects in temp files." | kind=entity | source=engine/render/tests/unit/check_framegraph_mutations.py:L1 | neighbors=[check_framegraph_mutations.py]
-- "unit_clear_backend_selection_fake": "Fake()" | kind=code-symbol | source=engine/rhi/tests/unit/clear_backend_selection.cpp:L10 | neighbors=[clear_backend_selection.cpp]
-- "unit_clear_backend_selection_main": "main()" | kind=code-symbol | source=engine/rhi/tests/unit/clear_backend_selection.cpp:L15 | neighbors=[clear_backend_selection.cpp]
-- "unit_config_allocation_test_allocate_or_throw": "allocate_or_throw()" | kind=code-symbol | source=engine/foundation/tests/unit/config_allocation_test.cpp:L17 | neighbors=[config_allocation_test.cpp]
-- "unit_config_allocation_test_main": "main()" | kind=code-symbol | source=engine/foundation/tests/unit/config_allocation_test.cpp:L62 | neighbors=[config_allocation_test.cpp]
-- "unit_config_logging_guard_test_info": "info()" | kind=code-symbol | source=engine/foundation/tests/unit/config_logging_guard_test.cpp:L32 | neighbors=[config_logging_guard_test.cpp]
-- "unit_config_logging_guard_test_init": "init()" | kind=code-symbol | source=engine/foundation/tests/unit/config_logging_guard_test.cpp:L26 | neighbors=[config_logging_guard_test.cpp]
-- "unit_config_logging_guard_test_main": "main()" | kind=code-symbol | source=engine/foundation/tests/unit/config_logging_guard_test.cpp:L36 | neighbors=[config_logging_guard_test.cpp]
-- "unit_config_logging_guard_test_shutdown": "shutdown()" | kind=code-symbol | source=engine/foundation/tests/unit/config_logging_guard_test.cpp:L31 | neighbors=[config_logging_guard_test.cpp]
-- "unit_console_test_main": "main()" | kind=code-symbol | source=mute/tests/unit/console_test.cpp:L19 | neighbors=[console_test.cpp]
-- "unit_console_test_write": "write()" | kind=code-symbol | source=mute/tests/unit/console_test.cpp:L15 | neighbors=[console_test.cpp]
-- "unit_cube_sync_test_main": "main()" | kind=code-symbol | source=server/net/tests/unit/cube_sync_test.cpp:L12 | neighbors=[cube_sync_test.cpp]
-- "unit_declaration_dump_main": "main()" | kind=code-symbol | source=mute/tests/unit/declaration_dump.cpp:L12 | neighbors=[declaration_dump.cpp]
-- "unit_delta_test_main": "main()" | kind=code-symbol | source=server/net/tests/unit/delta_test.cpp:L12 | neighbors=[delta_test.cpp]
-- "unit_deterministic_math_dump_main": "main()" | kind=code-symbol | source=mute/tests/unit/deterministic_math_dump.cpp:L8 | neighbors=[deterministic_math_dump.cpp]
-- "unit_deterministic_math_test_main": "main()" | kind=code-symbol | source=mute/tests/unit/deterministic_math_test.cpp:L12 | neighbors=[deterministic_math_test.cpp]
-- "unit_device_binding_test_main": "main()" | kind=code-symbol | source=server/identity/tests/unit/device_binding_test.cpp:L12 | neighbors=[device_binding_test.cpp]
-- "unit_directional_light_test_main": "main()" | kind=code-symbol | source=engine/rhi/tests/unit/directional_light_test.cpp:L6 | neighbors=[directional_light_test.cpp]
-- "unit_duration_query_state_test_main": "main()" | kind=code-symbol | source=engine/foundation/tests/unit/duration_query_state_test.cpp:L3 | neighbors=[duration_query_state_test.cpp]
-- "unit_evaluator_dump_main": "main()" | kind=code-symbol | source=mute/tests/unit/evaluator_dump.cpp:L16 | neighbors=[evaluator_dump.cpp]
-- "unit_flags_contract_main": "main()" | kind=code-symbol | source=engine/foundation/tests/unit/flags_contract.cpp:L8 | neighbors=[flags_contract.cpp]
-- "unit_frame_graph_test_main": "main()" | kind=code-symbol | source=engine/render/tests/unit/frame_graph_test.cpp:L15 | neighbors=[frame_graph_test.cpp]
-- "unit_frame_test_main": "main()" | kind=code-symbol | source=server/net/tests/unit/frame_test.cpp:L10 | neighbors=[frame_test.cpp]
-- "unit_i_platform_contract_main": "main()" | kind=code-symbol | source=engine/platform/tests/unit/i_platform_contract.cpp:L64 | neighbors=[i_platform_contract.cpp]
-- "unit_imgui_pass_faults_fakeshader": "FakeShader()" | kind=code-symbol | source=engine/rhi/tests/unit/imgui_pass_faults.cpp:L38 | neighbors=[imgui_pass_faults.cpp]
-- "unit_imgui_pass_faults_getenginefactoryvk": "GetEngineFactoryVk()" | kind=code-symbol | source=engine/rhi/tests/unit/imgui_pass_faults.cpp:L26 | neighbors=[imgui_pass_faults.cpp]
-- "unit_lexer_dump_main": "main()" | kind=code-symbol | source=mute/tests/unit/lexer_dump.cpp:L12 | neighbors=[lexer_dump.cpp]
-- "unit_opengl_clear_faults_bind": "bind()" | kind=code-symbol | source=engine/rhi/tests/unit/opengl_clear_faults.cpp:L24 | neighbors=[opengl_clear_faults.cpp]
-- "unit_opengl_clear_faults_get_attachment": "get_attachment()" | kind=code-symbol | source=engine/rhi/tests/unit/opengl_clear_faults.cpp:L25 | neighbors=[opengl_clear_faults.cpp]
-- "unit_opengl_clear_faults_get_error": "get_error()" | kind=code-symbol | source=engine/rhi/tests/unit/opengl_clear_faults.cpp:L26 | neighbors=[opengl_clear_faults.cpp]
-- "unit_opengl_clear_faults_get_int": "get_int()" | kind=code-symbol | source=engine/rhi/tests/unit/opengl_clear_faults.cpp:L23 | neighbors=[opengl_clear_faults.cpp]
-- "unit_opengl_clear_faults_getenginefactoryopengl": "GetEngineFactoryOpenGL()" | kind=code-symbol | source=engine/rhi/tests/unit/opengl_clear_faults.cpp:L70 | neighbors=[opengl_clear_faults.cpp]
+- "towncity_town_landmarks_rationale_242": "copy a temp Prop's solid mesh into P turned by yaw (keeps UVs)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L242 | neighbors=[_merge()] | lang=en
+- "towncity_town_landmarks_rationale_28": "triangular pediment: raking cornices + tympanum + round emblem (no text)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L28 | neighbors=[pediment()] | lang=en
+- "towncity_town_map_road_at": "road_at()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L41 | neighbors=[town_map.py] | lang=en
+- "towncity_town_map_shot": "shot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_map.py:L565 | neighbors=[town_map.py] | lang=en
+- "towncity_town_props_fl": "fl()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_props.py:L49 | neighbors=[town_props.py] | lang=en
+- "towncity_town_props_sh": "sh()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_props.py:L51 | neighbors=[town_props.py] | lang=en
+- "towncity_town_street_hedge": "hedge()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_street.py:L223 | neighbors=[town_street.py] | lang=en
+- "towncity_town_street_hood": "_hood()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_street.py:L33 | neighbors=[town_street.py] | lang=en
+- "towncity_town_street_rationale_111": "municipal bin: base, ribbed teal body, yellow band, dome lid with a dark mouth" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_street.py:L111 | neighbors=[litter_bin()] | lang=en
+- "towncity_town_street_rationale_124": "fire hydrant: lathed red body, bonnet + yellow nut, 3 hose outlets with yellow c" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_street.py:L124 | neighbors=[hydrant()] | lang=en
+- "towncity_town_street_rationale_136": "commercial dumpster: tapered body, rim, two lids (one propped open on a trash ba" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_street.py:L136 | neighbors=[dumpster()] | lang=pt
+- "towncity_town_street_rationale_159": "heap of bin bags + two cardboard boxes" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_street.py:L159 | neighbors=[trash_bags()] | lang=en
+- "towncity_town_street_rationale_170": "3 stacked shipping pallets (deck boards over stringers) + a box on top" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_street.py:L170 | neighbors=[pallets()] | lang=pt
+- "towncity_town_street_rationale_180": "alley wall services (stands against a wall whose face is at z = 0, pieces toward" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_street.py:L180 | neighbors=[wall_pipes()] | lang=en
+- "towncity_town_street_rationale_193": "tree: flared trunk with roots, 4 limbs, 6 overlapping smooth leaf masses as one" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_street.py:L193 | neighbors=[street_tree()] | lang=en
+- "towncity_town_street_rationale_233": "low stone-edged bed with a row of leaf clumps and flowers in alternating colours" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_street.py:L233 | neighbors=[flower_bed()] | lang=en
+- "towncity_town_street_rationale_248": "the street tree pit alone (stone kerb + iron grate + trunk ring): the realistic" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_street.py:L248 | neighbors=[street_grate()] | lang=en
+- "towncity_town_street_rationale_44": "mast-arm signal: base + yellow pole, arm over the road along +X, two 3-lens head" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_street.py:L44 | neighbors=[traffic_light()] | lang=en
+- "towncity_town_street_rationale_72": "park bench: cast-iron scroll ends (profile prism), 4 seat slats + 3 back slats," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_street.py:L72 | neighbors=[bench()] | lang=en
+- "towncity_town_street_rationale_8": "town lantern post: two-step octagonal plinth, tapered shaft with collars, scroll" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_street.py:L8 | neighbors=[street_lamp()] | lang=en
+- "towncity_town_street_rationale_91": "stone planter box: plinth, panelled body, coping, soil, layered shrub + flowers" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_street.py:L91 | neighbors=[planter()] | lang=en
+- "towncity_town_vehicles_rationale_102": "city bus: lofted box body, raked windscreen, window band with pillars, two doors" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_vehicles.py:L102 | neighbors=[bus()] | lang=en
+- "towncity_town_vehicles_rationale_136": "carriage / cab section loft: rounded roof shoulders, raked nose at the front whe" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_vehicles.py:L136 | neighbors=[_car_shell()] | lang=en
+- "towncity_town_vehicles_rationale_164": "commuter train car: lofted shell (teal skirt, yellow belt stripe, cream upper, g" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_vehicles.py:L164 | neighbors=[train_car()] | lang=en
+- "towncity_town_vehicles_rationale_195": "one track segment along Z: ballast bed, 12 sleepers, two rails with chairs" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_vehicles.py:L195 | neighbors=[track_seg()] | lang=en
+- "towncity_town_vehicles_rationale_22": "lofted body: ring per section s (0 front .. 1 rear); belt_f(s) shoulder height," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_vehicles.py:L22 | neighbors=[body_shell()] | lang=it
+- "towncity_town_vehicles_rationale_35": "face colours: rocker + underside dark metal, glass above the belt (except near-f" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_vehicles.py:L35 | neighbors=[body_shader()] | lang=en
+- "towncity_town_vehicles_rationale_54": "stylised car: lofted body + greenhouse, wheels with hubs, grille, head/tail ligh" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_vehicles.py:L54 | neighbors=[car()] | lang=en
+- "transitions_build_transitions_capture": "capture()" | kind=code-symbol | source=assets/characters/transitions/build_transitions.py:L6 | neighbors=[build_transitions.py] | lang=en
+- "transitions_v2_build_transitions_capture": "capture()" | kind=code-symbol | source=assets/characters/transitions-v2/build_transitions.py:L7 | neighbors=[build_transitions.py] | lang=en
+- "transitions_verify_transition_endpoints_diff": "diff()" | kind=code-symbol | source=assets/characters/transitions/verify_transition_endpoints.py:L7 | neighbors=[verify_transition_endpoints.py] | lang=en
+- "transitions_verify_transition_endpoints_pose": "pose()" | kind=code-symbol | source=assets/characters/transitions/verify_transition_endpoints.py:L5 | neighbors=[verify_transition_endpoints.py] | lang=en
+- "triangle_enginefactoryvk_cleardepthstencil": "ClearDepthStencil()" | kind=code-symbol | source=engine/rhi/tests/fakes/triangle/EngineFactoryVk.h:L72 | neighbors=[EngineFactoryVk.h] | lang=en
+- "triangle_enginefactoryvk_clearrendertarget": "ClearRenderTarget()" | kind=code-symbol | source=engine/rhi/tests/fakes/triangle/EngineFactoryVk.h:L71 | neighbors=[EngineFactoryVk.h] | lang=en
+- "triangle_enginefactoryvk_commitshaderresources": "CommitShaderResources()" | kind=code-symbol | source=engine/rhi/tests/fakes/triangle/EngineFactoryVk.h:L69 | neighbors=[EngineFactoryVk.h] | lang=en
+- "triangle_enginefactoryvk_creategraphicspipelinestate": "CreateGraphicsPipelineState()" | kind=code-symbol | source=engine/rhi/tests/fakes/triangle/EngineFactoryVk.h:L57 | neighbors=[EngineFactoryVk.h] | lang=en
+- "triangle_enginefactoryvk_createsampler": "CreateSampler()" | kind=code-symbol | source=engine/rhi/tests/fakes/triangle/EngineFactoryVk.h:L56 | neighbors=[EngineFactoryVk.h] | lang=en
+- "triangle_enginefactoryvk_createshader": "CreateShader()" | kind=code-symbol | source=engine/rhi/tests/fakes/triangle/EngineFactoryVk.h:L54 | neighbors=[EngineFactoryVk.h] | lang=en
+- "triangle_enginefactoryvk_createshaderresourcebinding": "CreateShaderResourceBinding()" | kind=code-symbol | source=engine/rhi/tests/fakes/triangle/EngineFactoryVk.h:L39 | neighbors=[EngineFactoryVk.h] | lang=en
+- "triangle_enginefactoryvk_createtexture": "CreateTexture()" | kind=code-symbol | source=engine/rhi/tests/fakes/triangle/EngineFactoryVk.h:L55 | neighbors=[EngineFactoryVk.h] | lang=en
 
 ## Instructions
 

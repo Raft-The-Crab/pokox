@@ -1,4 +1,4 @@
-# Node Description Batch 68 of 208
+# Node Description Batch 68 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -12,51 +12,60 @@ describing what it is or does. Use only the provided context.
 For a code symbol (kind=code-symbol — a function, class, or constant),
 describe what the function/symbol does based on its name, source location
 and neighbors — e.g. "Resolves the configured ontology profile from graphify.yaml.".
-Write every description in English (en). Do not switch languages.
+For an entity node (any other kind — e.g. a person, place, event, object),
+describe what the entity is and its role, grounded in its type, its
+relations (neighbors) and the provided citations/evidence — e.g.
+"Lady Carfax, a wealthy heiress who disappears en route to Lausanne.".
+Ground entity descriptions in the citations/evidence when present; do not
+speculate beyond the context, so a node with no supporting context may be
+left out of the reply.
+LANGUAGE: each entry has a `lang=` marker giving the language of its source.
+Write that entry's description in EXACTLY that language. Do not translate to
+a single common language — match each node's source language individually.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "dunedesert_dune_map_sub": "sub()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L24 | neighbors=[dune_map.py, place(), static()]
-- "dunedesert_dune_map_t_local": "T_local()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L74 | neighbors=[dune_map.py, H(), temple-local (lx across the trench, lz …]
-- "dunedesert_dune_props_campfire": "campfire()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L720 | neighbors=[dune_props.py, spike_flame(), stone ring, crossed logs, flame glow, a…]
-- "dunedesert_dune_props_column_set": "column_set()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L342 | neighbors=[dune_props.py, column(), kind 0 standing column, 1 broken column…]
-- "dunedesert_dune_props_dry_shrub": "dry_shrub()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L871 | neighbors=[dune_props.py, lerp(), desert scrub: a woody tangle of forking…]
-- "dunedesert_dune_props_dune_grass": "dune_grass()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L883 | neighbors=[dune_props.py, V(), tuft of tall pale dune grass: tapered f…]
-- "dunedesert_dune_props_grid_disc": "grid_disc()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L791 | neighbors=[dune_props.py, oasis_pool(), flat disc split into rings / sectors of…]
-- "dunedesert_dune_props_jar": "jar()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L571 | neighbors=[dune_props.py, cargo_pile(), trader_tent()]
-- "dunedesert_dune_props_oasis_pool": "oasis_pool()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L754 | neighbors=[dune_props.py, grid_disc(), oasis: a round pool (r 10) with a turqu…]
-- "dunedesert_dune_props_peg_rope": "peg_rope()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L546 | neighbors=[dune_props.py, sleep_tent(), trader_tent()]
-- "dunedesert_dune_props_rock_stack": "rock_stack()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L959 | neighbors=[dune_props.py, wind-cut sandstone stack: 3-5 rounded s…, V()]
-- "dunedesert_dune_props_ruin_arch": "ruin_arch()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L321 | neighbors=[dune_props.py, free-standing broken arch: block piers,…, sun_relief()]
-- "dunedesert_gen_trees_with_palms_canvas_grid": ".grid()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L127 | neighbors=[Canvas, .capsule_path(), .leaf()]
-- "dunedesert_gen_trees_with_palms_canvas_over": ".over()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L120 | neighbors=[Canvas, .capsule_path(), .leaf()]
-- "dunedesert_gen_trees_with_palms_twig_atlas": "twig_atlas()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/gen_trees_with_palms.py:L308 | neighbors=[gen_trees_with_palms.py, Canvas, .finish()]
-- "dunedesert_hooks_lua": "hooks_lua.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/hooks_lua.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, lua_attrs()]
-- "effekseer_ai_authoring_cutoff_easing": "cutoff_easing()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/authoring.py:L80 | neighbors=[authoring.py, .advanced(), {'start','end','easing'} equivalent of …]
-- "effekseer_ai_authoring_layerbuilder_curve": ".curve()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/authoring.py:L137 | neighbors=[LayerBuilder, .scalar(), .layer()]
-- "effekseer_ai_cli_build_parser": "build_parser()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L129 | neighbors=[cli.py, main(), Build the CLI parser without accessing …]
-- "effekseer_ai_cli_main": "main()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/cli.py:L210 | neighbors=[cli.py, build_parser(), _emit()]
-- "effekseer_ai_init": "__init__.py" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/__init__.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, Python access to the official Effekseer…]
-- "effekseer_ai_runtime_editor_bin_directory": "editor_bin_directory()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/runtime.py:L14 | neighbors=[runtime.py, load_core(), Return the configured directory contain…]
-- "effekseer_ai_runtime_export_binary": "export_binary()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/runtime.py:L66 | neighbors=[runtime.py, load_core(), Export the current Core document as an …]
-- "effekseer_ai_runtime_runtime_config_path": "runtime_config_path()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/runtime.py:L35 | neighbors=[runtime.py, load_core(), Return the bundled .NET runtime configu…]
-- "effekseer_ai_session_effectsession_add_node": ".add_node()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L56 | neighbors=[EffectSession, ._node(), Add a Core node and return its AI-facin…]
-- "effekseer_ai_session_effectsession_assign_value": "._assign_value()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L352 | neighbors=[EffectSession, .property_set(), Write scalar values through nested Core…]
-- "effekseer_ai_session_effectsession_curve_keys": ".curve_keys()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L207 | neighbors=[EffectSession, ._object_at_path(), Read a scalar curve as JSON-friendly ke…]
-- "effekseer_ai_session_effectsession_rename_node": ".rename_node()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L78 | neighbors=[EffectSession, ._node(), Rename a node through its Core string v…]
-- "effekseer_ai_session_effectsession_settings_list": ".settings_list()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L181 | neighbors=[EffectSession, .property_list(), Discover parameters grouped as they are…]
-- "effekseer_ai_session_effectsession_settings_set": ".settings_set()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/session.py:L196 | neighbors=[EffectSession, .property_set(), Set a batch of panel-relative editable …]
-- "effekseer_ai_settings": "settings.py" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/effekseer_ai/settings.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, Names of node setting panels exposed by…]
-- "eggplots_egg_map_free": "free()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_map.py:L93 | neighbors=[egg_map.py, dressing(), look()]
-- "eggplots_egg_map_h": "H()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_map.py:L53 | neighbors=[egg_map.py, isle_d(), Hg()]
-- "eggplots_egg_map_isle_d": "isle_d()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_map.py:L49 | neighbors=[egg_map.py, dressing(), H()]
-- "eggplots_egg_map_sub": "sub()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_map.py:L22 | neighbors=[egg_map.py, place(), static()]
-- "eggplots_egg_map_to_world": "to_world()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_map.py:L99 | neighbors=[egg_map.py, plot(), spawn_area()]
-- "eggplots_egg_props_bench": "bench()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L787 | neighbors=[egg_props.py, rbox(), sh()]
-- "eggplots_egg_props_collect_pad": "collect_pad()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L249 | neighbors=[egg_props.py, sh(), cash collect pad: octagon stone ring, a…]
-- "eggplots_egg_props_flower_patch": "flower_patch()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L832 | neighbors=[egg_props.py, sh(), ground flowers: a tuft of leaves + 5-7 …]
-- "eggplots_egg_props_flower_tub": "flower_tub()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/eggplots/egg_props.py:L421 | neighbors=[egg_props.py, sh(), half-barrel planter: honey staves with …]
+- "cavemap_cave_props_lake_glow": "lake_glow()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L465 | neighbors=[cave_props.py, strata_mass(), flat rounded glowing stones for the lak…] | lang=en
+- "cavemap_cave_props_moss_cap": "moss_cap()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L112 | neighbors=[cave_props.py, thick moss shell over the up-facing par…, rock_layered()] | lang=en
+- "cavemap_cave_props2_rail_seg": "rail_seg()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L45 | neighbors=[cave_props2.py, W(), 6-stud track: two I-profile rails on 3 …] | lang=en
+- "cavemap_cave_props3_glowroot": "glowroot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props3.py:L391 | neighbors=[cave_props3.py, glowroot_check(), THE GLOWROOT (hero): an ancient root ma…] | lang=en
+- "cavemap_cave_props3_quest_board": "quest_board()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props3.py:L184 | neighbors=[cave_props3.py, boards(), notice board: two posts on stone feet, …] | lang=en
+- "cavemap_cave_props3_shed_roof": "shed_roof()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props3.py:L14 | neighbors=[cave_props3.py, mine_shop(), overlapping board-and-batten shed roof …] | lang=en
+- "cavemap_hooks_lua": "hooks_lua.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/hooks_lua.py:L1 | neighbors=[lua_attrs(), 2680d0e Pushed an update., e77fa31 Add new skills and asset packs …] | lang=en
+- "cavemap_palette_sheet": "palette_sheet.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/palette_sheet.py:L1 | neighbors=[rgb(), 2680d0e Pushed an update., e77fa31 Add new skills and asset packs …] | lang=en
+- "cavemap_post_export": "post_export.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/post_export.py:L1 | neighbors=[kind(), 2680d0e Pushed an update., e77fa31 Add new skills and asset packs …] | lang=en
+- "clearbackend": "ClearBackend" | kind=code-symbol | neighbors=[OpenGLClearBackend, VulkanClearBackend, OpenGLESClearBackend] | lang=en
+- "clothing_test_append_actions": "test_append_actions.py" | kind=code-symbol | source=assets/characters/clothing/test_append_actions.py:L1 | neighbors=[f4a6ac4 Allowlist known validation-laye…, 52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …] | lang=en
+- "clothing_validate_looks": "validate_looks.py" | kind=code-symbol | source=assets/characters/clothing/validate_looks.py:L1 | neighbors=[f4a6ac4 Allowlist known validation-laye…, 52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …] | lang=en
+- "commit:repo:github.com/Raft-The-Crab/pokox@080a665a43f8021b82b26ff0124f5457feefea02": "080a665 Refresh graph after MUT-21 package resolver" | kind=Commit | source=git | neighbors=[main, e685cdf Add MUT-22 aggregate VM value a…, c7e951a Add MUT-21 package, import and …] | lang=pt
+- "commit:repo:github.com/Raft-The-Crab/pokox@0ab64e551168f8acc9a1a4bd06290630700757ae": "0ab64e5 Refresh graph after lowering assignments/phis" | kind=Commit | source=git | neighbors=[main, 14e66c1 Add assignments and loop-carrie…, 2c0194b Add assignments and loop-carrie…] | lang=en
+- "commit:repo:github.com/Raft-The-Crab/pokox@13dbd75204f6997de20d6a8e44defeb4e4a2fba2": "13dbd75 Refresh graph after MUT-25 SSA IR" | kind=Commit | source=git | neighbors=[main, 335e0dc Add MUT-26 IR-to-bytecode emitt…, fd66d0d Add MUT-25 typed SSA IR and ver…] | lang=en
+- "commit:repo:github.com/Raft-The-Crab/pokox@14e66c1c921431938335ff8de7be27cca14760e3": "14e66c1 Add assignments and loop-carried phis to Mute lowering" | kind=Commit | source=git | neighbors=[0ab64e5 Refresh graph after lowering as…, main, 807b9d3 Refresh graph after lowering as…] | lang=en
+- "commit:repo:github.com/Raft-The-Crab/pokox@45151c3daa9e4abf995cd7dcac6ec859fa07637c": "45151c3 Refresh graph after MUT-26 emitter" | kind=Commit | source=git | neighbors=[335e0dc Add MUT-26 IR-to-bytecode emitt…, main, 85b7130 Close MUT-26 limits: AST-to-SSA…] | lang=en
+- "commit:repo:github.com/Raft-The-Crab/pokox@56f527149399959d8cfb6ad256efa717166e3464": "56f5271 Refresh graph after MUT-21/22 audit fixes" | kind=Commit | source=git | neighbors=[main, 964ba8a Resolve MUT-22 values runtime l…, 5edd00c Fix MUT-21/22 audit defects in …] | lang=en
+- "commit:repo:github.com/Raft-The-Crab/pokox@69e798fccf8d916e746fb063555ff96693f36772": "69e798f Refresh graph after MUT-22 values runtime" | kind=Commit | source=git | neighbors=[main, 5edd00c Fix MUT-21/22 audit defects in …, e685cdf Add MUT-22 aggregate VM value a…] | lang=en
+- "commit:repo:github.com/Raft-The-Crab/pokox@716dc6c0363ad7a59454440af1a5606cc656b1d5": "716dc6c Refresh graph after MUT-23 scheduler" | kind=Commit | source=git | neighbors=[435b4d3 Add MUT-23 cooperative async sc…, main, 037434c Add MUT-24 determinism and capa…] | lang=en
+- "commit:repo:github.com/Raft-The-Crab/pokox@807b9d30c2d18e80397d9869312d64c829cacfbf": "807b9d3 Refresh graph after lowering assignments/phis" | kind=Commit | source=git | neighbors=[14e66c1 Add assignments and loop-carrie…, main, 90b7d79 Add for-range lowering to Mute …] | lang=en
+- "commit:repo:github.com/Raft-The-Crab/pokox@94d15469b0a8a6342a366d49057df0c5ee76f74c": "94d1546 Updated markdowns." | kind=Commit | source=git | neighbors=[1dac49d Created NET-01 to NET-09, Start…, main, 6568dc9 Update from ML AI Code] | lang=en
+- "commit:repo:github.com/Raft-The-Crab/pokox@97595370296038b36610809e376f29a3b90e679f": "9759537 Refresh graph after MUT-24 determinism analysis" | kind=Commit | source=git | neighbors=[037434c Add MUT-24 determinism and capa…, main, fd66d0d Add MUT-25 typed SSA IR and ver…] | lang=en
+- "commit:repo:github.com/Raft-The-Crab/pokox@9f1db236ec8e13698a5175419824a41e2e5266e7": "9f1db23 Record CI fix and green run evidence" | kind=Commit | source=git | neighbors=[main, 668ca72 Wait for X11 console input read…, d6139c3 Fix X11 test click helper argum…] | lang=en
+- "commit:repo:github.com/Raft-The-Crab/pokox@d14bc19be3490a321501bae30454f0ed852ca967": "d14bc19 Refresh graph after MUT-26 lowering" | kind=Commit | source=git | neighbors=[85b7130 Close MUT-26 limits: AST-to-SSA…, main, 2c0194b Add assignments and loop-carrie…] | lang=en
+- "commit:repo:github.com/Raft-The-Crab/pokox@dd14e7e63752ec67847380a4ba755b990cd1e9b3": "dd14e7e Refresh graph after MUT-22 limits fix" | kind=Commit | source=git | neighbors=[964ba8a Resolve MUT-22 values runtime l…, main, 435b4d3 Add MUT-23 cooperative async sc…] | lang=en
+- "commit:repo:github.com/Raft-The-Crab/pokox@e04375a18955a4063ba2531b5e2af19713ec6c02": "e04375a Run tests" | kind=Commit | source=git | neighbors=[1c81e45 Update from ML AI Code, main, ba75e97 Update FUNDING.yml with additio…] | lang=pt
+- "commit:repo:github.com/Raft-The-Crab/pokox@fc4604e3a06e0737a402b1f54dad07d0e348ea8c": "fc4604e Record CI billing block and X11 readiness fix" | kind=Commit | source=git | neighbors=[668ca72 Wait for X11 console input read…, main, c7e951a Add MUT-21 package, import and …] | lang=en
+- "console_console_append": "append()" | kind=code-symbol | source=mute/src/console/console.cpp:L157 | neighbors=[console.cpp, decode_utf8(), is_format_control()] | lang=en
+- "console_console_diagnostic": "diagnostic()" | kind=code-symbol | source=mute/src/console/console.cpp:L16 | neighbors=[console.cpp, execute_console_impl(), numeric()] | lang=en
+- "console_console_evaluate_console": "evaluate_console()" | kind=code-symbol | source=mute/src/console/console.cpp:L71 | neighbors=[console.cpp, numeric(), execute_console_impl()] | lang=en
+- "console_console_number": "number()" | kind=code-symbol | source=mute/src/console/console.cpp:L26 | neighbors=[console.cpp, execute_console_impl(), numeric()] | lang=en
+- "creaturelab_lab_map_anchor": "anchor()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_map.py:L83 | neighbors=[lab_map.py, exterior(), stations()] | lang=en
+- "creaturelab_lab_map_face_in": "face_in()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_map.py:L34 | neighbors=[lab_map.py, exterior(), stations()] | lang=en
+- "creaturelab_lab_map_path_free": "path_free()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_map.py:L472 | neighbors=[lab_map.py, exterior(), near_poly()] | lang=en
+- "creaturelab_lab_map_path_z_y": "path_z_y()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_map.py:L181 | neighbors=[lab_map.py, exterior(), hardscape()] | lang=en
+- "creaturelab_lab_map_set_roof": "set_roof()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_map.py:L634 | neighbors=[lab_map.py, sub(), shot()] | lang=en
+- "creaturelab_lab_map_to_world": "to_world()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_map.py:L79 | neighbors=[lab_map.py, exterior(), stations()] | lang=en
+- "creaturelab_lab_props_adeg": "adeg()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L794 | neighbors=[lab_props.py, hall_trim(), rotunda()] | lang=en
+- "creaturelab_lab_props_ball_lineup": "ball_lineup()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1912 | neighbors=[lab_props.py, catch_ball(), QA sheet prop: the four tiers in a row …] | lang=en
 
 ## Instructions
 

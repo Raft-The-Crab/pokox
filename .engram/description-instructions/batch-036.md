@@ -1,4 +1,4 @@
-# Node Description Batch 37 of 208
+# Node Description Batch 37 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -17,6 +17,19 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "input_input_snapshot_hash": "hash()" | kind=code-symbol | source=mute/src/input/input_snapshot.cpp:L236 | neighbors=[input_snapshot.cpp, put16(), put32(), put64(), put8()]
+- "input_input_snapshot_put64": "put64()" | kind=code-symbol | source=mute/src/input/input_snapshot.cpp:L18 | neighbors=[input_snapshot.cpp, encode(), hash(), put8(), snapshot_hash()]
+- "input_input_snapshot_read_bytes": "read_bytes()" | kind=code-symbol | source=mute/src/input/input_snapshot.cpp:L31 | neighbors=[input_snapshot.cpp, get16(), get32(), get64(), get8()]
+- "input_input_snapshot_snapshot_hash": "snapshot_hash()" | kind=code-symbol | source=mute/src/input/input_snapshot.cpp:L321 | neighbors=[input_snapshot.cpp, at(), put32(), put64(), put_event()]
+- "integration_config_file_test_put_kv": "put_kv()" | kind=code-symbol | source=engine/foundation/tests/integration/config_file_test.cpp:L55 | neighbors=[config_file_test.cpp, put_t(), test_config(), test_decoder(), test_resolve()]
+- "integration_config_file_test_put_map": "put_map()" | kind=code-symbol | source=engine/foundation/tests/integration/config_file_test.cpp:L41 | neighbors=[config_file_test.cpp, head(), test_config(), test_decoder(), test_resolve()]
+- "integration_config_file_test_put_t": "put_t()" | kind=code-symbol | source=engine/foundation/tests/integration/config_file_test.cpp:L36 | neighbors=[config_file_test.cpp, put_kv(), head(), test_config(), test_decoder()]
+- "integration_config_file_test_put_u": "put_u()" | kind=code-symbol | source=engine/foundation/tests/integration/config_file_test.cpp:L34 | neighbors=[config_file_test.cpp, head(), test_config(), test_decoder(), test_resolve()]
+- "integration_test_cube_x11_smoke": "test_cube_x11_smoke.py" | kind=code-symbol | source=engine/render/tests/integration/test_cube_x11_smoke.py:L1 | neighbors=[f4a6ac4 Allowlist known validation-laye…, find_window(), main(), 52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
+- "integration_test_imgui_toggle_x11": "test_imgui_toggle_x11.py" | kind=code-symbol | source=engine/render/tests/integration/test_imgui_toggle_x11.py:L1 | neighbors=[f4a6ac4 Allowlist known validation-laye…, find_window(), main(), 52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
+- "integration_test_uniform_x11_visual": "test_uniform_x11_visual.py" | kind=code-symbol | source=engine/render/tests/integration/test_uniform_x11_visual.py:L1 | neighbors=[f4a6ac4 Allowlist known validation-laye…, find_window(), pixel(), 52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
+- "integration_test_word_reservations": "test_word_reservations.py" | kind=code-symbol | source=backend/storage/d1/tests/integration/test_word_reservations.py:L1 | neighbors=[f4a6ac4 Allowlist known validation-laye…, ReservationMigrationTests, SQLite-level tests for the D1 word-rese…, 52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
+- "medievalbattle_battle_map_courtyard": "courtyard()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L284 | neighbors=[battle_map.py, sub(), X(), keep(), flagstone courtyard inside a keep (stat…]
 - "medievalbattle_battle_map_ground_shade": "ground_shade()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L164 | neighbors=[battle_map.py, keep_w(), road_d(), trench_drop(), column per face (grass / road dirt / fo…]
 - "medievalbattle_battle_map_road_d": "road_d()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_map.py:L67 | neighbors=[battle_map.py, ground_shade(), H(), on_road(), seg_d()]
 - "medievalbattle_battle_props_buttress": "buttress()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/medievalbattle/battle_props.py:L717 | neighbors=[battle_props.py, merge(), stone(), stepped buttress in canonical orientati…, ruined_chapel()]
@@ -33,30 +46,17 @@ one-sentence description — no prose, no markdown fences.
 - "moonclean_moon_props_floodlight": "floodlight()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L592 | neighbors=[moon_props.py, beam(), lathe(), torus(), hub floodlight mast: tripod foot, taper…]
 - "moonclean_moon_props_port": "port()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L101 | neighbors=[moon_props.py, moon_rocket(), torus(), round port window: steel frame ring + r…, reentry_pod()]
 - "moonclean_moon_props_vac_pack": "vac_pack()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/moonclean/moon_props.py:L198 | neighbors=[moon_props.py, gear_locker(), vacuum backpack: twin tanks, frame, dus…, lathe(), torus()]
-- "mute_parser": "parser.hpp" | kind=code-symbol | source=mute/include/poko/mute/parser.hpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, Ast, ExpressionParser, to_arithmetic(), c7a411f Fix MUT-01-20 audit defects in …]
+- "musl_math_cos": "cos.cpp" | kind=code-symbol | source=mute/third_party/musl_math/cos.cpp:L1 | neighbors=[f4a6ac4 Allowlist known validation-laye…, cosine(), kernel_cos(), 52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
+- "musl_math_sin": "sin.cpp" | kind=code-symbol | source=mute/third_party/musl_math/sin.cpp:L1 | neighbors=[f4a6ac4 Allowlist known validation-laye…, kernel_sin(), sine(), 52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
+- "mute_bytecode": "bytecode.hpp" | kind=code-symbol | source=mute/include/poko/mute/bytecode.hpp:L1 | neighbors=[85b7130 Close MUT-26 limits: AST-to-SSA…, 952997e Audit MUT-01-55 and harden veri…, f4a6ac4 Allowlist known validation-laye…, 52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
+- "mute_declaration": "declaration.hpp" | kind=code-symbol | source=mute/include/poko/mute/declaration.hpp:L1 | neighbors=[f4a6ac4 Allowlist known validation-laye…, DeclarationAst, DeclarationParser, 52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
+- "mute_statement": "statement.hpp" | kind=code-symbol | source=mute/include/poko/mute/statement.hpp:L1 | neighbors=[f4a6ac4 Allowlist known validation-laye…, StatementAst, StatementParser, 52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
 - "namedtuple": "NamedTuple" | kind=code-symbol | neighbors=[_Compartments, _CylinderPocket, _Notch, _Pocket, _PolygonPocket]
 - "net_crypto_aead_chacha20_xor": "chacha20_xor()" | kind=code-symbol | source=server/net/include/poko/net/crypto_aead.hpp:L81 | neighbors=[crypto_aead.hpp, aead_open(), aead_seal(), chacha20_block(), store32_le()]
 - "net_crypto_aead_poly1305_mac": "poly1305_mac()" | kind=code-symbol | source=server/net/include/poko/net/crypto_aead.hpp:L93 | neighbors=[crypto_aead.hpp, aead_open(), aead_seal(), load32_le(), store32_le()]
 - "net_delta": "delta.hpp" | kind=code-symbol | source=server/net/include/poko/net/delta.hpp:L1 | neighbors=[1dac49d Created NET-01 to NET-09, Start…, decode_delta(), DeltaSchema, encode_delta(), ResendWindow]
 - "net_ws_transport": "ws_transport.hpp" | kind=code-symbol | source=server/net/include/poko/net/ws_transport.hpp:L1 | neighbors=[1dac49d Created NET-01 to NET-09, Start…, ws_decode(), ws_encode_client(), ws_encode_server(), ws_roundtrip()]
 - "oaktrees_gen_trees_bark_fir": "bark_fir()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L100 | neighbors=[gen_trees.py, fft_noise(), normal_from_height(), ramp(), fir / spruce: scaly grey-brown plates w…]
-- "oaktrees_gen_trees_branch_length": ".length()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L343 | neighbors=[Branch, card_quads(), conifer_cards(), .children_of(), .laterals()]
-- "oaktrees_gen_trees_canvas_finish": ".finish()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L186 | neighbors=[Canvas, normal_from_height(), leaf_atlas(), needle_atlas(), twig_atlas()]
-- "oaktrees_gen_trees_conifer_cards": "conifer_cards()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L619 | neighbors=[gen_trees.py, .at(), .length(), rand_unit(), needle-spray cards along every branch /…]
-- "oaktrees_gen_trees_get_materials": "get_materials()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L991 | neighbors=[gen_trees.py, _img(), material(), make_tree(), Trunk / Branches / Leaves materials for…]
-- "oaktrees_gen_trees_needle_atlas": "needle_atlas()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L210 | neighbors=[gen_trees.py, Canvas, .capsule_path(), .finish(), 4 x 4 fir sprays: a central twig with p…]
-- "oaktrees_gen_trees_normal_from_height": "normal_from_height()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L42 | neighbors=[gen_trees.py, bark_birch(), bark_fir(), bark_oak(), .finish()]
-- "oaktrees_gen_trees_ramp": "ramp()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L66 | neighbors=[gen_trees.py, bark_birch(), bark_fir(), bark_oak(), t array -> colour from [(pos, (r,g,b)),…]
-- "oaktrees_gen_trees_rand_unit": "rand_unit()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L346 | neighbors=[gen_trees.py, card_quads(), conifer_cards(), .grow(), .grow_roots()]
-- "oaktrees_gen_trees_tree_build_conifer": ".build_conifer()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L450 | neighbors=[Tree, .build(), .at(), .grow(), .laterals()]
-- "oaktrees_gen_trees_tree_grow_roots": ".grow_roots()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/oaktrees/gen_trees.py:L426 | neighbors=[surface roots: leave the trunk foot out…, Tree, .build(), Branch, rand_unit()]
-- "onsenvillage_onsen_map_free": "free()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L119 | neighbors=[onsen_map.py, add_owner(), look(), nature(), steam()]
-- "onsenvillage_onsen_map_ground": "ground()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L194 | neighbors=[onsen_map.py, build(), mountains(), static(), stage ground (smooth: banks, stream bed…]
-- "onsenvillage_onsen_map_reserve": "reserve()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L120 | neighbors=[onsen_map.py, build(), nature(), stories(), village()]
-- "onsenvillage_onsen_map_stories": "stories()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L409 | neighbors=[onsen_map.py, build(), clusters of 2-4 at the stairs and bridg…, place(), reserve()]
-- "onsenvillage_onsen_map_water": "water()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_map.py:L263 | neighbors=[onsen_map.py, build(), stream + front pool surface: 4-stud cel…, H(), static()]
-- "onsenvillage_onsen_props_balcony": "balcony()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L176 | neighbors=[onsen_props.py, giboshi(), lerp(), house(), deck on brackets along a wall at z (sid…]
-- "onsenvillage_onsen_props_skirt_roof": "skirt_roof()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/onsenvillage/onsen_props.py:L118 | neighbors=[onsen_props.py, house(), pagoda(), pent roof around a storey (pagoda tiers…, flared_roof()]
 
 ## Instructions
 

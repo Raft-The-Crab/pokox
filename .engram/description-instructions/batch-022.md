@@ -1,4 +1,4 @@
-# Node Description Batch 23 of 208
+# Node Description Batch 23 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -17,8 +17,24 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "scripts_pro_lib_out": "Out" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L363 | neighbors=[pro_lib.py, .add(), .build(), .g(), .gadd(), .__init__()]
+- "scripts_qa_check_run": "run()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-asset-qa/scripts/qa_check.py:L178 | neighbors=[qa_check.py, _islands(), _material_issues(), _mesh_world(), _point_in_tri(), _result()]
+- "scripts_scene_mood_world": "_world()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-time-of-day/scripts/scene_mood.py:L174 | neighbors=[scene_mood.py, Build ENV_World. Returns horizontal amb…, run(), _lerp_table(), lum(), _math()]
+- "scripts_shapekeys": "shapekeys.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-facial-shapekeys/scripts/shapekeys.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, _co(), _get(), _keys(), run()]
+- "scripts_stress_poses": "stress_poses.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-character-rigging/scripts/stress_poses.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, _find(), _rotate(), run(), _side()]
+- "scripts_surface_weather_g_n": ".n()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/surface_weather.py:L44 | neighbors=[build_group(), _G, .math(), .mix(), .mrange(), .noise()]
+- "scripts_surface_weather_run": "run()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/surface_weather.py:L317 | neighbors=[surface_weather.py, _apply_mat(), build_group(), _remove_mat(), _snow_material(), _snow_tree()]
+- "scripts_surface_weather_snow_tree": "_snow_tree()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/surface_weather.py:L246 | neighbors=[surface_weather.py, run(), _G, .link(), .math(), .n()]
+- "scripts_template_engine_eachnode": "EachNode" | kind=code-symbol | source=.agents/skills/skills-main/play/play-policy-insights/scripts/template_engine.py:L114 | neighbors=[template_engine.py, compile_template(), .__init__(), .render(), ._render_children(), Node]
+- "scripts_template_engine_node": "Node" | kind=code-symbol | source=.agents/skills/skills-main/play/play-policy-insights/scripts/template_engine.py:L39 | neighbors=[template_engine.py, EachNode, IfNode, .render(), Base class for all Abstract Syntax Tree…, TextNode]
+- "scripts_terrain_run": "run()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-environment-kits/scripts/terrain.py:L157 | neighbors=[terrain.py, _erode(), _heightmap(), _material(), _noise_field(), _save_png16()]
+- "scripts_texel_density": "texel_density.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-retopology-uv/scripts/texel_density.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, _islands(), _measure(), run(), _uv_area()]
+- "scripts_vse_edit": "vse_edit.py" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-video-editing/scripts/vse_edit.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, _add_clip(), _frames(), _output(), run()]
+- "semantic_emit_emit_bytecode": "emit_bytecode()" | kind=code-symbol | source=mute/src/semantic/emit.cpp:L36 | neighbors=[emit.cpp, alu(), br16(), br32(), is_terminator_pub(), mk()]
+- "semantic_optimize": "optimize.cpp" | kind=code-symbol | source=mute/src/semantic/optimize.cpp:L1 | neighbors=[0621f1d Merge pull request #1 from Raft…, 34ca6de Fix GCC/Clang build: add <algor…, e499073 Add MUT-29 dead-code eliminatio…, eliminate_dead_code(), is_pure(), is_terminator()]
+- "skyrise_sky_map_on_bridge_line": "on_bridge_line()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_map.py:L121 | neighbors=[sky_map.py, micro_detail(), segd(), rim_dress(), sky_dressing(), summit()]
+- "skyrise_sky_map_rim": "rim()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/skyrise/sky_map.py:L33 | neighbors=[sky_map.py, bridge_ends(), island_at(), island_mesh(), micro_detail(), rim_dress()]
 - "src_narrowphase_collide": "collide()" | kind=code-symbol | source=engine/physics/src/narrowphase.cpp:L672 | neighbors=[narrowphase.cpp, aabb_of(), collide_local(), local_extent(), local_shape(), to_world()]
-- "state_state_snapshot": "state_snapshot.cpp" | kind=code-symbol | source=mute/src/state/state_snapshot.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, append_le(), load_state_snapshot(), read_le(), save_state_snapshot(), schema_for()]
 - "stdlib_stdlib_physics": "stdlib_physics.cpp" | kind=code-symbol | source=mute/src/stdlib/stdlib_physics.cpp:L1 | neighbors=[2680d0e Pushed an update., 5106553 MUT-42: physics hostcall implem…, 78dbd1e Merge pull request #7 from Raft…, fixed_from_raw(), physics_hostcall_defs(), physics_raycast()]
 - "sugarworks_sugar_props_exchange": "exchange()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/sugarworks/sugar_props.py:L293 | neighbors=[sugar_props.py, dome(), sphere(), stripes(), subdiv_line(), torus()]
 - "tests_fixtures_mesh_object": "mesh_object()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/fixtures.py:L7 | neighbors=[fixtures.py, cube(), detached_part(), plane(), simple_character(), uv_sphere()]
@@ -41,22 +57,6 @@ one-sentence description — no prose, no markdown fences.
 - "towncity_town_props_v3": "V3()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_props.py:L47 | neighbors=[town_props.py, awning_band(), fire_escape(), flower(), flower_box(), ring_frame()]
 - "towncity_town_vehicles_car": "car()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_vehicles.py:L53 | neighbors=[town_vehicles.py, body_shader(), body_shell(), _smoothstep(), taxi(), wheels()]
 - "unit_capability_test_main": "main()" | kind=code-symbol | source=mute/tests/unit/capability_test.cpp:L60 | neighbors=[capability_test.cpp, ceiling(), check(), def(), narrowed_module(), run_err()]
-- "unit_character_controller_test_main": "main()" | kind=code-symbol | source=engine/physics/tests/unit/character_controller_test.cpp:L120 | neighbors=[character_controller_test.cpp, aabb(), params(), tod(), todv(), v3()]
-- "unit_debugger_test_cases": "cases()" | kind=code-symbol | source=mute/tests/unit/debugger_test.cpp:L20 | neighbors=[debugger_test.cpp, arith(), check(), divzero(), imm(), pay()]
-- "unit_fold_test_cases": "cases()" | kind=code-symbol | source=mute/tests/unit/fold_test.cpp:L41 | neighbors=[fold_test.cpp, check(), count_op(), i32t(), run_source(), val()]
-- "unit_imgui_pass_faults": "imgui_pass_faults.cpp" | kind=code-symbol | source=engine/rhi/tests/unit/imgui_pass_faults.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, FakeShader(), GetEngineFactoryVk(), main(), reset(), write_spirv()]
-- "unit_input_snapshot_test_record_hashes": "record_hashes()" | kind=code-symbol | source=mute/tests/unit/input_snapshot_test.cpp:L43 | neighbors=[input_snapshot_test.cpp, main(), button(), key(), motion(), simple()]
-- "unit_lexer_test": "lexer_test.cpp" | kind=code-symbol | source=mute/tests/unit/lexer_test.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, check(), error(), main(), test_cases(), unicode_conformance()]
-- "unit_pokomesh_test": "pokomesh_test.cpp" | kind=code-symbol | source=engine/resource/tests/unit/pokomesh_test.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, main(), make_pmes(), put32(), putf(), write()]
-- "unit_solver_test_main": "main()" | kind=code-symbol | source=engine/physics/tests/unit/solver_test.cpp:L49 | neighbors=[solver_test.cpp, body(), contact(), fx(), statics(), tod()]
-- "unit_ssa_test_cases": "cases()" | kind=code-symbol | source=mute/tests/unit/ssa_test.cpp:L28 | neighbors=[ssa_test.cpp, check(), has(), i32(), v(), valid_module()]
-- "unit_stdlib_math_test": "stdlib_math_test.cpp" | kind=code-symbol | source=mute/tests/unit/stdlib_math_test.cpp:L1 | neighbors=[1c81e45 Update from ML AI Code, 5eb3f50 Mute det_pow: integer-exponent …, 952997e Audit MUT-01-55 and harden veri…, 9eeb3ff Merge pull request #2 from Raft…, main(), near()]
-- "unit_values_test": "values_test.cpp" | kind=code-symbol | source=mute/tests/unit/values_test.cpp:L1 | neighbors=[5edd00c Fix MUT-21/22 audit defects in …, 964ba8a Resolve MUT-22 values runtime l…, e685cdf Add MUT-22 aggregate VM value a…, cases(), check(), main()]
-- "unit_vulkan_mesh_pass_test": "vulkan_mesh_pass_test.cpp" | kind=code-symbol | source=engine/rhi/tests/unit/vulkan_mesh_pass_test.cpp:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, draw_and_present(), main(), messages(), VulkanClearRenderer(), VulkanDiagnostics()]
-- "valleylake_valley_map_build_profile": "build_profile()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L490 | neighbors=[valley_map.py, build(), foot_need(), H(), rim_point(), rim_r()]
-- "valleylake_valley_map_cliff_clear": "cliff_clear()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L558 | neighbors=[valley_map.py, H(), prof(), cliffs(), clip_fail(), nature()]
-- "valleylake_valley_map_ground": "ground()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L239 | neighbors=[valley_map.py, build(), H(), polar(), prof(), rim_s()]
-- "valleylake_valley_map_place_soft": "place_soft()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L206 | neighbors=[valley_map.py, build(), clip_fail(), place(), surface_y(), unplace()]
 
 ## Instructions
 

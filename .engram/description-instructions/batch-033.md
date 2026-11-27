@@ -1,4 +1,4 @@
-# Node Description Batch 34 of 208
+# Node Description Batch 34 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -24,6 +24,18 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
+- "canyonbazaar_canyon_map_path_x": "path_x()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_map.py:L93 | neighbors=[canyon_map.py, on_paving(), cx(), paving(), main path centre: follows the canyon, s…]
+- "canyonbazaar_canyon_map_paving": "paving()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_map.py:L255 | neighbors=[canyon_map.py, build(), path_x(), static(), _stones()]
+- "canyonbazaar_canyon_map_reserve": "reserve()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_map.py:L162 | neighbors=[canyon_map.py, build(), nature(), set_pieces(), stories()]
+- "canyonbazaar_canyon_map_under_wall": "under_wall()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_map.py:L137 | neighbors=[canyon_map.py, place(), True where the built cliff mesh (vertic…, free(), H()]
+- "canyonbazaar_canyon_map_wall": "wall()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_map.py:L48 | neighbors=[canyon_map.py, H(), stepped mesa profile at t studs past th…, levels(), shelf1()]
+- "canyonbazaar_canyon_props_relic_kiosk": "relic_kiosk()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_props.py:L668 | neighbors=[canyon_props.py, RELIC / PET station on the ledge: a sma…, dais(), pot(), sign_board()]
+- "cavemap_cave_map_anchor": "anchor()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_map.py:L201 | neighbors=[cave_map.py, build(), landmarks(), rails(), under_lake()]
+- "cavemap_cave_map_look": "look()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_map.py:L724 | neighbors=[cave_map.py, free(), H(), sky_at(), wd()]
+- "cavemap_cave_map_sky_at": "sky_at()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_map.py:L32 | neighbors=[cave_map.py, build(), landmarks(), look(), shapes()]
+- "cavemap_cave_ores_cart_load": "cart_load()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_ores.py:L135 | neighbors=[cave_ores.py, druse(), mound(), ore_lump(), v2 load: lumps packed into the tub mout…]
+- "cavemap_cave_ores_ore_lump": "ore_lump()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_ores.py:L47 | neighbors=[cave_ores.py, cart_load(), _lump(), ore_pile(), one ore lump: host rock faces + metalli…]
+- "cavemap_cave_props_jitter": "jitter()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L78 | neighbors=[cave_props.py, geode(), low-frequency noise displacement along …, stalactite(), stalagmite()]
 - "cavemap_cave_props_stalactite": "stalactite()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L210 | neighbors=[cave_props.py, hanging dripstone cluster: one long rin…, drip_profile(), jitter(), V()]
 - "cavemap_cave_props2_blob": "blob()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L9 | neighbors=[cave_props2.py, cart_load(), mine_frame(), mine_lantern_post(), ore_pile()]
 - "cavemap_cave_props2_ore_pile": "ore_pile()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L230 | neighbors=[cave_props2.py, blob(), logp(), W(), heap of broken ore with glowing crystal…]
@@ -52,18 +64,6 @@ one-sentence description — no prose, no markdown fences.
 - "creaturelab_lab_props_round_planter": "round_planter()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1068 | neighbors=[lab_props.py, round white planter with a mint band + …, merge_prop(), round_bush(), .add()]
 - "creaturelab_lab_props_sale_stand": "sale_stand()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1630 | neighbors=[lab_props.py, Shop story: A-frame sidewalk stand with…, capsule(), rbox(), .add()]
 - "creaturelab_lab_props_skel_grow": ".grow()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1945 | neighbors=[fiddle_fig(), park_tree(), Skel, lerp(), .add()]
-- "creaturelab_lab_props_skin_mesh": "skin_mesh()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1922 | neighbors=[lab_props.py, fiddle_fig(), olive_tree(), park_tree(), branching skeleton -> one smooth trunk …]
-- "creaturelab_lab_props_starter_table": "starter_table()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L715 | neighbors=[lab_props.py, starter-capsule table: round white pede…, capsule(), rbox(), .add()]
-- "creaturelab_lab_props_topiary_hedge": "topiary_hedge()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1501 | neighbors=[lab_props.py, clipped hedge with a smooth rounded pro…, ball(), rbox(), .add()]
-- "creaturelab_lab_props_wing_trim": "wing_trim()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1347 | neighbors=[lab_props.py, lab wing interior trim + ceiling beams …, rbox(), ring_seg(), .add()]
-- "creaturelab_lab_props_wood_sh": "wood_sh()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1952 | neighbors=[lab_props.py, fiddle_fig(), olive_tree(), park_tree(), lerp()]
-- "dunedesert_dune_map_dig_spots": "dig_spots()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L467 | neighbors=[dune_map.py, build(), anchor(), place(), reserve()]
-- "dunedesert_dune_map_horizon": "horizon()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L301 | neighbors=[dune_map.py, build(), H(), static(), distant tiered mesas + buttes far outsi…]
-- "dunedesert_dune_map_paving": "paving()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_map.py:L322 | neighbors=[dune_map.py, build(), H(), static(), worn flagstone slabs over the city + th…]
-- "dunedesert_dune_paint": "dune_paint.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_paint.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …, _hex(), paint_block(), remap()]
-- "dunedesert_dune_props_block_wall": "block_wall()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L114 | neighbors=[dune_props.py, wall of REAL bevelled blocks through th…, ruin_house(), ruin_wall(), sunken_temple()]
-- "dunedesert_dune_props_camel": "camel()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L655 | neighbors=[dune_props.py, sheet(), uvsphere(), V(), stylised camel (smooth hide): ellipsoid…]
-- "dunedesert_dune_props_column": "column()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/dunedesert/dune_props.py:L137 | neighbors=[dune_props.py, column_set(), square base + torus, drummed 10-sided s…, step_pyramid(), sunken_temple()]
 
 ## Instructions
 

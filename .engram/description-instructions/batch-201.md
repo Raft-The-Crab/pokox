@@ -1,4 +1,4 @@
-# Node Description Batch 202 of 208
+# Node Description Batch 202 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -19,53 +19,51 @@ relations (neighbors) and the provided citations/evidence — e.g.
 Ground entity descriptions in the citations/evidence when present; do not
 speculate beyond the context, so a node with no supporting context may be
 left out of the reply.
-LANGUAGE: each entry has a `lang=` marker giving the language of its source.
-Write that entry's description in EXACTLY that language. Do not translate to
-a single common language — match each node's source language individually.
+Write every description in English (en). Do not switch languages.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "vfxkit_examples_rationale_1": "Shipped example effects: four ranged pairs (projectile + impact), five single ef" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/examples.py:L1 | neighbors=[examples.py] | lang=en
-- "vfxkit_examples_rationale_122": "`show` for one effect, or for every effect of a named example (a pair shows proj" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/examples.py:L122 | neighbors=[show_any()] | lang=en
-- "vfxkit_examples_rationale_88": "Layer plan with absolute frames, so an example can be read as a timeline before" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/examples.py:L88 | neighbors=[show()] | lang=en
-- "vfxkit_filelock_acquire": "acquire()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/filelock.py:L12 | neighbors=[filelock.py] | lang=en
-- "vfxkit_filelock_rationale_1": "Exclusive, blocking, cross-process file locks on macOS, Linux and Windows. Stand" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/filelock.py:L1 | neighbors=[filelock.py] | lang=en
-- "vfxkit_filelock_release": "release()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/filelock.py:L21 | neighbors=[filelock.py] | lang=en
-- "vfxkit_finalize_finalize": "finalize()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/finalize.py:L7 | neighbors=[finalize.py] | lang=en
-- "vfxkit_finalize_rationale_1": "Package current generated assets; never invent test/device verification results." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/finalize.py:L1 | neighbors=[finalize.py] | lang=en
-- "vfxkit_handoff_rationale_1": "Everything an independent reviewer needs for one capture, as a prompt the author" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/handoff.py:L1 | neighbors=[handoff.py] | lang=en
-- "vfxkit_handoff_rationale_19": "The vfx-review skill installed next to this one (both folders are installed side" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/handoff.py:L19 | neighbors=[reviewer_skill()] | lang=en
-- "vfxkit_init_rationale_1": "effekseer-vfx toolchain: recipe primitives, lint, Core build, Godot review and e" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/__init__.py:L1 | neighbors=[__init__.py] | lang=en
-- "vfxkit_library_helperfinder_find_spec": ".find_spec()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/library.py:L21 | neighbors=[HelperFinder] | lang=en
-- "vfxkit_library_rationale_1": "The project's effect library: one recipe source per effect in vfx/src/<ID>.py." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/library.py:L1 | neighbors=[library.py] | lang=en
-- "vfxkit_library_rationale_17": "Resolves `_name` helpers in vfx/src. It sits at the end of sys.meta_path and vfx" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/library.py:L17 | neighbors=[HelperFinder] | lang=en
-- "vfxkit_library_rationale_62": "Every recipe; any source that fails to load fails the call (full builds and full" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/library.py:L62 | neighbors=[library()] | lang=en
-- "vfxkit_library_rationale_67": "Recipes for `ids` must load; the rest are loaded best-effort as context for cros" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/library.py:L67 | neighbors=[partial()] | lang=en
-- "vfxkit_lint_rationale_1": "Static recipe checks. Needs neither EffekseerCore nor Godot, so it also runs in" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/lint.py:L1 | neighbors=[lint.py] | lang=en
-- "vfxkit_lint_rationale_202": "Pairs in one category whose elements differ in fewer than MIN_DIFFERENCES featur" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/lint.py:L202 | neighbors=[compare_elements()] | lang=en
-- "vfxkit_lint_rationale_213": "Lint `recipes`; element differences are judged against `context` (default: the r" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/lint.py:L213 | neighbors=[lint_library()] | lang=en
-- "vfxkit_lint_rationale_28": "Screen feedback is game data (Vfx.gd emits it as screen_cue): keep it in the ran" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/lint.py:L28 | neighbors=[screen_errors()] | lang=en
-- "vfxkit_lint_rationale_43": "Frames after the start at which the reference performance releases sustained lay" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/lint.py:L43 | neighbors=[release_frames()] | lang=en
-- "vfxkit_lint_rationale_58": "White-hot: very bright and nearly unsaturated, so warm whites count and acid gre" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/lint.py:L58 | neighbors=[hot()] | lang=en
-- "vfxkit_lint_rationale_68": "Coarse motion tags for the element-difference check." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/lint.py:L68 | neighbors=[moves()] | lang=en
-- "vfxkit_lint_rationale_88": "What a layer draws: renderer plus its texture or procedural mesh shape." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/lint.py:L88 | neighbors=[look()] | lang=en
-- "vfxkit_ownership_rationale_1": "Which effects and files in a workspace this skill built, so it only ever deletes" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/ownership.py:L1 | neighbors=[ownership.py] | lang=en
-- "vfxkit_ownership_rationale_24": "Built by this skill, so a full build may remove it once its source is gone." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/ownership.py:L24 | neighbors=[owned()] | lang=en
-- "vfxkit_ownership_rationale_46": "Effect files this skill did not build: unowned manifest entries and .efkefc file" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/ownership.py:L46 | neighbors=[unmanaged()] | lang=en
-- "vfxkit_ownership_rationale_61": "Comparison key of a resource name: Unicode NFC, then case folded. The default ma" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/ownership.py:L61 | neighbors=[name_key()] | lang=en
-- "vfxkit_ownership_rationale_71": "Whether an effect file (whose dependencies are not recorded) could reference res" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/ownership.py:L71 | neighbors=[may_use()] | lang=en
-- "vfxkit_ownership_rationale_89": "`path` (after resolving symlinks) lies within `folder`." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/ownership.py:L89 | neighbors=[inside()] | lang=en
-- "vfxkit_ownership_rationale_94": "Raise unless writing `path` stays inside `folder`: its parent resolves inside, a" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/ownership.py:L94 | neighbors=[guard()] | lang=pt
-- "vfxkit_paths_rationale_1": "Where the skill's own files live, where the toolchain is installed and which gam" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/paths.py:L1 | neighbors=[paths.py] | lang=en
-- "vfxkit_paths_rationale_22": "`vfx init` has run here: a vfx/ folder that merely exists (another tool's output" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/paths.py:L22 | neighbors=[initialized()] | lang=en
-- "vfxkit_paths_rationale_36": "Where build and render (EffekseerCore through .NET, the Effekseer Godot plugin)" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/paths.py:L36 | neighbors=[full_mode_platform()] | lang=en
-- "vfxkit_paths_rationale_47": "How to run setup on this system, as a command an agent can run from the project." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/paths.py:L47 | neighbors=[setup_command()] | lang=en
-- "vfxkit_paths_rationale_55": "Godot 4 executable: GODOT, then `godot` (or `godot4`) on PATH, then the standard" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/paths.py:L55 | neighbors=[godot()] | lang=en
-- "vfxkit_primitives_rationale_1": "Composable layer primitives for effect recipes: `from vfxkit.primitives import *" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/primitives.py:L1 | neighbors=[primitives.py] | lang=en
-- "vfxkit_primitives_rationale_102": "Emissive-to-smoke afterimage: the same stroke, alpha-blended grey, a few frames" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/primitives.py:L102 | neighbors=[decay()] | lang=en
-- "vfxkit_primitives_rationale_112": "A very long, very thin accent line (aspect > 40:1) that shoots out to full lengt" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/primitives.py:L112 | neighbors=[slice_line()] | lang=en
-- "vfxkit_primitives_rationale_118": "Directional burst: particles fly to a random point in the world-space box `end`" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/primitives.py:L118 | neighbors=[spray()] | lang=en
+- "unit_vulkan_clear_faults_sdl_quitsubsystem": "SDL_QuitSubSystem()" | kind=code-symbol | source=engine/rhi/tests/unit/vulkan_clear_faults.cpp:L59 | neighbors=[vulkan_clear_faults.cpp]
+- "unit_vulkan_diagnostics_filter_test_main": "main()" | kind=code-symbol | source=engine/rhi/tests/unit/vulkan_diagnostics_filter_test.cpp:L5 | neighbors=[vulkan_diagnostics_filter_test.cpp]
+- "unit_vulkan_mesh_pass_test_draw_and_present": "draw_and_present()" | kind=code-symbol | source=engine/rhi/tests/unit/vulkan_mesh_pass_test.cpp:L18 | neighbors=[vulkan_mesh_pass_test.cpp]
+- "unit_vulkan_mesh_pass_test_main": "main()" | kind=code-symbol | source=engine/rhi/tests/unit/vulkan_mesh_pass_test.cpp:L23 | neighbors=[vulkan_mesh_pass_test.cpp]
+- "unit_vulkan_mesh_pass_test_messages": "messages()" | kind=code-symbol | source=engine/rhi/tests/unit/vulkan_mesh_pass_test.cpp:L14 | neighbors=[vulkan_mesh_pass_test.cpp]
+- "unit_vulkan_mesh_pass_test_vulkanclearrenderer": "VulkanClearRenderer()" | kind=code-symbol | source=engine/rhi/tests/unit/vulkan_mesh_pass_test.cpp:L16 | neighbors=[vulkan_mesh_pass_test.cpp]
+- "unit_vulkan_mesh_pass_test_vulkandiagnostics": "VulkanDiagnostics()" | kind=code-symbol | source=engine/rhi/tests/unit/vulkan_mesh_pass_test.cpp:L12 | neighbors=[vulkan_mesh_pass_test.cpp]
+- "unit_vulkan_triangle_pass_test_messages": "messages()" | kind=code-symbol | source=engine/rhi/tests/unit/vulkan_triangle_pass_test.cpp:L14 | neighbors=[vulkan_triangle_pass_test.cpp]
+- "unit_vulkan_triangle_pass_test_vulkanclearrenderer": "VulkanClearRenderer()" | kind=code-symbol | source=engine/rhi/tests/unit/vulkan_triangle_pass_test.cpp:L16 | neighbors=[vulkan_triangle_pass_test.cpp]
+- "unit_vulkan_triangle_pass_test_vulkandiagnostics": "VulkanDiagnostics()" | kind=code-symbol | source=engine/rhi/tests/unit/vulkan_triangle_pass_test.cpp:L12 | neighbors=[vulkan_triangle_pass_test.cpp]
+- "unit_worker_auth_test_fake_rsa_verify": "fake_rsa_verify()" | kind=code-symbol | source=server/identity/tests/unit/worker_auth_test.cpp:L24 | neighbors=[worker_auth_test.cpp]
+- "unit_ws_transport_test_main": "main()" | kind=code-symbol | source=server/net/tests/unit/ws_transport_test.cpp:L15 | neighbors=[ws_transport_test.cpp]
+- "unit_xor_fec_test_main": "main()" | kind=code-symbol | source=server/net/tests/unit/xor_fec_test.cpp:L12 | neighbors=[xor_fec_test.cpp]
+- "valleylake_paint_rationale_112": "palette UVs (u column, v shade) -> atlas UVs, in place on an MB (Roblox-space ve" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/paint.py:L112 | neighbors=[remap()]
+- "valleylake_paint_rationale_132": "patch the grove machinery: atlas instead of the strip, UV remap in mesh_from" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/paint.py:L132 | neighbors=[install()]
+- "valleylake_paint_rationale_22": "periodic FFT noise in [-1, 1]; aniso > 1 stretches features along x (brush strok" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/paint.py:L22 | neighbors=[fnoise()]
+- "valleylake_paint_rationale_31": "leaf / dab stamps: (value field, rim-highlight field) both periodic, rotated poi" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/paint.py:L31 | neighbors=[stamps()]
+- "valleylake_paint_rationale_96": "the 1024 px atlas image for a pro_lib Palette (column order = pal.names)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/paint.py:L96 | neighbors=[atlas()]
+- "valleylake_valley_map_rationale_428": "point on the rim superellipse at angle th (+ extra studs outward)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L428 | neighbors=[rim_point()]
+- "valleylake_valley_map_rationale_54": "signed distance-ish to the shore (negative = in the water)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L54 | neighbors=[lake_d()]
+- "valleylake_valley_map_rationale_559": "True if no cliff rises above y (default: the floor) within r + CLEAR of (x, z)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L559 | neighbors=[cliff_clear()]
+- "valleylake_valley_map_shot": "shot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L955 | neighbors=[valley_map.py]
+- "valleylake_valley_map_write_materials": "write_materials()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_map.py:L951 | neighbors=[valley_map.py]
+- "valleylake_valley_props_rationale_348": "blade clump: thin bent blades fanning out (no alpha cards)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L348 | neighbors=[grass_tuft()]
+- "valleylake_valley_props_rationale_451": "flat rectangle in XY facing -Z (lattice ribs: only ever seen from the front)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L451 | neighbors=[quad()]
+- "valleylake_valley_props_rationale_506": "veranda deck along a wall (z = wall line, side -1 = in front, -Z)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L506 | neighbors=[engawa()]
+- "valleylake_valley_props_rationale_821": "rounded stepping stones across the stream (small, flat-topped, moss edges)" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L821 | neighbors=[rock_steps()]
+- "valleylake_valley_props_skel_init": ".__init__()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/valleylake/valley_props.py:L864 | neighbors=[Skel]
+- "valueerror": "ValueError" | kind=code-symbol | neighbors=[GridfinityError]
+- "vfxkit_briefs_keyframes": "keyframes()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/briefs.py:L114 | neighbors=[briefs.py]
+- "vfxkit_briefs_rationale_1": "Design briefs (vfx/briefs/<ID>.json) live outside the strict Effekseer layer sch" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/briefs.py:L1 | neighbors=[briefs.py]
+- "vfxkit_briefs_rationale_18": "Absolute first/last births, including parent emission intervals and random life." | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/briefs.py:L18 | neighbors=[timeline()]
+- "vfxkit_briefs_read": "read()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/briefs.py:L12 | neighbors=[briefs.py]
+- "vfxkit_build_rationale_1": "Compile recipes through EffekseerCore into .efkefc sources, .efk runtime exports" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/build.py:L1 | neighbors=[build.py]
+- "vfxkit_build_rationale_20": "Every folder init or a build writes into or deletes from must really be inside v" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/build.py:L20 | neighbors=[check_output_dirs()]
+- "vfxkit_build_rationale_28": "No file a build is about to write may be a link that leads outside vfx/ (writes" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/build.py:L28 | neighbors=[check_targets()]
+- "vfxkit_build_rationale_35": "The outputs of one owned effect, refusing anything that resolves outside vfx/ (a" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/build.py:L35 | neighbors=[removable()]
+- "vfxkit_build_rationale_46": "{resource base name: source file} for every texture and model the recipes import" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/build.py:L46 | neighbors=[resource_inputs()]
+- "vfxkit_build_rationale_65": "Resource names a built effect uses, from its compiled recipe snapshot; None when" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/build.py:L65 | neighbors=[resource_names()]
+- "vfxkit_build_rationale_72": "Refuse to replace a resources/ file with different content while another effect" | kind=entity | source=.agents/skills/effekseer-vfx-skill-main/skills/effekseer-vfx/scripts/vfxkit/build.py:L72 | neighbors=[check_resource_conflicts()]
 
 ## Instructions
 

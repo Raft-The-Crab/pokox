@@ -1,4 +1,4 @@
-# Node Description Batch 100 of 208
+# Node Description Batch 100 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -19,53 +19,51 @@ relations (neighbors) and the provided citations/evidence — e.g.
 Ground entity descriptions in the citations/evidence when present; do not
 speculate beyond the context, so a node with no supporting context may be
 left out of the reply.
-LANGUAGE: each entry has a `lang=` marker giving the language of its source.
-Write that entry's description in EXACTLY that language. Do not translate to
-a single common language — match each node's source language individually.
+Write every description in English (en). Do not switch languages.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "candyland_candy_props_rationale_1211": "assign each face of a palette mesh the preview material of its column's kind (gl" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L1211 | neighbors=[preview_mats(), Palette] | lang=en
-- "candyland_candy_props_rationale_125": "explicitly closed torus grid (no seam). plane XZ = ring axis Y (lying), XY = rin" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L125 | neighbors=[closed_torus(), Palette] | lang=es
-- "candyland_candy_props_rationale_150": "tube with HELICAL stripes (face layer 'c' = 0/1): the stripe index shifts one fa" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L150 | neighbors=[striped_tube(), Palette] | lang=en
-- "candyland_candy_props_rationale_182": "a hanging icing drip: tapered neck from y 0 down to -length ending in a round be" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L182 | neighbors=[drip(), Palette] | lang=en
-- "candyland_candy_props_rationale_187": "drips hanging round a circle of radius R at height y, sitting on the surface" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L187 | neighbors=[drip_ring(), Palette] | lang=en
-- "candyland_candy_props_rationale_212": "icing piping along a polyline: beaded (radius pulses, short runs) or a smooth ro" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L212 | neighbors=[piping(), Palette] | lang=pt
-- "candyland_candy_props_rationale_227": "blank wafer sign: cream face in a beaded icing frame, facing -Z rotated by yaw." | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L227 | neighbors=[sign_plate(), Palette] | lang=en
-- "candyland_candy_props_rationale_237": "pleated paper liner: frustum whose radius alternates in/out per pleat, two-colou" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L237 | neighbors=[cupcake_liner(), Palette] | lang=en
-- "candyland_candy_props_rationale_251": "soft-serve swirl: a tube coiling up and in" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L251 | neighbors=[swirl(), Palette] | lang=en
-- "candyland_candy_props_rationale_266": "waffle grid: diagonal diamond pattern by alternating face shades (0 = ridge, 1 =" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L266 | neighbors=[waffle_lathe(), Palette] | lang=en
-- "candyland_candy_props_rationale_283": "SPAWN: giant cupcake in a cookie basin of strawberry milk; syrup arcs fall from" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L283 | neighbors=[cupcake_fountain(), Palette] | lang=en
-- "candyland_candy_props_rationale_331": "roof of chocolate-bar tiles on both slopes; ridge along X at y0 + rise" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L331 | neighbors=[gable_roof_bars(), Palette] | lang=en
-- "candyland_candy_props_rationale_344": "SWEET SHOP: gingerbread cottage, chocolate-bar roof, gumdrop ridge, icing piping" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L344 | neighbors=[sweet_shop(), Palette] | lang=en
-- "candyland_candy_props_rationale_39": "multi-colour shade: face int layer `lay` picks the palette column cols[i]; optio" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L39 | neighbors=[MS(), Palette] | lang=en
-- "candyland_candy_props_rationale_418": "UPGRADE OVEN: cookie-brick hearth, gingerbread dome with icing cap and gumdrop s" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L418 | neighbors=[bakery_oven(), Palette] | lang=en
-- "candyland_candy_props_rationale_483": "PET / EGG MACHINE: sugar-glass dome over a cotton-candy nest of three decorated" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L483 | neighbors=[egg_machine(), Palette] | lang=en
-- "candyland_candy_props_rationale_51": "sugar-coated: height gradient plus fine per-vertex sparkle" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L51 | neighbors=[sugar(), Palette] | lang=fr
-- "candyland_candy_props_rationale_517": "flat lollipop swirl: two interleaved Archimedean spiral ribbons (true spiral ban" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L517 | neighbors=[swirl_disc(), Palette] | lang=en
-- "candyland_candy_props_rationale_55": "flip faces so normals point away from the vertical axis (lathe shells) / out of" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L55 | neighbors=[orient(), Palette] | lang=en
-- "candyland_candy_props_rationale_550": "QUEST STAND: wafer-cookie kiosk under a cupcake-liner umbrella topped with a che" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L550 | neighbors=[quest_stand(), Palette] | lang=pt
-- "candyland_candy_props_rationale_590": "TELEPORT: giant gumball machine. Stepped glossy pedestal, cherry body with a gol" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L590 | neighbors=[gumball_machine(), Palette] | lang=en
-- "candyland_candy_props_rationale_638": "ice-cream-cone tower: waffle shaft, icing collar, big scoop with drips, upturned" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L638 | neighbors=[cone_tower(), Palette] | lang=en
-- "candyland_candy_props_rationale_65": "revolve a profile [(r, y)] (bottom -> top, solid on the left of travel) round th" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L65 | neighbors=[lathe(), Palette] | lang=en
-- "candyland_candy_props_rationale_662": "HERO: gingerbread-and-frosting castle. Square curtain wall (gumdrop merlons, pip" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L662 | neighbors=[candy_castle(), Palette] | lang=en
-- "candyland_candy_props_rationale_730": "gingerbread plank drawbridge (lowered) along Z with licorice chains; origin = ca" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L730 | neighbors=[drawbridge(), Palette] | lang=en
-- "candyland_candy_props_rationale_753": "icing poured over a bell top: follows the bell surface, scalloped lower edge (wa" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L753 | neighbors=[icing_cap(), Palette] | lang=en
-- "candyland_candy_props_rationale_771": "HERO: Fudge Falls. A grape gumdrop mountain (sugar sparkle, icing cap + drips) w" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L771 | neighbors=[choco_falls(), Palette] | lang=pt
-- "candyland_candy_props_rationale_846": "waffle-cone bridge along Z: an arched waffle deck between two giant waffle cones" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L846 | neighbors=[waffle_bridge(), Palette] | lang=en
-- "candyland_candy_props_rationale_897": "biscuit bridge along Z: shortbread rounds overlapping on an arched chocolate spi" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L897 | neighbors=[biscuit_bridge(), Palette] | lang=en
-- "candyland_candy_props_rationale_937": "giant glazed donut standing on edge over the path, half sunk; glaze cap with dri" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L937 | neighbors=[donut_arch(), Palette] | lang=en
-- "candyland_candy_props_rationale_97": "profile of a cylinder with rounded top (and bottom) edges, radius rr" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L97 | neighbors=[round_prof(), Palette] | lang=en
-- "candyland_candy_props_rationale_972": "candy-cane 'tree': helical-striped cane with a hook, planted in a sugar mound; s" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L972 | neighbors=[candy_cane(), Palette] | lang=en
-- "candyland_candy_props_rationale_990": "swirl lollipop on a bent stick, disc tilted to face the path (-Z), plus a smalle" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L990 | neighbors=[lollipop_tree(), Palette] | lang=en
-- "candyland_candy_props_ring_pts": "ring_pts()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L223 | neighbors=[candy_props.py, cone_tower()] | lang=en
-- "candyland_candy_props_roblox_materials": "roblox_materials()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L1189 | neighbors=[candy_props.py, palette column -> Enum.Material name, f…] | lang=en
-- "candyland_candy_props_waf": "WAF()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_props.py:L269 | neighbors=[candy_props.py, shade for waffle_lathe: ridges light, p…] | lang=en
-- "canyonbazaar_canyon_map_foot": "foot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_map.py:L128 | neighbors=[canyon_map.py, place()] | lang=en
-- "canyonbazaar_canyon_map_hook": "hook()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_map.py:L327 | neighbors=[canyon_map.py, set_pieces()] | lang=en
-- "canyonbazaar_canyon_map_kit": "kit()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_map.py:L123 | neighbors=[canyon_map.py, place()] | lang=en
-- "canyonbazaar_canyon_map_levels": "levels()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/canyonbazaar/canyon_map.py:L44 | neighbors=[canyon_map.py, wall()] | lang=en
+- "brick_war_mech_brick_exposed": "exposed()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/war_mech_brick.py:L312 | neighbors=[war_mech_brick.py, build()]
+- "brick_war_mech_brick_lin": "lin()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/war_mech_brick.py:L311 | neighbors=[war_mech_brick.py, build()]
+- "brick_war_mech_brick_newid": "newid()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/war_mech_brick.py:L32 | neighbors=[war_mech_brick.py, put()]
+- "brick_war_mech_brick_obox": "obox()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/war_mech_brick.py:L46 | neighbors=[war_mech_brick.py, finger()]
+- "brick_war_mech_brick_pipe": "pipe()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/war_mech_brick.py:L58 | neighbors=[war_mech_brick.py, cap()]
+- "brick_war_mech_brick_render_all": "render_all()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/war_mech_brick.py:L367 | neighbors=[war_mech_brick.py, B()]
+- "brick_war_rhino_brick_b": "B()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/war_rhino_brick.py:L233 | neighbors=[war_rhino_brick.py, render_all()]
+- "brick_war_rhino_brick_cap": "cap()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/war_rhino_brick.py:L41 | neighbors=[war_rhino_brick.py, chain()]
+- "brick_war_rhino_brick_chain": "chain()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/war_rhino_brick.py:L46 | neighbors=[war_rhino_brick.py, cap()]
+- "brick_war_rhino_brick_exposed": "exposed()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/war_rhino_brick.py:L179 | neighbors=[war_rhino_brick.py, build()]
+- "brick_war_rhino_brick_lin": "lin()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/war_rhino_brick.py:L178 | neighbors=[war_rhino_brick.py, build()]
+- "brick_war_rhino_brick_render_all": "render_all()" | kind=code-symbol | source=.agents/skills/Voxel Pack/stud/examples/brick/war_rhino_brick.py:L234 | neighbors=[war_rhino_brick.py, B()]
+- "bytecode_bytecode_decode_bytecode": "decode_bytecode()" | kind=code-symbol | source=mute/src/bytecode/bytecode.cpp:L106 | neighbors=[bytecode.cpp, validate_bytecode()]
+- "bytecode_bytecode_encode_bytecode": "encode_bytecode()" | kind=code-symbol | source=mute/src/bytecode/bytecode.cpp:L97 | neighbors=[bytecode.cpp, validate_bytecode()]
+- "bytecode_bytecode_long_payload": "long_payload()" | kind=code-symbol | source=mute/src/bytecode/bytecode.cpp:L33 | neighbors=[bytecode.cpp, assemble_bytecode()]
+- "cad_skill_main_gridfinity_gridfinitybin_body": "._body()" | kind=code-symbol | source=.agents/skills/cad-skill-main/gridfinity.py:L499 | neighbors=[GridfinityBin, .build()]
+- "cad_skill_main_gridfinity_gridfinitybin_floor_z": ".floor_z()" | kind=code-symbol | source=.agents/skills/cad-skill-main/gridfinity.py:L229 | neighbors=[GridfinityBin, Z of the interior floor: base profile p…]
+- "cad_skill_main_gridfinity_gridfinitybin_max_depth": ".max_depth()" | kind=code-symbol | source=.agents/skills/cad-skill-main/gridfinity.py:L234 | neighbors=[GridfinityBin, Deepest cavity possible from the top of…]
+- "cad_skill_main_gridfinity_gridfinitybin_notch_cut": "._notch_cut()" | kind=code-symbol | source=.agents/skills/cad-skill-main/gridfinity.py:L620 | neighbors=[GridfinityBin, .build()]
+- "cad_skill_main_gridfinity_gridfinitybin_polygon_cut": "._polygon_cut()" | kind=code-symbol | source=.agents/skills/cad-skill-main/gridfinity.py:L530 | neighbors=[GridfinityBin, .build()]
+- "cad_skill_main_gridfinity_gridfinitybin_summary": ".summary()" | kind=code-symbol | source=.agents/skills/cad-skill-main/gridfinity.py:L660 | neighbors=[GridfinityBin, One-paragraph description of the built …]
+- "cad_skill_main_mesh_io_bed_fit": "bed_fit()" | kind=code-symbol | source=.agents/skills/cad-skill-main/mesh_io.py:L94 | neighbors=[mesh_io.py, Check a part's bounding box against a b…]
+- "cad_skill_main_mesh_io_estimate_mass": "estimate_mass()" | kind=code-symbol | source=.agents/skills/cad-skill-main/mesh_io.py:L119 | neighbors=[mesh_io.py, Approximate printed mass in grams (defa…]
+- "cad_skill_main_mesh_io_load_mesh": "load_mesh()" | kind=code-symbol | source=.agents/skills/cad-skill-main/mesh_io.py:L13 | neighbors=[mesh_io.py, Load an STL file via trimesh.      Rais…]
+- "cad_skill_main_mesh_io_parse_bed": "parse_bed()" | kind=code-symbol | source=.agents/skills/cad-skill-main/mesh_io.py:L69 | neighbors=[mesh_io.py, Turn a printer name, "WxDxH" or a singl…]
+- "cad_skill_main_outline_from_scan_recentered": "recentered()" | kind=code-symbol | source=.agents/skills/cad-skill-main/outline_from_scan.py:L77 | neighbors=[outline_from_scan.py, main()]
+- "cad_skill_main_run_cadquery_model_append_stderr": "_append_stderr()" | kind=code-symbol | source=.agents/skills/cad-skill-main/run_cadquery_model.py:L58 | neighbors=[run_cadquery_model.py, main()]
+- "cad_skill_main_run_cadquery_model_sibling": "_sibling()" | kind=code-symbol | source=.agents/skills/cad-skill-main/run_cadquery_model.py:L54 | neighbors=[run_cadquery_model.py, _process_stls()]
+- "cad_skill_main_stl_to_3mf_convert": "convert()" | kind=code-symbol | source=.agents/skills/cad-skill-main/stl_to_3mf.py:L27 | neighbors=[stl_to_3mf.py, main()]
+- "cad_skill_main_stl_to_3mf_main": "main()" | kind=code-symbol | source=.agents/skills/cad-skill-main/stl_to_3mf.py:L40 | neighbors=[stl_to_3mf.py, convert()]
+- "candyland_candy_map_axis_coords": "axis_coords()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_map.py:L261 | neighbors=[candy_map.py, ground()]
+- "candyland_candy_map_bump": "bump()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_map.py:L81 | neighbors=[candy_map.py, H0()]
+- "candyland_candy_map_face": "face()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_map.py:L163 | neighbors=[candy_map.py, build()]
+- "candyland_candy_map_inb": "_inb()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_map.py:L213 | neighbors=[candy_map.py, _inside_one()]
+- "candyland_candy_map_kit": "kit()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_map.py:L117 | neighbors=[candy_map.py, place()]
+- "candyland_candy_map_look": "look()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_map.py:L662 | neighbors=[candy_map.py, free()]
+- "candyland_candy_map_moat": "moat()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_map.py:L420 | neighbors=[candy_map.py, mesh_obj()]
+- "candyland_candy_map_rationale_169": "trails, plazas, river, castle hill, falls: nothing scattered there" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_map.py:L169 | neighbors=[on_hard(), MB]
+- "candyland_candy_map_rationale_295": "one board tile: the polyline section s0..s1 (arc length) across `width`, draped" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_map.py:L295 | neighbors=[drape_strip(), MB]
+- "candyland_candy_map_rationale_329": "board-game tile runs (TILE long, 0.7 gaps) + sprinkles on them; round stop plaza" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/candyland/candy_map.py:L329 | neighbors=[trails(), MB]
 
 ## Instructions
 

@@ -1,4 +1,4 @@
-# Node Description Batch 105 of 208
+# Node Description Batch 105 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -9,6 +9,9 @@ your JSON answer to the answer file.
 You are documenting nodes in a knowledge graph.
 For each entry below, write ONE concise factual plain-language sentence
 describing what it is or does. Use only the provided context.
+For a code symbol (kind=code-symbol — a function, class, or constant),
+describe what the function/symbol does based on its name, source location
+and neighbors — e.g. "Resolves the configured ontology profile from graphify.yaml.".
 For an entity node (any other kind — e.g. a person, place, event, object),
 describe what the entity is and its role, grounded in its type, its
 relations (neighbors) and the provided citations/evidence — e.g.
@@ -23,46 +26,46 @@ No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "creaturelab_lab_props_rationale_1069": "round white planter with a mint band + a raised cream lip, soil, a bush in the m" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1069 | neighbors=[round_planter(), Palette] | lang=en
-- "creaturelab_lab_props_rationale_1085": "long planter box (white with a teal kick + cream coping) with a row of clipped r" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1085 | neighbors=[long_planter(), Palette] | lang=en
-- "creaturelab_lab_props_rationale_1101": "plaza lamp: round foot, slim white post with a mint collar, curved arm, glass la" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1101 | neighbors=[lamp_post(), Palette] | lang=en
-- "creaturelab_lab_props_rationale_111": "the Bloom Paw: rounded paw pad (soft heart-ish blob) + three leaf toes fanned ab" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L111 | neighbors=[emblem(), Palette] | lang=en
-- "creaturelab_lab_props_rationale_1116": "park bench: white cast ends with round feet, birch slats (seat + back), mint arm" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1116 | neighbors=[ext_bench(), Palette] | lang=en
-- "creaturelab_lab_props_rationale_1130": "indoor potted tree: tall white pot with a coloured band and foot, slim trunk, tw" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1130 | neighbors=[potted_tree(), Palette] | lang=en
-- "creaturelab_lab_props_rationale_1152": "entry monolith on the path: rounded white slab on a teal plinth, the Bloom Paw b" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1152 | neighbors=[welcome_sign(), Palette] | lang=en
-- "creaturelab_lab_props_rationale_1166": "berry-juice vending machine: rounded white cabinet, coloured side panels, glass" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1166 | neighbors=[vending_machine(), Palette] | lang=en
-- "creaturelab_lab_props_rationale_1189": "plaza fountain: round two-step basin (white with a teal coping + mint water), a" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1189 | neighbors=[capsule_statue(), Palette] | lang=pt
-- "creaturelab_lab_props_rationale_1211": "low path bollard: rounded white post, glowing ring band, teal cap" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1211 | neighbors=[bollard_light(), Palette] | lang=en
-- "creaturelab_lab_props_rationale_1219": "clipped hedge segment: rounded box mass with lumps, on a dark soil strip" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1219 | neighbors=[hedge(), Palette] | lang=en
-- "creaturelab_lab_props_rationale_1228": "low flower clumps in a soft oval: rounded leafy mounds with 5-petal flowers on s" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1228 | neighbors=[flower_bed(), Palette] | lang=en
-- "creaturelab_lab_props_rationale_125": "round badge facing -Z: white disc (back face at pos), coloured rim ring, the Blo" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L125 | neighbors=[emblem_badge(), Palette] | lang=en
-- "creaturelab_lab_props_rationale_1255": "lab wall shelving: steel frame, binders in rows (coloured spines, no text), samp" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1255 | neighbors=[wall_shelf_lab(), Palette] | lang=en
-- "creaturelab_lab_props_rationale_1278": "underside of the rotunda roof at radius r (same profile as rotunda_roof's inner" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1278 | neighbors=[roof_in_y(), Palette] | lang=en
-- "creaturelab_lab_props_rationale_1287": "interior architecture of the hall (no collision, the walls behind collide): pila" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1287 | neighbors=[hall_trim(), Palette] | lang=en
-- "creaturelab_lab_props_rationale_1317": "coffered ceiling hung under the dome (no collision): 16 radial ribs from the ocu" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1317 | neighbors=[hall_ceiling(), Palette] | lang=en
-- "creaturelab_lab_props_rationale_134": "the capture ball wherever the kit places one (was the Gem Pod): LOD by size / ca" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L134 | neighbors=[capsule(), Palette] | lang=en
-- "creaturelab_lab_props_rationale_1348": "lab wing interior trim + ceiling beams (no collision): pilasters between the win" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1348 | neighbors=[wing_trim(), Palette] | lang=en
-- "creaturelab_lab_props_rationale_1374": "clustered round leaves: n small smooth ellipsoids scattered on a shell of radius" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1374 | neighbors=[leaf_cluster(), Palette] | lang=en
-- "creaturelab_lab_props_rationale_1386": "round planter pot: style 0 = tapered white with a colour band, 1 = cylinder with" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1386 | neighbors=[pot(), Palette] | lang=en
-- "creaturelab_lab_props_rationale_1398": "indoor fiddle-leaf / round-leaf fig: tapered pot, slim trunk splitting in two, t" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1398 | neighbors=[fig_tree(), Palette] | lang=en
-- "creaturelab_lab_props_rationale_1414": "monstera in a footed pot: 7 big split leaves (heart shape with side slits) on ar" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1414 | neighbors=[monstera(), Palette] | lang=en
-- "creaturelab_lab_props_rationale_1437": "tall snake plant: square pot, 11 upright sword leaves (flattened tapered blades," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1437 | neighbors=[snake_plant(), Palette] | lang=en
-- "creaturelab_lab_props_rationale_145": "capsule cradle slot: steel cup, glowing ring, capsule seated (used in the heal m" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L145 | neighbors=[cradle(), Palette] | lang=en
-- "creaturelab_lab_props_rationale_1451": "hanging planter (origin = ceiling point, hangs DOWN): three cords, a round bowl," | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1451 | neighbors=[hanging_planter(), Palette] | lang=pt
-- "creaturelab_lab_props_rationale_1470": "outdoor rounded park tree in the same language: smooth tapered trunk with two bo" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1470 | neighbors=[round_tree(), Palette] | lang=en
-- "creaturelab_lab_props_rationale_1492": "small ornamental tree: smooth trunk, round canopy in soft pink (berry ramp light" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1492 | neighbors=[blossom_tree(), Palette] | lang=en
-- "creaturelab_lab_props_rationale_1502": "clipped hedge with a smooth rounded profile on a low white kerb, plus two topiar" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1502 | neighbors=[topiary_hedge(), Palette] | lang=pt
-- "creaturelab_lab_props_rationale_1511": "smooth round shrub: soft leaf mound with clustered leaves and small 5-petal flow" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1511 | neighbors=[round_bush(), Palette] | lang=en
-- "creaturelab_lab_props_rationale_1523": "low garden boundary wall: white rendered wall with a teal coping and a mint plin" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1523 | neighbors=[garden_wall(), Palette] | lang=en
-- "creaturelab_lab_props_rationale_153": "the Restoration Bay: plinth, white console with a tilted cradle deck of 6 capsul" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L153 | neighbors=[heal_machine(), Palette] | lang=en
-- "creaturelab_lab_props_rationale_1533": "floating lily pads (notched discs) with two pink flowers" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1533 | neighbors=[lily_pads(), Palette] | lang=en
-- "creaturelab_lab_props_rationale_1563": "creature plush toy (an original critter): round body, two leaf ears, stubby paws" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1563 | neighbors=[plush(), Palette] | lang=en
-- "creaturelab_lab_props_rationale_1576": "Heal story cluster: a big creature bed with a folded + a draped blanket, a plush" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1576 | neighbors=[heal_corner(), Palette] | lang=pt
-- "creaturelab_lab_props_rationale_1611": "Shop story: stacked supply cartons (cream with coral tape and a paw stamp), an o" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1611 | neighbors=[supply_boxes(), Palette] | lang=en
-- "creaturelab_lab_props_rationale_1631": "Shop story: A-frame sidewalk stand with a blank coral board (GUI spot) and a wir" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1631 | neighbors=[sale_stand(), Palette] | lang=en
-- "creaturelab_lab_props_rationale_1646": "Storage story: cable runs across the floor under rubber cable covers to three gl" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1646 | neighbors=[dock_cables(), Palette] | lang=en
-- "creaturelab_lab_props_rationale_1662": "queue rope line: n steel stanchions with weighted bases, sagging coloured ropes" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1662 | neighbors=[rope_line(), Palette] | lang=en
-- "creaturelab_lab_props_rationale_1674": "Trade story: wall trophy shelf (two birch boards on teal brackets) with gold cup" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_props.py:L1674 | neighbors=[trophy_shelf(), Palette] | lang=en
+- "cavemap_cave_props_rationale_399": "three giant cave mushrooms (16 / 11 / 7 tall) from one mossy root mound, caps le" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L399 | neighbors=[glowshroom_giant(), Palette] | lang=en
+- "cavemap_cave_props_rationale_415": "a knee-high cluster: 6-8 small mushrooms of mixed cap shapes on a mossy hump" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L415 | neighbors=[glowshroom_cluster(), Palette] | lang=pt
+- "cavemap_cave_props_rationale_426": "tiny scatter: thin-stalked glowing bell caps (all glow), ankle high" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L426 | neighbors=[shroom_patch(), Palette] | lang=en
+- "cavemap_cave_props_rationale_439": "hanging glow-root: a small root knot under the ceiling, 2-4 twisting root strand" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L439 | neighbors=[glow_vine(), Palette] | lang=en
+- "cavemap_cave_props_rationale_466": "flat rounded glowing stones for the lake bed: the turquoise 'glow from below' (N" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L466 | neighbors=[lake_glow(), Palette] | lang=en
+- "cavemap_cave_props_rationale_51": "per-vertex convexity: > 0 convex edge (lit rim), < 0 crevice" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L51 | neighbors=[rim_shade(), Palette] | lang=en
+- "cavemap_cave_props_rationale_75": "cheap lens / bead (glow spots, bulbs, nodules): ~4n triangles" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L75 | neighbors=[dot(), Palette] | lang=en
+- "cavemap_cave_props_rationale_86": "rounded rock built from stacked BEDS: a subdivided cube pushed onto a superellip" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L86 | neighbors=[strata_mass(), Palette] | lang=pt
+- "cavemap_cave_props_smooth": "smooth()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props.py:L30 | neighbors=[cave_props.py, strata_mass()] | lang=en
+- "cavemap_cave_props2_barrels": "barrels()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L219 | neighbors=[cave_props2.py, three staved barrels (bulged lathe, iro…] | lang=en
+- "cavemap_cave_props2_wheel": "wheel()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props2.py:L73 | neighbors=[cave_props2.py, mine_cart()] | lang=en
+- "cavemap_cave_props3_brew_station": "brew_station()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props3.py:L268 | neighbors=[cave_props3.py, SPORE BREWERY: a stone hearth under a f…] | lang=en
+- "cavemap_cave_props3_camp_tent": "camp_tent()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props3.py:L132 | neighbors=[cave_props3.py, A-frame canvas tent: ridge log on X-pol…] | lang=en
+- "cavemap_cave_props3_campfire_pit": "campfire_pit()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props3.py:L163 | neighbors=[cave_props3.py, stone ring, teepee logs, flame tongues …] | lang=en
+- "cavemap_cave_props3_cave_falls": "cave_falls()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props3.py:L317 | neighbors=[cave_props3.py, waterfall from a ceiling crack (origin …] | lang=en
+- "cavemap_cave_props3_crystal_forge": "crystal_forge()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props3.py:L78 | neighbors=[cave_props3.py, CRYSTAL FORGE: an ashlar beehive kiln w…] | lang=en
+- "cavemap_cave_props3_deep_lift": "deep_lift()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props3.py:L213 | neighbors=[cave_props3.py, DEEP-DIVE ELEVATOR: timber headframe (t…] | lang=en
+- "cavemap_cave_props3_glow_puddle": "glow_puddle()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props3.py:L353 | neighbors=[cave_props3.py, shallow puddle on the floor: a flat irr…] | lang=en
+- "cavemap_cave_props3_glow_worms": "glow_worms()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props3.py:L364 | neighbors=[cave_props3.py, glow-worm colony on the vault (origin a…] | lang=en
+- "cavemap_cave_props3_glowroot_check": "glowroot_check()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props3.py:L454 | neighbors=[cave_props3.py, glowroot()] | lang=en
+- "cavemap_cave_props3_log_seat": "log_seat()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props3.py:L204 | neighbors=[cave_props3.py, split-log bench on two chunk feet] | lang=en
+- "cavemap_cave_props3_skylight_lip": "skylight_lip()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props3.py:L375 | neighbors=[cave_props3.py, ring round the top of the sun shaft (or…] | lang=en
+- "cavemap_cave_props3_spawn_dais": "spawn_dais()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/cave_props3.py:L297 | neighbors=[cave_props3.py, spawn platform: layered round stone pli…] | lang=en
+- "cavemap_grid": "grid.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/grid.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …] | lang=en
+- "cavemap_post": "post.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/cavemap/post.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …] | lang=en
+- "console_console_decode_string": "decode_string()" | kind=code-symbol | source=mute/src/console/console.cpp:L52 | neighbors=[console.cpp, execute_console_impl()] | lang=en
+- "console_console_decode_utf8": "decode_utf8()" | kind=code-symbol | source=mute/src/console/console.cpp:L125 | neighbors=[console.cpp, append()] | lang=en
+- "console_console_execute_console": "execute_console()" | kind=code-symbol | source=mute/src/console/console.cpp:L115 | neighbors=[console.cpp, execute_console_impl()] | lang=en
+- "console_console_execute_console_stateful": "execute_console_stateful()" | kind=code-symbol | source=mute/src/console/console.cpp:L116 | neighbors=[console.cpp, execute_console_impl()] | lang=en
+- "console_console_is_format_control": "is_format_control()" | kind=code-symbol | source=mute/src/console/console.cpp:L147 | neighbors=[console.cpp, append()] | lang=en
+- "console_console_rebased": "rebased()" | kind=code-symbol | source=mute/src/console/console.cpp:L20 | neighbors=[console.cpp, numeric()] | lang=en
+- "console_console_spelling": "spelling()" | kind=code-symbol | source=mute/src/console/console.cpp:L47 | neighbors=[console.cpp, execute_console_impl()] | lang=en
+- "creaturelab_hooks_lua": "hooks_lua.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/hooks_lua.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …] | lang=en
+- "creaturelab_lab_map_catmull": "catmull()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_map.py:L399 | neighbors=[lab_map.py, garden_paths()] | lang=en
+- "creaturelab_lab_map_ceil_y": "ceil_y()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_map.py:L276 | neighbors=[lab_map.py, underside of the rotunda roof at radius…] | lang=en
+- "creaturelab_lab_map_foot": "foot()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_map.py:L54 | neighbors=[lab_map.py, place()] | lang=en
+- "creaturelab_lab_map_free": "free()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_map.py:L73 | neighbors=[lab_map.py, exterior()] | lang=en
+- "creaturelab_lab_map_in_wing": "in_wing()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_map.py:L145 | neighbors=[lab_map.py, wing_floor()] | lang=en
+- "creaturelab_lab_map_kit": "kit()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_map.py:L49 | neighbors=[lab_map.py, place()] | lang=en
+- "creaturelab_lab_map_near_poly": "near_poly()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/creaturelab/lab_map.py:L408 | neighbors=[lab_map.py, path_free()] | lang=en
 
 ## Instructions
 

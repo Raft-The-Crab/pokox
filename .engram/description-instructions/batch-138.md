@@ -1,4 +1,4 @@
-# Node Description Batch 139 of 208
+# Node Description Batch 139 of 209
 
 Engram is running in assistant/skill mode (no API key). You are the host
 assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
@@ -12,58 +12,51 @@ describing what it is or does. Use only the provided context.
 For a code symbol (kind=code-symbol — a function, class, or constant),
 describe what the function/symbol does based on its name, source location
 and neighbors — e.g. "Resolves the configured ontology profile from graphify.yaml.".
-For an entity node (any other kind — e.g. a person, place, event, object),
-describe what the entity is and its role, grounded in its type, its
-relations (neighbors) and the provided citations/evidence — e.g.
-"Lady Carfax, a wealthy heiress who disappears en route to Lausanne.".
-Ground entity descriptions in the citations/evidence when present; do not
-speculate beyond the context, so a node with no supporting context may be
-left out of the reply.
 Write every description in English (en). Do not switch languages.
 No marketing language.
 Respond ONLY with a JSON object mapping each node id (as a string) to its
 one-sentence description — no prose, no markdown fences.
 
-- "texture_tex_to_maps_main": "main()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/texture/tex_to_maps.py:L145 | neighbors=[tex_to_maps.py, process()]
-- "texture_tex_to_maps_save_gray": "save_gray()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/texture/tex_to_maps.py:L98 | neighbors=[tex_to_maps.py, process()]
-- "texture_tex_to_maps_save_rgb": "save_rgb()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/texture/tex_to_maps.py:L102 | neighbors=[tex_to_maps.py, process()]
-- "texture_tile_seam_check_load_gray": "load_gray()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/texture/tile_seam_check.py:L35 | neighbors=[tile_seam_check.py, assess()]
-- "texture_tile_seam_check_print_report": "print_report()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/texture/tile_seam_check.py:L115 | neighbors=[tile_seam_check.py, main()]
-- "texture_uv_density_print_report": "print_report()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/texture/uv_density.py:L166 | neighbors=[uv_density.py, main()]
-- "texture_uv_density_tri_area_3d": "tri_area_3d()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/texture/uv_density.py:L69 | neighbors=[uv_density.py, group_stats()]
-- "texture_uv_density_tri_area_uv": "tri_area_uv()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/texture/uv_density.py:L78 | neighbors=[uv_density.py, group_stats()]
-- "tools_g2_replay_probe_bounds_of": "bounds_of()" | kind=code-symbol | source=engine/physics/tools/g2_replay_probe.cpp:L58 | neighbors=[g2_replay_probe.cpp, main()]
-- "tools_g2_replay_probe_combine_friction": "combine_friction()" | kind=code-symbol | source=engine/physics/tools/g2_replay_probe.cpp:L112 | neighbors=[g2_replay_probe.cpp, main()]
-- "tools_g2_replay_probe_combine_restitution": "combine_restitution()" | kind=code-symbol | source=engine/physics/tools/g2_replay_probe.cpp:L113 | neighbors=[g2_replay_probe.cpp, main()]
-- "tools_g2_replay_probe_fx": "fx()" | kind=code-symbol | source=engine/physics/tools/g2_replay_probe.cpp:L35 | neighbors=[g2_replay_probe.cpp, main()]
-- "tools_g2_replay_probe_shape_of": "shape_of()" | kind=code-symbol | source=engine/physics/tools/g2_replay_probe.cpp:L65 | neighbors=[g2_replay_probe.cpp, main()]
-- "tools_g2_replay_probe_sim_body": "sim_body()" | kind=code-symbol | source=engine/physics/tools/g2_replay_probe.cpp:L77 | neighbors=[g2_replay_probe.cpp, main()]
-- "tools_g2_replay_probe_state_hash": "state_hash()" | kind=code-symbol | source=engine/physics/tools/g2_replay_probe.cpp:L88 | neighbors=[g2_replay_probe.cpp, main()]
-- "tools_generate_unicode_xid": "generate_unicode_xid.py" | kind=code-symbol | source=mute/tools/generate_unicode_xid.py:L1 | neighbors=[52dbcb9 Surface graphics warnings in X1…, c7a411f Fix MUT-01-20 audit defects in …]
-- "tools_mute_build_main": "main()" | kind=code-symbol | source=mute/tools/mute_build.cpp:L24 | neighbors=[mute_build.cpp, read_file()]
-- "tools_mute_build_read_file": "read_file()" | kind=code-symbol | source=mute/tools/mute_build.cpp:L14 | neighbors=[mute_build.cpp, main()]
-- "tools_readme_hero_font": "font()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/readme_hero.py:L32 | neighbors=[readme_hero.py, frame()]
-- "tools_readme_hero_main": "main()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/readme_hero.py:L143 | neighbors=[readme_hero.py, frame()]
-- "tools_sync_shared_main": "main()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tools/sync_shared.py:L20 | neighbors=[sync_shared.py, targets()]
-- "tools_sync_shared_targets": "targets()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tools/sync_shared.py:L14 | neighbors=[sync_shared.py, main()]
-- "tools_trigger_check_main": "main()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tools/trigger_check.py:L60 | neighbors=[trigger_check.py, toks()]
-- "tools_trigger_check_toks": "toks()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tools/trigger_check.py:L56 | neighbors=[trigger_check.py, main()]
-- "tools_validate_skills_frontmatter": "frontmatter()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tools/validate_skills.py:L28 | neighbors=[validate_skills.py, check_skill()]
-- "tools_validate_skills_main": "main()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tools/validate_skills.py:L110 | neighbors=[validate_skills.py, check_skill()]
-- "tools_validate_skills_tokens": "tokens()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tools/validate_skills.py:L24 | neighbors=[validate_skills.py, check_skill()]
-- "towncity_city_paint_area": "area()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/city_paint.py:L144 | neighbors=[city_paint.py, remap()]
-- "towncity_city_paint_atlas": "atlas()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/city_paint.py:L112 | neighbors=[city_paint.py, block()]
-- "towncity_city_paint_axes_of": "axes_of()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/city_paint.py:L124 | neighbors=[city_paint.py, remap()]
-- "towncity_city_paint_hash2": "hash2()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/city_paint.py:L42 | neighbors=[city_paint.py, tile()]
-- "towncity_city_paint_hex": "_hex()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/city_paint.py:L24 | neighbors=[city_paint.py, ramp()]
-- "towncity_town_kit": "town_kit.py" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_kit.py:L1 | neighbors=[2680d0e Pushed an update., e77fa31 Add new skills and asset packs …]
-- "towncity_town_landmarks_bus_stop": "bus_stop()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L455 | neighbors=[town_landmarks.py, bus shelter: steel frame, glass back + …]
-- "towncity_town_landmarks_car_showroom": "car_showroom()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L518 | neighbors=[town_landmarks.py, car dealer: open-front display hall (no…]
-- "towncity_town_landmarks_fountain": "fountain()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L381 | neighbors=[town_landmarks.py, town square fountain: 8-sided basin (pa…]
-- "towncity_town_landmarks_job_board": "job_board()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L422 | neighbors=[town_landmarks.py, job board kiosk: timber frame on stone …]
-- "towncity_town_landmarks_platform_canopy": "platform_canopy()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L350 | neighbors=[town_landmarks.py, platform segment along Z (track side = …]
-- "towncity_town_landmarks_rationale_171": "tower standing on the town hall roof: brick shaft with cream quoins + bands, clo" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L171 | neighbors=[MB, clock_tower()]
-- "towncity_town_landmarks_rationale_20": "classical column: square plinth, torus base, fluted-look shaft (12 sides, slight" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/towncity/town_landmarks.py:L20 | neighbors=[MB, column()]
+- "tests_test_run_wrapper_test_bed_too_small_fails": "test_bed_too_small_fails()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_run_wrapper.py:L89 | neighbors=[test_run_wrapper.py, run()]
+- "tests_test_run_wrapper_test_bed_unknown_printer_is_usage_error": "test_bed_unknown_printer_is_usage_error()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_run_wrapper.py:L105 | neighbors=[test_run_wrapper.py, run()]
+- "tests_test_run_wrapper_test_bed_without_stl_fails": "test_bed_without_stl_fails()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_run_wrapper.py:L99 | neighbors=[test_run_wrapper.py, run()]
+- "tests_test_run_wrapper_test_happy_path": "test_happy_path()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_run_wrapper.py:L23 | neighbors=[test_run_wrapper.py, run()]
+- "tests_test_run_wrapper_test_preview_renders_png": "test_preview_renders_png()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_run_wrapper.py:L74 | neighbors=[test_run_wrapper.py, run()]
+- "tests_test_run_wrapper_test_step_discovered": "test_step_discovered()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_run_wrapper.py:L64 | neighbors=[test_run_wrapper.py, run()]
+- "tests_test_run_wrapper_test_strict_empty_fails": "test_strict_empty_fails()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_run_wrapper.py:L39 | neighbors=[test_run_wrapper.py, run()]
+- "tests_test_run_wrapper_test_strict_watertight": "test_strict_watertight()" | kind=code-symbol | source=.agents/skills/cad-skill-main/tests/test_run_wrapper.py:L32 | neighbors=[test_run_wrapper.py, run()]
+- "tests_test_safety_test_a_broken_source_only_blocks_itself": "test_a_broken_source_only_blocks_itself()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_safety.py:L50 | neighbors=[test_safety.py, game()]
+- "tests_test_safety_test_a_build_mirrors_only_its_own_resources": "test_a_build_mirrors_only_its_own_resources()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_safety.py:L339 | neighbors=[test_safety.py, game()]
+- "tests_test_safety_test_a_build_never_replaces_a_resource_another_built_effect_uses": "test_a_build_never_replaces_a_resource_another_built_effect_uses()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_safety.py:L220 | neighbors=[test_safety.py, game()]
+- "tests_test_safety_test_a_full_build_of_an_empty_library_refuses_before_touching_anything": "test_a_full_build_of_an_empty_library_refuses_before_touching_anything()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_safety.py:L42 | neighbors=[test_safety.py, game()]
+- "tests_test_safety_test_a_full_build_prunes_only_effects_it_built": "test_a_full_build_prunes_only_effects_it_built()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_safety.py:L93 | neighbors=[test_safety.py, game()]
+- "tests_test_safety_test_conflicts_protect_hand_made_effects_without_a_recipe": "test_conflicts_protect_hand_made_effects_without_a_recipe()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_safety.py:L274 | neighbors=[test_safety.py, conflict_setup()]
+- "tests_test_safety_test_conflicts_protect_owned_effects_unless_they_are_rebuilt_or_removed": "test_conflicts_protect_owned_effects_unless_they_are_rebuilt_or_removed()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_safety.py:L265 | neighbors=[test_safety.py, conflict_setup()]
+- "tests_test_safety_test_doctor_uses_the_same_ownership_rules": "test_doctor_uses_the_same_ownership_rules()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_safety.py:L285 | neighbors=[test_safety.py, game()]
+- "tests_test_safety_test_helpers_never_shadow_built_in_modules": "test_helpers_never_shadow_built_in_modules()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_safety.py:L194 | neighbors=[test_safety.py, game()]
+- "tests_test_safety_test_init_fills_missing_math_textures_without_replacing_edited_ones": "test_init_fills_missing_math_textures_without_replacing_edited_ones()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_safety.py:L183 | neighbors=[test_safety.py, game()]
+- "tests_test_safety_test_init_never_writes_through_a_link_that_leads_outside": "test_init_never_writes_through_a_link_that_leads_outside()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_safety.py:L376 | neighbors=[test_safety.py, game()]
+- "tests_test_safety_test_project_files_never_shadow_modules": "test_project_files_never_shadow_modules()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_safety.py:L63 | neighbors=[test_safety.py, game()]
+- "tests_test_scale_beam_test_beam_recipe_lints_with_hold_and_needs_a_release": "test_beam_recipe_lints_with_hold_and_needs_a_release()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_scale_beam.py:L183 | neighbors=[test_scale_beam.py, recipe_with()]
+- "tests_test_scale_beam_test_lint_counts_repeatedly_emitted_painted_shapes_as_restruck": "test_lint_counts_repeatedly_emitted_painted_shapes_as_restruck()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_scale_beam.py:L220 | neighbors=[test_scale_beam.py, recipe_with()]
+- "tests_test_scale_beam_test_lint_scales_its_craft_limits_with_the_recipe": "test_lint_scales_its_craft_limits_with_the_recipe()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_scale_beam.py:L89 | neighbors=[test_scale_beam.py, recipe_with()]
+- "tests_test_scale_beam_test_scale_character_is_a_no_op_and_records_nothing": "test_scale_character_is_a_no_op_and_records_nothing()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_scale_beam.py:L83 | neighbors=[test_scale_beam.py, recipe_with()]
+- "tests_test_simulation_test_classic_cloth_drapes_on_collider": "test_classic_cloth_drapes_on_collider()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_simulation.py:L22 | neighbors=[test_simulation.py, _grid()]
+- "tests_test_simulation_test_gn_cloth_52_asset": "test_gn_cloth_52_asset()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_simulation.py:L31 | neighbors=[test_simulation.py, _grid()]
+- "tests_test_texturing_test_smart_material_bakes_to_texture": "test_smart_material_bakes_to_texture()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_texturing.py:L65 | neighbors=[test_texturing.py, _stepped_block()]
+- "tests_test_texturing_test_smart_material_curvature_and_roundtrip": "test_smart_material_curvature_and_roundtrip()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_texturing.py:L34 | neighbors=[test_texturing.py, _stepped_block()]
+- "tests_test_tools_test_ablation_verdicts": "test_ablation_verdicts()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tests/test_tools.py:L73 | neighbors=[test_tools.py, _write_ablation()]
+- "tests_test_tools_write_ablation": "_write_ablation()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tests/test_tools.py:L62 | neighbors=[test_tools.py, test_ablation_verdicts()]
+- "tests_test_video_clip": "clip()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_video.py:L21 | neighbors=[test_video.py, 48 frames at 24 fps: black, a warm disc…]
+- "tests_test_video_png": "_png()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_video.py:L17 | neighbors=[test_video.py, test_vse_edit_crossfade_title_audio_mp4…]
+- "tests_test_video_test_track_camera_solves_in_ui_session": "test_track_camera_solves_in_ui_session()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_video.py:L124 | neighbors=[test_video.py, _footage()]
+- "tests_test_video_test_unity_export_writes_the_grid_sidecar_and_stays_inside_the_project": "test_unity_export_writes_the_grid_sidecar_and_stays_inside_the_project()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_video.py:L112 | neighbors=[test_video.py, fake_unity()]
+- "tests_test_video_test_unity_force_keeps_meta_guids": "test_unity_force_keeps_meta_guids()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_video.py:L154 | neighbors=[test_video.py, fake_unity()]
+- "tests_test_video_test_unity_install_copies_the_package_and_draws_its_textures": "test_unity_install_copies_the_package_and_draws_its_textures()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_video.py:L92 | neighbors=[test_video.py, fake_unity()]
+- "tests_test_video_test_vse_edit_crossfade_title_audio_mp4": "test_vse_edit_crossfade_title_audio_mp4()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_video.py:L27 | neighbors=[test_video.py, _png()]
+- "tests_test_weather_instances": "_instances()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_weather.py:L6 | neighbors=[test_weather.py, test_precipitation_loops_and_stops_on_g…]
+- "tests_test_weather_test_precipitation_loops_and_stops_on_ground": "test_precipitation_loops_and_stops_on_ground()" | kind=code-symbol | source=.agents/skills/blender-skills-main/tests/test_weather.py:L14 | neighbors=[test_weather.py, _instances()]
+- "tests_test_workflow_isolated": "isolated()" | kind=code-symbol | source=.agents/skills/effekseer-vfx-skill-main/tests/test_workflow.py:L45 | neighbors=[test_workflow.py, Point the workspace-relative modules at…]
 
 ## Instructions
 

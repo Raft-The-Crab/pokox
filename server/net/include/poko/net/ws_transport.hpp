@@ -91,6 +91,9 @@ inline WsDecode ws_decode(const std::uint8_t* data, std::size_t len, std::size_t
     offset += 4;
   }
   if (len < offset + payload_len) { result.reject_reason = "truncated payload"; return result; }
+  // Wire-sourced length is hostile: cap it at the datagram cap before any
+  // resize, so a forged 64-bit length cannot drive a huge allocation.
+  if (payload_len > kMaxDatagramBytes) { result.reject_reason = "payload exceeds 1200 bytes"; return result; }
   result.payload.resize(payload_len);
   for (std::size_t i = 0; i < payload_len; ++i) {
     std::uint8_t byte = data[offset + i];
