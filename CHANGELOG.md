@@ -38,8 +38,21 @@ the first release tag exists.
   animation v2 sets, and preservation-first prototypes under `assets/`.
 - Identity module under `server/identity`: sign-in from a verified Firebase
   identity to an idempotent PokoX account record (IDN-01), device keypair
-  TOFU binding with five-device cap and revocation (IDN-02), and OTP
-  step-up gating Device-trust actions (IDN-03), with unit tests.
+  TOFU binding with five-device cap and revocation (IDN-02), OTP
+  step-up gating Device-trust actions (IDN-03), and session velocity /
+  impossible-travel checks (IDN-04), with unit tests.
+- Real-time game plane under `server/net` (spec 06): UDP echo with the
+  1200-byte datagram cap (NET-01), BitBuffer bit packing (NET-02),
+  frame header + truncated HMAC + replay window (NET-03), delta encoding
+  with a resend window (NET-04), the two-cube demo (NET-05), XOR-FEC
+  parity over groups of four (NET-06), RFC 6455 WebSocket binary-frame
+  fallback (NET-07), an adaptive jitter buffer with integer interpolation
+  and a 100 ms extrapolation cap (NET-08), and ChaCha20-Poly1305 AEAD
+  (NET-09), each with an RFC-vector or behavior unit test.
+- Canonical Postgres schema under `backend/storage/postgres/` (BAK-01):
+  users, games, assets, the Pokoins ledger with a double-credit guard,
+  derived balances, shares, cases and audit log, with an idempotent
+  `migrate.sh` runner verified against real Postgres 18.6.
 
 ### Fixed
 
