@@ -1,0 +1,1 @@
+{"nodes":[{"id":"mesh_inputlayout","label":"InputLayout.h","file_type":"code","source_file":"engine/rhi/tests/fakes/mesh/InputLayout.h","source_location":"L1"}],"edges":[{"source":"mesh_inputlayout","target":"enginefactoryvk","relation":"imports","confidence":"EXTRACTED","source_file":"engine/rhi/tests/fakes/mesh/InputLayout.h","source_location":"L2","weight":1}]}

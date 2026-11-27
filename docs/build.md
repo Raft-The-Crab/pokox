@@ -4,6 +4,11 @@
 
 The minimal CMake executable, vcpkg dependencies and pinned DiligentCore source integration are in place. **Do not mark INF-02 complete yet:** the plan requires builds on both MSYS2/MinGW and MSVC, and neither has been run in this Linux environment. INF-03 flag contracts are implemented and tested on Linux; Windows checks remain pending. The INF-04 CI workflow has run on GitHub (around 40 runs; the last fully green run was 2026-11-24, after which Actions billing blocked new jobs). The INF-05 golden harness and INF-06 build versioning pass local tests. Standalone SDL window and Vulkan clear-color demos are implemented; no product-ready application is implemented. Historical notes from the supplied archive are preserved in [build-historical.md](build-historical.md).
 
+### Server-wave status (2026-11-27)
+
+- Full suite on Linux: **130/130 tests passed** (cmake --build + ctest, ~25 s), including `pokox_authority_*` (BAK-02/05/06/07/08), `pokox_identity_*` (IDN-01..04) and `pokox_net_*` (NET-01..09).
+- `server/authority` (spec 05): `session.hpp`, `pkb_schema.hpp`, `rule_evaluator.hpp`, `projection_gate.hpp`, `replay_ring.hpp`, each with a unit test; audit of BAK-01..06 fixed signed-shift UB in `validate_value`, a `1ULL << 64` quantize scale at `float_bits=64`, and missing suspicion on out-of-width probes.
+
 ### Verified on 2026-11-20
 
 - Linux x64; GCC 11.5.0; CMake 4.4.5: the dependency-free Debug build succeeded and `pokox_starts` passed.

@@ -1,0 +1,85 @@
+# Node Description Batch 180 of 207
+
+Engram is running in assistant/skill mode (no API key). You are the host
+assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
+your JSON answer to the answer file.
+
+## Prompt
+
+You are documenting nodes in a knowledge graph.
+For each entry below, write ONE concise factual plain-language sentence
+describing what it is or does. Use only the provided context.
+For a code symbol (kind=code-symbol — a function, class, or constant),
+describe what the function/symbol does based on its name, source location
+and neighbors — e.g. "Resolves the configured ontology profile from graphify.yaml.".
+For an entity node (any other kind — e.g. a person, place, event, object),
+describe what the entity is and its role, grounded in its type, its
+relations (neighbors) and the provided citations/evidence — e.g.
+"Lady Carfax, a wealthy heiress who disappears en route to Lausanne.".
+Ground entity descriptions in the citations/evidence when present; do not
+speculate beyond the context, so a node with no supporting context may be
+left out of the reply.
+LANGUAGE: each entry has a `lang=` marker giving the language of its source.
+Write that entry's description in EXACTLY that language. Do not translate to
+a single common language — match each node's source language individually.
+No marketing language.
+Respond ONLY with a JSON object mapping each node id (as a string) to its
+one-sentence description — no prose, no markdown fences.
+
+- "scripts_precipitation_rationale_39": "Minimal node-graph helper: n(type, inputs..., **props) -> node; sockets by enabl" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/precipitation.py:L39 | neighbors=[_T] | lang=en
+- "scripts_precipitation_t_init": ".__init__()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-weather-fx/scripts/precipitation.py:L41 | neighbors=[_T] | lang=en
+- "scripts_pro_lib_b2r": "b2r()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L21 | neighbors=[pro_lib.py] | lang=en
+- "scripts_pro_lib_ccw": "ccw()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L358 | neighbors=[pro_lib.py] | lang=en
+- "scripts_pro_lib_clean": "clean()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L439 | neighbors=[pro_lib.py] | lang=en
+- "scripts_pro_lib_mb_add": ".add()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L95 | neighbors=[MB] | lang=en
+- "scripts_pro_lib_mb_init": ".__init__()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L93 | neighbors=[MB] | lang=en
+- "scripts_pro_lib_mb_merge": ".merge()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L105 | neighbors=[MB] | lang=en
+- "scripts_pro_lib_mb_tris": ".tris()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L108 | neighbors=[MB] | lang=en
+- "scripts_pro_lib_out_init": ".__init__()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L365 | neighbors=[Out] | lang=en
+- "scripts_pro_lib_preview_setup": "preview_setup()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L447 | neighbors=[pro_lib.py] | lang=en
+- "scripts_pro_lib_rationale_112": "rot = (pitch about X, yaw about Y, roll about Z) in degrees" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L112 | neighbors=[xf()] | lang=en
+- "scripts_pro_lib_rationale_142": "points on a lumpy ellipsoid (radii r = (rx, ry, rz)); flat = cut the bottom at -" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L142 | neighbors=[rock_pts()] | lang=en
+- "scripts_pro_lib_rationale_162": "poly = [(x, z), ...] counter-clockwise seen from above (+Y); extruded y0..y1, to" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L162 | neighbors=[ngon_prism()] | lang=es
+- "scripts_pro_lib_rationale_178": "vertical prism / frustum from y0 to y0 + h" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L178 | neighbors=[cyl()] | lang=en
+- "scripts_pro_lib_rationale_191": "a crystal / spire: prism up to h * shoulder, then a pyramid tip" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L191 | neighbors=[spike()] | lang=pt
+- "scripts_pro_lib_rationale_209": "parallel-transport frames along a polyline (Vectors)" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L209 | neighbors=[frames()] | lang=pt
+- "scripts_pro_lib_rationale_223": "swept polygon along pts; radii scalar or list; rough = random ring radius jitter" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L223 | neighbors=[tube()] | lang=en
+- "scripts_pro_lib_rationale_247": "a flat strip on the ground following pts (x, y, z); widths per point" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L247 | neighbors=[ribbon()] | lang=en
+- "scripts_pro_lib_rationale_266": "heightfield quad grid (Roblox space): y = hfun(x, z)" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L266 | neighbors=[grid()] | lang=es
+- "scripts_pro_lib_rationale_284": "a surface between a front curve z = zf(x) and a back curve zb(x) (quad strip ove" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L284 | neighbors=[strip_surface()] | lang=pt
+- "scripts_pro_lib_rationale_297": "jittered-grid Voronoi cells clipped to the rectangle: list of (site, polygon[(x," | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L297 | neighbors=[voronoi_cells()] | lang=en
+- "scripts_pro_lib_rationale_320": "keep the side of the bisector of s-o closer to s" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L320 | neighbors=[clip_half()] | lang=en
+- "scripts_pro_lib_rationale_364": "named groups -> uploaded meshes. solid groups use the palette; glow groups carry" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L364 | neighbors=[Out] | lang=en
+- "scripts_pro_lib_rationale_376": "a glow piece: uv on the white strip" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L376 | neighbors=[.gadd()] | lang=en
+- "scripts_pro_lib_rationale_38": "ramps: {name: (dark, mid, light)} in column order (max 16). 'white' is always ad" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L38 | neighbors=[.__init__()] | lang=en
+- "scripts_pro_lib_rationale_416": "mesh in Blender space, origin = bbox centre; returns the part record (Roblox spa" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L416 | neighbors=[make_obj()] | lang=en
+- "scripts_pro_lib_rationale_470": "loc / tgt in Roblox space" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L470 | neighbors=[render()] | lang=en
+- "scripts_pro_lib_rationale_66": "shade spec: col = palette column; facet: v = base + up * n.y + jitter (one value" | kind=entity | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L66 | neighbors=[Sh] | lang=es
+- "scripts_pro_lib_sh_init": ".__init__()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L68 | neighbors=[Sh] | lang=en
+- "scripts_pro_lib_shrink": "shrink()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/pro_lib.py:L354 | neighbors=[pro_lib.py] | lang=en
+- "scripts_prop_studio_arg": "arg()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/prop_studio.py:L8 | neighbors=[prop_studio.py] | lang=en
+- "scripts_prop_studio_setup": "setup()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/prop_studio.py:L21 | neighbors=[prop_studio.py] | lang=en
+- "scripts_qa_check_rationale_1": "Mesh/asset QA: z-fighting, detached parts, normals, topology, transforms, UVs, w" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-asset-qa/scripts/qa_check.py:L1 | neighbors=[qa_check.py] | lang=en
+- "scripts_qa_check_rationale_43": "(node type, input name) pairs a socket reaches through up to `depth` nodes." | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-asset-qa/scripts/qa_check.py:L43 | neighbors=[_feeds()] | lang=en
+- "scripts_qa_check_rationale_55": "[(severity_is_error, message)] for slots, faces and image textures." | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-asset-qa/scripts/qa_check.py:L55 | neighbors=[_material_issues()] | lang=en
+- "scripts_qa_check_rationale_94": "bmesh of the (evaluated) object in world space, triangulated copy kept separatel" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-asset-qa/scripts/qa_check.py:L94 | neighbors=[_mesh_world()] | lang=en
+- "scripts_render_batch_rationale_1": "Render stills/animations with quality presets, per-camera batches, any output fo" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-rendering/scripts/render_batch.py:L1 | neighbors=[render_batch.py] | lang=en
+- "scripts_render_plan_arg": "arg()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/scripts/render_plan.py:L9 | neighbors=[render_plan.py] | lang=en
+- "scripts_retarget_rationale_1": "Retarget an animated skeleton (mocap/BVH/Mixamo/any rig) onto another rig, const" | kind=entity | source=.agents/skills/blender-skills-main/skills/blender-animation/scripts/retarget.py:L1 | neighbors=[retarget.py] | lang=en
+
+## Instructions
+
+Write a single JSON object mapping each node id to a one-sentence description
+to: /vercel/sandbox/repo/.engram/description-instructions/batch-179.json
+
+Keep each description factual and concise (one sentence). No markdown, no prose
+outside the JSON object. It is acceptable to omit a node if context is
+insufficient — but include every node you can ground confidently.
+
+Example answer format:
+```json
+{
+  "node_id_1": "Resolves the configured ontology profile from graphify.yaml.",
+  "node_id_2": "Colonel James Barclay, an antagonist in The Crooked Man."
+}
+```

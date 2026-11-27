@@ -1,0 +1,85 @@
+# Node Description Batch 75 of 207
+
+Engram is running in assistant/skill mode (no API key). You are the host
+assistant (Claude Code / Codex / Gemini CLI). Read the prompt below and write
+your JSON answer to the answer file.
+
+## Prompt
+
+You are documenting nodes in a knowledge graph.
+For each entry below, write ONE concise factual plain-language sentence
+describing what it is or does. Use only the provided context.
+For a code symbol (kind=code-symbol — a function, class, or constant),
+describe what the function/symbol does based on its name, source location
+and neighbors — e.g. "Resolves the configured ontology profile from graphify.yaml.".
+For an entity node (any other kind — e.g. a person, place, event, object),
+describe what the entity is and its role, grounded in its type, its
+relations (neighbors) and the provided citations/evidence — e.g.
+"Lady Carfax, a wealthy heiress who disappears en route to Lausanne.".
+Ground entity descriptions in the citations/evidence when present; do not
+speculate beyond the context, so a node with no supporting context may be
+left out of the reply.
+LANGUAGE: each entry has a `lang=` marker giving the language of its source.
+Write that entry's description in EXACTLY that language. Do not translate to
+a single common language — match each node's source language individually.
+No marketing language.
+Respond ONLY with a JSON object mapping each node id (as a string) to its
+one-sentence description — no prose, no markdown fences.
+
+- "plusspeed_plus_map_rationale_89": "put theme props on cap tops (centre of the 24-wide cap), skipping some for rhyth" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_map.py:L89 | neighbors=[dress_caps(), Block, BlockProp] | lang=en
+- "plusspeed_plus_map_sky": "sky()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_map.py:L209 | neighbors=[plus_map.py, blk(), place()] | lang=en
+- "plusspeed_plus_props_lamp_pillar": "lamp_pillar()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props.py:L211 | neighbors=[plus_props.py, the stacked-cube lamp pillar from the r…, zone_gate()] | lang=en
+- "plusspeed_plus_props_rationale_212": "the stacked-cube lamp pillar from the reference game" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props.py:L212 | neighbors=[lamp_pillar(), BlockProp, Palette] | lang=en
+- "plusspeed_plus_props_rationale_223": "two lamp pillars at the track edges, a top beam with a sign board (name / price" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props.py:L223 | neighbors=[zone_gate(), BlockProp, Palette] | lang=en
+- "plusspeed_plus_props_rationale_326": "START / FINISH arch: two chunky towers, a deep beam with a black/white checker b" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props.py:L326 | neighbors=[big_arch(), BlockProp, Palette] | lang=pt
+- "plusspeed_plus_props_rationale_343": "finish hero: 1-2-3 podium with a giant blocky trophy on the top step" | kind=entity | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props.py:L343 | neighbors=[trophy(), BlockProp, Palette] | lang=en
+- "plusspeed_plus_props_v3_barrel": "barrel()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v3.py:L83 | neighbors=[plus_props_v3.py, cyl_v(), shop_stall()] | lang=en
+- "plusspeed_plus_props_v3_framed_panel": "framed_panel()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v3.py:L52 | neighbors=[plus_props_v3.py, hatchery(), shop_stall()] | lang=en
+- "plusspeed_plus_props_v3_gable": "gable()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v3.py:L37 | neighbors=[plus_props_v3.py, gable roof along X: two wedges back to …, shop_stall()] | lang=en
+- "plusspeed_plus_props_v3_potion": "potion()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v3.py:L70 | neighbors=[plus_props_v3.py, cyl_v(), shop_stall()] | lang=en
+- "plusspeed_plus_props_v4_egg_rows": "egg_rows()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v4.py:L101 | neighbors=[plus_props_v4.py, egg_hatchery(), raster()] | lang=en
+- "plusspeed_plus_props_v4_hoarding": "hoarding()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v4.py:L239 | neighbors=[plus_props_v4.py, medal_rows(), pixel_art()] | lang=en
+- "plusspeed_plus_props_v4_medal_pad": "medal_pad()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v4.py:L177 | neighbors=[plus_props_v4.py, medal_rows(), pixel_art()] | lang=en
+- "plusspeed_plus_props_v4_portal_rows": "portal_rows()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v4.py:L132 | neighbors=[plus_props_v4.py, raster(), rebirth_portal()] | lang=en
+- "plusspeed_plus_props_v4_sneaker_shop": "sneaker_shop()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v4.py:L86 | neighbors=[plus_props_v4.py, pixel_art(), plinth()] | lang=en
+- "plusspeed_plus_props_v4_start_gate": "start_gate()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v4.py:L208 | neighbors=[plus_props_v4.py, pixel_art(), stopwatch_rows()] | lang=en
+- "plusspeed_plus_props_v4_stopwatch_rows": "stopwatch_rows()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props_v4.py:L190 | neighbors=[plus_props_v4.py, start_gate(), raster()] | lang=en
+- "plusspeed_plus_props_zone_gate": "zone_gate()" | kind=code-symbol | source=.agents/skills/Map Pack/map-builder/examples/plusspeed/plus_props.py:L222 | neighbors=[plus_props.py, two lamp pillars at the track edges, a …, lamp_pillar()] | lang=en
+- "preserved_verify_preservation": "verify_preservation.py" | kind=code-symbol | source=assets/characters/preserved/verify_preservation.py:L1 | neighbors=[c7a411f Fix MUT-01-20 audit defects in …, capture(), floats()] | lang=en
+- "program_program_commit_globals": "commit_globals()" | kind=code-symbol | source=mute/src/program/program.cpp:L313 | neighbors=[program.cpp, run_stateful_program(), run_stateful_program_bytecode()] | lang=en
+- "program_program_run_program_reference": "run_program_reference()" | kind=code-symbol | source=mute/src/program/program.cpp:L377 | neighbors=[program.cpp, fail(), prepare_globals()] | lang=en
+- "refmatch_compare_conv_sep": "_conv_sep()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/refmatch/compare.py:L362 | neighbors=[compare.py, Separable convolution, same size out. H…, ssim()] | lang=en
+- "refmatch_compare_load_alpha": "load_alpha()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/refmatch/compare.py:L403 | neighbors=[compare.py, evaluate(), Read alpha if the file has one. A trans…] | lang=en
+- "refmatch_compare_load_rgb": "load_rgb()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/refmatch/compare.py:L46 | neighbors=[compare.py, evaluate(), letterbox()] | lang=en
+- "refmatch_compare_quad_basis": "_quad_basis()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/refmatch/compare.py:L53 | neighbors=[compare.py, background_fit_mask(), Normalized quadratic basis over the ima…] | lang=en
+- "refmatch_measure_sheet_subject_mask": "subject_mask()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/refmatch/measure_sheet.py:L26 | neighbors=[measure_sheet.py, auto_front(), main()] | lang=en
+- "refmatch_overlay_build": "build()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/refmatch/overlay.py:L44 | neighbors=[overlay.py, _overlay(), _panel()] | lang=en
+- "refmatch_palette_report_delta_e": "delta_e()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/refmatch/palette_report.py:L88 | neighbors=[palette_report.py, compare_to_render(), CIE76 delta-E. Above ~12 is a clearly d…] | lang=en
+- "refmatch_palette_report_subject_pixels": "subject_pixels()" | kind=code-symbol | source=.agents/skills/ForgeSkills-main/tools/refmatch/palette_report.py:L45 | neighbors=[palette_report.py, extract(), Subject pixels of an image, segmented a…] | lang=en
+- "scripts_analyze_main": "main()" | kind=code-symbol | source=.agents/skills/skills-main/performance/r8-analyzer/scripts/analyze.py:L251 | neighbors=[analyze.py, analyze(), Entry point for CLI execution.] | lang=en
+- "scripts_analyze_rule_origin": "rule_origin()" | kind=code-symbol | source=.agents/skills/skills-main/performance/r8-analyzer/scripts/analyze.py:L8 | neighbors=[analyze.py, describe_rule(), Returns the file, line and Maven coordi…] | lang=en
+- "scripts_auto_retopo_apply_all": "_apply_all()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-retopology-uv/scripts/auto_retopo.py:L27 | neighbors=[auto_retopo.py, _ctx(), run()] | lang=en
+- "scripts_auto_retopo_ctx": "_ctx()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-retopology-uv/scripts/auto_retopo.py:L22 | neighbors=[auto_retopo.py, _apply_all(), run()] | lang=en
+- "scripts_auto_retopo_run": "run()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-retopology-uv/scripts/auto_retopo.py:L33 | neighbors=[auto_retopo.py, _apply_all(), _ctx()] | lang=en
+- "scripts_bake_action_assign": "_assign()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-animation/scripts/bake_action.py:L37 | neighbors=[bake_action.py, _root_motion(), run()] | lang=en
+- "scripts_bake_action_root_motion": "_root_motion()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-animation/scripts/bake_action.py:L52 | neighbors=[bake_action.py, _assign(), run()] | lang=en
+- "scripts_bake_maps_signal_override": "_signal_override()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-texture-baking/scripts/bake_maps.py:L55 | neighbors=[bake_maps.py, Route a per-material signal into an Emi…, run()] | lang=en
+- "scripts_bake_maps_target_node": "_target_node()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-texture-baking/scripts/bake_maps.py:L97 | neighbors=[bake_maps.py, Ensure every low material has an active…, run()] | lang=en
+- "scripts_bind_mesh_cleanup": "cleanup()" | kind=code-symbol | source=.agents/skills/blender-skills-main/skills/blender-character-rigging/scripts/bind_mesh.py:L79 | neighbors=[bind_mesh.py, _ctx(), run()] | lang=en
+
+## Instructions
+
+Write a single JSON object mapping each node id to a one-sentence description
+to: /vercel/sandbox/repo/.engram/description-instructions/batch-074.json
+
+Keep each description factual and concise (one sentence). No markdown, no prose
+outside the JSON object. It is acceptable to omit a node if context is
+insufficient — but include every node you can ground confidently.
+
+Example answer format:
+```json
+{
+  "node_id_1": "Resolves the configured ontology profile from graphify.yaml.",
+  "node_id_2": "Colonel James Barclay, an antagonist in The Crooked Man."
+}
+```

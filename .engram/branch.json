@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "branchName": "main",
+  "worktreePath": "/vercel/sandbox/repo",
+  "upstream": "origin/main",
+  "mergeBase": "6568dc953fff853264807a3c4242300ec826ce6e",
+  "firstSeenHead": "6568dc953fff853264807a3c4242300ec826ce6e",
+  "lastSeenHead": "6568dc953fff853264807a3c4242300ec826ce6e",
+  "lastAnalyzedHead": "6568dc953fff853264807a3c4242300ec826ce6e",
+  "stale": false,
+  "staleReason": null,
+  "staleSince": null,
+  "lifecycleEvent": null,
+  "createdAt": "2026-11-27T07:03:50.399Z",
+  "updatedAt": "2026-11-27T07:03:50.399Z"
+}

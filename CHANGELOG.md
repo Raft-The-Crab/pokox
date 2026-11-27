@@ -53,10 +53,20 @@ the first release tag exists.
   users, games, assets, the Pokoins ledger with a double-credit guard,
   derived balances, shares, cases and audit log, with an idempotent
   `migrate.sh` runner verified against real Postgres 18.6.
-- .pkB schema arrival (BAK-05): the authority's field table, policies,
-  initial values, hash seed and projected-hash packing come from a .pkB
-  schema — declared bit widths with no padding, out-of-width proposals
-  refused rather than clamped, protected domains forced to ServerOwned.
+- Replay ring recorder (BAK-08): a bounded 64-tick ring of per-tick state
+  hashes, rejected flags, field values and moderation event markers,
+  encoded as deterministic CBOR in a zlib stream with in-tree fixed-
+  Huffman DEFLATE; decodes byte-exact, refuses corrupted or truncated
+  streams (Adler32-checked).
+- Authority module under `server/authority` (spec 05): the in-memory
+  per-session field authority with proposal/tick/snapshot semantics
+  (BAK-02); .pkB schema arrival with projected-hash packing, out-of-width
+  refusal and ServerOwned enforcement (BAK-05); the fixed-cost assert-rule
+  evaluator with parse-time node/depth/rule caps, div-by-zero safety and
+  both C-like and s-expr syntax (BAK-06); and the projected-state hash +
+  sequence window with generic rejection, a 64-hash ring and the penalty
+  model hash +1 / rule +2 / sequence +3, resync at 10 and suspend at 25
+  (BAK-07) — each with a unit test.
 - Device revocation enforcement (BAK-04): ticket issuance and validation
   fail closed for revoked devices within the 5-minute propagation bound,
   with stale ledger views refusing rather than passing, and replayed

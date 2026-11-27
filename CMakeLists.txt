@@ -1372,3 +1372,36 @@ target_compile_features(pokox_authority_pkb_schema_test PRIVATE cxx_std_20)
 set_target_properties(pokox_authority_pkb_schema_test PROPERTIES CXX_EXTENSIONS OFF)
 add_test(NAME pokox_authority_pkb_schema_test COMMAND pokox_authority_pkb_schema_test)
 set_tests_properties(pokox_authority_pkb_schema_test PROPERTIES TIMEOUT 15)
+
+# BAK-06: rule evaluator, fixed-cost — bounded ASTs (node/depth caps at
+# parse time), rules on Validated fields checked against previous() before
+# commit, generic rejections with a suspicion counter.
+add_executable(pokox_authority_rule_evaluator_test
+  server/authority/tests/unit/rule_evaluator_test.cpp
+  mute/src/state/state.cpp)
+target_include_directories(pokox_authority_rule_evaluator_test
+  PRIVATE server/authority/include server/net/include mute/include)
+target_compile_features(pokox_authority_rule_evaluator_test PRIVATE cxx_std_20)
+set_target_properties(pokox_authority_rule_evaluator_test PROPERTIES CXX_EXTENSIONS OFF)
+add_test(NAME pokox_authority_rule_evaluator_test COMMAND pokox_authority_rule_evaluator_test)
+set_tests_properties(pokox_authority_rule_evaluator_test PROPERTIES TIMEOUT 15)
+
+add_executable(pokox_authority_projection_gate_test
+  server/authority/tests/unit/projection_gate_test.cpp
+  mute/src/state/state.cpp)
+target_include_directories(pokox_authority_projection_gate_test
+  PRIVATE server/authority/include server/net/include mute/include)
+target_compile_features(pokox_authority_projection_gate_test PRIVATE cxx_std_20)
+set_target_properties(pokox_authority_projection_gate_test PROPERTIES CXX_EXTENSIONS OFF)
+add_test(NAME pokox_authority_projection_gate_test COMMAND pokox_authority_projection_gate_test)
+set_tests_properties(pokox_authority_projection_gate_test PROPERTIES TIMEOUT 15)
+
+add_executable(pokox_authority_replay_ring_test
+  server/authority/tests/unit/replay_ring_test.cpp
+  mute/src/state/state.cpp)
+target_include_directories(pokox_authority_replay_ring_test
+  PRIVATE server/authority/include server/net/include mute/include)
+target_compile_features(pokox_authority_replay_ring_test PRIVATE cxx_std_20)
+set_target_properties(pokox_authority_replay_ring_test PROPERTIES CXX_EXTENSIONS OFF)
+add_test(NAME pokox_authority_replay_ring_test COMMAND pokox_authority_replay_ring_test)
+set_tests_properties(pokox_authority_replay_ring_test PROPERTIES TIMEOUT 15)

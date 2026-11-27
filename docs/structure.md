@@ -2943,3 +2943,9 @@ The `engine/render/tests/fixtures` and `fixtures/golden` directories exist in th
 ## Identity module (2026-11-27)
 
 - New `server/identity/` area: headers under `include/poko/identity/` (`account_record.hpp`, `sign_in.hpp`, `device_binding.hpp`, `step_up.hpp`), unit tests under `tests/unit/` (`sign_in_test.cpp`, `device_binding_test.cpp`, `step_up_test.cpp`). Implements IDN-01–03 (spec 17): Firebase-claim sign-in to an idempotent PokoX account record, device TOFU binding with five-device cap and revocation, and OTP step-up gating Device-trust actions. Registered in the root `CMakeLists.txt` as `pokox_identity_*_test` targets; `server/identity` was added to the copy allowlist in `tools/version/tests/integration/test_version.py`.
+
+## Authority module and BAK wave (2026-11-27)
+
+- New `server/authority/` area: headers under `include/poko/authority/` (`session.hpp` BAK-02, `pkb_schema.hpp` BAK-05, `rule_evaluator.hpp` BAK-06, `projection_gate.hpp` BAK-07, `replay_ring.hpp` BAK-08), unit tests under `tests/unit/` (`session_test.cpp`, `pkb_schema_test.cpp`, `rule_evaluator_test.cpp`, `projection_gate_test.cpp`, `replay_ring_test.cpp`). Spec 05 authority: proposal/tick/snapshot, .pkB schema loading with projected-hash packing, fixed-cost assert rules, projected-hash + sequence-window gate with the penalty model.
+- New `backend/storage/postgres/` (BAK-01): migrations `0001`–`0003` and the idempotent `migrate.sh` runner, verified against Postgres 18.6.
+- `server/net/` (NET-01..09) and `server/identity/` (IDN-01..04, including `velocity.hpp`) complete their chains; root `CMakeLists.txt` registers all `pokox_*_test` targets. Suite: 130/130.

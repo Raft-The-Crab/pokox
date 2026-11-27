@@ -23,6 +23,7 @@
 // a well-formed schema — text form, same format the generator will emit).
 #pragma once
 
+#include "poko/authority/rule_evaluator.hpp"
 #include "poko/authority/session.hpp"
 #include "poko/mute/state.hpp" // xxhash64
 #include "poko/net/bit_buffer.hpp"
@@ -32,6 +33,7 @@
 #include <optional>
 #include <string>
 #include <string_view>
+#include <unordered_map>
 #include <vector>
 
 namespace poko::authority {
@@ -226,9 +228,6 @@ public:
     // Field ids are assigned in declaration order (the .pkB generator emits
     // them already sorted; the ascending-id pack order is the declared
     // order here).
-    // Field ids are assigned in declaration order (the .pkB generator emits
-    // them already sorted; the ascending-id pack order is the declared
-    // order here).
     for (std::uint32_t i = 0; i < schema.fields.size(); ++i) {
       const PkbField& f = schema.fields[i];
       FieldDef def;
@@ -247,15 +246,52 @@ public:
 
   [[nodiscard]] SessionAuthority& authority() { return auth_; }
 
+  // Load rules from .pkB text (call after construction, before proposing).
+  [[nodiscard]] RuleLoadError load_rules(std::string_view rules_text) {
+    std::unordered_map<std::string, std::uint32_t> ids;
+    for (std::uint32_t i = 0; i < schema_.fields.size(); ++i) ids.emplace(schema_.fields[i].name, i + 1);
+    return RuleParser(ids).parse(rules_text, rules_);
+  }
+
+  [[nodiscard]] const std::vector<Rule>& rules() const { return rules_; }
+
+  // Suspicion counter (spec 05: rule rejections are generic, suspicion rises
+  // without revealing the field). Per-authority for now; per-client split is
+  // a moderation row (MOD-*).
+  [[nodiscard]] std::uint64_t suspicion() const { return suspicion_; }
+
   // The authority rejects an invalid position (spec 05 trap 0x0D): a
   // proposal outside the field's declared width or quantization bounds is
-  // refused before it can be committed, never clamped.
+  // refused before it can be committed, never clamped. Validated fields
+  // additionally run their .pkB rules against previous() before acceptance
+  // (BAK-06); a rule failure discards the proposal and raises suspicion.
   [[nodiscard]] ProposalResult propose(std::uint32_t client, std::uint32_t field_id, std::int64_t value) {
     if (!validate_value(field_id, value)) {
       const Policy p = field_id <= schema_.fields.size()
                            ? schema_.fields[field_id - 1].policy
                            : Policy::server_owned;
+      ++suspicion_; // probing widths is the same cheat class as breaking a rule
       return {ProposalResult::Code::discarded, p};
+    }
+    if (!rules_.empty()) {
+      RuleEvaluator::Env env;
+      env.tick = auth_.tick_number();
+      // Rules run on world values: a float field's stored form is its
+      // quantized integer, so dequantize both proposal and previous.
+      if (schema_.fields[field_id - 1].type == PkbField::Type::float_) {
+        env.value = dequantize(value, schema_.fields[field_id - 1]);
+        env.previous = dequantize(*auth_.value_of(field_id), schema_.fields[field_id - 1]);
+      } else {
+        env.value = double(value);
+        env.previous = double(*auth_.value_of(field_id));
+      }
+      env.granted = true;
+      env.field_values = &field_value_cache();
+      const auto outcome = RuleEvaluator::check(rules_, field_id, env);
+      if (!outcome.ok) {
+        ++suspicion_;
+        return {ProposalResult::Code::discarded, schema_.fields[field_id - 1].policy};
+      }
     }
     return auth_.propose(client, field_id, value);
   }
@@ -299,10 +335,14 @@ public:
       const double d = dequantize(v, f);
       return d >= f.min && d <= f.max;
     }
-    const std::int64_t lo = f.signed_int ? -(std::int64_t(1) << (f.bits - 1)) : 0;
-    const std::int64_t hi = f.signed_int ? (std::int64_t(1) << (f.bits - 1)) - 1
-                                         : (f.bits >= 63 ? std::int64_t(1) << 62 : (std::int64_t(1) << f.bits) - 1);
-    return v >= lo && v <= hi;
+    if (f.signed_int) {
+      if (f.bits >= 64) return true; // every int64 fits; avoids 1LL << 63 UB
+      const std::int64_t lo = -(std::int64_t(1) << (f.bits - 1));
+      const std::int64_t hi = (std::int64_t(1) << (f.bits - 1)) - 1;
+      return v >= lo && v <= hi;
+    }
+    const std::int64_t hi = f.bits >= 63 ? std::int64_t(1) << 62 : (std::int64_t(1) << f.bits) - 1;
+    return v >= 0 && v <= hi;
   }
 
   [[nodiscard]] std::uint32_t field_id(const std::string& name) const {
@@ -314,19 +354,35 @@ public:
   void set_session_nonce(std::uint64_t n) { nonce_ = n; }
 
 private:
+  // Rule evaluation reads current field values as doubles, by id. Rebuilt
+  // on demand (schemas are tiny; no caching games).
+  [[nodiscard]] const std::unordered_map<std::uint32_t, double>& field_value_cache() const {
+    cache_.clear();
+    for (std::uint32_t i = 0; i < schema_.fields.size(); ++i)
+      cache_.emplace(i + 1, double(*auth_.value_of(i + 1)));
+    return cache_;
+  }
+
   [[nodiscard]] static std::uint64_t quantize(double v, const PkbField& f) {
     const double span = f.max - f.min;
     const double t = (v - f.min) / span;
-    const double q = std::round(t * double((std::uint64_t(1) << f.float_bits) - 1));
+    const double scale = f.float_bits >= 64 ? 18446744073709551615.0
+                                            : double((std::uint64_t(1) << f.float_bits) - 1);
+    const double q = std::round(t * scale);
     return std::uint64_t(q);
   }
   [[nodiscard]] static double dequantize(std::int64_t q, const PkbField& f) {
     const double span = f.max - f.min;
-    return f.min + span * double(std::uint64_t(q)) / double((std::uint64_t(1) << f.float_bits) - 1);
+    const double scale = f.float_bits >= 64 ? 18446744073709551615.0
+                                            : double((std::uint64_t(1) << f.float_bits) - 1);
+    return f.min + span * double(std::uint64_t(q)) / scale;
   }
 
   PkbSchema schema_;
   SessionAuthority auth_;
+  std::vector<Rule> rules_;
+  std::uint64_t suspicion_ = 0;
+  mutable std::unordered_map<std::uint32_t, double> cache_;
   std::uint64_t nonce_ = 0;
 };
 

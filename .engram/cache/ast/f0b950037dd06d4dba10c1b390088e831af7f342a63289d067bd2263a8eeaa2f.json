@@ -1,0 +1,1 @@
+{"nodes":[{"id":"work_list_images","label":"list_images.py","file_type":"code","source_file":"assets/characters/work/list_images.py","source_location":"L1"}],"edges":[{"source":"work_list_images","target":"bpy","relation":"imports","confidence":"EXTRACTED","source_file":"assets/characters/work/list_images.py","source_location":"L1","weight":1}]}
