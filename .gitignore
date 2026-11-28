@@ -2,15 +2,41 @@
 /build/
 /build-*/
 /out/
+/.tmp-build/
 /vcpkg_installed/
 /CMakeUserPresets.json
 
 # Ephemeral checkout used by the GitHub Actions workflow.
 /_vcpkg/
 
+# Debug/bench scratch output: traces, asan logs and bench binaries (76 MB local).
+/artifacts/
+
+# Anything a stray in-tree CMake/Ninja run leaves behind.
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+CTestTestfile.cmake
+DartConfiguration.tcl
+compile_commands.json
+.ninja_deps
+.ninja_log
+/build.ninja
+
 # Python test caches
 __pycache__/
 *.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.coverage
+coverage/
+htmlcov/
+*.gcda
+*.gcno
+*.profraw
+*.profdata
 
 # Local list of test environment variable names
 .env.example
@@ -23,3 +49,63 @@ client/android/.gradle/
 client/android/build/
 client/android/app/build/
 client/android/app/src/main/jniLibs/
+.gradle/
+.externalNativeBuild/
+.cxx/
+local.properties
+*.apk
+*.aab
+*.iml
+
+# Compiled objects, libraries and debug symbols
+*.o
+*.obj
+*.pdb
+*.ilk
+*.exp
+*.lib
+*.lo
+*.la
+*.a
+*.so
+*.so.*
+*.dylib
+*.dSYM/
+*.exe
+
+# Crash dumps and core files
+*.stackdump
+core
+core.*
+
+# Logs and temp output
+*.log
+*.tmp
+*.temp
+*.bak
+*.orig
+*.rej
+/Testing/
+
+# Editor and IDE state
+.vs/
+.idea/
+.vscode/
+*.user
+*.suo
+*.swp
+*.swo
+*~
+
+# OS clutter
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+desktop.ini
+.directory
+
+# Local AI-tool state (Serena, Workbuddy and similar agents)
+.serena/
+.workbuddy-ai/

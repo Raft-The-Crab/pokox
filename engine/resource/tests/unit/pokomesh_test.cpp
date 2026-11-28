@@ -1,4 +1,6 @@
 // ENG-19: PMES binary mesh loader accept/reject coverage.
+// AST-01: glTF 2.0 binary import, determinism and .meta sidecar coverage.
+#include "poko/resource/gltf_import.hpp"
 #include "poko/resource/pokomesh.hpp"
 
 #include <array>
@@ -109,6 +111,142 @@ int main() {
     CHECK(!poko::resource::parse_pokomesh(nullptr, 0));
     const std::uint8_t tiny[8] = {};
     CHECK(!poko::resource::parse_pokomesh(tiny, sizeof(tiny)));
+  }
+
+  // AST-01: glTF 2.0 binary (.glb) import, PMES serialization and .meta.
+  {
+    const auto near = [](float a, float b) { return a - b < 1e-4f && b - a < 1e-4f; };
+    auto make_bin = [](bool with_normals, std::uint16_t i0, std::uint16_t i1, std::uint16_t i2) {
+      std::vector<std::uint8_t> bin;
+      const float positions[3][3] = {
+          {-0.5f, -0.5f, 0.0f}, {0.5f, -0.5f, 0.0f}, {0.0f, 0.5f, 0.0f}};
+      for (const auto& p : positions)
+        for (float f : p) putf(bin, f);
+      if (with_normals)
+        for (int i = 0; i < 3; ++i) {
+          putf(bin, 0.0f);
+          putf(bin, 0.0f);
+          putf(bin, 1.0f);
+        }
+      for (std::uint16_t v : {i0, i1, i2}) {
+        bin.push_back(static_cast<std::uint8_t>(v & 0xFF));
+        bin.push_back(static_cast<std::uint8_t>(v >> 8));
+      }
+      return bin;
+    };
+    const auto make_glb = [](const std::string& json, const std::vector<std::uint8_t>& bin) {
+      std::vector<std::uint8_t> body;
+      std::string padded = json;
+      while (padded.size() % 4 != 0) padded.push_back(' ');
+      std::vector<std::uint8_t> padded_bin = bin;
+      while (padded_bin.size() % 4 != 0) padded_bin.push_back(0);
+      put32(body, static_cast<std::uint32_t>(padded.size()));
+      put32(body, 0x4E4F534Au);
+      body.insert(body.end(), padded.begin(), padded.end());
+      if (!padded_bin.empty()) {
+        put32(body, static_cast<std::uint32_t>(padded_bin.size()));
+        put32(body, 0x004E4942u);
+        body.insert(body.end(), padded_bin.begin(), padded_bin.end());
+      }
+      std::vector<std::uint8_t> glb;
+      glb.insert(glb.end(), {'g', 'l', 'T', 'F'});
+      put32(glb, 2);
+      put32(glb, static_cast<std::uint32_t>(12 + body.size()));
+      glb.insert(glb.end(), body.begin(), body.end());
+      return glb;
+    };
+    const std::string json_normals = R"({"asset":{"version":"2.0"},"buffers":[{"byteLength":78}],"bufferViews":[{"buffer":0,"byteOffset":0,"byteLength":36},{"buffer":0,"byteOffset":36,"byteLength":36},{"buffer":0,"byteOffset":72,"byteLength":6}],"accessors":[{"bufferView":0,"componentType":5126,"count":3,"type":"VEC3"},{"bufferView":1,"componentType":5126,"count":3,"type":"VEC3"},{"bufferView":2,"componentType":5123,"count":3,"type":"SCALAR"}],"meshes":[{"primitives":[{"attributes":{"POSITION":0,"NORMAL":1},"indices":2}]}],"nodes":[{"mesh":0,"translation":[1,2,3]}]})";
+    const std::string json_flat = R"({"asset":{"version":"2.0"},"buffers":[{"byteLength":48}],"bufferViews":[{"buffer":0,"byteOffset":0,"byteLength":36},{"buffer":0,"byteOffset":36,"byteLength":6}],"accessors":[{"bufferView":0,"componentType":5126,"count":3,"type":"VEC3"},{"bufferView":1,"componentType":5123,"count":3,"type":"SCALAR"}],"meshes":[{"primitives":[{"attributes":{"POSITION":0},"indices":1}]}]})";
+    std::string error;
+    {
+      // Normals + node translation: positions move, normals stay unit length.
+      const auto glb = make_glb(json_normals, make_bin(true, 0, 1, 2));
+      poko::resource::GltfImportStats stats;
+      auto mesh = poko::resource::import_glb(glb.data(), glb.size(), &error, &stats);
+      CHECK(mesh != nullptr);
+      CHECK(mesh && mesh->vertices.size() == 3 && mesh->indices.size() == 3);
+      CHECK(mesh && near(mesh->vertices[0].position[0], 0.5f));
+      CHECK(mesh && near(mesh->vertices[0].position[1], 1.5f));
+      CHECK(mesh && near(mesh->vertices[0].position[2], 3.0f));
+      CHECK(mesh && near(mesh->vertices[0].normal[2], 1.0f));
+      CHECK(mesh && mesh->indices[2] == 2);
+      CHECK(stats.primitive_count == 1 && stats.triangle_count == 1 && stats.mesh_count == 1);
+      if (mesh) {
+        const auto bytes = poko::resource::serialize_pokomesh(*mesh);
+        auto reparsed = poko::resource::parse_pokomesh(bytes.data(), bytes.size(), &error);
+        CHECK(reparsed && reparsed->vertices.size() == 3 && reparsed->indices[1] == 1);
+        auto again = poko::resource::import_glb(glb.data(), glb.size(), &error);
+        CHECK(again && poko::resource::serialize_pokomesh(*again) == bytes);
+      }
+      poko::resource::AssetMeta meta;
+      meta.source_name = "tri.glb";
+      meta.source_bytes = glb.size();
+      meta.source_fnv64 = poko::resource::fnv1a64(glb.data(), glb.size());
+      meta.vertex_count = 3;
+      meta.index_count = 3;
+      meta.triangle_count = 1;
+      CHECK(poko::resource::write_meta((dir / "tri.glb.meta").string(), meta, &error));
+      poko::resource::AssetMeta back;
+      CHECK(poko::resource::read_meta((dir / "tri.glb.meta").string(), &back, &error));
+      CHECK(back.source_name == "tri.glb" && back.source_fnv64 == meta.source_fnv64);
+      CHECK(back.vertex_count == 3 && back.index_count == 3 && back.triangle_count == 1);
+      CHECK(poko::resource::serialize_meta(meta) == poko::resource::serialize_meta(back));
+    }
+    {
+      // Missing NORMAL: computed +z; load_glb reads the same data from disk.
+      const auto glb = make_glb(json_flat, make_bin(false, 0, 1, 2));
+      write(dir / "flat.glb", glb);
+      auto mesh = poko::resource::load_glb((dir / "flat.glb").string(), &error);
+      CHECK(mesh && mesh->vertices.size() == 3);
+      CHECK(mesh && near(mesh->vertices[0].normal[2], 1.0f));
+      CHECK(mesh && near(mesh->vertices[0].position[0], -0.5f));
+    }
+    {
+      // Node `matrix`: uniform scale 2 is applied to positions.
+      const std::string json_matrix = R"({"asset":{"version":"2.0"},"buffers":[{"byteLength":78}],"bufferViews":[{"buffer":0,"byteOffset":0,"byteLength":36},{"buffer":0,"byteOffset":36,"byteLength":36},{"buffer":0,"byteOffset":72,"byteLength":6}],"accessors":[{"bufferView":0,"componentType":5126,"count":3,"type":"VEC3"},{"bufferView":1,"componentType":5126,"count":3,"type":"VEC3"},{"bufferView":2,"componentType":5123,"count":3,"type":"SCALAR"}],"meshes":[{"primitives":[{"attributes":{"POSITION":0,"NORMAL":1},"indices":2}]}],"nodes":[{"mesh":0,"matrix":[2,0,0,0,0,2,0,0,0,0,2,0,0,0,0,1]}]})";
+      const auto matrix_glb = make_glb(json_matrix, make_bin(true, 0, 1, 2));
+      auto mesh = poko::resource::import_glb(matrix_glb.data(), matrix_glb.size());
+      CHECK(mesh != nullptr);
+      CHECK(mesh && near(mesh->vertices[1].position[0], 1.0f));
+    }
+    {
+      // Rejections: bad index, points mode, container and schema errors.
+      const auto out_of_range = make_glb(json_flat, make_bin(false, 0, 1, 7));
+      CHECK(!poko::resource::import_glb(out_of_range.data(), out_of_range.size(), &error));
+      CHECK(!error.empty());
+      const std::string json_points = R"({"asset":{"version":"2.0"},"buffers":[{"byteLength":48}],"bufferViews":[{"buffer":0,"byteOffset":0,"byteLength":36}],"accessors":[{"bufferView":0,"componentType":5126,"count":3,"type":"VEC3"}],"meshes":[{"primitives":[{"attributes":{"POSITION":0},"mode":0}]}]})";
+      poko::resource::GltfImportStats skipped;
+      const auto points = make_glb(json_points, make_bin(false, 0, 1, 2));
+      CHECK(!poko::resource::import_glb(points.data(), points.size(), &error, &skipped));
+      CHECK(skipped.skipped_primitives == 1);
+      const auto good = make_glb(json_normals, make_bin(true, 0, 1, 2));
+      auto bad_magic = good;
+      bad_magic[0] = 'X';
+      CHECK(!poko::resource::import_glb(bad_magic.data(), bad_magic.size(), &error));
+      auto bad_version = good;
+      bad_version[4] = 1;
+      CHECK(!poko::resource::import_glb(bad_version.data(), bad_version.size(), &error));
+      auto truncated = good;
+      truncated.resize(truncated.size() - 4);
+      CHECK(!poko::resource::import_glb(truncated.data(), truncated.size(), &error));
+      auto bad_length = good;
+      bad_length[8] = 0;
+      CHECK(!poko::resource::import_glb(bad_length.data(), bad_length.size(), &error));
+      CHECK(!poko::resource::import_glb(nullptr, 0));
+      const auto no_mesh = make_glb(R"({"asset":{"version":"2.0"},"meshes":[]})", {});
+      CHECK(!poko::resource::import_glb(no_mesh.data(), no_mesh.size(), &error));
+      const auto old_asset =
+          make_glb(R"({"asset":{"version":"1.0"},"meshes":[{"primitives":[]}]})", {});
+      CHECK(!poko::resource::import_glb(old_asset.data(), old_asset.size(), &error));
+      const auto bad_accessor = make_glb(
+          R"({"asset":{"version":"2.0"},"bufferViews":[{"buffer":0,"byteOffset":0,"byteLength":36}],"accessors":[],"meshes":[{"primitives":[{"attributes":{"POSITION":5}}]}]})",
+          make_bin(false, 0, 1, 2));
+      CHECK(!poko::resource::import_glb(bad_accessor.data(), bad_accessor.size(), &error));
+      // A meta file that is not an ast-01 v1 sidecar is rejected.
+      write(dir / "stale.meta", std::vector<std::uint8_t>{'{', '}'});
+      poko::resource::AssetMeta stale;
+      CHECK(!poko::resource::read_meta((dir / "stale.meta").string(), &stale, &error));
+    }
   }
 
   fs::remove_all(dir, ec);

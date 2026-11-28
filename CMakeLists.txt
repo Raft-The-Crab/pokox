@@ -247,7 +247,7 @@ target_link_libraries(poko_mute_pkb_schema_draft PRIVATE poko_mute_program)
 target_compile_features(poko_mute_pkb_schema_draft PRIVATE cxx_std_20)
 
 # Dependency-free refcounted asset handles (ENG-16).
-add_library(poko_resource STATIC engine/resource/src/asset_store.cpp engine/resource/src/ktx2.cpp engine/resource/src/pokomesh.cpp)
+add_library(poko_resource STATIC engine/resource/src/asset_store.cpp engine/resource/src/gltf_import.cpp engine/resource/src/ktx2.cpp engine/resource/src/pokomesh.cpp)
 target_include_directories(poko_resource PUBLIC engine/resource/include)
 target_compile_features(poko_resource PUBLIC cxx_std_20)
 set_target_properties(poko_resource PROPERTIES CXX_EXTENSIONS OFF)
@@ -1424,6 +1424,71 @@ target_compile_features(pokox_matchmaker_allocator_test PRIVATE cxx_std_20)
 set_target_properties(pokox_matchmaker_allocator_test PROPERTIES CXX_EXTENSIONS OFF)
 add_test(NAME pokox_matchmaker_allocator_test COMMAND pokox_matchmaker_allocator_test)
 set_tests_properties(pokox_matchmaker_allocator_test PROPERTIES TIMEOUT 15)
+
+# BAK-09..14 + DEMO-01: the runnable server host wraps identity, matchmaker,
+# authority and net into one protocol state machine (see host_test.cpp).
+add_executable(pokox_host
+  server/host/main.cpp
+  mute/src/state/state.cpp)
+target_include_directories(pokox_host
+  PRIVATE server/host/include server/authority/include server/matchmaker/include
+          server/net/include server/identity/include mute/include)
+target_compile_features(pokox_host PRIVATE cxx_std_20)
+set_target_properties(pokox_host PROPERTIES CXX_EXTENSIONS OFF)
+if(WIN32)
+  target_link_libraries(pokox_host PRIVATE ws2_32)
+endif()
+
+add_executable(pokox_host_test
+  server/host/tests/unit/host_test.cpp
+  mute/src/state/state.cpp)
+target_include_directories(pokox_host_test
+  PRIVATE server/host/include server/authority/include server/matchmaker/include
+          server/net/include server/identity/include mute/include)
+target_compile_features(pokox_host_test PRIVATE cxx_std_20)
+set_target_properties(pokox_host_test PROPERTIES CXX_EXTENSIONS OFF)
+if(WIN32)
+  target_link_libraries(pokox_host_test PRIVATE ws2_32)
+endif()
+add_test(NAME pokox_host_test COMMAND pokox_host_test)
+set_tests_properties(pokox_host_test PROPERTIES TIMEOUT 15)
+
+# DEMO-03: the WebSocket plane — RFC 6455 handshake helpers, the host-side
+# listener and the client's control-plane session, checked over loopback.
+add_executable(pokox_net_ws_handshake_test server/net/tests/unit/ws_handshake_test.cpp)
+target_include_directories(pokox_net_ws_handshake_test PRIVATE server/net/include)
+target_compile_features(pokox_net_ws_handshake_test PRIVATE cxx_std_20)
+set_target_properties(pokox_net_ws_handshake_test PROPERTIES CXX_EXTENSIONS OFF)
+if(WIN32)
+  target_link_libraries(pokox_net_ws_handshake_test PRIVATE ws2_32)
+endif()
+add_test(NAME pokox_net_ws_handshake_test COMMAND pokox_net_ws_handshake_test)
+set_tests_properties(pokox_net_ws_handshake_test PROPERTIES TIMEOUT 15)
+
+add_library(poko_client_control STATIC
+  client/windows/net/control/src/session_client.cpp)
+target_include_directories(poko_client_control PUBLIC
+  client/windows/net/control/include server/net/include)
+target_compile_features(poko_client_control PUBLIC cxx_std_20)
+set_target_properties(poko_client_control PROPERTIES CXX_EXTENSIONS OFF)
+if(WIN32)
+  target_link_libraries(poko_client_control PUBLIC ws2_32)
+endif()
+
+add_executable(pokox_ws_client client/windows/net/control/examples/connect_demo.cpp)
+target_link_libraries(pokox_ws_client PRIVATE poko_client_control)
+
+add_executable(pokox_client_control_test
+  client/windows/net/control/tests/unit/session_client_test.cpp
+  mute/src/state/state.cpp)
+target_include_directories(pokox_client_control_test
+  PRIVATE server/host/include server/authority/include server/matchmaker/include
+          server/net/include server/identity/include mute/include)
+target_link_libraries(pokox_client_control_test PRIVATE poko_client_control)
+target_compile_features(pokox_client_control_test PRIVATE cxx_std_20)
+set_target_properties(pokox_client_control_test PROPERTIES CXX_EXTENSIONS OFF)
+add_test(NAME pokox_client_control_test COMMAND pokox_client_control_test)
+set_tests_properties(pokox_client_control_test PROPERTIES TIMEOUT 30)
 
 add_executable(pokox_matchmaker_match_queue_test
   server/matchmaker/tests/unit/match_queue_test.cpp)

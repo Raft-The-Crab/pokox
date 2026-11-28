@@ -1,0 +1,26 @@
+[Unit]
+Description=PokoX host (DEMO-01 server: identity + matchmaker + authority + net)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=@USER@
+Group=@USER@
+WorkingDirectory=@REMOTE_DIR@
+# Holds POKO_TICKET_SECRET (mode 0600). The host fails closed without it.
+EnvironmentFile=/etc/pokox/pokox-host.env
+ExecStart=@REMOTE_DIR@/pokox_host --port @PORT@ --tick-hz @TICK_HZ@ --slots @SLOTS@
+Restart=always
+RestartSec=2
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+RestrictAddressFamilies=AF_INET AF_INET6
+LimitNOFILE=4096
+
+[Install]
+WantedBy=multi-user.target

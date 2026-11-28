@@ -42,6 +42,14 @@ Explicitly cut for the demo: Android client (SHL-15..17), patcher/version distri
 
 Plus in parallel, any leftover fix/audit work found by the other agents (not counted above).
 
+Landed on this path so far: #1 and #2 (SHL-02..09), and #3 — DEMO-01 `server/host`
+(2026-11-27) and DEMO-02 `server/host/deploy` — plus #4 DEMO-03 (2026-11-28): a real
+client now upgrades a loopback WebSocket, signs in, joins a session, receives tick SNAPs,
+sends framed INPUT and leaves (`client/windows/net/control`, `server/host/ws_host.hpp`,
+`pokox_client_control_test`). The VPS systemd/TLS half of the transport stays environment-
+gated and plain `ws://`: a public demo needs a TLS reverse proxy in front of `--ws-port`.
+Next: #5 assets (AST-01 + AST-04 subset), then #6 Mute hostcalls, #7 Studio minimum.
+
 ## Parallel-agent plan
 
 Run at most **one agent per module directory** to avoid edit conflicts:

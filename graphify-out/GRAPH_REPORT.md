@@ -1,22 +1,22 @@
-# Graph Report - Project Poko  (2026-11-26)
+# Graph Report - Project Poko  (2026-11-28)
 
 ## Corpus Check
-- 2024 files · ~2,420,661 words
+- 3173 files · ~3,390,286 words
 - Verdict: corpus is large enough that graph structure adds value.
-- Unclassified: 513 file(s) not represented in the graph (top: .log 63, .mute 61, .blend 60)
+- Unclassified: 1123 file(s) not represented in the graph (top: (none) 641, .log 63, .mute 61)
 
 ## Summary
-- 31851 nodes · 54167 edges · 2753 communities (2503 shown, 250 thin omitted)
-- Extraction: 90% EXTRACTED · 10% INFERRED · 0% AMBIGUOUS · INFERRED: 5545 edges (avg confidence: 0.87)
+- 35506 nodes · 60272 edges · 3009 communities (2747 shown, 262 thin omitted)
+- Extraction: 90% EXTRACTED · 10% INFERRED · 0% AMBIGUOUS · INFERRED: 5949 edges (avg confidence: 0.87)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `952997ed`
+- Built from commit: `c67e2be8`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
-- json
+- build_refined.py
 - 21 — Engine core
 - run
 - VulkanTrianglePass::Impl
@@ -26,15 +26,15 @@
 - skill_module
 - box
 - VulkanTrianglePass
-- Prop
+- math
 - Scheduler
-- RenderError
+- OpenGLClearESRenderer
 - subprocess
 - find_cross_mesh_overlaps
 - Build status
 - narrowphase_dbg.cpp
 - 04 — Mute language and VM
-- HostcallTable
+- Scaffold progress
 - 29 — R6 character asset adaptation (BoyR6 and BlockyR6)
 - SdlPlatform
 - 02 — Ordered work queue
@@ -49,7 +49,7 @@
 - xxhash64
 - BufferDesc
 - GoldenHarnessTests
-- 03 — Architecture and services
+- README.md
 - 07 — Matchmaker, slots and donated servers
 - 17 — Identity and security
 - 22 — Engine RHI
@@ -71,13 +71,13 @@
 - R6 preparation: file guide
 - test_safety.py
 - 09 — Economy and Exchange
-- 28 — Engine diagnostics
+- Communities
 - Directory purposes
 - C++23 Features (Usable Today)
 - Position
 - cave_props.py
 - project.yml
-- FixedVec3
+- ConvexShape
 - OrbitCamera
 - quad
 - rules
@@ -97,8 +97,8 @@
 - 18 — Contributors and community
 - 20 — Legal and privacy
 - config.cpp
-- math
-- cube_golden.py
+- pet_props.py
+- test_privacy.py
 - lint
 - fakes/EngineFactoryVk.h
 - EngineConfig
@@ -106,8 +106,8 @@
 - IPipelineState
 - Contributor Covenant Code of Conduct
 - IDeviceObject
-- candy_props.py
-- cosine
+- HostServer
+- bit
 - Community Guidelines (draft)
 - Developer Agreement (draft)
 - Moderator Code of Conduct (draft)
@@ -126,14 +126,14 @@
 - numpy
 - onsen_props.py
 - rules
-- shutil
+- replay_ring.hpp
 - ISwapChain
 - RefCntAutoPtr
 - ExprKind
 - Superpowers Release Notes
 - FixedStepLoop
 - PokoX plan index
-- AssetStore
+- AssetStore::State
 - VulkanMeshPass::Impl
 - Character visual review — 2026-11-20
 - ENG-01–ENG-03 integration review
@@ -155,13 +155,13 @@
 - ENG-01–06 follow-up audit
 - pytest
 - DeviceRouter
-- ssa_test.cpp
-- EmitResult
+- IrErrorCode
+- parse_declarations
 - Engine reorganization and ENG-01–03 review
 - Data map (LEG-03)
 - void_props.py
 - cyl
-- load_state_snapshot
+- BitBuffer
 - rules
 - ENG-01–07 follow-up review
 - ENG-01–ENG-08 follow-up review
@@ -185,12 +185,12 @@
 - FakeDevice
 - BlendModeRenderTargetDesc
 - TextureData
-- EmitResult
+- VulkanShellUiPass::Impl
 - Safe C++ Idioms
 - MB
 - IDeviceContext
 - ActionListLayout.kt
-- ja/README.md
+- VFX クラフトルール
 - stdlib_crypto.cpp
 - Modern C++
 - GraphicsPipelineDesc
@@ -200,24 +200,24 @@
 - ImageGridLayout.kt
 - pet_map.py
 - TextureDesc
-- parse_declarations
+- determinism.cpp
 - SampleGlanceWidget.kt
 - glance-canonical-layouts/SKILL.md
-- bytecode.cpp
+- SlotRegistry
 - Compiler Hardening
 - ClearBackendSelection
 - IRenderDevice
 - InputTimeline
-- ISwapChain
+- VulkanImGuiPass::Impl
 - C++20 Features (Default Practice)
 - RefCntAutoPtr
-- VmDebugger
+- VmCore
 - Variant Analysis Report
 - blender-environment-kits/scripts/_bpyx.py
 - Chain
 - sky_map.py
 - main
-- forest_props.py
+- Fixed
 - charge_chain
 - TextWithImageLayout.kt
 - StatementParser
@@ -242,7 +242,7 @@
 - ToolBarLayout.kt
 - Vector3
 - Searching: The Abstraction Ladder
-- Ktx2Image
+- poko_jni_bridge.cpp
 - FakeContext
 - Triage: Deciding Whether a Candidate Is Real
 - IPipelineState
@@ -254,11 +254,11 @@
 - linux-build
 - town_map.py
 - void_map.py
-- parse_arithmetic
+- poko_shell.h
 - windows-build
 - camera.cpp
-- MUT-03 arithmetic evaluator — initial contract
-- StatementNode
+- CharacterController
+- StatementAst
 - GraphicsPipelineStateCreateInfo
 - TextureDesc
 - Post-implementation audit — ENG-01 through ENG-13
@@ -276,9 +276,9 @@
 - effekseer-vfx-skill
 - interface
 - Variant Analysis
-- CheckListAppWidget.kt
+- ws_handshake.hpp
 - roblox_export.py
-- BytecodeErrorCode
+- FixedVec3
 - Linux graphics setup and review — 2026-11-22
 - egg_map.py
 - AggregateStore
@@ -287,7 +287,7 @@
 - Change notes
 - SapBroadphase
 - InputEvent
-- resolve_packages
+- SessionClient
 - The Ladder
 - SnapshotErrorCode
 - studlib.py
@@ -298,7 +298,7 @@
 - Reporting a Variant Hunt
 - action_map_test.cpp
 - lich_king_brick.py
-- LayoutElement
+- DrawIndexedAttribs
 - DrawIndexedAttribs
 - run_register_vm
 - forest_map.py
@@ -309,16 +309,16 @@
 - scarecrow_king_brick.py
 - living_armor_brick.py
 - props_brick.py
-- BuildResult
+- ByoRegistration
 - plus_map.py
-- VulkanTrianglePass::draw
+- AssetStore
 - parse_pokomesh
 - blender-skills-main/tools/validate_skills.py
 - ember_dragon_brick.py
 - egg_props.py
 - blender-retopology-uv/scripts/_bpyx.py
 - DrawAttribs
-- VulkanDiagnostics
+- vulkan_diagnostics.cpp
 - frost_map.py
 - ValueErrorCode
 - plus_props_v3.py
@@ -327,17 +327,17 @@
 - SoftBody
 - build_apk.sh
 - ExpressiveToolbarLayout.kt
-- Console
+- ConsoleLog
 - blender-clothing/scripts/_bpyx.py
 - blender-hair-grooming/scripts/_bpyx.py
 - plus_props_v4.py
 - camerax/SKILL.md
 - storm_griffin_brick.py
 - MUT-08–10 progress and integration audit — 2026-11-22
-- Opcode
+- WsHost
 - Android skills
 - Android skills
-- SemanticErrorCode
+- TypeTag
 - ENG-01–ENG-22 hardening audit — 2026-11-22
 - Buttons.kt
 - Body
@@ -345,7 +345,7 @@
 - 11 — Engine, rendering and physics
 - mimic_chest_brick.py
 - Project layout check — 2026-11-22
-- Error
+- FakeContext
 - swamp_croc_brick.py
 - Position
 - tyrant_rex_brick.py
@@ -358,8 +358,8 @@
 - credential-verifier/SKILL.md
 - lexer.cpp
 - main
-- FloatEnvironment
-- blocks.py
+- SessionAuthority
+- Ticket
 - Android skills
 - gen_trees.py
 - kraken_brick.py
@@ -370,13 +370,13 @@
 - blender-texture-baking/scripts/_bpyx.py
 - SearchToolBarLayout.kt
 - blender-export-pipelines/scripts/_bpyx.py
-- debugger_test.cpp
+- FrameHeader
 - ENG-03 — Vulkan clear seed, acceptance still open
 - war_mech_brick.py
 - ElementProfile
 - DeclarationKind
 - build.md
-- ArithmeticOp
+- ProjectionGate
 - Configure fast-follow and on-demand delivery
 - ENG-22 — lit-cube screenshot golden
 - input_snapshot.cpp
@@ -391,8 +391,8 @@
 - Map quality checklist (run on every render pass)
 - blender-simulation/scripts/_bpyx.py
 - poly
-- volcano_tortoise_brick.py
-- war_rhino_brick.py
+- brick_rig.py
+- lib.rs
 - MUT-13 — Mute v1 scope and API matrix (APPROVED)
 - blender-game-optimization/scripts/_bpyx.py
 - credential-holder/SKILL.md
@@ -405,10 +405,10 @@
 - Tree
 - vulkan_clear_faults.cpp
 - blender-rendering/scripts/_bpyx.py
-- PackageErrorCode
+- PokoNativeBridge
 - blender-sculpting/scripts/_bpyx.py
 - blender-video-editing/scripts/_bpyx.py
-- effekseer_ai/cli.py
+- JitterBuffer
 - test_scale_beam.py
 - credential-issuer/SKILL.md
 - resources-and-assets.md
@@ -429,7 +429,7 @@
 - Android skills
 - steps
 - shared/_bpyx.py
-- blender-core/scripts/_bpyx.py
+- blender-character-rigging/scripts/_bpyx.py
 - blender-facial-shapekeys/scripts/_bpyx.py
 - blender-pbr-materials/scripts/_bpyx.py
 - blender-pipeline-automation/scripts/_bpyx.py
@@ -439,31 +439,30 @@
 - agp-9-upgrade/SKILL.md
 - litert-runtime/SKILL.md
 - HitFeel
-- Type
-- AppState
-- ModuleInfo
-- emit_test.cpp
+- TcpSocket
+- epa_penetration
+- shell_vulkan_ui_pass_test.cpp
 - implement-phone-number-verification.md
 - main
 - 12 — App interface (egui and Kotlin)
 - Tree
 - Roblox pipeline: from the Blender map to a placed, lit map in Studio
 - play_store_scraper.py
-- fold_constants
+- host_test.cpp
 - InputKind
 - DeclarationParser
-- ENG-09 — experimental Vulkan depth test
+- MatchQueue
 - LayoutComponents.kt
 - display-glasses-with-jetpack-compose-glimmer/SKILL.md
 - Diagnosing Superpowers Sessions — Design
 - test-skill-registration.mjs
 - blender-animation/scripts/_bpyx.py
 - gridfinity.py
-- parse_statements
+- NativeEngineHandle
 - Vec3f
-- ENG-06 — frame-graph skeleton
+- RenderError
 - mute-progress.md
-- 検証済みのエンジン規約（Effekseer Core 1.80.7 + EffekseerForGodot4 1.80.5.1）
+- FakeSwapchain
 - SHADER_TYPE
 - Test
 - Step 1: Provide entity data
@@ -475,18 +474,18 @@
 - Canvas
 - abyssal_angler_brick.py
 - Parametric 3D Printing with CadQuery
-- ResolvedPackage
+- stress_test.cpp
 - steps
 - MUT-21–22 audit — 2026-11-24
 - InputError
-- Kind
+- Stmt
 - ios-to-android/SKILL.md
 - look
 - navigation-3/SKILL.md
 - 13 — UI maker
 - look
 - look
-- BuildToolError
+- LoginVelocityService
 - look
 - android-intent-security/SKILL.md
 - look
@@ -523,7 +522,7 @@
 - look
 - 5. Common Issues and Fixes
 - Canvas
-- IrOp
+- ReconnectFlow
 - Instructions: Mapping Concepts
 - Glowroot Caverns - Studio setup
 - props
@@ -533,7 +532,7 @@
 - project-setup-and-gradle.md
 - Limits
 - SwapChainDesc
-- MUT-21 — packages, imports and lockfile
+- SessionTicket
 - push-notifications-fcm.md
 - Roblox Map Builder (Blender, scripted, Roblox-ready)
 - props
@@ -552,14 +551,14 @@
 - CryptoHostcall
 - opencode/setup.sh
 - blender-asset-qa/scripts/_bpyx.py
-- blender-character-rigging/scripts/_bpyx.py
+- UdpSocket
 - character_blockout.py
 - Using the effects in Godot
-- ENG-10 — per-frame uniform buffer prototype
+- RuleParser
 - TimeHostcall
 - IEngineFactoryVk
 - Palette and look
-- LayerBuilder
+- Op
 - IDeviceContext
 - void_crystal_blade
 - references/get-started.md
@@ -569,7 +568,6 @@
 - engage/food.md
 - Bloomcrest - Roblox export report
 - healthandfitness.md
-- lifecycle.test.js
 - DEBUG_MESSAGE_SEVERITY
 - StatementErrorCode
 - Oak trees (realistic alpha-card set)
@@ -606,7 +604,7 @@
 - props
 - Sugarcrest Kingdom - Studio setup
 - props
-- validate
+- PartyBook
 - props
 - Bloomcrest Care Centre - Studio setup
 - props
@@ -852,7 +850,7 @@
 - WingTrim
 - Workbench1
 - blender-texturing/scripts/_bpyx.py
-- palm_meshes
+- WakeLock
 - CamelKneel1
 - CamelKneel2
 - CamelStand1
@@ -1988,10 +1986,10 @@
 - Tuft1001_v001
 - Map archetypes: every map must be a different game
 - Weather FX
-- blender-weather-fx/scripts/_bpyx.py
+- crypto_aead.hpp
 - Android skills
-- ENG-05 — desktop resize prototype (in progress)
-- ENG-08 — forward-pass colored triangle
+- PkbAuthority
+- AccountRecord
 - ENG-64 — character controller through the solver (2026-11-26)
 - engage-sdk-integration/SKILL.md
 - sys
@@ -1999,7 +1997,7 @@
 - Moon Sweepers - Studio setup
 - Create entities
 - ImpulseCache
-- NumericBinding
+- DeviceBindingService
 - Sugarcrest Kingdom (brief)
 - Sunspire Canyon Bazaar (brief)
 - Glowroot Caverns (brief)
@@ -2056,7 +2054,7 @@
 - Visual Companion Guide
 - test-session-bootstrap.mjs
 - Creation Log: Systematic Debugging Skill
-- qa_check.py
+- CubePeer
 - litert-lm/SKILL.md
 - steps
 - adaptive/SKILL.md
@@ -2069,10 +2067,10 @@
 - Session diagnosis: <session-id>
 - writing-skills/SKILL.md
 - _load_plugin
-- rigify_build.py
+- ThemeTokens
 - addon_template/__init__.py
-- loop_check.py
-- test_effekseer_ai.py
+- main
+- FieldValue
 - The tools, concretely
 - ForgeSkills
 - Reference → 3D Reconstruction
@@ -2114,16 +2112,16 @@
 - Root Cause Tracing
 - Systematic Debugging
 - Persuasion Principles for Skill Design
-- bind_mesh.py
+- JoinTicket
 - Sculpting
 - Texturing
-- 独立 VFX レビュー
+- VmDebugger
 - CastDriver
 - Animation — rigs that carry motion
 - Performance — budget first, optimise second
 - Procedural modelling — parameters over sculpting
 - Verification — evidence before claims
-- Rect
+- widgets.rs
 - restore-credentials/SKILL.md
 - Detailed Migration Steps
 - risk_analysis_guide.md
@@ -2145,13 +2143,13 @@
 - Condition-Based Waiting
 - Using Git Worktrees
 - write_file
-- ENG-18 — KTX2 placeholder texture on quad
-- Body
-- SemanticErrorCode
-- StatementKind
+- PokoShell
+- VulkanMeshPass
+- gltf_import.cpp
+- FirebaseTokenVerifier
 - gn_builder recipes (specs verified on 5.2)
-- smart_material.py
-- outline_from_scan.py
+- contrast_pair
+- mesh_io.py
 - Gameplay systems — rules that hold up
 - Godot pipeline — assets that survive the trip
 - Locomotion — the feel layer
@@ -2171,12 +2169,12 @@
 - PULL_REQUEST_TEMPLATE.md
 - Superpowers
 - Dispatching Parallel Agents
-- ws-protocol.test.js
-- VulkanClearAndroidRenderer
+- test-skill-registration.mjs
 - vulkan_clear_android.cpp
-- decal.py
-- lightning.py
-- precipitation.py
+- Body
+- import_glb
+- Json
+- VulkanDiagnostics::Impl
 - steps
 - Camera — the player's only window
 - Concept judge — evidence before a build
@@ -2197,8 +2195,8 @@
 - lint-shell.sh
 - test-package-codex-plugin.sh
 - scheduler_test.cpp
-- effekseer-vfx-skill
-- effekseer-vfx-skill
+- Configure fast-follow and on-demand delivery
+- JsonParser
 - The skills
 - Audio wire — pick, then hook
 - Boss encounter — rules before spectacle
@@ -2226,7 +2224,7 @@
 - test-pi-extension.mjs
 - ContactState
 - Game Optimization
-- surface_weather.py
+- Slot
 - Workflow Recipes
 - delivery
 - com.vfx-skill.flipbook/package.json
@@ -2237,7 +2235,7 @@
 - Test results
 - Art Direction and Cohesion
 - render_compare_views.py
-- Device targeting
+- xor_fec.hpp
 - Use explicit cache management
 - structured-output.md
 - Detailed steps
@@ -2246,7 +2244,7 @@
 - Google Play Billing Library 2.0 Release (2019-05-07)
 - play-billing-library-version-upgrade/SKILL.md
 - Data Safety and Privacy Audit
-- Canonical layout reference files
+- DebugRun
 - Testing features
 - navigation.md
 - Prime Radiant Community Code of Conduct
@@ -2256,12 +2254,12 @@
 - test-lint-shell.sh
 - Animation
 - Rendering
-- Simulation
+- character_controller_test.cpp
 - type
 - additionalProperties
 - items
 - ShellPiece
-- Command reference
+- Theme.kt
 - Review loop, evidence and delivery
 - Knowledge Base A — Orchestration & Process
 - Knowledge Base C — Motion, Rigging & Animation
@@ -2274,7 +2272,7 @@
 - Workflow
 - Workflow
 - Step 3.1. List-detail
-- brush-structure.md
+- PokoEvent
 - strongskipping.md
 - graphics-performance.md
 - migrate-xml-theme-to-compose.md
@@ -2282,7 +2280,7 @@
 - create-castplayer.md
 - media3-cast-integration/SKILL.md
 - enable-app-optimization.md
-- r8-analyzer/SKILL.md
+- Env
 - version-checklist.md
 - Phase 2: Goal-oriented audit
 - perfetto_trace_recording.md
@@ -2305,7 +2303,7 @@
 - Scene Setup & Hygiene
 - Stylized / NPR
 - Texture Baking (Cycles)
-- _G
+- AccountStore
 - _G
 - レビューループ、エビデンス、納品
 - ワールドスケール：巨人、怪獣、軍艦
@@ -2321,9 +2319,9 @@
 - email-verification.md
 - container-properties.md
 - persistence-and-advanced.md
-- backwards-write.md
-- 1. Phase deferral for animations (skip Composition to Draw and Layout)
-- 1. Lazy layout directives
+- Level
+- Recipes
+- TouchCache
 - 4. Strong skipping mode and stability
 - views-in-compose.md
 - ui-layout-swiftui-to-compose.md
@@ -2333,7 +2331,7 @@
 - Google Play Billing Library 1.2 Release (2018-10-18)
 - Investigation Steps
 - skills-main/README.md
-- use-of-native-code.md
+- android-jni-security/SKILL.md
 - android-permissions-security/SKILL.md
 - Best practices
 - hilt-testing.md
@@ -2349,7 +2347,7 @@
 - test-run-hook-cmd-windows.sh
 - stroke
 - ScheduleErrorCode
-- review_shots.py
+- Accessor
 - Character Rigging
 - Facial Rig & Shape Keys
 - Pipeline Automation
@@ -2360,18 +2358,18 @@
 - Knowledge Base D — Effects & Feedback
 - Knowledge Base G — Performance, Perception & Pipeline
 - Follow the implementation guide
-- Follow the implementation guide
+- PkbField
 - appfunctions/SKILL.md
 - Instructions
 - Implementation
 - verified-email/references/android/identity/digital-credentials/index.md
 - Terminology
-- editing-and-architecture.md
-- migrate-xml-views-to-jetpack-compose/SKILL.md
+- worker_auth_test.cpp
+- gn_builder.py
 - REPORT_FORMAT.md
 - engage/shopping.md
 - Step 1: Provide entity data
-- engage/travel.md
+- Java_com_poko_glesclear_PokoActivity_nativeSetSurface
 - High-Impact Migration Logic
 - sql.md
 - testing-setup/references/android/studio/preview/compose-screenshot-testing-with-testsuites.md
@@ -2392,7 +2390,7 @@
 - Lighting & Look-dev
 - デザインブリーフ
 - レシピコードとプリミティブ
-- 设计简报
+- FrameOutcome
 - 配方代码与基元
 - Design briefs
 - Recipe code and primitives
@@ -2412,14 +2410,14 @@
 - deeplinks-syntheticbackstack.md
 - passingarguments.md
 - type-safe-destinations.md
-- Enable optimization
-- otherverticals.md
+- SamplerDesc
+- debugger.cpp
+- StepUpService
 - Integration detail
 - Integration detail
-- Integration detail
-- Integration detail
+- ForgeSkills-main/tools/validate_skills.py
 - Policies to Verify
-- hardcoded-cryptographic-secrets.md
+- ContactManifold
 - Types of permissions
 - sender-of-pending-intents.md
 - Understand the lifecycle of projected activities
@@ -2437,10 +2435,10 @@
 - REFACTOR Phase: Close Loopholes (Stay Green)
 - TestLayoutResolution
 - test-render-graphs.sh
-- frame_graph.cpp
-- logging_file_test.cpp
+- AssetMeta
+- Frame
 - IEngineFactoryVk
-- Vec4
+- TrustLevel
 - blender-skills-main/README.md
 - Add-on (Extension) Development
 - Asset QA (review gate)
@@ -2455,9 +2453,9 @@
 - credential-manager/index.md
 - Fundamentals
 - save-state.md
-- analysis-of-the-project-and-layout.md
-- xml-layout-migration.md
-- 4. Concurrency: Combine/RxSwift to Flow
+- Diagnosed cases
+- span
+- brush-behaviors.md
 - Preparation
 - How it works
 - Step 1: Provide entity data
@@ -2467,7 +2465,7 @@
 - perfetto_trace_analysis.md
 - perfetto-trace-analysis/references/triage.md
 - trace_config_reference.md
-- JNI boundary security logic and decisions
+- ServerLoop
 - leanback-to-compose-tv-migration/SKILL.md
 - Phased migration strategy
 - Capture a stream with the glasses' camera
@@ -2475,26 +2473,26 @@
 - Hermes Version-Bump Wiring Design
 - contact_links
 - plugin.yaml
-- v3.1.0 (2025-10-17)
+- Subscription
 - v6.2.0 (2026-07-23)
 - Requesting Code Review
 - The Task Loop
 - using-superpowers/SKILL.md
 - start-server.test.sh
 - test-executing-plans-scripts.sh
-- Overrides
-- SpringConstraint
+- TicketIssuanceDecision
+- SoftBodyNode
 - FrameGraphExecution
 - RefCntAutoPtr
 - RefCntAutoPtr
-- 类别骨架
-- Sequences: combos, finishers and the staged workflow
-- Texture roles, generation and acceptance
+- Code
+- Hard-Surface Modeling
+- build_pbr_material.py
 - Headless vs MCP vs computer use
 - Quality presets and cost knobs
 - Reference measurement tables
 - Poko Engine Development
-- Palette
+- MB
 - migrate-to-service-entry-point.md
 - Examples
 - system-instructions.md
@@ -2503,12 +2501,12 @@
 - flexbox/index.md
 - item-properties.md
 - Step 6: Preserve UI state across configuration changes
-- identify-optimal-xml-candidate.md
+- 复查循环、证据与交付
 - cast/index.md
 - navigation-3/index.md
 - Deep Link URI Arguments Recipe
-- Case: Gson
-- android-jni-security/SKILL.md
+- plus_props_fix.py
+- drawing-and-brushes.md
 - Setup and configuration
 - Build configuration DSL comparison
 - Back button navigation
@@ -2524,11 +2522,11 @@
 - Pressure Test 2: Sunk Cost + Exhaustion
 - Pressure Test 3: Authority + Social Pressure
 - test-bump-version.sh
-- ENG-11 — ImGui pass in the frame graph
-- SoftBodyNode
+- Step 1: Provide entity data
+- axolotl.py
 - FrameGraphPlan
-- DEBUG_MESSAGE_SEVERITY
-- IPipelineState
+- UniqueShell
+- EventError
 - Blender Agent Skills: agent instructions
 - Reddit post
 - Third-party notices
@@ -2546,7 +2544,7 @@
 - lifecycle-owner.md
 - navigation-3/references/android/guide/navigation/navigation-3/recipes/material-listdetail.md
 - material-supportingpane.md
-- Case: Retrofit
+- GameEvent
 - Manifest snippets
 - 4. Cryptographic caller identity verification
 - Android CLI
@@ -2555,7 +2553,7 @@
 - Reference implementations and battle-tested patterns
 - inputs.md
 - Testing Superpowers
-- v5.0.0 (2026-03-09)
+- events.cpp
 - v3.2.0 (2025-10-18)
 - v6.1.0 (2026-06-30)
 - render-antigravity-logo.sh
@@ -2581,16 +2579,16 @@
 - basicsaveable.md
 - dialog.md
 - modular-hilt.md
+- deploy.sh
 - Java
 - Java
-- Java
-- Java
+- Step 1: Provide entity data
 - Google Play Billing Library 3.0 Release (2020-06-08)
 - Google Play Billing Library 2.2.0 release and Unity support (2020-03-23)
 - Google Play Billing Library 3.0.3 Release (2021-03-12)
-- Faster native calls with `@FastNative` and `@CriticalNative`
-- jclass, jmethodID, and jfieldID
-- Native libraries
+- engage/watch.md
+- 03 — Architecture and services
+- Demo milestone — friends & family, 2026-12-22
 - 3. Exported component protection and URI permissions
 - 5. Method-level Binder enforcement in bound services (SecureBoundService.kt)
 - 7. Zero-permission alternatives and sequential flows
@@ -2608,10 +2606,20 @@
 - test-logo.sh
 - test-devin-plugin.sh
 - gym
-- VisualShape
+- Project review and repairs — 2026-11-22
 - _config.yml
 - mat_color
 - prompt-design.md
+- 2. Audit Findings for Next Agent
+- Two-target gate evidence — 2026-11-26 (G2)
+- make_pkb_schema_draft
+- byo_registration_test.cpp
+- CAD Skill for Claude Code
+- Integration detail
+- Type
+- event
+- Code
+- HostSession
 - Java
 - Java
 - Java
@@ -2640,30 +2648,19 @@
 - Java
 - Java
 - Java
-- Java
-- Java
-- Java
-- Java
-- Java
-- Java
-- Java
-- Java
-- Java
-- Java
-- Java
-- Java
-- Java
-- Java
-- Java
-- Java
-- Java
-- Java
-- Java
-- Java
-- Java
-- Java
-- Java
-- Java
+- slot_registry_test.cpp
+- Effekseer VFX
+- Code
+- match_queue_test.cpp
+- EventPhase
+- StateField
+- server/host — DEMO-01, the runnable server
+- allocator_test.cpp
+- 診断済みのケース
+- コマンドリファレンス
+- 強度、ボリューム、退場のリズム
+- VFX 制作规则
+- VFX craft rules
 - Android skills
 - Google Play Billing Library 8.2.1 Release (2025-12-15)
 - Google Play Billing Library 3.0.1 Release (2020-09-30)
@@ -2706,30 +2703,278 @@
 - test-no-dev-files-in-skills.sh
 - test-skill-size.sh
 - test-academic.md
+- std::print / std::println
+- Mat4
+- Community Labeling
+- StateDecl
+- VmDebugger::VmDebugger
+- Stylized hard-edge VFX
+- ReentrancyGuard
+- Node Description Batch 1 of 209
+- Node Description Batch 2 of 209
+- Node Description Batch 3 of 209
+- Node Description Batch 4 of 209
+- Node Description Batch 5 of 209
+- Node Description Batch 6 of 209
+- Node Description Batch 7 of 209
+- Node Description Batch 8 of 209
+- Node Description Batch 9 of 209
+- Node Description Batch 10 of 209
+- Node Description Batch 11 of 209
+- Node Description Batch 12 of 209
+- Node Description Batch 13 of 209
+- Node Description Batch 14 of 209
+- Node Description Batch 15 of 209
+- Node Description Batch 16 of 209
+- Node Description Batch 17 of 209
+- Node Description Batch 18 of 209
+- Node Description Batch 19 of 209
+- Node Description Batch 20 of 209
+- Node Description Batch 21 of 209
+- Node Description Batch 22 of 209
+- Node Description Batch 23 of 209
+- Node Description Batch 24 of 209
+- Node Description Batch 25 of 209
+- Node Description Batch 26 of 209
+- Node Description Batch 27 of 209
+- Node Description Batch 28 of 209
+- Node Description Batch 29 of 209
+- Node Description Batch 30 of 209
+- Node Description Batch 31 of 209
+- Node Description Batch 32 of 209
+- Node Description Batch 33 of 209
+- Node Description Batch 34 of 209
+- Node Description Batch 35 of 209
+- Node Description Batch 36 of 209
+- Node Description Batch 37 of 209
+- Node Description Batch 38 of 209
+- Node Description Batch 39 of 209
+- Node Description Batch 40 of 209
+- Node Description Batch 41 of 209
+- Node Description Batch 42 of 209
+- Node Description Batch 43 of 209
+- Node Description Batch 44 of 209
+- Node Description Batch 45 of 209
+- Node Description Batch 46 of 209
+- Node Description Batch 47 of 209
+- Node Description Batch 48 of 209
+- Node Description Batch 49 of 209
+- Node Description Batch 50 of 209
+- Node Description Batch 51 of 209
+- Node Description Batch 52 of 209
+- Node Description Batch 53 of 209
+- Node Description Batch 54 of 209
+- Node Description Batch 55 of 209
+- Node Description Batch 56 of 209
+- Node Description Batch 57 of 209
+- Node Description Batch 58 of 209
+- Node Description Batch 59 of 209
+- Node Description Batch 60 of 209
+- Node Description Batch 61 of 209
+- Node Description Batch 62 of 209
+- Node Description Batch 63 of 209
+- Node Description Batch 64 of 209
+- Node Description Batch 65 of 209
+- Node Description Batch 66 of 209
+- Node Description Batch 67 of 209
+- Node Description Batch 68 of 209
+- Node Description Batch 69 of 209
+- Node Description Batch 70 of 209
+- Node Description Batch 71 of 209
+- Node Description Batch 72 of 209
+- Node Description Batch 73 of 209
+- Node Description Batch 74 of 209
+- Node Description Batch 75 of 209
+- Node Description Batch 76 of 209
+- Node Description Batch 77 of 209
+- Node Description Batch 78 of 209
+- Node Description Batch 79 of 209
+- Node Description Batch 80 of 209
+- Node Description Batch 81 of 209
+- Node Description Batch 82 of 209
+- Node Description Batch 83 of 209
+- Node Description Batch 84 of 209
+- Node Description Batch 85 of 209
+- Node Description Batch 86 of 209
+- Node Description Batch 87 of 209
+- Node Description Batch 88 of 209
+- Node Description Batch 89 of 209
+- Node Description Batch 90 of 209
+- Node Description Batch 91 of 209
+- Node Description Batch 92 of 209
+- Node Description Batch 93 of 209
+- Node Description Batch 94 of 209
+- Node Description Batch 95 of 209
+- Node Description Batch 96 of 209
+- Node Description Batch 97 of 209
+- Node Description Batch 98 of 209
+- Node Description Batch 99 of 209
+- Node Description Batch 100 of 209
+- Node Description Batch 101 of 209
+- Node Description Batch 102 of 209
+- Node Description Batch 103 of 209
+- Node Description Batch 104 of 209
+- Node Description Batch 105 of 209
+- Node Description Batch 106 of 209
+- Node Description Batch 107 of 209
+- Node Description Batch 108 of 209
+- Node Description Batch 109 of 209
+- Node Description Batch 110 of 209
+- Node Description Batch 111 of 209
+- Node Description Batch 112 of 209
+- Node Description Batch 113 of 209
+- Node Description Batch 114 of 209
+- Node Description Batch 115 of 209
+- Node Description Batch 116 of 209
+- Node Description Batch 117 of 209
+- Node Description Batch 118 of 209
+- Node Description Batch 119 of 209
+- Node Description Batch 120 of 209
+- Node Description Batch 121 of 209
+- Node Description Batch 122 of 209
+- Node Description Batch 123 of 209
+- Node Description Batch 124 of 209
+- Node Description Batch 125 of 209
+- Node Description Batch 126 of 209
+- Node Description Batch 127 of 209
+- Node Description Batch 128 of 209
+- Node Description Batch 129 of 209
+- Node Description Batch 130 of 209
+- Node Description Batch 131 of 209
+- Node Description Batch 132 of 209
+- Node Description Batch 133 of 209
+- Node Description Batch 134 of 209
+- Node Description Batch 135 of 209
+- Node Description Batch 136 of 209
+- Node Description Batch 137 of 209
+- Node Description Batch 138 of 209
+- Node Description Batch 139 of 209
+- Node Description Batch 140 of 209
+- Node Description Batch 141 of 209
+- Node Description Batch 142 of 209
+- Node Description Batch 143 of 209
+- Node Description Batch 144 of 209
+- Node Description Batch 145 of 209
+- Node Description Batch 146 of 209
+- Node Description Batch 147 of 209
+- Node Description Batch 148 of 209
+- Node Description Batch 149 of 209
+- Node Description Batch 150 of 209
+- Node Description Batch 151 of 209
+- Node Description Batch 152 of 209
+- Node Description Batch 153 of 209
+- Node Description Batch 154 of 209
+- Node Description Batch 155 of 209
+- Node Description Batch 156 of 209
+- Node Description Batch 157 of 209
+- Node Description Batch 158 of 209
+- Node Description Batch 159 of 209
+- Node Description Batch 160 of 209
+- Node Description Batch 161 of 209
+- Node Description Batch 162 of 209
+- Node Description Batch 163 of 209
+- Node Description Batch 164 of 209
+- Node Description Batch 165 of 209
+- Node Description Batch 166 of 209
+- Node Description Batch 167 of 209
+- Node Description Batch 168 of 209
+- Node Description Batch 169 of 209
+- Node Description Batch 170 of 209
+- Node Description Batch 171 of 209
+- Node Description Batch 172 of 209
+- Node Description Batch 173 of 209
+- Node Description Batch 174 of 209
+- Node Description Batch 175 of 209
+- Node Description Batch 176 of 209
+- Node Description Batch 177 of 209
+- Node Description Batch 178 of 209
+- Node Description Batch 179 of 209
+- Node Description Batch 180 of 209
+- Node Description Batch 181 of 209
+- Node Description Batch 182 of 209
+- Node Description Batch 183 of 209
+- Node Description Batch 184 of 209
+- Node Description Batch 185 of 209
+- Node Description Batch 186 of 209
+- Node Description Batch 187 of 209
+- Node Description Batch 188 of 209
+- Node Description Batch 189 of 209
+- Node Description Batch 190 of 209
+- Node Description Batch 191 of 209
+- Node Description Batch 192 of 209
+- Node Description Batch 193 of 209
+- Node Description Batch 194 of 209
+- Node Description Batch 195 of 209
+- Node Description Batch 196 of 209
+- Node Description Batch 197 of 209
+- Node Description Batch 198 of 209
+- Node Description Batch 199 of 209
+- Node Description Batch 200 of 209
+- Node Description Batch 201 of 209
+- Node Description Batch 202 of 209
+- Node Description Batch 203 of 209
+- Node Description Batch 204 of 209
+- Node Description Batch 205 of 209
+- Node Description Batch 206 of 209
+- Node Description Batch 207 of 209
+- Node Description Batch 208 of 209
+- Node Description Batch 209 of 209
+- read_file
+- party_book_test.cpp
+- reconnect_test.cpp
+- Java
+- Java
+- v3.3.1 (2025-10-28)
+- v5.0.5 (2026-03-17)
+- Conventions
+- wake_lock_test.cpp
+- Java
+- Java
+- Java
+- Java
+- Java
+- Java
+- Java
+- Java
+- Java
+- Java
+- Java
+- Java
+- Java
+- Java
+- Java
+- Java
+- Java
+- Java
+- Java
+- Java
+- Java
+- migrate.sh
+- poko_shell
 
 ## God Nodes (most connected - your core abstractions)
-1. `Prop` - 641 edges
+1. `Prop` - 642 edges
 2. `S()` - 618 edges
-3. `box()` - 369 edges
-4. `tube()` - 268 edges
-5. `cyl()` - 236 edges
-6. `V3()` - 159 edges
-7. `clamp()` - 135 edges
-8. `props` - 101 edges
-9. `props` - 101 edges
+3. `Communities` - 458 edges
+4. `box()` - 369 edges
+5. `tube()` - 268 edges
+6. `cyl()` - 236 edges
+7. `V3()` - 159 edges
+8. `clamp()` - 135 edges
+9. `FixedVec3` - 103 edges
 10. `props` - 101 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `Extraction` --references--> `t()`  [INFERRED]
-  docs/plan/16-localization-a11y.md → artifacts/g2dbg/coltest.cpp
-- `Critical mandates` --references--> `EngineConfig`  [INFERRED]
-  .agents/skills/skills-main/device-ai/litert/litert-lm/SKILL.md → engine/foundation/include/poko/foundation/config.hpp
-- `Step 4: Initialize the engine off the main thread` --references--> `EngineConfig`  [INFERRED]
-  .agents/skills/skills-main/device-ai/litert/litert-lm/SKILL.md → engine/foundation/include/poko/foundation/config.hpp
-- `What was built` --references--> `EngineConfig`  [INFERRED]
-  docs/eng-progress.md → engine/foundation/include/poko/foundation/config.hpp
-- `Implemented and verified` --references--> `FixedStepLoop`  [INFERRED]
-  docs/eng-progress.md → engine/foundation/include/poko/foundation/loop.hpp
+- `Probe` --references--> `ContactConstraint`  [INFERRED]
+  docs/two-target-gate-evidence-2026-11-26.md → engine/physics/include/poko/physics/solver.hpp
+- `Hardware awareness` --references--> `Viewport`  [INFERRED]
+  .agents/skills/skills-main/camera/camerax/references/modern-apis.md → engine/rhi/tests/fakes/imgui/EngineFactoryVk.h
+- `Tool mapping issues` --references--> `Task`  [INFERRED]
+  .agents/skills/superpowers-main/docs/plans/2025-11-22-opencode-support-implementation.md → mute/include/poko/mute/scheduler.hpp
+- `The rest of the capability checklist` --references--> `Task`  [INFERRED]
+  .agents/skills/superpowers-main/docs/porting-to-a-new-harness.md → mute/include/poko/mute/scheduler.hpp
+- `Out of scope` --references--> `Task`  [INFERRED]
+  .agents/skills/superpowers-main/docs/superpowers/specs/2026-05-05-platform-neutral-prose-design.md → mute/include/poko/mute/scheduler.hpp
 
 ## Import Cycles
 - 2-file cycle: `.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models.py -> .agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py -> .agents/skills/Map Pack/map-builder/examples/skyrise/sky_models.py`
@@ -2744,31 +2989,31 @@
 - 3-file cycle: `.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models.py -> .agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py -> .agents/skills/Map Pack/map-builder/examples/skyrise/sky_models3.py -> .agents/skills/Map Pack/map-builder/examples/skyrise/sky_models.py`
 - 3-file cycle: `.agents/skills/Map Pack/map-builder/examples/skyrise/sky_models.py -> .agents/skills/Map Pack/map-builder/examples/skyrise/sky_props.py -> .agents/skills/Map Pack/map-builder/examples/skyrise/sky_models4.py -> .agents/skills/Map Pack/map-builder/examples/skyrise/sky_models.py`
 
-## Communities (2753 total, 250 thin omitted)
+## Communities (3009 total, 262 thin omitted)
 
-### Community 0 - "json"
-Cohesion: 0.02
-Nodes (44): auto_map(), _parts(), _rot(), run(), _split(), preview_effects(), dump_metrics(), test_metrics_baseline_is_compact_and_round_trips() (+36 more)
+### Community 0 - "build_refined.py"
+Cohesion: 0.32
+Nodes (3): ease(), foot(), interp()
 
 ### Community 1 - "21 — Engine core"
 Cohesion: 0.12
 Nodes (16): 21 — Engine core, Coding standards, Console and CVars, Design principles, ECS, Error handling, Filesystem abstraction, Hot reload (+8 more)
 
 ### Community 2 - "run"
-Cohesion: 0.03
-Nodes (119): layer_schema(), keyframes(), read(), timeline(), validate(), main(), parser(), recipes_for() (+111 more)
+Cohesion: 0.02
+Nodes (161): layer_schema(), preview_effects(), keyframes(), read(), timeline(), validate(), build(), check_resource_conflicts() (+153 more)
 
 ### Community 3 - "VulkanTrianglePass::Impl"
-Cohesion: 0.06
-Nodes (28): TriangleMode, color, depth_disabled_control, depth_test, textured, uniform_depth, VulkanTrianglePass::Impl, binding (+20 more)
+Cohesion: 0.05
+Nodes (29): TriangleMode, color, depth_disabled_control, depth_test, textured, uniform_depth, VulkanTrianglePass::draw(), VulkanTrianglePass::Impl (+21 more)
 
 ### Community 4 - "ExprOp"
 Cohesion: 0.05
-Nodes (37): ExprOp, assign, assign_add, assign_and, assign_div, assign_mod, assign_mul, assign_or (+29 more)
+Nodes (38): ExprOp, assign, assign_add, assign_and, assign_div, assign_mod, assign_mul, assign_or (+30 more)
 
 ### Community 5 - "S"
-Cohesion: 0.02
-Nodes (109): adeg(), arc_wall(), art_frame(), ball(), ball_lineup(), _ball_sh(), berry_baskets(), blossom_park() (+101 more)
+Cohesion: 0.01
+Nodes (242): agave(), boulder(), brass_lantern(), brazier(), carved_stair(), cloth_sheet(), crate(), dry_grass() (+234 more)
 
 ### Community 6 - "with"
 Cohesion: 0.12
@@ -2776,31 +3021,31 @@ Nodes (17): with, cache-environment, environment-file, environment-name, fetch-d
 
 ### Community 7 - "skill_module"
 Cohesion: 0.03
-Nodes (119): cube(), detached_part(), build(), mesh_object(), plane(), simple_character(), street(), mat() (+111 more)
+Nodes (121): cube(), detached_part(), build(), mesh_object(), plane(), simple_character(), street(), mat() (+113 more)
 
 ### Community 8 - "box"
 Cohesion: 0.03
-Nodes (118): brass_lantern(), carved_stair(), cloth_sheet(), p(), crate(), dais(), dry_grass(), forge_station() (+110 more)
+Nodes (98): dais(), forge_station(), market_gate(), parapet_niche(), relic_kiosk(), y(), sign_board(), sun_temple() (+90 more)
 
 ### Community 9 - "VulkanTrianglePass"
-Cohesion: 0.13
-Nodes (8): VulkanTrianglePass, impl_, TextureMip, height, pixels, width, VulkanTrianglePass::set_texture(), VulkanTrianglePass::set_texture_mips()
+Cohesion: 0.05
+Nodes (34): Bugs found during implementation, eng19-progress, ENG-18 — KTX2 placeholder texture on quad, Integration review, 2026-11-22, Mip-chain continuation, Not done / future, sRGB continuation, Verified (+26 more)
 
-### Community 10 - "Prop"
+### Community 10 - "math"
 Cohesion: 0.02
-Nodes (126): boulder(), hoodoo(), crystal_shards(), cloud(), cloud(), snow_pine(), dust_pile(), junk_heap() (+118 more)
+Nodes (180): test_kit_check_flags_and_fixes(), look(), bakery_oven(), ball(), bell_r(), biscuit_bridge(), crimp(), candy_cane() (+172 more)
 
 ### Community 11 - "Scheduler"
 Cohesion: 0.07
 Nodes (29): Gemini CLI, Pi Tool Mapping, Subagents, Task lists, Scheduler, Limits, max_steps, max_tasks (+21 more)
 
-### Community 12 - "RenderError"
-Cohesion: 0.02
-Nodes (96): eng13-progress, ENG-12 — ImGui F1 toggle and release strip, Implementation, Reproduce / open work, Verification — Windows laptop (MSYS2 UCRT64, AMD Radeon), composite(), ensure_gpu_timer(), Frame (+88 more)
+### Community 12 - "OpenGLClearESRenderer"
+Cohesion: 0.04
+Nodes (34): OpenGLESClearBackend, height_, renderer_, shutdown_failed_, width_, OpenGLClearESRenderer, cleanup_uncertain_, impl_ (+26 more)
 
 ### Community 13 - "subprocess"
 Cohesion: 0.02
-Nodes (56): _mirror(), run(), _find(), _rotate(), run(), _side(), find_blender(), main() (+48 more)
+Nodes (82): find_blender(), main(), _ver(), main(), main(), targets(), main(), toks() (+74 more)
 
 ### Community 14 - "find_cross_mesh_overlaps"
 Cohesion: 0.20
@@ -2808,39 +3053,39 @@ Nodes (5): OverlapTests, _cross(), find_cross_mesh_overlaps(), intersection_area
 
 ### Community 15 - "Build status"
 Cohesion: 0.08
-Nodes (25): Build status, Character-validation regression check, Dependency-enabled builds, Dependency setup, ENG-01 / ENG-02 test hardening — 2026-11-20, ENG-01 platform interface, ENG-02 SDL window backend, ENG-03 continuation — opt-in clear-color source candidate (+17 more)
+Nodes (26): Build status, Character-validation regression check, Dependency-enabled builds, Dependency setup, ENG-01 / ENG-02 test hardening — 2026-11-20, ENG-01 platform interface, ENG-02 SDL window backend, ENG-03 continuation — opt-in clear-color source candidate (+18 more)
 
 ### Community 16 - "narrowphase_dbg.cpp"
 Cohesion: 0.08
-Nodes (40): centroid(), closest_on_hull(), closest_segment(), closest_triangle(), ClosestResult, dist_sq, mask, origin_inside (+32 more)
+Nodes (32): ClosestResult, dist_sq, mask, origin_inside, point, CsoPoint, a, b (+24 more)
 
 ### Community 17 - "04 — Mute language and VM"
 Cohesion: 0.12
 Nodes (16): 04 — Mute language and VM, Branch encoding decision, Bytecode ISA, Capabilities, Compiler passes, Determinism contract, Goals, Lexical rules (+8 more)
 
-### Community 18 - "HostcallTable"
-Cohesion: 0.05
-Nodes (36): Function calls — slices 2, 3, 4, 5 and 6 landed (2026-11-25), mut38-progress, Remaining, Slice 3 — emit, Slice 4 — VM frames (landed before emit, fixing the calling convention), Slice 5 — `call_host` emission from IR, Slice 6 — coverage, HostcallDef (+28 more)
+### Community 18 - "Scaffold progress"
+Cohesion: 0.03
+Nodes (86): PokoFrameInfo, events_consumed, label_rendered, pixels_per_point, repaint_delay_ms, shape_count, Delivered, Scaffold progress (+78 more)
 
 ### Community 19 - "29 — R6 character asset adaptation (BoyR6 and BlockyR6)"
 Cohesion: 0.12
 Nodes (16): 1. Head shading architecture, 29 — R6 character asset adaptation (BoyR6 and BlockyR6), 2. Missing pin attachments, Connection method, Diagnosed problems, Earlier simplified adaptation (legacy), Files, Known remaining issues (+8 more)
 
 ### Community 20 - "SdlPlatform"
-Cohesion: 0.03
-Nodes (59): Scope and safety, Event, button, dx, dy, pressed, size, type (+51 more)
+Cohesion: 0.01
+Nodes (170): sdl_event_observer(), SdlEventBridgeContext, dpi_scale, last_error, pushed_count, shell, window_id, start_text_input() (+162 more)
 
 ### Community 21 - "02 — Ordered work queue"
-Cohesion: 0.11
-Nodes (18): 02 — Ordered work queue, Broader review, 2026-11-22, Canonical ID map, Corrections, additions and enhancements placement, Engine completion tasks (specs 21–28), First 20 tasks — exact execution order, Integration review, 2026-11-22, Mute v1 completion tasks (planned; span later waves) (+10 more)
+Cohesion: 0.12
+Nodes (17): 02 — Ordered work queue, Broader review, 2026-11-22, Canonical ID map, Corrections, additions and enhancements placement, Engine completion tasks (specs 21–28), First 20 tasks — exact execution order, Integration review, 2026-11-22, Mute v1 completion tasks (planned; span later waves) (+9 more)
 
 ### Community 22 - "random"
-Cohesion: 0.03
-Nodes (63): icing_caps(), look(), palm(), loft(), look(), look(), earth(), look() (+55 more)
+Cohesion: 0.04
+Nodes (58): bark(), barrel(), basket(), blossom_tree(), boulder(), broadleaf(), bush(), canopy() (+50 more)
 
 ### Community 23 - "primitives.py"
-Cohesion: 0.04
-Nodes (80): 2. 時間構造, メッシュとフレネル, プリミティブ, シールドと持続する状態, チャージと解放, ヒット, 2. 时间结构, 网格与 fresnel (+72 more)
+Cohesion: 0.05
+Nodes (61): 2. 時間構造, プリミティブ, ヒット, 2. 时间结构, 基元, 命中, recipe(), disk() (+53 more)
 
 ### Community 25 - "05 — pkB validation contract"
 Cohesion: 0.13
@@ -2863,19 +3108,19 @@ Cohesion: 0.13
 Nodes (14): 26 — Engine animation, Animation clips, Animation events, Blend trees, Debug features, Determinism boundary, IK, Limits (+6 more)
 
 ### Community 30 - "xxhash64"
-Cohesion: 0.20
-Nodes (11): StateError, invalid_state, uninitialized, hash_state(), merge(), read32(), read64(), round() (+3 more)
+Cohesion: 0.09
+Nodes (21): LoadStateResult, SaveStateResult, StateError, invalid_state, uninitialized, hash_state(), merge(), read32() (+13 more)
 
 ### Community 31 - "BufferDesc"
 Cohesion: 0.12
 Nodes (14): BufferData, context, DataSize, pData, BufferDesc, BindFlags, CPUAccessFlags, Name (+6 more)
 
-### Community 33 - "03 — Architecture and services"
-Cohesion: 0.12
-Nodes (11): Backend, 03 — Architecture and services, Critical correction, Free-tier facts verified at planning time, Naming, Quota budget, Service assignments, Topology (+3 more)
+### Community 33 - "README.md"
+Cohesion: 0.09
+Nodes (16): Evidence and limits, Preservation-first R6 prototype, Proposed engine integration — not implemented, Reproduce with Blender 5.2.1, Backend, Folder scaffold, Directory structure, Server (+8 more)
 
 ### Community 34 - "07 — Matchmaker, slots and donated servers"
-Cohesion: 0.14
+Cohesion: 0.13
 Nodes (14): 07 — Matchmaker, slots and donated servers, Allocation algorithm, Anti-abuse, API, BYO and donated registration, Capacity accounting, Cold start integration, Moderation visibility (+6 more)
 
 ### Community 35 - "17 — Identity and security"
@@ -2899,8 +3144,8 @@ Cohesion: 0.14
 Nodes (13): 27 — Engine scene, Determinism boundary, Editor integration, Limits, Prefabs, Queries, Runtime lifecycle, Save state (+5 more)
 
 ### Community 40 - "Godot visual polish — per-step settings"
-Cohesion: 0.08
-Nodes (23): 10. Character fill and practical lights, 11. Camera, 12. Finishing, 1. Sun: direction first, then colour, 2. Sky as the fill light, 3. Tonemapper and exposure, 4. Contact shading, 5. Bounce light (+15 more)
+Cohesion: 0.05
+Nodes (36): 10. Character fill and practical lights, 11. Camera, 12. Finishing, 1. Sun: direction first, then colour, 2. Sky as the fill light, 3. Tonemapper and exposure, 4. Contact shading, 5. Bounce light (+28 more)
 
 ### Community 41 - "IDeviceContext"
 Cohesion: 0.17
@@ -2915,76 +3160,76 @@ Cohesion: 0.15
 Nodes (12): 15 — Asset pipeline, Audio handling, CDN and caching, Chunk packing, Contract, Fonts and text, Import settings, Limits (+4 more)
 
 ### Community 44 - "16 — Localization and accessibility"
-Cohesion: 0.15
-Nodes (12): 16 — Localization and accessibility, Accessibility tree, Contract, Data and limits, Extraction, Font fallback, Input accessibility, Platform hooks (+4 more)
+Cohesion: 0.13
+Nodes (18): aabb(), fx(), main(), sph(), t(), v3(), 16 — Localization and accessibility, Accessibility tree (+10 more)
 
 ### Community 45 - "Actual directory structure"
 Cohesion: 0.06
-Nodes (31): ENG-01–22 hardening additions (2026-11-22), ENG-03 clear-seed additions (2026-11-20), ENG-03 continuation (2026-11-20), ENG-03 diagnostics/evidence files (2026-11-20), ENG-04 fallback prototype (2026-11-21), ENG-09 additions (2026-11-21), ENG-10 additions (2026-11-21), ENG-21 directional-light prototype (2026-11-22) (+23 more)
+Nodes (33): Authority module and BAK wave (2026-11-27), ENG-01–22 hardening additions (2026-11-22), ENG-03 clear-seed additions (2026-11-20), ENG-03 continuation (2026-11-20), ENG-03 diagnostics/evidence files (2026-11-20), ENG-04 fallback prototype (2026-11-21), ENG-09 additions (2026-11-21), ENG-10 additions (2026-11-21) (+25 more)
 
 ### Community 46 - "tube"
 Cohesion: 0.03
-Nodes (76): brazier(), aquarium_dome(), gv(), vp(), awning(), bait_bucket(), bait_shop(), ball() (+68 more)
+Nodes (80): M_part(), place(), pt(), tr(), roof_in_y(), aquarium_dome(), gv(), vp() (+72 more)
 
 ### Community 47 - "array"
 Cohesion: 0.02
-Nodes (58): "dependency libraries are available", "dependency libraries are available", allocate_or_throw(), operator delete(), operator new(), operator delete(), operator new(), fx() (+50 more)
+Nodes (64): "dependency libraries are available", "dependency libraries are available", count_stamps(), main(), read_file(), allocate_or_throw(), operator delete(), operator new() (+56 more)
 
 ### Community 48 - "FrameGraph"
-Cohesion: 0.15
-Nodes (7): FrameGraph, executing_, imports_, passes_, FrameGraph::compile(), FrameGraph::execute(), main()
+Cohesion: 0.13
+Nodes (8): FrameGraph, executing_, imports_, passes_, FrameGraph::build_plan(), FrameGraph::compile(), FrameGraph::execute(), main()
 
 ### Community 49 - "FrameGraphError"
-Cohesion: 0.15
-Nodes (13): FrameGraphError, busy, callback_failed, dependency_cycle, duplicate_import, duplicate_pass, duplicate_resource_use, empty_name (+5 more)
+Cohesion: 0.14
+Nodes (14): FrameGraphError, busy, callback_failed, dependency_cycle, duplicate_import, duplicate_pass, duplicate_resource_use, empty_name (+6 more)
 
 ### Community 50 - "AddressSanitizer (ASan)"
 Cohesion: 0.06
 Nodes (30): AddressSanitizer (ASan), Advanced Usage, AFL++, Anti-Patterns, cargo-fuzz (Rust), Combining Sanitizers, Common Patterns, honggfuzz (+22 more)
 
 ### Community 51 - "orchestrator.py"
-Cohesion: 0.03
-Nodes (51): Godot Visual Polish (settings, not assets), Knowledge base, Related, Step 0 — Baseline, Step 1 — The pass, in order of impact, Step 2 — Attribute cost per setting (leave-one-out), Step 3 — Foundation test, Step 4 — Presets (+43 more)
+Cohesion: 0.02
+Nodes (62): Godot Visual Polish (settings, not assets), Knowledge base, Related, Step 0 — Baseline, Step 1 — The pass, in order of impact, Step 2 — Attribute cost per setting (leave-one-out), Step 3 — Foundation test, Step 4 — Presets (+54 more)
 
 ### Community 52 - "R6 preparation: file guide"
 Cohesion: 0.17
 Nodes (10): Clips, R6 animation refinement (v2), Regeneration and verification, Transitions and combination with looks, Animations — one file per clip, per rig, Faces, R6 preparation: file guide, Starter clothing (+2 more)
 
 ### Community 53 - "test_safety.py"
-Cohesion: 0.04
-Nodes (60): build(), check_output_dirs(), check_resource_conflicts(), check_targets(), eid(), owned(), removable(), resource_inputs() (+52 more)
+Cohesion: 0.05
+Nodes (40): check_output_dirs(), system_python(), test_a_fresh_project_lints_a_recipe_that_uses_primitive_default_textures(), test_cli_init_examples_and_lint_in_a_fresh_project(), test_doctor_reports_an_initialised_workspace(), test_doctor_runs_through_the_wrapper_on_a_bare_system_python(), test_doctor_runs_through_vfx_cmd_on_a_bare_system_python(), test_effect_verify_reports_missing_evidence_and_fails() (+32 more)
 
 ### Community 54 - "09 — Economy and Exchange"
 Cohesion: 0.17
 Nodes (11): 09 — Economy and Exchange, Activity proof, API, Dynamic rate, Exchange, Fraud detection, Idempotency, Ledger invariant (+3 more)
 
-### Community 55 - "28 — Engine diagnostics"
-Cohesion: 0.18
-Nodes (10): 28 — Engine diagnostics, Console, Crash handler, Debug draw, Limits, Logging, Profiler, Replay recorder (+2 more)
+### Community 55 - "Communities"
+Cohesion: 0.00
+Nodes (458): Communities, Community 0 - "Community 0", Community 100 - "Community 100", Community 101 - "Community 101", Community 102 - "Community 102", Community 103 - "Community 103", Community 104 - "Community 104", Community 105 - "Community 105" (+450 more)
 
 ### Community 56 - "Directory purposes"
-Cohesion: 0.09
-Nodes (18): Evidence and limits, Preservation-first R6 prototype, Proposed engine integration — not implemented, Reproduce with Blender 5.2.1, Folder scaffold, `applications`, `assets`, `backend` (+10 more)
+Cohesion: 0.17
+Nodes (12): `applications`, `assets`, `backend`, `cmake`, Directory purposes, `docs`, `engine`, `.github` (+4 more)
 
 ### Community 57 - "C++23 Features (Usable Today)"
-Cohesion: 0.07
-Nodes (30): Basic Usage, Basic Usage, C++23 Features (Usable Today), Caveats, Compiler Support, Compiler Support, Compiler Support, Compiler Support (+22 more)
+Cohesion: 0.08
+Nodes (25): Basic Usage, C++23 Features (Usable Today), Caveats, Compiler Support, Compiler Support, Compiler Support, Compiler Support, Compiler Support (+17 more)
 
 ### Community 58 - "Position"
-Cohesion: 0.09
-Nodes (27): ConsoleLog, max_bytes, max_entries, max_input_bytes, PrintHost, context, console_input_full(), ConsoleLog::append() (+19 more)
+Cohesion: 0.15
+Nodes (22): PrintHost, context, console_input_full(), ConsoleLog::append(), decode_string(), decode_utf8(), diagnostic(), evaluate_console() (+14 more)
 
 ### Community 59 - "cave_props.py"
 Cohesion: 0.03
-Nodes (76): cart_load(), druse(), _lump(), mound(), ore_lump(), ore_pile(), pickaxe(), shovel() (+68 more)
+Nodes (73): cart_load(), druse(), _lump(), mound(), ore_lump(), ore_pile(), pickaxe(), shovel() (+65 more)
 
 ### Community 60 - "project.yml"
 Cohesion: 0.08
 Nodes (25): activation_command, activation_command_timeout, added_modes, agent_interface, default_modes, encoding, excluded_apis, excluded_tools (+17 more)
 
-### Community 61 - "FixedVec3"
-Cohesion: 0.02
-Nodes (181): aabb(), bench(), fx(), main(), sph(), v3(), aabb(), fx() (+173 more)
+### Community 61 - "ConvexShape"
+Cohesion: 0.08
+Nodes (44): centroid(), collide(), cso_support(), gjk_distance(), max_coord_raw(), scaled_shape(), widen_raw(), widen_vec() (+36 more)
 
 ### Community 62 - "OrbitCamera"
 Cohesion: 0.12
@@ -2992,7 +3237,7 @@ Nodes (11): OrbitCamera, aspect_, kFar, kFovY, kMaxDist, kMaxPitch, kMinDist, kM
 
 ### Community 63 - "quad"
 Cohesion: 0.04
-Nodes (76): B(), drop_bottom(), glowbox(), ibeam(), lathe(), pol(), prism_x(), prism_z() (+68 more)
+Nodes (75): B(), drop_bottom(), glowbox(), ibeam(), lathe(), pol(), prism_x(), prism_z() (+67 more)
 
 ### Community 64 - "rules"
 Cohesion: 0.09
@@ -3007,8 +3252,8 @@ Cohesion: 0.24
 Nodes (8): ISwapChain, depth, desc, SwapChainDesc, ColorBufferFormat, DepthBufferFormat, TEXTURE_FORMAT, Uint32
 
 ### Community 67 - "stdlib_math.cpp"
-Cohesion: 0.07
-Nodes (51): SimClock, Vec2, x, y, Vec3, x, y, z (+43 more)
+Cohesion: 0.06
+Nodes (58): SimClock, Vec2, x, y, Vec3, x, y, z (+50 more)
 
 ### Community 68 - "00 — Decision log"
 Cohesion: 0.18
@@ -3019,11 +3264,11 @@ Cohesion: 0.18
 Nodes (10): 19 — Economy simulator, Agents, Analysis output, Contract, Gate, Honest limit, Scenario, Simulated week (+2 more)
 
 ### Community 70 - "SequentialImpulseSolver"
-Cohesion: 0.03
-Nodes (58): ENG-63 — sequential impulse solver, translational (2026-11-26), Implemented and verified, Scope boundary and remaining (contractual limitations), Verified, Environment, Narrowphase defects found and fixed during validation, Probe, Remaining limitations (unchanged, documented in code) (+50 more)
+Cohesion: 0.04
+Nodes (51): ENG-63 — sequential impulse solver, translational (2026-11-26), Implemented and verified, Scope boundary and remaining (contractual limitations), Verified, ContactConstraint, body_a, body_b, depth (+43 more)
 
 ### Community 71 - "config_file_test.cpp"
-Cohesion: 0.25
+Cohesion: 0.26
 Nodes (17): head(), main(), put_arr(), put_b(), put_bool(), put_double(), put_float(), put_half() (+9 more)
 
 ### Community 72 - "BufferDesc"
@@ -3062,29 +3307,29 @@ Nodes (9): 20 — Legal and privacy, Data map, Donor and contributor documents, 
 Cohesion: 0.27
 Nodes (9): collect_unknown(), fail(), find_key(), load_file(), parse_level(), read_bool(), read_text(), read_u32() (+1 more)
 
-### Community 81 - "math"
-Cohesion: 0.02
-Nodes (132): blossom_tree(), fig_tree(), hanging_planter(), leaf_cluster(), tr(), monstera(), potted_fern(), reeds() (+124 more)
+### Community 81 - "pet_props.py"
+Cohesion: 0.04
+Nodes (67): arc_pts(), bench(), bridge(), bubble_crown(), candy_cane(), chest(), cloud(), coin_pile() (+59 more)
 
-### Community 82 - "cube_golden.py"
-Cohesion: 0.07
-Nodes (23): attribution_allowed(), file_hits(), files(), jpeg_metadata(), png_metadata(), private_terms(), publisher_allowed(), test_maintainer_private_terms_when_configured() (+15 more)
+### Community 82 - "test_privacy.py"
+Cohesion: 0.22
+Nodes (11): attribution_allowed(), file_hits(), files(), jpeg_metadata(), png_metadata(), private_terms(), publisher_allowed(), test_maintainer_private_terms_when_configured() (+3 more)
 
 ### Community 83 - "lint"
-Cohesion: 0.03
-Nodes (50): _term(), _unknown(), validate_layer(), colours(), compare_elements(), documented_textures(), features(), hot() (+42 more)
+Cohesion: 0.06
+Nodes (34): colours(), compare_elements(), documented_textures(), features(), hot(), lint(), lint_library(), look() (+26 more)
 
 ### Community 84 - "fakes/EngineFactoryVk.h"
 Cohesion: 0.16
 Nodes (14): Char, DebugMessageCallbackType, EngineVkCreateInfo, AdapterId, EnableValidation, NumDeferredContexts, ITextureView, NativeWindow (+6 more)
 
 ### Community 85 - "EngineConfig"
-Cohesion: 0.10
-Nodes (15): EngineConfig, adapter_id, log_echo_to_console, log_file, log_level, validation, window_height, window_width (+7 more)
+Cohesion: 0.08
+Nodes (20): EngineConfig, adapter_id, log_echo_to_console, log_file, log_level, validation, window_height, window_width (+12 more)
 
 ### Community 86 - "add"
 Cohesion: 0.04
-Nodes (73): arch_open(), bank(), bus_stop(), car_showroom(), clock_face(), L(), clock_tower(), column() (+65 more)
+Nodes (71): arch_open(), bank(), bus_stop(), car_showroom(), clock_face(), clock_tower(), column(), cslab() (+63 more)
 
 ### Community 87 - "IPipelineState"
 Cohesion: 0.19
@@ -3095,16 +3340,16 @@ Cohesion: 0.22
 Nodes (8): Attribution, Contributor Covenant Code of Conduct, Enforcement, Enforcement Guidelines, Enforcement Responsibilities, Our Pledge, Our Standards, Scope
 
 ### Community 89 - "IDeviceObject"
-Cohesion: 0.07
-Nodes (12): IBuffer, IDeviceObject, ISampler, IShader, ITexture, ITextureView, FakePipeline, font_texture (+4 more)
+Cohesion: 0.05
+Nodes (18): IBuffer, IDeviceObject, ISampler, IShader, ITexture, ITextureView, FakePipeline, font_texture (+10 more)
 
-### Community 90 - "candy_props.py"
-Cohesion: 0.04
-Nodes (65): bakery_oven(), ball(), bell_r(), biscuit_bridge(), crimp(), candy_cane(), candy_castle(), wall() (+57 more)
+### Community 90 - "HostServer"
+Cohesion: 0.08
+Nodes (32): HostConfig, game_version, platform_slots, schema, tick_hz, ticket_secret, HostServer, accounts_ (+24 more)
 
-### Community 91 - "cosine"
-Cohesion: 0.13
-Nodes (9): cosine(), kernel_cos(), floor_value(), Pinned deterministic sin/cos kernels, rem_pio2_large(), rem_pio2(), scalbn_value(), kernel_sin() (+1 more)
+### Community 91 - "bit"
+Cohesion: 0.09
+Nodes (20): MUT-09: deterministic math, MathError, unsupported_environment, MathResult, Initial register VM, math and bytecode, calculate(), deterministic_cos(), deterministic_sin() (+12 more)
 
 ### Community 92 - "Community Guidelines (draft)"
 Cohesion: 0.22
@@ -3127,16 +3372,16 @@ Cohesion: 0.22
 Nodes (8): Desktop laptop build (MSVC path not yet verified), ENG-04 desktop fallback prototype (in progress), Graphics diagnostics and repeatable laptop verification, Included, Ownership and failure behavior, Reproducible dependency-free checks, RHI — experimental Vulkan clear seed, Verified Windows MinGW notes (2026-11-20)
 
 ### Community 97 - "FrameStats"
-Cohesion: 0.07
-Nodes (27): eng16-progress, ENG-15 — Frame timing and stats, Not done / future, Verification, What was built, DurationQueryState, active_, pending_ (+19 more)
+Cohesion: 0.04
+Nodes (39): eng16-progress, ENG-15 — Frame timing and stats, Implementation, Not done / future, Verification, What was built, DurationQueryState, active_ (+31 more)
 
 ### Community 98 - "evaluator.cpp"
-Cohesion: 0.10
-Nodes (41): Ast, ExprNode, begin, children, end_byte, kind, left, op (+33 more)
+Cohesion: 0.03
+Nodes (112): Errors and cost, Floating-point safeguards and limitations, Host numeric bindings, MUT-03 arithmetic evaluator — initial contract, Numeric rules for this baseline, EvalDiagnostic, code, position (+104 more)
 
 ### Community 99 - "hull"
 Cohesion: 0.04
-Nodes (57): block_wall(), camel(), blanket(), campfire(), cargo_pile(), colossus_head(), column(), column_set() (+49 more)
+Nodes (56): block_wall(), camel(), blanket(), campfire(), cargo_pile(), colossus_head(), column(), column_set() (+48 more)
 
 ### Community 100 - "[Unreleased]"
 Cohesion: 0.25
@@ -3168,19 +3413,19 @@ Nodes (7): 01 — Roadmap and gates, Dependency map, Explicitly deferred, Gate r
 
 ### Community 107 - "numpy"
 Cohesion: 0.02
-Nodes (146): N(), _co(), _get(), _keys(), run(), Pitfalls, _blob(), bottom_inset() (+138 more)
+Nodes (163): N(), _co(), _get(), _keys(), run(), Pitfalls, guard(), download() (+155 more)
 
 ### Community 108 - "onsen_props.py"
 Cohesion: 0.04
-Nodes (45): balcony(), bath_pavilion(), bench(), boulder(), bucket(), cedar(), cloud_tree(), crag() (+37 more)
+Nodes (43): balcony(), bath_pavilion(), bench(), boulder(), bucket(), cedar(), cloud_tree(), crag() (+35 more)
 
 ### Community 109 - "rules"
 Cohesion: 0.11
 Nodes (18): exclude, pattern, pattern, pattern, pattern, pattern-either, pattern-not, rules (+10 more)
 
-### Community 110 - "shutil"
-Cohesion: 0.04
-Nodes (46): acquire(), finalize(), guard(), download(), initialize(), safe(), toolchain_lock(), flame_band() (+38 more)
+### Community 110 - "replay_ring.hpp"
+Cohesion: 0.05
+Nodes (49): BitReader, acc, n, nbits, p, pos, BitWriter, acc (+41 more)
 
 ### Community 113 - "ExprKind"
 Cohesion: 0.14
@@ -3188,23 +3433,23 @@ Nodes (14): ExprKind, await, binary, boolean, call, floating, identifier, index 
 
 ### Community 114 - "Superpowers Release Notes"
 Cohesion: 0.03
-Nodes (75): Added, Brainstorm Server Reliability, Brainstorming, Bug Fixes, Bug Fixes, Bug Fixes, Bug Fixes, Bug Fixes (+67 more)
+Nodes (79): Added, Brainstorm Server Reliability, Brainstorming, Breaking Changes, Breaking Changes, Bug Fixes, Bug Fixes, Bug Fixes (+71 more)
 
 ### Community 115 - "FixedStepLoop"
-Cohesion: 0.07
-Nodes (27): Implemented, Scaffold progress, FixedStepLoop, accumulator_ns_, clamp_ns_, clamped_last_, Limits, max_frame_dt (+19 more)
+Cohesion: 0.05
+Nodes (33): Defect fixed, ENG-02 — target-platform window evidence (2026-11-25), ENG-30 — main loop with fixed accumulator and spiral guard (2026-11-25), Implemented, Implemented and verified, Limitations, Remaining, Verified (+25 more)
 
 ### Community 116 - "PokoX plan index"
 Cohesion: 0.29
 Nodes (6): Current continuation, Known shallow areas, Non-negotiable rules, PokoX plan index, Reading order, Status
 
-### Community 117 - "AssetStore"
-Cohesion: 0.02
-Nodes (81): 1. State, snapshots, and stability ([references/state-and-stability.md](references/state-and-stability.md)), How it works, Returning a Result (State-Based), Findings to address, Audit round 2 — additional defects found and fixed, Audit round — defects found and fixed, Concurrency design, Defect found by the new test during implementation (+73 more)
+### Community 117 - "AssetStore::State"
+Cohesion: 0.05
+Nodes (36): Concurrency design, AssetHandle, state_, AssetLoader, AssetPayload, AssetHandle::AssetHandle(), AssetHandle::key(), AssetHandle::operator=() (+28 more)
 
 ### Community 118 - "VulkanMeshPass::Impl"
-Cohesion: 0.04
-Nodes (37): ENG-01–20 audit and ENG-21 — 2026-11-22, ENG-21 implementation, Next work, Scope and outcome, Subsequent ENG-22 finding, Task-by-task evidence and gaps, Verification on this Linux x86-64 host, What was built (+29 more)
+Cohesion: 0.05
+Nodes (25): ENG-01–20 audit and ENG-21 — 2026-11-22, ENG-21 implementation, Next work, Subsequent ENG-22 finding, Verification on this Linux x86-64 host, DirectionalLight, VulkanMeshPass::draw(), VulkanMeshPass::Impl (+17 more)
 
 ### Community 119 - "Character visual review — 2026-11-20"
 Cohesion: 0.33
@@ -3219,20 +3464,20 @@ Cohesion: 0.33
 Nodes (5): Checks, ENG-01–ENG-05 folder and code audit, Fixes, Folder layout, Still open
 
 ### Community 122 - "argparse"
-Cohesion: 0.04
-Nodes (41): convert(), main(), test_ablation_verdicts(), _write_ablation(), analyse(), image_change(), luminance(), main() (+33 more)
+Cohesion: 0.03
+Nodes (50): align_and_scale(), main(), max_section_outline(), recentered(), rotate_min_square(), _append_stderr(), main(), _new_files_by_ext() (+42 more)
 
 ### Community 123 - "GitHub repositories"
 Cohesion: 0.33
 Nodes (5): Creation, Decision (2026-11-21): monorepo, GitHub repositories, Open decisions before creating anything, Proposed repositories
 
 ### Community 124 - "cave_map.py"
-Cohesion: 0.08
-Nodes (58): air(), anchor(), build(), build_dist(), build_solid(), bvh_of(), ceil_y(), clip_fail() (+50 more)
+Cohesion: 0.07
+Nodes (65): air(), anchor(), build(), build_dist(), build_solid(), bvh_of(), ceil_y(), clip_fail() (+57 more)
 
 ### Community 125 - "fish_map.py"
 Cohesion: 0.06
-Nodes (56): add_owner(), anchor(), arc_with_gaps(), bay_key(), beam(), build(), compass(), deck_rect() (+48 more)
+Nodes (58): tr(), add_owner(), anchor(), arc_with_gaps(), bay_key(), beam(), build(), compass() (+50 more)
 
 ### Community 126 - "ISSUE_TEMPLATE/bug_report.md"
 Cohesion: 0.33
@@ -3256,7 +3501,7 @@ Nodes (5): Changes, Checklist, Remaining gaps, Summary, Verification
 
 ### Community 131 - "bone_hydra_brick.py"
 Cohesion: 0.08
-Nodes (30): solid(), B(), build(), cap(), chain(), chest_z(), dil(), dspike() (+22 more)
+Nodes (31): p(), solid(), B(), build(), cap(), chain(), chest_z(), dil() (+23 more)
 
 ### Community 132 - "Security Policy"
 Cohesion: 0.33
@@ -3286,13 +3531,13 @@ Nodes (25): GridfinityBin, GridfinityError, Gridfinity Bins, _assert_footprint()
 Cohesion: 0.05
 Nodes (38): DeviceRoute, id, native_id, DeviceRouter, Mapping, kind, native_id, slot (+30 more)
 
-### Community 139 - "ssa_test.cpp"
-Cohesion: 0.10
-Nodes (21): Evidence, IrErrorCode, bad_operand_count, bad_terminator, duplicate_label, empty_function, missing_entry, missing_terminator (+13 more)
+### Community 139 - "IrErrorCode"
+Cohesion: 0.15
+Nodes (12): IrErrorCode, bad_operand_count, bad_terminator, duplicate_label, empty_function, missing_entry, missing_terminator, phi_arity (+4 more)
 
-### Community 140 - "EmitResult"
-Cohesion: 0.07
-Nodes (31): EmitResult, capabilities, diagnostics, errors, functions, positions, bench(), best_ns() (+23 more)
+### Community 140 - "parse_declarations"
+Cohesion: 0.02
+Nodes (148): Delivered, Delivered, Evidence, mut32-progress, mut34-progress, MUT-31 progress — differential-test optimized and baseline programs, MUT-33 progress — source mappings and useful diagnostics, Still open (+140 more)
 
 ### Community 141 - "Engine reorganization and ENG-01–03 review"
 Cohesion: 0.40
@@ -3304,15 +3549,15 @@ Nodes (4): Colour by plane, Data map (LEG-03), Deletion behaviour, Privacy contr
 
 ### Community 143 - "void_props.py"
 Cohesion: 0.06
-Nodes (43): crystal(), loft(), ring(), annulus(), arena_rim(), brazier(), chamfer_box(), crystal_chips() (+35 more)
+Nodes (44): ringv(), crystal(), loft(), ring(), annulus(), arena_rim(), brazier(), chamfer_box() (+36 more)
 
 ### Community 144 - "cyl"
-Cohesion: 0.04
-Nodes (65): airlock_gate(), beacon_post(), beacon_rail(), beam(), comms_dish(), crater(), dish(), dust_exchange() (+57 more)
+Cohesion: 0.03
+Nodes (68): wall_clock(), airlock_gate(), beacon_post(), beacon_rail(), beam(), comms_dish(), crater(), tone() (+60 more)
 
-### Community 145 - "load_state_snapshot"
-Cohesion: 0.18
-Nodes (10): LoadStateResult, SaveStateResult, append_le(), load_state_snapshot(), read_le(), save_state_snapshot(), schema_for(), SchemaResult (+2 more)
+### Community 145 - "BitBuffer"
+Cohesion: 0.07
+Nodes (23): BitBuffer, read_bit_, read_byte_, write_bit_, cube_schema(), decode_delta(), DeltaSchema, fields_ (+15 more)
 
 ### Community 146 - "rules"
 Cohesion: 0.11
@@ -3327,8 +3572,8 @@ Cohesion: 0.50
 Nodes (3): Changes, ENG-01–ENG-08 follow-up review, Still open
 
 ### Community 149 - "r2b"
-Cohesion: 0.04
-Nodes (59): look(), shot(), shot(), look(), look(), shot(), look(), shot() (+51 more)
+Cohesion: 0.07
+Nodes (36): add_owner(), fit(), fit_bad(), _inb(), _inside_one(), _top(), Build, Export (+28 more)
 
 ### Community 150 - "Vendor DPA checklist (LEG-02)"
 Cohesion: 0.50
@@ -3343,64 +3588,64 @@ Cohesion: 0.50
 Nodes (3): DrawAttribs, Flags, NumVertices
 
 ### Community 153 - "logging.cpp"
-Cohesion: 0.09
-Nodes (25): Config, echo_to_console, file_path, level, Field, key, value, Level (+17 more)
+Cohesion: 0.18
+Nodes (13): Field, key, value, critical(), debug(), emit(), error(), info() (+5 more)
 
 ### Community 154 - "mesh/EngineFactoryVk.h"
 Cohesion: 0.17
 Nodes (12): ISwapChain, depth, desc, SwapChainDesc, ColorBufferFormat, DepthBufferFormat, TEXTURE_FORMAT, TextureSubResData (+4 more)
 
 ### Community 157 - "candy_map.py"
-Cohesion: 0.07
-Nodes (52): add_owner(), anchor(), axis_coords(), build(), at_stop(), bridge_on(), donut_on(), scatter() (+44 more)
+Cohesion: 0.08
+Nodes (47): add_owner(), anchor(), axis_coords(), build(), at_stop(), bridge_on(), donut_on(), scatter() (+39 more)
 
 ### Community 158 - "canyon_map.py"
 Cohesion: 0.07
-Nodes (49): build(), cx(), dcx(), edge_rhythm(), run(), foot(), free(), ground() (+41 more)
+Nodes (46): build(), cx(), dcx(), edge_rhythm(), run(), foot(), free(), ground() (+38 more)
 
 ### Community 159 - "zh/README.md"
-Cohesion: 0.05
-Nodes (53): effekseer-vfx-skill 中文文档, 参考文档（`references/`）, 技能, 使用案例, 护盾：始终不露出间隙的破碎, 火焰爆炸：一直不退的白色接触, 诊断案例, 飞行体：随头部一起消失的拖尾烟 (+45 more)
+Cohesion: 0.04
+Nodes (56): 出力, 受け取るべき入力, 独立 VFX レビュー, 評価基準, effekseer-vfx-skill 中文文档, 参考文档（`references/`）, 技能, 使用案例 (+48 more)
 
 ### Community 160 - "Analyzer"
-Cohesion: 0.09
-Nodes (30): accepts(), Analyzer, diagnostics_, functions_, return_type_, scopes_, types_, Binding (+22 more)
+Cohesion: 0.05
+Nodes (53): Ast, SemanticDiagnostic, code, position, SemanticErrorCode, duplicate_binding, duplicate_declaration, immutable_assignment (+45 more)
 
 ### Community 161 - "rules"
 Cohesion: 0.11
 Nodes (18): exclude, pattern, pattern, pattern, pattern, pattern-either, pattern-not, rules (+10 more)
 
 ### Community 162 - "EffectSession"
-Cohesion: 0.06
-Nodes (14): compile_effect(), load_core(), EffectSession, walk(), test_advanced_layer_features_survive_core_roundtrip(), test_core_roundtrip_preserves_timing_curves_seed_and_model(), test_curve_tangent_data_roundtrips_and_invalid_edit_preserves_keys(), test_decal_resolves_extra_textures_and_accepts_overrides() (+6 more)
+Cohesion: 0.03
+Nodes (67): テクスチャとフリップブック, 纹理与序列帧, Textures and flipbooks, _code(), compile_effect(), cutoff_easing(), LayerBuilder, _number() (+59 more)
 
 ### Community 163 - "Box"
 Cohesion: 0.14
 Nodes (12): Box, MaxX, MaxY, MaxZ, MinX, MinY, MinZ, TextureSubResData (+4 more)
 
 ### Community 164 - "imgui/EngineFactoryVk.h"
-Cohesion: 0.04
-Nodes (55): Final audit round (pre-closeout), BIND_FLAGS, BIND_INDEX_BUFFER, BIND_NONE, BIND_SHADER_RESOURCE, BIND_UNIFORM_BUFFER, BIND_VERTEX_BUFFER, BufferData (+47 more)
+Cohesion: 0.03
+Nodes (68): BufferData, DataSize, pData, BufferDesc, BindFlags, CPUAccessFlags, Name, Size (+60 more)
 
 ### Community 165 - "LayoutElement"
 Cohesion: 0.14
 Nodes (14): InputLayoutDesc, n, p, LayoutElement, BufferSlot, Frequency, InputIndex, InstanceDataStepRate (+6 more)
 
 ### Community 166 - "FakeDevice"
-Cohesion: 0.08
-Nodes (6): FakeDevice, last_pipeline, FakeSampler, FakeTargetView, FakeTextureView, sampler
+Cohesion: 0.07
+Nodes (6): FakeDevice, last_pipeline, FakeDevice, FakeSampler, FakeTextureView, sampler
 
 ### Community 167 - "BlendModeRenderTargetDesc"
 Cohesion: 0.11
 Nodes (18): BLEND_FACTOR, BLEND_FACTOR_INV_SRC_ALPHA, BLEND_FACTOR_ONE, BLEND_FACTOR_SRC_ALPHA, BLEND_FACTOR_ZERO, BLEND_OPERATION, BLEND_OPERATION_ADD, BlendDesc (+10 more)
 
 ### Community 168 - "TextureData"
-Cohesion: 0.15
-Nodes (8): TEXTURE_VIEW_TYPE, TEXTURE_VIEW_SHADER_RESOURCE, TextureData, NumSubresources, pSubresources, TextureViewDesc, ViewType, FakeTexture
+Cohesion: 0.12
+Nodes (9): TEXTURE_VIEW_TYPE, TEXTURE_VIEW_SHADER_RESOURCE, TextureData, NumSubresources, pSubresources, TextureViewDesc, ViewType, FakeTexture (+1 more)
 
-### Community 169 - "EmitResult"
-Cohesion: 0.14
-Nodes (13): EmitError, block, code, function, instr, pos, EmitErrorCode, bad_phi_operand (+5 more)
+### Community 169 - "VulkanShellUiPass::Impl"
+Cohesion: 0.05
+Nodes (28): ShellTextureDelta, height, id, pixels_len, pixels_offset, width, VulkanShellUiPass, impl_ (+20 more)
 
 ### Community 170 - "Safe C++ Idioms"
 Cohesion: 0.07
@@ -3408,19 +3653,19 @@ Nodes (26): Always Initialize, Atomics, Compiler Warnings, Concurrency Safety, c
 
 ### Community 171 - "MB"
 Cohesion: 0.08
-Nodes (42): anchor(), build(), catmull(), ceil_y(), exterior(), face_in(), foot(), free() (+34 more)
+Nodes (43): anchor(), build(), catmull(), ceil_y(), exterior(), face_in(), foot(), free() (+35 more)
 
 ### Community 173 - "ActionListLayout.kt"
 Cohesion: 0.05
-Nodes (11): ActionDemonstrationActivity, ActionListLayout(), Content(), GridView(), ListView(), CheckListLayoutDimensions, CheckListLayoutTextStyles, EmptyListContent() (+3 more)
+Nodes (19): ActionListLayout(), Content(), GridView(), ListView(), CheckListLayout(), CheckListLayoutDimensions, CheckListLayoutSize, Large (+11 more)
 
-### Community 174 - "ja/README.md"
-Cohesion: 0.05
-Nodes (49): effekseer-vfx-skill 日本語ドキュメント, スキル本体, リファレンス, ケースの使い方, シールド：隙間が一度も見えない崩れ, 火の爆発：白いままの接触, 診断済みのケース, 飛翔体：ヘッドと一緒に消えるトレイルの煙 (+41 more)
+### Community 174 - "VFX クラフトルール"
+Cohesion: 0.11
+Nodes (15): 1. 「ステッカー」エフェクトが失敗する理由, 3. 属性の違い, 4. 飛翔体（カテゴリ `projectile`）, 6. 予算, VFX クラフトルール, テクスチャ, 写真から取る色と明るさ, 写真調の爆発、炎、煙 (+7 more)
 
 ### Community 175 - "stdlib_crypto.cpp"
-Cohesion: 0.17
-Nodes (15): Bytes, append_u32_be(), compress(), crypto_hostcall_defs(), from_hex(), hmac_sha256(), rotr(), sha256() (+7 more)
+Cohesion: 0.15
+Nodes (15): HostcallArgs, append_u32_be(), compress(), crypto_hostcall_defs(), from_hex(), hmac_sha256(), rotr(), sha256() (+7 more)
 
 ### Community 176 - "Modern C++"
 Cohesion: 0.12
@@ -3436,7 +3681,7 @@ Nodes (40): LowerParam, name, type, LowerResult, diagnostics, fn, LowerSignature
 
 ### Community 179 - "server.cjs"
 Cohesion: 0.05
-Nodes (61): `index.js` (server), 2. Root Screen Containment, Codex Fixes, v6.0.1 (2026-06-16), bootstrapPage(), brandMarkup(), broadcast(), browserLauncherForPlatform() (+53 more)
+Nodes (61): `index.js` (server), WebSocket Protocol, 2. Root Screen Containment, Codex Fixes, v6.0.1 (2026-06-16), bootstrapPage(), brandMarkup(), broadcast() (+53 more)
 
 ### Community 180 - "dune_map.py"
 Cohesion: 0.08
@@ -3444,7 +3689,7 @@ Nodes (40): add_owner(), anchor(), build(), build_solid(), clip_fail(), dig_spot
 
 ### Community 181 - "ImageGridLayout.kt"
 Cohesion: 0.06
-Nodes (18): Grid(), GridItem(), ImageGridItemData, ImageGridLayout(), ImageGridLayoutDimensions, ImageGridLayoutSize, Large, Medium (+10 more)
+Nodes (14): Grid(), GridItem(), ImageGridLayout(), ImageGridLayoutDimensions, ImageGridLayoutSize, Large, Medium, Small (+6 more)
 
 ### Community 182 - "pet_map.py"
 Cohesion: 0.12
@@ -3454,21 +3699,21 @@ Nodes (47): anchor(), breakables(), build(), build_solid(), candy(), catmull(), 
 Cohesion: 0.09
 Nodes (22): RESOURCE_DIMENSION, RESOURCE_DIM_TEX_2D, SwapChainDesc, ColorBufferFormat, DepthBufferFormat, Height, Width, TEXTURE_FORMAT (+14 more)
 
-### Community 184 - "parse_declarations"
-Cohesion: 0.04
-Nodes (62): Delivered, mut37-progress, MUT-36 progress — runtime capability enforcement, Still open, Verified, DeterminismDiagnostic, code, detail (+54 more)
+### Community 184 - "determinism.cpp"
+Cohesion: 0.09
+Nodes (22): DeterminismDiagnostic, code, detail, position, DeterminismErrorCode, capability_in_state, duplicate_capability, nondeterministic_operation (+14 more)
 
 ### Community 185 - "SampleGlanceWidget.kt"
-Cohesion: 0.06
-Nodes (17): FeedCollectionGlanceWidget, FeedItem, SampleGlanceWidget, SampleGlanceWidgetReceiver, cacheWidgetImageUri(), calculateWidgetMemoryCapBytes(), decodeDownsampledWidgetBitmap(), Antipatterns (+9 more)
+Cohesion: 0.05
+Nodes (18): FeedCollectionGlanceWidget, FeedItem, SampleGlanceWidget, SampleGlanceWidgetReceiver, cacheWidgetImageUri(), calculateWidgetMemoryCapBytes(), decodeDownsampledWidgetBitmap(), Antipatterns (+10 more)
 
 ### Community 186 - "glance-canonical-layouts/SKILL.md"
 Cohesion: 0.07
-Nodes (10): FakeImageTextListDataRepository, DemoDataItem, computeIfAbsent(), FakeTextWithImageRepository, DemoData, AspectRatio, ImageUtils, Checklist (+2 more)
+Nodes (19): FakeImageTextListDataRepository, DemoDataItem, computeIfAbsent(), removeIf(), AspectRatio, Action list layout (`action_list`), Canonical layout reference files, Check list layout (`check_list`) (+11 more)
 
-### Community 187 - "bytecode.cpp"
-Cohesion: 0.12
-Nodes (25): Delivered, Delivered, BytecodeError, code, offset, DecodeResult, EncodeResult, Instruction (+17 more)
+### Community 187 - "SlotRegistry"
+Cohesion: 0.07
+Nodes (37): SlotRegistry, Admit, admitted, not_alive, platform_ccu_full, slot_full, slot_unknown, kDrainTicks (+29 more)
 
 ### Community 188 - "Compiler Hardening"
 Cohesion: 0.07
@@ -3482,13 +3727,17 @@ Nodes (36): Android ES backend behind ClearBackend contract — 2026-11-22 (same
 Cohesion: 0.12
 Nodes (10): InputReplay, index_, InputTimeline, events_, max_events, Record, event, tick (+2 more)
 
+### Community 192 - "VulkanImGuiPass::Impl"
+Cohesion: 0.05
+Nodes (24): VulkanDiagnostics, impl_, saved_, VulkanDiagnostics::start(), VulkanImGuiPass::draw(), VulkanImGuiPass::Impl, binding, font_sampler (+16 more)
+
 ### Community 193 - "C++20 Features (Default Practice)"
 Cohesion: 0.09
 Nodes (21): Before / After, C++20 Features (Default Practice), Concepts, Coroutines, Custom Concepts, Custom Formatters, Designated Initializers, Key Patterns (+13 more)
 
-### Community 195 - "VmDebugger"
-Cohesion: 0.04
-Nodes (48): DebugRun, pc, result, stop, DebugStop, breakpoint, returned, stepped (+40 more)
+### Community 195 - "VmCore"
+Cohesion: 0.10
+Nodes (15): VmDebugger::result(), VmCore, base_depth_, budget_, code_, depth_guard_, DepthGuard, s (+7 more)
 
 ### Community 196 - "Variant Analysis Report"
 Cohesion: 0.18
@@ -3499,28 +3748,28 @@ Cohesion: 0.05
 Nodes (34): add_common(), argv(), cli(), _default(), emit(), enum_ids(), mesh_tris(), node() (+26 more)
 
 ### Community 198 - "Chain"
-Cohesion: 0.07
-Nodes (8): Chain, desc, Context, Device, info, emit(), Factory, GetEngineFactoryVk()
+Cohesion: 0.08
+Nodes (6): Chain, desc, Context, Device, info, emit()
 
 ### Community 199 - "sky_map.py"
-Cohesion: 0.14
-Nodes (32): bridge_ends(), build(), ext(), face(), foot(), free(), H(), Hm() (+24 more)
+Cohesion: 0.15
+Nodes (31): bridge_ends(), build(), ext(), face(), foot(), free(), H(), Hm() (+23 more)
 
 ### Community 200 - "main"
 Cohesion: 0.22
 Nodes (12): pack_device_code(), pack_gamepad_code(), apply_events(), connect(), disconnect(), event(), main(), pad_axis() (+4 more)
 
-### Community 201 - "forest_props.py"
-Cohesion: 0.04
-Nodes (69): horizon(), agave(), oasis_pool(), scrub(), buoy_stack(), reef_rock(), tiki_torch(), bench() (+61 more)
+### Community 201 - "Fixed"
+Cohesion: 0.08
+Nodes (29): td(), td(), combine_friction(), combine_restitution(), fx(), main(), shape_of(), sim_body() (+21 more)
 
 ### Community 202 - "charge_chain"
-Cohesion: 0.06
-Nodes (49): 5. 不規則で複数の役割を持つエフェクト, 角度と軸, 同梱サンプル, 3 種類のコピーはそれぞれ別の仕事をする, まずパレットの役割, サイズとライフの出発点, 明度、色、レイヤーの組み合わせ, 白い塊と黒い塊の修正順序 (+41 more)
+Cohesion: 0.04
+Nodes (75): 5. 不規則で複数の役割を持つエフェクト, アンカーと配置, ゲーム入力と動的方程式, コンパイラの拡張, メッシュとフレネル, レンダリング、HDR、Lab, 力とモーション, 検証済みのエンジン規約（Effekseer Core 1.80.7 + EffekseerForGodot4 1.80.5.1） (+67 more)
 
 ### Community 203 - "TextWithImageLayout.kt"
-Cohesion: 0.07
-Nodes (19): HorizontalContent(), Image(), ImageData, maybeClickable(), NoDataContent(), TextData, TextStack(), TextWithImageData (+11 more)
+Cohesion: 0.05
+Nodes (21): FakeTextWithImageRepository, DemoData, HorizontalContent(), Image(), ImageData, maybeClickable(), NoDataContent(), TextData (+13 more)
 
 ### Community 204 - "StatementParser"
 Cohesion: 0.16
@@ -3528,7 +3777,7 @@ Nodes (11): StatementParser, ast_, depth_, Depth, depth_limit, loop_depth_, Loop
 
 ### Community 205 - "string"
 Cohesion: 0.04
-Nodes (42): MUT-09: deterministic math, DeclarationParser, DeclarationResult, MathError, unsupported_environment, MathResult, HostcallArgs, HostcallError (+34 more)
+Nodes (17): VulkanDiagnostics, VulkanDiagnostics, DeclarationParser, HostcallResult, Result, ExpressionParser, StatementParser, Bytes (+9 more)
 
 ### Community 206 - "stdlib_string.cpp"
 Cohesion: 0.19
@@ -3540,43 +3789,43 @@ Nodes (10): TextureDesc, ArraySize, BindFlags, Format, Height, MipLevels, Name, 
 
 ### Community 208 - "onsen_map.py"
 Cohesion: 0.08
-Nodes (36): add_owner(), bank_path(), build(), fit(), fit_bad(), foot(), free(), ground() (+28 more)
+Nodes (39): add_owner(), bank_path(), build(), fit(), fit_bad(), foot(), free(), ground() (+31 more)
 
 ### Community 209 - "BlockProp"
-Cohesion: 0.07
-Nodes (41): asteroid(), big_arch(), bush(), cactus(), candy_cane(), city_tower(), cloud(), crate() (+33 more)
+Cohesion: 0.09
+Nodes (35): asteroid(), big_arch(), bush(), cactus(), candy_cane(), city_tower(), cloud(), crate() (+27 more)
 
 ### Community 210 - "clamp"
-Cohesion: 0.05
-Nodes (57): f(), two_tone(), WAF(), f(), sh(), f(), f(), sh() (+49 more)
+Cohesion: 0.07
+Nodes (42): f(), two_tone(), WAF(), f(), shade_rock(), levels(), shelf1(), wall() (+34 more)
 
 ### Community 211 - "Contracts"
-Cohesion: 0.08
-Nodes (24): Before / After, Before / After, C++26 Features, Compiler Support, Contracts, Core Syntax, #embed, Enforcement Modes (+16 more)
+Cohesion: 0.09
+Nodes (23): Before / After, Before / After, C++26 Features, Compiler Support, Contracts, Core Syntax, #embed, Enforcement Modes (+15 more)
 
 ### Community 212 - "linux-lit-cube-golden"
 Cohesion: 0.17
 Nodes (12): run, LIBGL_ALWAYS_SOFTWARE, LP_NATIVE_VECTOR_WIDTH, LP_NUM_THREADS, SDL_VIDEODRIVER, linux-lit-cube-golden, defaults, env (+4 more)
 
 ### Community 213 - "DeclarationErrorCode"
-Cohesion: 0.10
-Nodes (21): DeclarationDiagnostic, code, position, DeclarationErrorCode, depth_exceeded, expected_arrow, expected_colon, expected_declaration (+13 more)
+Cohesion: 0.06
+Nodes (29): DILIGENT_CALL_TYPE capture(), is_environment_layer_version_warning(), main(), DeclarationDiagnostic, code, position, DeclarationErrorCode, depth_exceeded (+21 more)
 
 ### Community 214 - "Root Cause and Expansion Axes"
 Cohesion: 0.20
 Nodes (10): 1. Semantically related identifiers, 2. Other boolean-logic errors, 3. Data-type edge cases, 4. Documentation/code mismatches, Extracting the Root Cause, Pitfalls at This Stage, Root Cause and Expansion Axes, The Expansion Checklist (+2 more)
 
 ### Community 215 - "EventBus"
-Cohesion: 0.04
-Nodes (44): EventBus, last_tick_, max_events, max_subscriptions, next_id_, queue_, sequence_, Subscription (+36 more)
+Cohesion: 0.13
+Nodes (8): EventBus, last_tick_, max_events, max_subscriptions, next_id_, queue_, sequence_, MUT-54 — lifecycle and game events
 
 ### Community 216 - "program.cpp"
-Cohesion: 0.07
-Nodes (45): Audit fixes, 1. Medium — Bytecode compilation accepts an invalid state initializer, MUT-10: compiled-program and word-code round trips, State behavior, Evidence and open gates, Implemented, Limits and safety boundaries, mut07-progress (+37 more)
+Cohesion: 0.08
+Nodes (40): Audit fixes, 1. Medium — Bytecode compilation accepts an invalid state initializer, MUT-10: compiled-program and word-code round trips, State behavior, Evidence and open gates, Implemented, Limits and safety boundaries, mut07-progress (+32 more)
 
 ### Community 217 - "Value"
-Cohesion: 0.12
-Nodes (12): Member, first, second, Value, boolean, entries, i, items (+4 more)
+Cohesion: 0.07
+Nodes (22): Member, first, second, Type, array, boolean, bytes, map (+14 more)
 
 ### Community 218 - "values.cpp"
 Cohesion: 0.17
@@ -3599,8 +3848,8 @@ Cohesion: 0.22
 Nodes (3): in_bounds(), Reader, pos
 
 ### Community 223 - "ToolBarLayout.kt"
-Cohesion: 0.07
-Nodes (16): FluidContentIconButton(), FluidHeaderAppIcon(), FluidHeaderIconButton(), Header(), ToolBarButton, ToolBarLayout(), ToolBarLayoutDimens, ToolBarLayoutSize (+8 more)
+Cohesion: 0.08
+Nodes (15): FluidContentIconButton(), FluidHeaderAppIcon(), FluidHeaderIconButton(), Header(), ToolBarButton, ToolBarLayout(), ToolBarLayoutDimens, ToolBarLayoutSize (+7 more)
 
 ### Community 224 - "Vector3"
 Cohesion: 0.16
@@ -3610,13 +3859,13 @@ Nodes (5): IElementHitReceiver, ElementSkill, Hand, P, Unity (URP)
 Cohesion: 0.22
 Nodes (8): Acceptable rates by context, Common FP sources and filters, Decision points, False Positive Management, One Change at a Time, Search Scope, Searching: The Abstraction Ladder, Tool Selection
 
-### Community 226 - "Ktx2Image"
-Cohesion: 0.15
-Nodes (11): Ktx2Image, format, height, mips, width, Ktx2Mip, height, pixels (+3 more)
+### Community 226 - "poko_jni_bridge.cpp"
+Cohesion: 0.09
+Nodes (37): jboolean, jbyte, _jbyteArray, jbyteArray, jclass, jdouble, jfloat, jint (+29 more)
 
 ### Community 227 - "FakeContext"
-Cohesion: 0.06
-Nodes (12): MAP_FLAGS, MAP_FLAG_DISCARD, MAP_FLAG_NONE, MAP_TYPE, MAP_READ, MAP_WRITE, FakeBuffer, storage (+4 more)
+Cohesion: 0.07
+Nodes (9): FakeBuffer, storage, FakeChain, desc, FakeContext, FakeSampler, FakeTargetView, FakeTextureView (+1 more)
 
 ### Community 228 - "Triage: Deciding Whether a Candidate Is Real"
 Cohesion: 0.22
@@ -3631,8 +3880,8 @@ Cohesion: 0.04
 Nodes (54): Android skills, Conditional Service Availability Feature, `deleteClusters`, `deleteFeaturedCluster`, `deleteFoodShoppingCartCluster`, `deleteFoodShoppingListCluster`, `deleteRecommendationsClusters`, `deleteReorderCluster` (+46 more)
 
 ### Community 232 - "test_version.py"
-Cohesion: 0.08
-Nodes (11): ReservationMigrationTests, first_difference(), main(), update_golden(), command(), copy_sources(), main(), parse_options() (+3 more)
+Cohesion: 0.11
+Nodes (9): ReservationMigrationTests, build_env(), command(), copy_sources(), main(), parse_options(), VersionIntegrationTests, build_and_version() (+1 more)
 
 ### Community 233 - "SamplerDesc"
 Cohesion: 0.15
@@ -3647,16 +3896,16 @@ Cohesion: 0.22
 Nodes (8): jobs, name, on, pull_request, push, workflow_dispatch, permissions, contents
 
 ### Community 236 - "town_map.py"
-Cohesion: 0.09
-Nodes (35): alley(), anchor(), anchor_local(), bkit(), blocks(), build(), buildings(), check_rects() (+27 more)
+Cohesion: 0.10
+Nodes (34): alley(), anchor(), anchor_local(), bkit(), blocks(), build(), buildings(), check_rects() (+26 more)
 
 ### Community 237 - "void_map.py"
 Cohesion: 0.11
 Nodes (36): anchor(), ang(), bridges(), build(), build_paths(), clip_frac(), dressing(), edge_pt() (+28 more)
 
-### Community 238 - "parse_arithmetic"
+### Community 238 - "poko_shell.h"
 Cohesion: 0.06
-Nodes (47): EvalResult, NumericType, f32, f64, i16, i32, i64, i8 (+39 more)
+Nodes (36): PokoShell, PokoTextureUpdate, height, id, pixels_len, pixels_offset, width, check() (+28 more)
 
 ### Community 239 - "windows-build"
 Cohesion: 0.25
@@ -3666,13 +3915,13 @@ Nodes (8): windows-build, toolchain, fail-fast, matrix, name, runs-on, strategy,
 Cohesion: 0.21
 Nodes (11): Integration review — 2026-11-22, Remaining limitations and risks, Scope and findings, Subsequent review, Verification on this host, look_at(), multiply(), OrbitCamera::orbit() (+3 more)
 
-### Community 241 - "MUT-03 arithmetic evaluator — initial contract"
-Cohesion: 0.08
-Nodes (24): Errors and cost, Floating-point safeguards and limitations, Host numeric bindings, MUT-03 arithmetic evaluator — initial contract, Numeric rules for this baseline, EvalDiagnostic, code, position (+16 more)
+### Community 241 - "CharacterController"
+Cohesion: 0.06
+Nodes (41): aabb(), fx(), main(), params(), v3(), wedge(), aabb(), fx() (+33 more)
 
-### Community 242 - "StatementNode"
-Cohesion: 0.14
-Nodes (10): StatementAst, StatementNode, begin, children, end_byte, expression, kind, spelling (+2 more)
+### Community 242 - "StatementAst"
+Cohesion: 0.06
+Nodes (39): StatementAst, StatementKind, block, break_stmt, continue_stmt, expression, for_stmt, guard_stmt (+31 more)
 
 ### Community 243 - "GraphicsPipelineStateCreateInfo"
 Cohesion: 0.20
@@ -3683,8 +3932,8 @@ Cohesion: 0.20
 Nodes (10): TextureDesc, ArraySize, BindFlags, Format, Height, MipLevels, Name, Type (+2 more)
 
 ### Community 245 - "Post-implementation audit — ENG-01 through ENG-13"
-Cohesion: 0.17
-Nodes (8): Bugs fixed, Gap-closure round 2, Independent review round 4 (2026-11-21), Known remaining gaps (documented, not defects), Post-implementation audit — ENG-01 through ENG-13, Test updates, Verified, read_spirv()
+Cohesion: 0.11
+Nodes (15): Bugs fixed, Final audit round (pre-closeout), Gap-closure round 2, Independent review round 4 (2026-11-21), Known remaining gaps (documented, not defects), Post-implementation audit — ENG-01 through ENG-13, Test updates, Verified (+7 more)
 
 ### Community 246 - "WidgetStateAndActions.kt"
 Cohesion: 0.05
@@ -3700,7 +3949,7 @@ Nodes (25): add_common(), argv(), cli(), _default(), emit(), enum_ids(), mesh_tr
 
 ### Community 249 - "VulkanClearAndroidRenderer::Impl"
 Cohesion: 0.05
-Nodes (24): VulkanClearAndroidRenderer::Impl, color_space, command_buffer, command_pool, device, extent, fence, format (+16 more)
+Nodes (25): VulkanClearAndroidRenderer::Impl, color_space, command_buffer, command_pool, device, extent, fence, fence_pending (+17 more)
 
 ### Community 250 - "interface"
 Cohesion: 0.29
@@ -3719,20 +3968,20 @@ Cohesion: 0.06
 Nodes (30): add_common(), argv(), cli(), _default(), emit(), enum_ids(), mesh_tris(), node() (+22 more)
 
 ### Community 254 - "effekseer-vfx/SKILL.md"
-Cohesion: 0.11
-Nodes (21): KanaWorks_AI brand assets, Diagnosed cases, Fire explosion: a contact that stays white, Projectile: trail smoke that dies with the head, Shield: a break that never shows a gap, Using a case, Comparing against a reference clip, Choose the volume from the standard camera (+13 more)
+Cohesion: 0.08
+Nodes (28): KanaWorks_AI brand assets, effekseer-vfx-skill 日本語ドキュメント, スキル本体, リファレンス, リファレンスクリップとの比較, ボリュームと遮蔽, 標準カメラでボリュームを選ぶ, Colour and brightness from photographs (+20 more)
 
 ### Community 255 - "build_tool.cpp"
-Cohesion: 0.23
-Nodes (11): after_token(), build_project(), declared_identity(), name(), next_quoted(), parse_manifest(), quoted(), string_array() (+3 more)
+Cohesion: 0.08
+Nodes (31): BuildResult, diagnostic, error, lock_text, packages, BuildToolError, invalid_lock, invalid_manifest (+23 more)
 
 ### Community 256 - "LongTextLayout.kt"
-Cohesion: 0.08
+Cohesion: 0.09
 Nodes (14): FakeLongTextRepository, LongTextLayout(), LongTextLayoutData, LongTextLayoutPreview(), LongTextLayoutSize, Normal, XSmall, maybeClickable() (+6 more)
 
 ### Community 257 - "effekseer-vfx-skill"
-Cohesion: 0.04
-Nodes (49): Development, effekseer-vfx-skill, First steps, For agents: installing from this URL, Image generation, Install, effekseer-vfx-skill, はじめの一歩 (+41 more)
+Cohesion: 0.03
+Nodes (86): Development, effekseer-vfx-skill, Desarrollo, effekseer-vfx-skill, Estructura del repositorio, Generación de imágenes, Instalación, Licencia y créditos (+78 more)
 
 ### Community 258 - "interface"
 Cohesion: 0.29
@@ -3742,33 +3991,33 @@ Nodes (6): interface, brand_color, display_name, icon_large, icon_small, short_d
 Cohesion: 0.29
 Nodes (7): Resources, Running it as a Workflow, The Five Steps, Variant Analysis, What Makes Hunts Fail, When NOT to Use, When to Use
 
-### Community 260 - "CheckListAppWidget.kt"
-Cohesion: 0.07
-Nodes (15): CheckListAppWidget, CheckListAppWidgetReceiver, FakeCheckListDataRepository, CheckListItem(), CheckListLayout(), CheckListLayoutSize, Large, Medium (+7 more)
+### Community 260 - "ws_handshake.hpp"
+Cohesion: 0.09
+Nodes (32): base64_encode(), lower(), Sha1, buf_, buf_len_, h_, total_bits_, trim_view() (+24 more)
 
 ### Community 261 - "roblox_export.py"
 Cohesion: 0.12
 Nodes (6): at(), collision_of(), glow_of(), look(), _owner(), r_pos()
 
-### Community 262 - "BytecodeErrorCode"
-Cohesion: 0.22
-Nodes (9): BytecodeErrorCode, bad_header, invalid_assembly, invalid_opcode, invalid_operands, invalid_target, size_limit, truncated (+1 more)
+### Community 262 - "FixedVec3"
+Cohesion: 0.08
+Nodes (39): aabb(), bench(), fx(), main(), sph(), v3(), closest_on_hull(), closest_segment() (+31 more)
 
 ### Community 263 - "Linux graphics setup and review — 2026-11-22"
 Cohesion: 0.22
 Nodes (8): Environment, Linux graphics setup and review — 2026-11-22, Next task and outstanding gates, Repeat the X11 smoke test, Scope, Skills and C++20, Subsequent ENG-01–21 audit, Verification
 
 ### Community 264 - "egg_map.py"
-Cohesion: 0.11
-Nodes (29): g(), anchor(), build(), dressing(), foot(), free(), ground(), shg() (+21 more)
+Cohesion: 0.05
+Nodes (58): shot(), look(), shot(), shot(), look(), look(), shot(), g() (+50 more)
 
 ### Community 265 - "AggregateStore"
-Cohesion: 0.13
+Cohesion: 0.14
 Nodes (7): AggregateStore, arena_bytes_, heap_bytes_, live_, objects_, AggregateStore::copy(), AggregateStore::copy_impl()
 
 ### Community 266 - "ExpressionParser"
-Cohesion: 0.08
-Nodes (27): Token, begin, end_byte, kind, ParseResult, ExpressionParser, ast_, Frame (+19 more)
+Cohesion: 0.06
+Nodes (41): Token, begin, end_byte, kind, ParseDiagnostic, code, position, ParseErrorCode (+33 more)
 
 ### Community 267 - "Box"
 Cohesion: 0.25
@@ -3779,44 +4028,44 @@ Cohesion: 0.04
 Nodes (47): App categories, April 2022, April 2023, Associated large screen quality guidelines, Associated large screen quality guidelines, Associated large screen quality guidelines, August 2026, Car differentiated (+39 more)
 
 ### Community 269 - "SapBroadphase"
-Cohesion: 0.09
-Nodes (15): 6. Graphics and custom drawing ([references/graphics-performance.md](references/graphics-performance.md)), ENG-61 — SAP broadphase with sorted pair output (2026-11-26), Implemented and verified, Scope boundary and remaining, Verified, SapBroadphase, bodies_, commands_ (+7 more)
+Cohesion: 0.06
+Nodes (29): 6. Graphics and custom drawing ([references/graphics-performance.md](references/graphics-performance.md)), ENG-61 — SAP broadphase with sorted pair output (2026-11-26), Implemented and verified, Scope boundary and remaining, Verified, SapBroadphase, bodies_, Body (+21 more)
 
 ### Community 270 - "InputEvent"
 Cohesion: 0.12
 Nodes (24): Implemented, MUT-38 — deterministic input snapshots (2026-11-25), Remaining at this milestone, Verified, InputEvent, code, dx, dy (+16 more)
 
-### Community 271 - "resolve_packages"
-Cohesion: 0.19
-Nodes (11): What was added, PackageInput, name, source, version, dump_lockfile(), resolve_packages(), cases() (+3 more)
+### Community 271 - "SessionClient"
+Cohesion: 0.08
+Nodes (22): main(), SessionClient, in_, latest_snap_, mask_counter_, next_seq_, pending_reply_, seen_ (+14 more)
 
 ### Community 272 - "The Ladder"
 Cohesion: 0.33
 Nodes (6): Choosing your level, Level 0: Exact match, Level 1: Variable abstraction, Level 2: Structural abstraction, Level 3: Semantic abstraction, The Ladder
 
 ### Community 273 - "SnapshotErrorCode"
-Cohesion: 0.18
-Nodes (10): SnapshotError, code, offset, SnapshotErrorCode, checksum_mismatch, invalid_format, invalid_source, invalid_state (+2 more)
+Cohesion: 0.15
+Nodes (12): SnapshotError, code, offset, SnapshotErrorCode, checksum_mismatch, invalid_format, invalid_source, invalid_state (+4 more)
 
 ### Community 274 - "studlib.py"
-Cohesion: 0.09
-Nodes (18): Best Practices Checklist, build(), ring(), apply(), box(), cyl(), _emit(), frame() (+10 more)
+Cohesion: 0.12
+Nodes (12): apply(), box(), cyl(), _emit(), frame(), limb(), lin(), make() (+4 more)
 
 ### Community 275 - "ImageGridAppWidget.kt"
-Cohesion: 0.07
-Nodes (7): ImageGridAppWidget, ImageGridAppWidgetReceiver, WidgetContent(), ImageTextListAppWidget, ImageTextListAppWidgetReceiver, TextWithImageAppWidget, TextWithImageAppWidgetReceiver
+Cohesion: 0.04
+Nodes (12): CheckListAppWidget, CheckListAppWidgetReceiver, FakeCheckListDataRepository, ImageGridAppWidget, ImageGridAppWidgetReceiver, WidgetContent(), ImageTextListAppWidget, ImageTextListAppWidgetReceiver (+4 more)
 
 ### Community 276 - "OpenGLClearRenderer::Impl"
-Cohesion: 0.05
-Nodes (26): SDL_GLContext, OpenGLClearRenderer::Impl, cleanup_uncertain, context, device, gl_context, gl_library_loaded, initialized (+18 more)
+Cohesion: 0.02
+Nodes (55): SDL_FunctionPointer, SDL_GLAttr, SDL_GLContext, OpenGLClearBackend, cleanup_error_, diagnostics_, height_, renderer_ (+47 more)
 
 ### Community 277 - "ENG-20 — Camera with view/projection"
 Cohesion: 0.20
 Nodes (9): Bugs found during implementation, eng22-progress, ENG-20 — Camera with view/projection, Integration review, 2026-11-22, Linux software-rendering update — 2026-11-22, Not done / future, Review update — 2026-11-22, Verified (+1 more)
 
 ### Community 278 - "moon_map.py"
-Cohesion: 0.08
-Nodes (50): adiff(), build(), crater_at(), _crater_ok(), crater_ramp(), craters(), face(), foot() (+42 more)
+Cohesion: 0.10
+Nodes (41): adiff(), build(), crater_at(), _crater_ok(), crater_ramp(), craters(), face(), foot() (+33 more)
 
 ### Community 279 - "Reporting a Variant Hunt"
 Cohesion: 0.40
@@ -3830,29 +4079,29 @@ Nodes (15): apply_events(), axis(), game_map(), kb(), key(), main(), mouse(), mo
 Cohesion: 0.10
 Nodes (25): B(), back_layer(), band_edge(), build(), cap(), chain(), ci(), cube_dil() (+17 more)
 
-### Community 282 - "LayoutElement"
-Cohesion: 0.05
-Nodes (39): DRAW_FLAGS, DRAW_FLAG_NONE, DrawIndexedAttribs, BaseVertex, FirstIndexLocation, FirstInstanceLocation, Flags, IndexType (+31 more)
+### Community 282 - "DrawIndexedAttribs"
+Cohesion: 0.13
+Nodes (15): DRAW_FLAGS, DRAW_FLAG_NONE, DrawIndexedAttribs, BaseVertex, FirstIndexLocation, FirstInstanceLocation, Flags, IndexType (+7 more)
 
 ### Community 283 - "DrawIndexedAttribs"
 Cohesion: 0.33
 Nodes (5): DrawIndexedAttribs, Flags, IndexType, NumIndices, Uint32
 
 ### Community 284 - "run_register_vm"
-Cohesion: 0.03
-Nodes (69): AST-to-SSA lowering (`mute/src/semantic/lower.cpp`, `mute/include/poko/mute/lower.hpp`), Bugs found and fixed while landing this milestone, Delivered, Delivered, Delivered, Delivered, Delivered, Emitter (`mute/src/semantic/emit.cpp`, `mute/include/poko/mute/emit.hpp`) (+61 more)
+Cohesion: 0.02
+Nodes (135): AST-to-SSA lowering (`mute/src/semantic/lower.cpp`, `mute/include/poko/mute/lower.hpp`), Bugs found and fixed while landing this milestone, Delivered, Delivered, Delivered, Delivered, Delivered, Emitter (`mute/src/semantic/emit.cpp`, `mute/include/poko/mute/emit.hpp`) (+127 more)
 
 ### Community 286 - "forest_map.py"
-Cohesion: 0.14
-Nodes (21): build(), bank(), flat(), tree(), CAMP_PTS(), canopy_shade(), face(), foot() (+13 more)
+Cohesion: 0.12
+Nodes (23): build(), bank(), flat(), tree(), CAMP_PTS(), canopy_shade(), face(), foot() (+15 more)
 
 ### Community 288 - "DeclarationAst"
-Cohesion: 0.05
-Nodes (39): Coverage, Evidence, Limits, mut25-progress, MUT-24 — determinism and capability analysis (foundation), mut-call-slices2-6, Rules enforced, Slice 2 design notes (lowering calls) — captured before context reset (+31 more)
+Cohesion: 0.06
+Nodes (35): mut-call-slices2-6, Slice 2 design notes (lowering calls) — captured before context reset, Slice 2 — lowering with a signature table, DeclarationAst, DeclarationNode, begin, body, children (+27 more)
 
 ### Community 289 - "cad-skill-main/preview.py"
-Cohesion: 0.07
-Nodes (24): bed_fit(), estimate_mass(), load_mesh(), parse_bed(), _add_edges(), _build_grid(), _build_scene(), _get_font() (+16 more)
+Cohesion: 0.12
+Nodes (13): _add_edges(), _build_grid(), _build_scene(), _get_font(), _info_lines(), main(), _nice_spacing(), _render_frame() (+5 more)
 
 ### Community 290 - "battle_map.py"
 Cohesion: 0.10
@@ -3870,17 +4119,21 @@ Nodes (14): B(), build(), cap(), chain(), exposed(), flame(), lin(), put() (+6 m
 Cohesion: 0.14
 Nodes (9): bush(), cart(), crimson_blade(), grass_base(), leaf_col(), rocks(), traced(), well() (+1 more)
 
-### Community 294 - "BuildResult"
-Cohesion: 0.14
-Nodes (12): BuildResult, diagnostic, error, lock_text, packages, Manifest, name, sources (+4 more)
+### Community 294 - "ByoRegistration"
+Cohesion: 0.06
+Nodes (30): ByoRegistration, challenge_, developer_keys_, DonorToken, game_id, token, kChallengeTtlTicks, kHeartbeatTtlTicks (+22 more)
 
 ### Community 295 - "plus_map.py"
-Cohesion: 0.24
-Nodes (14): blk(), dress_caps(), finish(), floor(), grp(), hub(), kerb_x(), kerb_z() (+6 more)
+Cohesion: 0.15
+Nodes (17): blk(), dress_caps(), finish(), floor(), grp(), hub(), kerb_x(), kerb_z() (+9 more)
+
+### Community 296 - "AssetStore"
+Cohesion: 0.05
+Nodes (34): Findings to address, Scope and outcome, Task-by-task evidence and gaps, Audit round 2 — additional defects found and fixed, Audit round — defects found and fixed, Defect found by the new test during implementation, eng17-progress, eng18-progress (+26 more)
 
 ### Community 297 - "parse_pokomesh"
-Cohesion: 0.11
-Nodes (18): Audits performed, Delivered, Files of note, Known gaps / not done, Session report — ENG-14 through ENG-20 + audits, Verification, PokoMesh, indices (+10 more)
+Cohesion: 0.18
+Nodes (12): Audits performed, Delivered, Files of note, Known gaps / not done, Session report — ENG-14 through ENG-20 + audits, Verification, fail(), finite_vec3() (+4 more)
 
 ### Community 298 - "blender-skills-main/tools/validate_skills.py"
 Cohesion: 0.27
@@ -3892,7 +4145,7 @@ Nodes (16): B(), b_(), build(), chain(), exposed(), h_(), lin(), put() (+8 more)
 
 ### Community 300 - "egg_props.py"
 Cohesion: 0.05
-Nodes (56): T(), barn(), bench(), boulder(), bush(), cloud(), collect_pad(), conveyor_end() (+48 more)
+Nodes (58): T(), barn(), bench(), boulder(), bush(), cloud(), collect_pad(), conveyor_end() (+50 more)
 
 ### Community 301 - "blender-retopology-uv/scripts/_bpyx.py"
 Cohesion: 0.06
@@ -3902,13 +4155,13 @@ Nodes (24): _apply_all(), _ctx(), run(), add_common(), argv(), cli(), _default()
 Cohesion: 0.50
 Nodes (3): DrawAttribs, Flags, NumVertices
 
-### Community 303 - "VulkanDiagnostics"
-Cohesion: 0.02
-Nodes (64): SDL_GLAttr, DiagnosticsError, already_active, backend_failure, busy, factory_unavailable, none, GraphicsMessages (+56 more)
+### Community 303 - "vulkan_diagnostics.cpp"
+Cohesion: 0.08
+Nodes (17): GraphicsMessages, errors, warnings, since(), totals(), VulkanDiagnostics::messages(), VulkanDiagnostics::stop(), BasicPlatformDebug (+9 more)
 
 ### Community 304 - "frost_map.py"
-Cohesion: 0.14
-Nodes (25): build(), drift(), tree(), canopy_shade(), _drift(), face(), foot(), free() (+17 more)
+Cohesion: 0.09
+Nodes (34): build(), drift(), tree(), canopy_shade(), _drift(), face(), foot(), free() (+26 more)
 
 ### Community 305 - "ValueErrorCode"
 Cohesion: 0.20
@@ -3924,19 +4177,19 @@ Nodes (8): 30 — Mute v1 completion plan, Branch encoding decision, Dependencie
 
 ### Community 308 - "CanonicalLayoutActivity.kt"
 Cohesion: 0.06
-Nodes (7): CanonicalLayoutActivity, CanonicalLayoutRow(), CanonicalLayoutRowData, Content(), Header(), requestPin(), LayoutSamplesTheme()
+Nodes (7): ActionDemonstrationActivity, CanonicalLayoutActivity, CanonicalLayoutRow(), CanonicalLayoutRowData, Content(), Header(), requestPin()
 
 ### Community 309 - "SoftBody"
-Cohesion: 0.07
+Cohesion: 0.08
 Nodes (19): ENG-65 — visual physics and soft body path (2026-11-26), Implemented and verified, Scope boundary and remaining, Verified, ClothGrid, SoftBody, kDefaultConstraintIterations, clamp01() (+11 more)
 
 ### Community 311 - "ExpressiveToolbarLayout.kt"
 Cohesion: 0.11
 Nodes (17): ExpressiveToolbarAppWidget, ExpressiveToolbarAppWidgetReceiver, AllButtonsScaledLayout(), CenterButton(), CenterButtonOnlyLayout(), checkCornerButtonsListSize(), CornerButton(), CornerButtonsGrid() (+9 more)
 
-### Community 312 - "Console"
-Cohesion: 0.13
-Nodes (9): Console, input, log, output, scroll_to_end, state, StateField, name (+1 more)
+### Community 312 - "ConsoleLog"
+Cohesion: 0.10
+Nodes (11): Console, input, log, output, scroll_to_end, state, ConsoleLog, max_bytes (+3 more)
 
 ### Community 313 - "blender-clothing/scripts/_bpyx.py"
 Cohesion: 0.06
@@ -3951,8 +4204,8 @@ Cohesion: 0.16
 Nodes (18): chamfer_block(), treadmill(), egg_hatchery(), egg_rows(), f(), hoarding(), kerb_lip(), medal_pad() (+10 more)
 
 ### Community 316 - "camerax/SKILL.md"
-Cohesion: 0.05
-Nodes (37): Foldable pitfalls, Manage fold states and postures, CameraX video recording, Common immutable classes, Use standard patterns, Viewport construction, AE mode, Basic setup (+29 more)
+Cohesion: 0.04
+Nodes (44): Foldable pitfalls, Manage fold states and postures, CameraX video recording, Common immutable classes, Use standard patterns, Viewport construction, AE mode, Basic setup (+36 more)
 
 ### Community 317 - "storm_griffin_brick.py"
 Cohesion: 0.10
@@ -3962,21 +4215,21 @@ Nodes (11): arm(), B(), build(), chain(), chain_t(), exposed(), fdir(), lin() (+
 Cohesion: 0.25
 Nodes (7): Audit findings and remaining risks, MUT-08–10 progress and integration audit — 2026-11-22, MUT-08 — register execution of existing programs, MUT-09 — deterministic binary64 sin/cos, MUT-10 — experimental low-level bytecode, Status, Validation
 
-### Community 319 - "Opcode"
-Cohesion: 0.06
-Nodes (42): Function calls — implementation plan (MUT-31..37 closure path), mut36-progress, MUT-35 progress — versioned, typed hostcall boundary, mut-call-slice1, Still open, Verified, Opcode, add (+34 more)
+### Community 319 - "WsHost"
+Cohesion: 0.08
+Nodes (15): WsHost, Conn, handshaken, in, peer_key, sock, conns_, listener_ (+7 more)
 
 ### Community 320 - "Android skills"
-Cohesion: 0.05
-Nodes (44): Android skills, Conditional Service Availability Feature, `deleteClusters`, `deleteContinuationCluster`, `deleteFeaturedCluster`, `deleteRecommendationsClusters`, `deleteUserManagementCluster`, Engage SDK integration (+36 more)
+Cohesion: 0.11
+Nodes (19): Android skills, Engage SDK integration, Java, Java, Kotlin, Kotlin, Kotlin, Kotlin (+11 more)
 
 ### Community 321 - "Android skills"
-Cohesion: 0.05
-Nodes (44): Android skills, Conditional Service Availability Feature, `deleteClusters`, `deleteContinuationCluster`, `deleteFeaturedCluster`, `deleteRecommendationsClusters`, `deleteUserManagementCluster`, Engage SDK integration (+36 more)
+Cohesion: 0.10
+Nodes (21): Android skills, Engage SDK integration, Java, Java, Java, Kotlin, Kotlin, Kotlin (+13 more)
 
-### Community 322 - "SemanticErrorCode"
-Cohesion: 0.05
-Nodes (36): DILIGENT_CALL_TYPE capture(), is_environment_layer_version_warning(), main(), SemanticDiagnostic, code, position, SemanticResult, diagnostics (+28 more)
+### Community 322 - "TypeTag"
+Cohesion: 0.10
+Nodes (19): Type, args, name, tag, TypeTag, array, enumeration, error (+11 more)
 
 ### Community 323 - "ENG-01–ENG-22 hardening audit — 2026-11-22"
 Cohesion: 0.29
@@ -3984,11 +4237,11 @@ Nodes (6): ENG-01–ENG-22 hardening audit — 2026-11-22, Evidence by task, Fin
 
 ### Community 324 - "Buttons.kt"
 Cohesion: 0.06
-Nodes (32): PillShapedButton(), RectangularIconButton(), RoundedCornerShape, FULL, MEDIUM, 1. Composable preview suites (`Squircle`, `Round`, and `Rectangular`), 2. Widget picker preview PNGs (`res/drawable-nodpi/`), 3. Robolectric unit testing (`provideWidgetData` and `captureRawContent`) (+24 more)
+Nodes (30): RoundedCornerShape, FULL, MEDIUM, 1. Composable preview suites (`Squircle`, `Round`, and `Rectangular`), 2. Widget picker preview PNGs (`res/drawable-nodpi/`), 3. Robolectric unit testing (`provideWidgetData` and `captureRawContent`), Generating and saving rectangular preview assets, Platform asset requirements (+22 more)
 
 ### Community 325 - "Body"
-Cohesion: 0.09
-Nodes (29): Bounds, lower, upper, box(), lo(), main(), sorted_pairs(), Body (+21 more)
+Cohesion: 0.07
+Nodes (38): bounds_of(), fx(), isqrt_ref(), main(), Bounds, lower, upper, box() (+30 more)
 
 ### Community 326 - "MUT-01–05 audit — 2026-11-22"
 Cohesion: 0.40
@@ -4006,25 +4259,25 @@ Nodes (13): B(), body_to_world(), build(), exposed(), fang(), lid_to_body(), lid
 Cohesion: 0.40
 Nodes (4): Checks and limits, Documentation fix, Project layout check — 2026-11-22, Result
 
-### Community 330 - "Error"
-Cohesion: 0.25
-Nodes (8): Error, invalid_utf8, malformed, none, too_deep, too_many_items, truncated, unsupported
+### Community 330 - "FakeContext"
+Cohesion: 0.06
+Nodes (12): MAP_FLAGS, MAP_FLAG_DISCARD, MAP_FLAG_NONE, MAP_TYPE, MAP_READ, MAP_WRITE, FakeBuffer, storage (+4 more)
 
 ### Community 331 - "swamp_croc_brick.py"
 Cohesion: 0.14
 Nodes (19): B(), box(), build(), cap(), chain(), exposed(), leg(), lin() (+11 more)
 
 ### Community 332 - "Position"
-Cohesion: 0.06
-Nodes (57): NumericData, NumericValue, data, type, Position, byte, column, line (+49 more)
+Cohesion: 0.07
+Nodes (40): NumericData, NumericValue, data, type, Position, byte, column, line (+32 more)
 
 ### Community 333 - "tyrant_rex_brick.py"
 Cohesion: 0.12
 Nodes (16): B(), build(), cap(), chain(), colmax(), edge(), exposed(), hide() (+8 more)
 
 ### Community 334 - "cbor.cpp"
-Cohesion: 0.14
-Nodes (10): Cursor, data, pos, size, values, decode(), decode_item(), fail() (+2 more)
+Cohesion: 0.09
+Nodes (18): Error, invalid_utf8, malformed, none, too_deep, too_many_items, truncated, unsupported (+10 more)
 
 ### Community 335 - "ElementFX"
 Cohesion: 0.12
@@ -4036,7 +4289,7 @@ Nodes (7): main(), make_ktx2(), put32(), put64(), set32(), set64(), write()
 
 ### Community 337 - "gen_trees_with_palms.py"
 Cohesion: 0.09
-Nodes (28): bark_birch(), bark_fir(), bark_oak(), bark_palm(), contact_sheet(), export_glb(), fft_noise(), frond_atlas() (+20 more)
+Nodes (29): bark_birch(), bark_fir(), bark_oak(), bark_palm(), contact_sheet(), export_glb(), fft_noise(), get_materials() (+21 more)
 
 ### Community 338 - "MUT-01–12: MUT-12 implementation and three audit passes"
 Cohesion: 0.22
@@ -4058,13 +4311,13 @@ Nodes (46): Diagnostic, code, position, ErrorCode, bom, invalid_escape, invalid_
 Cohesion: 0.43
 Nodes (6): main(), click(), image(), press(), send(), window()
 
-### Community 343 - "FloatEnvironment"
-Cohesion: 0.22
-Nodes (3): FloatEnvironment, active_, saved_
+### Community 343 - "SessionAuthority"
+Cohesion: 0.09
+Nodes (18): SessionAuthority, clients_, Field, def, pending, value, fields_, hash_hook_ (+10 more)
 
-### Community 344 - "blocks.py"
-Cohesion: 0.10
-Nodes (9): Block, _f(), rgb_of(), rotm(), stud_material(), transformed(), write_rbxmx(), hexrgb() (+1 more)
+### Community 344 - "Ticket"
+Cohesion: 0.07
+Nodes (29): Matchmaker, Decision, Outcome, allocated_donated, allocated_platform, queued, waking, score (+21 more)
 
 ### Community 345 - "Android skills"
 Cohesion: 0.05
@@ -4091,8 +4344,8 @@ Cohesion: 0.05
 Nodes (41): Bug fixes, Bug fixes, Bug fixes, Bug fixes, Bug fixes, Bug fixes, Developer Preview 1 Release (2017-06-12, [Announcement](https://android-developers.googleblog.com/2017/06/money-made-easily-with-new-google-play.html)), Google Play Billing Library 1.2.2 Release (2019-03-07) (+33 more)
 
 ### Community 351 - "blender-geometry-nodes/scripts/_bpyx.py"
-Cohesion: 0.06
-Nodes (21): add_common(), argv(), cli(), _default(), emit(), enum_ids(), mesh_tris(), node() (+13 more)
+Cohesion: 0.08
+Nodes (14): add_common(), argv(), cli(), _default(), emit(), enum_ids(), mesh_tris(), node() (+6 more)
 
 ### Community 352 - "blender-texture-baking/scripts/_bpyx.py"
 Cohesion: 0.06
@@ -4103,12 +4356,12 @@ Cohesion: 0.10
 Nodes (15): SearchBar(), SearchIconButton(), SearchToolBarButton, SearchToolBarLayout(), SearchToolBarLayoutDimens, SearchToolBarLayoutSize, HeaderTwoRowGrid, HorizontalRow (+7 more)
 
 ### Community 354 - "blender-export-pipelines/scripts/_bpyx.py"
-Cohesion: 0.07
+Cohesion: 0.06
 Nodes (20): add_common(), argv(), cli(), _default(), emit(), enum_ids(), mesh_tris(), node() (+12 more)
 
-### Community 355 - "debugger_test.cpp"
-Cohesion: 0.15
-Nodes (11): Bytecode, VmCore::result(), VmCore::step(), VmCore::VmCore(), arith(), cases(), check(), divzero() (+3 more)
+### Community 355 - "FrameHeader"
+Cohesion: 0.09
+Nodes (27): constant_time_equal(), FrameHeader, ack, ack_bits, flags, magic, nonce, payload_bit_length (+19 more)
 
 ### Community 356 - "ENG-03 — Vulkan clear seed, acceptance still open"
 Cohesion: 0.22
@@ -4127,16 +4380,16 @@ Cohesion: 0.14
 Nodes (14): DeclarationKind, allow, attribute, enum_decl, field, fn_decl, import, module (+6 more)
 
 ### Community 360 - "build.md"
-Cohesion: 0.11
-Nodes (14): Build status, Build status, Commands, Full dependencies, Golden files, Historical build notes — not current status, Historical build notes (unverified), Toolchain matrix (+6 more)
+Cohesion: 0.20
+Nodes (8): Build status, Build status, Commands, Full dependencies, Golden files, Historical build notes — not current status, Historical build notes (unverified), Toolchain matrix
 
-### Community 361 - "ArithmeticOp"
-Cohesion: 0.29
-Nodes (7): ArithmeticOp, divide, minus, multiply, none, plus, remainder
+### Community 361 - "ProjectionGate"
+Cohesion: 0.07
+Nodes (27): ProjectionGate, Client, has_last, last_accepted, suspended, clients_, kHashMismatchWeight, kHashRing (+19 more)
 
 ### Community 362 - "Configure fast-follow and on-demand delivery"
-Cohesion: 0.06
-Nodes (37): Access AI packs, Cancel request, Check Android Gradle Plugin version, Check status, Configure device targeting, Configure fast-follow and on-demand delivery, Configure install-time delivery, Declare dependency on the Play AI Delivery Library (+29 more)
+Cohesion: 0.10
+Nodes (19): Access AI packs, Cancel request, Check Android Gradle Plugin version, Check status, Configure device targeting, Configure fast-follow and on-demand delivery, Configure install-time delivery, Declare dependency on the Play AI Delivery Library (+11 more)
 
 ### Community 363 - "ENG-22 — lit-cube screenshot golden"
 Cohesion: 0.29
@@ -4176,7 +4429,7 @@ Nodes (8): B(), build(), chain(), chain_t(), exposed(), lin(), render_all(), vie
 
 ### Community 374 - "Map quality checklist (run on every render pass)"
 Cohesion: 0.11
-Nodes (17): Arena / castle lessons (Riverfield Siege), Budget (for Roblox import later), Composition, Crater / space lessons (Moon Sweepers), Detail pass lessons (Skyrise), Diorama / roof lessons (Yumori Springs), Export naming (found during the Skyrise stud skin), Kit sheet (prop QA) lessons (+9 more)
+Nodes (18): Arena / castle lessons (Riverfield Siege), Budget (for Roblox import later), Composition, Crater / space lessons (Moon Sweepers), Detail pass lessons (Skyrise), Diorama / roof lessons (Yumori Springs), Export naming (found during the Skyrise stud skin), Kit sheet (prop QA) lessons (+10 more)
 
 ### Community 375 - "blender-simulation/scripts/_bpyx.py"
 Cohesion: 0.07
@@ -4186,13 +4439,13 @@ Nodes (20): add_common(), argv(), cli(), _default(), emit(), enum_ids(), mesh_tr
 Cohesion: 0.25
 Nodes (5): assault_rifle(), poly(), fn(), sniper(), P()
 
-### Community 377 - "volcano_tortoise_brick.py"
-Cohesion: 0.14
-Nodes (6): B(), build(), exposed(), lin(), render_all(), view()
+### Community 377 - "brick_rig.py"
+Cohesion: 0.04
+Nodes (35): B(), build(), disc_x(), exposed(), hx(), lin(), newid(), put() (+27 more)
 
-### Community 378 - "war_rhino_brick.py"
-Cohesion: 0.14
-Nodes (8): B(), build(), cap(), chain(), exposed(), lin(), render_all(), view()
+### Community 378 - "lib.rs"
+Cohesion: 0.05
+Nodes (26): decode_modifiers(), map_sdl_keycode(), POKO_EVENT_BUTTON, POKO_EVENT_FOCUS, POKO_EVENT_KEY, POKO_EVENT_MOTION, POKO_EVENT_RESIZE, POKO_EVENT_TEXT (+18 more)
 
 ### Community 379 - "MUT-13 — Mute v1 scope and API matrix (APPROVED)"
 Cohesion: 0.22
@@ -4208,11 +4461,11 @@ Nodes (32): Credential formats, Credential issuance methods, Credential metadata
 
 ### Community 382 - "ink-app-builder/SKILL.md"
 Cohesion: 0.06
-Nodes (29): Android skills, Create a brush, Create custom Ink brushes, Custom Brushes, Modify brush properties, Groovy, Kotlin, Converters (+21 more)
+Nodes (28): Android skills, Create a brush, Create custom Ink brushes, Custom Brushes, Modify brush properties, Groovy, Kotlin, Converters (+20 more)
 
 ### Community 383 - "ink-custom-brush-builder/references/examples.md"
 Cohesion: 0.06
-Nodes (30): Android skills, Create a brush, Create custom Ink brushes, Custom Brushes, Modify brush properties, 10. `TargetNode` (scalar terminal node), 11. `PolarTargetNode` (2D vector terminal node), 1. `SourceNode` (input signals) (+22 more)
+Nodes (30): Android skills, Create a brush, Create custom Ink brushes, Custom Brushes, Modify brush properties, `BrushFamily` and `BrushCoat` hierarchy, `BrushPaint` blending and `ColorFunction`, `BrushPaint.ColorFunction` (`OpacityMultiplier` and `ReplaceColor`) (+22 more)
 
 ### Community 384 - "General Questions"
 Cohesion: 0.06
@@ -4220,7 +4473,7 @@ Nodes (35): Account and Profile Questions, Can I use AccountProfile with only `a
 
 ### Community 385 - "OpenCode Support Implementation Plan"
 Cohesion: 0.06
-Nodes (34): 2. Install the Plugin, 3. Restart OpenCode, Finding Skills, Getting Help, Loading a Skill, OpenCode Support Implementation Plan, Personal Skills, Phase 1: Create Shared Core Module (+26 more)
+Nodes (30): 2. Install the Plugin, 3. Restart OpenCode, Getting Help, OpenCode Support Implementation Plan, Phase 1: Create Shared Core Module, Phase 2: Refactor Codex to Use Shared Core, Phase 3: Build OpenCode Plugin, Phase 4: Documentation (+22 more)
 
 ### Community 386 - "Worktree Rototill: Detect-and-Defer"
 Cohesion: 0.06
@@ -4235,32 +4488,32 @@ Cohesion: 0.11
 Nodes (8): basis_card(), Branch, card_quads(), add_card(), conifer_cards(), add(), rand_unit(), Tree
 
 ### Community 389 - "vulkan_clear_faults.cpp"
-Cohesion: 0.02
-Nodes (89): SDL_Window, SDL_Event, button, motion, type, wheel, window, SDL_InitFlags (+81 more)
+Cohesion: 0.04
+Nodes (43): SDL_PropertiesID, SDL_WindowFlags, Sint64, VulkanClearRenderer, cleanup_uncertain_, drawing_, impl_, VulkanDrawCallback (+35 more)
 
 ### Community 390 - "blender-rendering/scripts/_bpyx.py"
-Cohesion: 0.07
-Nodes (17): add_common(), argv(), cli(), _default(), emit(), enum_ids(), mesh_tris(), node() (+9 more)
+Cohesion: 0.08
+Nodes (14): add_common(), argv(), cli(), _default(), emit(), enum_ids(), mesh_tris(), node() (+6 more)
 
-### Community 391 - "PackageErrorCode"
-Cohesion: 0.17
-Nodes (12): PackageErrorCode, ambiguous_version, cyclic_import, duplicate_package, identity_mismatch, input_limit, invalid_import_spec, missing_dependency (+4 more)
+### Community 391 - "PokoNativeBridge"
+Cohesion: 0.08
+Nodes (5): PokoActivity, PokoHost, PokoNativeBridge, PokoShellScreen(), Callback
 
 ### Community 392 - "blender-sculpting/scripts/_bpyx.py"
 Cohesion: 0.08
 Nodes (17): add_common(), argv(), cli(), _default(), emit(), enum_ids(), mesh_tris(), node() (+9 more)
 
 ### Community 393 - "blender-video-editing/scripts/_bpyx.py"
-Cohesion: 0.07
-Nodes (17): add_common(), argv(), cli(), _default(), emit(), enum_ids(), mesh_tris(), node() (+9 more)
+Cohesion: 0.08
+Nodes (14): add_common(), argv(), cli(), _default(), emit(), enum_ids(), mesh_tris(), node() (+6 more)
 
-### Community 394 - "effekseer_ai/cli.py"
-Cohesion: 0.17
-Nodes (26): build_parser(), _compile(), _curve_list(), _curve_set(), _emit(), _export(), _image_import(), main() (+18 more)
+### Community 394 - "JitterBuffer"
+Cohesion: 0.08
+Nodes (23): JitterBuffer, jitter_dev_sum_, jitter_samples_, kBaseHoldbackTicks, kMaxHoldbackTicks, kMaxInterpSpanTicks, kNominalDeltaTicks, max_depth_ (+15 more)
 
 ### Community 395 - "test_scale_beam.py"
 Cohesion: 0.10
-Nodes (22): beam_inputs(), apply(), _frames(), _layers(), _life(), _map(), profile(), _space() (+14 more)
+Nodes (22): apply(), _frames(), _layers(), _life(), _map(), profile(), _space(), _time() (+14 more)
 
 ### Community 396 - "credential-issuer/SKILL.md"
 Cohesion: 0.06
@@ -4287,8 +4540,8 @@ Cohesion: 0.15
 Nodes (31): add_openai_agent_metadata_fixture(), assert_branch_absent(), assert_contains(), assert_current_branch(), assert_equals(), assert_file_equals(), assert_matches(), assert_not_contains() (+23 more)
 
 ### Community 402 - "check_mating"
-Cohesion: 0.11
-Nodes (17): _rot(), check_mating(), MatingError, overlap(), CAD Skill for Claude Code, Dependencies, Files, Installation (+9 more)
+Cohesion: 0.15
+Nodes (10): _rot(), check_mating(), MatingError, overlap(), _socket(), test_collision_fails(), test_good_fit_passes(), test_loose_fit_fails() (+2 more)
 
 ### Community 403 - "docs/README.md"
 Cohesion: 0.08
@@ -4307,8 +4560,8 @@ Cohesion: 0.12
 Nodes (5): VfxSkillTextureRules, ShellPoolTests, VfxSkill.EditorTools, VfxSkill, VfxSkill.Tests
 
 ### Community 407 - "Integration detail"
-Cohesion: 0.06
-Nodes (30): Android skills, Category support and surfaces, Contact, Example, FAQs, For Engage SDK v1.6.0 and higher (Recommended), Image specifications, Integrate Engage SDK (+22 more)
+Cohesion: 0.14
+Nodes (14): For Engage SDK v1.6.0 and higher (Recommended), Integration detail, `isServiceAvailable`, Java, Java, Kotlin, Kotlin, Map data models from existing integration (+6 more)
 
 ### Community 408 - "Test-Driven Development (TDD)"
 Cohesion: 0.06
@@ -4323,8 +4576,8 @@ Cohesion: 0.17
 Nodes (4): CreateElementSkill, Sidecar, SkillSpec, VfxSkillSetup
 
 ### Community 411 - "ForgeSkills-main/tools/validate_skills.py"
-Cohesion: 0.08
-Nodes (22): check_coverage(), collect_tech_ids(), find_skills(), parse_frontmatter(), validate(), Plugin not loading, Skills not found, Tool mapping issues (+14 more)
+Cohesion: 0.09
+Nodes (22): find_skills(), Finding Skills, Loading a Skill, Personal Skills, Plugin not loading, Skills not found, Tool mapping issues, Troubleshooting (+14 more)
 
 ### Community 412 - "Android skills"
 Cohesion: 0.07
@@ -4338,9 +4591,9 @@ Nodes (28): env, runs-on, steps, strategy, BAS_SKIP_GPU, BLENDER_VERSION, jobs, 
 Cohesion: 0.08
 Nodes (14): add_common(), argv(), cli(), _default(), emit(), enum_ids(), mesh_tris(), node() (+6 more)
 
-### Community 415 - "blender-core/scripts/_bpyx.py"
-Cohesion: 0.08
-Nodes (14): add_common(), argv(), cli(), _default(), emit(), enum_ids(), mesh_tris(), node() (+6 more)
+### Community 415 - "blender-character-rigging/scripts/_bpyx.py"
+Cohesion: 0.03
+Nodes (51): cleanup(), _ctx(), _heat_scale(), _height(), _parent(), _proxy_weights(), run(), unweighted() (+43 more)
 
 ### Community 416 - "blender-facial-shapekeys/scripts/_bpyx.py"
 Cohesion: 0.08
@@ -4375,24 +4628,20 @@ Cohesion: 0.07
 Nodes (25): Changes to Steps 2 and 3, Choose the runtime, Create the Environment, From the bundled CompiledModel runtime, From the bundled TensorFlow Lite Interpreter, From the Interpreter API in Google Play services, Gradle, Migrate to the Play services runtime (+17 more)
 
 ### Community 424 - "HitFeel"
-Cohesion: 0.14
+Cohesion: 0.13
 Nodes (7): HitFeel, Budget, I, RealDelta, Poko UI Design, Rules, Workflow
 
-### Community 425 - "Type"
-Cohesion: 0.20
-Nodes (10): Type, array, boolean, bytes, map, nint, null, real (+2 more)
+### Community 425 - "TcpSocket"
+Cohesion: 0.10
+Nodes (17): SessionClient::close(), SessionClient::poll(), SessionClient::read_handshake_response(), SessionClient::send_input(), SessionClient::transact(), socket_would_block(), SocketRead, bytes (+9 more)
 
-### Community 426 - "AppState"
-Cohesion: 0.12
-Nodes (15): android_main(), AppState, app, done, frames_done, have_size, height, renderer_ready (+7 more)
+### Community 427 - "epa_penetration"
+Cohesion: 0.07
+Nodes (33): ClosestResult, dist_sq, mask, origin_inside, point, CsoPoint, a, b (+25 more)
 
-### Community 427 - "ModuleInfo"
-Cohesion: 0.13
-Nodes (12): ModuleInfo, has_name, has_version, imports, input, name, name_pos, version (+4 more)
-
-### Community 428 - "emit_test.cpp"
-Cohesion: 0.20
-Nodes (18): IrModule, functions, hostcalls, source_pcs(), source_position(), arith_module(), calls_module(), cases() (+10 more)
+### Community 428 - "shell_vulkan_ui_pass_test.cpp"
+Cohesion: 0.08
+Nodes (20): check(), drain_atlas(), main(), check(), main(), motion(), rss_bytes(), capture_mesh() (+12 more)
 
 ### Community 429 - "implement-phone-number-verification.md"
 Cohesion: 0.07
@@ -4403,8 +4652,8 @@ Cohesion: 0.38
 Nodes (4): main(), click_input(), image(), window()
 
 ### Community 431 - "12 — App interface (egui and Kotlin)"
-Cohesion: 0.17
-Nodes (12): 12 — App interface (egui and Kotlin), 2008 + modern rule, Android Kotlin bridge, App surfaces, Boundary, Input mapping, Rendering, Safety rules (+4 more)
+Cohesion: 0.12
+Nodes (13): Client, 12 — App interface (egui and Kotlin), 2008 + modern rule, Android Kotlin bridge, App surfaces, Boundary, Input mapping, Rendering (+5 more)
 
 ### Community 432 - "Tree"
 Cohesion: 0.20
@@ -4418,9 +4667,9 @@ Nodes (16): 10. Re-exports, 11b. Studio look per map (`roblox_look.json`, Studio
 Cohesion: 0.09
 Nodes (7): extract_data_safety(), extract_metadata(), fetch_html(), load_taxonomy(), PlayStoreDataSafetyParser, PlayStoreMetadataParser, scrape_app_details()
 
-### Community 435 - "fold_constants"
-Cohesion: 0.11
-Nodes (22): Bug fixed in lowering, Delivered, mut29-progress, MUT-28 progress — proven-safe constant folding, Still open, Verified, Verifier upgrade required by this work, eval_binary() (+14 more)
+### Community 435 - "host_test.cpp"
+Cohesion: 0.17
+Nodes (21): Bytes, check(), Client, key, next_seq, peer, seen, session_id (+13 more)
 
 ### Community 436 - "InputKind"
 Cohesion: 0.13
@@ -4430,13 +4679,13 @@ Nodes (15): InputKind, device_connected, device_disconnected, focus_gained, focu
 Cohesion: 0.20
 Nodes (9): decl_fail(), DeclarationParser, ast_, depth_, Depth, depth_limit, pos_, source_ (+1 more)
 
-### Community 438 - "ENG-09 — experimental Vulkan depth test"
-Cohesion: 0.40
-Nodes (5): eng10-progress, ENG-09 — experimental Vulkan depth test, Implementation, Running and remaining work, Verification on Linux
+### Community 438 - "MatchQueue"
+Cohesion: 0.12
+Nodes (18): MatchQueue, Enqueue, duplicate, enqueued, full, Entry, enqueue_tick, party_size (+10 more)
 
 ### Community 439 - "LayoutComponents.kt"
-Cohesion: 0.16
-Nodes (7): ListItem(), VerticalListItem(), HeaderTwoRowGrid(), SideBarTwoRowGrid(), SpacedColumn(), SpacedRow(), TwoRowGrid()
+Cohesion: 0.13
+Nodes (9): ListItem(), VerticalListItem(), PillShapedButton(), RectangularIconButton(), HeaderTwoRowGrid(), SideBarTwoRowGrid(), SpacedColumn(), SpacedRow() (+1 more)
 
 ### Community 440 - "display-glasses-with-jetpack-compose-glimmer/SKILL.md"
 Cohesion: 0.07
@@ -4447,40 +4696,40 @@ Cohesion: 0.07
 Nodes (27): 1. Problem intake, 2. Locate, 3. Triage, 4. Report, 4a. GitHub issues, 5. Export (on request), 6. Similar sessions (on request), Diagnosing Superpowers Sessions — Design (+19 more)
 
 ### Community 442 - "test-skill-registration.mjs"
-Cohesion: 0.09
-Nodes (19): combineGraphs(), extractDotBlocks(), extractGraphBody(), main(), renderToSvg(), assert, fs, HELPER (+11 more)
+Cohesion: 0.11
+Nodes (14): browserLauncherForPlatform(), maybeOpenBrowser(), combineGraphs(), extractDotBlocks(), extractGraphBody(), main(), renderToSvg(), assert (+6 more)
 
 ### Community 443 - "blender-animation/scripts/_bpyx.py"
 Cohesion: 0.08
 Nodes (13): add_common(), argv(), cli(), _default(), emit(), enum_ids(), mesh_tris(), node() (+5 more)
 
 ### Community 444 - "gridfinity.py"
-Cohesion: 0.09
+Cohesion: 0.08
 Nodes (9): _Compartments, _compound(), _corner_radii(), _CylinderPocket, _fused(), _Notch, _Pocket, _PolygonPocket (+1 more)
 
-### Community 445 - "parse_statements"
-Cohesion: 0.19
-Nodes (16): LexOptions, max_source_bytes, StatementResult, dump_statement_ast(), parse_statements(), quoted(), StatementFailure, result (+8 more)
+### Community 445 - "NativeEngineHandle"
+Cohesion: 0.07
+Nodes (25): NativeEngineConfig, abi_version, dpi_scale, height, width, NativeEngineHandle, abi_version, auth_token (+17 more)
 
 ### Community 446 - "Vec3f"
 Cohesion: 0.14
 Nodes (14): cross(), dot(), length(), lengthSquared(), normalized(), operator+(), Vec3f, x (+6 more)
 
-### Community 447 - "ENG-06 — frame-graph skeleton"
-Cohesion: 0.40
-Nodes (5): Boundaries, eng07-progress, ENG-06 — frame-graph skeleton, Implemented, Verification
+### Community 447 - "RenderError"
+Cohesion: 0.08
+Nodes (24): RenderError, already_initialized, backbuffer_unavailable, backend_failure, device_creation_failed, factory_unavailable, invalid_window, native_window_unavailable (+16 more)
 
 ### Community 448 - "mute-progress.md"
-Cohesion: 0.03
-Nodes (71): Bugs found and fixed while landing this, Build, Completion follow-up (2026-11-22), Current status — authoritative (2026-11-25), Delivered, Delivered, Deterministic execution budget, Evidence (+63 more)
+Cohesion: 0.02
+Nodes (92): Bug fixed in lowering, Bugs found and fixed while landing this, Build, Completion follow-up (2026-11-22), Coverage, Current status — authoritative (2026-11-25), Delivered, Delivered (+84 more)
 
-### Community 449 - "検証済みのエンジン規約（Effekseer Core 1.80.7 + EffekseerForGodot4 1.80.5.1）"
+### Community 449 - "FakeSwapchain"
 Cohesion: 0.07
-Nodes (26): アンカーと配置, ゲーム入力と動的方程式, コンパイラの拡張, テクスチャとフリップブック, レンダリング、HDR、Lab, 力とモーション, 検証済みのエンジン規約（Effekseer Core 1.80.7 + EffekseerForGodot4 1.80.5.1）, 継承とライフタイム (+18 more)
+Nodes (20): SwapchainStatus, error, ok, out_of_date, suboptimal, FakeSwapchain, acquire_script, acquires (+12 more)
 
 ### Community 450 - "SHADER_TYPE"
-Cohesion: 0.22
-Nodes (5): SHADER_TYPE, SHADER_TYPE_PIXEL, SHADER_TYPE_VERTEX, FakeShader, type
+Cohesion: 0.17
+Nodes (7): SHADER_TYPE, SHADER_TYPE_PIXEL, SHADER_TYPE_VERTEX, FakeShader, type, FakeShader, type
 
 ### Community 451 - "Test"
 Cohesion: 0.13
@@ -4503,7 +4752,7 @@ Cohesion: 0.22
 Nodes (8): Defects found by the new tests during implementation, eng15-progress, ENG-14 — CBOR config loader, Integration review, 2026-11-22, Not done / future, Verification, What was built, half_to_double()
 
 ### Community 456 - "ActionListAppWidget.kt"
-Cohesion: 0.12
+Cohesion: 0.13
 Nodes (3): ActionListAppWidget, ActionListAppWidgetAppWidgetReceiver, FakeActionListDataRepository
 
 ### Community 457 - "Superpowers v2.0.0 Release Notes"
@@ -4511,8 +4760,8 @@ Cohesion: 0.07
 Nodes (26): Breaking Changes, Bug Fixes, Commit History, Credits, Documentation, File Changes, For Contributors, For Users (+18 more)
 
 ### Community 458 - "Canvas"
-Cohesion: 0.15
-Nodes (7): rgb(), Canvas, needle_atlas(), twig_atlas(), twig(), twig_atlas(), twig()
+Cohesion: 0.12
+Nodes (9): rgb(), Canvas, frond_atlas(), needle_atlas(), palm_twig_atlas(), twig_atlas(), twig(), twig_atlas() (+1 more)
 
 ### Community 459 - "abyssal_angler_brick.py"
 Cohesion: 0.11
@@ -4522,9 +4771,9 @@ Nodes (16): B(), build(), cap(), cell(), chain(), exposed(), front_z(), ix() (+8
 Cohesion: 0.08
 Nodes (25): CadQuery Patterns, Common Pitfalls, Core Workflow, Export, Key Rules, Measuring from photos, Multi-Part Models, Orientation Awareness (+17 more)
 
-### Community 461 - "ResolvedPackage"
-Cohesion: 0.11
-Nodes (17): ImportRef, alias, name, position, version, PackageDiagnostic, code, detail (+9 more)
+### Community 461 - "stress_test.cpp"
+Cohesion: 0.03
+Nodes (71): Evidence, Limits, mut22-progress, MUT-21 — packages, imports and lockfile, Resolution rules, What was added, DeclarationResult, ImportRef (+63 more)
 
 ### Community 462 - "steps"
 Cohesion: 0.08
@@ -4538,9 +4787,9 @@ Nodes (10): `AggregateStore` (values.cpp), Defects found and fixed, mut35-progre
 Cohesion: 0.20
 Nodes (9): InputError, invalid_event, invalid_format, non_monotonic_tick, size_limit, trailing_bytes, truncated, unsupported_version (+1 more)
 
-### Community 465 - "Kind"
-Cohesion: 0.29
-Nodes (7): Kind, assign, conditional, declare_let, declare_var, ret, while_loop
+### Community 465 - "Stmt"
+Cohesion: 0.11
+Nodes (19): Function, body, name, params, pos, Stmt, expr, Kind (+11 more)
 
 ### Community 466 - "ios-to-android/SKILL.md"
 Cohesion: 0.08
@@ -4566,9 +4815,9 @@ Nodes (14): bigparts, format, look, AtmosphereColor, AtmosphereDensity, Brightne
 Cohesion: 0.13
 Nodes (14): bigparts, format, look, AtmosphereColor, AtmosphereDensity, Brightness, ClockTime, Horizon (+6 more)
 
-### Community 472 - "BuildToolError"
-Cohesion: 0.25
-Nodes (8): BuildToolError, invalid_lock, invalid_manifest, invalid_source, io, lock_mismatch, ok, resolve_failed
+### Community 472 - "LoginVelocityService"
+Cohesion: 0.09
+Nodes (20): GeoPoint, latitude_deg, longitude_deg, haversine_km(), LoginAttempt, at_seconds, device_fingerprint, failed (+12 more)
 
 ### Community 473 - "look"
 Cohesion: 0.13
@@ -4591,8 +4840,8 @@ Cohesion: 0.13
 Nodes (14): bigparts, format, look, AtmosphereColor, AtmosphereDensity, Brightness, ClockTime, Horizon (+6 more)
 
 ### Community 478 - "eng-progress.md"
-Cohesion: 0.06
-Nodes (31): Bugs found during implementation, Defect fixed, eng03-progress, eng08-progress, eng14-progress, eng20-progress, ENG-02 — target-platform window evidence (2026-11-25), ENG-07 — build-time GLSL to SPIR-V (+23 more)
+Cohesion: 0.03
+Nodes (61): Behavior, Boundaries, Bugs found during implementation, eng03-progress, eng06-progress, eng07-progress, eng08-progress, eng09-progress (+53 more)
 
 ### Community 479 - "look"
 Cohesion: 0.13
@@ -4607,12 +4856,12 @@ Cohesion: 0.06
 Nodes (31): Current gate status, Evidence, G1 replay scenario v0 (2026-11-22, Windows x64 leg only), Outstanding work, Post-MUT audit fixes and G1/G2 preflight, Windows laptop run (2026-11-22, MSYS2 UCRT64 MinGW g++ 16.2), MUT-08–10 completion audit — 2026-11-22, MUT-08: program execution (+23 more)
 
 ### Community 482 - "FullBleedImageAppWidget.kt"
-Cohesion: 0.14
-Nodes (4): FakeImageGridDataRepository, ImageGridItemBackendData, FullBleedImageAppWidget, FullBleedImageAppWidgetReceiver
+Cohesion: 0.12
+Nodes (9): FakeImageGridDataRepository, ImageGridItemBackendData, ImageGridItemData, FullBleedImageAppWidget, FullBleedImageAppWidgetReceiver, FullBleedImageLayout(), FullBleedImageLayoutPreview(), GalleryItemCard() (+1 more)
 
 ### Community 483 - "14 — Client shell"
-Cohesion: 0.12
-Nodes (13): Client, 14 — Client shell, Android lifecycle, Authentication, Boot and self-update, Catalog and patcher, Limits, Offline mode (+5 more)
+Cohesion: 0.17
+Nodes (12): 14 — Client shell, Android lifecycle, Authentication, Boot and self-update, Catalog and patcher, Limits, Offline mode, Responsibilities (+4 more)
 
 ### Community 484 - "Sink"
 Cohesion: 0.40
@@ -4631,16 +4880,16 @@ Cohesion: 0.13
 Nodes (14): bigparts, format, look, AtmosphereColor, AtmosphereDensity, Brightness, ClockTime, Horizon (+6 more)
 
 ### Community 488 - "server.test.js"
-Cohesion: 0.13
-Nodes (22): assert, assertStartedOnExpectedPort(), cleanup(), CONTENT_DIR, ensureSymlinkWorks(), fs, http, path (+14 more)
+Cohesion: 0.14
+Nodes (23): assert, assertStartedOnExpectedPort(), cleanup(), CONTENT_DIR, ensureSymlinkWorks(), fetch(), fs, http (+15 more)
 
 ### Community 489 - "litert-runtime/references/android/google/play/on-device-ai.md"
 Cohesion: 0.08
 Nodes (24): Available device properties, Benefits, Bundletool, Check Android Gradle Plugin version, Combine selector properties with AND and OR, Considerations, Create a device targeting configuration XML file, Device targeting (+16 more)
 
 ### Community 490 - "Quat"
-Cohesion: 0.12
-Nodes (16): ENG-60 — Q16.16 math primitive suite (2026-11-26), Scope boundary and remaining, Verified, Implemented, MUT-51–55 — v1 standard API core and build tool (2026-11-25), Remaining, Verified, Math library (+8 more)
+Cohesion: 0.13
+Nodes (13): Implemented, MUT-51–55 — v1 standard API core and build tool (2026-11-25), Remaining, Verified, Math library, Mat4, m, Quat (+5 more)
 
 ### Community 491 - "state-and-reactive-flows.md"
 Cohesion: 0.08
@@ -4667,12 +4916,12 @@ Cohesion: 0.13
 Nodes (14): bigparts, format, look, AtmosphereColor, AtmosphereDensity, Brightness, ClockTime, Horizon (+6 more)
 
 ### Community 497 - "VisualBody"
-Cohesion: 0.13
-Nodes (24): VisualBody, friction, half_extents, index, inv_mass, kinematic, position, radius (+16 more)
+Cohesion: 0.11
+Nodes (27): VisualBody, friction, half_extents, index, inv_mass, kinematic, position, radius (+19 more)
 
 ### Community 498 - "VisualSolver"
-Cohesion: 0.08
-Nodes (17): VisualContact, body_a, body_b, depth, friction, key, normal, point (+9 more)
+Cohesion: 0.07
+Nodes (18): VisualContact, body_a, body_b, depth, friction, key, normal, point (+10 more)
 
 ### Community 499 - "branding.test.js"
 Cohesion: 0.17
@@ -4687,8 +4936,8 @@ Cohesion: 0.14
 Nodes (7): VisualWorld, bodies_, colliders_, dynamics_, next_auto_index_, solver_, VisualWorld::add_collider()
 
 ### Community 502 - "IrInstr"
-Cohesion: 0.05
-Nodes (46): Audit fixes applied during verification, IR model, Limits, mut26-progress, MUT-25 — typed SSA IR (foundation), Verifier checks (done-when), What was added, MUT-26 IR->bytecode + AST lowering (2026-11-24) (+38 more)
+Cohesion: 0.04
+Nodes (50): Audit fixes applied during verification, Function calls — implementation plan (MUT-31..37 closure path), Function calls — slices 2, 3, 4, 5 and 6 landed (2026-11-25), IR model, Limits, mut26-progress, mut38-progress, MUT-25 — typed SSA IR (foundation) (+42 more)
 
 ### Community 503 - "Claude Code Skills Tests"
 Cohesion: 0.08
@@ -4714,9 +4963,9 @@ Nodes (23): 1. Preview-Analyze-Iterate Workflow, 2. Visual Inspection Checklist,
 Cohesion: 0.12
 Nodes (7): basis_card(), Canvas, card_quads(), add_card(), conifer_cards(), add(), needle_atlas()
 
-### Community 509 - "IrOp"
-Cohesion: 0.08
-Nodes (36): Delivered, mut34-progress, MUT-33 progress — source mappings and useful diagnostics, Still open, Verified, VmResult, IrOp, binary (+28 more)
+### Community 509 - "ReconnectFlow"
+Cohesion: 0.09
+Nodes (21): ReconnectFlow, kReconnectWindowTicks, Result, Kind, inactive, nonce_reused, reconnected, slot_gone (+13 more)
 
 ### Community 510 - "Instructions: Mapping Concepts"
 Cohesion: 0.08
@@ -4747,16 +4996,16 @@ Cohesion: 0.08
 Nodes (23): 1. Root \& Build Layout (from iOS Project Metadata), 2. Boilerplate Package \& Architectural Structure (`app/src/main/java/<package_name>/`), Antipatterns, DO, DON'T, Framework Mapping: iOS to Android, Glossary, Info.plist to AndroidManifest Mapping (+15 more)
 
 ### Community 517 - "Limits"
-Cohesion: 0.33
+Cohesion: 0.29
 Nodes (6): Limits, heap_bytes, heap_objects, max_array_length, max_depth, max_string_bytes
 
 ### Community 518 - "SwapChainDesc"
 Cohesion: 0.20
 Nodes (10): SwapChainDesc, ColorBufferFormat, DepthBufferFormat, Height, Width, TEXTURE_FORMAT, TEX_FORMAT_D32_FLOAT, TEX_FORMAT_RGBA8_UNORM (+2 more)
 
-### Community 519 - "MUT-21 — packages, imports and lockfile"
-Cohesion: 0.40
-Nodes (5): Evidence, Limits, mut22-progress, MUT-21 — packages, imports and lockfile, Resolution rules
+### Community 519 - "SessionTicket"
+Cohesion: 0.11
+Nodes (18): base64url_decode(), SessionTicket, device_id, expires_at, issued_at, nonce, roles, trust_level (+10 more)
 
 ### Community 520 - "push-notifications-fcm.md"
 Cohesion: 0.08
@@ -4827,24 +5076,24 @@ Cohesion: 0.11
 Nodes (17): HOME, OPENCODE_CONFIG_DIR, setup.sh script, XDG_CONFIG_HOME, run_missing_file_check(), run_present_file_check(), test-bootstrap-caching.sh script, test-plugin-loading.sh script (+9 more)
 
 ### Community 537 - "blender-asset-qa/scripts/_bpyx.py"
-Cohesion: 0.10
-Nodes (11): add_common(), argv(), cli(), _default(), emit(), enum_ids(), mesh_tris(), node() (+3 more)
+Cohesion: 0.04
+Nodes (28): add_common(), argv(), cli(), _default(), emit(), enum_ids(), mesh_tris(), node() (+20 more)
 
-### Community 538 - "blender-character-rigging/scripts/_bpyx.py"
-Cohesion: 0.10
-Nodes (11): add_common(), argv(), cli(), _default(), emit(), enum_ids(), mesh_tris(), node() (+3 more)
+### Community 538 - "UdpSocket"
+Cohesion: 0.12
+Nodes (15): elapsed_ms_since(), main(), echo_server_loop(), RecvResult, error, payload, sender_host, sender_port (+7 more)
 
 ### Community 539 - "character_blockout.py"
-Cohesion: 0.11
-Nodes (14): Edge/face attributes from Python (4.0+ names), Gotchas, Hard-Surface Modeling, Pick the workflow first, Procedure, Stack rules, Topology rules, box() (+6 more)
+Cohesion: 0.22
+Nodes (6): box(), build(), capsule(), get_collection(), report(), sphere()
 
 ### Community 540 - "Using the effects in Godot"
 Cohesion: 0.09
 Nodes (22): API, Godot でエフェクトを使う, Lab, スケールしたエフェクト, ソフトパーティクル, チェック, ビーム, API (+14 more)
 
-### Community 541 - "ENG-10 — per-frame uniform buffer prototype"
-Cohesion: 0.40
-Nodes (5): eng11-progress, ENG-10 — per-frame uniform buffer prototype, Implementation, Reproduce / open work, Verification — Linux development host
+### Community 541 - "RuleParser"
+Cohesion: 0.19
+Nodes (12): Rule, asserts, name, on_field, RuleLoadError, detail, RuleNode, args (+4 more)
 
 ### Community 542 - "TimeHostcall"
 Cohesion: 0.50
@@ -4854,9 +5103,9 @@ Nodes (4): TimeHostcall, dt_q16, sim_now, tick
 Cohesion: 0.20
 Nodes (9): Building a palette that works, Colour palettes (method: do this BEFORE building), Colour pass lessons (Sugarworks), Haze rule (Mistvale Lake, tested in Studio 2026-11-18), Matching the look in Roblox, Palette and look, Palettes used so far, The look (preview lighting in Blender) (+1 more)
 
-### Community 545 - "LayerBuilder"
-Cohesion: 0.17
-Nodes (6): _code(), LayerBuilder, _number(), assign_procedural_model(), model_schema(), test_bind_components_and_equations_are_validated()
+### Community 545 - "Op"
+Cohesion: 0.07
+Nodes (28): Op, abs_, add, and_, clamp, distance, div, dot (+20 more)
 
 ### Community 547 - "void_crystal_blade"
 Cohesion: 0.29
@@ -4887,12 +5136,8 @@ Cohesion: 0.25
 Nodes (7): Bloomcrest - Roblox export report, Budget (ok), Collision per prop, Next steps, Over-detailed for their size (> 600 tris per stud; players do not see that detail), Warnings (9), Where the triangles go (cut here first)
 
 ### Community 554 - "healthandfitness.md"
-Cohesion: 0.09
-Nodes (22): Android skills, `ArticleEntity`, Category support and surfaces, Contact, Content Category, `EventEntity`, `EventReservationEntity`, FAQs (+14 more)
-
-### Community 555 - "lifecycle.test.js"
-Cohesion: 0.16
-Nodes (21): assert, firstServerStarted(), fs, httpStatus(), isWindowsLikeShell(), killAndWait(), makeShellTempDir(), newestSessionDir() (+13 more)
+Cohesion: 0.25
+Nodes (7): Android skills, Category support and surfaces, Contact, FAQs, Integrate Engage SDK, Integration workflow, Next steps
 
 ### Community 556 - "DEBUG_MESSAGE_SEVERITY"
 Cohesion: 0.40
@@ -5034,9 +5279,9 @@ Nodes (5): Collision, Files, Gameplay hooks (`Hooks.lua`, generated from `anchor
 Cohesion: 0.33
 Nodes (6): collision, parts, size, tris, props, Agave1
 
-### Community 592 - "validate"
-Cohesion: 0.53
-Nodes (4): validate(), cast(), inside(), test()
+### Community 592 - "PartyBook"
+Cohesion: 0.11
+Nodes (15): PartyBook, Join, already_member, joined, no_party, party_full, kAffinityBonus, kMaxPartySize (+7 more)
 
 ### Community 593 - "props"
 Cohesion: 0.33
@@ -5079,7 +5324,7 @@ Cohesion: 0.33
 Nodes (5): Composition, Diorama stage look (coastal-town style guide), Light and mood, Organising the place, Palette
 
 ### Community 603 - "auth.test.js"
-Cohesion: 0.16
+Cohesion: 0.15
 Nodes (20): assert, assertSecurityHeaders(), assertStartedOnExpectedPort(), cleanup(), CONTENT_DIR, EXPECTED_SECURITY_HEADERS, fs, get() (+12 more)
 
 ### Community 605 - "BakeryOven"
@@ -6011,12 +6256,12 @@ Cohesion: 0.40
 Nodes (5): Workbench1, collision, parts, size, tris
 
 ### Community 837 - "blender-texturing/scripts/_bpyx.py"
-Cohesion: 0.11
-Nodes (10): add_common(), argv(), cli(), _default(), emit(), enum_ids(), mesh_tris(), parser() (+2 more)
+Cohesion: 0.05
+Nodes (27): add_common(), argv(), cli(), _default(), emit(), enum_ids(), mesh_tris(), node() (+19 more)
 
-### Community 838 - "palm_meshes"
-Cohesion: 0.40
-Nodes (3): palm_meshes(), xcard(), bv()
+### Community 838 - "WakeLock"
+Cohesion: 0.11
+Nodes (15): WakeLock, attempts_, kLockTtlTicks, kMedianWatchTicks, kWakeTimeoutTicks, locks_, Outcome, failed_twice (+7 more)
 
 ### Community 839 - "CamelKneel1"
 Cohesion: 0.40
@@ -10558,33 +10803,33 @@ Nodes (4): Archetypes (pick one, or combine two, never the last one used), Diffe
 Cohesion: 0.10
 Nodes (18): Budgets, Engine side (what reads the masks), Weather for games and real-time, What to export from Blender, Dust, ash, embers, Lightning, Rain, Snow (+10 more)
 
-### Community 1974 - "blender-weather-fx/scripts/_bpyx.py"
-Cohesion: 0.11
-Nodes (10): add_common(), argv(), cli(), _default(), emit(), enum_ids(), mesh_tris(), parser() (+2 more)
+### Community 1974 - "crypto_aead.hpp"
+Cohesion: 0.20
+Nodes (18): aead_open(), aead_seal(), AeadKey, bytes, AeadNonce, bytes, chacha20_block(), chacha20_xor() (+10 more)
 
 ### Community 1975 - "Android skills"
+Cohesion: 0.04
+Nodes (50): Android skills, Conditional Service Availability Feature, `deleteClusters`, `deleteContinueSearchCluster`, `deleteFeaturedCluster`, `deleteRecommendationsClusters`, `deleteReservationCluster`, `deleteUserManagementCluster` (+42 more)
+
+### Community 1976 - "PkbAuthority"
+Cohesion: 0.14
+Nodes (9): PkbAuthority, auth_, cache_, nonce_, schema_, PkbSchema, fields, game_id (+1 more)
+
+### Community 1977 - "AccountRecord"
 Cohesion: 0.10
-Nodes (21): Android skills, Engage SDK integration, Java, Java, Kotlin, Kotlin, Kotlin, Kotlin (+13 more)
-
-### Community 1976 - "ENG-05 — desktop resize prototype (in progress)"
-Cohesion: 0.40
-Nodes (5): Behavior, eng06-progress, ENG-05 — desktop resize prototype (in progress), Target-device follow-up, Verification
-
-### Community 1977 - "ENG-08 — forward-pass colored triangle"
-Cohesion: 0.40
-Nodes (5): eng09-progress, ENG-08 — forward-pass colored triangle, Implemented, Reproduction and remaining work, Verification — Linux development host
+Nodes (16): AccountRecord, device_ids, display_name, email, firebase_uid, roles, trust_level, user_id (+8 more)
 
 ### Community 1978 - "ENG-64 — character controller through the solver (2026-11-26)"
-Cohesion: 0.40
-Nodes (4): ENG-64 — character controller through the solver (2026-11-26), Implemented and verified, Scope boundary and remaining, Verified
+Cohesion: 0.22
+Nodes (8): ENG-64 — character controller through the solver (2026-11-26), Implemented and verified, Scope boundary and remaining, Verified, MUT-42 — physics queries and body operations (2026-11-26), Not in this slice, Verification, What landed
 
 ### Community 1979 - "engage-sdk-integration/SKILL.md"
 Cohesion: 0.10
 Nodes (6): Sample code, 1. Verify compilation with full build tasks, 2. Resolve missing imports, 3. Resolve namespace conflicts, Reference materials, Workflow
 
 ### Community 1980 - "sys"
-Cohesion: 0.02
-Nodes (50): classify(), _find_textures(), _gltf_output_group(), run(), _srgb_to_lin(), gather(), inventory(), load() (+42 more)
+Cohesion: 0.01
+Nodes (118): _assign(), list_actions(), _mute(), _root_motion(), run(), object_mode(), _check(), _diff() (+110 more)
 
 ### Community 1981 - "Riverfield Siege - Studio setup"
 Cohesion: 0.50
@@ -10602,9 +10847,9 @@ Nodes (20): Call to action text, Create entities, Cross-device sync, DataFeedEle
 Cohesion: 0.50
 Nodes (4): ImpulseCache, normal, tangent1, tangent2
 
-### Community 1985 - "NumericBinding"
-Cohesion: 0.50
-Nodes (3): NumericBinding, name, value
+### Community 1985 - "DeviceBindingService"
+Cohesion: 0.13
+Nodes (9): DeviceBindingService, revoked_, RevokedDeviceLedger, TicketIssuanceGate, kRevocationPropagationSeconds, LedgerView, last_refresh, mutex (+1 more)
 
 ### Community 1995 - "Google Play Billing Library 1.0 Release (2017-09-19, [Announcement](https://android-developers.googleblog.com/2017/09/google-play-billing-library-10-released.html))"
 Cohesion: 0.10
@@ -10615,12 +10860,12 @@ Cohesion: 0.10
 Nodes (20): Architecture, Background, Benefits, Code Reuse Strategy, Custom Tools, File Structure, High-Level Structure, Implementation Plan (+12 more)
 
 ### Community 2069 - "List"
-Cohesion: 0.15
+Cohesion: 0.16
 Nodes (4): BoltPath, MeshBuilder, Surface, TwoPi
 
 ### Community 2070 - "test_workflow.py"
-Cohesion: 0.16
-Nodes (12): captured(), isolated(), lab(), report(), test_build_and_render_reject_changed_sources_assets_outputs_and_templates(), test_completion_requires_brief_review_and_overview_instead_of_no_flags(), test_evidence_is_stored_in_the_workspace_work_folder(), test_independent_report_binds_images_scores_and_observed_frames() (+4 more)
+Cohesion: 0.15
+Nodes (13): captured(), isolated(), lab(), report(), test_build_and_render_reject_changed_sources_assets_outputs_and_templates(), test_completion_requires_brief_review_and_overview_instead_of_no_flags(), test_evidence_is_stored_in_the_workspace_work_folder(), test_independent_report_binds_images_scores_and_observed_frames() (+5 more)
 
 ### Community 2071 - "Blender headless — script everything"
 Cohesion: 0.10
@@ -10658,9 +10903,9 @@ Nodes (14): checkpoint, childEvent, empty, freshRootEvent, newPromptAfterCheckpo
 Cohesion: 0.10
 Nodes (19): Bulletproofing Elements, Creation Log: Systematic Debugging Skill, Enhancement 1: TDD Reference, Extraction Decisions, Final Outcome, Initial Version, Iterations, Key Insight (+11 more)
 
-### Community 2080 - "qa_check.py"
-Cohesion: 0.15
-Nodes (9): r(), _feeds(), _islands(), _material_issues(), _mesh_world(), _point_in_tri(), _result(), run() (+1 more)
+### Community 2080 - "CubePeer"
+Cohesion: 0.14
+Nodes (12): CubePeer, baseline_, remote_baseline_, schema_, session_id_, CubeState, x, y (+4 more)
 
 ### Community 2081 - "litert-lm/SKILL.md"
 Cohesion: 0.11
@@ -10675,8 +10920,8 @@ Cohesion: 0.11
 Nodes (17): Create basic FlexBox layouts, Set up project, Additional documentation for experimental adaptive APIs, Final step: Build and test, FlexBox, Grid, MediaQuery, Prerequisites (+9 more)
 
 ### Community 2084 - "state-and-stability.md"
-Cohesion: 0.11
-Nodes (18): 1. Phase deferral and lambdas (Composition versus Layout versus Draw), 2. Preventing backwards writes across frame phases, 3. State and snapshot optimizations, 5. Using `remember` and calculation keys, A. Direct mutation in Composition (`Read -> Write` versus `Write -> Read`), A. Modifier offsets, A. Optimize whole-collection updates with `neverEqualPolicy()`, B. Alpha and rotation animations (+10 more)
+Cohesion: 0.06
+Nodes (33): Backwards: Reading in Composition, writing in Composition (same phase), Backwards: Reading in Composition, writing in Drawing, Backwards: Reading in Composition, writing in Layout, Consequences of backwards writes, Forward flow through phases, Key rules to prevent backwards writes, Phase combinations: Backwards versus forward, What makes a write "backwards"? (+25 more)
 
 ### Community 2085 - "Instructions: Mapping Concepts"
 Cohesion: 0.11
@@ -10687,8 +10932,8 @@ Cohesion: 0.11
 Nodes (19): 1. Automated Target Configuration, 2. Configuration File Mapping: Snapfile to Screengrabfile, 3. Scheme Architecture to Build Variants, 4. UI Test Concurrency \& Isolation, 5. Security \& Fraud Prevention (Overlay \& Screenshot Protection), 6. Maintenance \& Scoped Debugging, 7. Advanced Android Testing Requirements, Android (Target) (+11 more)
 
 ### Community 2087 - "Android skills"
-Cohesion: 0.11
-Nodes (19): Android skills, Engage SDK integration, Java, Java, Kotlin, Kotlin, Kotlin, Kotlin (+11 more)
+Cohesion: 0.05
+Nodes (44): Android skills, Conditional Service Availability Feature, `deleteClusters`, `deleteContinuationCluster`, `deleteFeaturedCluster`, `deleteRecommendationsClusters`, `deleteUserManagementCluster`, Engage SDK integration (+36 more)
 
 ### Community 2088 - "engage/social.md"
 Cohesion: 0.11
@@ -10710,21 +10955,21 @@ Nodes (14): Codex App Finishing, Environment Detection, Model routing on spawns,
 Cohesion: 0.18
 Nodes (5): _fire_pre_llm(), _load_plugin(), TestBootstrapInjection, TestPluginRegistration, TestSkillDescriptions
 
-### Community 2093 - "rigify_build.py"
-Cohesion: 0.20
-Nodes (10): select_only(), _bounds(), _ensure_rigify(), _fit(), game_skeleton(), _generate(), _remove_face(), run() (+2 more)
+### Community 2093 - "ThemeTokens"
+Cohesion: 0.11
+Nodes (10): main(), PreviewApp, ThemeKind, Classic, Flat, ThemeTokens, PokoBevelButton, PokoGlossPanel (+2 more)
 
 ### Community 2094 - "addon_template/__init__.py"
 Cohesion: 0.12
 Nodes (4): MYTOOL_OT_offset_selected, MYTOOL_PG_settings, MYTOOL_AP_preferences, MYTOOL_PT_main
 
-### Community 2095 - "loop_check.py"
-Cohesion: 0.17
-Nodes (11): _assign(), list_actions(), _mute(), _root_motion(), run(), object_mode(), _check(), _diff() (+3 more)
+### Community 2095 - "main"
+Cohesion: 0.11
+Nodes (17): is_protected_domain(), load_pkb_schema(), PkbLoadError, Code, bad_policy, bad_protected_name, duplicate_name, float_no_bounds (+9 more)
 
-### Community 2096 - "test_effekseer_ai.py"
-Cohesion: 0.13
-Nodes (9): editor_bin_directory(), export_binary(), runtime_config_path(), test_cli_exposes_only_the_portable_effect_bridge_commands(), test_cli_rejects_removed_recipe_commands(), test_editor_bin_directory_rejects_a_directory_without_core(), test_editor_bin_directory_requires_an_explicit_configuration(), test_editor_bin_directory_uses_a_configured_core_directory() (+1 more)
+### Community 2096 - "FieldValue"
+Cohesion: 0.09
+Nodes (22): FieldDef, id, initial, name, policy, FieldValue, id, name (+14 more)
 
 ### Community 2097 - "The tools, concretely"
 Cohesion: 0.11
@@ -10747,8 +10992,8 @@ Cohesion: 0.11
 Nodes (17): Animate a modifier, Chain existing modifiers together, Common situations using `Modifier.Node`, Complete example, Composable function modifiers are never skipped, Composable function modifiers must be called within a composable function, `CompositionLocal` values are resolved at the call site of the modifier factory, Create a custom modifier using a composable modifier factory (+9 more)
 
 ### Community 2102 - "Instructions: Mapping Concepts"
-Cohesion: 0.11
-Nodes (18): 2. Data Persistence: CoreData/Realm to Room, 3. Dependency Injection: Swinject to Hilt, 5. Image Loading: Kingfisher to Coil, 6. Testing: XCTest to MockK, 7. Animations: Lottie to Lottie-Compose, Android (Coil in Compose), Android (Hilt), Android (JUnit + MockK) (+10 more)
+Cohesion: 0.08
+Nodes (24): 2. Data Persistence: CoreData/Realm to Room, 3. Dependency Injection: Swinject to Hilt, 4. Concurrency: Combine/RxSwift to Flow, 5. Image Loading: Kingfisher to Coil, 6. Testing: XCTest to MockK, 7. Animations: Lottie to Lottie-Compose, Android (Coil in Compose), Android (Hilt) (+16 more)
 
 ### Community 2103 - "Codex App Compatibility: Worktree and Finishing Skill Adaptation"
 Cohesion: 0.11
@@ -10867,8 +11112,8 @@ Cohesion: 0.12
 Nodes (15): Changes by File, Core Model, Design, `frame-template.html` (UI frame), Key Addition: `.events` File (Per-Screen Event Stream), Key Deletion: `wait-for-feedback.sh`, Platform Compatibility, Problem (+7 more)
 
 ### Community 2132 - "Architecture"
-Cohesion: 0.12
-Nodes (15): Application-Level WebSocket Messages, Architecture, Configuration, Error Handling, File Watching, HTTP Server, Motivation, Platform Compatibility (+7 more)
+Cohesion: 0.14
+Nodes (13): Application-Level WebSocket Messages, Architecture, Configuration, Error Handling, File Watching, HTTP Server, Motivation, Platform Compatibility (+5 more)
 
 ### Community 2133 - "Design"
 Cohesion: 0.12
@@ -10890,9 +11135,9 @@ Nodes (15): Common Rationalizations, Overview, Phase 1: Root Cause Investigation
 Cohesion: 0.12
 Nodes (15): 1. Authority, 2. Commitment, 3. Scarcity, 4. Social Proof, 5. Unity, 6. Reciprocity, 7. Liking, Ethical Use (+7 more)
 
-### Community 2138 - "bind_mesh.py"
-Cohesion: 0.23
-Nodes (10): cleanup(), _ctx(), _heat_scale(), _height(), _parent(), _proxy_weights(), run(), unweighted() (+2 more)
+### Community 2138 - "JoinTicket"
+Cohesion: 0.10
+Nodes (13): JoinTicket, frame_key, nonce, session_id, slot_id, tick, version, await_snapshot() (+5 more)
 
 ### Community 2139 - "Sculpting"
 Cohesion: 0.13
@@ -10902,9 +11147,9 @@ Nodes (13): Forms, proportions, hard-surface sculpting, bake sources (operators 
 Cohesion: 0.13
 Nodes (13): Headless pixel writes (masks, IDs, procedural stencils), Texture painting (live session with UI), Tiling materials + vertex-color blends (large surfaces), Trim sheets (environment and hard-surface kits), Trim sheets, tiling blends, texture painting (verified in Blender 5.2.3), Decals (decal.py), Gotchas, How pros layer a material (+5 more)
 
-### Community 2141 - "独立 VFX レビュー"
-Cohesion: 0.13
-Nodes (12): 出力, 受け取るべき入力, 独立 VFX レビュー, 評価基準, 你应该收到的输入, 独立 VFX 评审, 评分表, 输出 (+4 more)
+### Community 2141 - "VmDebugger"
+Cohesion: 0.09
+Nodes (7): mut35-37-closure, MUT-34 follow-up — source-level breakpoint lookup, VmCore, VmDebugger, breakpoints_, core_, VmDebugger::clear_breakpoints()
 
 ### Community 2142 - "CastDriver"
 Cohesion: 0.15
@@ -10926,9 +11171,9 @@ Nodes (14): Before/after: what a profile change does, Bevels, Capsule: limbs and
 Cohesion: 0.13
 Nodes (14): 3D asset (Blender → engine), Code change, Engine scene (Godot / Unity), Knowledge base, Related, Render / visual output, Rules, The false-success catalogue (+6 more)
 
-### Community 2147 - "Rect"
-Cohesion: 0.13
-Nodes (13): Coordinate transformation matrix, Face mesh and pose normalization, Follow the implementation guide, Handling the "double rotation" bug, Overlays and canvas clipping, Spatial pitfalls, The mapping mindset, Int32 (+5 more)
+### Community 2147 - "widgets.rs"
+Cohesion: 0.16
+Nodes (4): paint_bevel_border(), paint_vertical_gradient(), PokoBevelButton<'a>, PokoTabStrip<'a>
 
 ### Community 2148 - "restore-credentials/SKILL.md"
 Cohesion: 0.13
@@ -10943,20 +11188,20 @@ Cohesion: 0.13
 Nodes (11): Output, Step 1: List candidates in the file, Step 2: Prove the executing thread (mandatory), Step 3: Prove the call blocks, Step 4: View threading violations (sync barrier leak), Step 5: Attribute and grade, 1. Pre-flight context checks, 2. Attribution verdict (+3 more)
 
 ### Community 2151 - "Step 1: Provide entity data"
-Cohesion: 0.13
-Nodes (15): `ArticleEntity`, Content Category, `EventEntity`, `EventReservationEntity`, `GenericFeaturedEntity`, Image specifications, `LodgingEntity`, `LodgingReservationEntity` (+7 more)
+Cohesion: 0.07
+Nodes (28): Android skills, `ArticleEntity`, Contact, Content Category, `EventEntity`, `EventReservationEntity`, FAQs, For Engage SDK v1.6.0 and higher (Recommended) (+20 more)
 
 ### Community 2152 - "Step 1: Provide entity data"
-Cohesion: 0.13
-Nodes (15): `ArticleEntity`, Content Category, `EventEntity`, `EventReservationEntity`, `GenericFeaturedEntity`, Image specifications, `LodgingEntity`, `LodgingReservationEntity` (+7 more)
+Cohesion: 0.07
+Nodes (29): Android skills, `ArticleEntity`, Category support and surfaces, Contact, Content Category, `EventEntity`, `EventReservationEntity`, FAQs (+21 more)
 
 ### Community 2153 - "patterns.md"
 Cohesion: 0.13
 Nodes (14): AccountProfile example, AndroidManifest.xml for TV, BroadcastReceiver implementation, ClusterRequestFactory, Constants, Dependency specifications (libs.versions.toml), Dual content rating fields for Watch and TV, EngageBroadcastReceiver (+6 more)
 
 ### Community 2154 - "jni-tips.md"
-Cohesion: 0.13
-Nodes (14): 64-bit considerations, Exceptions, Extended checking, FAQ: How do I share raw data with native code?, FAQ: Why didn't `FindClass` find my class?, FAQ: Why do I get `UnsatisfiedLinkError`?, General tips, JavaVM and JNIEnv (+6 more)
+Cohesion: 0.08
+Nodes (23): 64-bit considerations, Exceptions, Extended checking, FAQ: How do I share raw data with native code?, FAQ: Why didn't `FindClass` find my class?, FAQ: Why do I get `UnsatisfiedLinkError`?, Faster native calls with `@FastNative` and `@CriticalNative`, General tips (+15 more)
 
 ### Community 2155 - "Visual Brainstorming Companion Implementation Plan"
 Cohesion: 0.13
@@ -10983,7 +11228,7 @@ Cohesion: 0.13
 Nodes (14): 1. Native manifest: `.antigravity-plugin/plugin.json`, 2. Bootstrap: skill discovery, no extra files, 3. Logo: `assets/antigravity-logo.png`, 4. Version bumps, 5. Codex sync, 6. README, 7. Tests: `tests/antigravity/`, 8. Porting guide: separate commit (+6 more)
 
 ### Community 2161 - "superpowers.js"
-Cohesion: 0.20
+Cohesion: 0.22
 Nodes (12): _bootstrapCache, _cacheChildSession(), _childSessionCache, __dirname, extractAndStripFrontmatter(), getBootstrapContent(), isChildSession(), setup() (+4 more)
 
 ### Community 2162 - "Installing Superpowers for OpenCode"
@@ -11014,33 +11259,33 @@ Nodes (14): 1a. Native Worktree Tools (preferred), 1b. Git Worktree Fallback, Co
 Cohesion: 0.14
 Nodes (12): Hermes Agent Tool Mapping, Instructions file, Invoking a skill, Subagent dispatch, Task tracking, Tools, Instructions file, Muse Tool Mapping (+4 more)
 
-### Community 2169 - "ENG-18 — KTX2 placeholder texture on quad"
-Cohesion: 0.14
-Nodes (14): Bugs found during implementation, eng19-progress, ENG-18 — KTX2 placeholder texture on quad, Integration review, 2026-11-22, Mip-chain continuation, Not done / future, sRGB continuation, Verified (+6 more)
+### Community 2169 - "PokoShell"
+Cohesion: 0.25
+Nodes (18): cjk_text_typed_into_field(), dpi_resize_regenerates_font_atlas(), enter_shell(), maybe_force_panic(), mesh_vertices_stay_within_screen_rect(), mouse_and_keyboard_drive_egui_input(), panic_boundary(), poko_shell_create() (+10 more)
 
-### Community 2170 - "Body"
-Cohesion: 0.13
-Nodes (14): Body, index, lower, upper, Command, bounds, index, Kind (+6 more)
+### Community 2170 - "VulkanMeshPass"
+Cohesion: 0.11
+Nodes (10): What was built, MeshVertex, normal, position, VulkanMeshPass, impl_, VulkanMeshPass::draw_and_present(), VulkanMeshPass::set_light_direction() (+2 more)
 
-### Community 2171 - "SemanticErrorCode"
-Cohesion: 0.13
-Nodes (15): SemanticErrorCode, duplicate_binding, duplicate_declaration, immutable_assignment, invalid_assignment, invalid_generic_arity, invalid_operand, invalid_return (+7 more)
+### Community 2171 - "gltf_import.cpp"
+Cohesion: 0.19
+Nodes (14): BinData, data, size, element_ptr(), fnv1a64(), json_escape(), normalize3(), read_f32() (+6 more)
 
-### Community 2172 - "StatementKind"
-Cohesion: 0.13
-Nodes (15): StatementKind, block, break_stmt, continue_stmt, expression, for_stmt, guard_stmt, if_stmt (+7 more)
+### Community 2172 - "FirebaseTokenVerifier"
+Cohesion: 0.17
+Nodes (11): FirebaseTokenVerifier, project_id_, Result, error, token, rsa_verify_, VerifiedFirebaseToken, display_name (+3 more)
 
 ### Community 2173 - "gn_builder recipes (specs verified on 5.2)"
 Cohesion: 0.14
 Nodes (12): gn_builder recipes (specs verified on 5.2), Pipe / cable along a curve, Repeat zone (iterative subdivide), Scatter instances on a surface, Shader tree with the same builder, Store a mask attribute for shaders/export, Core concepts (get these right or nothing works), Geometry Nodes (+4 more)
 
-### Community 2174 - "smart_material.py"
-Cohesion: 0.22
-Nodes (9): objects(), _apply_mat(), build_group(), curvature_attribute(), _image_node(), _lin(), _remove_mat(), run() (+1 more)
+### Community 2174 - "contrast_pair"
+Cohesion: 0.11
+Nodes (17): 3 種類のコピーはそれぞれ別の仕事をする, まずパレットの役割, サイズとライフの出発点, 明度、色、レイヤーの組み合わせ, 白い塊と黒い塊の修正順序, 三种副本承担不同的工作, 先定调色板职责, 尺寸与寿命的起点 (+9 more)
 
-### Community 2175 - "outline_from_scan.py"
-Cohesion: 0.20
-Nodes (5): align_and_scale(), main(), max_section_outline(), recentered(), rotate_min_square()
+### Community 2175 - "mesh_io.py"
+Cohesion: 0.14
+Nodes (11): bed_fit(), estimate_mass(), load_mesh(), parse_bed(), test_bed_fit_allows_rotation_and_reports_overflow(), test_estimate_mass_hollow_less_than_solid(), test_load_mesh_empty_file(), test_load_mesh_missing_file() (+3 more)
 
 ### Community 2176 - "Gameplay systems — rules that hold up"
 Cohesion: 0.14
@@ -11075,12 +11320,12 @@ Cohesion: 0.14
 Nodes (13): Choosing the metrics by artifact class, Common stalls and what they mean, Diagnosing by layer, Guard rails, Knowledge base, Reading a band width profile, Related, The ledger (+5 more)
 
 ### Community 2184 - "litert-lm/references/android/google/play/on-device-ai.md"
-Cohesion: 0.14
-Nodes (13): Benefits, Bundletool, Considerations, How to use Play for On-device AI, Internal App Sharing, Introduction, Limitations of local testing with bundletool, Related content (+5 more)
+Cohesion: 0.08
+Nodes (24): Available device properties, Benefits, Bundletool, Check Android Gradle Plugin version, Combine selector properties with AND and OR, Considerations, Create a device targeting configuration XML file, Device targeting (+16 more)
 
 ### Community 2185 - "jetpack-compose-performance/SKILL.md"
-Cohesion: 0.14
-Nodes (12): 1. Cache expensive computations in composable body, 1. Main thread blocking, offloading, and caching, 2. Avoid heavy object allocations in composition, 3. Offload I/O and heavy work to `Dispatchers.IO` with `produceState`, 3. Side effects API selection guide, 2. Layouts and measurement optimization ([references/layouts.md](references/layouts.md)), 3. Lazy layouts optimization ([references/lazy-layouts.md](references/lazy-layouts.md)), 4. Animation and shared transitions ([references/animation.md](references/animation.md)) (+4 more)
+Cohesion: 0.06
+Nodes (28): 1. Defer `sharedBounds` and `sharedElement` in fast-scrolling lists, 1. Phase deferral for animations (skip Composition to Draw and Layout), 2. Shared transitions and shared elements (`SharedTransitionScope`), 3. Persistent `Animatable` in custom modifiers (`Modifier.Node`), A. Alpha, rotation, and scale: defer to Draw with `graphicsLayer`, B. Animated offsets: defer to Layout with `Modifier.offset`, C. Animated size: defer to Layout with `Modifier.layout` or `animateBounds`, D. Custom composable parameters (lambda providers) (+20 more)
 
 ### Community 2186 - "screenshots-screengrab.md"
 Cohesion: 0.14
@@ -11118,29 +11363,29 @@ Nodes (14): Commercial Services, Community, Contributing, How it works, License,
 Cohesion: 0.14
 Nodes (13): 1. Identify Independent Domains, 2. Create Focused Agent Tasks, 3. Dispatch in Parallel, 4. Review and Integrate, Agent Prompt Structure, Common Mistakes, Dispatching Parallel Agents, Overview (+5 more)
 
-### Community 2195 - "ws-protocol.test.js"
-Cohesion: 0.15
-Nodes (7): assert, assert, crypto, RFC-6455, path, runTests(), SERVER_PATH
+### Community 2195 - "test-skill-registration.mjs"
+Cohesion: 0.09
+Nodes (14): assert, crypto, RFC-6455, path, runTests(), SERVER_PATH, added, failures (+6 more)
 
-### Community 2196 - "VulkanClearAndroidRenderer"
-Cohesion: 0.16
-Nodes (6): VulkanClearAndroidRenderer, cleanup_uncertain_, impl_, VulkanClearAndroidRenderer::clear_and_present(), VulkanClearAndroidRenderer::shutdown(), VulkanClearAndroidRenderer::shutdown_checked()
+### Community 2196 - "vulkan_clear_android.cpp"
+Cohesion: 0.12
+Nodes (14): VulkanClearAndroidRenderer, cleanup_uncertain_, impl_, destroy_swapchain_resources(), make_device_objects(), make_instance(), make_surface(), make_swapchain() (+6 more)
 
-### Community 2197 - "vulkan_clear_android.cpp"
-Cohesion: 0.27
-Nodes (8): destroy_swapchain_resources(), make_device_objects(), make_instance(), make_surface(), make_swapchain(), pick_device(), pick_surface_format(), VulkanClearAndroidRenderer::initialize()
+### Community 2197 - "Body"
+Cohesion: 0.12
+Nodes (15): Body, friction, half, index, inv_mass, is_static, kind, position (+7 more)
 
-### Community 2198 - "decal.py"
-Cohesion: 0.19
-Nodes (7): node(), object_mode(), r(), _gaps(), _grid(), _material(), run()
+### Community 2198 - "import_glb"
+Cohesion: 0.14
+Nodes (14): GltfImportStats, mesh_count, primitive_count, skipped_primitives, triangle_count, PokoMesh, indices, vertices (+6 more)
 
-### Community 2199 - "lightning.py"
-Cohesion: 0.21
-Nodes (7): node(), object_mode(), _bolt_points(), _clear(), _curve(), _envelope(), run()
+### Community 2199 - "Json"
+Cohesion: 0.22
+Nodes (15): array_at(), as_index(), as_size(), Json, boolean, items, members, number (+7 more)
 
-### Community 2200 - "precipitation.py"
-Cohesion: 0.21
-Nodes (7): objects(), r(), build_tree(), _camera_box(), _iface(), _material(), run()
+### Community 2200 - "VulkanDiagnostics::Impl"
+Cohesion: 0.11
+Nodes (15): DiagnosticsError, already_active, backend_failure, busy, factory_unavailable, none, VulkanDiagnostics::Impl, baseline (+7 more)
 
 ### Community 2201 - "steps"
 Cohesion: 0.15
@@ -11203,7 +11448,7 @@ Cohesion: 0.15
 Nodes (12): Budget and sequencing, Judgment guardrail (co-invariant with quality), L1 — Plan-side crispness (writing-plans changes; est. −$1.5-3/run, plus variance reduction), L2 — Controller tier (est. −$4-5/run; the biggest single lever, gated hardest), L3 — Reviewer tier (est. −$0.7-1/run; most likely rung to die on the judgment guardrail), L4 — Resident-context diet (est. −$0.5-1/run), L5 — Re-litigations (explicitly flagged, maintainer-vetoed or counter-thesis), Relationship to existing work (+4 more)
 
 ### Community 2216 - "v7.0.0 (2026-10-09)"
-Cohesion: 0.15
+Cohesion: 0.13
 Nodes (11): Antigravity, Brainstorming, Executing Plans, Hermes Agent, Hooks, Requesting Code Review, Subagent-Driven Development, Systematic Debugging (+3 more)
 
 ### Community 2217 - "v6.0.0 (2026-06-16)"
@@ -11222,13 +11467,13 @@ Nodes (11): assert_contains(), assert_equals(), assert_not_matches(), extract_ar
 Cohesion: 0.19
 Nodes (11): StepKind, await_task, finish, yield, StepResult, kind, target, cases() (+3 more)
 
-### Community 2221 - "effekseer-vfx-skill"
-Cohesion: 0.17
-Nodes (12): Desarrollo, effekseer-vfx-skill, Estructura del repositorio, Generación de imágenes, Instalación, Licencia y créditos, Limitaciones, Para agentes: instalar desde esta URL (+4 more)
+### Community 2221 - "Configure fast-follow and on-demand delivery"
+Cohesion: 0.12
+Nodes (17): Access AI packs, Check Android Gradle Plugin version, Check status, Configure device targeting, Configure fast-follow and on-demand delivery, Configure install-time delivery, Declare dependency on the Play AI Delivery Library, Extract your model into an AI pack (+9 more)
 
-### Community 2222 - "effekseer-vfx-skill"
-Cohesion: 0.17
-Nodes (12): effekseer-vfx-skill, 개발, 게임에서 이펙트 사용하기, 라이선스와 크레딧, 설치, 시작하기, 에이전트용: 이 URL에서 설치하기, 요구 사항 (+4 more)
+### Community 2222 - "JsonParser"
+Cohesion: 0.29
+Nodes (4): JsonParser, end_, message_, p_
 
 ### Community 2223 - "The skills"
 Cohesion: 0.17
@@ -11271,8 +11516,8 @@ Cohesion: 0.17
 Nodes (12): Activity Listener, Add the `MediaRouteButton` as a View, Add the `MediaRouteButton` to the app bar menu, Add UI elements, Java, Java, Java, Java (+4 more)
 
 ### Community 2233 - "Result"
-Cohesion: 0.17
-Nodes (11): 1. Networking: Alamofire to Retrofit, Adding Interceptors (OkHttp), Android (Retrofit), iOS (Alamofire), Logic: Handling Legacy RxJava, Interface surface, Assertion policy, Result (+3 more)
+Cohesion: 0.09
+Nodes (21): 1. Networking: Alamofire to Retrofit, Adding Interceptors (OkHttp), Android (Retrofit), iOS (Alamofire), Logic: Handling Legacy RxJava, Interface surface, 28 — Engine diagnostics, Assertion policy (+13 more)
 
 ### Community 2234 - "testing-unit-and-compose.md"
 Cohesion: 0.17
@@ -11338,9 +11583,9 @@ Nodes (12): ContactState, a, b, c, kn, lambda_n, lambda_t1, lambda_t2 (+4 more)
 Cohesion: 0.18
 Nodes (10): Budgets (guidance per asset, 2026), Collision, Decimate modes, Draw calls and batching, Game Optimization, Gotchas, LOD rules, Procedure (+2 more)
 
-### Community 2250 - "surface_weather.py"
-Cohesion: 0.31
-Nodes (8): _apply_mat(), build_group(), _remove_mat(), run(), _snow_material(), _snow_tree(), _src(), _vertex_mask()
+### Community 2250 - "Slot"
+Cohesion: 0.12
+Nodes (17): Slot, id, opted_in, player_count, rtt_ms, Source, byo, donated (+9 more)
 
 ### Community 2251 - "Workflow Recipes"
 Cohesion: 0.18
@@ -11382,9 +11627,9 @@ Nodes (10): Art Direction and Cohesion, Knowledge base, Pitfalls, Related, Step 
 Cohesion: 0.29
 Nodes (7): _area(), _ensure_world(), render_turnaround(), _scene_bounds(), setup_camera(), setup_lighting(), setup_render()
 
-### Community 2261 - "Device targeting"
-Cohesion: 0.18
-Nodes (11): Available device properties, Check Android Gradle Plugin version, Combine selector properties with AND and OR, Create a device targeting configuration XML file, Device targeting, Enable this feature in Android Gradle Plugin, Include your device targeting configuration file in your app bundle, Official device manufacturer and device model codes (+3 more)
+### Community 2261 - "xor_fec.hpp"
+Cohesion: 0.28
+Nodes (11): attach_parity(), FecGroup, data, parity, received, losses(), make_parity(), recover_loss() (+3 more)
 
 ### Community 2262 - "Use explicit cache management"
 Cohesion: 0.18
@@ -11395,16 +11640,16 @@ Cohesion: 0.18
 Nodes (10): Configure project, Count tokens, Define the output structure, Exceptions, finishReason values, Generate structured content, Handle finish reasons and errors, Limitations (+2 more)
 
 ### Community 2264 - "Detailed steps"
-Cohesion: 0.18
-Nodes (11): Detailed steps, Step 10: XML code removal, Step 1: Identify the optimal XML candidate for migration, Step 2: Analyze the project and layout, Step 3: Create a plan, Step 4: Capture the XML View UI, Step 5: Set up Compose dependencies and compiler, Step 6: Set up Compose theming (+3 more)
+Cohesion: 0.06
+Nodes (31): 1. Project health \& build validation, 2. Compose pattern \& consistency analysis, 3. Design system \& infrastructure audit, 4. Candidate layout decomposition, 5. Architectural \& non-UI analysis, `ComposeView` in Fragments (Transitionary Step), Multiple `ComposeView` instances in the same layout, Preview composables in Layout Editor (+23 more)
 
 ### Community 2265 - "dependencies-and-concurrency.md"
 Cohesion: 0.18
 Nodes (10): Antipatterns, DO, DON'T, Glossary, Limitations, NEVER, Prerequisites, Setup \& Dependencies (+2 more)
 
 ### Community 2266 - "INSPECT-RULES.md"
-Cohesion: 0.18
-Nodes (10): Blanket coroutine library rules, Case: Android components, Case: Global keep rules, Case: Kotlin coroutines, Case: Official Android and Kotlin libraries, Case: Parcelable and enums, Case: Room database, Dispatcher and exception handler rules (+2 more)
+Cohesion: 0.10
+Nodes (19): Blanket coroutine library rules, Blanket library preservation, Case: Android components, Case: Global keep rules, Case: Gson, Case: Kotlin coroutines, Case: Official Android and Kotlin libraries, Case: Parcelable and enums (+11 more)
 
 ### Community 2267 - "Google Play Billing Library 2.0 Release (2019-05-07)"
 Cohesion: 0.18
@@ -11418,9 +11663,9 @@ Nodes (9): Final Report, Phase 0: Intent Message, Phase 1: Discovery \& Situatio
 Cohesion: 0.18
 Nodes (10): Codebase Context & Evidence, Data Safety and Privacy Audit, Domain-Specific Heuristics, Output schema, Policies to Verify, Step 0: Facts orientation, Step 1: Verify behavioral transmission (Forward Trace), Step 2: Semantic Search for Protection (UI Disclosure) (+2 more)
 
-### Community 2270 - "Canonical layout reference files"
-Cohesion: 0.18
-Nodes (11): Action list layout (`action_list`), Canonical layout reference files, Check list layout (`check_list`), Expressive toolbar layout (`expressive_toolbar`), Full-bleed image layout and snap scrolling (`snap_scrolling`), Image grid layout (`image_grid`), Image text list layout (`image_text_list`), Long text layout (`long_text`) (+3 more)
+### Community 2270 - "DebugRun"
+Cohesion: 0.17
+Nodes (12): DebugRun, pc, result, stop, DebugStop, breakpoint, returned, stepped (+4 more)
 
 ### Community 2271 - "Testing features"
 Cohesion: 0.18
@@ -11458,9 +11703,9 @@ Nodes (9): 5.x data model (what changed), Animation, Bake control rig → export
 Cohesion: 0.20
 Nodes (9): CLI rendering (render farms, CI), Color management (decide once per project), Compositor (5.0+ API), Cycles quality levers (ordered by impact), Engine choice, Gotchas, One call, Output formats (+1 more)
 
-### Community 2280 - "Simulation"
-Cohesion: 0.20
-Nodes (9): Choose the solver, Classic cloth, Fluids (Mantaflow) quick setup, Gotchas, Node-based dynamics (5.2, experimental), One call, Rigid bodies, Rules (+1 more)
+### Community 2280 - "character_controller_test.cpp"
+Cohesion: 0.10
+Nodes (21): Choose the solver, Classic cloth, Fluids (Mantaflow) quick setup, Gotchas, Node-based dynamics (5.2, experimental), One call, Rigid bodies, Rules (+13 more)
 
 ### Community 2281 - "type"
 Cohesion: 0.22
@@ -11477,10 +11722,6 @@ Nodes (10): items, minItems, type, additionalProperties, required, items, minIte
 ### Community 2284 - "ShellPiece"
 Cohesion: 0.24
 Nodes (3): ShellPiece, InUse, Visible
-
-### Community 2285 - "Command reference"
-Cohesion: 0.18
-Nodes (10): Command reference, `--ids` and broken sources, What a full build may delete, What lint checks, Workspace layout, Colour and brightness from photographs, Layer plan of a photographic explosion, Photographic explosions, fire and smoke (+2 more)
 
 ### Community 2286 - "Review loop, evidence and delivery"
 Cohesion: 0.20
@@ -11530,9 +11771,9 @@ Nodes (9): Common pitfalls, Description, Reference links, Step 1: Inventory the 
 Cohesion: 0.20
 Nodes (10): Add a Material list-detail SceneStrategy, Add a Material supporting pane `SceneStrategy`, Identify the list and detail screens, Important considerations, Step 3.1. List-detail, Step 3.2. Supporting pane, Step 3.3. Run screenshot tests, Step 3. Add multi-pane layouts using Navigation 3 Scenes (+2 more)
 
-### Community 2299 - "brush-structure.md"
-Cohesion: 0.20
-Nodes (9): `BrushFamily` and `BrushCoat` hierarchy, `BrushPaint` blending and `ColorFunction`, `BrushPaint.ColorFunction` (`OpacityMultiplier` and `ReplaceColor`), `BrushTip` geometry configuration, `BrushTip` shape examples (calligraphy nib and flat marker), Common pitfalls, Construct and copy `BrushFamily` and `BrushCoat`, `InputModel` and stroke smoothing (`SlidingWindowModel`) (+1 more)
+### Community 2299 - "PokoEvent"
+Cohesion: 0.13
+Nodes (15): PokoEvent, button, focus, height, key, kind, modifiers, pressed (+7 more)
 
 ### Community 2300 - "strongskipping.md"
 Cohesion: 0.20
@@ -11559,12 +11800,12 @@ Cohesion: 0.20
 Nodes (9): Common guidelines, Compose-based UI, Glossary, Prerequisites, Step 1: Set up dependencies, Step 2: Update the manifest, Step 4: Set up the UI, Step 5: Clean up legacy Cast SDK code (+1 more)
 
 ### Community 2306 - "enable-app-optimization.md"
-Cohesion: 0.20
-Nodes (9): AGP and R8 version behavior changes, Android skills, Enable optimized resource shrinking, Improve R8 optimization, Optimize resource shrinking for even smaller apps, R8 Analyzer, R8 optimization overview, Use R8 with other build systems (+1 more)
+Cohesion: 0.12
+Nodes (16): AGP and R8 version behavior changes, Android skills, Enable optimization, Enable optimized resource shrinking, For AGP versions 9.3 and higher, Groovy, Improve R8 optimization, Kotlin (+8 more)
 
-### Community 2307 - "r8-analyzer/SKILL.md"
-Cohesion: 0.20
-Nodes (8): 1. App modules (`com.android.application`), 2. `gradle.properties` flags, Constraints, Path A: Standalone Gradle task (AGP \>= 9.3.0), Path B: Invoke R8 release build (AGP \< 9.3.0), Step 1. Setup and configuration check, Step 2. Analysis path selection, Step 3. Report generation
+### Community 2307 - "Env"
+Cohesion: 0.19
+Nodes (11): RuleEvaluator, Env, dt, field_values, granted, previous, tick, value (+3 more)
 
 ### Community 2308 - "version-checklist.md"
 Cohesion: 0.20
@@ -11631,7 +11872,7 @@ Cohesion: 0.36
 Nodes (8): fail(), get_key_from_info(), get_port_from_info(), http_check(), pass(), windows-lifecycle.test.sh script, skip(), wait_for_server_info()
 
 ### Community 2324 - "pokomesh_test.cpp"
-Cohesion: 0.44
+Cohesion: 0.49
 Nodes (5): main(), make_pmes(), put32(), putf(), write()
 
 ### Community 2325 - "Changelog"
@@ -11653,6 +11894,10 @@ Nodes (8): Anime faces and hair, Gotchas, Grease Pencil (5.x API), One call each
 ### Community 2329 - "Texture Baking (Cycles)"
 Cohesion: 0.22
 Nodes (8): Baking non-PBR data, Fixing common artifacts, Gotchas, Map guide, One call, Preparation checklist (most bake bugs come from this list), Rays: extrusion vs cage, Texture Baking (Cycles)
+
+### Community 2330 - "AccountStore"
+Cohesion: 0.16
+Nodes (7): FirebaseIdentity, display_name, email, uid, AccountStore, SignInService, next_id_
 
 ### Community 2332 - "レビューループ、エビデンス、納品"
 Cohesion: 0.22
@@ -11710,17 +11955,17 @@ Nodes (8): Define a grid, Define grid areas with named areas, Determine grid tra
 Cohesion: 0.22
 Nodes (8): Bitmap and PNG export, Common pitfalls, Drag coexistence (`pointerInputWithSiblingFallthrough`), Low-latency motion prediction, Motion prediction and gesture coexistence, Room database entity, converter, and repository, Serialized data classes and stroke converters, Stroke serialization and Room persistence
 
-### Community 2346 - "backwards-write.md"
-Cohesion: 0.22
-Nodes (8): Backwards: Reading in Composition, writing in Composition (same phase), Backwards: Reading in Composition, writing in Drawing, Backwards: Reading in Composition, writing in Layout, Consequences of backwards writes, Forward flow through phases, Key rules to prevent backwards writes, Phase combinations: Backwards versus forward, What makes a write "backwards"?
+### Community 2346 - "Level"
+Cohesion: 0.14
+Nodes (12): Config, echo_to_console, file_path, level, Level, critical, debug, error (+4 more)
 
-### Community 2347 - "1. Phase deferral for animations (skip Composition to Draw and Layout)"
-Cohesion: 0.22
-Nodes (8): 1. Defer `sharedBounds` and `sharedElement` in fast-scrolling lists, 1. Phase deferral for animations (skip Composition to Draw and Layout), 2. Shared transitions and shared elements (`SharedTransitionScope`), 3. Persistent `Animatable` in custom modifiers (`Modifier.Node`), A. Alpha, rotation, and scale: defer to Draw with `graphicsLayer`, B. Animated offsets: defer to Layout with `Modifier.offset`, C. Animated size: defer to Layout with `Modifier.layout` or `animateBounds`, D. Custom composable parameters (lambda providers)
+### Community 2347 - "Recipes"
+Cohesion: 0.15
+Nodes (12): Buildings that read as built, not boxes, Floating island (sky maps), Glow, Ground details that make it feel made, Machines (tycoon), Prop checklist (before a prop enters a map), Prop cookbook: how the kit props are built, Recipes (+4 more)
 
-### Community 2348 - "1. Lazy layout directives"
-Cohesion: 0.22
-Nodes (8): 1. Lazy layout directives, 1. Require keys and content types, 2. Avoid in-item collection searches and observable state queries, 3. Avoid `derivedStateOf` for direct collection sizes and counts, 4. Avoid lazy layouts for small or bounded collections, 5. Hoist shared `Flow` and state collections out of lazy items, 6. Propagate `CompositionLocal`s down instead of reading in lazy items, 7. Defer shared transitions behind visibility indicators
+### Community 2348 - "TouchCache"
+Cohesion: 0.18
+Nodes (9): TouchCache, buckets, entries, TouchCacheEntry, key, touching, TouchCacheKey, hash (+1 more)
 
 ### Community 2349 - "4. Strong skipping mode and stability"
 Cohesion: 0.22
@@ -11758,9 +12003,9 @@ Nodes (8): Guiding Principles for Trace Analysis, Investigation Steps, Step 1: S
 Cohesion: 0.22
 Nodes (8): Activate skills, Android skills, Contributing, Disclaimer, Install Android skills, Install as an agent plugin, License, Review our community guidelines
 
-### Community 2358 - "use-of-native-code.md"
-Cohesion: 0.22
-Nodes (8): Bash, Development and coding guidance, Harden the compilation options, Impact, Mitigations, Overview, Resources, Verify third-party libraries are not vulnerable
+### Community 2358 - "android-jni-security/SKILL.md"
+Cohesion: 0.07
+Nodes (27): Impact, Java, Kotlin, Mitigations, Overview, Resources, Bash, Development and coding guidance (+19 more)
 
 ### Community 2359 - "android-permissions-security/SKILL.md"
 Cohesion: 0.22
@@ -11822,9 +12067,9 @@ Nodes (3): scifi_pistol(), stroke(), thorn_bow()
 Cohesion: 0.22
 Nodes (9): ScheduleError, code, step, ScheduleErrorCode, budget_exceeded, cancelled_target, invalid_await, task_limit (+1 more)
 
-### Community 2374 - "review_shots.py"
-Cohesion: 0.29
-Nodes (4): object_mode(), objects(), _bounds(), run()
+### Community 2374 - "Accessor"
+Cohesion: 0.15
+Nodes (13): Accessor, base_offset, component_count, component_size, component_type, count, element_size, type (+5 more)
 
 ### Community 2375 - "Character Rigging"
 Cohesion: 0.25
@@ -11862,9 +12107,9 @@ Nodes (7): Knowledge Base G — Performance, Perception & Pipeline, T-53 — Hei
 Cohesion: 0.25
 Nodes (7): Develop a testing mindset, Fakes over mocks, Follow the implementation guide, Mock camera capabilities, Test asynchronous lifecycles, Testing pitfalls, Use Truth assertions
 
-### Community 2385 - "Follow the implementation guide"
-Cohesion: 0.25
-Nodes (7): Follow the implementation guide, Remote triggers and syncing, Rotary input support, Stream the viewfinder, The circular UI challenge, The Wear OS remote mindset, Wear OS pitfalls
+### Community 2385 - "PkbField"
+Cohesion: 0.15
+Nodes (13): PkbField, bits, float_bits, initial, initial_f, max, min, name (+5 more)
 
 ### Community 2386 - "appfunctions/SKILL.md"
 Cohesion: 0.25
@@ -11886,13 +12131,13 @@ Nodes (7): Benefits of digital credentials, How digital credentials work, Indust
 Cohesion: 0.25
 Nodes (7): Grid area, Grid cell, Grid gap, Grid line, Grid track, How is Grid different from similar composables?, Terminology
 
-### Community 2391 - "editing-and-architecture.md"
-Cohesion: 0.25
-Nodes (7): Common pitfalls, Composable screen wiring and repository interface, `DrawingViewModel` with undo, redo, and eraser, Geometry-based stroke eraser details, Geometry conversions and pan or zoom erasing, Linear undo and redo history stack, MVVM architecture overview
+### Community 2391 - "worker_auth_test.cpp"
+Cohesion: 0.29
+Nodes (8): base64url_encode(), check(), fake_rsa_verify(), main(), make_token(), sample_ticket(), sign_input(), test_key()
 
-### Community 2392 - "migrate-xml-views-to-jetpack-compose/SKILL.md"
-Cohesion: 0.25
-Nodes (6): `ComposeView` in Fragments (Transitionary Step), Multiple `ComposeView` instances in the same layout, Preview composables in Layout Editor, `ViewCompositionStrategy` for `ComposeView`, Objective, Summary of the 10-step migration process
+### Community 2392 - "gn_builder.py"
+Cohesion: 0.26
+Nodes (7): apply(), build(), describe(), _layout(), _parse_val(), run(), _sock()
 
 ### Community 2393 - "REPORT_FORMAT.md"
 Cohesion: 0.25
@@ -11906,9 +12151,9 @@ Nodes (7): Android skills, Category support and surfaces, Contact, FAQs, Integra
 Cohesion: 0.25
 Nodes (8): Image specifications, `ShoppingCart`, `ShoppingEntity`, `ShoppingEntity`, `ShoppingList`, `ShoppingOrderTrackingCluster`, `ShoppingReorderCluster`, Step 1: Provide entity data
 
-### Community 2396 - "engage/travel.md"
-Cohesion: 0.25
-Nodes (7): Android skills, Category support and surfaces, Contact, FAQs, Integrate Engage SDK, Integration workflow, Next steps
+### Community 2396 - "Java_com_poko_glesclear_PokoActivity_nativeSetSurface"
+Cohesion: 0.23
+Nodes (5): Java_com_poko_glesclear_PokoActivity_nativeInit(), Java_com_poko_glesclear_PokoActivity_nativeSetSurface(), Java_com_poko_glesclear_PokoActivity_nativeSurfaceDestroyed(), run_probe(), write_line()
 
 ### Community 2397 - "High-Impact Migration Logic"
 Cohesion: 0.25
@@ -11986,9 +12231,9 @@ Nodes (7): スタイルルールの例外, デザインブリーフ, パレッ�
 Cohesion: 0.29
 Nodes (7): `bind`：ゲームが動かす値, `effect()` のフィールド, ヘルパー, レイヤーフィールド, レシピコードとプリミティブ, レシピファイル, 単位
 
-### Community 2417 - "设计简报"
-Cohesion: 0.29
-Nodes (7): 开始之前, 按用途安排时间结构, 简报格式, 简报要决定什么, 设计简报, 调色板职责, 风格规则的例外
+### Community 2417 - "FrameOutcome"
+Cohesion: 0.20
+Nodes (10): FrameOutcome, acquire_failed, present_failed, presented, recreate_failed, retries_exhausted, submit_failed, wait_failed (+2 more)
 
 ### Community 2418 - "配方代码与基元"
 Cohesion: 0.29
@@ -12066,17 +12311,17 @@ Nodes (6): How it works, How it works, How it works, Passing Arguments to ViewMo
 Cohesion: 0.29
 Nodes (6): Prerequisites, Step 1: Define Your Destinations, Step 2: Update the NavHost Configuration, Step 3: Implement Type-Safe Navigation Calls, Step 4: Accessing Arguments in ViewModels, Step 5: (Advanced) Handling Custom Types
 
-### Community 2437 - "Enable optimization"
-Cohesion: 0.29
-Nodes (7): Enable optimization, For AGP versions 9.3 and higher, Groovy, Kotlin, Legacy DSL for AGP versions lower than 9.3, Legacy DSL (Groovy), Legacy DSL (Kotlin)
+### Community 2437 - "SamplerDesc"
+Cohesion: 0.17
+Nodes (12): FILTER_TYPE, FILTER_TYPE_LINEAR, SamplerDesc, AddressU, AddressV, AddressW, MagFilter, MinFilter (+4 more)
 
-### Community 2438 - "otherverticals.md"
-Cohesion: 0.29
-Nodes (6): Android skills, Contact, FAQs, Integrate Engage SDK, Integration workflow, Next steps
+### Community 2438 - "debugger.cpp"
+Cohesion: 0.27
+Nodes (8): VmDebugger::add_breakpoint(), VmDebugger::finished(), VmDebugger::has_breakpoint(), VmDebugger::last_pc(), VmDebugger::pc(), VmDebugger::remove_breakpoint(), VmDebugger::stack(), VmDebugger::steps()
 
-### Community 2439 - "Integration detail"
-Cohesion: 0.29
-Nodes (7): For Engage SDK v1.6.0 and higher (Recommended), Integration detail, `isServiceAvailable`, Pre-work, Step 2: Provide Cluster data, Summary, Terminology
+### Community 2439 - "StepUpService"
+Cohesion: 0.27
+Nodes (3): StepUpService, challenges_, mutex_
 
 ### Community 2440 - "Integration detail"
 Cohesion: 0.29
@@ -12086,17 +12331,17 @@ Nodes (7): For Engage SDK v1.6.0 and higher (Recommended), Integration detail, `
 Cohesion: 0.29
 Nodes (7): For Engage SDK v1.6.0 and higher (Recommended), Integration detail, `isServiceAvailable`, Pre-work, Step 2: Provide Cluster data, Summary, Terminology
 
-### Community 2442 - "Integration detail"
-Cohesion: 0.29
-Nodes (7): For Engage SDK v1.6.0 and higher (Recommended), Integration detail, `isServiceAvailable`, Pre-work, Step 2: Provide Cluster data, Summary, Terminology
+### Community 2442 - "ForgeSkills-main/tools/validate_skills.py"
+Cohesion: 0.24
+Nodes (4): check_coverage(), collect_tech_ids(), parse_frontmatter(), validate()
 
 ### Community 2443 - "Policies to Verify"
 Cohesion: 0.29
 Nodes (6): Account Deletion Requirement (Policy ID: account_deletion), Hint: Deducing Account Presence, Output schema, Play Console Requirements (Policy ID: login_credentials), Policies to Verify, User Account and Identity Audit
 
-### Community 2444 - "hardcoded-cryptographic-secrets.md"
-Cohesion: 0.29
-Nodes (6): Impact, Java, Kotlin, Mitigations, Overview, Resources
+### Community 2444 - "ContactManifold"
+Cohesion: 0.18
+Nodes (9): ContactManifold, count, depth, normal, points, touching, ContactPoint, point_a (+1 more)
 
 ### Community 2445 - "Types of permissions"
 Cohesion: 0.29
@@ -12162,13 +12407,17 @@ Nodes (7): 1. Explicit Negation in Rules, 2. Entry in Rationalization Table, 3. 
 Cohesion: 0.67
 Nodes (5): assert_contains(), assert_not_contains(), fail(), pass(), test-render-graphs.sh script
 
-### Community 2463 - "logging_file_test.cpp"
-Cohesion: 0.43
-Nodes (3): count_stamps(), main(), read_file()
+### Community 2462 - "AssetMeta"
+Cohesion: 0.18
+Nodes (9): AssetMeta, index_count, mesh_index, source_bytes, source_fnv64, source_name, triangle_count, vertex_count (+1 more)
 
-### Community 2465 - "Vec4"
-Cohesion: 0.29
-Nodes (7): Vec4, w, x, y, z, vec4_add(), vec4_scale()
+### Community 2463 - "Frame"
+Cohesion: 0.20
+Nodes (6): Frame, code, dest, mask, registers, return_pc
+
+### Community 2465 - "TrustLevel"
+Cohesion: 0.18
+Nodes (11): TrustLevel, kBasic, kDeveloper, kDevice, kGuest, kModerator, kVerified, DeviceBindingResult (+3 more)
 
 ### Community 2466 - "blender-skills-main/README.md"
 Cohesion: 0.33
@@ -12226,17 +12475,17 @@ Nodes (6): Fundamentals, Limitations \& Nuances, Requirements, Scope \& Pre-requ
 Cohesion: 0.33
 Nodes (5): Alternative: Storing in a `ViewModel`, Remember a back stack with subtypes of `NavKey`, Save your back stack, Scoping `ViewModel` instances to `NavEntry` objects, Use `rememberNavBackStack`
 
-### Community 2480 - "analysis-of-the-project-and-layout.md"
-Cohesion: 0.33
-Nodes (5): 1. Project health \& build validation, 2. Compose pattern \& consistency analysis, 3. Design system \& infrastructure audit, 4. Candidate layout decomposition, 5. Architectural \& non-UI analysis
+### Community 2480 - "Diagnosed cases"
+Cohesion: 0.18
+Nodes (10): Diagnosed cases, Fire explosion: a contact that stays white, Projectile: trail smoke that dies with the head, Shield: a break that never shows a gap, Using a case, Curves must land on real frames, Do not gamble on the last frame, Every phase has a successor (+2 more)
 
-### Community 2481 - "xml-layout-migration.md"
-Cohesion: 0.33
-Nodes (5): 1. Structural analysis \& mapping, 2. Migration execution, 3. Theming \& design system integrity, 4. Component layering \& reusability, 5. Output requirements
+### Community 2481 - "span"
+Cohesion: 0.22
+Nodes (7): Hardened Standard Library, Best Practices Checklist, build(), ring(), span(), stack(), sym()
 
-### Community 2482 - "4. Concurrency: Combine/RxSwift to Flow"
-Cohesion: 0.33
-Nodes (6): 4. Concurrency: Combine/RxSwift to Flow, Android (SharedFlow), Combining Flows, Example Mapping, Handling Events (PassthroughSubject to SharedFlow), Mapping Table: Operators
+### Community 2482 - "brush-behaviors.md"
+Cohesion: 0.20
+Nodes (9): 10. `TargetNode` (scalar terminal node), 11. `PolarTargetNode` (2D vector terminal node), 1. `SourceNode` (input signals), 2-9. Value and operator nodes, All 11 behavior node types, Available `SourceNode.Source` constants, Common pitfalls, Overview and package imports (+1 more)
 
 ### Community 2483 - "Preparation"
 Cohesion: 0.33
@@ -12274,9 +12523,9 @@ Nodes (5): 1. Verify Data Integrity, 2. Run High-Level System Metrics, 3. Define
 Cohesion: 0.33
 Nodes (5): Data sources at a glance, Exemplar configs, Pitfalls, Shape of a config, Top-level knobs
 
-### Community 2492 - "JNI boundary security logic and decisions"
-Cohesion: 0.33
-Nodes (6): 1. JNI parameter mapping and release requirements, 2. Boundary input validation and buffer bounds logic, 3. TOCTOU-safe file access across JNI, 4. Cryptographic keys and native memory scrubbing, 5. Cross-thread reference lifecycles and pending JVM exceptions, JNI boundary security logic and decisions
+### Community 2492 - "ServerLoop"
+Cohesion: 0.24
+Nodes (4): ServerLoop, running, thread, tick
 
 ### Community 2493 - "leanback-to-compose-tv-migration/SKILL.md"
 Cohesion: 0.33
@@ -12306,9 +12555,9 @@ Nodes (5): blank_issues_enabled, contact_links, about, name, url
 Cohesion: 0.33
 Nodes (5): author, description, name, provides_hooks, version
 
-### Community 2500 - "v3.1.0 (2025-10-17)"
-Cohesion: 0.33
-Nodes (6): Breaking Changes, Bug Fixes, Documentation, Improvements, New Features, v3.1.0 (2025-10-17)
+### Community 2500 - "Subscription"
+Cohesion: 0.20
+Nodes (8): Subscription, handler, id, phase, type, EventHandler, EventResult, EventBus::subscribe()
 
 ### Community 2501 - "v6.2.0 (2026-07-23)"
 Cohesion: 0.33
@@ -12334,29 +12583,29 @@ Nodes (4): fail(), make_fake_uname(), pass(), start-server.test.sh script
 Cohesion: 0.53
 Nodes (4): fail(), main(), pass(), test-executing-plans-scripts.sh script
 
-### Community 2507 - "Overrides"
-Cohesion: 0.33
-Nodes (5): Overrides, adapter_id, adapter_set, validation, validation_set
+### Community 2507 - "TicketIssuanceDecision"
+Cohesion: 0.20
+Nodes (9): TicketIssuanceDecision, issued, Reason, device_not_trusted, device_revoked, ledger_view_stale, none, unknown_account (+1 more)
 
-### Community 2508 - "SpringConstraint"
-Cohesion: 0.33
-Nodes (5): SpringConstraint, a, b, rest_length, stiffness
+### Community 2508 - "SoftBodyNode"
+Cohesion: 0.14
+Nodes (10): SoftBodyNode, acceleration, inv_mass, position, prev_position, SpringConstraint, a, b (+2 more)
 
 ### Community 2509 - "FrameGraphExecution"
 Cohesion: 0.33
 Nodes (4): FrameGraphExecution, completed, detail, error
 
-### Community 2512 - "类别骨架"
-Cohesion: 0.40
-Nodes (5): 使用示例代码, 治疗与增益, 爆炸, 类别骨架, 飞行体
+### Community 2512 - "Code"
+Cohesion: 0.20
+Nodes (10): FirebaseTokenError, Code, bad_header, bad_signature, empty_subject, expired, malformed, not_yet_valid (+2 more)
 
-### Community 2513 - "Sequences: combos, finishers and the staged workflow"
-Cohesion: 0.40
-Nodes (5): Capturing and reviewing, Paintover concept, Screen feedback, Sequences: combos, finishers and the staged workflow, The sequence brief
+### Community 2513 - "Hard-Surface Modeling"
+Cohesion: 0.22
+Nodes (8): Edge/face attributes from Python (4.0+ names), Gotchas, Hard-Surface Modeling, Pick the workflow first, Procedure, Stack rules, Topology rules, shade_smooth()
 
-### Community 2514 - "Texture roles, generation and acceptance"
-Cohesion: 0.40
-Nodes (5): Acceptance, Generating, Prompt contents, Sequences must deform, Texture roles, generation and acceptance
+### Community 2514 - "build_pbr_material.py"
+Cohesion: 0.33
+Nodes (5): classify(), _find_textures(), _gltf_output_group(), run(), _srgb_to_lin()
 
 ### Community 2515 - "Headless vs MCP vs computer use"
 Cohesion: 0.40
@@ -12373,6 +12622,10 @@ Nodes (4): Reference measurement tables, Step 1 - what to measure, Step 3 - impl
 ### Community 2518 - "Poko Engine Development"
 Cohesion: 0.40
 Nodes (4): Architecture, Hard rules, Poko Engine Development, Verify before done
+
+### Community 2519 - "MB"
+Cohesion: 0.08
+Nodes (14): mesh_blocks(), sh(), neon_mat(), MB, Palette, Sh, Corpus Check, God Nodes (most connected - your core abstractions) (+6 more)
 
 ### Community 2520 - "migrate-to-service-entry-point.md"
 Cohesion: 0.40
@@ -12406,9 +12659,9 @@ Nodes (4): Auto-placement mixed with placed items, Set the alignment in a grid a
 Cohesion: 0.40
 Nodes (5): Step 6.1. Preserve primitive and custom UI state in Composables, Step 6.2. Preserve scroll state in lazy and scrollable layouts, Step 6.3. Preserve Navigation 3 state and multiple back stacks, Step 6.4. Preserve media playback state (`ExoPlayer` / Media3), Step 6: Preserve UI state across configuration changes
 
-### Community 2528 - "identify-optimal-xml-candidate.md"
-Cohesion: 0.40
-Nodes (4): 1. Analysis scope, 2. Selection criteria, 3. Risk assessment, Output requirements
+### Community 2528 - "复查循环、证据与交付"
+Cohesion: 0.22
+Nodes (9): Flags, `vfx review` 产出什么, 变体, 复查循环、证据与交付, 独立评审, 轮次与历史, 采集行为（macOS / Windows）, 阅读连拍图 (+1 more)
 
 ### Community 2529 - "cast/index.md"
 Cohesion: 0.40
@@ -12422,13 +12675,13 @@ Nodes (4): Android skills, Code samples, Improvements upon Jetpack Navigation, J
 Cohesion: 0.40
 Nodes (4): Deep Link URI Arguments Recipe, Demonstrated forms of deeplink, How it works, Recipe components
 
-### Community 2532 - "Case: Gson"
-Cohesion: 0.40
-Nodes (5): Case: Gson, Internal and example packages, Overly broad data model rules, Redundant interface and adapter rules, Unnecessary TypeToken rules
+### Community 2532 - "plus_props_fix.py"
+Cohesion: 0.22
+Nodes (6): big_arch(), candy_cane(), pine(), planet(), trophy(), zone_gate()
 
-### Community 2533 - "android-jni-security/SKILL.md"
-Cohesion: 0.40
-Nodes (4): Error handling, Glossary, Limitations, Setup and dependencies
+### Community 2533 - "drawing-and-brushes.md"
+Cohesion: 0.22
+Nodes (8): Common pitfalls, Emoji highlighter requirements, `InProgressStrokes` parameters, Modify and switch brushes with alpha preservation, Render dry strokes and highlighter blend modes, Render highlighter strokes with `BlendMode.Multiply`, Stock brushes and brush configuration, `TextureBitmapStore` and generation invalidation
 
 ### Community 2534 - "Setup and configuration"
 Cohesion: 0.40
@@ -12490,21 +12743,21 @@ Nodes (4): Choose A, B, or C, Pressure Test 3: Authority + Social Pressure, Scen
 Cohesion: 0.60
 Nodes (3): fail(), make_fixture(), test-bump-version.sh script
 
-### Community 2549 - "ENG-11 — ImGui pass in the frame graph"
-Cohesion: 0.40
-Nodes (5): eng12-progress, ENG-11 — ImGui pass in the frame graph, Implementation, Reproduce / open work, Verification — Windows laptop (MSYS2 UCRT64, AMD Radeon iGPU)
+### Community 2549 - "Step 1: Provide entity data"
+Cohesion: 0.22
+Nodes (9): Example, Image specifications, `LiveStreamingVideoEntity`, `MovieEntity`, Step 1: Provide entity data, `TvEpisodeEntity`, `TvSeasonEntity`, `TvShowEntity` (+1 more)
 
-### Community 2550 - "SoftBodyNode"
-Cohesion: 0.40
-Nodes (5): SoftBodyNode, acceleration, inv_mass, position, prev_position
+### Community 2550 - "axolotl.py"
+Cohesion: 0.39
+Nodes (8): build(), gill_base(), gills(), happy(), idle(), swim(), _unit(), walk()
 
 ### Community 2551 - "FrameGraphPlan"
 Cohesion: 0.40
 Nodes (4): FrameGraphPlan, detail, error, order
 
-### Community 2552 - "DEBUG_MESSAGE_SEVERITY"
-Cohesion: 0.40
-Nodes (5): DEBUG_MESSAGE_SEVERITY, DEBUG_MESSAGE_SEVERITY_ERROR, DEBUG_MESSAGE_SEVERITY_FATAL_ERROR, DEBUG_MESSAGE_SEVERITY_INFO, DEBUG_MESSAGE_SEVERITY_WARNING
+### Community 2553 - "EventError"
+Cohesion: 0.22
+Nodes (8): EventError, duplicate_subscription, non_monotonic_tick, ok, queue_full, unknown_subscription, EventBus::emit(), name()
 
 ### Community 2554 - "Blender Agent Skills: agent instructions"
 Cohesion: 0.50
@@ -12570,9 +12823,9 @@ Nodes (3): How it works, `ListDetailSceneStrategy`, Material List-Detail Recipe
 Cohesion: 0.50
 Nodes (3): How it works, Material Supporting Pane Recipe, `SupportingPaneSceneStrategy`
 
-### Community 2571 - "Case: Retrofit"
-Cohesion: 0.50
-Nodes (4): Blanket library preservation, Case: Retrofit, Manual annotation keeps, Redundant network response and adapter rules
+### Community 2571 - "GameEvent"
+Cohesion: 0.22
+Nodes (6): GameEvent, payload, phase, source, tick, type
 
 ### Community 2572 - "Manifest snippets"
 Cohesion: 0.50
@@ -12606,9 +12859,9 @@ Nodes (3): Audio glasses, Display glasses, Hardware controls
 Cohesion: 0.50
 Nodes (3): Plugin tests, Skill behavior evals, Testing Superpowers
 
-### Community 2581 - "v5.0.0 (2026-03-09)"
-Cohesion: 0.50
-Nodes (4): Breaking Changes, Improvements, New Features, v5.0.0 (2026-03-09)
+### Community 2581 - "events.cpp"
+Cohesion: 0.39
+Nodes (6): SubscriptionId, EventBus::dispatch(), EventBus::hash(), EventBus::subscriptions(), EventBus::unsubscribe(), mix()
 
 ### Community 2582 - "v3.2.0 (2025-10-18)"
 Cohesion: 0.50
@@ -12674,9 +12927,9 @@ Nodes (3): Add build dependencies, Groovy, Kotlin
 Cohesion: 0.67
 Nodes (3): Advanced: `RemoteCastPlayer`, Architecture baseline, Step 3: Implement the player and service
 
-### Community 2607 - "Java"
-Cohesion: 0.67
-Nodes (3): Conditional Service Availability Feature, For SDK versions prior to v1.6.0 (Deprecated), Java
+### Community 2607 - "deploy.sh"
+Cohesion: 0.47
+Nodes (8): die(), need_value(), numeric(), run_remote(), run_scp(), say(), deploy.sh script, usage()
 
 ### Community 2608 - "Java"
 Cohesion: 0.67
@@ -12686,9 +12939,9 @@ Nodes (3): Conditional Service Availability Feature, For SDK versions prior to v
 Cohesion: 0.67
 Nodes (3): Conditional Service Availability Feature, For SDK versions prior to v1.6.0 (Deprecated), Java
 
-### Community 2610 - "Java"
-Cohesion: 0.67
-Nodes (3): Conditional Service Availability Feature, For SDK versions prior to v1.6.0 (Deprecated), Java
+### Community 2610 - "Step 1: Provide entity data"
+Cohesion: 0.25
+Nodes (8): `ArticleEntity`, Content Category, `EventEntity`, `EventReservationEntity`, `GenericFeaturedEntity`, Image specifications, `PersonEntity`, Step 1: Provide entity data
 
 ### Community 2611 - "Google Play Billing Library 3.0 Release (2020-06-08)"
 Cohesion: 0.67
@@ -12702,17 +12955,17 @@ Nodes (3): Google Play Billing Billing Library 2 for Unity, Google Play Billing 
 Cohesion: 0.67
 Nodes (3): Google Play Billing Library 3.0.3 Release (2021-03-12), Java and Kotlin Bug fixes, Unity Bug fixes
 
-### Community 2614 - "Faster native calls with `@FastNative` and `@CriticalNative`"
-Cohesion: 0.67
-Nodes (3): Faster native calls with `@FastNative` and `@CriticalNative`, Java, Kotlin
+### Community 2614 - "engage/watch.md"
+Cohesion: 0.25
+Nodes (7): Android skills, Category support and surfaces, Contact, FAQs, Integrate Engage SDK, Integration workflow, Next steps
 
-### Community 2615 - "jclass, jmethodID, and jfieldID"
-Cohesion: 0.67
-Nodes (3): Java, jclass, jmethodID, and jfieldID, Kotlin
+### Community 2615 - "03 — Architecture and services"
+Cohesion: 0.25
+Nodes (8): 03 — Architecture and services, Critical correction, Free-tier facts verified at planning time, Naming, Quota budget, Service assignments, Topology, Two-plane network summary
 
-### Community 2616 - "Native libraries"
-Cohesion: 0.67
-Nodes (3): Java, Kotlin, Native libraries
+### Community 2616 - "Demo milestone — friends & family, 2026-12-22"
+Cohesion: 0.25
+Nodes (7): Capacity math (from 2026-11-27 to 2026-12-22), Critical path (19 must-have rows, ≈25 with integration and fixes), Demo "done when" (acceptance), Demo milestone — friends & family, 2026-12-22, Parallel-agent plan, Risks, What friends can do on Dec 22
 
 ### Community 2617 - "3. Exported component protection and URI permissions"
 Cohesion: 0.67
@@ -12754,29 +13007,997 @@ Nodes (3): Anti-patterns to avoid, Avoid offering too many options, Avoid Window
 Cohesion: 0.67
 Nodes (3): Technical notes, Token budgets, YAML frontmatter requirements
 
-### Community 2635 - "VisualShape"
+### Community 2635 - "Project review and repairs — 2026-11-22"
+Cohesion: 0.25
+Nodes (6): Project map and review scope, Project review and repairs — 2026-11-22, Remaining work and next safe step, Skills and graph, Verification, Verified fixes
+
+### Community 2640 - "2. Audit Findings for Next Agent"
+Cohesion: 0.25
+Nodes (7): 1. SHL-01..SHL-07 Windows MSVC Verification, 2. Audit Findings for Next Agent, 3. Directory Scaffold Created, A. `client/windows/bridge/poko-shell/src/lib.rs` Docstring vs Implementation, B. Windows CMake & Build Issues Blocking Full-Suite Parity, C. Next Row Readiness, SHL-07 Windows Verification & Audit Note (2026-11-27)
+
+### Community 2641 - "Two-target gate evidence — 2026-11-26 (G2)"
+Cohesion: 0.25
+Nodes (7): Environment, Narrowphase defects found and fixed during validation, Probe, Remaining limitations (unchanged, documented in code), Results, Scope, Two-target gate evidence — 2026-11-26 (G2)
+
+### Community 2642 - "make_pkb_schema_draft"
+Cohesion: 0.46
+Nodes (3): head(), make_pkb_schema_draft(), text()
+
+### Community 2643 - "byo_registration_test.cpp"
+Cohesion: 0.36
+Nodes (5): Byo, check(), key(), main(), req()
+
+### Community 2644 - "CAD Skill for Claude Code"
+Cohesion: 0.29
+Nodes (7): CAD Skill for Claude Code, Dependencies, Files, Installation, License, More examples, Usage
+
+### Community 2645 - "Integration detail"
+Cohesion: 0.29
+Nodes (7): For Engage SDK v1.6.0 and higher (Recommended), Integration detail, `isServiceAvailable`, Pre-work, Step 2: Provide Cluster data, Summary, Terminology
+
+### Community 2647 - "Type"
+Cohesion: 0.29
+Nodes (7): Type, Array, Bool, Null, Number, Object, String
+
+### Community 2648 - "event"
+Cohesion: 0.29
+Nodes (3): configured(), event(), main()
+
+### Community 2649 - "Code"
+Cohesion: 0.29
+Nodes (7): Code, malformed, none, too_deep, too_many_nodes, too_many_rules, unknown_field
+
+### Community 2650 - "HostSession"
+Cohesion: 0.29
+Nodes (6): HostSession, clients, game, session_id, slot_id, version
+
+### Community 2679 - "slot_registry_test.cpp"
+Cohesion: 0.38
+Nodes (4): check(), main(), mk(), Reg
+
+### Community 2680 - "Effekseer VFX"
+Cohesion: 0.33
+Nodes (6): Effekseer VFX, エフェクトを一つ作る・変更する, プロジェクトでの初回実行, ルーティング表, レシピの骨格, 厳守ルール
+
+### Community 2681 - "Code"
+Cohesion: 0.33
+Nodes (5): TicketError, Code, bad_signature, expired, malformed
+
+### Community 2682 - "match_queue_test.cpp"
+Cohesion: 0.47
+Nodes (3): check(), main(), req()
+
+### Community 2683 - "EventPhase"
+Cohesion: 0.33
+Nodes (5): EventPhase, simulation, startup, teardown, EventBus::clear_phase()
+
+### Community 2684 - "StateField"
+Cohesion: 0.33
+Nodes (3): StateField, name, value
+
+### Community 2685 - "server/host — DEMO-01, the runnable server"
+Cohesion: 0.33
+Nodes (5): Deploy (DEMO-02), Run, server/host — DEMO-01, the runnable server, WebSocket transport (DEMO-03), Wire protocol
+
+### Community 2686 - "allocator_test.cpp"
+Cohesion: 0.47
+Nodes (3): check(), main(), ready_platform()
+
+### Community 2687 - "診断済みのケース"
+Cohesion: 0.40
+Nodes (5): ケースの使い方, シールド：隙間が一度も見えない崩れ, 火の爆発：白いままの接触, 診断済みのケース, 飛翔体：ヘッドと一緒に消えるトレイルの煙
+
+### Community 2688 - "コマンドリファレンス"
+Cohesion: 0.40
+Nodes (5): `--ids` と壊れたソース, lint がチェックするもの, コマンドリファレンス, 作業領域の構成, 全量ビルドが削除しうるもの
+
+### Community 2689 - "強度、ボリューム、退場のリズム"
+Cohesion: 0.40
+Nodes (5): どのフェーズにも後継がある, カーブは実フレームに着地させる, 同梱サンプルの参考タイミング, 強度、ボリューム、退場のリズム, 最後のフレームに賭けない
+
+### Community 2690 - "VFX 制作规则"
+Cohesion: 0.40
+Nodes (5): 1. 为什么"贴纸感"的效果不行, 3. 元素之间的差别, 4. 飞行体（category `projectile`）, 6. 预算, VFX 制作规则
+
+### Community 2691 - "VFX craft rules"
+Cohesion: 0.40
+Nodes (5): 1. Why "sticker" effects fail, 3. Element differences, 4. Projectiles (category `projectile`), 6. Budgets, VFX craft rules
+
+### Community 2753 - "std::print / std::println"
+Cohesion: 0.40
+Nodes (5): Basic Usage, Compiler Support, Relationship to {fmt}, std::print / std::println, What It Replaces
+
+### Community 2755 - "Community Labeling"
+Cohesion: 0.40
+Nodes (4): Communities, Community Labeling, Instructions, Language
+
+### Community 2756 - "StateDecl"
+Cohesion: 0.40
+Nodes (5): StateDecl, literal, name, negative, pos
+
+### Community 2758 - "Stylized hard-edge VFX"
+Cohesion: 0.50
+Nodes (4): Greyscale masks + a steep cutoff, Primitives, Stylized hard-edge VFX, Value and colour on real backgrounds
+
+### Community 2760 - "Node Description Batch 1 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 1 of 209, Prompt
+
+### Community 2761 - "Node Description Batch 2 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 2 of 209, Prompt
+
+### Community 2762 - "Node Description Batch 3 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 3 of 209, Prompt
+
+### Community 2763 - "Node Description Batch 4 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 4 of 209, Prompt
+
+### Community 2764 - "Node Description Batch 5 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 5 of 209, Prompt
+
+### Community 2765 - "Node Description Batch 6 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 6 of 209, Prompt
+
+### Community 2766 - "Node Description Batch 7 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 7 of 209, Prompt
+
+### Community 2767 - "Node Description Batch 8 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 8 of 209, Prompt
+
+### Community 2768 - "Node Description Batch 9 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 9 of 209, Prompt
+
+### Community 2769 - "Node Description Batch 10 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 10 of 209, Prompt
+
+### Community 2770 - "Node Description Batch 11 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 11 of 209, Prompt
+
+### Community 2771 - "Node Description Batch 12 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 12 of 209, Prompt
+
+### Community 2772 - "Node Description Batch 13 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 13 of 209, Prompt
+
+### Community 2773 - "Node Description Batch 14 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 14 of 209, Prompt
+
+### Community 2774 - "Node Description Batch 15 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 15 of 209, Prompt
+
+### Community 2775 - "Node Description Batch 16 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 16 of 209, Prompt
+
+### Community 2776 - "Node Description Batch 17 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 17 of 209, Prompt
+
+### Community 2777 - "Node Description Batch 18 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 18 of 209, Prompt
+
+### Community 2778 - "Node Description Batch 19 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 19 of 209, Prompt
+
+### Community 2779 - "Node Description Batch 20 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 20 of 209, Prompt
+
+### Community 2780 - "Node Description Batch 21 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 21 of 209, Prompt
+
+### Community 2781 - "Node Description Batch 22 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 22 of 209, Prompt
+
+### Community 2782 - "Node Description Batch 23 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 23 of 209, Prompt
+
+### Community 2783 - "Node Description Batch 24 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 24 of 209, Prompt
+
+### Community 2784 - "Node Description Batch 25 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 25 of 209, Prompt
+
+### Community 2785 - "Node Description Batch 26 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 26 of 209, Prompt
+
+### Community 2786 - "Node Description Batch 27 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 27 of 209, Prompt
+
+### Community 2787 - "Node Description Batch 28 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 28 of 209, Prompt
+
+### Community 2788 - "Node Description Batch 29 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 29 of 209, Prompt
+
+### Community 2789 - "Node Description Batch 30 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 30 of 209, Prompt
+
+### Community 2790 - "Node Description Batch 31 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 31 of 209, Prompt
+
+### Community 2791 - "Node Description Batch 32 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 32 of 209, Prompt
+
+### Community 2792 - "Node Description Batch 33 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 33 of 209, Prompt
+
+### Community 2793 - "Node Description Batch 34 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 34 of 209, Prompt
+
+### Community 2794 - "Node Description Batch 35 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 35 of 209, Prompt
+
+### Community 2795 - "Node Description Batch 36 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 36 of 209, Prompt
+
+### Community 2796 - "Node Description Batch 37 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 37 of 209, Prompt
+
+### Community 2797 - "Node Description Batch 38 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 38 of 209, Prompt
+
+### Community 2798 - "Node Description Batch 39 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 39 of 209, Prompt
+
+### Community 2799 - "Node Description Batch 40 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 40 of 209, Prompt
+
+### Community 2800 - "Node Description Batch 41 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 41 of 209, Prompt
+
+### Community 2801 - "Node Description Batch 42 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 42 of 209, Prompt
+
+### Community 2802 - "Node Description Batch 43 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 43 of 209, Prompt
+
+### Community 2803 - "Node Description Batch 44 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 44 of 209, Prompt
+
+### Community 2804 - "Node Description Batch 45 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 45 of 209, Prompt
+
+### Community 2805 - "Node Description Batch 46 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 46 of 209, Prompt
+
+### Community 2806 - "Node Description Batch 47 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 47 of 209, Prompt
+
+### Community 2807 - "Node Description Batch 48 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 48 of 209, Prompt
+
+### Community 2808 - "Node Description Batch 49 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 49 of 209, Prompt
+
+### Community 2809 - "Node Description Batch 50 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 50 of 209, Prompt
+
+### Community 2810 - "Node Description Batch 51 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 51 of 209, Prompt
+
+### Community 2811 - "Node Description Batch 52 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 52 of 209, Prompt
+
+### Community 2812 - "Node Description Batch 53 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 53 of 209, Prompt
+
+### Community 2813 - "Node Description Batch 54 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 54 of 209, Prompt
+
+### Community 2814 - "Node Description Batch 55 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 55 of 209, Prompt
+
+### Community 2815 - "Node Description Batch 56 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 56 of 209, Prompt
+
+### Community 2816 - "Node Description Batch 57 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 57 of 209, Prompt
+
+### Community 2817 - "Node Description Batch 58 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 58 of 209, Prompt
+
+### Community 2818 - "Node Description Batch 59 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 59 of 209, Prompt
+
+### Community 2819 - "Node Description Batch 60 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 60 of 209, Prompt
+
+### Community 2820 - "Node Description Batch 61 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 61 of 209, Prompt
+
+### Community 2821 - "Node Description Batch 62 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 62 of 209, Prompt
+
+### Community 2822 - "Node Description Batch 63 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 63 of 209, Prompt
+
+### Community 2823 - "Node Description Batch 64 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 64 of 209, Prompt
+
+### Community 2824 - "Node Description Batch 65 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 65 of 209, Prompt
+
+### Community 2825 - "Node Description Batch 66 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 66 of 209, Prompt
+
+### Community 2826 - "Node Description Batch 67 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 67 of 209, Prompt
+
+### Community 2827 - "Node Description Batch 68 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 68 of 209, Prompt
+
+### Community 2828 - "Node Description Batch 69 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 69 of 209, Prompt
+
+### Community 2829 - "Node Description Batch 70 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 70 of 209, Prompt
+
+### Community 2830 - "Node Description Batch 71 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 71 of 209, Prompt
+
+### Community 2831 - "Node Description Batch 72 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 72 of 209, Prompt
+
+### Community 2832 - "Node Description Batch 73 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 73 of 209, Prompt
+
+### Community 2833 - "Node Description Batch 74 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 74 of 209, Prompt
+
+### Community 2834 - "Node Description Batch 75 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 75 of 209, Prompt
+
+### Community 2835 - "Node Description Batch 76 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 76 of 209, Prompt
+
+### Community 2836 - "Node Description Batch 77 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 77 of 209, Prompt
+
+### Community 2837 - "Node Description Batch 78 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 78 of 209, Prompt
+
+### Community 2838 - "Node Description Batch 79 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 79 of 209, Prompt
+
+### Community 2839 - "Node Description Batch 80 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 80 of 209, Prompt
+
+### Community 2840 - "Node Description Batch 81 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 81 of 209, Prompt
+
+### Community 2841 - "Node Description Batch 82 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 82 of 209, Prompt
+
+### Community 2842 - "Node Description Batch 83 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 83 of 209, Prompt
+
+### Community 2843 - "Node Description Batch 84 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 84 of 209, Prompt
+
+### Community 2844 - "Node Description Batch 85 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 85 of 209, Prompt
+
+### Community 2845 - "Node Description Batch 86 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 86 of 209, Prompt
+
+### Community 2846 - "Node Description Batch 87 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 87 of 209, Prompt
+
+### Community 2847 - "Node Description Batch 88 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 88 of 209, Prompt
+
+### Community 2848 - "Node Description Batch 89 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 89 of 209, Prompt
+
+### Community 2849 - "Node Description Batch 90 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 90 of 209, Prompt
+
+### Community 2850 - "Node Description Batch 91 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 91 of 209, Prompt
+
+### Community 2851 - "Node Description Batch 92 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 92 of 209, Prompt
+
+### Community 2852 - "Node Description Batch 93 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 93 of 209, Prompt
+
+### Community 2853 - "Node Description Batch 94 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 94 of 209, Prompt
+
+### Community 2854 - "Node Description Batch 95 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 95 of 209, Prompt
+
+### Community 2855 - "Node Description Batch 96 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 96 of 209, Prompt
+
+### Community 2856 - "Node Description Batch 97 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 97 of 209, Prompt
+
+### Community 2857 - "Node Description Batch 98 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 98 of 209, Prompt
+
+### Community 2858 - "Node Description Batch 99 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 99 of 209, Prompt
+
+### Community 2859 - "Node Description Batch 100 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 100 of 209, Prompt
+
+### Community 2860 - "Node Description Batch 101 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 101 of 209, Prompt
+
+### Community 2861 - "Node Description Batch 102 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 102 of 209, Prompt
+
+### Community 2862 - "Node Description Batch 103 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 103 of 209, Prompt
+
+### Community 2863 - "Node Description Batch 104 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 104 of 209, Prompt
+
+### Community 2864 - "Node Description Batch 105 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 105 of 209, Prompt
+
+### Community 2865 - "Node Description Batch 106 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 106 of 209, Prompt
+
+### Community 2866 - "Node Description Batch 107 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 107 of 209, Prompt
+
+### Community 2867 - "Node Description Batch 108 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 108 of 209, Prompt
+
+### Community 2868 - "Node Description Batch 109 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 109 of 209, Prompt
+
+### Community 2869 - "Node Description Batch 110 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 110 of 209, Prompt
+
+### Community 2870 - "Node Description Batch 111 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 111 of 209, Prompt
+
+### Community 2871 - "Node Description Batch 112 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 112 of 209, Prompt
+
+### Community 2872 - "Node Description Batch 113 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 113 of 209, Prompt
+
+### Community 2873 - "Node Description Batch 114 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 114 of 209, Prompt
+
+### Community 2874 - "Node Description Batch 115 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 115 of 209, Prompt
+
+### Community 2875 - "Node Description Batch 116 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 116 of 209, Prompt
+
+### Community 2876 - "Node Description Batch 117 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 117 of 209, Prompt
+
+### Community 2877 - "Node Description Batch 118 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 118 of 209, Prompt
+
+### Community 2878 - "Node Description Batch 119 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 119 of 209, Prompt
+
+### Community 2879 - "Node Description Batch 120 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 120 of 209, Prompt
+
+### Community 2880 - "Node Description Batch 121 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 121 of 209, Prompt
+
+### Community 2881 - "Node Description Batch 122 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 122 of 209, Prompt
+
+### Community 2882 - "Node Description Batch 123 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 123 of 209, Prompt
+
+### Community 2883 - "Node Description Batch 124 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 124 of 209, Prompt
+
+### Community 2884 - "Node Description Batch 125 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 125 of 209, Prompt
+
+### Community 2885 - "Node Description Batch 126 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 126 of 209, Prompt
+
+### Community 2886 - "Node Description Batch 127 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 127 of 209, Prompt
+
+### Community 2887 - "Node Description Batch 128 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 128 of 209, Prompt
+
+### Community 2888 - "Node Description Batch 129 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 129 of 209, Prompt
+
+### Community 2889 - "Node Description Batch 130 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 130 of 209, Prompt
+
+### Community 2890 - "Node Description Batch 131 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 131 of 209, Prompt
+
+### Community 2891 - "Node Description Batch 132 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 132 of 209, Prompt
+
+### Community 2892 - "Node Description Batch 133 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 133 of 209, Prompt
+
+### Community 2893 - "Node Description Batch 134 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 134 of 209, Prompt
+
+### Community 2894 - "Node Description Batch 135 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 135 of 209, Prompt
+
+### Community 2895 - "Node Description Batch 136 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 136 of 209, Prompt
+
+### Community 2896 - "Node Description Batch 137 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 137 of 209, Prompt
+
+### Community 2897 - "Node Description Batch 138 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 138 of 209, Prompt
+
+### Community 2898 - "Node Description Batch 139 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 139 of 209, Prompt
+
+### Community 2899 - "Node Description Batch 140 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 140 of 209, Prompt
+
+### Community 2900 - "Node Description Batch 141 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 141 of 209, Prompt
+
+### Community 2901 - "Node Description Batch 142 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 142 of 209, Prompt
+
+### Community 2902 - "Node Description Batch 143 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 143 of 209, Prompt
+
+### Community 2903 - "Node Description Batch 144 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 144 of 209, Prompt
+
+### Community 2904 - "Node Description Batch 145 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 145 of 209, Prompt
+
+### Community 2905 - "Node Description Batch 146 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 146 of 209, Prompt
+
+### Community 2906 - "Node Description Batch 147 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 147 of 209, Prompt
+
+### Community 2907 - "Node Description Batch 148 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 148 of 209, Prompt
+
+### Community 2908 - "Node Description Batch 149 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 149 of 209, Prompt
+
+### Community 2909 - "Node Description Batch 150 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 150 of 209, Prompt
+
+### Community 2910 - "Node Description Batch 151 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 151 of 209, Prompt
+
+### Community 2911 - "Node Description Batch 152 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 152 of 209, Prompt
+
+### Community 2912 - "Node Description Batch 153 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 153 of 209, Prompt
+
+### Community 2913 - "Node Description Batch 154 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 154 of 209, Prompt
+
+### Community 2914 - "Node Description Batch 155 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 155 of 209, Prompt
+
+### Community 2915 - "Node Description Batch 156 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 156 of 209, Prompt
+
+### Community 2916 - "Node Description Batch 157 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 157 of 209, Prompt
+
+### Community 2917 - "Node Description Batch 158 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 158 of 209, Prompt
+
+### Community 2918 - "Node Description Batch 159 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 159 of 209, Prompt
+
+### Community 2919 - "Node Description Batch 160 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 160 of 209, Prompt
+
+### Community 2920 - "Node Description Batch 161 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 161 of 209, Prompt
+
+### Community 2921 - "Node Description Batch 162 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 162 of 209, Prompt
+
+### Community 2922 - "Node Description Batch 163 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 163 of 209, Prompt
+
+### Community 2923 - "Node Description Batch 164 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 164 of 209, Prompt
+
+### Community 2924 - "Node Description Batch 165 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 165 of 209, Prompt
+
+### Community 2925 - "Node Description Batch 166 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 166 of 209, Prompt
+
+### Community 2926 - "Node Description Batch 167 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 167 of 209, Prompt
+
+### Community 2927 - "Node Description Batch 168 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 168 of 209, Prompt
+
+### Community 2928 - "Node Description Batch 169 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 169 of 209, Prompt
+
+### Community 2929 - "Node Description Batch 170 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 170 of 209, Prompt
+
+### Community 2930 - "Node Description Batch 171 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 171 of 209, Prompt
+
+### Community 2931 - "Node Description Batch 172 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 172 of 209, Prompt
+
+### Community 2932 - "Node Description Batch 173 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 173 of 209, Prompt
+
+### Community 2933 - "Node Description Batch 174 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 174 of 209, Prompt
+
+### Community 2934 - "Node Description Batch 175 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 175 of 209, Prompt
+
+### Community 2935 - "Node Description Batch 176 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 176 of 209, Prompt
+
+### Community 2936 - "Node Description Batch 177 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 177 of 209, Prompt
+
+### Community 2937 - "Node Description Batch 178 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 178 of 209, Prompt
+
+### Community 2938 - "Node Description Batch 179 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 179 of 209, Prompt
+
+### Community 2939 - "Node Description Batch 180 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 180 of 209, Prompt
+
+### Community 2940 - "Node Description Batch 181 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 181 of 209, Prompt
+
+### Community 2941 - "Node Description Batch 182 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 182 of 209, Prompt
+
+### Community 2942 - "Node Description Batch 183 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 183 of 209, Prompt
+
+### Community 2943 - "Node Description Batch 184 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 184 of 209, Prompt
+
+### Community 2944 - "Node Description Batch 185 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 185 of 209, Prompt
+
+### Community 2945 - "Node Description Batch 186 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 186 of 209, Prompt
+
+### Community 2946 - "Node Description Batch 187 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 187 of 209, Prompt
+
+### Community 2947 - "Node Description Batch 188 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 188 of 209, Prompt
+
+### Community 2948 - "Node Description Batch 189 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 189 of 209, Prompt
+
+### Community 2949 - "Node Description Batch 190 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 190 of 209, Prompt
+
+### Community 2950 - "Node Description Batch 191 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 191 of 209, Prompt
+
+### Community 2951 - "Node Description Batch 192 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 192 of 209, Prompt
+
+### Community 2952 - "Node Description Batch 193 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 193 of 209, Prompt
+
+### Community 2953 - "Node Description Batch 194 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 194 of 209, Prompt
+
+### Community 2954 - "Node Description Batch 195 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 195 of 209, Prompt
+
+### Community 2955 - "Node Description Batch 196 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 196 of 209, Prompt
+
+### Community 2956 - "Node Description Batch 197 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 197 of 209, Prompt
+
+### Community 2957 - "Node Description Batch 198 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 198 of 209, Prompt
+
+### Community 2958 - "Node Description Batch 199 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 199 of 209, Prompt
+
+### Community 2959 - "Node Description Batch 200 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 200 of 209, Prompt
+
+### Community 2960 - "Node Description Batch 201 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 201 of 209, Prompt
+
+### Community 2961 - "Node Description Batch 202 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 202 of 209, Prompt
+
+### Community 2962 - "Node Description Batch 203 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 203 of 209, Prompt
+
+### Community 2963 - "Node Description Batch 204 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 204 of 209, Prompt
+
+### Community 2964 - "Node Description Batch 205 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 205 of 209, Prompt
+
+### Community 2965 - "Node Description Batch 206 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 206 of 209, Prompt
+
+### Community 2966 - "Node Description Batch 207 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 207 of 209, Prompt
+
+### Community 2967 - "Node Description Batch 208 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 208 of 209, Prompt
+
+### Community 2968 - "Node Description Batch 209 of 209"
+Cohesion: 0.50
+Nodes (3): Instructions, Node Description Batch 209 of 209, Prompt
+
+### Community 2970 - "party_book_test.cpp"
 Cohesion: 0.67
-Nodes (3): VisualShape, kBox, kSphere
+Nodes (3): check(), main(), PB
+
+### Community 2971 - "reconnect_test.cpp"
+Cohesion: 0.67
+Nodes (3): check(), main(), RF
+
+### Community 2972 - "Java"
+Cohesion: 0.67
+Nodes (3): Conditional Service Availability Feature, For SDK versions prior to v1.6.0 (Deprecated), Java
+
+### Community 2973 - "Java"
+Cohesion: 0.67
+Nodes (3): Conditional Service Availability Feature, For SDK versions prior to v1.6.0 (Deprecated), Java
+
+### Community 2974 - "v3.3.1 (2025-10-28)"
+Cohesion: 0.67
+Nodes (3): Bug Fixes, Improvements, v3.3.1 (2025-10-28)
+
+### Community 2975 - "v5.0.5 (2026-03-17)"
+Cohesion: 0.67
+Nodes (3): Bug Fixes, Changed, v5.0.5 (2026-03-17)
 
 ## Knowledge Gaps
-- **1897 isolated node(s):** `HandPosition`, `UsesReleaseEvent`, `UsesLegacy`, `ReleaseStamp`, `I` (+1892 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 18794 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **250 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **2629 isolated node(s):** `abi_version`, `width`, `height`, `dpi_scale`, `magic` (+2624 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 20915 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **262 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Superpowers Release Notes` connect `Superpowers Release Notes` to `v6.3.0 (2026-08-12)`, `v6.4.1 (2026-09-18)`, `v3.1.0 (2025-10-17)`, `v5.1.0 (2026-04-30)`, `v6.2.0 (2026-07-23)`, `v7.0.0 (2026-10-09)`, `Superpowers v2.0.0 Release Notes`, `v6.0.0 (2026-06-16)`, `v5.0.6 (2026-03-24)`, `v4.0.0 (2025-12-17)`, `v7.0.2 (2026-11-03)`, `v5.0.1 (2026-03-10)`, `server.cjs`, `v5.0.0 (2026-03-09)`, `v3.2.0 (2025-10-18)`, `v6.1.0 (2026-06-30)`, `ForgeSkills-main/tools/validate_skills.py`?**
-  _High betweenness centrality (0.014) - this node is a cross-community bridge._
-- **Are the 609 inferred relationships involving `Prop` (e.g. with `bakery_oven()` and `biscuit_bridge()`) actually correct?**
-  _`Prop` has 609 INFERRED edges - model-reasoned connections that need verification._
-- **What connects `HandPosition`, `UsesReleaseEvent`, `UsesLegacy` to the rest of the system?**
-  _1897 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `json` be split into smaller, more focused modules?**
-  _Cohesion score 0.023795559279430247 - nodes in this community are weakly interconnected._
-- **Why does `Task` connect `Scheduler` to `Platform-neutral prose — Phase A design`, `ForgeSkills-main/tools/validate_skills.py`, `Porting Superpowers to a New Harness`, `litert-runtime/SKILL.md`?**
-  _High betweenness centrality (0.014) - this node is a cross-community bridge._
-- **Are the 590 inferred relationships involving `S()` (e.g. with `bakery_oven()` and `biscuit_bridge()`) actually correct?**
-  _`S()` has 590 INFERRED edges - model-reasoned connections that need verification._
+- **Why does `Superpowers Release Notes` connect `Superpowers Release Notes` to `v6.3.0 (2026-08-12)`, `v6.4.1 (2026-09-18)`, `v5.1.0 (2026-04-30)`, `v6.2.0 (2026-07-23)`, `v7.0.0 (2026-10-09)`, `Superpowers v2.0.0 Release Notes`, `v6.0.0 (2026-06-16)`, `v5.0.6 (2026-03-24)`, `v4.0.0 (2025-12-17)`, `v7.0.2 (2026-11-03)`, `v5.0.1 (2026-03-10)`, `server.cjs`, `v3.2.0 (2025-10-18)`, `v6.1.0 (2026-06-30)`, `ForgeSkills-main/tools/validate_skills.py`, `v3.3.1 (2025-10-28)`, `v5.0.5 (2026-03-17)`?**
+  _High betweenness centrality (0.018) - this node is a cross-community bridge._
+- **Are the 610 inferred relationships involving `Prop` (e.g. with `bakery_oven()` and `biscuit_bridge()`) actually correct?**
+  _`Prop` has 610 INFERRED edges - model-reasoned connections that need verification._
+- **What connects `abi_version`, `width`, `height` to the rest of the system?**
+  _2629 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `21 — Engine core` be split into smaller, more focused modules?**
   _Cohesion score 0.125 - nodes in this community are weakly interconnected._
+- **Why does `Graph Report - .  (2026-11-27)` connect `MB` to `skill_module`, `Communities`?**
+  _High betweenness centrality (0.016) - this node is a cross-community bridge._
+- **Are the 590 inferred relationships involving `S()` (e.g. with `bakery_oven()` and `biscuit_bridge()`) actually correct?**
+  _`S()` has 590 INFERRED edges - model-reasoned connections that need verification._
+- **Should `run` be split into smaller, more focused modules?**
+  _Cohesion score 0.021183545168785022 - nodes in this community are weakly interconnected._
